@@ -1,0 +1,199 @@
+#
+# GCCG v0.9.6.3 Middle-earth deck
+#
+#      DCCD - Elf-lord - Elrond - Guardian of Arnor
+#
+
+####
+Deck
+####
+
+# Dual Resource (4)
+
+1 Bow-master (GW)
+1 Elf-friend (FB)
+2 Well Aimed (FB)
+
+# Elf-lord Character (4)
+
+4 Elrond [E] (FB)
+
+# Hazard (33)
+
+1 An Unexpected Outpost (DM)
+1 Black Crows (FB)
+2 Cave Worm (TD)
+2 Cave-drake (TW)
+1 Crossing the Border (FB)
+1 Dragon's Blood (TD)
+1 Flooded to the Surface (DF)
+1 From the Pits of Angband (TD)
+1 Ice-drake (NW)
+1 Khuzadrepa Ahunt (GW)
+2 Marsh-drake (TD)
+1 Nameless Thing (DM)
+1 Out of Practise (DF)
+1 Rain-drake (TD)
+1 Ring-chained (NM)
+1 Shut Yer Mouth (LE)
+2 Summons from Long Sleep (AS)
+1 Taint of Deep Lore (WR)
+2 The Reach of Ulmo (DM)
+1 Thrice Told Tales (RS)
+1 Tidings of Doubt and Danger (LE)
+1 True Fire-drake (TD)
+1 Twilight (TW)
+1 Watchers at the Gate (WR)
+1 Wielder's Curse (GW)
+1 Winged Fire-drake (TD)
+1 Witch-king of Angmar (TW)
+1 Wound of Long Burden (DM)
+
+# Hero Character (10)
+
+1 Beretar (TW)
+1 Brandir (KN)
+1 Elladan (TW)
+1 Elrohir (TW)
+1 Elven Handmaid (FB)
+1 Emissary of the House (FB)
+1 Erestor (FB)
+2 Ranger of Arnor (KN)
+1 Strider (BA)
+
+# Hero Resource (25)
+
+1 A Chance Meeting (TW)
+1 Aeglin (GW)
+1 Ancient Skill and Wisdom (FB)
+1 Asfaloth (RS)
+1 Bow of Dragon-horn (TD)
+1 Choose a Mortal Life (FB)
+1 Elves of the House (FB)
+1 Great Bow of Yew (FB)
+1 Kindling of the Spirit (TW)
+1 Lossoth (TW)
+1 Many Turns and Doublings (TD)
+2 Marvels Told (TD)
+1 Narsil (TW)
+1 Palantír of Amon Sûl [H] (TW)
+1 Rangers of the North (TW)
+1 Reconstructed Towers (FB)
+2 Smoke Rings (DM)
+1 Spirit of Celebrian (FB)
+1 True Fána (TW)
+1 Vanishment (TW)
+1 Vilya (TW)
+1 Wizard Uncloaked (TD)
+1 Wizard's Flame (TW)
+
+# Stage Resource (4)
+
+1 Captain of the House (FB)
+1 Long-time Visitor (FB)
+1 Possessions of the High-elves (FB)
+1 Ring of Air (FB)
+
+####
+Pool
+####
+
+# Dual Resource (1)
+
+1 Bow of Yew (FB)
+
+# Hero Character (4)
+
+1 Andovon Pathdal (FB)
+1 Arwen (TW)
+1 Glorfindel II (TW)
+1 Halbarad of the North (WR)
+
+# Hero Resource (2)
+
+1 Elven Rope (BA)
+1 Miruvor (TW)
+
+# Stage Resource (2)
+
+1 Fosterhome of Royal Heirs (FB)
+1 Thrall of the Voice (WH)
+
+#########
+Sideboard
+#########
+
+# Dual Resource (2)
+
+1 Flight Unmarked (RS)
+1 Mighty Steed (TI)
+
+# Hazard (5)
+
+1 Ash-drake (NE)
+1 Drawn to its Master (NM)
+1 Lost in Free-domains (TW)
+1 The Burden of Time (TW)
+1 Wyrmsiege (DF)
+
+# Hero Resource (11)
+
+1 Adamant Helmet (TD)
+1 Align Palantír (TW)
+1 Attuning the Blade (FB)
+1 Elf-stone (TW)
+1 Emerald of Doriath (TD)
+1 Jewel of Beleriand (AS)
+1 Light and Flame (RS)
+1 Power Against the Shadow (AS)
+1 Ring of Barahir (WR)
+1 Sûlhelka (FB)
+1 Wielded Twice (TD)
+
+# Stage Resource (2)
+
+1 Legacy of Smiths (WH)
+1 The Elf-king (FB)
+
+#####
+Sites
+#####
+
+# Elf-lord Site (2)
+
+2 Rivendell@ (FB)
+
+# Fallen Site (1)
+
+1 Grey Havens [F] (FB)
+
+# Hero Site (27)
+
+1 Annúminas [H] (KN)
+1 Bree [H] (TW)
+1 Cameth Brin [H] (TW)
+1 Carn Dûm [H] (TW)
+1 Cirith Helkaloke [H] (GW)
+1 Creb Durga [H] (KN)
+1 Dead Man's Dike [H] (KN)
+1 Ettenmoors [H] (TW)
+1 Gondring's Lair [H] (NW)
+1 Hostel of the Sisters of Nienna [H] (KN)
+1 Lossadan Cairn [H] (TW)
+1 Lossadan Camp [H] (TW)
+1 Moria [H] (TW)
+1 Mount Gram [H] (TW)
+1 Mount Gundabad [H] (TW)
+1 Mount Rerir [H] (FB)
+1 Ruskea Vene [H] (NW)
+1 Sonotor's Mound [H] (DF)
+1 The Iron-deeps [H] (DM)
+1 The Last Bridge [H] (RS)
+1 The Under-Caves [H] (KN)
+1 The Under-vaults [H] (DM)
+1 The White Towers [H] (TW)
+1 The Willow Dingle [H] (RS)
+1 Tol Lamfirith [H] (KN)
+1 Weathertop [H] (TW)
+1 Zarak Dûm [H] (TD)
+
