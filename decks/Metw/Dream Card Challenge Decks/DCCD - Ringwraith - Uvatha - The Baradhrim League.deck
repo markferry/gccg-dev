@@ -51,7 +51,6 @@ Deck
 # Minion Resource (31)
 
 1 Balchoth (LE)
-2 The Baradhrim League (CP)
 3 Black Steed (NE)
 1 Bright Gold Ring (LE)
 1 Call to Arms (KN)
@@ -64,6 +63,7 @@ Deck
 1 Ovatha's Bow (CP)
 2 Records Unread (AS)
 1 Sojourn in Shadows (WH)
+2 The Baradhrim League (CP)
 1 Tribute to Sauron (NE)
 1 Variag-king of Khand (CP)
 1 Variags of Khand [M] (LE)
@@ -100,11 +100,10 @@ Sideboard
 
 1 Lure of Expedience (LE)
 
-# Minion Resource (16)
+# Minion Resource (15)
 
 1 Abhorred Ring (NE)
 1 Asdriags (AS)
-1 Baradhrim League (CP)
 1 Bat-winged Helmet (CP)
 1 Binding-ring (LE)
 1 Channels of Chey (CP)
@@ -137,3 +136,4 @@ Sites
 1 Temple of Kondri Odchi [M] (CP)
 1 Temple of Lokuthor [M] (CP)
 1 Wain-Easterling Camp [M] (CP)
+
