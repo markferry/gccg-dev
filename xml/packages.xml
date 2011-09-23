@@ -546,7 +546,7 @@
   <module name="mtg-cards-075" version="15">
     <include dir="graphics/Mtg/M12"/>
   </module>
-    <module name="mtg-cards-075" version="1">
+    <module name="mtg-cards-076" version="1">
     <include dir="graphics/Mtg/ISD"/>
     <include file="graphics/Mtg/BaneofHanweir.jpg"/>
     <include file="graphics/Mtg/GarruktheVeilCursed.jpg"/>
