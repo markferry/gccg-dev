@@ -23,19 +23,27 @@ deck_rules{"Modern"}{""}=(
   ("RuleCardLimitAny","Snow-Covered Swamp"),
   ("RuleCardLimitAny","Snow-Covered Plains"),
 
+  ("RuleCardLimitAny","Relentless Rats"),
+
   ("RuleCardLimitSingle",("Ancestral Vision",0)),
   ("RuleCardLimitSingle",("Ancient Den",0)),
   ("RuleCardLimitSingle",("Bitterblossom",0)),
+  ("RuleCardLimitSingle",("Blazing Shoal",0)),
   ("RuleCardLimitSingle",("Chrome Mox",0)),
+  ("RuleCardLimitSingle",("Cloudpost",0)),
   ("RuleCardLimitSingle",("Dark Depths",0)),
   ("RuleCardLimitSingle",("Dread Return",0)),
   ("RuleCardLimitSingle",("Golgari Grave-Troll",0)),
   ("RuleCardLimitSingle",("Great Furnace",0)),
+  ("RuleCardLimitSingle",("Green Sun's Zenith",0)),
   ("RuleCardLimitSingle",("Hypergenesis",0)),
   ("RuleCardLimitSingle",("Jace, the Mind Sculptor",0)),
   ("RuleCardLimitSingle",("Mental Misstep",0)),
   ("RuleCardLimitSingle",("Seat of the Synod",0)),
   ("RuleCardLimitSingle",("Sensei's Divining Top",0)),
+  ("RuleCardLimitSingle",("Ponder",0)),
+  ("RuleCardLimitSingle",("Preordain",0)),
+  ("RuleCardLimitSingle",("Rite of Flame",0)),
   ("RuleCardLimitSingle",("Skullclamp",0)),
   ("RuleCardLimitSingle",("Stoneforge Mystic",0)),
   ("RuleCardLimitSingle",("Sword of the Meek",0)),
@@ -43,8 +51,6 @@ deck_rules{"Modern"}{""}=(
   ("RuleCardLimitSingle",("Umezawa's Jitte",0)),
   ("RuleCardLimitSingle",("Valakut, the Molten Pinnacle",0)),
   ("RuleCardLimitSingle",("Vault of Whispers",0)),
-
-  ("RuleCardLimitAny","Relentless Rats"),
 
   ("RuleCardSetReprint",("8TH",4)),
   ("RuleCardSetReprint",("9TH",4)),
@@ -89,4 +95,7 @@ deck_rules{"Modern"}{""}=(
   ("RuleCardSetReprint",("MBS",4)),
   ("RuleCardSetReprint",("NPH",4)),
 
+  ("RuleCardSetReprint",("ISD",4)),
+
+  ("RulePass",NULL),
 );

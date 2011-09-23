@@ -4064,6 +4064,8 @@ def AddCards
         r=first(card_attr("rarity",c));
         if(r=="H")
           m=m+"{gold}";
+        else if(r=="M")
+          m=m+"{red}";
         else if(r=="R")
           m=m+"{blue}";
         else if(r=="U")

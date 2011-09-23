@@ -156,6 +156,7 @@ product.image{"Mirrodin Besieged phyrexian"}="MBS_phyrexian.jpg";
 product.image{"New Phyrexia booster"}="NPH_booster.jpg";
 product.image{"Commander starter"}="COM_starter.jpg";
 product.image{"Magic 2012 booster"}="M12_booster.jpg";
+product.image{"Innistrad booster"}="ISD_booster.jpg";
 
 
 game.bindings=(
@@ -179,6 +180,8 @@ GAME_MENU{"Main Menu - Play"}=(
  (1,"Play White Token","",'Send("Transfer",(1,("out.of.play",6),("play",0)))'),
  (1,"{hr}","",""),
  (1,"Select Token Type...","","TokenSubmenu()"),
+ (1,"{hr}","",""),
+ (1,"Innistrad Transformed...","","ISDSubmenu()"),
  (1,"{hr}","",""),
  (1,"Play Jitte Counter","",'Send("Transfer",(1,("out.of.play",7),("play",0)))'),
  (1,"Play Storm Counter","",'Send("Transfer",(1,("out.of.play",8),("play",0)))'),
@@ -225,6 +228,7 @@ FILTER_OPTIONS=(
  ("Modern Legal","TypeLegal('Modern',#)",(1,"[color]","[age]","[name]")),
  ("Extended Legal","TypeLegal('Extended',#)",(1,"[color]","[age]","[name]")),
  ("Standard Legal","TypeLegal('Type 2',#)",(1,"[color]","[age]","[name]")),
+ ("Standard (2011) Legal","TypeLegal('Type 2 (2011)',#)",(1,"[color]","[age]","[name]")),
  ("Standard (2010) Legal","TypeLegal('Type 2 (2010)',#)",(1,"[color]","[age]","[name]")),
  ("Standard (2009) Legal","TypeLegal('Type 2 (2009)',#)",(1,"[color]","[age]","[name]")),
  ("Standard (2008) Legal","TypeLegal('Type 2 (2008)',#)",(1,"[color]","[age]","[name]")),
@@ -362,6 +366,32 @@ def MouseLeftClickExile
 # MENU FUNCTIONS
 # ==============
 
+def ISDSubmenu 
+{
+  Submenu("Select Transform",(
+   ("Bloodline Keeper -> Lord of Lineage","",'Send("Transfer",(1,("out.of.play",126),("play",0)))'),
+   ("Civilized Scholar -> Homicidal Brute","",'Send("Transfer",(1,("out.of.play",127),("play",0)))'),
+   ("Cloistered Youth -> Unholy Fiend","",'Send("Transfer",(1,("out.of.play",128),("play",0)))'),
+   ("Daybreak Ranger -> Nightfall Predator","",'Send("Transfer",(1,("out.of.play",129),("play",0)))'),
+   ("Delver of Secrets -> Insectile Aberration","",'Send("Transfer",(1,("out.of.play",130),("play",0)))'),
+   ("Garruk Relentless -> Garruk, the Veil-Cursed","",'Send("Transfer",(1,("out.of.play",131),("play",0)))'),
+   ("Gatstaf Shepherd -> Gatstaf Howler","",'Send("Transfer",(1,("out.of.play",9),("play",132)))'),
+   ("Grizzled Outcasts -> Krallenhorde Wantons","",'Send("Transfer",(1,("out.of.play",133),("play",0)))'),
+   ("Hanweir Watchkeep -> Bane of Hanweir","",'Send("Transfer",(1,("out.of.play",134),("play",0)))'),
+   ("Instigator Gang -> Wildblood Pack","",'Send("Transfer",(1,("out.of.play",135),("play",0)))'),
+   ("Kruin Outlaw -> Terror of Kruin Pass","",'Send("Transfer",(1,("out.of.play",136),("play",0)))'),
+   ("Ludevic's Test Subject -> Ludevic's Abomination","",'Send("Transfer",(1,("out.of.play",137),("play",0)))'),
+   ("Mayor of Avabruck -> Howlpack Alpha","",'Send("Transfer",(1,("out.of.play",138),("play",0)))'),
+   ("Reckless Waif -> Merciless Predator","",'Send("Transfer",(1,("out.of.play",139),("play",0)))'),
+   ("Screeching Bat -> Stalking Vampire","",'Send("Transfer",(1,("out.of.play",140),("play",0)))'),
+   ("Thraben Sentry -> Thraben Militia","",'Send("Transfer",(1,("out.of.play",141),("play",0)))'),
+   ("Tormented Pariah -> Rampaging Werewolf","",'Send("Transfer",(1,("out.of.play",142),("play",0)))'),
+   ("Ulvenwald Mystics -> Ulvenwald Primordials","",'Send("Transfer",(1,("out.of.play",143),("play",0)))'),
+   ("Village Ironsmith -> Ironfang","",'Send("Transfer",(1,("out.of.play",144),("play",0)))'),
+   ("Villagers of Estwald -> Howlpack of Estwald","",'Send("Transfer",(1,("out.of.play",145),("play",0)))'),
+  ));
+}
+
 # 
 # TokenSubmenu() - Create a submenu of token options.
 # 
@@ -397,7 +427,7 @@ def TokenSubmenu
 def TokenSubmenuA 
 {
   Submenu("Select Token",(
-   ("Angel 4/4 (W)","",'Send("Transfer",(1,("out.of.play",9),("play",0)))'),
+   ("Angel 4/4 (W, flying)","",'Send("Transfer",(1,("out.of.play",9),("play",0)))'),
    ("Avatar */* (W)","",'Send("Transfer",(1,("out.of.play",10),("play",0)))'),
   ));
 }
@@ -410,11 +440,11 @@ def TokenSubmenuB
    ("Beast 4/4 (G)","",'Send("Transfer",(1,("out.of.play",13),("play",0)))'),
    ("Beast 5/5 (G)","",'Send("Transfer",(1,("out.of.play",14),("play",0)))'),
    ("Beast 8/8 (RGW)","",'Send("Transfer",(1,("out.of.play",15),("play",0)))'),
-   ("Bird 1/1 (U)","",'Send("Transfer",(1,("out.of.play",16),("play",0)))'),
-   ("Bird 1/1 (UW)","",'Send("Transfer",(1,("out.of.play",17),("play",0)))'),
-   ("Bird 1/1 (W)","",'Send("Transfer",(1,("out.of.play",18),("play",0)))'),
-   ("Bird 3/3 (W)","",'Send("Transfer",(1,("out.of.play",112),("play",0)))'),
-   ("Bird Soldier 1/1 (W)","",'Send("Transfer",(1,("out.of.play",19),("play",0)))'),
+   ("Bird 1/1 (U, flying)","",'Send("Transfer",(1,("out.of.play",16),("play",0)))'),
+   ("Bird 1/1 (UW, flying)","",'Send("Transfer",(1,("out.of.play",17),("play",0)))'),
+   ("Bird 1/1 (W, flying)","",'Send("Transfer",(1,("out.of.play",18),("play",0)))'),
+   ("Bird 3/3 (W, flying)","",'Send("Transfer",(1,("out.of.play",112),("play",0)))'),
+   ("Bird Soldier 1/1 (W, flying)","",'Send("Transfer",(1,("out.of.play",19),("play",0)))'),
   ));
 }
 
@@ -423,20 +453,21 @@ def TokenSubmenuC
   Submenu("Select Token",(
    ("Cat 1/1 (R)","",'Send("Transfer",(1,("out.of.play",20),("play",0)))'),
    ("Cat 2/1 (B)","",'Send("Transfer",(1,("out.of.play",21),("play",0)))'),
+   ("Cat 2/2 (W)","",'Send("Transfer",(1,("out.of.play",113),("play",0)))'),
    ("Centaur 3/3 (G)","",'Send("Transfer",(1,("out.of.play",22),("play",0)))'),
-   ("Construct 6/12 (C)","",'Send("Transfer",(1,("out.of.play",100),("play",0)))'),
+   ("Construct 6/12 (C, trample)","",'Send("Transfer",(1,("out.of.play",100),("play",0)))'),
   ));
 }
 
 def TokenSubmenuD 
 {
   Submenu("Select Token",(
-   ("Play Demon */* (B)","",'Send("Transfer",(1,("out.of.play",23),("play",0)))'),
-   ("Play Dragon 1/1 (RG)","",'Send("Transfer",(1,("out.of.play",24),("play",0)))'),
-   ("Play Dragon 4/4 (R)","",'Send("Transfer",(1,("out.of.play",25),("play",0)))'),
-   ("Play Dragon 5/5 (R)","",'Send("Transfer",(1,("out.of.play",26),("play",0)))'),
-   ("Play Dragon Spirit 5/5 (U)","",'Send("Transfer",(1,("out.of.play",27),("play",0)))'),
-   ("Play Drake 2/2 (UG)","",'Send("Transfer",(1,("out.of.play",28),("play",0)))'),
+   ("Play Demon */* (B, flying)","",'Send("Transfer",(1,("out.of.play",23),("play",0)))'),
+   ("Play Dragon 1/1 (RG, flying, devour)","",'Send("Transfer",(1,("out.of.play",24),("play",0)))'),
+   ("Play Dragon 4/4 (R, flying)","",'Send("Transfer",(1,("out.of.play",25),("play",0)))'),
+   ("Play Dragon 5/5 (R, flying)","",'Send("Transfer",(1,("out.of.play",26),("play",0)))'),
+   ("Play Dragon Spirit 5/5 (U, flying)","",'Send("Transfer",(1,("out.of.play",27),("play",0)))'),
+   ("Play Drake 2/2 (UG, flying)","",'Send("Transfer",(1,("out.of.play",28),("play",0)))'),
   ));
 }
    
@@ -444,15 +475,16 @@ def TokenSubmenuE
 {
   Submenu("Select Token",(
    ("Eldrazi Spawn 0/1 (C)","",'Send("Transfer",(1,("out.of.play",101),("play",0)))'),
-   ("Elemental 1/1 (U)","",'Send("Transfer",(1,("out.of.play",29),("play",0)))'),
-   ("Elemental 2/2 (U)","",'Send("Transfer",(1,("out.of.play",30),("play",0)))'),
-   ("Elemental 3/1 (R)","",'Send("Transfer",(1,("out.of.play",31),("play",0)))'),
+   ("Elemental 1/1 (R, haste)","",'Send("Transfer",(1,("out.of.play",29),("play",0)))'),
+   ("Elemental 2/2 (U, flying)","",'Send("Transfer",(1,("out.of.play",30),("play",0)))'),
+   ("Elemental 3/1 (R, haste)","",'Send("Transfer",(1,("out.of.play",31),("play",0)))'),
    ("Elemental 3/3 (R)","",'Send("Transfer",(1,("out.of.play",32),("play",0)))'),
    ("Elemental 4/4 (G)","",'Send("Transfer",(1,("out.of.play",33),("play",0)))'),
-   ("Elemental 4/4 (W)","",'Send("Transfer",(1,("out.of.play",34),("play",0)))'),
+   ("Elemental 4/4 (W, flying)","",'Send("Transfer",(1,("out.of.play",34),("play",0)))'),
    ("Elemental 5/5 (BR)","",'Send("Transfer",(1,("out.of.play",35),("play",0)))'),
-   ("Elemental 5/5 (UR)","",'Send("Transfer",(1,("out.of.play",36),("play",0)))'),
-   ("Elemental 7/7 (G)","",'Send("Transfer",(1,("out.of.play",37),("play",0)))'),
+   ("Elemental 5/5 (UR, flying)","",'Send("Transfer",(1,("out.of.play",36),("play",0)))'),
+   ("Elemental 7/1 (R, trample, haste)","",'Send("Transfer",(1,("out.of.play",114),("play",0)))'),
+   ("Elemental 7/7 (G, trample)","",'Send("Transfer",(1,("out.of.play",37),("play",0)))'),
    ("Elemental */* (G)","",'Send("Transfer",(1,("out.of.play",38),("play",0)))'),
    ("Elemental */* (R)","",'Send("Transfer",(1,("out.of.play",102),("play",0)))'),
    ("Elemental Shaman 3/1 (R)","",'Send("Transfer",(1,("out.of.play",39),("play",0)))'),
@@ -465,25 +497,27 @@ def TokenSubmenuE
 def TokenSubmenuF
 {
   Submenu("Select Token",(
-   ("Faerie 1/1 (U)","",'Send("Transfer",(1,("out.of.play",43),("play",0)))'),
-   ("Faerie Rogue 1/1 (B)","",'Send("Transfer",(1,("out.of.play",44),("play",0)))'),
-   ("Faerie Rogue 1/1 (BU)","",'Send("Transfer",(1,("out.of.play",45),("play",0)))'),
+   ("Faerie 1/1 (U, flying)","",'Send("Transfer",(1,("out.of.play",43),("play",0)))'),
+   ("Faerie Rogue 1/1 (B, flying)","",'Send("Transfer",(1,("out.of.play",44),("play",0)))'),
+   ("Faerie Rogue 1/1 (BU, flying)","",'Send("Transfer",(1,("out.of.play",45),("play",0)))'),
   ));
 }
 
 def TokenSubmenuG 
 {
   Submenu("Select Token",(
+   ("Gargoyle 3/4 (A, flying)","",'Send("Transfer",(1,("out.of.play",115),("play",0)))'),
    ("Germ 0/0 (B)","",'Send("Transfer",(1,("out.of.play",103),("play",0)))'),
-   ("Giant Warrior 4/4 (GR)","",'Send("Transfer",(1,("out.of.play",46),("play",0)))'),
+   ("Giant Warrior 4/4 (GR, haste)","",'Send("Transfer",(1,("out.of.play",46),("play",0)))'),
    ("Giant Warrior 5/5 (W)","",'Send("Transfer",(1,("out.of.play",47),("play",0)))'),
    ("Goat 0/1 (W)","",'Send("Transfer",(1,("out.of.play",48),("play",0)))'),
    ("Goblin 1/1 (R)","",'Send("Transfer",(1,("out.of.play",49),("play",0)))'),
    ("Goblin Rogue 1/1 (B)","",'Send("Transfer",(1,("out.of.play",50),("play",0)))'),   
    ("Goblin Soldier 1/1 (RW)","",'Send("Transfer",(1,("out.of.play",51),("play",0)))'),
    ("Goblin Warrior 1/1 (GR)","",'Send("Transfer",(1,("out.of.play",52),("play",0)))'),
-   ("Golem 3/3 (C)","",'Send("Transfer",(1,("out.of.play",104),("play",0)))'),
-   ("Golem 9/9 (C)","",'Send("Transfer",(1,("out.of.play",105),("play",0)))'),
+   ("Golem 3/3 (A)","",'Send("Transfer",(1,("out.of.play",104),("play",0)))'),
+   ("Golem 9/9 (A)","",'Send("Transfer",(1,("out.of.play",105),("play",0)))'),
+   ("Griffin 2/2 (W, flying)","",'Send("Transfer",(1,("out.of.play",116),("play",0)))'),
   ));
 }
 
@@ -501,8 +535,10 @@ def TokenSubmenuH
 def TokenSubmenuI 
 {
   Submenu("Select Token",(
-   ("Illusion 1/1 (U)","",'Send("Transfer",(1,("out.of.play",56),("play",0)))'),
+   ("Illusion 1/1 (U, flying)","",'Send("Transfer",(1,("out.of.play",56),("play",0)))'),
+   ("Illusion 2/2 (U)","",'Send("Transfer",(1,("out.of.play",117),("play",0)))'),
    ("Insect 1/1 (G)","",'Send("Transfer",(1,("out.of.play",57),("play",0)))'),
+   ("Insect 1/1 (G, infect)","",'Send("Transfer",(1,("out.of.play",118),("play",0)))'),
   ));
 }
 
@@ -512,7 +548,8 @@ def TokenSubmenuK
    ("Kaldra 4/4 (C)","",'Send("Transfer",(1,("out.of.play",58),("play",0)))'),
    ("Kavu 3/3 (B)","",'Send("Transfer",(1,("out.of.play",59),("play",0)))'),
    ("Kithkin Soldier 1/1 (W)","",'Send("Transfer",(1,("out.of.play",60),("play",0)))'),   
-   ("Knight 2/2 (W)","",'Send("Transfer",(1,("out.of.play",61),("play",0)))'),
+   ("Knight 2/2 (W, first strike)","",'Send("Transfer",(1,("out.of.play",61),("play",0)))'),
+   ("Kor Soldier 1/1 (W)","",'Send("Transfer",(1,("out.of.play",119),("play",0)))'),   
   ));
 }
 
@@ -527,6 +564,7 @@ def TokenSubmenuM
 {
   Submenu("Select Token",(
    ("Marit Lage 20/20 (B)","",'Send("Transfer",(1,("out.of.play",63),("play",0)))'),
+   ("Merfolk 1/1 (U)","",'Send("Transfer",(1,("out.of.play",120),("play",0)))'),
    ("Merfolk Wizard 1/1 (U)","",'Send("Transfer",(1,("out.of.play",64),("play",0)))'),
    ("Myr 1/1 (A)","",'Send("Transfer",(1,("out.of.play",65),("play",0)))'),
   ));
@@ -543,7 +581,7 @@ def TokenSubmenuO
 def TokenSubmenuP 
 {
   Submenu("Select Token",(
-   ("Pentavite 1/1 (A)","",'Send("Transfer",(1,("out.of.play",67),("play",0)))'),
+   ("Pentavite 1/1 (A, flying)","",'Send("Transfer",(1,("out.of.play",67),("play",0)))'),
    ("Pest 0/1 (A)","",'Send("Transfer",(1,("out.of.play",68),("play",0)))'),
    ("Pincher 2/2 (A)","",'Send("Transfer",(1,("out.of.play",69),("play",0)))'),
    ("Plant 0/1 (G)","",'Send("Transfer",(1,("out.of.play",109),("play",0)))'),
@@ -555,7 +593,7 @@ def TokenSubmenuR
   Submenu("Select Token",(
    ("Rat 1/1 (B)","",'Send("Transfer",(1,("out.of.play",70),("play",0)))'),
    ("Reflection */* (W)","",'Send("Transfer",(1,("out.of.play",71),("play",0)))'),   
-   ("Rukh 4/4 (R)","",'Send("Transfer",(1,("out.of.play",72),("play",0)))'),
+   ("Rukh 4/4 (R, flying)","",'Send("Transfer",(1,("out.of.play",72),("play",0)))'),
   ));
 }
 
@@ -563,7 +601,7 @@ def TokenSubmenuS
 {
   Submenu("Select Token",(
    ("Saproling 1/1 (G)","",'Send("Transfer",(1,("out.of.play",73),("play",0)))'),
-   ("Shapeshifter 1/1 (C)","",'Send("Transfer",(1,("out.of.play",74),("play",0)))'),
+   ("Shapeshifter 1/1 (C, changeling)","",'Send("Transfer",(1,("out.of.play",74),("play",0)))'),
    ("Skeleton 1/1 (B)","",'Send("Transfer",(1,("out.of.play",75),("play",0)))'),
    ("Sliver 1/1 (A)","",'Send("Transfer",(1,("out.of.play",76),("play",0)))'),
    ("Snake 1/1 (G)","",'Send("Transfer",(1,("out.of.play",77),("play",0)))'),
@@ -571,10 +609,10 @@ def TokenSubmenuS
    ("Soldier 1/1 (W)","",'Send("Transfer",(1,("out.of.play",79),("play",0)))'),
    ("Soldier Ally 1/1 (W)","",'Send("Transfer",(1,("out.of.play",110),("play",0)))'),
    ("Spawn 2/2 (A)","",'Send("Transfer",(1,("out.of.play",80),("play",0)))'),
-   ("Spider 1/2 (G)","",'Send("Transfer",(1,("out.of.play",81),("play",0)))'),   
+   ("Spider 1/2 (G, reach)","",'Send("Transfer",(1,("out.of.play",81),("play",0)))'),   
    ("Spirit 1/1 (C)","",'Send("Transfer",(1,("out.of.play",82),("play",0)))'),
-   ("Spirit 1/1 (BW)","",'Send("Transfer",(1,("out.of.play",83),("play",0)))'),
-   ("Spirit 1/1 (W)","",'Send("Transfer",(1,("out.of.play",84),("play",0)))'),
+   ("Spirit 1/1 (BW, flying)","",'Send("Transfer",(1,("out.of.play",83),("play",0)))'),
+   ("Spirit 1/1 (W, flying)","",'Send("Transfer",(1,("out.of.play",84),("play",0)))'),
    ("Squirrel 1/1 (G)","",'Send("Transfer",(1,("out.of.play",85),("play",0)))'),
   ));
 }
@@ -582,10 +620,11 @@ def TokenSubmenuS
 def TokenSubmenuT 
 {
   Submenu("Select Token",(
-   ("Thopter 1/1 (AU)","",'Send("Transfer",(1,("out.of.play",86),("play",0)))'),
-   ("Thopter 1/1 (A)","",'Send("Transfer",(1,("out.of.play",111),("play",0)))'),
+   ("Thopter 1/1 (AU, flying)","",'Send("Transfer",(1,("out.of.play",86),("play",0)))'),
+   ("Thopter 1/1 (A, flying)","",'Send("Transfer",(1,("out.of.play",111),("play",0)))'),
    ("Thrull 0/1 (B)","",'Send("Transfer",(1,("out.of.play",87),("play",0)))'),
    ("Treefolk Shaman 2/5 (G)","",'Send("Transfer",(1,("out.of.play",88),("play",0)))'),
+   ("Tuktuk, the Returned 5/5 (A)","",'Send("Transfer",(1,("out.of.play",121),("play",0)))'),
    ("Twin 3/4 (A)","",'Send("Transfer",(1,("out.of.play",89),("play",0)))'),
   ));
 }
@@ -600,6 +639,7 @@ def TokenSubmenuU
 def TokenSubmenuV 
 {
   Submenu("Select Token",(
+   ("Vampire */* (B)","",'Send("Transfer",(1,("out.of.play",122),("play",0)))'),
    ("Voja 2/2 (GW)","",'Send("Transfer",(1,("out.of.play",91),("play",0)))'),   
   ));
 }
@@ -608,10 +648,12 @@ def TokenSubmenuW
 {
   Submenu("Select Token",(
    ("Warrior 1/1 (R)","",'Send("Transfer",(1,("out.of.play",92),("play",0)))'),
-   ("Wasp 1/1 (A)","",'Send("Transfer",(1,("out.of.play",93),("play",0)))'),
+   ("Wasp 1/1 (A, flying)","",'Send("Transfer",(1,("out.of.play",93),("play",0)))'),
    ("Wolf 2/2 (G)","",'Send("Transfer",(1,("out.of.play",94),("play",0)))'),
    ("Worm 1/1 (BG)","",'Send("Transfer",(1,("out.of.play",95),("play",0)))'),
-   ("Wurm 6/6 (B)","",'Send("Transfer",(1,("out.of.play",96),("play",0)))'),
+   ("Wurm 3/3 (A, deathouch)","",'Send("Transfer",(1,("out.of.play",123),("play",0)))'),
+   ("Wurm 3/3 (A, lifelink)","",'Send("Transfer",(1,("out.of.play",124),("play",0)))'),
+   ("Wurm 6/6 (B, Trample)","",'Send("Transfer",(1,("out.of.play",96),("play",0)))'),
    ("Wurm 6/6 (G)","",'Send("Transfer",(1,("out.of.play",97),("play",0)))'),
   ));
 }
@@ -620,6 +662,7 @@ def TokenSubmenuZ
 {
   Submenu("Select Token",(
    ("Zombie 2/2 (B)","",'Send("Transfer",(1,("out.of.play",98),("play",0)))'),
+   ("Zombie Giant 5/5 (B)","",'Send("Transfer",(1,("out.of.play",125),("play",0)))'),
    ("Zombie Wizard 1/1 (BU)","",'Send("Transfer",(1,("out.of.play",99),("play",0)))'),
   ));
 }
@@ -652,7 +695,7 @@ def PlayExileMenu
 #
 # KeyShiftControlKeyX() - Put a card to exile.
 #
-def  KeyControlKeyX
+def KeyControlKeyX
 {
     TryTransferTo('deck.top',deck.objects[me]{'exile'});
 }

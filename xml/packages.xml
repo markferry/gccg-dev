@@ -107,7 +107,7 @@
 	<include file="scripts/Lotr-server.include"/>
 	<include file="lotr-sample.conf"/>
   </module>
-  <module name="mtg" version="1.2.24">
+  <module name="mtg" version="1.2.25">
   	<include file="Mtg"/>
 	<include file="Mtg.bat"/>
 	<include file="xml/mtg.xml"/>
@@ -201,7 +201,7 @@
 	<include file="scripts/Nr-server.include"/>
 	<include file="nr-sample.conf"/>
   </module>
-  <module name="mtg-cards-000" version="15">
+  <module name="mtg-cards-000" version="16">
     <include file="graphics/Mtg/Angel44W.jpg"/>
     <include file="graphics/Mtg/AvatarXXW.jpg"/>
     <include file="graphics/Mtg/Bear22G.jpg"/>
@@ -216,6 +216,7 @@
     <include file="graphics/Mtg/BirdSoldier11W.jpg"/>
     <include file="graphics/Mtg/Cat11R.jpg"/>
     <include file="graphics/Mtg/Cat21B.jpg"/>
+    <include file="graphics/Mtg/Cat22W.jpg"/>
     <include file="graphics/Mtg/Centaur33G.jpg"/>
     <include file="graphics/Mtg/Construct612C.jpg"/>
     <include file="graphics/Mtg/DemonXXB.jpg"/>
@@ -243,6 +244,7 @@
     <include file="graphics/Mtg/Faerie11U.jpg"/>
     <include file="graphics/Mtg/FaerieRogue11B.jpg"/>
     <include file="graphics/Mtg/FaerieRogue11BU.jpg"/>
+    <include file="graphics/Mtg/Gargoyle34C.jpg"/>
     <include file="graphics/Mtg/Germ00B.jpg"/>
     <include file="graphics/Mtg/GiantWarrior44GR.jpg"/>
     <include file="graphics/Mtg/GiantWarrior55W.jpg"/>
@@ -253,20 +255,25 @@
     <include file="graphics/Mtg/GoblinWarrior11GR.jpg"/>
     <include file="graphics/Mtg/Golem33C.jpg"/>
     <include file="graphics/Mtg/Golem99C.jpg"/>
+    <include file="graphics/Mtg/Griffin22W.jpg"/>
     <include file="graphics/Mtg/Hellion44R.jpg"/>
     <include file="graphics/Mtg/Hippo11G.jpg"/>
     <include file="graphics/Mtg/Homunculus01C.jpg"/>
     <include file="graphics/Mtg/Horror44B.jpg"/>
     <include file="graphics/Mtg/HorrorXXC.jpg"/>
     <include file="graphics/Mtg/Illusion11U.jpg"/>
-    <include file="graphics/Mtg/Insect22G.jpg"/>
+    <include file="graphics/Mtg/Illusion22U.jpg"/>
+    <include file="graphics/Mtg/Insect11G.jpg"/>
+    <include file="graphics/Mtg/Insect11Gi.jpg"/>
     <include file="graphics/Mtg/JitteCounter.jpg"/>
     <include file="graphics/Mtg/Kaldra44C.jpg"/>
     <include file="graphics/Mtg/Kavu33B.jpg"/>
     <include file="graphics/Mtg/KithkinSoldier11W.jpg"/>
     <include file="graphics/Mtg/Knight22W.jpg"/>
+    <include file="graphics/Mtg/KorSoldier11W.jpg"/>
     <include file="graphics/Mtg/Lizard22G.jpg"/>
     <include file="graphics/Mtg/MaritLage22B.jpg"/>
+    <include file="graphics/Mtg/Merfolk11U.jpg"/>
     <include file="graphics/Mtg/MerfolkWizard11U.jpg"/>
     <include file="graphics/Mtg/Myr11C.jpg"/>
     <include file="graphics/Mtg/Ogre33R.jpg"/>
@@ -298,15 +305,20 @@
     <include file="graphics/Mtg/Thrull01B.jpg"/>
     <include file="graphics/Mtg/TreefolkShaman25G.jpg"/>
     <include file="graphics/Mtg/Twin34C.jpg"/>
+    <include file="graphics/Mtg/TuktuktheReturned55C.jpg"/>
     <include file="graphics/Mtg/Urami55B.jpg"/>
+    <include file="graphics/Mtg/VampireXXB.jpg"/>
     <include file="graphics/Mtg/Voja22GW.jpg"/>
     <include file="graphics/Mtg/Warrior11R.jpg"/>
     <include file="graphics/Mtg/Wasp11C.jpg"/>
     <include file="graphics/Mtg/Wolf22G.jpg"/>
     <include file="graphics/Mtg/Worm11BG.jpg"/>
+    <include file="graphics/Mtg/Wurm33Cd.jpg"/>
+    <include file="graphics/Mtg/Wurm33Cl.jpg"/>
     <include file="graphics/Mtg/Wurm66B.jpg"/>
     <include file="graphics/Mtg/Wurm66G.jpg"/>
     <include file="graphics/Mtg/Zombie22B.jpg"/>
+    <include file="graphics/Mtg/ZombieGiant55B.jpg"/>
     <include file="graphics/Mtg/ZombieWizard11BU.jpg"/>
   </module>
   <module name="mtg-cards-001" version="15">
@@ -533,6 +545,29 @@
   </module>  
   <module name="mtg-cards-075" version="15">
     <include dir="graphics/Mtg/M12"/>
+  </module>
+    <module name="mtg-cards-075" version="1">
+    <include dir="graphics/Mtg/ISD"/>
+    <include file="graphics/Mtg/BaneofHanweir.jpg"/>
+    <include file="graphics/Mtg/GarruktheVeilCursed.jpg"/>
+    <include file="graphics/Mtg/GatstafHowler.jpg"/>
+    <include file="graphics/Mtg/HomicidalBrute.jpg"/>
+    <include file="graphics/Mtg/HowlpackAlpha.jpg"/>
+    <include file="graphics/Mtg/HowlpackofEstwald.jpg"/>
+    <include file="graphics/Mtg/InsectileAberration.jpg"/>
+    <include file="graphics/Mtg/Ironfang.jpg"/>
+    <include file="graphics/Mtg/KrallenhordeWantons.jpg"/>
+    <include file="graphics/Mtg/LordofLineage.jpg"/>
+    <include file="graphics/Mtg/LudevicsAbomination.jpg"/>
+    <include file="graphics/Mtg/MercilessPredator.jpg"/>
+    <include file="graphics/Mtg/NightfallPredator.jpg"/>
+    <include file="graphics/Mtg/RampagingWerewolf.jpg"/>
+    <include file="graphics/Mtg/StalkingVampire.jpg"/>
+    <include file="graphics/Mtg/TerrorofKruinPass.jpg"/>
+    <include file="graphics/Mtg/ThrabenMilitia.jpg"/>
+    <include file="graphics/Mtg/UlvenwaldPrimordials.jpg"/>
+    <include file="graphics/Mtg/UnholyFiend.jpg"/>
+    <include file="graphics/Mtg/WildbloodPack.jpg"/>
   </module>
   <module name="pokemon-cards-001" version="5">
 	<include dir="graphics/Pokemon/BasicSet"/>

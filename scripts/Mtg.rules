@@ -25,6 +25,7 @@ deck_rules{"Vintage T1"}{""}=(
   ("RuleCardLimitAny","Snow-Covered Mountain"),
   ("RuleCardLimitAny","Snow-Covered Swamp"),
   ("RuleCardLimitAny","Snow-Covered Plains"),
+  ("RuleCardLimitGeneral",4),
 
   ("RuleCardLimitAny","Relentless Rats"),
 
@@ -49,7 +50,6 @@ deck_rules{"Vintage T1"}{""}=(
   ("RuleCardLimitSingle",("Channel",1)),
   ("RuleCardLimitSingle",("Demonic Consultation",1)),
   ("RuleCardLimitSingle",("Demonic Tutor",1)),
-  ("RuleCardLimitSingle",("Fact or Fiction",1)),
   ("RuleCardLimitSingle",("Fastbond",1)),
   ("RuleCardLimitSingle",("Flash",1)),
   ("RuleCardLimitSingle",("Gifts Ungiven",1)),
@@ -85,7 +85,7 @@ deck_rules{"Vintage T1"}{""}=(
   ("RuleCardLimitSingle",("Windfall",1)),
   ("RuleCardLimitSingle",("Yawgmoth's Bargain",1)),
   ("RuleCardLimitSingle",("Yawgmoth's Will",1)),
-  ("RuleCardLimitGeneral",4),
+
   ("RulePass",NULL),
 );
 
@@ -104,6 +104,20 @@ deck_rules{"Legacy T1.5"}{"sideboard"}=(
 );
 deck_rules{"Legacy T1.5"}{""}=(
   ("RuleLimitEachByExpression",(0,"(set_of(#)==\"UG\" || set_of(#)==\"UH\") && Attr(\"type\",#) != \"Basic Land\"")),
+  ("RuleCardLimitAny","Island"),
+  ("RuleCardLimitAny","Forest"),
+  ("RuleCardLimitAny","Mountain"),
+  ("RuleCardLimitAny","Swamp"),
+  ("RuleCardLimitAny","Plains"),
+  ("RuleCardLimitAny","Snow-Covered Island"),
+  ("RuleCardLimitAny","Snow-Covered Forest"),
+  ("RuleCardLimitAny","Snow-Covered Mountain"),
+  ("RuleCardLimitAny","Snow-Covered Swamp"),
+  ("RuleCardLimitAny","Snow-Covered Plains"),
+  ("RuleCardLimitGeneral",4),
+
+  ("RuleCardLimitAny","Relentless Rats"),
+
   ("RuleCardLimitSingle",("Amulet of Quoz",0)),
   ("RuleCardLimitSingle",("Ancestral Recall",0)),
   ("RuleCardLimitSingle",("Balance",0)),
@@ -134,6 +148,7 @@ deck_rules{"Legacy T1.5"}{""}=(
   ("RuleCardLimitSingle",("Mana Drain",0)),
   ("RuleCardLimitSingle",("Mana Vault",0)),
   ("RuleCardLimitSingle",("Memory Jar",0)),
+  ("RuleCardLimitSingle",("Mental Misstep",0)),
   ("RuleCardLimitSingle",("Mind Twist",0)),
   ("RuleCardLimitSingle",("Mind's Desire",0)),
   ("RuleCardLimitSingle",("Mishra's Workshop",0)),
@@ -165,18 +180,6 @@ deck_rules{"Legacy T1.5"}{""}=(
   ("RuleCardLimitSingle",("Yawgmoth's Bargain",0)),
   ("RuleCardLimitSingle",("Yawgmoth's Will",0)),
 
-  ("RuleCardLimitAny","Island"),
-  ("RuleCardLimitAny","Forest"),
-  ("RuleCardLimitAny","Mountain"),
-  ("RuleCardLimitAny","Swamp"),
-  ("RuleCardLimitAny","Plains"),
-  ("RuleCardLimitAny","Snow-Covered Island"),
-  ("RuleCardLimitAny","Snow-Covered Forest"),
-  ("RuleCardLimitAny","Snow-Covered Mountain"),
-  ("RuleCardLimitAny","Snow-Covered Swamp"),
-  ("RuleCardLimitAny","Snow-Covered Plains"),
-  ("RuleCardLimitAny","Relentless Rats"),
-  ("RuleCardLimitGeneral",4),
   ("RulePass",NULL),
 );
 
@@ -195,6 +198,18 @@ deck_rules{"Highlander"}{"sideboard"}=(
 );
 deck_rules{"Highlander"}{""}=(
   ("RuleLimitEachByExpression",(0,"(set_of(#)==\"UG\" || set_of(#)==\"UH\") && Attr(\"type\",#) != \"Basic Land\"")),
+  ("RuleCardLimitAny","Island"),
+  ("RuleCardLimitAny","Forest"),
+  ("RuleCardLimitAny","Mountain"),
+  ("RuleCardLimitAny","Swamp"),
+  ("RuleCardLimitAny","Plains"),
+  ("RuleCardLimitAny","Snow-Covered Island"),
+  ("RuleCardLimitAny","Snow-Covered Forest"),
+  ("RuleCardLimitAny","Snow-Covered Mountain"),
+  ("RuleCardLimitAny","Snow-Covered Swamp"),
+  ("RuleCardLimitAny","Snow-Covered Plains"),
+  ("RuleCardLimitGeneral",1),
+
   ("RuleCardLimitSingle",("Amulet of Quoz",0)),
   ("RuleCardLimitSingle",("Bronze Tablet",0)),
   ("RuleCardLimitSingle",("Contract from Below",0)),
@@ -248,17 +263,6 @@ deck_rules{"Highlander"}{""}=(
   ("RuleCardLimitSingle",("Worldgorger Dragon",0)),
   ("RuleCardLimitSingle",("Yawgmoth's Will",0)),
 
-  ("RuleCardLimitAny","Island"),
-  ("RuleCardLimitAny","Forest"),
-  ("RuleCardLimitAny","Mountain"),
-  ("RuleCardLimitAny","Swamp"),
-  ("RuleCardLimitAny","Plains"),
-  ("RuleCardLimitAny","Snow-Covered Island"),
-  ("RuleCardLimitAny","Snow-Covered Forest"),
-  ("RuleCardLimitAny","Snow-Covered Mountain"),
-  ("RuleCardLimitAny","Snow-Covered Swamp"),
-  ("RuleCardLimitAny","Snow-Covered Plains"),
-  ("RuleCardLimitGeneral",1),
   ("RulePass",NULL),
 );
 
@@ -277,6 +281,18 @@ deck_rules{"Commander EDH"}{"sideboard"}=(
 );
 deck_rules{"Commander EDH"}{""}=(
   ("RuleLimitEachByExpression",(0,"(set_of(#)==\"UG\" || set_of(#)==\"UH\") && Attr(\"type\",#) != \"Basic Land\"")),
+  ("RuleCardLimitAny","Island"),
+  ("RuleCardLimitAny","Forest"),
+  ("RuleCardLimitAny","Mountain"),
+  ("RuleCardLimitAny","Swamp"),
+  ("RuleCardLimitAny","Plains"),
+  ("RuleCardLimitAny","Snow-Covered Island"),
+  ("RuleCardLimitAny","Snow-Covered Forest"),
+  ("RuleCardLimitAny","Snow-Covered Mountain"),
+  ("RuleCardLimitAny","Snow-Covered Swamp"),
+  ("RuleCardLimitAny","Snow-Covered Plains"),
+  ("RuleCardLimitGeneral",1),
+
   ("RuleCardLimitSingle",("Amulet of Quoz",0)),
   ("RuleCardLimitSingle",("Bronze Tablet",0)),
   ("RuleCardLimitSingle",("Contract from Below",0)),
@@ -303,7 +319,6 @@ deck_rules{"Commander EDH"}{""}=(
   ("RuleCardLimitSingle",("Kokusho, the Evening Star",0)),
   ("RuleCardLimitSingle",("Library of Alexandria",0)),
   ("RuleCardLimitSingle",("Limited Resources",0)),
-  ("RuleCardLimitSingle",("Lion's Eye Diamond",0)),
   ("RuleCardLimitSingle",("Metalworker",0)),
   ("RuleCardLimitSingle",("Mox Emerald",0)),
   ("RuleCardLimitSingle",("Mox Jet",0)),
@@ -323,34 +338,23 @@ deck_rules{"Commander EDH"}{""}=(
   ("RuleCardLimitSingle",("Upheaval",0)),
   ("RuleCardLimitSingle",("Yawgmoth's Bargain",0)),
 
-  ("RuleCardLimitAny","Island"),
-  ("RuleCardLimitAny","Forest"),
-  ("RuleCardLimitAny","Mountain"),
-  ("RuleCardLimitAny","Swamp"),
-  ("RuleCardLimitAny","Plains"),
-  ("RuleCardLimitAny","Snow-Covered Island"),
-  ("RuleCardLimitAny","Snow-Covered Forest"),
-  ("RuleCardLimitAny","Snow-Covered Mountain"),
-  ("RuleCardLimitAny","Snow-Covered Swamp"),
-  ("RuleCardLimitAny","Snow-Covered Plains"),
-  ("RuleCardLimitGeneral",1),
   ("RulePass",NULL),
 );
 
-############
-# STANDARD #
-############
+####################
+# CURRENT STANDARD #
+####################
 
-deck_rules{"Type 2"}=(,);
-deck_rules{"Type 2"}{"deck"}=(
+deck_rules{"Standard T2"}=(,);
+deck_rules{"Standard T2"}{"deck"}=(
   ("RuleDeckMinimum",60),
   ("RulePass",NULL),
 );
-deck_rules{"Type 2"}{"sideboard"}=(
+deck_rules{"Standard T2"}{"sideboard"}=(
   ("RuleDeckSizes",(0,15)),
   ("RulePass",NULL),
 );
-deck_rules{"Type 2"}{""}=(
+deck_rules{"Standard T2"}{""}=(
   ("RuleCardLimitAny","Island"),
   ("RuleCardLimitAny","Forest"),
   ("RuleCardLimitAny","Mountain"),
@@ -362,32 +366,31 @@ deck_rules{"Type 2"}{""}=(
   ("RuleCardLimitSingle",("Jace, the Mind Sculptor",0)),
   ("RuleCardLimitSingle",("Stoneforge Mystic",0)),
 
-  ("RuleCardSetReprint",("M11",4)),
   ("RuleCardSetReprint",("M12",4)),
-
-  ("RuleCardSetReprint",("ZDK",4)),
-  ("RuleCardSetReprint",("WWK",4)),
-  ("RuleCardSetReprint",("ROE",4)),
 
   ("RuleCardSetReprint",("SOM",4)),
   ("RuleCardSetReprint",("MBS",4)),
   ("RuleCardSetReprint",("NPH",4)),
+  
+  ("RuleCardSetReprint",("ISD",4)),
+  
+  ("RulePass",NULL),
 );
 
 ############
 # EXTENDED #
 ############
 
-deck_rules{"Extended"}=(,);
-deck_rules{"Extended"}{"deck"}=(
+deck_rules{"Extended T1.X"}=(,);
+deck_rules{"Extended T1.X"}{"deck"}=(
   ("RuleDeckMinimum",60),
   ("RulePass",NULL),
 );
-deck_rules{"Extended"}{"sideboard"}=(
+deck_rules{"Extended T1.X"}{"sideboard"}=(
   ("RuleDeckSizes",(0,15)),
   ("RulePass",NULL),
 );
-deck_rules{"Extended"}{""}=(
+deck_rules{"Extended T1.X"}{""}=(
   ("RuleCardLimitAny","Island"),
   ("RuleCardLimitAny","Forest"),
   ("RuleCardLimitAny","Mountain"),
@@ -396,15 +399,15 @@ deck_rules{"Extended"}{""}=(
 
   ("RuleCardLimitAny","Relentless Rats"),
 
+  ("RuleCardLimitSingle",("Jace, the Mind Sculptor",0)),
+  ("RuleCardLimitSingle",("Mental Misstep",0)),
+  ("RuleCardLimitSingle",("Ponder",0)),
+  ("RuleCardLimitSingle",("Preordain",0)),
+  ("RuleCardLimitSingle",("Stoneforge Mystic",0)),
+
   ("RuleCardSetReprint",("M10",4)),
   ("RuleCardSetReprint",("M11",4)),
   ("RuleCardSetReprint",("M12",4)),
-
-  ("RuleCardSetReprint",("LRW",4)),
-  ("RuleCardSetReprint",("MOR",4)),
-
-  ("RuleCardSetReprint",("SM",4)),
-  ("RuleCardSetReprint",("EVE",4)),
 
   ("RuleCardSetReprint",("ALA",4)),
   ("RuleCardSetReprint",("CFX",4)),
@@ -418,6 +421,9 @@ deck_rules{"Extended"}{""}=(
   ("RuleCardSetReprint",("MBS",4)),
   ("RuleCardSetReprint",("NPH",4)),
 
+  ("RuleCardSetReprint",("ISD",4)),
+
+  ("RulePass",NULL),
 );
 
 ##########
@@ -445,19 +451,27 @@ deck_rules{"Modern"}{""}=(
   ("RuleCardLimitAny","Snow-Covered Swamp"),
   ("RuleCardLimitAny","Snow-Covered Plains"),
 
+  ("RuleCardLimitAny","Relentless Rats"),
+
   ("RuleCardLimitSingle",("Ancestral Vision",0)),
   ("RuleCardLimitSingle",("Ancient Den",0)),
   ("RuleCardLimitSingle",("Bitterblossom",0)),
+  ("RuleCardLimitSingle",("Blazing Shoal",0)),
   ("RuleCardLimitSingle",("Chrome Mox",0)),
+  ("RuleCardLimitSingle",("Cloudpost",0)),
   ("RuleCardLimitSingle",("Dark Depths",0)),
   ("RuleCardLimitSingle",("Dread Return",0)),
   ("RuleCardLimitSingle",("Golgari Grave-Troll",0)),
   ("RuleCardLimitSingle",("Great Furnace",0)),
+  ("RuleCardLimitSingle",("Green Sun's Zenith",0)),
   ("RuleCardLimitSingle",("Hypergenesis",0)),
   ("RuleCardLimitSingle",("Jace, the Mind Sculptor",0)),
   ("RuleCardLimitSingle",("Mental Misstep",0)),
   ("RuleCardLimitSingle",("Seat of the Synod",0)),
   ("RuleCardLimitSingle",("Sensei's Divining Top",0)),
+  ("RuleCardLimitSingle",("Ponder",0)),
+  ("RuleCardLimitSingle",("Preordain",0)),
+  ("RuleCardLimitSingle",("Rite of Flame",0)),
   ("RuleCardLimitSingle",("Skullclamp",0)),
   ("RuleCardLimitSingle",("Stoneforge Mystic",0)),
   ("RuleCardLimitSingle",("Sword of the Meek",0)),
@@ -465,8 +479,6 @@ deck_rules{"Modern"}{""}=(
   ("RuleCardLimitSingle",("Umezawa's Jitte",0)),
   ("RuleCardLimitSingle",("Valakut, the Molten Pinnacle",0)),
   ("RuleCardLimitSingle",("Vault of Whispers",0)),
-
-  ("RuleCardLimitAny","Relentless Rats"),
 
   ("RuleCardSetReprint",("8TH",4)),
   ("RuleCardSetReprint",("9TH",4)),
@@ -511,4 +523,7 @@ deck_rules{"Modern"}{""}=(
   ("RuleCardSetReprint",("MBS",4)),
   ("RuleCardSetReprint",("NPH",4)),
 
+  ("RuleCardSetReprint",("ISD",4)),
+
+  ("RulePass",NULL),
 );
