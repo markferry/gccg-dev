@@ -40,13 +40,15 @@ Deck
 3 Orc Grunt (NE)
 1 Orc Tracker (LE)
 
-# Minion Resource (33)
+# Hero Resource (1)
+
+1 Torque of Hues (TW)
+
+# Minion Resource (32)
 
 2 Ancient Secrets (BA)
 2 Black Rider (LE)
 2 Blasting Fire (WH)
-1 Broad-headed Spear (LE)
-1 By the Ringwraith's Word (LE)
 1 Call to Arms (KN)
 1 Crept Along Cleverly (WH)
 1 Dark Defenders (NE)
@@ -57,6 +59,7 @@ Deck
 2 Ice-king of Urd (ML)
 1 Mechanical Bow (WH)
 3 Orcs of the Barl Syrnac (ML)
+1 Snow-trolls (NW)
 2 The Goblins Are upon You! (NE)
 1 The Runeknife of Risinth (NW)
 3 War-wolf (LE)
@@ -68,12 +71,12 @@ Deck
 Pool
 ####
 
-# Minion Character (5)
+# Minion Character (6)
 
 1 Dakalmog (NW)
 1 Durba (NW)
 1 Ologong (ML)
-1 Orc Brawler (LE)
+2 Orc Brawler (LE)
 1 Urdrak (NW)
 
 # Minion Resource (3)
@@ -90,49 +93,63 @@ Sideboard
 
 1 Flight Unmarked (RS)
 
-# Hazard (4)
+# Hazard (5)
 
 1 Desire All for Thy Belly (BA)
+1 Drowning Seas (TW)
+1 New Moon (TW)
 1 Night (TW)
 1 Quicksand (SL)
-1 Twilight (TW)
 
 # Minion Character (1)
 
-1 Dwar the Ringwraith (LE)
+1 Ûvatha the Ringwraith (LE)
 
-# Minion Resource (11)
+# Minion Resource (13)
 
 1 Bitter Cold (LE)
-1 Gifts as Given of Old (LE)
+1 Consumed by Dragon-fire (GW)
+2 Gifts as Given of Old (LE)
 1 Gostir Roused (ML)
 1 Hammer of the Underworld (ML)
 1 Our Own Wolves (AS)
 2 Roam the Waste (BA)
-1 Slew the Great Warrior (TI)
 1 Snow-hammer (ML)
 1 The Mithril-coat [M] (LE)
 1 The Sled-horde (ML)
+1 The Under-roads (AS)
 
 #####
 Sites
 #####
 
-# Dual Site (1)
+# Dual Site (3)
 
 1 Ruins of Kheledkhizdin (ML)
+1 The Cobalt-deeps (NW)
+1 The Rusted-deeps [D] (DF)
 
-# Minion Site (13)
+# Minion Site (22)
 
+1 Bernastath [M] (NW)
+1 Buhr Thurasig [M] (GW)
+1 Celeb-ost [M] (NW)
 1 Collarmount [M] (GW)
+1 Deep Cleft [M] (GW)
+1 Dol Guldur [M] (LE)
 1 Elyamû [M] (ML)
 1 Hollow Spire [M] (ML)
-1 Kula Dulakurth [M] (NW)
+1 Kala Dulakurth [M] (NW)
+1 Lar-huz [M] (CP)
 1 Lugdruong [M] (ML)
 1 Mirror Halls [M] (ML)
+1 Mornost [M] (NW)
 1 Númenórean Tomb [M] (ML)
+1 Olyavud [M] (ML)
 2 Shapal Udûn [M] (ML)
 1 The Vaults of Utûmno [M] (ML)
 1 Tol Ringurthur [M] (ML)
+1 Tower of the Wolf-friend [M] (GW)
 1 Urdic Camp [M] (NW)
 1 Zayandaur [M] (ML)
+
