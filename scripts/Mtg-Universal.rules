@@ -132,7 +132,7 @@ deck_rules{"Commander"}{"sideboard"}=(
 ##############
 
 deck_rules{"Highlander"}=(,);
-deck_rules{"Highlander"}{"deck"}=", ";
+deck_rules{"Highlander"}{"deck"}=(,);
 deck_rules{"Highlander"}{""}=(
   ("RuleDeckSizes",(100,)),
   ("RuleCardLimitAny","Island"),
