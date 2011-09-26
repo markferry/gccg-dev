@@ -346,8 +346,47 @@ def RuleCardLimitSingle
     RuleViolation(ARG[0][0]+" is limited to "+ARG[0][1]);
     return(NULL);
   }
-  else
+  else if (ARG[0][1])
     return(select("name(#)!=ARG[0][0]",ARG[1]));
+  else
+    return(ARG[1]);
+}
+
+#
+# RuleCardLimitEach((cardname1, [cardname2, cardname3... ,] limit), list of cards in deck) - Check deck for limit on listed cards and remove cards by name.
+#
+def RuleCardLimitEach
+{
+  push(l);
+  push(h);
+  push(r);
+  push(D);
+  push(d);
+  
+  l=last(ARG[0]);
+  h=head(ARG[0]);
+  r=flatten(images(h));
+  
+  D=ARG[1];
+  d=D-r;
+  
+  if(l>0)
+  {
+    if(RuleCardLimitGeneral(l,D-d) == NULL) D=NULL;
+    else D=d;
+  }
+  else if(length(D) > length(d))
+  {
+    RuleViolation("Banned cards found: "+join(unique(sort(name(D-d))),", "));
+  }
+  
+  return(D);
+  
+  d=pop();
+  D=pop();
+  r=pop();
+  h=pop();
+  l=pop();
 }
 
 #
@@ -380,9 +419,9 @@ def RuleCardLimitGeneral
   push(d);
   push(r);
   r=ARG[1];
-  d=name(ARG[1]);
+  d=sort(name(ARG[1]));
   return(,);
-  for(c)(unique(sort(d)))
+  for(c)(unique(d))
   {
     if(count(c,d) > ARG[0])
     {
@@ -418,6 +457,50 @@ def RuleCardSet
 }
 
 #
+# RuleCardSets((list of set abbrevs,limit), list of cards) - Check the number of cards belonging to the set.
+#
+def RuleCardSets
+{
+  push(D);
+  push(d);
+  push(s);
+  push(h);
+  push(l);
+  
+  l=last(ARG[0]);
+  h=head(ARG[0]);
+  s=(,);
+  
+  for(c)(h)
+  {
+    s=s+seq(tail(set_data(c)));
+  }
+  
+  D=ARG[1];
+  d=sort(select("count(#,s)",D));
+  
+  for(c)(unique(d))
+  {
+    if(D != NULL)
+    {
+      if(!l || count(c,d) > l)
+      {
+        RuleViolation(name(c)+"is limited to "+l+" by virtue of being in set "+set_of(c));
+        D=NULL;
+      }
+      else
+        D=D-(c,);
+    }
+  }
+  return(D);
+  l=pop();
+  h=pop();
+  s=pop();
+  d=pop();
+  D=pop();
+}
+
+#
 # RuleCardSetReprint((set abbrev,limit), list of cards) - Check the number of cards belonging to the set including cards with the same name.
 #
 def RuleCardSetReprint
@@ -440,6 +523,44 @@ def RuleCardSetReprint
   d=pop();
   D=pop();
 }
+
+#
+# RuleAllowedSetsReprint((set code 1, [set code 2, set code 3... ,] limit), list of cards in deck) - Check to make sure only cards from listed sets (including cards with the same name) are present, and in no more than the listed quantity.
+#
+def RuleAllowedSetsReprint
+{
+  push(D);
+  push(d);
+  push(s);
+  push(h);
+  push(l);
+  
+  l=last(ARG[0]);
+  h=head(ARG[0]);
+  s=(,);
+  
+  for(c)(h)
+  {
+    s=s+name(seq(tail(set_data(c))));
+  }
+
+  D=ARG[1];
+  if(length(name(D)-s) > 0)
+  {
+    RuleViolation("Can only have cards from sets "+join(h,", "));
+    D=NULL;
+  }
+  else
+    D=RuleCardLimitGeneral(l,D);
+  
+  return(D);
+  l=pop();
+  h=pop();
+  s=pop();
+  d=pop();
+  D=pop();
+}
+
 
 #
 # RuleLimitEachByExpression((limit,expression),list of cards) - Limit each card satisfying the expression and remove them.
@@ -483,6 +604,29 @@ def RuleLimitByExpression
   return(d-i);
   d=pop();
   i=pop();
+}
+
+#
+# RuleMinProxies(num,list of cards) - Require minimum number of proxies.
+#
+def RuleMinProxies
+{
+  if(ARG[0] > d[1][1])
+    RuleViolation("Needs at least "+tostr(ARG[0])+" proxies");
+
+  return(ARG[1]);
+}
+
+
+#
+# RuleMaxProxies(num,list of cards) - Set maximum number of proxies.
+#
+def RuleMaxProxies
+{
+  if(ARG[0] < d[1][1])
+    RuleViolation("No more than "+tostr(ARG[0])+" proxies");
+
+  return(ARG[1]);
 }
 
 #
@@ -573,7 +717,7 @@ def LegalityCheckRuleset
 }
 
 #
-# LegalityCheckDeck(deck) - Return the list of rulesets to which deck mathces.
+# LegalityCheckDeck(deck) - Return the list of rulesets to which deck matches.
 #
 def LegalityCheckDeck
 {

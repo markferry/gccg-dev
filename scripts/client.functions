@@ -164,6 +164,7 @@
 # products.box - object number of products panel
 # product.images{product name} - image number of the product picture
 # product.objects{product name} - object numbers of products
+# rarity.display{letter} - format code to apply when opening card of that rarity from pack
 # room.players - players in chat room (see meta-server)
 # room.tables - tables in chat room (see meta-server)
 # rules.category - list of pairs (condition,category), which is used to map a name to category
@@ -261,6 +262,10 @@ DEFAULT_EXPORT_FORMAT="Gccg";
 # Color to use for highlighting touched objects.
 HIGHLIGHT_COLOR=(150,0,0);
 
+# List of counter colors in numeric order (0-indexed)
+COUNTER_COLORS=("Red","Green","Blue","Yellow","Orange","Black","White","Default",NULL,NULL);
+DEFAULT_COUNTER_COLOR=7;
+
 # Default book order.
 BOOK_DEFAULT_SORT=("[age]","[name]");
 
@@ -294,7 +299,7 @@ MENU{"Main Menu - Chat"}=(
 	(1,"{hr}","",""),
 	(1,"Show/Hide Collection","Ctrl+B",""),
 	(1,"Show/Hide Products","Ctrl+P",""),
-	(1,"Create new deck","","Msg('{red}Sorry, dialogs not implemented. Type {yellow}/newdeck My deck name{red} to create a deck.')"),
+	(1,"Create new deck","","CreateEmptyDeck()"),
 	('deck.name!=NULL',"Edit/Hide deck","Ctrl+E",""),
 	(1,"Import deck","Ctrl+I",""),
 	('length(decks)>0',"Select deck","Ctrl+D",""),
@@ -453,6 +458,7 @@ function{"CreateDeck"}="CreateDeck";
 function{"CreateHand"}="CreateHand";
 function{"DelActive"}="DelActive";
 function{"DelDeck"}="DelDeck";
+function{"DelDeckBottom"}="DelDeckBottom";
 function{"DelDeckTop"}="DelDeckTop";
 function{"DelHand"}="DelHand";
 function{"DelMarker"}="DelMarker";
@@ -559,14 +565,6 @@ def is_object
 # =========
 
 #
-# d(expr) - Dump the arguments to the message box.
-#
-def d
-{
-  Msg(tostr(ARG));
-}
-
-#
 # ok() - Check if the client has card data and show error if not.
 #
 def ok
@@ -575,6 +573,14 @@ def ok
     Msg("{red}You need to download game repository for full functionality.");
   else
     return(1);
+}
+
+#
+# d(expr) - Dump the arguments to the message box.
+#
+def d
+{
+  Msg(tostr(ARG));
 }
 
 #
@@ -649,7 +655,7 @@ def Initialize
   set_attr(alert.box,"ontop",100);
   raise(alert.box);
 
-  chat_msg.box=create_msgbox(screen.width-w(403),screen.height-h(220),obj=obj+1,"chat msg",w(400),h(200),99999);
+  chat_msg.box=create_msgbox(screen.width-w(404),screen.height-h(220),obj=obj+1,"chat msg",w(401),h(200),99999);
   set_bgcolor(chat_msg.box,NULL);
   set_fgcolor(chat_msg.box,BRCOLOR);
   set_attr(chat_msg.box,"visible",1);
@@ -669,11 +675,11 @@ def Initialize
 
   Msg("{hr}");
   Msg(L("{sz20}{center}Welcome to Gccg/%s",GAME));
-  Msg("{center}{sz16}© 2001-2010 Tommi Ronkainen");
+  Msg("{center}{sz16}© 2001-2011 Tommi Ronkainen");
   Msg(L("{sz20}{center}Press {orange}F1{white} for help or {orange}right click{white} for menu."));
   Msg("{hr}");
 
-  card.book=create_book(w(10),h(140),obj=obj+1,"My Collection",BOOK_ROWS,BOOK_COLUMNS);
+  card.book=create_book(w(5),h(140),obj=obj+1,"My Collection",BOOK_ROWS,BOOK_COLUMNS);
   set_attr(card.book,"ontop",50);
   raise(card.book);
   set_bgcolor(card.book,BKBGCOLOR);
@@ -706,7 +712,7 @@ def Initialize
   set_attr(drag.box,"tiny",1);
   set_attr(drag.box,"ontop",1);
 
-  deck.box=create_listbox(screen.width-w(sum(DECKBOX_SIZE)-2),h(40),obj=obj+1,"Current Deck",100,("#","Name of the card",""),DECKBOX_SIZE,34,(1,0,1));
+  deck.box=create_listbox(screen.width-w(sum(DECKBOX_SIZE))-4,h(5),obj=obj+1,"Current Deck",100,("#","Name of the card",""),DECKBOX_SIZE,34,(1,0,1));
   set_attr(deck.box,"ontop",50);
   raise(deck.box);
 
@@ -840,7 +846,7 @@ def SaveAll
 #
 def _InitializeGame
 {
-  player.marker_color=7;
+  player.marker_color=DEFAULT_COUNTER_COLOR;
   active=array(players);
   hand=array(players);
   deck.objects=array(players);
@@ -879,10 +885,15 @@ def _EndGame
 {
   if(isfunction("EndGame"))
     call("EndGame",NULL);
-  net_send(con,("OK",NULL));
-  net_close(con);
+  if (con != server.meta)
+  {
+    net_send(con,("OK",NULL));
+    net_close(con);
+  }
   ClearScores();
   flag.playing=0;
+  if (mode != "chat")
+    SetMode("chat");
 }
 
 #
@@ -1669,6 +1680,30 @@ HELP{"any"}{"refresh"}=("","refresh collection",NULL,
 "Ask full refresh of the collection status from server. Normally the collection state is stored on disk cache and may be not accurate if you have been offline.");
 
 #
+# CommandClearcache() - Implementation of /clearcache command.
+#
+def CommandClearcache
+{
+  Msg("Cleaning out old book files.");
+  book.cache=(,);
+  save("book.cache");
+  book.filter=(,);
+  book.index=(,);
+  book.my_filters=(,);
+  save("book.my_filters");
+  book.history=(,);
+  save("book.history");
+  
+  CheckFilterVersion();
+  SetBookIndex("default","default");
+  
+  save("book.filter");
+  save("book.index");
+}
+HELP{"any"}{"clearcache"}=("","clear out book variables",NULL,
+"Remove all cached variables dealing with the cardbook. In case of new cards being added to the game, you may need to clear cache before the cards are recognized.");
+
+#
 # CommandWho() - Implementation of /who command.
 #
 def CommandWho
@@ -1733,13 +1768,14 @@ def ChatCommandGive
 {
   if(length(ARG)==2 && toint(ARG[1])>0)
     Send("Give",join(ARG," "));
+  else if(length(ARG)<2)
+    Msg("{red}You have to give something. Use {yellow}/give NAME MONEY{red} or {yellow}/give NAME CARD{red}.");
   else
   {
     push(n);
     push(i);
-    n=length(ARG);
-    n=join(right(ARG,n-1)," ");
-    if(left(n,1)=="'" && right(n,1)=="'")
+    n=join(tail(ARG)," ");
+    if(first(n)=="'" && last(n)=="'")
       n=substr(n,1,length(n)-2);
 
     i=images(n);
@@ -2534,13 +2570,17 @@ HELP{"any"}{"select"}=("exp","select cards to display",NULL,
 #
 def CommandSelect
 {
-  push(f);
-  f=String2Filter(join(ARG," "));
-  if(f==NULL)
-    Msg("{red}Invalid filter expression.");
-  else
-    RefineFilter(f);
-  f=pop();
+  if (length(ARG) == 0)
+    SetBookIndex('default','default');
+  else {
+    push(f);
+    f=String2Filter(join(ARG," "));
+    if(f==NULL)
+      Msg("{red}Invalid filter expression.");
+    else
+      RefineFilter(f);
+    f=pop();
+  }
 }
 
 HELP{"any"}{"sort"}=("[n],k1,k2,...","sort display",NULL,
@@ -2993,7 +3033,8 @@ def PutActive
 #
 def PutTable
 {
-  if(options.game{"PutTableHook"}!="off")
+# calling PlayCardSound (and thus card_sound) on an unknown card CRASHES gccg, so don't do it
+  if(name(ARG[4]) != NULL && options.game{"PutTableHook"}!="off")
 	PlayCardSound(ARG[4],ARG[6]);
   
   put_inplay(ARG[0],ARG[1],ARG[2],ARG[3],ARG[6],ARG[5]);
@@ -3026,7 +3067,6 @@ def PutTable
     c=pop();
   }
 }
-
 #
 #  DelDeckTop(object number) - Remove top card of the deck.
 #
@@ -3036,6 +3076,17 @@ def DelDeckTop
     call("DelDeckHook",(ARG,deck.class{ARG},last(deck_content{ARG}),length(deck_content{ARG})-1));
   del_deck_top(ARG);
   deck_content{ARG}=head(deck_content{ARG});
+}
+
+#
+#  DelDeckBottom(object number) - Remove bottom card of the deck.
+#
+def DelDeckBottom
+{
+  if(isfunction("DelDeckHook"))
+    call("DelDeckHook",(ARG,deck.class{ARG},first(deck_content{ARG}),length(deck_content{ARG})-1));
+  del_deck_top(ARG);
+  deck_content{ARG}=tail(deck_content{ARG});
 }
 
 #
@@ -3141,18 +3192,24 @@ def DelTable
 }
 
 #
-# Rotate(object number, orientation degrees) - Rotate an object.
+# Rotate(object number, [object number 2, etc.,] orientation degrees) - Rotate an object.
 #
 def Rotate
 {
-  if(ARG[1]==90)
-    tap(ARG[0]);
-  if(ARG[1]==0)
-    untap(ARG[0]);
-  if(ARG[1]==180)
-    invert(ARG[0]);
-  if(ARG[1]==270)
-    tap_left(ARG[0]);
+  push(c);
+  if(last(ARG)==90)
+    for(c)(head(ARG))
+      tap(c);
+  if(last(ARG)==0)
+    for(c)(head(ARG))
+      untap(c);
+  if(last(ARG)==180)
+    for(c)(head(ARG))
+      invert(c);
+  if(last(ARG)==270)
+    for(c)(head(ARG))
+      tap_left(c);
+  c=pop();
 }
 
 #
@@ -3212,14 +3269,19 @@ def SetHand
 #
 def SetDeck
 {
-  repeat(length(deck(ARG[0])),"del_deck_top(ARG[0])");
+  if(isfunction("clear_deck"))
+    clear_deck(ARG[0]);
+  else
+    repeat(length(deck(ARG[0])),"del_deck_top(ARG[0])");
 
-  deck_content{ARG[0]}=ARG[1];
+  
   if(length(ARG)>=3)
     deck_content{ARG[0]}=ARG[2];
-
-  forall("put_deck_top(ARG[0],#)",ARG[1]);
-
+  else
+    deck_content{ARG[0]}=ARG[1];
+    
+  put_deck_top(ARG[0],ARG[1]);
+  
   if(isfunction("PutDeckHook"))
     call("PutDeckHook",(ARG[0],deck.class{ARG[0]},ARG[1]));
 }
@@ -3229,63 +3291,73 @@ def SetDeck
 #
 def TryTransferTo
 {
-  if(object.number)
+  push(d);
+  push(s);
+
+  d=ARG;
+  s=NULL;
+
+  if(isfunction("TryTransferHook"))
+    d=call("TryTransferHook",d);
+
+  if(d[0]!="table" && object.type=="card")
   {
-    push(d);
-    push(s);
-
-    d=ARG;
-    s=NULL;
-
-    if(isfunction("TryTransferHook"))
-      d=call("TryTransferHook",d);
-
-    if(d[0]!="table" && object.type=="card")
-      s=("table",object.number);
-    elseif(object.type=="hand")
-      s=("hand",Owner(object.number),hand.card_index);
-    elseif(object.type=="deck")
-    {
-      ClearSearchbox();
-      s=("deck.top",object.number);
-    }
-    elseif(object.type=="cardbox" && count(object.number,active))
-      s=("active",Owner(object.number),cardbox.card_index);
-    elseif(d[0]!="active" && object.number==active[me])
-      s=("active",me,cardbox.card_index);
-    elseif(d[0]!="search.box" && cardbox.card_index >=0 && object.number==search.box)
-    {
-      s=("deck",search.source,cardbox.card_index);
-      del_cardbox_recenter(search.box,cardbox.card_index);
-    }
-    else if(object.number==select.box && select.source!=NULL)
-    {
-      s=first(forall(select.source,card.number));
-      del_cardbox_all_recenter(select.box);
-      set_attr(select.box,"visible",0);
-      if(isfunction("PlayFromSelectionHook"))
-        call("PlayFromSelectionHook",NULL);
-    }
-
-    if(s!=NULL)
-    {
-      if(IMMOBILE_CARDS==NULL)
-        IMMOBILE_CARDS=(,);
-
-      if(find(card.number,IMMOBILE_CARDS)==NULL)
-      {
-        if(transfer.options!=(,))
-          Send("Transfer",(1,s,d,transfer.options));
-        else
-          Send("Transfer",(1,s,d));
-      }
-    }
-
-    transfer.options=(,);
-
-    s=pop();
-    d=pop();
+    s=("table",object.number);
   }
+  elseif(object.type=="hand")
+  {
+    s=("hand",Owner(object.number),hand.card_index);
+  }
+  elseif(object.type=="deck")
+  {
+    ClearSearchbox();
+    s=("deck.top",object.number);
+  }
+  elseif(object.type=="bottomdeck")
+  {
+    ClearSearchbox();
+    s=("deck.bottom",object.number);
+  }
+  elseif(object.type=="cardbox" && count(object.number,active))
+  {
+    s=("active",Owner(object.number),cardbox.card_index);
+  }
+  elseif(d[0]!="active" && object.number==active[me])
+  {
+    s=("active",me,cardbox.card_index);
+  }
+  elseif(d[0]!="search.box" && cardbox.card_index >=0 && object.number==search.box)
+  {
+    s=("deck",search.source,cardbox.card_index);
+    del_cardbox_recenter(search.box,cardbox.card_index);
+  }
+  else if(object.number==select.box && select.source!=NULL)
+  {
+    s=first(forall(select.source,card.number));
+    del_cardbox_all_recenter(select.box);
+    set_attr(select.box,"visible",0);
+    if(isfunction("PlayFromSelectionHook"))
+      call("PlayFromSelectionHook",NULL);
+  }
+
+  if(s!=NULL)
+  {
+    if(IMMOBILE_CARDS==NULL)
+      IMMOBILE_CARDS=(,);
+
+    if(find(card.number,IMMOBILE_CARDS)==NULL)
+    {
+      if(transfer.options!=(,))
+        Send("Transfer",(1,s,d,transfer.options));
+      else
+        Send("Transfer",(1,s,d));
+    }
+  }
+
+  transfer.options=(,);
+
+  s=pop();
+  d=pop();
 }
 
 #
@@ -3538,6 +3610,7 @@ def StartChatMode
 {
   server.meta=server;
   room.players=(,);
+  forall('c=TableCoord(#);del_object(TableObject(#));table.number[c[0]][c[1]]=NULL;',keys(room.tables));
   room.tables=(,);
   if(old.me != NULL)
     me=old.me;
@@ -3680,7 +3753,8 @@ def LeaveWatchMode
         Receive(toval(d[1]));
     }
   }
-  net_close(server);
+  if(server != server.meta)
+    net_close(server);
   server=server.meta;
   del_object(select("#>=10000",objects()));
   HidePlaymat();
@@ -3850,17 +3924,19 @@ def TableObject
 #
 def AddRoomTable
 {
-  if(mode!="watch")
+  if(mode!="watch" && mode!="play")
   {
     push(c);
     push(s);
     push(o);
     push(h);
+    push(b);
+    
+    c=FreeTablePos();
+    o=table.object[c[0]][c[1]];
 
     DelRoomTable(ARG[0]);
 
-    c=FreeTablePos();
-    o=table.object[c[0]][c[1]];
     room.tables{ARG[0]}=ARG[1];
     table.number[c[0]][c[1]]=ARG[0];
     create_image((image_width(table.image)+w(10))*c[0]+w(20),(image_height(table.image)+h(10))*c[1]+h(270),o,table.image,"table");
@@ -3875,19 +3951,31 @@ def AddRoomTable
       h="{shadow}";
     else
       h="";
+      
+    if(ARG[1][4] > 0)
+      b="{red}$";
+    else
+      b="$";
+
+#    if(ARG[1][5]==1)
+#      h=h+"{orange}";
+#    else if(ARG[1][5] > 2)
+#      h=h+"{80,160,0}";
+      
 
     add_text(o,h+"TABLE "+ARG[0]);
-    add_text(o,h+"{sz10}"+ARG[1][5]+" players, $"+format("%.2f",ARG[1][4]));
-    add_text(o,h+"{hr}");
+    add_text(o,h+"{sz10}"+ARG[1][5]+" players, "+b+format("%.2f",ARG[1][4]));
+#    add_text(o,h+"{hr}");
     add_text(o,h+"{sz10}"+room.tables{ARG[0]}[10]);
 
     s=first(split(room.tables{ARG[0]}[0],"."));
     if(tostr(toint(s))==s)
       s=room.tables{ARG[0]}[0];
-    add_text(o,h+"{sz12}{font3}"+s);
+    add_text(o,h+"{sz8}"+s+":"+room.tables{ARG[0]}[1]);
 
     AvatarRecalcTable(ARG[0]);
 
+    b=pop();
     h=pop();
     o=pop();
     s=pop();
@@ -3938,7 +4026,7 @@ def LeaveTable
 {
   if(mode=="chat" && has_entry(ARG[0],room.players) && has_entry(ARG[1],room.tables))
   {
-    room.tables{room.players{ARG[0]}[2]}[2]=room.tables{room.players{ARG[0]}[2]}[2]-(ARG[0],);
+    room.tables{ARG[1]}[2]=room.tables{ARG[1]}[2]-(ARG[0],);
     room.players{ARG[0]}[2]=-1;
     AvatarRecalcTable(ARG[1]);
   }
@@ -4062,14 +4150,8 @@ def AddCards
       for(c)(ARG)
       {
         r=first(card_attr("rarity",c));
-        if(r=="H")
-          m=m+"{gold}";
-        else if(r=="M")
-          m=m+"{red}";
-        else if(r=="R")
-          m=m+"{blue}";
-        else if(r=="U")
-          m=m+"{green}";
+        if(isdict(rarity.display) && has_entry(r,rarity.display))
+          m=m+rarity.display{r};
         m=m+" "+name(c)+"{white},";
       }
       Msg(left(m,length(m)-1)+".");
@@ -4394,6 +4476,56 @@ def AddToDeck
   d=pop();
 }
 
+def CommandAddpart
+{
+  if(!has_entry(deck.name,decks) || deck.name==NULL)
+    Msg("{red}You must have a deck selected.");
+  if (ARG != NULL)
+    AddDeckPart(join(ARG," "));
+}
+
+def CommandDelpart
+{
+  if(!has_entry(deck.name,decks) || deck.name==NULL)
+    Msg("{red}You must have a deck selected.");
+  if (ARG != NULL)
+    RemoveDeckPart(join(ARG," "));
+}
+
+#
+# AddDeckPart() - Add deck part with the given name to the current deck.
+#
+def AddDeckPart
+{
+  if(deck.name!=NULL)
+  {
+    if(has_entry(lc(ARG),decks{deck.name}))
+      Msg("{red}"+ucfirst(lc(ARG)+" already added.");
+    else
+    {
+      decks{deck.name}{lc(ARG)}=(,);
+      RefreshCurrentDeck();
+    }
+  }
+}
+
+#
+# RemoveDeckPart() - Remove named part from the current deck if it exists.
+#
+def RemoveDeckPart
+{
+  if(deck.name!=NULL)
+  {
+    if(!has_entry(lc(ARG),decks{deck.name}))
+      Msg("{red}The deck has no "+lc(ARG)+".");
+    else
+    {
+      decks{deck.name}=del_entry(lc(ARG),decks{deck.name});
+      RefreshCurrentDeck();
+    }
+  }
+}
+
 #
 # EditAdd(deck part,card name or number) - Add a card to the current deck.
 #
@@ -4465,6 +4597,22 @@ def EditDel
       SelectDeck(ARG);
       set_attr(deck.box,"visible",1);
     }
+  }
+
+#
+# CreateEmptyDeck() - Create a new unnamed deck and display help about deckbuilding.
+#
+  def CreateEmptyDeck
+  {
+    decks{"{blue}New Deck{white}"}=NewDeck();
+    deck.part="deck";
+    SelectDeck("{blue}New Deck{white}");
+    set_attr(deck.box,"visible",1);
+    Msg("{sz20}{yellow}Deckbuilding Help");
+    Msg("To give your new deck a name, type {yellow}/renamedeck [deckname]{white}. To create another deck without bringing up this help, type {yellow}/newdeck [deckname]{white}.");
+    Msg("You can open the list of cards with {yellow}Ctrl+B{white} if you haven't already, then scroll through it with the mouse wheel or with {yellow}PgUp{white} and {yellow}PgDn{white} keys.");
+    Msg("You can also go directly to the next page that has a particular card you want, by typing {yellow}/find [cardname]{white}.");
+    Msg("Clicking on a card with the mouse wheel (or using {yellow}Ctrl+A{white}) adds a copy to the deck; left-clicking removes a copy. Right-clicking offers these options and more.");
   }
 
 #
@@ -5271,6 +5419,17 @@ def ChatKeyControlKeyS
         BookChangeForsale(card.number,1);
     }
   }
+### dummy block only needed for mass refreshing of prices
+  else if(1)
+  {
+    for(b)(book_cards(card.book,book_page(card.book)))
+    {
+      r=book_entry(card.book,b);
+      if(r[3] > 0.0 && r[4] > 0)
+        BookSetPrice(b,r[3]);
+    }
+    
+  }
   r=pop();
   b=pop();
 }
@@ -5280,6 +5439,39 @@ def ChatKeyControlKeyS
 #
 def WatchKeyControlKeyS
   ChatKeyControlKeyS();
+
+#
+# ChatKeyControlKeyA() - Handler for key Control+A in chat mode.
+#
+def ChatKeyControlKeyA
+{
+  if(deck.name != NULL)
+  {
+    if(object.name=="My Collection" && card.number!=NULL && card_back(card.number)!=card.number)
+    {
+      if(deck.part==NULL)
+        SelectDeckPart("deck");
+      EditAdd(deck.part,card.number);
+    }
+    else if(object.name=="Current Deck" && EditCardname()!=NULL)
+    {
+      SelectDeckPart(EditNearestPartname());
+      EditAdd(deck.part,EditCardname());
+    }
+  }
+}
+
+#
+# WatchKeyControlKeyA() - Handler for key Control+A in watch mode.
+#
+def WatchKeyControlKeyA
+  ChatKeyControlKeyA();
+
+#
+# OfflineKeyControlKeyA() - Handler for key Control+A in offline mode.
+#
+def OfflineKeyControlKeyA
+  ChatKeyControlKeyA();
 
 #
 # ChatKeyControlKeyW() - Handler for key Control+W in chat mode.
@@ -5647,8 +5839,7 @@ def OfflineKeyControlKeyD
 #
 def ChatKeyControlKeyI
 {
-  if(ok())
-    ImportDeckMenu();
+  ImportDeckMenu();
 }
 
 #
@@ -5668,7 +5859,7 @@ def OfflineKeyControlKeyI
 #
 def ChatKeyControlKeyX
 {
-  if(deck.name != NULL && has_entry(deck.name,decks) && ok())
+  if(deck.name != NULL && has_entry(deck.name,decks))
     ExportToFile(decks{deck.name},strreplace(deck.name,".","_"),DEFAULT_EXPORT_FORMAT);
 }
 
@@ -5706,6 +5897,7 @@ def KeyControlKeyH
         if(b[1]!="")
           s=s+"{yellow}"+join(ucfirst(split(L(b[0]),"_"))," ")+":{white} "+L(b[1])+"  ";
       }
+      s=s+"{yellow}Card ID: {white}"+c;
       Msg(s);
       s=pop();
       b=pop();
@@ -5772,6 +5964,26 @@ def PlayKeyDelete
 }
 
 #
+# PlayKeyShiftKeyDelete() - Handler for key Shift+Delete in play mode.
+#
+def PlayKeyShiftKeyDelete
+{
+  if(input!="")
+    InputKeyDelete();
+  else if (object.type=="deck")
+  {
+    object.type="bottomdeck";
+    
+    if(Owner(object.number)==me || DELETE_TO_MINE)
+      TryTransferTo("deck.top",discard);
+    else
+      TryTransferTo("deck.top",deck.objects[Owner(object.number)]{"opponent discard pile"});
+  }
+  else
+    PlayKeyDelete();
+}
+
+#
 # PlayKeyInsert() - Handler for key Insert in play mode.
 #
 def PlayKeyInsert
@@ -5803,6 +6015,23 @@ def PlayKeyEnd
     InputKeyEnd();
   else
     TryTransferTo("active",me);
+}
+
+#
+# PlayKeyShiftKeyEnd() - Handler for key Shift+End in play mode.
+#
+def PlayKeyShiftKeyEnd
+{
+  if(input!="")
+    InputKeyEnd();
+  else if (object.type=="deck")
+  {
+    object.type="bottomdeck";
+    
+    TryTransferTo("active",me);
+  }
+  else
+    PlayKeyEnd();
 }
 
 #
@@ -5848,6 +6077,14 @@ def PlayKeyControlKeyP
 }
 
 #
+# PlayKeyShiftControlKeyP() - Control+Shift+P: play a card face down.
+#
+def PlayKeyShiftControlKeyP
+{
+  TryTransferTo("play",1);
+}
+
+#
 # PlayKeyControlKeyU() - Handler for key Control+U in play mode.
 #
 def PlayKeyControlKeyU
@@ -5868,75 +6105,106 @@ def PlayKeyControlKeyU
 }
 
 #
-# PlayKeyAltKey1() - Select counter color "default".
+# PlayKeyAltKey0() - Select counter color 0 (default: red).
+#
+def PlayKeyAltKey0
+{
+  SetCounterColor(0,0);
+}
+
+#
+# PlayKeyAltKey1() - Select counter color 1 (default: green).
 #
 def PlayKeyAltKey1
 {
-  Msg("Default counters selected.");
-  player.marker_color = 7;
+  SetCounterColor(1,0);
 }
 
 #
-# PlayKeyAltKey2() - Select counter color "red".
+# PlayKeyAltKey2() - Select counter color 2 (default: blue).
 #
 def PlayKeyAltKey2
 {
-  Msg("Red counters selected.");
-  player.marker_color = 0;
+  SetCounterColor(2,0);
 }
 
 #
-# PlayKeyAltKey3() - Select counter color "green".
+# PlayKeyAltKey3() - Select counter color 3 (default: yellow).
 #
 def PlayKeyAltKey3
 {
-  Msg("Green counters selected.");
-  player.marker_color = 1;
+  SetCounterColor(3,0);
 }
 
 #
-# PlayKeyAltKey4() - Select counter color "blue".
+# PlayKeyAltKey4() - Select counter color 4 (default: orange).
 #
 def PlayKeyAltKey4
 {
-  Msg("Blue counters selected.");
-  player.marker_color = 2;
+  SetCounterColor(4,0);
 }
 
 #
-# PlayKeyAltKey5() - Select counter color "orange".
+# PlayKeyAltKey5() - Select counter color 5 (default: black).
 #
 def PlayKeyAltKey5
 {
-  Msg("Orange counters selected.");
-  player.marker_color = 3;
+  SetCounterColor(5,0);
 }
 
 #
-# PlayKeyAltKey6() - Select counter color "yellow".
+# PlayKeyAltKey6() - Select counter color 6 (default: white).
 #
 def PlayKeyAltKey6
 {
-  Msg("Yellow counters selected.");
-  player.marker_color = 4;
+  SetCounterColor(6,0);
 }
 
 #
-# PlayKeyAltKey7() - Select counter color "black".
+# PlayKeyAltKey7() - Select counter color 7 (default: default "G" counters).
 #
 def PlayKeyAltKey7
 {
-  Msg("Black counters selected.");
-  player.marker_color = 5;
+  SetCounterColor(7,0);
 }
 
 #
-# PlayKeyAltKey8() - Select counter color "white".
+# PlayKeyAltKey8() - Select counter color 8 (default: not initialized).
 #
 def PlayKeyAltKey8
 {
-  Msg("White counters selected.");
-  player.marker_color = 6;
+  SetCounterColor(8,0);
+}
+
+#
+# PlayKeyAltKey9() - Select counter color 9 (default: not initialized).
+#
+def PlayKeyAltKey9
+{
+  SetCounterColor(9,0);
+}
+
+#
+# SetCounterColor(color, ignore map?) - Unified function for setting counter color.
+#
+def SetCounterColor
+{
+  push(c);
+  push(cm);
+  if (has_entry("countermap",options) && !ARG[1])
+    cm=tostr(options{"countermap"});
+  else
+    cm="";
+  c=ARG[0];
+  if(length(cm) > c)
+    c=toint(substr(cm,c,1));
+  if (COUNTER_COLORS[c] == NULL)
+    c=DEFAULT_COUNTER_COLOR;
+    
+  Msg(COUNTER_COLORS[c]+" counters selected.");
+  player.marker_color = c;
+  cm=pop();
+  c=pop();
 }
 
 #
@@ -6749,7 +7017,9 @@ def MenuClick
         k="control key "+substr(k,5);
       if(left(k,4)=="Alt+")
         k="alt key "+substr(k,4);
-
+      if(left(k,6)=="Shift+")
+        k="shift key "+substr(k,6);
+      
       if(k!="")
       {
         RestoreMenuContext();
@@ -7026,6 +7296,7 @@ def DeckMenu
       ("{hr}","",""),
 	  ("Look","Ctrl+L",""),
 	  ("Shuffle","Ctrl+S",""),
+	  ("Set aside bottom card","Shift+End",""),
       );
   }
 
@@ -7050,6 +7321,7 @@ def OpponentDeckMenu
     m=m+(
 	  ("Look","Ctrl+L",""),
 	  ("Set aside the topmost card","End",""),
+	  ("Set aside bottom card","Shift+End",""),
       ("{hr}","","")
       );
   }
@@ -7139,14 +7411,14 @@ def CardMenu
 def CounterSubmenu
 {
   Submenu("Select counter color",(
-    ("Default","Alt+1",""),
-    ("Red","Alt+2",""),
-    ("Green","Alt+3",""),
-    ("Blue","Alt+4",""),
-    ("Orange","Alt+5",""),
-    ("Yellow","Alt+6",""),
-    ("Black","Alt+7",""),
-    ("White","Alt+8",""),
+    ("Red","Alt+0","SetCounterColor(0,1)"),
+    ("Green","Alt+1","SetCounterColor(1,1)"),
+    ("Blue","Alt+2","SetCounterColor(2,1)"),
+    ("Yellow","Alt+3","SetCounterColor(3,1)"),
+    ("Orange","Alt+4","SetCounterColor(4,1)"),
+    ("Black","Alt+5","SetCounterColor(5,1)"),
+    ("White","Alt+6","SetCounterColor(6,1)"),
+    ("Default","Alt+7","SetCounterColor(7,1)"),
   ));
 }
 
@@ -8341,9 +8613,7 @@ def RandomNearPoint
 #
 def StacksByGroup
 {
-  push(c);
   return(ARG[2]+ARG[0]*ARG[6]+ARG[1]*ARG[4],ARG[3]+ARG[0]*ARG[7]+ARG[1]*ARG[5]);
-  c=pop();
 }
 
 #
@@ -9158,15 +9428,18 @@ def str2filter_split
   if(length(e)>1)
   {
     r=NULL;
-    for(i)(length(e)-1)
-    {
-      if(r==NULL)
-      {
-        r=(call(ARG[2],join(left(e,i+1),ARG[1])),call(ARG[2],join(right(e,length(e)-i-1),ARG[1])));
-        if(count(NULL,r))
-          r=NULL;
-      }
-    }
+#    for(i)(length(e)-1)
+#    {
+#      if(r==NULL)
+#      {
+#        r=(call(ARG[2],join(left(e,i+1),ARG[1])),call(ARG[2],join(right(e,length(e)-i-1),ARG[1])));
+#        if(count(NULL,r))
+#          r=NULL;
+#      }
+#    }
+    r=forall("call(ARG[2],#)",e);
+    if(r==NULL || count(NULL,r))
+      r=NULL;
     return(r);
   }
 
@@ -9251,7 +9524,8 @@ def str2filter_join
   if(length(ARG[0])==1)
     return(ARG[0][0]);
   else
-    return(ARG[0][0][0]+ARG[1]+ARG[0][1][0],ARG[0][0][1]);
+     return(join(forall("#[0]",ARG[0]),ARG[1]),ARG[0][0][1]);
+#    return(ARG[0][0][0]+ARG[1]+ARG[0][1][0],ARG[0][0][1]);
 }
 
 #
@@ -9263,12 +9537,12 @@ def str2filter_exp
   push(e);
   e=str2filter_split(ARG," and ","str2filter_rel");
   if(e!=NULL)
-    return(str2filter_join(str2filter_typetoint(e),"&&"));
+    return(str2filter_join(e,"&&"));
   else
   {
     e=str2filter_split(ARG," or ","str2filter_rel");
     if(e!=NULL)
-      return(str2filter_join(str2filter_typetoint(e),"||"));
+      return(str2filter_join(e,"||"));
     else
       return(str2filter_rel(ARG));
   }
@@ -9282,7 +9556,6 @@ def str2filter_exp
 def str2filter_rel
 {
   push(e);
-
   e=str2filter_split(ARG,">=","str2filter_sum");
   if(e!=NULL)
     return(str2filter_join(str2filter_typeconvert(e),">="));
@@ -9313,11 +9586,12 @@ def str2filter_rel
               return(str2filter_join(str2filter_typeconvert(e),">"));
             else
             {
-              e=str2filter_split(ARG,"has","str2filter_sum");
+              e=str2filter_split(ARG," has ","str2filter_sum");
               if(e!=NULL)
               {
                 e=str2filter_typetostring(e);
-                return("find(uc(fuzzy("+e[1][0]+")),uc(fuzzy("+e[0][0]+")))!=NULL","s");
+                e[1][0]=strreplace(lc(e[1][0]),"cardname","\"+name(#)+\"");
+                return("find(fuzzy("+e[1][0]+"),fuzzy("+e[0][0]+"))!=NULL","s");
               }
               else
                 return(str2filter_sum(ARG));
@@ -9508,10 +9782,10 @@ def MainLoop
     {
       message(msg.box,"{red}Server closed connection.");
       message(msg.box,"{red}ABNORMAL EXIT!");
+      if(server.meta!=NULL && server.meta==server)
+        net_close(server.meta);
       if(server!=NULL)
         net_close(server);
-      if(server.meta!=NULL)
-        net_close(server.meta);
     }
     else
     {

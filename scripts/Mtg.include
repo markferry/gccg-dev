@@ -44,6 +44,16 @@ BKBGCOLOR=(98,52,23);
 # book border
 BKBRCOLOR=(248,201,111);
 
+if(!rarity.display)
+  rarity.display = (,);
+rarity.display{"L"}="";
+rarity.display{"C"}="";
+rarity.display{"U"}="{154,154,154}";
+rarity.display{"R"}="{gold}";
+rarity.display{"M"}="{red}";
+rarity.display{"P"}="{154,77,154}";
+rarity.display{"S"}="{154,77,154}";
+
 product.image=(,);
 product.image{"Limited Edition Beta booster"}="Beta_booster.jpg";
 product.image{"Limited Edition Beta starter"}="Beta_starter.jpg";
@@ -180,8 +190,7 @@ GAME_MENU{"Main Menu - Play"}=(
  (1,"Play White Token","",'Send("Transfer",(1,("out.of.play",6),("play",0)))'),
  (1,"{hr}","",""),
  (1,"Select Token Type...","","TokenSubmenu()"),
- (1,"{hr}","",""),
- (1,"Innistrad Transformed...","","ISDSubmenu()"),
+ (1,"Select Innistrad Transformed...","","ISDSubmenu()"),
  (1,"{hr}","",""),
  (1,"Play Jitte Counter","",'Send("Transfer",(1,("out.of.play",7),("play",0)))'),
  (1,"Play Storm Counter","",'Send("Transfer",(1,("out.of.play",8),("play",0)))'),
@@ -205,47 +214,55 @@ GAME_MENU{"A Card"}=(
  );
 
 FILTER_OPTIONS=(
- ("Artifacts","Attr('color',#)=='Artifact'",(1,"[age]","[name]")),
- ("Lands","Attr('color',#)=='Land'",(1,"[age]","[name]")),
- ("Black spells","find('Black',Attr('color',#))!=NULL",(1,"[age]","[color]","[name]")),
- ("Blue spells","find('Blue',Attr('color',#))!=NULL",(1,"[age]","[color]","[name]")),
- ("Green spells","find('Green',Attr('color',#))!=NULL",(1,"[age]","[color]","[name]")),
- ("Red spells","find('Red',Attr('color',#))!=NULL",(1,"[age]","[color]","[name]")),
- ("White spells","find('White',Attr('color',#))!=NULL",(1,"[age]","[color]","[name]")),
- "{hr}",
- ("Enchantments","find('Enchant',Attr('type',#))!=NULL",(1,"[type]","[color]","[name]")),
- ("Instants","find('Instant',Attr('type',#))!=NULL",(1,"[color]","[name]")),
- ("Sorceries","find('Sorcery',Attr('type',#))!=NULL",(1,"[color]","[name]")),
- ("Creatures","find('Creature',Attr('type',#))!=NULL",(1,"[color]","[name]")),
- "{hr}",
  ("Sealed deck","first(book_entry(card.book,#))",(1,"[color]","[name]")),
  "{hr}",
- ("Vintage Restricted","TypeRestricted('Vintage T1',#)",(1,"[color]","[age]","[name]")),
- ("Legacy Legal","TypeLegal('Legacy T1.5',#)",(1,"[color]","[age]","[name]")),
- ("Commander Legal","TypeLegal('Commander EDH',#)",(1,"[color]","[age]","[name]")),
- ("Highlander Legal","TypeLegal('Highlander',#)",(1,"[color]","[age]","[name]")),
+ ("Common","left(Attr('rarity',#),1)=='C'",(1,"[age]","[color]","[name]")),
+ ("Uncommon","left(Attr('rarity',#),1)=='U'",(1,"[age]","[color]","[name]")),
+ ("Rare","left(Attr('rarity',#),1)=='R'",(1,"[age]","[color]","[name]")),
+ ("Mythic","left(Attr('rarity',#),1)=='M'",(1,"[age]","[color]","[name]")),
  "{hr}",
- ("Modern Legal","TypeLegal('Modern',#)",(1,"[color]","[age]","[name]")),
+ ("White spells","find('White',Attr('color',#))!=NULL",(1,"[age]","[color]","[name]")),
+ ("Blue spells","find('Blue',Attr('color',#))!=NULL",(1,"[age]","[color]","[name]")),
+ ("Black spells","find('Black',Attr('color',#))!=NULL",(1,"[age]","[color]","[name]")),
+ ("Red spells","find('Red',Attr('color',#))!=NULL",(1,"[age]","[color]","[name]")),
+ ("Green spells","find('Green',Attr('color',#))!=NULL",(1,"[age]","[color]","[name]")),
+ ("Multicolored","find(' ',Attr('color',#))!=NULL",(1,"[age]","[color]","[name]")),
+ ("Colorless","find(Attr('color',#),'ArtifactLandColorless')!=NULL",(1,"[age]","[name]")),
+ "{hr}",
+ ("Legendary","find('Legendary',Attr('type',#))!=NULL",(1,"[age]","[name]")),
+ ("Artifacts","find('Artifact',Attr('type',#))!=NULL",(1,"[age]","[name]")),
+ ("Creatures","find('Creature',Attr('type',#))!=NULL",(1,"[color]","[name]")),
+ ("Enchantments","find('Enchant',Attr('type',#))!=NULL",(1,"[type]","[color]","[name]")),
+ ("Lands","find('Land',Attr('type',#))!=NULL",(1,"[age]","[name]")),
+ ("Planeswalkers","find('Planeswalker',Attr('type',#))!=NULL",(1,"[age]","[name]")),
+ ("Instants","find('Instant',Attr('type',#))!=NULL",(1,"[color]","[name]")),
+ ("Sorceries","find('Sorcery',Attr('type',#))!=NULL",(1,"[color]","[name]")),
+ "{hr}",
+ ("Tribal Creatures","TribalLegal(#) && TypeLegal('Vintage',#)",("[subtype]","[color]","[name]")),
+ ("Vintage Restricted","TypeRestricted('Vintage',#)",(1,"[age]","[color]","[name]")),
+ ("Legacy Banned","!TypeLegal('Legacy',#)",(1,"[age]","[color]","[name]")),
+ ("Commander Banned","!TypeLegal('Commander',#)",(1,"[color]","[age]","[name]")),
+ ("Highlander Banned","!TypeLegal('Highlander',#)",(1,"[color]","[age]","[name]")),
+ ("Modern Legal","TypeLegal('Modern',#)",(1,"[age]","[color]","[name]")),
  ("Extended Legal","TypeLegal('Extended',#)",(1,"[color]","[age]","[name]")),
- ("Standard Legal","TypeLegal('Type 2',#)",(1,"[color]","[age]","[name]")),
- ("Standard (2011) Legal","TypeLegal('Type 2 (2011)',#)",(1,"[color]","[age]","[name]")),
- ("Standard (2010) Legal","TypeLegal('Type 2 (2010)',#)",(1,"[color]","[age]","[name]")),
- ("Standard (2009) Legal","TypeLegal('Type 2 (2009)',#)",(1,"[color]","[age]","[name]")),
- ("Standard (2008) Legal","TypeLegal('Type 2 (2008)',#)",(1,"[color]","[age]","[name]")),
- ("Standard (2007) Legal","TypeLegal('Type 2 (2007)',#)",(1,"[color]","[age]","[name]")),
- ("Standard (2006) Legal","TypeLegal('Type 2 (2006)',#)",(1,"[color]","[age]","[name]")),
- ("Standard (2005) Legal","TypeLegal('Type 2 (2005)',#)",(1,"[color]","[age]","[name]")),
- ("Standard (2004) Legal","TypeLegal('Type 2 (2004)',#)",(1,"[color]","[age]","[name]")),
- ("Standard (2003) Legal","TypeLegal('Type 2 (2003)',#)",(1,"[color]","[age]","[name]")),
- ("Standard (2002) Legal","TypeLegal('Type 2 (2002)',#)",(1,"[color]","[age]","[name]")),
- ("Standard (2001) Legal","TypeLegal('Type 2 (2001)',#)",(1,"[color]","[age]","[name]")),
- ("Standard (2000) Legal","TypeLegal('Type 2 (2000)',#)",(1,"[color]","[age]","[name]")),
- ("Standard (1999) Legal","TypeLegal('Type 2 (1999)',#)",(1,"[color]","[age]","[name]")),
- ("Standard (1998) Legal","TypeLegal('Type 2 (1998)',#)",(1,"[color]","[age]","[name]")),
- ("Standard (1997) Legal","TypeLegal('Type 2 (1997)',#)",(1,"[color]","[age]","[name]")),
+ ("Standard Legal","TypeLegal('Standard',#)",(1,"[color]","[age]","[name]")),
  "{hr}",
- ("Tribal Creatures","TribalLegal(#) && set_of(#)!='UG'",("[subtype]","[color]","[name]")),
- "{hr}",
+# ("Standard (2011) Legal","TypeLegal('Type 2 (2011)',#)",(1,"[color]","[age]","[name]")),
+# ("Standard (2010) Legal","TypeLegal('Type 2 (2010)',#)",(1,"[color]","[age]","[name]")),
+# ("Standard (2009) Legal","TypeLegal('Type 2 (2009)',#)",(1,"[color]","[age]","[name]")),
+# ("Standard (2008) Legal","TypeLegal('Type 2 (2008)',#)",(1,"[color]","[age]","[name]")),
+# ("Standard (2007) Legal","TypeLegal('Type 2 (2007)',#)",(1,"[color]","[age]","[name]")),
+# ("Standard (2006) Legal","TypeLegal('Type 2 (2006)',#)",(1,"[color]","[age]","[name]")),
+# ("Standard (2005) Legal","TypeLegal('Type 2 (2005)',#)",(1,"[color]","[age]","[name]")),
+# ("Standard (2004) Legal","TypeLegal('Type 2 (2004)',#)",(1,"[color]","[age]","[name]")),
+# ("Standard (2003) Legal","TypeLegal('Type 2 (2003)',#)",(1,"[color]","[age]","[name]")),
+# ("Standard (2002) Legal","TypeLegal('Type 2 (2002)',#)",(1,"[color]","[age]","[name]")),
+# ("Standard (2001) Legal","TypeLegal('Type 2 (2001)',#)",(1,"[color]","[age]","[name]")),
+# ("Standard (2000) Legal","TypeLegal('Type 2 (2000)',#)",(1,"[color]","[age]","[name]")),
+# ("Standard (1999) Legal","TypeLegal('Type 2 (1999)',#)",(1,"[color]","[age]","[name]")),
+# ("Standard (1998) Legal","TypeLegal('Type 2 (1998)',#)",(1,"[color]","[age]","[name]")),
+# ("Standard (1997) Legal","TypeLegal('Type 2 (1997)',#)",(1,"[color]","[age]","[name]")),
+# "{hr}",
 );
 
 FILTER_FUNCTIONS=(,);
@@ -260,7 +277,7 @@ FILTER_FUNCTIONS{"mana"}=("i","converted mana cost");
 #
 def mana
 {
-  return(sum(forall("toint(#)",split(tr(ARG,"RGBUW","1"),"{"))));
+  return(sum(forall("toint(#)",split(strreplace(tr(ARG,"RGBUW","1.0"),"21.0","2"),"{"))));
 }
 
 #
@@ -268,7 +285,10 @@ def mana
 #
 def filter_mana
 {
-  return(min(apply("mana",split(Attr("cost",ARG),"//"))));
+  if((c=Attr("cost",ARG)) == "")
+    return(0);
+  else
+    return(min(apply("mana",split(Attr("cost",ARG),"//"))));
 }
 
 # FUNCTIONS
@@ -279,16 +299,7 @@ def filter_mana
 #
 def EditAddSideboard
 {
-  if(deck.name!=NULL)
-  {
-    if(has_entry("sideboard",decks{deck.name}))
-      Msg("{red}Sideboard already added.");
-    else
-    {
-      decks{deck.name}{"sideboard"}=(,);
-      RefreshCurrentDeck();
-    }
-  }
+  AddDeckPart("sideboard");
 }
 
 #
@@ -296,16 +307,7 @@ def EditAddSideboard
 #
 def EditRemoveSideboard
 {
-  if(deck.name!=NULL)
-  {
-    if(!has_entry("sideboard",decks{deck.name}))
-      Msg("{red}The deck has no sideboard.");
-    else
-    {
-      decks{deck.name}=del_entry("sideboard",decks{deck.name});
-      RefreshCurrentDeck();
-    }
-  }
+  RemoveDeckPart("sideboard");
 }
 
 #
@@ -375,7 +377,7 @@ def ISDSubmenu
    ("Daybreak Ranger -> Nightfall Predator","",'Send("Transfer",(1,("out.of.play",129),("play",0)))'),
    ("Delver of Secrets -> Insectile Aberration","",'Send("Transfer",(1,("out.of.play",130),("play",0)))'),
    ("Garruk Relentless -> Garruk, the Veil-Cursed","",'Send("Transfer",(1,("out.of.play",131),("play",0)))'),
-   ("Gatstaf Shepherd -> Gatstaf Howler","",'Send("Transfer",(1,("out.of.play",9),("play",132)))'),
+   ("Gatstaf Shepherd -> Gatstaf Howler","",'Send("Transfer",(1,("out.of.play",132),("play",0)))'),
    ("Grizzled Outcasts -> Krallenhorde Wantons","",'Send("Transfer",(1,("out.of.play",133),("play",0)))'),
    ("Hanweir Watchkeep -> Bane of Hanweir","",'Send("Transfer",(1,("out.of.play",134),("play",0)))'),
    ("Instigator Gang -> Wildblood Pack","",'Send("Transfer",(1,("out.of.play",135),("play",0)))'),
@@ -955,6 +957,14 @@ def KeyControlKeyH
       push(power);
       push(toughness);
       push(loyalty);
+      push(flipname);
+      push(fliptext);
+      push(flipcolor);
+      push(fliptype);
+      push(flipsubtype);
+      push(flippower);
+      push(fliptoughness);
+      
       
       Msg("{hr}");
             
@@ -968,6 +978,13 @@ def KeyControlKeyH
       power="";
       toughness="";
       loyalty="";
+      flipname="";
+      fliptext="";
+      flipcolor="";
+      fliptype="";
+      flipsubtype="";
+      flippower="";
+      fliptoughness="";
       
       for(b)((("set",set_of(c)),)+attrs(c))
       {
@@ -991,6 +1008,20 @@ def KeyControlKeyH
         		toughness=L(b[1]) + "   ";
         	else if(b[0]=="loyalty")
         		loyalty="{yellow}Loyalty:{white} "+ L(b[1]) + " ";
+            else if(b[0]=="flipname")
+        		flipname=L(b[1]);
+            else if(b[0]=="fliptext")
+        		fliptext=L(b[1]);
+           	else if(b[0]=="flipcolor")
+        		flipcolor="{yellow}FlipColor:{white} "+ L(b[1]) + "   ";
+        	else if(b[0]=="fliptype")
+        		fliptype="{yellow}FlipType:{white} "+ L(b[1]) + " ";
+        	else if(b[0]=="flipsubtype")
+        		flipsubtype="- "+ L(b[1]) + "   ";
+        	else if(b[0]=="flippower")
+        		flippower="{yellow}FlipPower/Toughness:{white} "+ L(b[1]) + "/";
+        	else if(b[0]=="fliptoughness")
+        		fliptoughness=L(b[1]) + "   ";
         	else
         		s="";        	
         }
@@ -1000,17 +1031,18 @@ def KeyControlKeyH
       Msg(set + rarity + cost + color);
       Msg(text(c));
       Msg(type + subtype + power + toughness + loyalty);
+      Msg("{sz15}{yellow}"+flipname+"{sz12}");
+      Msg(fliptext);
+      Msg(flipcolor + fliptype + flipsubtype + flippower + fliptoughness);
 
-      set="";
-      rarity="";
-      cost="";
-      color="";
-      type="";
-      subtype="";
-      power="";
-      toughness="";
-      loyalty="";
 
+      flipname=pop();
+      fliptext=pop();
+      flipcolor=pop();
+      fliptype=pop();
+      flipsubtype=pop();
+      flippower=pop();
+      fliptoughness=pop();
       set=pop();
       rarity=pop();
       cost=pop();
@@ -1103,7 +1135,7 @@ rules.category=(
 	'imprint==1','("attach","imprint")'
   ),
   (
-	'findspace.facedown','("facedown","")'
+	'findspace.facedown','("permanent","")'
   ),
   (
 	'find("Land",type)!=NULL','("land",name(card))'

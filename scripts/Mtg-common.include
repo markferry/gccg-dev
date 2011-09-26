@@ -78,48 +78,66 @@ def TribalLegal
 #
 def CreateTypeLegalTable
 {
+  push(s);
   if(TYPE_LEGAL==NULL)
     TYPE_LEGAL=(,);
   if(TYPE_LEGAL{ARG}==NULL)
   {
     TYPE_LEGAL{ARG}=(,);
-    for(c)(cards())
-        TYPE_LEGAL{ARG}{c}=0;
+    genlimit = 0;
     for(r)(deck_rules{ARG}{""})
     {
       if(r[0]=="RuleCardSet" || r[0]=="RuleCardSetReprint")
       {
-        if(r[1][1] > 0)
+        s=set_data(r[1][0]);
+        for(c)(seq(s[1],s[2]))
+          TYPE_LEGAL{ARG}{c}=r[1][1];
+      }
+      if(r[0]=="RuleCardSets" || r[0]=="RuleAllowedSetsReprint")
+      {
+        s=(,);
+  
+        for(c)(head(r[1]))
         {
-          push(s);
-          s=set_data(r[1][0]);
-          for(c)(seq(s[1],s[2]))
-            TYPE_LEGAL{ARG}{c}=r[1][1];
-          s=pop();
+          s=s+seq(tail(set_data(c)));
         }
+        
+        for(c)(s)
+          TYPE_LEGAL{ARG}{c}=last(r[1]);
       }
       else if(r[0]=="RuleCardLimitSingle")
       {
-        if(r[1][1] > 0)
-        {
-          for(c)(images(r[1][0]))
-            TYPE_LEGAL{ARG}{c}=r[1][1];
-        }
+        for(c)(images(r[1][0]))
+          TYPE_LEGAL{ARG}{c}=r[1][1];
+      }
+      else if(r[0]=="RuleCardLimitEach")
+      {
+        for(c)(flatten(images(head(r[1]))))
+          TYPE_LEGAL{ARG}{c}=last(r[1]);
+      }
+      else if(r[0]=="RuleCardLimitAny")
+      {
+        for(c)(images(r[1]))
+          TYPE_LEGAL{ARG}{c}=999;
+      }
+      else if(r[0]=="RuleLimitEachByExpression")
+# || (r[0]=="RuleLimitByExpression" && r[1][0] < 2))
+      {
+        for(c)(select(r[1][1],cards()))
+          TYPE_LEGAL{ARG}{c}=r[1][0];
+      }
+      else if(r[0]=="RuleCardLimitGeneral")
+      {
+        genlimit = r[1];
       }
     }
-
-    for(r)(deck_rules{ARG}{""})
+    for(c)(cards())
     {
-      if(r[0]=="RuleCardLimitSingle")
-      {
-        if(r[1][1]==0)
-        {
-          for(c)(images(r[1][0]))
-            TYPE_LEGAL{ARG}{c}=0;
-        }
-      }
+      if(TYPE_LEGAL{ARG}{c}==NULL)
+        TYPE_LEGAL{ARG}{c}=genlimit;
     }
   }
+  s=pop();
 }
 
 #
