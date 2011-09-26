@@ -49,7 +49,7 @@ Deck
 1 Witch-king of Angmar (TW)
 1 Wound of Long Burden (DM)
 
-# Hero Character (10)
+# Hero Character (9)
 
 1 Beretar (TW)
 1 Brandir (KN)
@@ -59,7 +59,6 @@ Deck
 1 Emissary of the House (FB)
 1 Erestor (FB)
 2 Ranger of Arnor (KN)
-1 Strider (BA)
 
 # Hero Resource (25)
 
@@ -70,6 +69,7 @@ Deck
 1 Bow of Dragon-horn (TD)
 1 Choose a Mortal Life (FB)
 1 Elves of the House (FB)
+1 Emerald of Doriath (TD)
 1 Great Bow of Yew (FB)
 1 Kindling of the Spirit (TW)
 1 Lossoth (TW)
@@ -82,7 +82,6 @@ Deck
 2 Smoke Rings (DM)
 1 Spirit of Celebrian (FB)
 1 True Fána (TW)
-1 Vanishment (TW)
 1 Vilya (TW)
 1 Wizard Uncloaked (TD)
 1 Wizard's Flame (TW)
@@ -132,19 +131,22 @@ Sideboard
 
 1 Ash-drake (NE)
 1 Drawn to its Master (NM)
+1 Drought (SL)
 1 Lost in Free-domains (TW)
-1 The Burden of Time (TW)
 1 Wyrmsiege (DF)
 
-# Hero Resource (11)
+# Hero Character (1)
+
+1 Strider (BA)
+
+# Hero Resource (10)
 
 1 Adamant Helmet (TD)
 1 Align Palantír (TW)
 1 Attuning the Blade (FB)
+1 Banner of Elendil's House (WR)
 1 Elf-stone (TW)
-1 Emerald of Doriath (TD)
 1 Jewel of Beleriand (AS)
-1 Light and Flame (RS)
 1 Power Against the Shadow (AS)
 1 Ring of Barahir (WR)
 1 Sûlhelka (FB)
@@ -170,6 +172,7 @@ Sites
 # Hero Site (27)
 
 1 Annúminas [H] (KN)
+1 Barrow-downs [H] (TW)
 1 Bree [H] (TW)
 1 Cameth Brin [H] (TW)
 1 Carn Dûm [H] (TW)
@@ -179,13 +182,13 @@ Sites
 1 Ettenmoors [H] (TW)
 1 Gondring's Lair [H] (NW)
 1 Hostel of the Sisters of Nienna [H] (KN)
+1 Litash [H] (NW)
 1 Lossadan Cairn [H] (TW)
 1 Lossadan Camp [H] (TW)
 1 Moria [H] (TW)
 1 Mount Gram [H] (TW)
 1 Mount Gundabad [H] (TW)
 1 Mount Rerir [H] (FB)
-1 Ruskea Vene [H] (NW)
 1 Sonotor's Mound [H] (DF)
 1 The Iron-deeps [H] (DM)
 1 The Last Bridge [H] (RS)
@@ -194,6 +197,5 @@ Sites
 1 The White Towers [H] (TW)
 1 The Willow Dingle [H] (RS)
 1 Tol Lamfirith [H] (KN)
-1 Weathertop [H] (TW)
 1 Zarak Dûm [H] (TD)
 

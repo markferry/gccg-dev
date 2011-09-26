@@ -40,10 +40,11 @@ Deck
 2 Thrice Outnumbered (LE)
 1 Thrice Told Tales (RS)
 
-# Minion Character (8)
+# Minion Character (9)
 
+1 Asternak (LE)
+1 Burdîlgoth (SL)
 1 Dâsakûn (DM)
-1 Mîonid (AS)
 1 Nevido Smôd (LE)
 1 Râisha (DM)
 4 Ûvatha the Ringwraith (LE)
@@ -76,15 +77,17 @@ Deck
 Pool
 ####
 
-# Dual Character (1)
+# Dual Character (2)
 
+1 Harngorin (SL)
 1 Khandash (SL)
 
-# Minion Character (3)
+# Minion Character (4)
 
-1 Asternak (LE)
-1 Burdîlgoth (SL)
 1 Gorovod (CP)
+1 Mîonid (AS)
+1 Nazog (SL)
+1 Tartas Izain (SL)
 
 # Minion Resource (3)
 
@@ -123,13 +126,16 @@ Sideboard
 Sites
 #####
 
-# Minion Site (20)
+# Minion Site (24)
 
 1 Adan Tomb [M] (CP)
 1 Amrûn [M] (SL)
 1 An Karagmir [M] (SL)
 1 Balchoth Camp [M] (CP)
 1 Chey Goumal [M] (CP)
+1 Dale [M] (LE)
+2 Dol Guldur [M] (LE)
+1 Easterling Camp [M[ (LE)
 1 Iorag Camp [M] (CP)
 1 Joghul's Shrine [M] (CP)
 1 Korondaj [M] (SL)
@@ -144,5 +150,6 @@ Sites
 1 Temple of Kondri Odchi [M] (CP)
 1 Temple of Lokuthor [M] (CP)
 1 Tol Buruth [M] (NE)
+1 Variag Camp [M] (LE)
 1 Wain-Easterling Camp [M] (CP)
 
