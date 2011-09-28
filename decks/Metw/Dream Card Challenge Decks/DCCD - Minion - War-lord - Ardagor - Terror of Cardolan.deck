@@ -8,6 +8,10 @@
 Deck
 ####
 
+# Dual Character (1)
+
+1 Morvran (NW)
+
 # Dual Resource (3)
 
 1 Olga-wama (KN)
@@ -40,16 +44,14 @@ Deck
 2 Wild Trolls (LE)
 2 Wound of Long Burden (DM)
 
-# Minion Character (9)
+# Minion Character (7)
 
 1 Brutal Retinue (KN)
 1 Bûrat (AS)
-1 Forest-troll (KN)
 1 Freca (TI)
 1 Hill-troll (BA)
-1 Ognor (KN)
+1 Troll Henchman (KN)
 1 Tûma (AS)
-1 Wolf (TI)
 1 Wûluag (AS)
 
 # Minion Resource (31)
@@ -80,18 +82,21 @@ Deck
 2 War-wolf (LE)
 3 Weigh All Things to a Nicety (LE)
 
+# War-lord (4)
+
+4 Ardagor [W] (KN)
+
 ####
 Pool
 ####
 
-# Dual Character (1)
+# Minion Character (5)
 
-1 Morvran (NW)
-
-# Minion Character (2)
-
+1 Forest-troll (KN)
+1 Ognor (KN)
 1 Perchen (AS)
 1 Uchel (LE)
+1 Wolf (TI)
 
 # Minion Resource (3)
 
@@ -99,20 +104,15 @@ Pool
 1 Foul-smelling Paste (LE)
 1 Terror of Cardolan (KN)
 
-# War-lord (1)
-
-1 Ardagor [W] (KN)
-
 #########
 Sideboard
 #########
 
-# Dual Resource (4)
+# Dual Resource (3)
 
 1 Beasts of the Wood (WH)
 1 Concealed Entrance (KN)
 1 Mace-master (NE)
-1 Stone Mace (WR)
 
 # Hazard (5)
 
@@ -126,13 +126,14 @@ Sideboard
 
 1 Brutal Retinue (KN)
 
-# Minion Resource (10)
+# Minion Resource (11)
 
 1 Cave Troll (BA)
 1 Cave-trolls (KN)
 1 Counterfeit (WH)
 1 Eddy in Fate's Tide (BA)
 1 Growing Shadow (NE)
+1 Instilled with Malice (NE)
 1 Slew the Great Warrior (TI)
 1 Snow-trolls (NW)
 1 Stone Trolls (LE)
@@ -150,10 +151,10 @@ Sites
 # Minion Site (25)
 
 1 Amon Lind [M] (FB)
+1 Andoloki [M] (NW)
 1 Barrow-downs [M] (LE)
 1 Bree [M] (LE)
 1 Cameth Brin [M] (LE)
-1 Cirith Helkaloke [M] (GW)
 1 Creb Durga [M] (KN)
 1 Dunnish Clan-hold [M] (LE)
 1 Ettenmoors [M] (LE)
