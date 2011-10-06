@@ -11,7 +11,7 @@ Deck
 # Dual Resource (6)
 
 1 Anguirel (NW)
-1 Cristals of Bilak-Khald (DF)
+1 Durang (DF)
 1 Dwarf-friend (DF)
 1 Logath Herdsmen (CP)
 2 Old Grudge (DF)
@@ -51,7 +51,7 @@ Deck
 # Hero Character (9)
 
 1 Borin (DF)
-1 Floi (DF)
+1 Dwarf-miner (DF)
 1 Frár (DF)
 1 King's Advisor (DF)
 1 King's Judge (DF)
@@ -60,12 +60,12 @@ Deck
 1 Pathfinder (DF)
 1 Yanos Kosvar (CP)
 
-# Hero Resource (16)
+# Hero Resource (17)
 
 1 A Friend or Three (TW)
 1 Clan Bonds (DF)
+1 Dark Quarrels (TW)
 1 Dwarven Armory (DF)
-1 Dwarven Light-stone (DM)
 1 Ford (TW)
 1 Horn of Defiance (GW)
 1 Houses of Healing (TD)
@@ -75,17 +75,16 @@ Deck
 1 Magical Harp (TD)
 1 Marvels Told (TD)
 1 New Supplies (RS)
-1 Smoke Rings (DM)
+2 Smoke Rings (DM)
 1 The Dwarves Are upon You! (DM)
 1 The Great Battle of Our Time (WR)
 
-# Minion Resource (9)
+# Minion Resource (8)
 
 1 Blasting Fire (WH)
 1 Bone-hilted Broadsword (GW)
 1 Crept Along Cleverly (WH)
 1 Long Forgotten Gold (GW)
-1 Old Treasure (AS)
 2 Regiment of Black Crows (AS)
 2 Secret Book (AS)
 
@@ -119,11 +118,10 @@ Pool
 
 1 Flaming Torch (NE)
 
-# Stage Resource (3)
+# Stage Resource (2)
 
-1 Double-dealing (WH)
 1 Huntsman's Garb (WH)
-1 Wizard's Myrmidon (WH)
+1 Squire of the Hunt (WH)
 
 #########
 Sideboard
@@ -133,14 +131,17 @@ Sideboard
 
 2 Miner's Pick (DF)
 
-# Hero Resource (10)
+# Hazard (1)
+
+1 He is lost to us (FB)
+
+# Hero Resource (9)
 
 1 A More or Less Decent Giant (DF)
 1 Cram (TD)
 1 Healing Herbs (TW)
 1 Kirrauko (NW)
 1 Reforging (NW)
-1 Return to Old Dwellings (DF)
 1 Risky Blow (TW)
 1 Shield of Iron-bound Ash (TW)
 1 The Old Thrush (TW)
@@ -148,28 +149,30 @@ Sideboard
 
 # Stage Resource (8)
 
-1 Double-dealing (WH)
+2 Double-dealing (WH)
 1 Gatherer of Loyalties (WH)
 1 Guarded Haven (WH)
 1 Hidden behind Doors of Stone (DF)
 1 Legacy of Smiths (WH)
-1 Mission to the East (CP)
-1 Squire of the Hunt (WH)
 1 The Great Hunt (WH)
+1 Wizard's Myrmidon (WH)
 
 #####
 Sites
 #####
 
-# Dual Site (5)
+# Dual Site (4)
 
 1 Mines of Falek-dim (DF)
 1 Ruins of Kheledkhizdin (ML)
-1 The Cobalt-deeps (NW)
 1 The Rusted-deeps [D] (DF)
 1 The Wind-deeps [D] (DF)
 
-# Hero Site (23)
+# Fallen-wizard Site (1)
+
+1 Deep Mines (WH)
+
+# Hero Site (21)
 
 1 Adan Tomb [H] (CP)
 1 Azagarbhun [H] (CP)
@@ -179,14 +182,12 @@ Sites
 1 Chey Goumal [H] (CP)
 1 Dol Guldur [H] (TW)
 1 Gaurblog Lug [H] (DF)
-1 Iorag Camp [H] (CP)
 1 Iron Hill Dwarf-hold [H] (TW)
 1 Joghul's Shrine [H] (CP)
 1 Lar-huz [H] (CP)
 1 Logath Camp [H] (CP)
 1 Long Marish [H] (DF)
 1 Mirror Halls [H] (ML)
-1 Mistrand [H] (CP)
 1 Nurunkhizdín [H] (DF)
 1 The Lonely Mountain [H] (TW)
 1 The Sulfur-deeps [H] (DM)
@@ -195,10 +196,9 @@ Sites
 1 Tol Buruth [H] (NE)
 1 Tower of the Wolf-friend [H] (GW)
 
-# Minion Site (16)
+# Minion Site (14)
 
 1 Adan Tomb [M] (CP)
-1 Azagarbhun [M] (CP)
 1 Barak-shathur [M] (DF)
 1 Buhr Widu [M] (LE)
 1 Caves of Ûlund [M] (LE)
@@ -209,7 +209,6 @@ Sites
 1 Long Marish [M] (DF)
 1 Nurunkhizdín [M] (DF)
 1 Númenórean Tomb [M] (ML)
-1 The Lonely Mountain [M] (LE)
 1 Thunder Cleft [M] (GW)
 1 Tol Buruth [M] (NE)
 1 Tower of the Wolf-friend [M] (GW)

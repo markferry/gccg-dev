@@ -1402,7 +1402,7 @@
        <attr key="unique" value="yes"/>
        <attr key="haven" value="Lórien"/>
        <attr key="draw" value="2"/>
-       <attr key="region" value="Heart of Mirkwood"/>
+       <attr key="region" value="Southern Mirkwood"/>
        <attr key="site_type" value="{F}"/>
        <attr key="playable" value="Information"/>
        <attr key="special" value="If Huinen is at this site, tap this site, during your organization look at opponent's hand; if Huinen makes a corruption and taps he may place any number of hazards from opponent's hand either on the top or bottom of opponent's decks "/>
@@ -1418,7 +1418,7 @@
        <attr key="unique" value="yes"/>
        <attr key="haven" value="Dol Guldur"/>
        <attr key="draw" value="1"/>
-       <attr key="region" value="Heart of Mirkwood"/>
+       <attr key="region" value="Southern Mirkwood"/>
        <attr key="site_type" value="{F}"/>
        <attr key="playable" value="Information, Items (minor, major, gold ring)"/>
        <attr key="special" value="*Special: If opponent has Huinen at this site, he may tap to take an elf-creature to opponent's hand, when this site card is reveiled by you. "/>
