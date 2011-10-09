@@ -1,0 +1,209 @@
+#
+# GCCG v0.9.6.3 Middle-earth deck
+#
+#      DCCD - Fallen-wizard - Radagast - Search for the Entwives
+#
+
+####
+Deck
+####
+
+# Dual Character (2)
+
+2 Wose Elite Hunter (WR)
+
+# Dual Resource (6)
+
+1 Beasts of the Wood (WH)
+1 Get You Gone (WR)
+1 Ghostbane (KN)
+1 Great Falcons of Mirkwood (GW)
+2 Old Drûg (WR)
+
+# Fallen-wizard Character (4)
+
+4 Radagast [F] (WH)
+
+# Hazard (33)
+
+1 An Unexpected Outpost (DM)
+2 Black Crows (FB)
+2 Come at Need (AS)
+1 Despair of the Heart (TW)
+3 Drought (SL)
+1 Earth-tremors (DM)
+1 Ent in Search of the Entwives (LE)
+1 Fladrif (FB)
+2 Gloom (TW)
+1 Huorn (TW)
+1 Huorn (LE)
+1 Marsh-drake (TD)
+2 Memories of Axe-wielders (TI)
+1 Nameless Thing (DM)
+2 Old Man Willow (TW)
+1 Orc-watch (TW)
+1 Peril Returned (TD)
+1 Rain-drake (TD)
+1 Sand-drake (SL)
+1 Sentinel of the Grove (FB)
+1 Sloth Bear (SL)
+3 Tree-herder (FB)
+1 Twilight (LE)
+1 Vultures (SL)
+
+# Hero Character (6)
+
+1 Heledwen (NW)
+1 Mallorn-dweller (FB)
+1 Striuk'ir (NW)
+1 Taurnil (RS)
+1 Wood-elf (FB)
+1 Ôn-Ikana (SL)
+
+# Hero Resource (24)
+
+1 A Chance Meeting (TW)
+2 Almost Felt You Liked the Forest! (TI)
+1 Beechbone (TI)
+1 Cup of Farewell (DM)
+1 Elven Cloak (TW)
+2 Ent-draughts (TW)
+1 Ent-moot (TI)
+1 Ents of Fangorn (TW)
+2 Escape (TW)
+2 Ford (TW)
+1 Halfling Strength (TW)
+1 Leaflock (TW)
+1 Refuge (TD)
+2 Tempering Friendship (TW)
+1 The Great Battle of Our Time (WR)
+1 The Wind Is Turning (WR)
+1 Treebeard (TW)
+1 Trickery (TD)
+1 Woses of the Drúadan Forest (TW)
+
+# Minion Resource (1)
+
+1 Blackbole (LE)
+
+# Stage Resource (2)
+
+1 Hidden Haven (WH)
+1 Radagast's Black Bird (WH)
+
+####
+Pool
+####
+
+# Dual Resource (2)
+
+1 Blood-stone Amulet (WR)
+1 Wose Blowpipe (WR)
+
+# Hero Character (3)
+
+1 Fatty Bolger (RS)
+1 Ghân-buri-Ghân (TW)
+1 Sancho Proudfoot (RS)
+
+# Hero Resource (1)
+
+1 Fate Let Our Ways Meet (RS)
+
+# Minion Character (2)
+
+1 Pôn-ora-Pôn (DM)
+1 Ôm-buri-Ôm (DM)
+
+# Stage Resource (3)
+
+1 A Mind Alike (TI)
+1 Master of Shapes (WH)
+1 Pocketed Robes (WH)
+
+#########
+Sideboard
+#########
+
+# Dual Resource (4)
+
+2 Dirwood Spear (WR)
+1 Stone Mace (WR)
+1 Wose Shamanist Potion (WR)
+
+# Hazard (1)
+
+1 Curse him, Root and Branch! (FB)
+
+# Hero Resource (9)
+
+1 Bow of the Galadhrim (AS)
+1 Elf-stone (TW)
+1 Elven Cloak (TW)
+1 Entwives (TI)
+1 Forgotten Scrolls (DM)
+1 Herb-lore (DM)
+1 Miraearon (TI)
+1 Wandlimb (TI)
+1 Willowshanks (TI)
+
+# Minion Resource (1)
+
+1 Crept Along Cleverly (WH)
+
+# Stage Resource (5)
+
+1 Friend of Secret Things (WH)
+1 Girdle of Radagast (WH)
+1 In Accord with Nature (FB)
+1 The Trees have Ears (FB)
+1 Wizard's Myrmidon (WH)
+
+#####
+Sites
+#####
+
+# Fallen Site (2)
+
+1 Lórien [F] (FB)
+1 Thranduil's Halls [F] (FB)
+
+# Fallen-wizard Site (2)
+
+2 Rhosgobel [F] (WH)
+
+# Hero Site (29)
+
+1 Amon Hen [H] (TW)
+1 Amon Lhaw [H] (TI)
+1 Auz Azunan [H] (SL)
+1 Bag End [H] (TW)
+1 Bandit Lair [H] (TW)
+1 Buhr Widu [H] (TD)
+1 Cair Andros [H] (WR)
+1 Ceber Fanuin [H] (FB)
+1 Cerin Amroth [H] (FB)
+1 Drúadan Forest [H] (TW)
+1 Eagles' Eyrie [H] (TW)
+1 Elyamû [H] (ML)
+1 Gyogorasag Sanctuary [H] (GW)
+1 Hermit's Hill [H] (DM)
+1 Hyvät Kalat [H] (NW)
+1 Isengard [H] (TW)
+1 Ligr Wodaize Berne [H] (NW)
+1 Lind-or-Burúm [H] (TI)
+1 Logath Camp [H] (CP)
+1 Mountains of Mirkwood [H] (GW)
+1 Pred [H] (SL)
+1 Rhosgobel [H] (TW)
+1 Shrel-Kain [H] (TW)
+1 The Carrock [H] (DF)
+1 The Riddle Caves [H] (KN)
+1 The Stones [H] (TW)
+1 The Tower of Birds [H] (SL)
+1 Wellinghall [H] (TW)
+1 Yatali Clan-hold [H] (BO)
+
+# Minion Site (1)
+
+1 Caras Amarth [M] (FB)
