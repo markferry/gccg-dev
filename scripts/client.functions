@@ -128,6 +128,7 @@
 # menu.object - object number to use for menu
 # mode - "chat","shop","watch","play" current screen
 # mode_object{mode} - mode specific objects to hide when changing mode
+# modifier - list of modifier keys (Ctrl, Alt, Shift) being pressed
 # money - current amount of money
 # money.box - object number to show money
 # me - my player number
@@ -227,7 +228,7 @@ MINIMUM_VERSION="0.9.0";
 
 # How to fit tables
 TABLES_X=7;
-TABLES_Y=4;
+TABLES_Y=5;
 
 # How many cards in a row at collection
 BOOK_ROWS=3;
@@ -241,7 +242,8 @@ MAX_PLAYERS=8;
 # Maximum number of characters in one message line in pixels.
 MAX_MESSAGE=screen.width-10;
 
-# If delete key should discard to my own discard.
+# 1: delete key always moves card to my own discard pile
+# 0: delete key moves card to discard pile of its controller
 DELETE_TO_MINE=0;
 
 # How much we must move a card before removing it from the
@@ -398,7 +400,7 @@ HELP{"chat"}{"products"}=("","show products available",NULL,
 HELP{"chat"}{"reboot"}=("","reboot the server",("God",),
 "Send Quit-message to all players and game servers. After that, reboot the meta server.");
 HELP{"chat"}{"register"}=("set","register complete set",NULL,
-"If the player has collected all cards of the {yellow}set{white}, he or she is awarded by a bonus. The bonus is $0.1 per individual card in the set. If the player has not yet collected all cards, the number of missing cards is announced. The {yellow}set{white} must be given as an abbreviation of the card set (case insensitive). If the abbreviation is not valid, the list of valid abbreviations are shown.");
+"If the player has collected all cards of the {yellow}set{white}, he or she is awarded by a bonus. The bonus is $0.50 per individual card in the set. If the player has not yet collected all cards, the number of missing cards is announced. The {yellow}set{white} must be given as an abbreviation of the card set (case insensitive). If the abbreviation is not valid, the list of valid abbreviations are shown.");
 HELP{"chat"}{"registerplayset"}=("set","register playset",NULL,
 "If the player has already registered the {yellow}set{white}, and has collected a full playset of each card in the set, he or she is awarded by a bonus.  The bonus is $2 per distinct card in the set. If the player has not yet collected all cards, the number of missing cards is announced. The {yellow}set{white} must be given as an abbreviation of the card set (case insensitive). If the abbreviation is not valid, the list of valid abbreviations are shown.");
 HELP{"chat"}{"removeuser"}=("player","delete user",("God",),
@@ -528,6 +530,8 @@ def playerwants {
   else
     return 0;
 }
+
+modifier=" ";
 
 #
 # FUNCTIONS WAITING FOR C++ IMPLEMENTATION
@@ -892,8 +896,8 @@ def _EndGame
   }
   ClearScores();
   flag.playing=0;
-  if (mode != "chat")
-    SetMode("chat");
+#  if (mode != "chat")
+#    SetMode("chat");
 }
 
 #
@@ -2198,7 +2202,7 @@ def CommandSet
 }
 
 HELP{"chat"}{"set"}=("var,value","change settings",NULL,
-"Without arguments, this command lists all options currenlty set. Otherwise it can be used to fine tune operating parameters of the client or the server. All settings are offered to the server. If the server accepts the setting, i.e. the given variable {yellow}var{white} is meaningful to the server, then the server side option is set to {yellow}value{white}. In any case, client-side option is set to the {yellow}value{white}.\nThe list of client-side options follows:\n  {green}nosound {yellow}<s>{white} - if set to 'yes', all sounds are disabled\n  {green}noalert {yellow}<s>{white} - if set to 'yes', visual alerts are disabled\n  {green}log {yellow}<s>{white} - if set to 'yes', print messages to stdout.\n  {green}trade_limit {yellow}<n>{white} - if you own more than {yellow}n{white} copies of the given card, consider these extra cards as tradeable (default 4)\n  {green}price {yellow}'higher'/'lower'/'same'/'default'{white} - when selling first card or pressing enter, choose price according to this setting (default 'higher')\nThe list of server-side options:\n  {green}avatar {yellow}<image>{white} - choose an image presenting you (see graphics/avatar)\n{green}  email {yellow}<s>{white} - set your email address shown by /whois command to {yellow}s{white}\n  {green}plan {yellow}<s>{white} - set additional information shown by /whois command to {yellow}s{white}\n  {green}realname {yellow}<s>{white} - set your real name shown by /whois command to {yellow}s{white}\n");
+"Without arguments, this command lists all options currenlty set. Otherwise it can be used to fine tune operating parameters of the client or the server. All settings are offered to the server. If the server accepts the setting, i.e. the given variable {yellow}var{white} is meaningful to the server, then the server side option is set to {yellow}value{white}. In any case, client-side option is set to the {yellow}value{white}.\nThe list of client-side options follows:\n  {green}nosound {yellow}<s>{white} - if set to 'yes', all sounds are disabled\n  {green}noalert {yellow}<s>{white} - if set to 'yes', visual alerts are disabled\n  {green}log {yellow}<s>{white} - if set to 'yes', print messages to stdout.\n  {green}trade_limit {yellow}<n>{white} - if you own more than {yellow}n{white} copies of the given card, consider these extra cards as tradeable (default 4)\n  {green}price {yellow}'higher'/'lower'/'same'/'default'{white} - when selling first card or pressing enter, choose price according to this setting (default 'same')\nThe list of server-side options:\n  {green}avatar {yellow}<image>{white} - choose an image presenting you (see graphics/avatar)\n{green}  email {yellow}<s>{white} - set your email address shown by /whois command to {yellow}s{white}\n  {green}plan {yellow}<s>{white} - set additional information shown by /whois command to {yellow}s{white}\n  {green}realname {yellow}<s>{white} - set your real name shown by /whois command to {yellow}s{white}\n");
 
 #
 # CommandLoadimages() - Implementation of /loadimages command.
@@ -4544,7 +4548,7 @@ def EditAdd
     else if(typeof(ARG[1])=="integer")
       decks{deck.name}{ARG[0]}=decks{deck.name}{ARG[0]} + (ARG[1],);
     else
-      Msg("{red}Can't add "+tostr(ARG[1])+" to the deck (this is an uncatched bug in Gccg).");
+      Msg("{red}Can't add "+tostr(ARG[1])+" to the deck (this is an uncaught bug in Gccg).");
 
     RefreshCurrentDeck();
   }
@@ -4917,15 +4921,16 @@ def InputKeyEnd
 #
 def KeyModifierDown
 {
-  if(ARG=="shift" && info.persistent==0)
+  modifier=modifier+ARG+" ";
+  if(find("shift",modifier) && info.persistent==0)
   {
     push(c);
     c=CheckForCard();
     if(c!=NULL)
     {
-      del_cardbox(info.box,0);
-      raise(info.box);
-      put_cardbox(info.box,c);
+      if(find("ctrl",modifier) && length(Attr("flipid",c)))
+        c=toint(Attr("flipid",c));
+      replace_cardbox(info.box,c);
       info.current=c;
     }
     c=pop();
@@ -4937,13 +4942,22 @@ def KeyModifierDown
 #
 def KeyModifierUp
 {
+  modifier=strreplace(modifier," "+ARG,"");
   if(ARG=="shift" && info.persistent==0)
   {
 	del_cardbox(info.box,0);
 	info.current=NULL;
   }
+  else if(ARG=="ctrl" && find("shift",modifier))
+  {
+     c=CheckForCard();
+     if(c!=NULL)
+     {
+       replace_cardbox(info.box,c);
+       info.current=c;
+     }
+  }
 }
-
 #
 # CheckForCard() - Return a card number, if mouse points to card name
 #   (deck listing, etc.) or card image. Otherwise NULL.
@@ -5327,7 +5341,7 @@ def DefaultInitialPrice
       return(e[1]+PriceDelta(e[1]));
   }
   else
-      return(e[1]+PriceDelta(e[1]));
+      return(e[1]);
 
   e=pop();
 }
@@ -6537,22 +6551,22 @@ def RegisterSubmenu
 }
 
 #
-# RegisterPlaysetSubmenu() - Set registration menu.
+# RegisterPlaysetSubmenu() - Set registration menu. (NOT CURRENTLY SUPPORTED)
 #
-def RegisterPlaysetSubmenu
-{
-  push(m);
-  push(d);
-  m=(,);
-  for(s)(sets())
-  {
-    d=set_data(s);
-    m=m+(("Register "+d[0]+" playset","/registerplayset "+s,""),);
-  }
-  Submenu("Register Playset",m);
-  d=pop();
-  m=pop();
-}
+#def RegisterPlaysetSubmenu
+#{
+#  push(m);
+#  push(d);
+#  m=(,);
+#  for(s)(sets())
+#  {
+#    d=set_data(s);
+#    m=m+(("Register "+d[0]+" playset","/registerplayset "+s,""),);
+#  }
+#  Submenu("Register Playset",m);
+#  d=pop();
+#  m=pop();
+#}
 
 #
 # CheckLegalitySubmenu() - Deck legality checking menu.
@@ -7722,12 +7736,14 @@ def MouseLeftClickCardSelectBox
 #
 def MouseMove
 {
-	if(ARG=="shift" && info.persistent==0)
+	if(find("shift",modifier) && info.persistent==0)
 	{
 	    push(c);
 	    c=CheckForCard();
 	    if(c!=NULL)
 	    {
+	          if(find("ctrl",modifier) && length(Attr("flipid",c)))
+                 c=toint(Attr("flipid",c));
 			if(info.current==NULL)
 			{
 				raise(info.box);
@@ -7753,6 +7769,8 @@ def MouseMove
 	    c=CheckForCard();
 	    if(c!=NULL)
 	    {
+	          if(find("ctrl",modifier) && length(Attr("flipid",c)))
+                 c=toint(Attr("flipid",c));
 			if(info.current==NULL)
 			{
 				raise(info.box);

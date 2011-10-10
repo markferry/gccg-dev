@@ -445,6 +445,16 @@ trigger "control left drag end" "" code
   MouseControlLeftDragEnd();
 }
 
+trigger "shift control move" "" code
+{
+  MouseMove("shift ctrl");
+}
+
+trigger "control move" "" code
+{
+  MouseMove("ctrl");
+}
+
 trigger "shift move" "" code
 {
   MouseMove("shift");
