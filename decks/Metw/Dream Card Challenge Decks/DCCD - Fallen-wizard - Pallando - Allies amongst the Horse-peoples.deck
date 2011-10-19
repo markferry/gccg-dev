@@ -18,11 +18,9 @@ Deck
 1 Khandash (SL)
 1 Khursh (BO)
 
-# Dual Resource (8)
+# Dual Resource (6)
 
-1 Chyans (BO)
 1 Deadly Dart (PR)
-1 Ered Harmal* (CP)
 1 Iorags (CP)
 2 Mighty Steed (TI)
 2 Southron Scimitar (SL)
@@ -31,20 +29,22 @@ Deck
 
 4 Pallando [F] (WH)
 
-# Grey Agent Character (1)
+# Grey Agent Character (2)
 
 1 Goblin-basher (DF)
+1 Kori (DF)
 
-# Hazard (32)
+# Hazard (31)
 
 1 An Unexpected Outpost (DM)
+1 Beorning Skin-changers (BA)
 1 Black Crows (FB)
 1 Brigands (LE)
-2 Cobras (SL)
-1 Despair of the Heart (LE)
+1 Dwarven Warparty (DF)
 1 Fruitless Victory (NE)
 1 Full of Froth and Rage (AS)
 1 Galadhrim (AS)
+1 Glutan (RS)
 1 Good Sense Revolts (DM)
 1 Great Need or Purpose (DM)
 1 Great Northern Bear (GW)
@@ -52,27 +52,27 @@ Deck
 1 Lure of Expedience (LE)
 1 Merkampa at Home (BO)
 1 Never Seen Him (DM)
-1 Nobody's Friend (DM)
+2 Nobody's Friend (DM)
 1 Orc-guard (TW)
-1 Rank upon Rank (DM)
 1 Scatha Ahunt (TD)
 1 Sellswords Between Charters (LE)
 1 Slip Treacherously (AS)
-1 Stout Men of Gondor (AS)
 1 Sudden Fury (DM)
 1 The Border-watch (LE)
-1 The Way is Shut (DM)
 2 To Get You Away (DM)
 1 Trolls from the Mountains (AS)
 1 Twilight (LE)
 1 Watcher in the Water (TW)
 1 Wielder's Curse (GW)
+1 Wild Trolls (LE)
 
-# Hero Resource (11)
+# Hero Resource (13)
 
 1 A Friend or Three (TW)
 1 Beautiful Gold Ring (TW)
 1 Concealment (TW)
+1 Dark Quarrels (TW)
+1 Long They Journeyed (CP)
 1 Longbottom Leaf (BA)
 2 Noble Steed (WH)
 1 Southrons [H] (TW)
@@ -91,20 +91,20 @@ Deck
 1 Nimloth (DM)
 1 Râisha (DM)
 
-# Minion Resource (10)
+# Minion Resource (9)
 
 1 Back to the Fray (LE)
 2 Binding-ring (LE)
 1 Driven as by a Madness (AS)
-1 Not Slay Needlessly (LE)
 1 Poison of his Voice (WH)
 1 Sojourn in Shadows (WH)
 1 Some Secret Art of Flame (LE)
 1 Swag (LE)
 1 Under His Blow (LE)
 
-# Stage Resource (3)
+# Stage Resource (4)
 
+1 Mission to the East (CP)
 2 Never Refuse (WH)
 1 Wizard's Myrmidon (WH)
 
@@ -143,14 +143,16 @@ Pool
 Sideboard
 #########
 
-# Dual Resource (3)
+# Dual Resource (5)
 
+1 Chyans (BO)
 1 Desert Amber (SL)
+1 Ered Harmal* (CP)
 2 Mounted Lance (TI)
 
-# Hazard (1)
+# Grey Agent Character (1)
 
-1 He is lost to us (FB)
+1 Sprautabern (NW)
 
 # Hero Resource (3)
 
@@ -158,24 +160,22 @@ Sideboard
 1 The Great Battle of Our Time (WR)
 1 The Old Thrush (TW)
 
-# Minion Resource (7)
+# Minion Resource (6)
 
 1 Bone Dragon (NE)
 1 Magic Ring of Fury (LE)
 1 Minor Ring (LE)
-1 Raised Again (NE)
 1 Ring of Flame (CP)
 1 Ring of the Dispossessed (CP)
 1 Secret Book (AS)
 
-# Stage Resource (6)
+# Stage Resource (5)
 
 1 Allies in the East and South (WR)
 1 Blind to All Else (WH)
 1 Gatherer of Loyalties (WH)
 1 Great Patron (WH)
 1 Legacy of Smiths (WH)
-1 Mission to the East (CP)
 
 #####
 Sites
