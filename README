@@ -1,0 +1,36 @@
+gccg-dev - Generic Collectible Card Game dev project
+
+gccg-dev/core/ - git subtree following gccg sf.net core
+gccg-dev/mythos/ - git submodule linking to external gccg-mythos-data project
+
+Branches:
+* master
+* svn-track [git-svn subtree tracking branch]
+* remotes/github/master [github remote master]
+* remotes/github/svn-track [github remote svn-track]
+* remotes/svn-core [git-svn]
+
+  master -> remotes/github/master
+  svn-track -> remotes/svn-core
+
+  svn-track --subtree--> master:core/
+
+==============
+Workflow
+
+!! Pull upstream svn
+[@
+git svn fetch svn-core
+git checkout svn-track
+git merge svn-core (git svn rebase?)
+git checkout master
+git subtree merge -P core --squash -m "merge changes to git subtree" svn-track
+@]
+
+!! Push upstream svn
+[@
+git subtree split -P core -b backport
+git checkout backport
+git svn dcommit (?)
+@]
+
