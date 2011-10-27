@@ -2,12 +2,12 @@
 #
 #
 CLIENT_NAME:=gccg-mythos
-CLIENT_VERSION:=0.2.4
+CLIENT_VERSION:=0.3.0
 CLIENT_XML:=<module name=\"mythos\" version=\"${CLIENT_VERSION}\"></module>
 CLIENT_PACKAGE:=${CLIENT_NAME}-${CLIENT_VERSION}.tar
 
 DATA_NAME:=gccg-mythos-data
-DATA_VERSION:=11072900
+DATA_VERSION:=11072901
 DATA_XML:=<module name=\"mythos-data\" version=\"${DATA_VERSION}\"></module>
 DATA_PACKAGE:=${DATA_NAME}-${DATA_VERSION}.tar
 
