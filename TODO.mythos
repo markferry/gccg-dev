@@ -1,0 +1,289 @@
+TODO
+==============
+gccg-set.dtd needs mythos-attr in core
+
+Add text orientation to core (SDL_Rect rotation?) for long text
+
+Fonts
+==============
+Handel.ttf - New Æon Titles
+Windsor.ttf - Dreamlands Titles
+
+Scripts
+==============
+Normalize images:
+    mogrify -resize 240x340^ -gravity center -extent 240x340 *.jpg
+
+Normalize investigator images:
+    mogrify -resize 480x340^ -gravity center -extent 480x340 *.jpg
+
+Trim and Normalize images:
+    mogrify -bordercolor white -border 1x1 -fuzz 50% -trim -resize 240x340^ -gravity center -extent 240x340 *.jpg
+
+Spoiler
+=============
+Mythos\ All.ods
+    saveas -> mythos_all.csv
+    sh (
+        csv2xml -> mythos_all.xml
+        xsltproc -> all.xml
+       ) -> {ltd.xml, eomu.xml, ...}
+
+Packaging
+==============
+Packaging and source control are independent.
+
+Two sets of icons:
+    Base images - simple free versions
+        * blank cardback.jpg (for sizing)
+        * gate.png, dim-drm.png, dim-nae.png
+        * These go in core svn to make Mythos playable without graphics
+    Non-free/derived icons
+        * go in mythos-data package
+
+NOTE! Simple base images *must* go in SVN
+ * gate.png
+ * dim-drm.png
+ * dim-nae.png
+
+gccg-dev
+ + core support
+ + xml/mythos.xml
+ + xml/Mythos/mythos_basecards.xml
+
+gccg-mythos-data
+ + graphics/Mythos
+ m xml/mythos.xml
+ + xml/Mythos/{sets}.xml
+
+Card Colouring
+================
+  <option name="Adventure back color" value="210,180,90"/>
+  <option name="Artifact back color" value="180,120,180"/>
+  <option name="Location back color" value="208,176,160"/>
+  <option name="Monster back color" value="224,128,144"/>
+  <option name="Event back color" value="230,200,130"/>
+  <option name="Ally back color" value="100,160,100"/>
+  <option name="Spell back color" value="160,128,192"/>
+  <option name="Tome back color" value="192,144,176"/>
+
+  <option name="Adventure text box color" value="212,146,62"/>
+
+  <option name="default text 1" value="16,60,20,150"/>
+
+
+End of Round
+================
+Flip all face-down cards face up.
+Bury threat in story deck.
+
+Voluntary Lobotomy
+====================
+Discard Story Deck except current Location.
+Discard all cards in hand.
+-1 SAN
+Reshuffle Deck and Discards
+Draw a new hand.
+
+Reshuffle
+=============
+-1 SAN
+Shuffle Discards into Deck
+
+Draw Up
+================
+* Get handsize from Investigator
+Need code to retrieve handsize from current Investigator
+
+#
+# ReconcileHand() - Draw up to handsize cards
+#
+def ReconcileHand
+{
+    if((handsize-(length(hand(hand[me]))))>0)
+    {
+        Send("Transfer",((handsize-(length(hand(hand[me])))),("deck.top",deck),("hand",me)));
+    }
+    else
+    {
+        Msg("You already have "+handsize+" or more cards in hand.");
+    }
+}
+
+Graphics
+==============
+TODO: Investigators
+Fix missing New Æon lozenge character in graphics
+(stripped out)
+
+Fix missing accented characters in New Æon
+    - Cité Tatoue
+    - Maison Nationale de Santé
+
+Locations already split Gate and Value.
+Properties need to be named
+* Translate in spoiler conversion
+* gate -> {G}, etc
+
+  <!-- Meta -->
+  <image file="unique.png" tag="{U}"/>
+
+  <!-- Dimension -->
+  <image file="dim-drm.png" tag="{DRM}"/>
+  <image file="dim-nae.png" tag="{NAE}"/>
+
+  <!-- Tome Public -->
+  <image file="dream.png" tag="{D}"/>
+  <image file="cthulhu.png" tag="{C}"/>
+  <image file="eye.png" tag="{E}"/>
+  <image file="folk.png" tag="{F}"/>
+  <image file="death.png" tag="{S}"/>
+  <image file="yellowsign.png" tag="{Y}"/>
+
+  <!-- Location -->
+  <image file="gate.png" tag="{G}"/>
+
+  <image file="water.png" tag="{w}"/>
+  <image file="forest.png" tag="{f}"/>
+  <image file="cemetary.png" tag="{c}"/>
+  <image file="inside.png" tag="{i}"/>
+  <image file="outside.png" tag="{o}"/>
+
+  <!-- Monster -->
+  <image file="goo.png" tag="{GOO}"/>
+
+
+Layout
+==============
+Visible cards per area:
+@800x600
+    Other: 8
+    Threat: 6
+    Allies: 6
+    Perms: 3-6
+    Adv: 6
+
+@1024x768
+    Other: 13
+    Threat: 10
+    Allies: 10
+    Perms: (4-6)x12
+    Adv: 11
+
+
+Fix
+==============
+Card Data
+    * Kranon - flavour text [FIXED]
+    * Temple of the Elder Ones - image path [FIXED]
+    * Temple of the Great Old Ones - image path [FIXED]
+    * Etienne-Laurent de Marigny [FIXED]
+
+Table Layout
+    * Separate layout for single-player
+    * Game still presumes 1024x768 table
+    * Set free space to be the area above the Investigator?
+
+Card Layout
+    * Region / Subregion
+    * Public attributes
+    * Private (Carl Stanford has longest private text)
+    * UTF-8 text displays as 8859-1(5?)
+
+Reconcile Hand
+    * Find current investigator's handsize
+    * Add "Reconcile Hand" Deck Menu item
+
+Investigator Selection
+    * select box remains if game ends before playing an investigator
+    * can't play investigators if they've been removed from the game
+
+Gate Locations
+    * Auto add gate counter when gate locations are played?
+
+Factory
+    * Buy MSGS, register MSGS is a net gain of $40.05 (one-off)!
+
+Double-sidedness of Investigators
+    * Which investigator in the Standard Decks?
+    * Need to include in Standard decklists
+    * Implement flipid
+
+gccg.pm is_card not working for mythos
+    * data/Mythos.rules can't specify cards by name
+
+scripts/Mythos.include
+    * Is sanity_lock necessary?
+
+Investigator Parameters
+    * IMMOBILE_CARDS?
+    * Set initial SAN
+    * Draw a hand
+    * Beginning of round: Draw up to Investigator handsize
+    * Who goes first
+
+Pass mechanism
+
+Threat
+    * Allow opponents to see SAN cost?
+        (Put red counters on the threat?)
+
+
+FAQ
+==============
+Card playing FAQ
+
+Switching investigators
+    * Set aside current investigator
+    * Play Menu / Select Investigator
+
+Contacts
+==============
+Danny Bourne - d.bourne AT dial.pipex.com
+Mythos-UK on yahoogroups.com
+uk.games.trading-cards.misc
+
+
+Commit
+==============
+Create .bat file
+
+Repo setup:
+* gccg-dev as main project for all gccg dev
+    * git-svn subtree core/
+    * git submodule gccg-mythos-data
+    * have other commits (mythos.mk) in gccg-dev
+* core/ subtree branch follows gccg/svnroot/core with git-svn
+    * imported as subtree gccg-dev/core/ using git subtree add
+    * apply svn changes with git subtree split
+* gccg-mythos-data project
+    * import as submodule in gccg-dev/mythos/
+    * all potentially copyrighted data in gccg-mythos-data
+
+Migration
+-----------
+0. Export old/gccg-mythos/core
+    git subtree split --prefix=core master2 -b core-export
+1.1 Import (0) into new/gccg-core:mythos-core
+    git remote add mythos-core ../gccg-mythos -t core-export
+    git fetch core-export
+1.2 Filter (1.1) for xml/Mythos/???.xml
+    git branch core-export-base (before first ???.xml commit)
+    foreach i in ltd.xml eomu.xml cr.xml lotn.xml drm.xml nae.xml pr.xml sd.xml :
+        git filter-branch -f --index-filter "git rm --cached --ignore-unmatch xml/Mythos/$i" --prune-empty core-export-base..core-export
+    git remote rm mythos-core
+1.3 Rebase (1.2) on to new/gccg-core:master
+    git checkout core-export
+    git rebase master
+    git branch -m mythos-core
+1.4 Recreate tags
+
+2.1 Import (0) into gccg-mythos-data
+    git remote add mythos-core-data ../gccg-mythos -t mythos-data-export
+2.2 Filter (2.1) for data/mythosdb_to_xml.xslt
+        git filter-branch -f --index-filter "git rm --cached --ignore-unmatch data/mythosdb_to_xml.xslt" --prune-empty mythos-core-data-base..HEAD
+2.3 Rebase only xml/Mythos/???.xml
+        git checkout -b mythos-data-import
+        git rebase -i master
+
+
