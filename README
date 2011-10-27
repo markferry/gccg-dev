@@ -11,12 +11,18 @@ Branches:
 * remotes/svn-core [git-svn]
 
   master -> remotes/github/master
-  svn-track -> remotes/svn-core
+  svn-track -> [remotes/github/svn-track, remotes/svn-core]
 
   svn-track --subtree--> master:core/
 
 ==============
 Workflow
+
+!! Push non-core changes
+[@
+git checkout master
+git push
+@]
 
 !! Pull upstream svn
 [@
