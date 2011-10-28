@@ -5,14 +5,16 @@ gccg-dev/mythos/ - git submodule linking to external gccg-mythos-data project
 
 Branches:
 * master
-* svn-core [git-svn subtree tracking branch]
+* svn-core [svn subtree tracking branch]
+* git-core [git subtree tracking branch]
 * remotes/github/master [github remote master]
 * remotes/github/svn-core [github remote svn-track]
 * remotes/svn-core [git-svn]
 
 Tracking:
   master -> remotes/github/master
-  svn-core -> (remotes/github/svn-track, remotes/svn-core)
+  svn-core -> (remotes/svn-core)
+  git-core -> (remotes/github/svn-core)
 
   svn-core --subtree--> master:core/
 
@@ -38,6 +40,10 @@ git subtree merge -P core --squash -m "merge changes to git subtree" svn-core
 git subtree split -P core -b svn-core
 git checkout svn-core
 git svn dcommit
-git push github svn-core
+# NB! push *after* svn dcommit explicitly to github/svn-core
+git push github git-core:svn-core
+# NB! merge following dcommit
+git checkout master
+git subtree merge -P core --squash -m "merge dcommit" svn-core
 @]
 
