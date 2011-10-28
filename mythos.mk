@@ -2,7 +2,7 @@
 #
 #
 CLIENT_NAME:=gccg-mythos
-CLIENT_VERSION:=0.3.0
+CLIENT_VERSION:=0.3.1
 CLIENT_XML:=<module name=\"mythos\" version=\"${CLIENT_VERSION}\"></module>
 CLIENT_PACKAGE:=${CLIENT_NAME}-${CLIENT_VERSION}.tar
 
@@ -23,12 +23,13 @@ SITE_XML:=${SITE_PATH}/available.xml
 AVAILABLE_XML="<modules>\n\t<source url=\"http://gccg.sourceforge.net/modules/\"/>\n\t${CLIENT_XML}\n\t${DATA_XML}\n\t${GRAPHICS_XML}\n</modules>"
 
 # core/ files included in mythos-client package
-CLIENT_FILES=decks/Mythos graphics/Mythos scripts/Mythos* xml/mythos.xml xml/Mythos
+#  NOTE this is also built in core/xml/packages.xml
+CLIENT_FILES=Mythos Mythos.bat decks/Mythos graphics/Mythos scripts/Mythos* xml/mythos.xml xml/Mythos
 SERVER_FILES=games.dat
 # mythos/ files included in mythos-data package
 DATA_FILES=xml/Mythos
 # mythos/ files included in mythos-graphics package
-GRAPHICS_FILES=graphics/Mythos
+GRAPHICS_FILES=graphics/Mythos graphics/fonts/Mythos
 
 SSH_PATH=yuggoth-git:~/public_html/
 ########################

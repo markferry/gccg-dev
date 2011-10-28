@@ -6,6 +6,7 @@
   <source url="http://www.derangedmonkey.com/bmin/"/>
   <source url="http://www.reneploetz.de/gccg/"/>
   <source url="http://lotrtcgdb.com/files/gccg/"/>
+  <source url="http://markferry.net/gccg/"/>
   <module name="core" version="1.0.1">
 	<include file="decks"/>
 	<include file="doc"/>
@@ -727,5 +728,16 @@
   </module>
   <module name="nr-cards-003" version="1">
 	<include dir="graphics/Nr/classic"/>
+  </module>
+  <module name="mythos" version="0.3.1">
+    <include file="Mythos"/>
+    <include file="Mythos.bat"/>
+    <include dir="decks/Mythos"/>
+    <include files="graphics/Mythos/*.jpg"/>
+    <include files="graphics/Mythos/*.png"/>
+    <include files="scripts/Mythos*.include"/>
+    <include files="scripts/Mythos*.rules"/>
+    <include file="xml/mythos.xml"/>
+    <include file="xml/Mythos/mythos_basecards.xml"/>
   </module>
 </modules>
