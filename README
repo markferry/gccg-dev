@@ -40,7 +40,6 @@ git subtree merge -P core --squash -m "merge changes to git subtree" svn-core
 git subtree split -P core -b svn-core
 git checkout svn-core
 git svn dcommit
-# NB! push *after* svn dcommit explicitly to github/svn-core
 git push github git-core:svn-core
 # NB! merge following dcommit
 git checkout master
