@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE ccg SYSTEM "gccg-game.dtd">
+
+<ccg name="Lord of the Rings: Living Card Game" dir="LotrLCG">
+
+  <cardset source="lotrlcg_basecards.xml"/>
+  <cardset source="core.xml"/>
+
+  <image tag="{threat}" file="threat.png" />
+  <image tag="{will}" file="will.png" />
+  <image tag="{attack}" file="attack.png" />
+  <image tag="{defence}" file="defence.png" />
+  <image tag="{leadership}" file="leadership.png" />
+  <image tag="{tactics}" file="tactics.png" />
+  <image tag="{lore}" file="lore.png" />
+  <image tag="{spirit}" file="spirit.png" />
+  <image tag="{spider}" file="spider.png" />
+  <image tag="{orc}" file="orc.png" />
+  <image tag="{orc_head}" file="orc_head.png" />
+  <image tag="{tree}" file="tree.png" />
+  <image tag="{paw}" file="paw.png" />
+  <image tag="{eye}" file="eye.png" />
+  <image tag="{tower}" file="tower.png" />
+  <image tag="{river}" file="river.png" />
+
+  <option name="hand card size" value="40"/>
+  <option name="table card size" value="30"/>
+  <option name="deck card size" value="25"/>
+  <option name="book card size" value="34"/>
+
+  <option name="deck order" value="type"/>
+  <option name="deck color by" value="type"/>
+  <option name="draw hints" value="type"/>
+
+  <trigger event="location hint" attribute="type"/>
+  <trigger event="play" attribute="type"/>
+
+  <option name="Ally text" value="{green}"/>
+  <option name="Attachment text" value="{gray}"/>
+  <option name="Event text" value="{blue}"/>
+  <option name="Hero text" value="{orange}"/>
+  <option name="Enemy text" value="{red}"/>
+  <option name="Location text" value="{brown}"/>
+  <option name="Treachery text" value="{black}"/>
+  <option name="Quest text" value="{magenta}"/>
+
+</ccg>

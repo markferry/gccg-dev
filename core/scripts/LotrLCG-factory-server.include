@@ -1,0 +1,16 @@
+
+if(!port)
+  port=29115;
+  
+
+def InitDistributions
+{
+  distribution=(,);
+  distribution{"C"}=(,);
+  distribution{"C"}{"pack"}=(,);
+}
+
+def ProduceCore_Pack
+{
+    return(CompleteCardSet('Core','F'));
+}

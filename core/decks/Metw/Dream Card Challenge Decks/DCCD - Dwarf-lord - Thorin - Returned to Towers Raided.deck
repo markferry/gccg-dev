@@ -1,0 +1,186 @@
+#
+# GCCG v0.9.6.3 Middle-earth deck
+#
+#      DCCD - Dwarf-lord - Thorin - Returned to Towers Raided
+#
+
+####
+Deck
+####
+
+# Dual Resource (1)
+
+1 Dwarven Art of War (DF)
+
+# Dwarf-lord Character (4)
+
+4 Thorin (DF)
+
+# Hazard (33)
+
+2 An Unexpected Outpost (DM)
+1 Ando-anca Ahunt (GW)
+1 Arouse Defenders (LE)
+1 Covetous Thoughts (LE)
+3 Dire Wolves (TD)
+2 Doors of Night (TW)
+1 Grasping and Ungracious (TI)
+1 Greed (TW)
+1 Hard to Tame (DF)
+1 Lord of the Eagles (DF)
+1 Lure of Nature (TW)
+1 No Memory of This Place (RS)
+2 The Pack at the Door (NW)
+3 Wake of War (TW)
+1 War-wargs (NW)
+1 War-wolves (NW)
+3 Wargs (TW)
+2 Watcher in the Water (TW)
+1 Were-wolf (NW)
+1 White Wolves (NW)
+3 Wolves (TW)
+
+# Hero Character (10)
+
+1 Attack-lord (DF)
+1 Bofur (TW)
+1 Dís (DF)
+1 Frerin (DF)
+1 Fíli (TW)
+1 Glóin (TW)
+1 Nori (TW)
+1 Ori (TW)
+1 Pathfinder (DF)
+1 Óin (TW)
+
+# Hero Resource (25)
+
+2 A Friend or Three (TW)
+1 A More or Less Decent Giant (DF)
+1 Block (TW)
+1 Blue Mountain Dwarves (TW)
+2 Concealment (TW)
+1 Dark Numbers (DM)
+1 Durin's Axe (TW)
+2 Dwarven-axe (DF)
+1 Habergeon of Silver (TD)
+1 Khazadshatur (DF)
+1 Knowledge of the Enemy (DM)
+1 Longbottom Leaf (BA)
+1 Marvels Told (TD)
+1 Reforging (NW)
+1 Return to Old Dwellings (DF)
+1 Secret Passage (TW)
+1 Shimmer of Hope (DF)
+2 Smoke Rings (DM)
+3 The Dwarves Are upon You! (DM)
+
+# Minion Resource (4)
+
+1 Crack in the Wall (LE)
+2 Crept Along Cleverly (WH)
+1 Swift Strokes (LE)
+
+# Stage Resource (3)
+
+1 Clad for War (DF)
+1 Kheleglin (FP)
+1 Son of Thráin (DF)
+
+####
+Pool
+####
+
+# Dual Character (1)
+
+1 Dár (SL)
+
+# Hero Character (3)
+
+1 Lipór (DF)
+1 Norin (DF)
+1 Náin, Son of Grór (DF)
+
+# Hero Resource (3)
+
+1 Pipe (DF)
+1 Shield of Iron-bound Ash (TW)
+1 Star-glass (TW)
+
+# Stage Resource (3)
+
+1 Durin's Day (DF)
+1 Oakenshield (DF)
+1 Promise of Treasure (DF)
+
+#########
+Sideboard
+#########
+
+# Dual Resource (3)
+
+1 Axe-master (GW)
+1 Dwarven Cunning (DF)
+1 Fortress Reclaimed (DF)
+
+# Hazard (2)
+
+1 Elf-lord Revealed in Wrath* (FB)
+1 Great Northern Bear (GW)
+
+# Hero Resource (11)
+
+1 An Unexpected Party (DM)
+1 Block (TW)
+1 Dwarven Hoard (TD)
+1 Ironfists (CP)
+1 Kingdom under the Mountain (DF)
+1 No Strangers at this Time (AS)
+1 Noldo-lantern (DM)
+1 Petty-dwarves [H] (AS)
+1 Pipe Weed (DF)
+1 Rebuild the Town (DM)
+1 Tower Raided (AS)
+
+# Minion Resource (1)
+
+1 Old Prejudice (LE)
+
+# Stage Resource (3)
+
+1 Great Achievement (DF)
+1 Mining Settlement (DF)
+1 The Seven Houses (DF)
+
+#####
+Sites
+#####
+
+# Dwarf-lord Site (1)
+
+1 Blue Mountain Dwarf-hold [D] (DF)
+
+# Fallen-wizard Site (1)
+
+1 Deep Mines (WH)
+
+# Hero Site (18)
+
+1 Andoloki [H] (NW)
+1 Bar-en-Ibûn [H] (DF)
+1 Barrow-downs [H] (TW)
+1 Carn Dûm [H] (TW)
+1 Cirith Helkaloke [H] (GW)
+1 Creb Durga [H] (KN)
+1 Giant's Isle [H] (RS)
+1 Goblin-gate [H] (TW)
+1 Gondring's Lair [H] (NW)
+1 Litash [H] (NW)
+1 Morkai [H] (KN)
+1 Mount Gram [H] (TW)
+1 Mount Gundabad [H] (TW)
+1 Mount Rerir [H] (FB)
+1 Sonotor's Mound [H] (DF)
+1 The Iron-deeps [H] (DM)
+1 The Under-Caves [H] (KN)
+1 Zarak Dûm [H] (TD)

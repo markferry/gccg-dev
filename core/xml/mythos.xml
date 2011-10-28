@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE ccg SYSTEM "gccg-game.dtd">
+
+<ccg name="Mythos" dir="Mythos">
+
+  <cardset source="mythos_basecards.xml"/>
+  <cardset source="ltd.xml"/>
+  <cardset source="eomu.xml"/>
+  <cardset source="cr.xml"/>
+  <cardset source="lotn.xml"/>
+  <cardset source="msgs.xml"/>
+  <cardset source="drm.xml"/>
+  <cardset source="nae.xml"/>
+  <cardset source="pr.xml"/>
+  <cardset source="sd.xml"/>
+
+  <image file="dim-drm.png" tag="{DRM}"/>
+  <image file="dim-nae.png" tag="{NAE}"/>
+  <image file="gate.png" tag="{G}"/>
+  <image file="unique.png" tag="{U}"/>
+  <image file="goo.png" tag="{GOO}"/>
+
+  <option name="hand card size" value="50"/>
+  <option name="table card size" value="50"/>
+  <option name="deck card size" value="30"/>
+  <option name="book card size" value="50"/>
+
+  <option name="deck order" value="type"/>
+  <option name="deck color by" value="type"/>
+
+  <option name="draw hints" value="type"/>
+
+  <option name="Adventure text" value="{black}"/>
+  <option name="Artifact text" value="{magenta}"/>
+  <option name="Location text" value="{brown}"/>
+  <option name="Monster text" value="{red}"/>
+  <option name="Event text" value="{yellow}"/>
+  <option name="Ally text" value="{green}"/>
+  <option name="Spell text" value="{76,76,166}"/>
+  <option name="Tome text" value="{magenta}"/>
+
+  <option name="Adventure back color" value="210,180,90"/>
+  <option name="Artifact back color" value="148,0,211"/>
+  <option name="Location back color" value="208,176,160"/>
+  <option name="Monster back color" value="240,128,128"/>
+  <option name="Event back color" value="255,255,0"/>
+  <option name="Ally back color" value="0,100,0"/>
+  <option name="Spell back color" value="123,104,238"/>
+  <option name="Tome back color" value="148,0,211"/>
+
+  <option name="Adventure text box color" value="212,146,62"/>
+  <option name="Artifact text box color" value="255,255,255"/>
+  <option name="Location text box color" value="255,255,255"/>
+  <option name="Monster text box color" value="255,255,255"/>
+  <option name="Event text box color" value="255,255,255"/>
+  <option name="Ally text box color" value="255,255,255"/>
+  <option name="Spell text box color" value="255,255,255"/>
+  <option name="Tome text box color" value="255,255,255"/>
+
+  <option name="default back color" value="150,150,150"/>
+  <option name="default border width" value="5"/>
+  <option name="default border color" value="180,180,180"/>
+
+  <option name="default title" value="6,6,234,30"/>
+  <option name="default title font color" value="0,0,0"/>
+  <option name="default title font size" value="24"/>
+
+  <option name="default text 1" value="56,40,168,30"/>
+  <option name="default text 1 content" value="[private]"/>
+  <option name="default text 1 font color" value="0,0,0"/>
+  <option name="default text 1 font size" value="14"/>
+
+  <option name="default text 2" value="12,50,48,30"/>
+  <option name="default text 2 content" value="[value]"/>
+  <option name="default text 2 color" value="{black}"/>
+  <option name="default text 2 font size" value="24"/>
+
+  <option name="default text 3" value="56,70,168,20"/>
+  <option name="default text 3 content" value="[type] [subtype]"/>
+  <option name="default text 3 font color" value="0,0,0"/>
+  <option name="default text 3 font size" value="16"/>
+
+  <option name="default image" value="50,90,180,90"/>
+  <option name="default image color" value="150,159,156"/>
+  <option name="default image border" value="2"/>
+  <option name="default image font size" value="100"/>
+
+  <option name="default text 4" value="56,180,168,20"/>
+  <option name="default text 4 content" value="[region] [subregion]"/>
+  <option name="default text 4 font color" value="0,0,0"/>
+  <option name="default text 4 font size" value="16"/>
+
+  <option name="default text box" value="50,218,170,100"/>
+  <option name="default text box align" value="1"/>
+  <option name="default text box color" value="200,50,200"/>
+  <option name="default text box border" value="2"/>
+  <option name="default text box font size" value="16"/>
+
+  <option name="default text 5" value="12,220,48,100"/>
+  <option name="default text 5 content" value="[public]"/>
+  <option name="default text 5 font color" value="0,0,0"/>
+  <option name="default text 5 font size" value="16"/>
+
+  <option name="default text 6" value="12,320,44,15"/>
+  <option name="default text 6 content" value="[san]"/>
+  <option name="default text 6 font color" value="0,0,0"/>
+  <option name="default text 6 font size" value="18"/>
+
+  <option name="default text 7" value="36,311,15,15"/>
+  <option name="default text 7 content" value="[dimension]"/>
+  <option name="default text 7 font color" value="0,0,0"/>
+  <option name="default text 7 font size" value="14"/>
+
+  <option name="default text 8" value="213,311,15,15"/>
+  <option name="default text 8 content" value="[unique]"/>
+  <option name="default text 8 font color" value="0,0,0"/>
+  <option name="default text 8 font size" value="14"/>
+
+  <option name="Adventure image" value="50,90,180,40"/>
+  <option name="Adventure image color" value="150,159,156"/>
+  <option name="Adventure image border" value="2"/>
+  <option name="Adventure image font size" value="50"/>
+
+  <option name="Adventure text box font size" value="16"/>
+  <option name="Adventure text box" value="50,130,170,188"/>
+  <option name="Adventure text box align" value="1"/>
+  <option name="Adventure text box color" value="200,50,200"/>
+  <option name="Adventure text box border" value="2"/>
+
+  <option name="Investigator image" value="50,90,180,40"/>
+  <option name="Investigator image color" value="150,159,156"/>
+  <option name="Investigator image border" value="2"/>
+  <option name="Investigator image font size" value="50"/>
+
+  <option name="Investigator text 2 font size" value="16"/>
+  <option name="Investigator text 2" value="50,132,170,95"/>
+  <option name="Investigator text 2 align" value="1"/>
+  <option name="Investigator text 2 content" value="Hand: [hand]\nMin: [handmin]\nMax: [handmax]\nEdu: [education]"/>
+  <option name="Investigator text 2 color" value="200,50,200"/>
+  <option name="Investigator text 2 border" value="2"/>
+
+  <option name="Location text 2" value="12,50,48,30"/>
+  <option name="Location text 2 content" value="[gate]"/>
+  <option name="Location text 2 font color" value="0,0,0"/>
+  <option name="Location text 2 font size" value="24"/>
+
+  <trigger event="location hint" attribute="type"/>
+
+</ccg>
+

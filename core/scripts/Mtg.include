@@ -1,0 +1,1219 @@
+#
+# VARIABLES
+# =========
+
+# Size of columns of the decklist in pixels.
+DECKBOX_SIZE=(20,260,120);
+# Number of cards in hand.
+HANDSIZE=7;
+# keep-tapped text
+STRING_KEEP_TAPPED="{T}";
+# minor version number for filter alogrithm
+BOOK_FILTER_VERSION_MINOR=".27";
+# Default export format.
+DEFAULT_EXPORT_FORMAT="Gccg";
+# default book sorting criteria.
+BOOK_DEFAULT_SORT=("[age]","[color]","[name]");
+# next card played will be imprinted
+imprint=0;
+
+# Servers
+if(server.name=="NO.DEFAULT.SERVER.FOR.THIS.GAME")
+  server.name="gccgmeta.sytes.net";
+if(!port)
+  port=29100;
+  
+# lobby background color
+BGCOLOR=(98,52,23);
+# lobby foreground color
+FGCOLOR=(248,201,111);
+# lobby border color
+BRCOLOR=(175,160,75);
+# in-game background color
+BGCOLOR2=(98,52,23);
+# in-game foreground color
+FGCOLOR2=(88,42,11);
+# in-game border color
+BRCOLOR2=(175,160,75);
+# item text color
+TXCOLOR=(248,201,111);
+# command text color
+INCOLOR=(255,255,255);
+# book background
+BKBGCOLOR=(98,52,23);
+# book border
+BKBRCOLOR=(248,201,111);
+
+if(!rarity.display)
+  rarity.display = (,);
+rarity.display{"L"}="";
+rarity.display{"C"}="";
+rarity.display{"U"}="{154,154,154}";
+rarity.display{"R"}="{gold}";
+rarity.display{"M"}="{red}";
+rarity.display{"P"}="{154,77,154}";
+rarity.display{"S"}="{154,77,154}";
+
+product.image=(,);
+product.image{"Limited Edition Beta booster"}="Beta_booster.jpg";
+product.image{"Limited Edition Beta starter"}="Beta_starter.jpg";
+product.image{"Arabian Nights booster"}="AN_booster.jpg";
+product.image{"Antiquities booster"}="AQ_booster.jpg";
+product.image{"Legends booster"}="LG_booster.jpg";
+product.image{"The Dark booster"}="DK_booster.jpg";
+product.image{"Fallen Empires booster"}="FE_booster.jpg";
+product.image{"Ice Age booster"}="IA_booster.jpg";
+product.image{"Ice Age starter"}="IA_starter.jpg";
+product.image{"Homelands booster"}="HL_booster.jpg";
+product.image{"Alliances booster"}="AL_booster.jpg";
+product.image{"Mirage booster"}="MI_booster.jpg";
+product.image{"Mirage starter"}="MI_starter.jpg";
+product.image{"Visions booster"}="VI_booster.jpg";
+product.image{"Weatherlight booster"}="WL_booster.jpg";
+product.image{"Tempest booster"}="TE_booster.jpg";
+product.image{"Tempest starter"}="TE_starter.jpg";
+product.image{"Stronghold booster"}="SH_booster.jpg";
+product.image{"Exodus booster"}="EX_booster.jpg";
+product.image{"Urza's Saga starter"}="US_starter.jpg";
+product.image{"Urza's Saga booster"}="US_booster.jpg";
+product.image{"Urza's Legacy booster"}="UL_booster.jpg";
+product.image{"Urza's Destiny booster"}="UD_booster.jpg";
+product.image{"Mercadian Masques starter"}="MM_starter.jpg";
+product.image{"Mercadian Masques booster"}="MM_booster.jpg";
+product.image{"Nemesis booster"}="NE_booster.jpg";
+product.image{"Prophecy booster"}="PY_booster.jpg";
+product.image{"Invasion starter"}="IN_starter.jpg";
+product.image{"Invasion booster"}="IN_booster.jpg";
+product.image{"Planeshift booster"}="PS_booster.jpg";
+product.image{"Apocalypse booster"}="AP_booster.jpg";
+product.image{"Odyssey starter"}="OD_starter.jpg";
+product.image{"Odyssey booster"}="OD_booster.jpg";
+product.image{"Mercadian Masques starter"}="MM_starter.jpg";
+product.image{"Mercadian Masques booster"}="MM_booster.jpg";
+product.image{"Nemesis booster"}="NE_booster.jpg";
+product.image{"Prophecy booster"}="PY_booster.jpg";
+product.image{"Invasion starter"}="IN_starter.jpg";
+product.image{"Invasion booster"}="IN_booster.jpg";
+product.image{"Planeshift booster"}="PS_booster.jpg";
+product.image{"Apocalypse booster"}="AP_booster.jpg";
+product.image{"Odyssey starter"}="OD_starter.jpg";
+product.image{"Odyssey booster"}="OD_booster.jpg";
+product.image{"Torment booster"}="TO_booster.jpg";
+product.image{"Judgment booster"}="JD_booster.jpg";
+product.image{"Onslaught starter"}="ON_starter.jpg";
+product.image{"Onslaught booster"}="ON_booster.jpg";
+product.image{"Legions booster"}="LE_booster.jpg";
+product.image{"Scourge booster"}="SC_booster.jpg";
+product.image{"Mirrodin starter"}="MR_starter.jpg";
+product.image{"Mirrodin booster"}="MR_booster.jpg";
+product.image{"Fourth Edition starter"}="4E_starter.jpg";
+product.image{"Fourth Edition booster"}="4E_booster.jpg";
+product.image{"Fifth Edition starter"}="5E_starter.jpg";
+product.image{"Fifth Edition booster"}="5E_booster.jpg";
+product.image{"Sixth Edition starter"}="6E_starter.jpg";
+product.image{"Sixth Edition booster"}="6E_booster.jpg";
+product.image{"Seventh Edition booster"}="7E_booster.jpg";
+product.image{"Seventh Edition starter"}="7E_starter.jpg";
+product.image{"Eighth Edition booster"}="8E_booster.jpg";
+product.image{"Eighth Edition starter"}="8E_starter.jpg";
+product.image{"Ninth Edition booster"}="9E_booster.jpg";
+product.image{"Ninth Edition starter"}="9E_starter.jpg";
+product.image{"Revised Edition starter"}="RV_starter.jpg";
+product.image{"Revised Edition booster"}="RV_booster.jpg";
+product.image{"Darksteel booster"}="DS_booster.jpg";
+product.image{"Fifth Dawn booster"}="FD_booster.jpg";
+product.image{"Champions of Kamigawa starter"}="CK_starter.jpg";
+product.image{"Champions of Kamigawa booster"}="CK_booster.jpg";
+product.image{"Unhinged booster"}="UH_booster.jpg";
+product.image{"Betrayers of Kamigawa booster"}="BK_booster.jpg";
+product.image{"Portal booster"}="P1_booster.jpg";
+product.image{"Portal Second Age booster"}="P2_booster.jpg";
+product.image{"Portal Three Kingdoms booster"}="P3_booster.jpg";
+product.image{"Saviors of Kamigawa booster"}="SK_booster.jpg";
+product.image{"Ravnica: City of Guilds starter"}="RA_starter.jpg";
+product.image{"Ravnica: City of Guilds booster"}="RA_booster.jpg";
+product.image{"Guildpact booster"}="GP_booster.jpg";
+product.image{"Dissension booster"}="DI_booster.jpg";
+product.image{"Coldsnap booster"}="CS_booster.jpg";
+product.image{"Starter 1999 booster"}="S1_booster.jpg";
+product.image{"Unglued booster"}="UG_booster.jpg";
+product.image{"Time Spiral booster"}="TS_booster.jpg";
+product.image{"Time Spiral starter"}="TS_starter.jpg";
+product.image{"Planar Chaos booster"}="PC_booster.jpg";
+product.image{"Future Sight booster"}="FS_booster.jpg";
+product.image{"Tenth Edition booster"}="XE_booster.jpg";
+product.image{"Tenth Edition starter"}="XE_starter.jpg";
+product.image{"Lorwyn booster"}="LRW_booster.jpg";
+product.image{"Lorwyn starter"}="LRW_starter.jpg";
+product.image{"Morningtide booster"}="MOR_booster.jpg";
+product.image{"Shadowmoor starter"}="SM_starter.jpg";
+product.image{"Shadowmoor booster"}="SM_booster.jpg";
+product.image{"Eventide booster"}="EVE_booster.jpg";
+product.image{"Shards of Alara starter"}="ALA_starter.jpg";
+product.image{"Shards of Alara booster"}="ALA_booster.jpg";
+product.image{"Conflux booster"}="CFX_booster.jpg";
+product.image{"Alara Reborn booster"}="ARE_booster.jpg";
+product.image{"Magic 2010 starter"}="M10_starter.jpg";
+product.image{"Magic 2010 booster"}="M10_booster.jpg";
+product.image{"Zendikar booster"}="ZDK_booster.jpg";
+product.image{"Worldwake booster"}="WWK_booster.jpg";
+product.image{"Rise of the Eldrazi booster"}="ROE_booster.jpg";
+product.image{"Magic 2011 booster"}="M11_booster.jpg";
+product.image{"Scars of Mirrodin booster"}="SOM_booster.jpg";
+product.image{"Mirrodin Besieged booster"}="MBS_booster.jpg";
+product.image{"Mirrodin Besieged mirran"}="MBS_mirran.jpg";
+product.image{"Mirrodin Besieged phyrexian"}="MBS_phyrexian.jpg";
+product.image{"New Phyrexia booster"}="NPH_booster.jpg";
+product.image{"Commander starter"}="COM_starter.jpg";
+product.image{"Magic 2012 booster"}="M12_booster.jpg";
+product.image{"Innistrad booster"}="ISD_booster.jpg";
+
+
+game.bindings=(
+  ("KeyControlKey1","{orange}During untap phase...",),
+  ("KeyControlKey2","{orange}During upkeep phase...",),
+  ("KeyControlKey3","{orange}During draw phase...",),
+  ("KeyControlKey4","{orange}During main phase...",),
+  ("KeyControlKey5","{orange}During combat phase...",),
+  ("KeyControlKey6","{orange}During discard phase...",),);
+
+# MENUS
+# =====
+
+GAME_MENU{"Main Menu - Play"}=(
+ (1,"{hr}","",""),
+ (1,"Play Colorless Token","",'Send("Transfer",(1,("out.of.play",1),("play",0)))'),
+ (1,"Play Black Token","",'Send("Transfer",(1,("out.of.play",2),("play",0)))'),
+ (1,"Play Blue Token","",'Send("Transfer",(1,("out.of.play",3),("play",0)))'),
+ (1,"Play Green Token","",'Send("Transfer",(1,("out.of.play",4),("play",0)))'),
+ (1,"Play Red Token","",'Send("Transfer",(1,("out.of.play",5),("play",0)))'),
+ (1,"Play White Token","",'Send("Transfer",(1,("out.of.play",6),("play",0)))'),
+ (1,"{hr}","",""),
+ (1,"Select Token Type...","","TokenSubmenu()"),
+ (1,"Select Innistrad Transformed...","","ISDSubmenu()"),
+ (1,"{hr}","",""),
+ (1,"Play Jitte Counter","",'Send("Transfer",(1,("out.of.play",7),("play",0)))'),
+ (1,"Play Storm Counter","",'Send("Transfer",(1,("out.of.play",8),("play",0)))'),
+ (1,"{hr}","",""),
+ (1,"Look at your sideboard","",'search.source=sideboard;Send("SearchDeck",sideboard)'),
+ );
+
+GAME_MENU{"Current Deck Menu"}=(
+ (1,"Add sideboard","","EditAddSideboard()"),
+ (1,"Remove sideboard","","EditRemoveSideboard()"),
+ );
+
+GAME_MENU{"Tap a card"}=(
+ (1,"Tap/Untap","middle click",""),
+ (1,"Tap and keep tapped","","SetStayTapped()"),
+ (1,"Flip","",'Send("Rotate",(object.number,((card_data(object.number))[1]+180)%360))'),
+);
+
+GAME_MENU{"A Card"}=(
+ ("1","Imprint/Equip","Ctrl+I",""),
+ );
+
+FILTER_OPTIONS=(
+ ("Sealed deck","first(book_entry(card.book,#))",(1,"[color]","[name]")),
+ "{hr}",
+ ("Common","left(Attr('rarity',#),1)=='C'",(1,"[age]","[color]","[name]")),
+ ("Uncommon","left(Attr('rarity',#),1)=='U'",(1,"[age]","[color]","[name]")),
+ ("Rare","left(Attr('rarity',#),1)=='R'",(1,"[age]","[color]","[name]")),
+ ("Mythic","left(Attr('rarity',#),1)=='M'",(1,"[age]","[color]","[name]")),
+ "{hr}",
+ ("White spells","find('White',Attr('color',#))!=NULL",(1,"[age]","[color]","[name]")),
+ ("Blue spells","find('Blue',Attr('color',#))!=NULL",(1,"[age]","[color]","[name]")),
+ ("Black spells","find('Black',Attr('color',#))!=NULL",(1,"[age]","[color]","[name]")),
+ ("Red spells","find('Red',Attr('color',#))!=NULL",(1,"[age]","[color]","[name]")),
+ ("Green spells","find('Green',Attr('color',#))!=NULL",(1,"[age]","[color]","[name]")),
+ ("Multicolored","find(' ',Attr('color',#))!=NULL",(1,"[age]","[color]","[name]")),
+ ("Colorless","find(Attr('color',#),'ArtifactLandColorless')!=NULL",(1,"[age]","[name]")),
+ "{hr}",
+ ("Legendary","find('Legendary',Attr('type',#))!=NULL",(1,"[age]","[name]")),
+ ("Artifacts","find('Artifact',Attr('type',#))!=NULL",(1,"[age]","[name]")),
+ ("Creatures","find('Creature',Attr('type',#))!=NULL",(1,"[color]","[name]")),
+ ("Enchantments","find('Enchant',Attr('type',#))!=NULL",(1,"[type]","[color]","[name]")),
+ ("Lands","find('Land',Attr('type',#))!=NULL",(1,"[age]","[name]")),
+ ("Planeswalkers","find('Planeswalker',Attr('type',#))!=NULL",(1,"[age]","[name]")),
+ ("Instants","find('Instant',Attr('type',#))!=NULL",(1,"[color]","[name]")),
+ ("Sorceries","find('Sorcery',Attr('type',#))!=NULL",(1,"[color]","[name]")),
+ "{hr}",
+ ("Tribal Creatures","TribalLegal(#) && TypeLegal('Vintage',#)",("[subtype]","[color]","[name]")),
+ ("Vintage Restricted","TypeRestricted('Vintage',#)",(1,"[age]","[color]","[name]")),
+ ("Legacy Banned","!TypeLegal('Legacy',#)",(1,"[age]","[color]","[name]")),
+ ("Commander Banned","!TypeLegal('Commander',#)",(1,"[color]","[age]","[name]")),
+ ("Highlander Banned","!TypeLegal('Highlander',#)",(1,"[color]","[age]","[name]")),
+ ("Modern Legal","TypeLegal('Modern',#)",(1,"[age]","[color]","[name]")),
+ ("Extended Legal","TypeLegal('Extended',#)",(1,"[color]","[age]","[name]")),
+ ("Standard Legal","TypeLegal('Standard',#)",(1,"[color]","[age]","[name]")),
+ "{hr}",
+# ("Standard (2011) Legal","TypeLegal('Type 2 (2011)',#)",(1,"[color]","[age]","[name]")),
+# ("Standard (2010) Legal","TypeLegal('Type 2 (2010)',#)",(1,"[color]","[age]","[name]")),
+# ("Standard (2009) Legal","TypeLegal('Type 2 (2009)',#)",(1,"[color]","[age]","[name]")),
+# ("Standard (2008) Legal","TypeLegal('Type 2 (2008)',#)",(1,"[color]","[age]","[name]")),
+# ("Standard (2007) Legal","TypeLegal('Type 2 (2007)',#)",(1,"[color]","[age]","[name]")),
+# ("Standard (2006) Legal","TypeLegal('Type 2 (2006)',#)",(1,"[color]","[age]","[name]")),
+# ("Standard (2005) Legal","TypeLegal('Type 2 (2005)',#)",(1,"[color]","[age]","[name]")),
+# ("Standard (2004) Legal","TypeLegal('Type 2 (2004)',#)",(1,"[color]","[age]","[name]")),
+# ("Standard (2003) Legal","TypeLegal('Type 2 (2003)',#)",(1,"[color]","[age]","[name]")),
+# ("Standard (2002) Legal","TypeLegal('Type 2 (2002)',#)",(1,"[color]","[age]","[name]")),
+# ("Standard (2001) Legal","TypeLegal('Type 2 (2001)',#)",(1,"[color]","[age]","[name]")),
+# ("Standard (2000) Legal","TypeLegal('Type 2 (2000)',#)",(1,"[color]","[age]","[name]")),
+# ("Standard (1999) Legal","TypeLegal('Type 2 (1999)',#)",(1,"[color]","[age]","[name]")),
+# ("Standard (1998) Legal","TypeLegal('Type 2 (1998)',#)",(1,"[color]","[age]","[name]")),
+# ("Standard (1997) Legal","TypeLegal('Type 2 (1997)',#)",(1,"[color]","[age]","[name]")),
+# "{hr}",
+);
+
+FILTER_FUNCTIONS=(,);
+FILTER_FUNCTIONS{"mana"}=("i","converted mana cost");
+
+# FILTERS
+# =======
+
+#
+# mana(cost string) - Helper function to filter_mana(). Return the
+#   converted mana cost for a single cost string.
+#
+def mana
+{
+  return(sum(forall("toint(#)",split(strreplace(tr(ARG,"RGBUW","1.0"),"21.0","2"),"{"))));
+}
+
+#
+# filter_mana(card number) - Return converted mana cost of the card.
+#
+def filter_mana
+{
+  if((c=Attr("cost",ARG)) == "")
+    return(0);
+  else
+    return(min(apply("mana",split(Attr("cost",ARG),"//"))));
+}
+
+# FUNCTIONS
+# =========
+
+#
+# EditAddSideboard() - Add sideboard to the current deck.
+#
+def EditAddSideboard
+{
+  AddDeckPart("sideboard");
+}
+
+#
+# EditRemoveSideboard() - Remove sideboard from the current deck if exist.
+#
+def EditRemoveSideboard
+{
+  RemoveDeckPart("sideboard");
+}
+
+#
+# NewDeck() - Game specific creation of empty deck structure.
+#
+def NewDeck
+{
+  return((("deck",(,)),));
+}
+
+#
+# InitializeGame() - Game specific initialization of game variables.
+#
+def InitializeGame
+{
+}
+
+#
+# StartGame() - What to do when game begins.
+#
+def StartGame
+{
+  Send("UploadDeck",decks{deck.name});
+  Send("ShuffleDeck",deck);
+}
+
+#
+# EndGame() - Game over.
+#
+def EndGame
+{
+}
+
+#
+# ShowGameSpecificHelp() - Additional help text.
+#
+def ShowGameSpecificHelp
+{
+}
+
+#
+# MOUSE
+# =====
+
+#
+# MouseLeftClickSideboard() - Look at sideboard.
+#
+def MouseLeftClickSideboard
+  PlayKeyControlKeyL();
+
+#
+# MouseLeftClickExile() - Look at exile.
+#
+def MouseLeftClickExile
+  PlayKeyControlKeyL();
+
+#
+# MENU FUNCTIONS
+# ==============
+
+def ISDSubmenu 
+{
+  Submenu("Select Transform",(
+   ("Bloodline Keeper -> Lord of Lineage","",'Send("Transfer",(1,("out.of.play",126),("play",0)))'),
+   ("Civilized Scholar -> Homicidal Brute","",'Send("Transfer",(1,("out.of.play",127),("play",0)))'),
+   ("Cloistered Youth -> Unholy Fiend","",'Send("Transfer",(1,("out.of.play",128),("play",0)))'),
+   ("Daybreak Ranger -> Nightfall Predator","",'Send("Transfer",(1,("out.of.play",129),("play",0)))'),
+   ("Delver of Secrets -> Insectile Aberration","",'Send("Transfer",(1,("out.of.play",130),("play",0)))'),
+   ("Garruk Relentless -> Garruk, the Veil-Cursed","",'Send("Transfer",(1,("out.of.play",131),("play",0)))'),
+   ("Gatstaf Shepherd -> Gatstaf Howler","",'Send("Transfer",(1,("out.of.play",132),("play",0)))'),
+   ("Grizzled Outcasts -> Krallenhorde Wantons","",'Send("Transfer",(1,("out.of.play",133),("play",0)))'),
+   ("Hanweir Watchkeep -> Bane of Hanweir","",'Send("Transfer",(1,("out.of.play",134),("play",0)))'),
+   ("Instigator Gang -> Wildblood Pack","",'Send("Transfer",(1,("out.of.play",135),("play",0)))'),
+   ("Kruin Outlaw -> Terror of Kruin Pass","",'Send("Transfer",(1,("out.of.play",136),("play",0)))'),
+   ("Ludevic's Test Subject -> Ludevic's Abomination","",'Send("Transfer",(1,("out.of.play",137),("play",0)))'),
+   ("Mayor of Avabruck -> Howlpack Alpha","",'Send("Transfer",(1,("out.of.play",138),("play",0)))'),
+   ("Reckless Waif -> Merciless Predator","",'Send("Transfer",(1,("out.of.play",139),("play",0)))'),
+   ("Screeching Bat -> Stalking Vampire","",'Send("Transfer",(1,("out.of.play",140),("play",0)))'),
+   ("Thraben Sentry -> Thraben Militia","",'Send("Transfer",(1,("out.of.play",141),("play",0)))'),
+   ("Tormented Pariah -> Rampaging Werewolf","",'Send("Transfer",(1,("out.of.play",142),("play",0)))'),
+   ("Ulvenwald Mystics -> Ulvenwald Primordials","",'Send("Transfer",(1,("out.of.play",143),("play",0)))'),
+   ("Village Ironsmith -> Ironfang","",'Send("Transfer",(1,("out.of.play",144),("play",0)))'),
+   ("Villagers of Estwald -> Howlpack of Estwald","",'Send("Transfer",(1,("out.of.play",145),("play",0)))'),
+  ));
+}
+
+# 
+# TokenSubmenu() - Create a submenu of token options.
+# 
+
+
+def TokenSubmenu
+{
+  Submenu("Select Token",(
+   ("A","","TokenSubmenuA()"),
+   ("B","","TokenSubmenuB()"),
+   ("C","","TokenSubmenuC()"),
+   ("D","","TokenSubmenuD()"),
+   ("E","","TokenSubmenuE()"),
+   ("F","","TokenSubmenuF()"),
+   ("G","","TokenSubmenuG()"),
+   ("H","","TokenSubmenuH()"),
+   ("I","","TokenSubmenuI()"),
+   ("K","","TokenSubmenuK()"),
+   ("L","","TokenSubmenuL()"),
+   ("M","","TokenSubmenuM()"),
+   ("O","","TokenSubmenuO()"),
+   ("P","","TokenSubmenuP()"),
+   ("R","","TokenSubmenuR()"),
+   ("S","","TokenSubmenuS()"),
+   ("T","","TokenSubmenuT()"),
+   ("U","","TokenSubmenuU()"),
+   ("V","","TokenSubmenuV()"),
+   ("W","","TokenSubmenuW()"),
+   ("Z","","TokenSubmenuZ()"),
+   ));
+}
+
+def TokenSubmenuA 
+{
+  Submenu("Select Token",(
+   ("Angel 4/4 (W, flying)","",'Send("Transfer",(1,("out.of.play",9),("play",0)))'),
+   ("Avatar */* (W)","",'Send("Transfer",(1,("out.of.play",10),("play",0)))'),
+  ));
+}
+
+def TokenSubmenuB 
+{
+  Submenu("Select Token",(
+   ("Bear 2/2 (G)","",'Send("Transfer",(1,("out.of.play",11),("play",0)))'),
+   ("Beast 3/3 (G)","",'Send("Transfer",(1,("out.of.play",12),("play",0)))'),
+   ("Beast 4/4 (G)","",'Send("Transfer",(1,("out.of.play",13),("play",0)))'),
+   ("Beast 5/5 (G)","",'Send("Transfer",(1,("out.of.play",14),("play",0)))'),
+   ("Beast 8/8 (RGW)","",'Send("Transfer",(1,("out.of.play",15),("play",0)))'),
+   ("Bird 1/1 (U, flying)","",'Send("Transfer",(1,("out.of.play",16),("play",0)))'),
+   ("Bird 1/1 (UW, flying)","",'Send("Transfer",(1,("out.of.play",17),("play",0)))'),
+   ("Bird 1/1 (W, flying)","",'Send("Transfer",(1,("out.of.play",18),("play",0)))'),
+   ("Bird 3/3 (W, flying)","",'Send("Transfer",(1,("out.of.play",112),("play",0)))'),
+   ("Bird Soldier 1/1 (W, flying)","",'Send("Transfer",(1,("out.of.play",19),("play",0)))'),
+  ));
+}
+
+def TokenSubmenuC 
+{
+  Submenu("Select Token",(
+   ("Cat 1/1 (R)","",'Send("Transfer",(1,("out.of.play",20),("play",0)))'),
+   ("Cat 2/1 (B)","",'Send("Transfer",(1,("out.of.play",21),("play",0)))'),
+   ("Cat 2/2 (W)","",'Send("Transfer",(1,("out.of.play",113),("play",0)))'),
+   ("Centaur 3/3 (G)","",'Send("Transfer",(1,("out.of.play",22),("play",0)))'),
+   ("Construct 6/12 (C, trample)","",'Send("Transfer",(1,("out.of.play",100),("play",0)))'),
+  ));
+}
+
+def TokenSubmenuD 
+{
+  Submenu("Select Token",(
+   ("Play Demon */* (B, flying)","",'Send("Transfer",(1,("out.of.play",23),("play",0)))'),
+   ("Play Dragon 1/1 (RG, flying, devour)","",'Send("Transfer",(1,("out.of.play",24),("play",0)))'),
+   ("Play Dragon 4/4 (R, flying)","",'Send("Transfer",(1,("out.of.play",25),("play",0)))'),
+   ("Play Dragon 5/5 (R, flying)","",'Send("Transfer",(1,("out.of.play",26),("play",0)))'),
+   ("Play Dragon Spirit 5/5 (U, flying)","",'Send("Transfer",(1,("out.of.play",27),("play",0)))'),
+   ("Play Drake 2/2 (UG, flying)","",'Send("Transfer",(1,("out.of.play",28),("play",0)))'),
+  ));
+}
+   
+def TokenSubmenuE
+{
+  Submenu("Select Token",(
+   ("Eldrazi Spawn 0/1 (C)","",'Send("Transfer",(1,("out.of.play",101),("play",0)))'),
+   ("Elemental 1/1 (R, haste)","",'Send("Transfer",(1,("out.of.play",29),("play",0)))'),
+   ("Elemental 2/2 (U, flying)","",'Send("Transfer",(1,("out.of.play",30),("play",0)))'),
+   ("Elemental 3/1 (R, haste)","",'Send("Transfer",(1,("out.of.play",31),("play",0)))'),
+   ("Elemental 3/3 (R)","",'Send("Transfer",(1,("out.of.play",32),("play",0)))'),
+   ("Elemental 4/4 (G)","",'Send("Transfer",(1,("out.of.play",33),("play",0)))'),
+   ("Elemental 4/4 (W, flying)","",'Send("Transfer",(1,("out.of.play",34),("play",0)))'),
+   ("Elemental 5/5 (BR)","",'Send("Transfer",(1,("out.of.play",35),("play",0)))'),
+   ("Elemental 5/5 (UR, flying)","",'Send("Transfer",(1,("out.of.play",36),("play",0)))'),
+   ("Elemental 7/1 (R, trample, haste)","",'Send("Transfer",(1,("out.of.play",114),("play",0)))'),
+   ("Elemental 7/7 (G, trample)","",'Send("Transfer",(1,("out.of.play",37),("play",0)))'),
+   ("Elemental */* (G)","",'Send("Transfer",(1,("out.of.play",38),("play",0)))'),
+   ("Elemental */* (R)","",'Send("Transfer",(1,("out.of.play",102),("play",0)))'),
+   ("Elemental Shaman 3/1 (R)","",'Send("Transfer",(1,("out.of.play",39),("play",0)))'),
+   ("Elephant 3/3 (G)","",'Send("Transfer",(1,("out.of.play",40),("play",0)))'),   
+   ("Elf Warrior 1/1 (G)","",'Send("Transfer",(1,("out.of.play",41),("play",0)))'),
+   ("Elf Warrior 1/1 (GW)","",'Send("Transfer",(1,("out.of.play",42),("play",0)))'),
+  ));
+}
+
+def TokenSubmenuF
+{
+  Submenu("Select Token",(
+   ("Faerie 1/1 (U, flying)","",'Send("Transfer",(1,("out.of.play",43),("play",0)))'),
+   ("Faerie Rogue 1/1 (B, flying)","",'Send("Transfer",(1,("out.of.play",44),("play",0)))'),
+   ("Faerie Rogue 1/1 (BU, flying)","",'Send("Transfer",(1,("out.of.play",45),("play",0)))'),
+  ));
+}
+
+def TokenSubmenuG 
+{
+  Submenu("Select Token",(
+   ("Gargoyle 3/4 (A, flying)","",'Send("Transfer",(1,("out.of.play",115),("play",0)))'),
+   ("Germ 0/0 (B)","",'Send("Transfer",(1,("out.of.play",103),("play",0)))'),
+   ("Giant Warrior 4/4 (GR, haste)","",'Send("Transfer",(1,("out.of.play",46),("play",0)))'),
+   ("Giant Warrior 5/5 (W)","",'Send("Transfer",(1,("out.of.play",47),("play",0)))'),
+   ("Goat 0/1 (W)","",'Send("Transfer",(1,("out.of.play",48),("play",0)))'),
+   ("Goblin 1/1 (R)","",'Send("Transfer",(1,("out.of.play",49),("play",0)))'),
+   ("Goblin Rogue 1/1 (B)","",'Send("Transfer",(1,("out.of.play",50),("play",0)))'),   
+   ("Goblin Soldier 1/1 (RW)","",'Send("Transfer",(1,("out.of.play",51),("play",0)))'),
+   ("Goblin Warrior 1/1 (GR)","",'Send("Transfer",(1,("out.of.play",52),("play",0)))'),
+   ("Golem 3/3 (A)","",'Send("Transfer",(1,("out.of.play",104),("play",0)))'),
+   ("Golem 9/9 (A)","",'Send("Transfer",(1,("out.of.play",105),("play",0)))'),
+   ("Griffin 2/2 (W, flying)","",'Send("Transfer",(1,("out.of.play",116),("play",0)))'),
+  ));
+}
+
+def TokenSubmenuH 
+{
+  Submenu("Select Token",(
+   ("Hellion 4/4 (R)","",'Send("Transfer",(1,("out.of.play",106),("play",0)))'),
+   ("Hippo 1/1 (G)","",'Send("Transfer",(1,("out.of.play",53),("play",0)))'),
+   ("Homunculus 0/1 (A)","",'Send("Transfer",(1,("out.of.play",54),("play",0)))'),
+   ("Horror 4/4 (B)","",'Send("Transfer",(1,("out.of.play",55),("play",0)))'),
+   ("Horror */* (C)","",'Send("Transfer",(1,("out.of.play",107),("play",0)))'),
+  ));
+}
+
+def TokenSubmenuI 
+{
+  Submenu("Select Token",(
+   ("Illusion 1/1 (U, flying)","",'Send("Transfer",(1,("out.of.play",56),("play",0)))'),
+   ("Illusion 2/2 (U)","",'Send("Transfer",(1,("out.of.play",117),("play",0)))'),
+   ("Insect 1/1 (G)","",'Send("Transfer",(1,("out.of.play",57),("play",0)))'),
+   ("Insect 1/1 (G, infect)","",'Send("Transfer",(1,("out.of.play",118),("play",0)))'),
+  ));
+}
+
+def TokenSubmenuK 
+{
+  Submenu("Select Token",(
+   ("Kaldra 4/4 (C)","",'Send("Transfer",(1,("out.of.play",58),("play",0)))'),
+   ("Kavu 3/3 (B)","",'Send("Transfer",(1,("out.of.play",59),("play",0)))'),
+   ("Kithkin Soldier 1/1 (W)","",'Send("Transfer",(1,("out.of.play",60),("play",0)))'),   
+   ("Knight 2/2 (W, first strike)","",'Send("Transfer",(1,("out.of.play",61),("play",0)))'),
+   ("Kor Soldier 1/1 (W)","",'Send("Transfer",(1,("out.of.play",119),("play",0)))'),   
+  ));
+}
+
+def TokenSubmenuL 
+{
+  Submenu("Select Token",(
+   ("Lizard 2/2 (G)","",'Send("Transfer",(1,("out.of.play",62),("play",0)))'),
+  ));
+}
+
+def TokenSubmenuM 
+{
+  Submenu("Select Token",(
+   ("Marit Lage 20/20 (B)","",'Send("Transfer",(1,("out.of.play",63),("play",0)))'),
+   ("Merfolk 1/1 (U)","",'Send("Transfer",(1,("out.of.play",120),("play",0)))'),
+   ("Merfolk Wizard 1/1 (U)","",'Send("Transfer",(1,("out.of.play",64),("play",0)))'),
+   ("Myr 1/1 (A)","",'Send("Transfer",(1,("out.of.play",65),("play",0)))'),
+  ));
+}
+
+def TokenSubmenuO 
+{
+  Submenu("Select Token",(
+   ("Ogre 3/3 (R)","",'Send("Transfer",(1,("out.of.play",108),("play",0)))'),
+   ("Ooze */* (G)","",'Send("Transfer",(1,("out.of.play",66),("play",0)))'),
+  ));
+}
+
+def TokenSubmenuP 
+{
+  Submenu("Select Token",(
+   ("Pentavite 1/1 (A, flying)","",'Send("Transfer",(1,("out.of.play",67),("play",0)))'),
+   ("Pest 0/1 (A)","",'Send("Transfer",(1,("out.of.play",68),("play",0)))'),
+   ("Pincher 2/2 (A)","",'Send("Transfer",(1,("out.of.play",69),("play",0)))'),
+   ("Plant 0/1 (G)","",'Send("Transfer",(1,("out.of.play",109),("play",0)))'),
+  ));
+}
+
+def TokenSubmenuR 
+{
+  Submenu("Select Token",(
+   ("Rat 1/1 (B)","",'Send("Transfer",(1,("out.of.play",70),("play",0)))'),
+   ("Reflection */* (W)","",'Send("Transfer",(1,("out.of.play",71),("play",0)))'),   
+   ("Rukh 4/4 (R, flying)","",'Send("Transfer",(1,("out.of.play",72),("play",0)))'),
+  ));
+}
+
+def TokenSubmenuS 
+{
+  Submenu("Select Token",(
+   ("Saproling 1/1 (G)","",'Send("Transfer",(1,("out.of.play",73),("play",0)))'),
+   ("Shapeshifter 1/1 (C, changeling)","",'Send("Transfer",(1,("out.of.play",74),("play",0)))'),
+   ("Skeleton 1/1 (B)","",'Send("Transfer",(1,("out.of.play",75),("play",0)))'),
+   ("Sliver 1/1 (A)","",'Send("Transfer",(1,("out.of.play",76),("play",0)))'),
+   ("Snake 1/1 (G)","",'Send("Transfer",(1,("out.of.play",77),("play",0)))'),
+   ("Snake 1/1 (UG)","",'Send("Transfer",(1,("out.of.play",78),("play",0)))'),
+   ("Soldier 1/1 (W)","",'Send("Transfer",(1,("out.of.play",79),("play",0)))'),
+   ("Soldier Ally 1/1 (W)","",'Send("Transfer",(1,("out.of.play",110),("play",0)))'),
+   ("Spawn 2/2 (A)","",'Send("Transfer",(1,("out.of.play",80),("play",0)))'),
+   ("Spider 1/2 (G, reach)","",'Send("Transfer",(1,("out.of.play",81),("play",0)))'),   
+   ("Spirit 1/1 (C)","",'Send("Transfer",(1,("out.of.play",82),("play",0)))'),
+   ("Spirit 1/1 (BW, flying)","",'Send("Transfer",(1,("out.of.play",83),("play",0)))'),
+   ("Spirit 1/1 (W, flying)","",'Send("Transfer",(1,("out.of.play",84),("play",0)))'),
+   ("Squirrel 1/1 (G)","",'Send("Transfer",(1,("out.of.play",85),("play",0)))'),
+  ));
+}
+
+def TokenSubmenuT 
+{
+  Submenu("Select Token",(
+   ("Thopter 1/1 (AU, flying)","",'Send("Transfer",(1,("out.of.play",86),("play",0)))'),
+   ("Thopter 1/1 (A, flying)","",'Send("Transfer",(1,("out.of.play",111),("play",0)))'),
+   ("Thrull 0/1 (B)","",'Send("Transfer",(1,("out.of.play",87),("play",0)))'),
+   ("Treefolk Shaman 2/5 (G)","",'Send("Transfer",(1,("out.of.play",88),("play",0)))'),
+   ("Tuktuk, the Returned 5/5 (A)","",'Send("Transfer",(1,("out.of.play",121),("play",0)))'),
+   ("Twin 3/4 (A)","",'Send("Transfer",(1,("out.of.play",89),("play",0)))'),
+  ));
+}
+
+def TokenSubmenuU 
+{
+  Submenu("Select Token",(
+   ("Urami 5/5 (B)","",'Send("Transfer",(1,("out.of.play",90),("play",0)))'),
+  ));
+}
+
+def TokenSubmenuV 
+{
+  Submenu("Select Token",(
+   ("Vampire */* (B)","",'Send("Transfer",(1,("out.of.play",122),("play",0)))'),
+   ("Voja 2/2 (GW)","",'Send("Transfer",(1,("out.of.play",91),("play",0)))'),   
+  ));
+}
+
+def TokenSubmenuW 
+{
+  Submenu("Select Token",(
+   ("Warrior 1/1 (R)","",'Send("Transfer",(1,("out.of.play",92),("play",0)))'),
+   ("Wasp 1/1 (A, flying)","",'Send("Transfer",(1,("out.of.play",93),("play",0)))'),
+   ("Wolf 2/2 (G)","",'Send("Transfer",(1,("out.of.play",94),("play",0)))'),
+   ("Worm 1/1 (BG)","",'Send("Transfer",(1,("out.of.play",95),("play",0)))'),
+   ("Wurm 3/3 (A, deathouch)","",'Send("Transfer",(1,("out.of.play",123),("play",0)))'),
+   ("Wurm 3/3 (A, lifelink)","",'Send("Transfer",(1,("out.of.play",124),("play",0)))'),
+   ("Wurm 6/6 (B, Trample)","",'Send("Transfer",(1,("out.of.play",96),("play",0)))'),
+   ("Wurm 6/6 (G)","",'Send("Transfer",(1,("out.of.play",97),("play",0)))'),
+  ));
+}
+
+def TokenSubmenuZ 
+{
+  Submenu("Select Token",(
+   ("Zombie 2/2 (B)","",'Send("Transfer",(1,("out.of.play",98),("play",0)))'),
+   ("Zombie Giant 5/5 (B)","",'Send("Transfer",(1,("out.of.play",125),("play",0)))'),
+   ("Zombie Wizard 1/1 (BU)","",'Send("Transfer",(1,("out.of.play",99),("play",0)))'),
+  ));
+}
+
+#
+# PlaySideboardMenu() - Generate menu for sideboard.
+#
+def PlaySideboardMenu
+{
+  Menu("Sideboard",(
+   ("Look at your sideboard","left click",""),
+  ));
+}
+
+#
+# PlayExileMenu() - Generate menu for exile.
+#
+def PlayExileMenu
+{
+  Menu("Exile",(
+   ("Look","Ctrl+L",'PlayKeyControlKeyL()'),
+   ("Reveal/Hide pile","Ctrl+F",'PlayKeyControlKeyF()'),
+   ("Touch","Ctrl+T",'PlayKeyControlKeyT()'),
+  ));
+}
+
+# SPECIAL KEYS
+# ============
+
+#
+# KeyShiftControlKeyX() - Put a card to exile.
+#
+def KeyControlKeyX
+{
+    TryTransferTo('deck.top',deck.objects[me]{'exile'});
+}
+
+#
+# KeyShiftControlKeyR() - Produce {R}.
+#
+def KeyShiftControlKeyR
+{
+    Input("{R}");
+}
+#
+# KeyShiftControlKeyG() - Produce {G}.
+#
+def KeyShiftControlKeyG
+{
+    Input("{G}");
+}
+#
+# KeyShiftControlKeyB() - Produce {B}.
+#
+def KeyShiftControlKeyB
+{
+    Input("{B}");
+}
+#
+# KeyShiftControlKeyU() - Produce {U}.
+#
+def KeyShiftControlKeyU
+{
+    Input("{U}");
+}
+#
+# KeyShiftControlKeyW() - Produce {W}.
+#
+def KeyShiftControlKeyW
+{
+    Input("{W}");
+}
+#
+# KeyShiftControlKeyC() - Produce {1}.
+#
+def KeyShiftControlKeyC
+{
+    Input("{1}");
+}
+
+#
+# KeyShiftControlKey0() - Produce {0}.
+#
+def KeyShiftControlKey0
+{
+    Input("{0}");
+}
+
+#
+# KeyShiftControlKeyT() - Produce {T}.
+#
+def KeyShiftControlKeyT
+{
+    Input("{T}");
+}
+
+#
+# KeyShiftControlKeyI() - Produce {UT}.
+#
+def KeyShiftControlKeyI
+{
+    Input("{UT}");
+}
+
+#
+# KeyShiftControlKeyX() - Produce {X}.
+#
+def KeyShiftControlKeyX
+{
+    Input("{X}");
+}
+
+#
+# KeyShiftControlKeyY() - Produce {Y}.
+#
+def KeyShiftControlKeyY
+{
+    Input("{Y}");
+}
+
+#
+# KeyShiftControlKeyZ() - Produce {Z}.
+#
+def KeyShiftControlKeyZ
+{
+    Input("{Z}");
+}
+
+
+#
+# PlayKeyControlKeyI() - Imprint.
+#
+def PlayKeyControlKeyI
+{
+  if(card.number!=NULL)
+  {
+    imprint=1;
+    Say("{orange}Imprint/Equip...");
+    TryTransferTo("play",card.number==0);
+  }
+}
+
+#
+# HOOKS
+# =====
+
+#
+# AddInputHook(left input,right input,string) - Called when a string
+#   is about to be added to the input line.
+#   This hook must add a string to the current input line and return the whole input line.
+# 
+def AddInputHook
+{
+  if(ARG[2]=="{1}")
+  {
+    push(i);
+    i=right(ARG[0],3);
+    if(length(i)==3 && first(i)=="{" && last(i)=="}" && count(substr(i,1,1),("1","2","3","4","5","6","7","8")))
+      return(left(ARG[0],length(ARG[0])-3)+"{"+(toint(substr(i,1,1))+1)+"}{|}"+ARG[1]);
+    else
+      return(ARG[0]+ARG[2]+"{|}"+ARG[1]);
+    
+    i=pop();
+  }
+  else
+    return(ARG[0]+ARG[2]+"{|}"+ARG[1]);
+}
+
+# 
+# InputHook(input) - This hook is called when the enter key is pressed and
+#   the current input line is not going to be a pricing command. This
+#   hook should return 1, if it handles the input or 0, if default handler
+#   should be used instead.
+#
+def InputHook
+{
+  return(0);
+  if(flag.playing)
+  {
+    push(s);
+    push(d);
+
+    d=NULL;
+    s=toint(score[me]);
+
+    if(left(ARG,1)=="-" && tostr(toint(ARG))==ARG)
+      d=toint(ARG);
+    else if(left(ARG,1)=="+" && tostr(toint(substr(ARG,1)))==substr(ARG,1))
+      d=toint(substr(ARG,1));
+    else if(tostr(toint(ARG))==ARG)
+      d=toint(ARG)-s;
+
+    if(d != NULL)
+    {
+      s=s+d;
+      Send("Score",(me,s));
+    
+      if(d >= 0)
+        d="+"+d;
+      Say("{orange}Current life ("+d+") : "+s);
+
+      return(1);
+    }
+
+    d=pop();
+    s=pop();
+  }
+}
+
+#
+# MessageHook(string) - Called before output when a message is
+#  received. This hook should return the modified message.
+#
+def MessageHook
+{
+  return(ARG);
+}
+
+#
+#  CreateDeckHook(object num,owner player,name,(x,y)) - This hook is
+#    called after creation of a deck.
+#
+def CreateDeckHook
+{
+  if(ARG[2]=="sideboard" || ARG[2]=="opponent sideboard")
+  {
+    set_attr(ARG[0],"visible",0);
+    if(ARG[1]==me)
+      sideboard=ARG[0];
+  }
+}
+
+#
+# PutTableHook() - Clear imprint flag.
+#
+def PutTableHook
+{
+  imprint=0;
+}
+
+#
+# SingleCardMenuHook(context) - added to menu for a single card.
+#
+def SingleCardMenuHook
+{
+  return(("Put to exile","Ctrl+X","TryTransferTo('deck.top',deck.objects[me]{'exile'})"),
+("Put to sideboard","","TryTransferTo('deck.top',deck.objects[me]{'sideboard'})"),);
+}
+
+#
+# UntapHook(object number) - Return 1 if card shoud be untapped using Ctrl+U.
+#
+def UntapHook
+{
+  if((card_data(ARG))[1]==270)
+  {
+    Send("Rotate",(ARG,180));
+    return(0);
+  }
+  else if((card_data(ARG))[1]==180)
+    return(0);
+  else if((card_data(ARG))[1]!=0)
+    return(1);
+}
+
+#
+# KeyControlKeyH() - Handler for key Control+H.
+#
+def KeyControlKeyH
+{
+  push(c);
+  c=CheckForCard();
+  if(c==NULL)
+  {
+    if(object.number)
+      Msg("This is "+object_name(object.number)+".");
+  }
+  else
+  {
+    if(card_back(c) != c)
+    {
+      push(b);
+      push(s);
+      push(set);
+      push(rarity);
+      push(cost);
+      push(color);
+      push(type);
+      push(subtype);
+      push(power);
+      push(toughness);
+      push(loyalty);
+      push(flipname);
+      push(fliptext);
+      push(flipcolor);
+      push(fliptype);
+      push(flipsubtype);
+      push(flippower);
+      push(fliptoughness);
+      
+      
+      Msg("{hr}");
+            
+      s="";           
+      set="";
+      rarity="";
+      cost="";
+      color="";
+      type="";
+      subtype="";
+      power="";
+      toughness="";
+      loyalty="";
+      flipname="";
+      fliptext="";
+      flipcolor="";
+      fliptype="";
+      flipsubtype="";
+      flippower="";
+      fliptoughness="";
+      
+      for(b)((("set",set_of(c)),)+attrs(c))
+      {
+        if(b[1]!="")
+        {
+        	if(b[0]=="set")
+        		set="{yellow}Set:{white} "+ L(b[1]) + "   ";
+        	else if(b[0]=="rarity")
+        		rarity="{yellow}Rarity:{white} "+ L(b[1]) + "   ";
+        	else if(b[0]=="cost")
+        		cost="{yellow}Cost:{white} "+ L(b[1]) + "  ";
+        	else if(b[0]=="color")
+        		color="{yellow}Color:{white} "+ L(b[1]) + "   ";
+        	else if(b[0]=="type")
+        		type="{yellow}Type:{white} "+ L(b[1]) + " ";
+        	else if(b[0]=="subtype")
+        		subtype="- "+ L(b[1]) + "   ";
+        	else if(b[0]=="power")
+        		power="{yellow}Power/Toughness:{white} "+ L(b[1]) + "/";
+        	else if(b[0]=="toughness")
+        		toughness=L(b[1]) + "   ";
+        	else if(b[0]=="loyalty")
+        		loyalty="{yellow}Loyalty:{white} "+ L(b[1]) + " ";
+            else if(b[0]=="flipname")
+        		flipname=L(b[1]);
+            else if(b[0]=="fliptext")
+        		fliptext=L(b[1]);
+           	else if(b[0]=="flipcolor")
+        		flipcolor="{yellow}FlipColor:{white} "+ L(b[1]) + "   ";
+        	else if(b[0]=="fliptype")
+        		fliptype="{yellow}FlipType:{white} "+ L(b[1]) + " ";
+        	else if(b[0]=="flipsubtype")
+        		flipsubtype="- "+ L(b[1]) + "   ";
+        	else if(b[0]=="flippower")
+        		flippower="{yellow}FlipPower/Toughness:{white} "+ L(b[1]) + "/";
+        	else if(b[0]=="fliptoughness")
+        		fliptoughness=L(b[1]) + "   ";
+        	else
+        		s="";        	
+        }
+      }
+      
+      Msg("{sz20}{yellow}"+name(c)+"{sz12}");
+      Msg(set + rarity + cost + color);
+      Msg(text(c));
+      Msg(type + subtype + power + toughness + loyalty);
+      Msg("{sz15}{yellow}"+flipname+"{sz12}");
+      Msg(fliptext);
+      Msg(flipcolor + fliptype + flipsubtype + flippower + fliptoughness);
+
+
+      flipname=pop();
+      fliptext=pop();
+      flipcolor=pop();
+      fliptype=pop();
+      flipsubtype=pop();
+      flippower=pop();
+      fliptoughness=pop();
+      set=pop();
+      rarity=pop();
+      cost=pop();
+      color=pop();
+      type=pop();
+      subtype=pop();
+      power=pop();
+      toughness=pop();
+      loyalty=pop();
+      s=pop();
+      b=pop();
+    }
+    else
+      Msg("This is "+object_name(object.number)+".");
+  }
+
+  c=pop();
+}
+
+# PLAYING CARDS
+# =============
+
+#
+# PlaySorcery(card number,is face down?) - Play a sorcery card.
+#
+def PlaySorcery
+{
+  if(imprint==1)
+  {
+    PlayCard(ARG);
+    imprint=0;
+  }
+  else
+  {
+    PlayCard(ARG);
+  }
+}
+
+
+#
+# PlayInstant(card number,is face down?) - Play an instant card.
+#
+def PlayInstant
+{
+  PlaySorcery(ARG);
+}
+
+#
+# OBSOLETE!!!
+#
+# PlayInterrupt(card number,is face down?) - Play an interrupt card.
+#
+#def PlayInterrupt
+#{
+#  PlaySorcery(ARG);
+#}
+
+#
+# LOCATION TABLES
+# ===============
+
+#
+# InitializeLocationTables() - Fill tables for location algorithm.
+#
+def InitializeLocationTables
+{
+
+# This table maps a card number 'card' to the correct location
+# category. The category is a list of one or more strings, specifying
+# the category in the order of precedence: the most general one is the
+# first. The entries of the table are checked in the order declared
+# and the first component of an entry is evaluated. If the result of
+# the evaluation is non-zero, then the second entry is evaluated and
+# the result is set as the category of the card. In addition to the
+# variable 'card', all variables mentioned as
+#             <trigger event="location hint" atribute="var"> 
+# in the game xml-file, is preset to the corresponding values of the
+# card in question. If no one of the rules matches, the value
+# ("Default",) is selected as a category. The first component of the
+# category description is called as a primary category, the second one
+# is called as a group and third as a subgroup.
+#
+# Hera are some preset variables to use:
+#
+# findspace.facedown - face down status set for last FindSpace request
+# findspace.orientation - orientation set for last FindSpace request
+
+rules.category=(
+  (
+	'imprint==1','("attach","imprint")'
+  ),
+  (
+	'findspace.facedown','("permanent","")'
+  ),
+  (
+	'find("Land",type)!=NULL','("land",name(card))'
+  ),
+  (
+	'type=="Enchantment"','("permanent",name(card))'
+  ),
+  (
+	'type=="World Enchantment"','("wenchantment","")'
+  ),
+  (
+	'type=="Sorcery" || type=="Instant" || type=="Instant // Instant" || type=="Instant // Sorcery" || type=="Sorcery // Instant" || type=="Sorcery // Sorcery" || type=="Tribal Sorcery" || type=="Tribal Instant"','("spell","")'
+  ),
+  (
+	'1','("permanent",name(card))'
+  )
+);
+
+# This table maps categories to coordinate rules.
+# Entries are (category part,rules), where
+#  - 'category part' must match to the beginning of the full catergory description
+#  - 'rules' is a list containing (coordinate mappings, options) pairs
+#    - coordinate mappings is a list of functions and arguments to try in the defined order
+#      following functions are implemented:
+#		Stack card by group
+#       ("StacksByGroup",x,y,xoffset,yoffset,stack x-step,stack y-step)
+#       ("LocationList",((x1,y1),(x2,y2),...))
+#       ("FindOtherCard",select expression,xoffset,yoffset)
+#		Place card in random position near position <x,y>
+#       ("RandomNearPoint",x,y)
+#		Attach to card
+#       ("TargetCard",xoffset,yoffset,xsuboffset,ysuboffset)
+#       ("Default",)
+#    - options is a dictionary with following usable entries:
+#       "AutoRaiseGroupTail" if "yes", raise all cards automatically with greater card index
+#       "RaiseTarget", if "yes" raise target card after attaching in method "TargetCard"
+#       "RaiseSource", if "yes" raise source card before attaching in method "TargetCard"
+#       "ReverseAttach", if "yes" attach cards vice versa in method "TargetCard"
+#       "OffscreenEnabled" if "yes", allow cards to go out of screen
+# Following variables are set when calling function implementing a rule:
+#   findspace.category - category of a card
+#   findspace.group - group of a card
+#   findspace.options - options for current rule
+#   findspace.card - card number of the card
+#     (("StacksByGroup",8*(card.xstep+10)-36,36,-24,12,0,0),),
+
+
+rules.coordinate=(
+  (("land",),(
+     (("StacksByGroup",90,card.ystep+48,6,12,card.xstep+10,0),),
+     (("OffscreenEnabled","yes"),),
+     (("AutoRaiseGroupTail","yes"),)
+  )),
+  (("permanent",),(
+     (("StacksByGroup",90,8,6,12,card.xstep+10,0),),
+     (("AutoRaiseGroupTail","yes"),)
+  )),
+  (("wenchantment",),(
+     (("StacksByGroup",8*(card.xstep+10),12,6,12,card.xstep+10,0),),
+     (("AutoRaiseGroupTail","yes"),)
+  )),
+  (("spell",),(
+     (("StacksByGroup",5*(card.xstep),36,24,0,0,0),),
+     (("AutoRaiseGroupTail","yes"),)
+  )),
+  (("attach",),(
+     (("TargetCard",0,-h(15),0,-h(15)),),
+     (,)
+  )),
+);
+
+# This table contains grouping information of the cards
+# currently on table:
+#
+# card.group{primary category}{group}=(group index,list of object numbers,initial coordinates)
+#
+# - group index is id number of each (primary category, group) pair
+# - list of object numbers may contain "free" entries denoting removed cards
+#   and "reserved" entries denoting cards that are coming to play soon
+# - initial coordinates are positions of top left corner of cards
+}
