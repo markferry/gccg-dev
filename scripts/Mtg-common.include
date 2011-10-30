@@ -54,13 +54,13 @@ def TribalLegal
     return(0);
   else
   {
-    if(TRIBAL_COUNT==NULL)
+    if(!isdict(TRIBAL_COUNT))
     {
       TRIBAL_COUNT=(,);
   
       for(t)(flatten(forall("split(#,' ')",Attr('subtype',cards())-("",))))
       {
-          if(TRIBAL_COUNT{t}==NULL)
+          if(!has_entry(t,TRIBAL_COUNT))
             TRIBAL_COUNT{t}=1;
           else
             TRIBAL_COUNT{t}=TRIBAL_COUNT{t}+1;
@@ -79,11 +79,12 @@ def TribalLegal
 def CreateTypeLegalTable
 {
   push(s);
-  if(TYPE_LEGAL==NULL)
+  lasttype=ARG;
+  if(!isdict(TYPE_LEGAL))
     TYPE_LEGAL=(,);
-  if(TYPE_LEGAL{ARG}==NULL)
+  if(!has_entry(ARG,TYPE_LEGAL))
   {
-    TYPE_LEGAL{ARG}=(,);
+    TYPE_LEGAL{ARG}=copy(-1,last(cards())+1);
     genlimit = 0;
     for(r)(deck_rules{ARG}{""})
     {
@@ -91,7 +92,7 @@ def CreateTypeLegalTable
       {
         s=set_data(r[1][0]);
         for(c)(seq(s[1],s[2]))
-          TYPE_LEGAL{ARG}{c}=r[1][1];
+          TYPE_LEGAL{ARG}[c]=r[1][1];
       }
       if(r[0]=="RuleCardSets" || r[0]=="RuleAllowedSetsReprint")
       {
@@ -103,38 +104,41 @@ def CreateTypeLegalTable
         }
         
         for(c)(s)
-          TYPE_LEGAL{ARG}{c}=last(r[1]);
+          TYPE_LEGAL{ARG}[c]=last(r[1]);
       }
       else if(r[0]=="RuleCardLimitSingle")
       {
         for(c)(images(r[1][0]))
-          TYPE_LEGAL{ARG}{c}=r[1][1];
+          TYPE_LEGAL{ARG}[c]=r[1][1];
       }
       else if(r[0]=="RuleCardLimitEach")
       {
         for(c)(flatten(images(head(r[1]))))
-          TYPE_LEGAL{ARG}{c}=last(r[1]);
+          TYPE_LEGAL{ARG}[c]=last(r[1]);
       }
       else if(r[0]=="RuleCardLimitAny")
       {
         for(c)(images(r[1]))
-          TYPE_LEGAL{ARG}{c}=999;
+          TYPE_LEGAL{ARG}[c]=999;
       }
       else if(r[0]=="RuleLimitEachByExpression")
 # || (r[0]=="RuleLimitByExpression" && r[1][0] < 2))
       {
         for(c)(select(r[1][1],cards()))
-          TYPE_LEGAL{ARG}{c}=r[1][0];
+          TYPE_LEGAL{ARG}[c]=r[1][0];
       }
       else if(r[0]=="RuleCardLimitGeneral")
       {
         genlimit = r[1];
       }
     }
-    for(c)(cards())
+    if(genlimit)
     {
-      if(TYPE_LEGAL{ARG}{c}==NULL)
-        TYPE_LEGAL{ARG}{c}=genlimit;
+      for(c)(cards())
+      {
+        if(TYPE_LEGAL{ARG}[c] < 0)
+          TYPE_LEGAL{ARG}[c]=genlimit;
+      }
     }
   }
   s=pop();
@@ -145,8 +149,8 @@ def CreateTypeLegalTable
 #
 def TypeLegal
 {
-  CreateTypeLegalTable(ARG[0]);
-  return(TYPE_LEGAL{ARG[0]}{ARG[1]});
+  if(lasttype != ARG[0]) CreateTypeLegalTable(ARG[0]);
+  return(TYPE_LEGAL{ARG[0]}[ARG[1]] > 0);
 }
 
 #

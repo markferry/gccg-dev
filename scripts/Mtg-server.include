@@ -19,6 +19,9 @@ screen.height=768;
 port=29200;
 meta.port=29100;
 
+if(server.name=="NO.DEFAULT.SERVER.FOR.THIS.GAME")
+  server.name="gccgmeta.sytes.net";
+
 #
 # GAME SPECIFIC FUNCTIONS
 # =======================

@@ -54,119 +54,10 @@ rarity.display{"M"}="{red}";
 rarity.display{"P"}="{154,77,154}";
 rarity.display{"S"}="{154,77,154}";
 
+# Products following default naming scheme are now handled automatically, so only exceptional cases need listing here
 product.image=(,);
 product.image{"Limited Edition Beta booster"}="Beta_booster.jpg";
 product.image{"Limited Edition Beta starter"}="Beta_starter.jpg";
-product.image{"Arabian Nights booster"}="AN_booster.jpg";
-product.image{"Antiquities booster"}="AQ_booster.jpg";
-product.image{"Legends booster"}="LG_booster.jpg";
-product.image{"The Dark booster"}="DK_booster.jpg";
-product.image{"Fallen Empires booster"}="FE_booster.jpg";
-product.image{"Ice Age booster"}="IA_booster.jpg";
-product.image{"Ice Age starter"}="IA_starter.jpg";
-product.image{"Homelands booster"}="HL_booster.jpg";
-product.image{"Alliances booster"}="AL_booster.jpg";
-product.image{"Mirage booster"}="MI_booster.jpg";
-product.image{"Mirage starter"}="MI_starter.jpg";
-product.image{"Visions booster"}="VI_booster.jpg";
-product.image{"Weatherlight booster"}="WL_booster.jpg";
-product.image{"Tempest booster"}="TE_booster.jpg";
-product.image{"Tempest starter"}="TE_starter.jpg";
-product.image{"Stronghold booster"}="SH_booster.jpg";
-product.image{"Exodus booster"}="EX_booster.jpg";
-product.image{"Urza's Saga starter"}="US_starter.jpg";
-product.image{"Urza's Saga booster"}="US_booster.jpg";
-product.image{"Urza's Legacy booster"}="UL_booster.jpg";
-product.image{"Urza's Destiny booster"}="UD_booster.jpg";
-product.image{"Mercadian Masques starter"}="MM_starter.jpg";
-product.image{"Mercadian Masques booster"}="MM_booster.jpg";
-product.image{"Nemesis booster"}="NE_booster.jpg";
-product.image{"Prophecy booster"}="PY_booster.jpg";
-product.image{"Invasion starter"}="IN_starter.jpg";
-product.image{"Invasion booster"}="IN_booster.jpg";
-product.image{"Planeshift booster"}="PS_booster.jpg";
-product.image{"Apocalypse booster"}="AP_booster.jpg";
-product.image{"Odyssey starter"}="OD_starter.jpg";
-product.image{"Odyssey booster"}="OD_booster.jpg";
-product.image{"Mercadian Masques starter"}="MM_starter.jpg";
-product.image{"Mercadian Masques booster"}="MM_booster.jpg";
-product.image{"Nemesis booster"}="NE_booster.jpg";
-product.image{"Prophecy booster"}="PY_booster.jpg";
-product.image{"Invasion starter"}="IN_starter.jpg";
-product.image{"Invasion booster"}="IN_booster.jpg";
-product.image{"Planeshift booster"}="PS_booster.jpg";
-product.image{"Apocalypse booster"}="AP_booster.jpg";
-product.image{"Odyssey starter"}="OD_starter.jpg";
-product.image{"Odyssey booster"}="OD_booster.jpg";
-product.image{"Torment booster"}="TO_booster.jpg";
-product.image{"Judgment booster"}="JD_booster.jpg";
-product.image{"Onslaught starter"}="ON_starter.jpg";
-product.image{"Onslaught booster"}="ON_booster.jpg";
-product.image{"Legions booster"}="LE_booster.jpg";
-product.image{"Scourge booster"}="SC_booster.jpg";
-product.image{"Mirrodin starter"}="MR_starter.jpg";
-product.image{"Mirrodin booster"}="MR_booster.jpg";
-product.image{"Fourth Edition starter"}="4E_starter.jpg";
-product.image{"Fourth Edition booster"}="4E_booster.jpg";
-product.image{"Fifth Edition starter"}="5E_starter.jpg";
-product.image{"Fifth Edition booster"}="5E_booster.jpg";
-product.image{"Sixth Edition starter"}="6E_starter.jpg";
-product.image{"Sixth Edition booster"}="6E_booster.jpg";
-product.image{"Seventh Edition booster"}="7E_booster.jpg";
-product.image{"Seventh Edition starter"}="7E_starter.jpg";
-product.image{"Eighth Edition booster"}="8E_booster.jpg";
-product.image{"Eighth Edition starter"}="8E_starter.jpg";
-product.image{"Ninth Edition booster"}="9E_booster.jpg";
-product.image{"Ninth Edition starter"}="9E_starter.jpg";
-product.image{"Revised Edition starter"}="RV_starter.jpg";
-product.image{"Revised Edition booster"}="RV_booster.jpg";
-product.image{"Darksteel booster"}="DS_booster.jpg";
-product.image{"Fifth Dawn booster"}="FD_booster.jpg";
-product.image{"Champions of Kamigawa starter"}="CK_starter.jpg";
-product.image{"Champions of Kamigawa booster"}="CK_booster.jpg";
-product.image{"Unhinged booster"}="UH_booster.jpg";
-product.image{"Betrayers of Kamigawa booster"}="BK_booster.jpg";
-product.image{"Portal booster"}="P1_booster.jpg";
-product.image{"Portal Second Age booster"}="P2_booster.jpg";
-product.image{"Portal Three Kingdoms booster"}="P3_booster.jpg";
-product.image{"Saviors of Kamigawa booster"}="SK_booster.jpg";
-product.image{"Ravnica: City of Guilds starter"}="RA_starter.jpg";
-product.image{"Ravnica: City of Guilds booster"}="RA_booster.jpg";
-product.image{"Guildpact booster"}="GP_booster.jpg";
-product.image{"Dissension booster"}="DI_booster.jpg";
-product.image{"Coldsnap booster"}="CS_booster.jpg";
-product.image{"Starter 1999 booster"}="S1_booster.jpg";
-product.image{"Unglued booster"}="UG_booster.jpg";
-product.image{"Time Spiral booster"}="TS_booster.jpg";
-product.image{"Time Spiral starter"}="TS_starter.jpg";
-product.image{"Planar Chaos booster"}="PC_booster.jpg";
-product.image{"Future Sight booster"}="FS_booster.jpg";
-product.image{"Tenth Edition booster"}="XE_booster.jpg";
-product.image{"Tenth Edition starter"}="XE_starter.jpg";
-product.image{"Lorwyn booster"}="LRW_booster.jpg";
-product.image{"Lorwyn starter"}="LRW_starter.jpg";
-product.image{"Morningtide booster"}="MOR_booster.jpg";
-product.image{"Shadowmoor starter"}="SM_starter.jpg";
-product.image{"Shadowmoor booster"}="SM_booster.jpg";
-product.image{"Eventide booster"}="EVE_booster.jpg";
-product.image{"Shards of Alara starter"}="ALA_starter.jpg";
-product.image{"Shards of Alara booster"}="ALA_booster.jpg";
-product.image{"Conflux booster"}="CFX_booster.jpg";
-product.image{"Alara Reborn booster"}="ARE_booster.jpg";
-product.image{"Magic 2010 starter"}="M10_starter.jpg";
-product.image{"Magic 2010 booster"}="M10_booster.jpg";
-product.image{"Zendikar booster"}="ZDK_booster.jpg";
-product.image{"Worldwake booster"}="WWK_booster.jpg";
-product.image{"Rise of the Eldrazi booster"}="ROE_booster.jpg";
-product.image{"Magic 2011 booster"}="M11_booster.jpg";
-product.image{"Scars of Mirrodin booster"}="SOM_booster.jpg";
-product.image{"Mirrodin Besieged booster"}="MBS_booster.jpg";
-product.image{"Mirrodin Besieged mirran"}="MBS_mirran.jpg";
-product.image{"Mirrodin Besieged phyrexian"}="MBS_phyrexian.jpg";
-product.image{"New Phyrexia booster"}="NPH_booster.jpg";
-product.image{"Commander starter"}="COM_starter.jpg";
-product.image{"Magic 2012 booster"}="M12_booster.jpg";
-product.image{"Innistrad booster"}="ISD_booster.jpg";
 
 
 game.bindings=(
@@ -267,6 +158,7 @@ FILTER_OPTIONS=(
 
 FILTER_FUNCTIONS=(,);
 FILTER_FUNCTIONS{"mana"}=("i","converted mana cost");
+FILTER_FUNCTIONS{"pt"}=("s","power and toughness");
 
 # FILTERS
 # =======
@@ -289,6 +181,17 @@ def filter_mana
     return(0);
   else
     return(min(apply("mana",split(Attr("cost",ARG),"//"))));
+}
+
+#
+# filter_pt(card number) - Return slash-separated power and toughness.
+#
+def filter_pt
+{
+  if((c=Attr("power",ARG)+"/"+Attr("toughness",ARG)) == "/")
+    return("");
+  else
+    return(c);
 }
 
 # FUNCTIONS

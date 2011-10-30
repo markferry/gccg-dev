@@ -38,10 +38,11 @@
 # Functions:
 #
 # CardsOfSetWithRarity(card numbers,rarity) - Return weighted set of cards with the given rarity
+# FixedSet(set,list of card names) - return fixed set of card numbers.
 # Initialize() - Initialize all tables.
 # InitTables(set abbrev) - initialize card tables for set
 # Log(message) - Print a message with date and time.
-# Produce(type,set) - return "booster" or "starter" of set
+# Produce(type,set,quantity) - return n "boosters" or "starters" of set
 # RandomCardSet(set abbrev,distribution) - return random sample of cards with given distribution
 #
 
@@ -66,13 +67,14 @@ def CardsOfSetWithRarity
 #
 def RandomCardSet
 {
-  push(z);
-  push(b);
-  push(e);
-  return(flatten(forall("b=#; repeat(b[0],'random(cards{ARG[0]}{b[1]})')",ARG[1])));
-  e=pop();
-  b=pop();
-  z=pop();
+  push(d);
+  push(pack);
+  pack=(,);
+  for(d)(ARG[1])
+    pack=pack+left(shuffle(flatten(forall("cards{ARG[0]}{#}",split(d[1],"+")))),d[0]);
+  return(pack);
+  pack=pop();
+  d=pop();
 }
 
 #
@@ -100,18 +102,18 @@ def InitTables
 }
 
 #
-# Produce(set,type) - Return "booster" or "starter" of set.
+# Produce(set,type,quantity) - Return n "boosters" or "starters" of set.
 #
 def Produce
 {
   if(isfunction("Produce"+ucfirst(ARG[1])))
-     return(call("Produce"+ucfirst(ARG[1]),ARG[0]));
+     return(repeat(ARG[2],"call('Produce'+ucfirst(ARG[1]),ARG[0])"));
   else if(isfunction("Produce"+ARG[0]+"_"+ucfirst(ARG[1])))
-     return(call("Produce"+ARG[0]+"_"+ucfirst(ARG[1]),NULL));
+     return(repeat(ARG[2],"call('Produce'+ARG[0]+'_'+ucfirst(ARG[1]),NULL)"));
   else if(has_entry(ARG[0],distribution))
   {
     if(has_entry(ARG[1],distribution{ARG[0]}))
-      return(RandomCardSet(ARG[0],distribution{ARG[0]}{ARG[1]}));
+      return(repeat(ARG[2],"RandomCardSet(ARG[0],distribution{ARG[0]}{ARG[1]},ARG[2])"));
     else
       Log("Invalid product asked: "+ARG[0]+" "+ARG[1]);
   }
