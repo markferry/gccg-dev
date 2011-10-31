@@ -151,8 +151,8 @@ def InitDistributions
   distribution{"CS"}=(,);
   distribution{"CS"}{"booster"}=((11,"C"),(3,"U"),(1,"R"));
   distribution{"TS"}=(,);
-  distribution{"TS"}{"booster"}=((11,"C"),(3,"U"),(1,"R"));
-  distribution{"TS"}{"starter"}=((30,"L+L"),(32,"C"),(10,"U"),(3,"R"));
+  distribution{"TS"}{"booster"}=((10,"C"),(3,"U"),(1,"S"),(1,"R"));
+  distribution{"TS"}{"starter"}=((30,"L+L"),(29,"C"),(10,"U"),(3,"S"),(3,"R"));
   distribution{"PC"}=(,);
   distribution{"PC"}{"booster"}=((11,"C"),(3,"U"),(1,"R"));
   distribution{"FS"}=(,);
