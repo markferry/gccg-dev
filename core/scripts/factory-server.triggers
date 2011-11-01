@@ -72,7 +72,7 @@ trigger "main" "" code
         if(count(c[1],sets()))
         {
           Log("Sending "+c[0]+" "+c[1]+" "+c[2]+"(s)");
-          ret=repeat(c[0],"Produce(c[1],c[2])");
+          ret=Produce(c[1],c[2],c[0]);
           if(count(NULL,ret))
             ret=NULL;
         }

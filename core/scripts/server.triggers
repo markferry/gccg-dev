@@ -36,12 +36,9 @@ trigger "init" "" code
   if(server != NULL)
     meta.server=server;
   else
-    meta.server="gccg.servebeer.com";
+    meta.server="NO.DEFAULT.SERVER.FOR.THIS.GAME";
 
   players_wanted=1;
-  players=0;
-  watchers=0;
-  next_object=10001;
   deny.list=(,);
   options.game=(,);
 
@@ -79,17 +76,7 @@ trigger "init" "game" code
   randomize();
   println("Initializing server at port "+port);
   net_create_server(port);
-  meta.connection=net_connect(meta.server,meta.port);
-  if(meta.connection==NULL)
-  {
-    Log("ERROR: Connection to meta server "+meta.server+" port "+meta.port+" failed");
-    quit(1);
-  }
-  Log("Registering server to "+meta.server+".");
-  cookie=GeneratePassword();
-  net_send(meta.connection,("RegisterServer",(port,players_wanted,bet,cookie,keys(deck_rules),server_description,VERSION,options.tournament)));
-  WaitMetaEvents("StartGame");
-  Log("Launching the game.");
+  InitGame();
 }
 
 #
@@ -126,6 +113,7 @@ trigger "main" "" code
         SendAll("Message","{red}Quit instruction recieved from the meta server.");
         quit(1);
       }
+
     }
 
     e=net_server_get(10000);
@@ -133,6 +121,7 @@ trigger "main" "" code
       net_server_send_all("Null",NULL);
     else
       ReceiveData(e);
+    net_send(meta.connection,("Null",Null));
   }
 }
 

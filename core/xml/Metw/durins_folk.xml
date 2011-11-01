@@ -1458,6 +1458,7 @@
 			 <attr key="type" value="Hero Resource"/>
 			 <attr key="rarity" value="U"/>
 			 <attr key="class" value="Short-event"/>
+			 <attr key="keyword" value="Song"/>
 		</card>
 		<card name="Sonotor's Mound" graphics="Sonotors Mound.jpg" back="1" text="">
 			 <attr key="type" value="Hero Site"/>

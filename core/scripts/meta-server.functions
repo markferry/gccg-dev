@@ -229,7 +229,9 @@ command.acl{"/torrent"}=(0,("God","Salesman","Guard","Judge","player"));
 command.acl{"/unban"}=(1,("God",));
 command.acl{"/unrestrict"}=(1,("God",));
 command.acl{"/users"}=(-1,("God","Salesman","Guard","Judge","player"));
+command.acl{"/w"}=(-1,("God","Salesman","Guard","Judge","player"));
 command.acl{"/want"}=(1,("God","Salesman","Guard","Judge","player"));
+command.acl{"/whisper"}=(-1,("God","Salesman","Guard","Judge","player"));
 command.acl{"/whois"}=(1,("God","Salesman","Guard","Judge","player"));
 command.acl{"/yell"}=(-1,("God","Salesman","Guard","Judge","player"));
 
@@ -242,6 +244,7 @@ function{"DeckCheck"}="DeckCheck";
 function{"EndGame"}="EndGame";
 function{"Give"}="Give";
 function{"GiveCard"}="GiveCard";
+function{"GiveCards"}="GiveCards";
 function{"JoinTable"}="JoinTable";
 function{"LeaveTableToChat"}="LeaveTableToChat";
 function{"Null"}="Null";
@@ -467,6 +470,7 @@ def RegisterServer
   push(d);
   push(v);
   push(t);
+  push(n);
 
   if(length(ARG) >= 5)
     r=ARG[4];
@@ -505,6 +509,18 @@ def RegisterServer
   }
   else
   {
+#   kill duplicate tables that may linger  
+    for(n)(keys(tables))
+    {
+      if (tables{n}[0] == net_client_name(con) && tables{n}[1] == ARG[0])
+      {
+        push(con);
+        con = n;
+        DisconnectServer();
+        net_server_close(con);
+        con=pop();
+      }        
+    }
     if(t)
       Log("Tournament server "+net_client_name(con)+" registered as server "+con+".");
     else
@@ -517,6 +533,7 @@ def RegisterServer
       SendAllNP("Message","Table "+con+" is now available at server "+net_client_name(con)+".");
   }
 
+  n=pop();
   t=pop();
   v=pop();
   d=pop();
@@ -655,6 +672,7 @@ def Sealed
 
 #
 # CheckSealedCharacter(mode name) - Check existence of sealed character and create if necessary.
+# Return number of cards owned by sealed character.
 #
 def CheckSealedCharacter
 {
@@ -667,7 +685,10 @@ def CheckSealedCharacter
     users{u}[1]=0.0;
     users{u}[3][0]{"realname"}=users{User()}[3][0]{"realname"}+" ("+ARG+")";
     users{u}[3][0]{"avatar"}=users{User()}[3][0]{"avatar"};
+    return(0);
   }
+  else
+    return((count_cards(u))[0]);
   u=pop();
 }
 
@@ -678,6 +699,7 @@ def SealedStart
 {
   push(o);
   push(m);
+  push(c);
   m=toreal(ARG[1]);
   o=ARG[2];
   if(Mode()!="")
@@ -689,15 +711,28 @@ def SealedStart
   else
   {
     TransferMoney(User(),-m);
-    CheckSealedCharacter(ARG[0]);
-    SendAllNP("Message","{blue}"+User()+" enters to "+ARG[0]+" mode with $"+format("%.2f",m)+".");
+    owned = CheckSealedCharacter(ARG[0]);
+    c=".";
+    if(owned)
+      c=" and "+owned+" cards.";
+    SendAllNP("Message","{blue}"+User()+" enters to "+ARG[0]+" mode with $"+format("%.2f",m)+c);
+    
     if(isfunction("SealedStartHook"))
       SealedStartHook(User()+"-"+ARG[0],ARG[0],ARG[1],ARG[2]);
     if(ReRegisterPlayer(User()+"-"+ARG[0],users{User()}[3][0]{"version"},12345,game.data{"game"},users{User()}[0],users{User()}[3][0]{"system"},users{User()}[3][0]{"serial"}))
+    {
        TransferMoney(User(),m);
+       if(owned)
+       {
+         Reply("{red}{sz16}You still have "+owned+" cards from a previous "+ARG[0]+" session!");
+         Reply("{red}{sz16}If you want to start a new session, type {yellow}/"+ARG[0]+" end{red} first.");
+       }
+    }
     else
        Log("ERROR: Reregistration failed.");
+    
   }
+  c=pop();
   m=pop();
   o=pop();
 }
@@ -1532,6 +1567,90 @@ def CheckGiveMode
       return(GiveCardSealedAllowed(ARG));
     else
       return(0);
+  }
+}
+
+#
+# GiveCards(user name,card number[, card number 2, ...]) - Give multiple cards at once.
+#
+def GiveCards
+{
+  if(length(ARG) < 2)
+    Reply("{red}No cards selected.");
+  elseif(length(ARG) > 201)
+    Reply("{red}Please don't attempt to give more than 200 cards at once.");
+  elseif(!CheckGiveMode(ARG[1]))
+    Reply("{red}Can't give that card in "+Mode()+" mode.");
+  elseif(!is_user(ARG[0]))
+    Reply("{red}No such user.");
+  elseif(ARG[0]==User())
+      Reply("{red}Idiot.");
+  else
+  {
+    push(cards);
+    push(c);
+    push(m);
+    push(n);
+    cards=unique(sort(tail(ARG)));
+    cards=forall("(count(#,cards),#)",cards);
+    transfer=(,);
+    c=0;
+    
+    if (User()!="God" && User()!="Judge")
+    {
+      for(m)(cards)
+      {
+        check_card(User(),m[1]);
+#         (copies owned,             copies not tradable)
+        n=(users{User()}[2]{m[1]}[0],count(SetOfCard(m[1]),users{ARG[0]}[3][2]));
+        if(n[0] < m[0] + n[1])
+        {
+#         user is representing too many cards; trim the request to what they can actually send
+          if(n[1] < n[0])
+            transfer=transfer+(n[0] - n[1]);
+        }
+        else
+          transfer=transfer+m;
+      }
+    }
+    
+    else
+      transfer=cards;
+    
+    cards=User()+" gives you: ";
+    n = ((,),(,));
+    for(m)(transfer)
+    {
+      if(User()!="God" && User()!="Judge")
+      {
+        DelCards(User(),m[1],m[0]);
+        n[0]=n[0]+((m[1],users{User()}[2]{m[1]}),);
+      }
+      AddCards(ARG[0],m[1],m[0]);
+      if(Con(ARG[0]) >= 0)
+        n[1]=n[1]+((m[1],users{ARG[0]}[2]{m[1]}),);
+      
+      if(m[0] > 1)
+        cards = cards + tostr(m[0]) + "x ";
+      cards = cards + name(m[1]) + ", ";
+      count = count + m[0];
+    }
+    
+    if(count>0)
+    {
+      if(Con(ARG[0]) >= 0)
+      {
+        Send(Con(ARG[0]),substr(cards,0,length(cards)-2)+".");
+        Send(Con(ARG[0]),("SetCardbook",(n[1],));
+      }
+      Send(con,("SetCardbook",(n[0],));
+      SendOther(ARG[0],("Message",User()+" gives "+tostr(count)+" cards to "+ARG[0]+"."));
+      Log(User()+" gives "+tostr(count)+" cards to "+ARG[0]+".");
+    }
+    n=pop();
+    m=pop();
+    count=pop();
+    cards=pop();
   }
 }
 
@@ -2763,6 +2882,25 @@ def CommandYell
       SendAll("Message","{blue}"+User()+" yells: "+m);
   }
   s=pop();
+}
+
+#
+# CommandWhisper() - Implementation of the command /whisper (private message).
+#
+def CommandWhisper
+{
+  if(Con(ARG[0]) >= 0)
+  {
+    Reply("{gold}* you whisper to "+ARG[0]+": "+join(tail(ARG)," "));
+    Send(Con(ARG[0]),("Message","{gold}"+User()+" whispers: "+join(tail(ARG)," ")));
+  }
+  else
+    Reply("{red}No player '"+ARG[0]+"' currently online.");
+}
+
+def CommandW
+{
+  CommandWhisper(ARG);
 }
 
 #def CommandTest
