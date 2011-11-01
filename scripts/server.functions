@@ -72,6 +72,7 @@
 # options.tournament - table is in tournament mode
 # options.game{option name} - dictionary of game specific options 
 #    zero_counters_ok - if 1, generate message when adding/deleting 0 counters
+# persistent - if 1, don't close and reload XML files for next game, just reconnect to meta server
 # play.stack - list of cards waiting for PlayStage2
 # player - player causing event
 # player.name{player number} - name of the players and watchers
@@ -333,6 +334,7 @@ def InitServer
   visible.me=array(ARG);
   visible.opp=array(ARG);
   waitfor=-1;
+  persistent=1;
   alive=(,);
 
   for(i)(ARG)
@@ -417,13 +419,16 @@ def EndGame
   flag.game_broken=NULL;
   flag.game_halted=NULL;
   
-  sleep(3);
+  sleep(2);
 
-#  quit();
-#  sleep(3);
-  net_close(meta.connection);
-  InitServer(players_wanted);
-  InitGame();
+  if (persistent)
+  {
+    net_close(meta.connection);
+    InitServer(players_wanted);
+    InitGame();
+  }
+  else
+    quit();
 }
 
 #
@@ -3009,7 +3014,7 @@ def Attach
 }
 
 #
-# Flip(object number) - Reval or hide object.
+# Flip(object number) - Reveal or hide object.
 #
 def Flip
 {
@@ -3040,9 +3045,13 @@ def Flip
     }
     else
     {
+      push(c);
       table{ARG}[5]=1;
       MsgVerbObject("hide",ARG);
-      SendAll("ReplaceTable",(ARG,card_back(table{ARG}[0])));
+      c=toint(Attr("flipid",table{ARG}[0]));
+      if (!c) c=card_back(table{ARG}[0]);
+      SendAll("ReplaceTable",(ARG,c));
+      c=pop();
     }
   }
   elseif(hand.object[player]==ARG)
@@ -3637,7 +3646,7 @@ def CommandWt
 }
 
 #
-# CommandT - Alias for /whisperteam (backward compatibility for 1009's habits).
+# CommandT - Alias for /whisperteam (backward compatibility for 1009's original implementation).
 #
 def CommandT
 {
@@ -3790,8 +3799,18 @@ def SendFullGameStatus
   push(c);
   for(o)(table.stack_order)
   {
-    xy=CoordToPlr(table{o}[2],table{o}[3],ARG);
-    Send(ARG,("PutTable",(o,xy[0],xy[1],OriToPlr(table{o}[4],ARG),Image(table{o}[0],!table{o}[5]),table{o}[1],Image(table{o}[0],!table{o}[5] || ARG==table{o}[1]))));
+    if(table{o}[5])
+    {
+      c=toint(Attr("flipid",table{o}[0]));
+      if (!c) c=card_back(table{o}[0]);
+      xy=CoordToPlr(table{o}[2],table{o}[3],ARG);
+      Send(ARG,("PutTable",(o,xy[0],xy[1],OriToPlr(table{o}[4],ARG),Image(table{o}[0],0,c),table{o}[1],Image(table{o}[0],ARG==table{o}[1] && !c,c))));
+    }
+    else
+    {
+      xy=CoordToPlr(table{o}[2],table{o}[3],ARG);
+      Send(ARG,("PutTable",(o,xy[0],xy[1],OriToPlr(table{o}[4],ARG),Image(table{o}[0],1),table{o}[1],Image(table{o}[0],1))));
+    }
   }
   c=pop();
   xy=pop();

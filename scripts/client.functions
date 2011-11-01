@@ -1,6 +1,6 @@
 #
 #    Gccg - Generic collectible card game.
-#    Copyright (C) 2001,2002,2003,2004 Tommi Ronkainen
+#    Copyright (C) 2001-2011 Tommi Ronkainen
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -33,6 +33,7 @@
 # GAMEDIR - name of the directory of the game
 # HELP{mode}{command} - (parameters,short description, users allowed or NULL if not restricted, long description)
 # HIGHLIGHT_COLOR - color to use for highlighting touched objects
+# IMAGE_FORMAT - default file extension expected by image files (including the dot)
 # IMMOBILE_CARDS - list of card numbers not allowed to move with TryTransferTo()
 # MENU{context} - menu entries for the given context
 # MAX_MESSAGE - maximum length of the message line in pixels
@@ -235,6 +236,9 @@ BOOK_ROWS=3;
 
 # How many cards in a column at collection
 BOOK_COLUMNS=5;
+
+# Default file extension expected by image files
+IMAGE_FORMAT=".jpg";
 
 # Maximum number of simultaneous players.
 MAX_PLAYERS=8;
@@ -651,7 +655,7 @@ def Initialize
   CreatePanel("alert",screen.width/2-w(200),h(100));
   CreatePanel("messages",w(5),h(5));
   CreatePanel("input",0,screen.height-h(16));
-  CreatePanel("player info",w(5),screen.height-h(90));
+  CreatePanel("player info",w(5),screen.height-h(70));
   CreatePanel("products",w(5),h(200));
 
   set_attr(msg.box,"ontop",20);
@@ -659,7 +663,7 @@ def Initialize
   set_attr(alert.box,"ontop",100);
   raise(alert.box);
 
-  chat_msg.box=create_msgbox(screen.width-w(404),screen.height-h(220),obj=obj+1,"chat msg",w(401),h(200),99999);
+  chat_msg.box=create_msgbox(screen.width-w(403),screen.height-h(220),obj=obj+1,"chat msg",w(400),h(200),99999);
   set_bgcolor(chat_msg.box,NULL);
   set_fgcolor(chat_msg.box,BRCOLOR);
   set_attr(chat_msg.box,"visible",1);
@@ -683,7 +687,7 @@ def Initialize
   Msg(L("{sz20}{center}Press {orange}F1{white} for help or {orange}right click{white} for menu."));
   Msg("{hr}");
 
-  card.book=create_book(w(5),h(140),obj=obj+1,"My Collection",BOOK_ROWS,BOOK_COLUMNS);
+  card.book=create_book(w(5),h(176),obj=obj+1,"My Collection",BOOK_ROWS,BOOK_COLUMNS);
   set_attr(card.book,"ontop",50);
   raise(card.book);
   set_bgcolor(card.book,BKBGCOLOR);
@@ -716,7 +720,7 @@ def Initialize
   set_attr(drag.box,"tiny",1);
   set_attr(drag.box,"ontop",1);
 
-  deck.box=create_listbox(screen.width-w(sum(DECKBOX_SIZE))-4,h(5),obj=obj+1,"Current Deck",100,("#","Name of the card",""),DECKBOX_SIZE,34,(1,0,1));
+  deck.box=create_listbox(screen.width-w(sum(DECKBOX_SIZE)+5),h(134),obj=obj+1,"Current Deck",100,("#","Name of the card",""),DECKBOX_SIZE,34,(1,0,1));
   set_attr(deck.box,"ontop",50);
   raise(deck.box);
 
@@ -1156,9 +1160,7 @@ def SelectDeck
         RefreshCurrentDeck();
         RefreshBookForDeck(deck.name);
         message(deckname.box,"");
-        message(deckname.box,"");
-        message(deckname.box,"");
-        message(deckname.box,deck.name);
+        message(deckname.box,"Deck: {white}"+deck.name);
       }
     }
   }
@@ -1177,9 +1179,7 @@ def DeleteDeck
     set_attr(deck.box,"visible",0);
     deck.name=NULL;
     message(deckname.box,"");
-    message(deckname.box,"");
-    message(deckname.box,"");
-    message(deckname.box,"");
+    message(deckname.box,"{red}No Deck Selected");
   }
 }
 
@@ -2050,6 +2050,21 @@ def ChatCommandRenamedeck
 
 HELP{"chat"}{"renamedeck"}=("name","rename deck",NULL,
 "Give new {yellow}name{white} to the current deck if selected. If there are no deck selected, this command does nothing.");
+
+#
+# CommandPage() - Implementation of /page command.
+#
+def CommandPage
+{
+  ARG=toint(ARG[0]);
+  if(ARG > 0 && ARG < book_last_page(card.book)+2)
+    SetBookPage(ARG-1);
+  else
+    Msg("{red}Invalid page number.");
+}
+
+HELP{"any"}{"page"}=("page number","go to a page number",NULL,
+"Flips immediately to the specified page number in the card book.");
 
 #
 # CommandFind() - Implementation of /find command.
@@ -3600,8 +3615,8 @@ def SetMode
     forall('if(object_data(#)!=NULL) set_attr(#,"visible",0);',mode_object{mode});
 
     mode=ARG;
-    if(mode!="")
-      call("Start"+ucfirst(mode)+"Mode",NULL);
+    if(ARG!="")
+      call("Start"+ucfirst(ARG)+"Mode",NULL);
 
     forall('if(object_data(#)!=NULL) set_attr(#,"visible",1);',mode_object{mode});
   }
@@ -10422,7 +10437,7 @@ def InitializePanelSystem
       0,12,1,1,
       ("highlight","fit"),
       1),
-    ("msgbox","deck name","deckname.box",0,h(16)+h(18)-2,w(130),h(18*2),
+    ("msgbox","deck name","deckname.box",0,h(16)+h(18)-2,w(130),h(16),
       TXCOLOR,BRCOLOR,BGCOLOR,
       2,10,1,1,
       ("highlight",),
@@ -10669,7 +10684,7 @@ def UpdateProductsPanel
   product.objects=(,);
 
   if(!has_entry("none",product.images))
-    product.images{"none"}=load_image("unknown_booster.jpg");
+    product.images{"none"}=load_image("unknown_booster"+IMAGE_FORMAT);
 
   x=w(6);
   y=h(20);
@@ -10684,9 +10699,9 @@ def UpdateProductsPanel
     if(!has_entry(b[0],product.images))
     {
       if(!has_entry(b[0],product.image))
-        product.images{b[0]}=product.images{"none"};
+        product.images{b[0]}=load_image(b[1][2][0]+"_"+b[1][2][1]+IMAGE_FORMAT,"unknown_booster"+IMAGE_FORMAT);
       else
-        product.images{b[0]}=load_image(product.image{b[0]},"unknown_booster.jpg");
+        product.images{b[0]}=load_image(product.image{b[0]},"unknown_booster"+IMAGE_FORMAT);
     }
 
     obj=obj+1;
