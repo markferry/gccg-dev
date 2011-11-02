@@ -317,7 +317,7 @@
        <attr key="prowess" value="2"/>
        <attr key="rarity" value="U2"/>
        <attr key="agent" value="yes"/>
-       <attr key="race" value="Man"/>
+       <attr key="race" value="Wose"/>
        <attr key="class" value=""/>
        <attr key="type" value="Minion Character"/>
        <attr key="mind" value="5"/>
@@ -333,7 +333,7 @@
        <attr key="prowess" value="1"/>
        <attr key="rarity" value="U2"/>
        <attr key="agent" value="yes"/>
-       <attr key="race" value="Man"/>
+       <attr key="race" value="Wose"/>
        <attr key="class" value=""/>
        <attr key="type" value="Minion Character"/>
        <attr key="mind" value="5"/>
