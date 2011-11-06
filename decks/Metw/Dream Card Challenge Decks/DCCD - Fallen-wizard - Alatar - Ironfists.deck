@@ -102,7 +102,7 @@ Pool
 1 Dwarf-miner (DF)
 1 Dworin (DF)
 1 Norin (DF)
-1 Ulvûn the Owlkeeper (ML)
+1 Ulvûn the Owl Keeper (ML)
 
 # Hero Resource (3)
 
@@ -110,8 +110,9 @@ Pool
 1 Fate Let Our Ways Meet (RS)
 1 Shield of Iron-bound Ash (TW)
 
-# Minion Character (1)
+# Minion Character (2)
 
+1 Bertok (ML)
 1 Tarin (DF)
 
 # Minion Resource (1)
@@ -127,20 +128,20 @@ Pool
 Sideboard
 #########
 
-# Dual Resource (2)
+# Dual Resource (3)
 
 2 Miner's Pick (DF)
+1 Skis and Fur-coats (NW)
 
 # Hazard (1)
 
 1 He is lost to us (FB)
 
-# Hero Resource (9)
+# Hero Resource (8)
 
 1 A More or Less Decent Giant (DF)
 1 Cram (TD)
 1 Healing Herbs (TW)
-1 Kirrauko (NW)
 1 Reforging (NW)
 1 Risky Blow (TW)
 1 Shield of Iron-bound Ash (TW)
@@ -172,7 +173,7 @@ Sites
 
 1 Deep Mines (WH)
 
-# Hero Site (21)
+# Hero Site (22)
 
 1 Adan Tomb [H] (CP)
 1 Azagarbhun [H] (CP)
@@ -182,6 +183,7 @@ Sites
 1 Chey Goumal [H] (CP)
 1 Dol Guldur [H] (TW)
 1 Gaurblog Lug [H] (DF)
+1 Hollow Spire [H] (ML)
 1 Iron Hill Dwarf-hold [H] (TW)
 1 Joghul's Shrine [H] (CP)
 1 Lar-huz [H] (CP)
