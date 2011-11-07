@@ -742,9 +742,9 @@
        <attr key="class" value=""/>
        <attr key="type" value="Balrog Site"/>
     </card>
-    <card name="The Iron-deeps" graphics="TheIrondeeps.jpg" back="1" text="">
+    <card name="The Iron-deeps" graphics="The IrondeepsDC.jpg" back="1" text="">
        <attr key="unique" value="yes"/>
-       <attr key="adjacent" value=" Carn Dûm (0), The Under-leas (6), The Under-vaults (7)"/>
+       <attr key="adjacent" value=" Carn Dûm (0), The Under-forges (4), The Under-leas (6), The Under-vaults (7)"/>
        <attr key="draw" value="2"/>
        <attr key="region" value="Under-deeps"/>
        <attr key="site_type" value="{D}"/>
@@ -797,7 +797,7 @@
        <attr key="class" value=""/>
        <attr key="type" value="Balrog Site"/>
     </card>
-    <card name="Remains of Thangorodrim" graphics="RemainsofThangorodrim.jpg" back="1" text="{green} DCE: add to adjacent sites: The Pits of Angband (4),">
+    <card name="Remains of Thangorodrim" graphics="Remains of ThangorodrimDC.jpg" back="1" text="{green} DCE: add to adjacent sites: The Pits of Angband (4),">
        <attr key="unique" value="yes"/>
        <attr key="adjacent" value=" no surface site, The Drowning-deeps (9)"/>
        <attr key="draw" value="2"/>
