@@ -738,7 +738,12 @@ def SitesOfRegion
 
     underdeeps_region{"Númeriador"}=underdeeps_region{"Númeriador"}+images("The Drowning-deeps");
     underdeeps_region{"Númeriador"}=underdeeps_region{"Númeriador"}+images("Remains of Thangorodrim");
-    underdeeps_region{"Iron Hills"}=underdeeps_region{"Iron Hills"}+images("The Rusted-deeps");
+    underdeeps_region{"Númeriador"}=underdeeps_region{"Númeriador"}+images("Ruins of Belegost");
+	underdeeps_region{"Númeriador"}=underdeeps_region{"Númeriador"}+images("Ruins of Nogrod");
+	underdeeps_region{"Iron Hills"}=underdeeps_region{"Iron Hills"}+images("The Rusted-deeps");
+	underdeeps_region{"Mirror of Fire"}=underdeeps_region{"Mirror of Fire"}+images("The Amber-deeps");
+	underdeeps_region{"Narthalf"}=underdeeps_region{"Narthalf"}+images("The Pits of Angband");
+
 
     a=pop();
     u=pop();

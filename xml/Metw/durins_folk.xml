@@ -1030,7 +1030,7 @@
 			 <attr key="draw" value="2"/>
 			 <attr key="draw_opp" value="2"/>
 			 <attr key="region" value="Dungeon"/>
-			 <attr key="adjacent" value="Wondrous Maps* (0), Ostigurth (7) The Under-courts (10)"/>
+			 <attr key="adjacent" value="Wondrous Maps* (0), Ostigurth (7), The Under-courts (10)"/>
 			 <attr key="playable" value="Items (minor, major, gold ring)"/>
 			 <attr key="auto_attack" value="Dwarves -- 3 strikes with 10 prowess (detainment if the company contains a Dwarf majority)"/>
 			 <attr key="special" value="Contains a hoard. Hidden site. *You may move to this site from any Wondrous Maps site in Nurn or Horse Plains.  Dwarven Warparty may be played keyed to this site."/>
