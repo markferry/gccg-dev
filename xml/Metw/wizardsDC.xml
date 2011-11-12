@@ -3952,6 +3952,7 @@
        <attr key="rarity" value="R"/>
        <attr key="type" value="Hero Site"/>
 	   <attr key="keyword" value="Man-hold"/>
+	   <attr key="keyword" value="Oasis"/>
     </card>
     <card name="Stone-circle" graphics="Stonecircle.jpg" back="1" text="">
        <attr key="unique" value="yes"/>
