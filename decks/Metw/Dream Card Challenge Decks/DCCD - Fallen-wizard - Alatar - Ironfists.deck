@@ -97,12 +97,11 @@ Deck
 Pool
 ####
 
-# Hero Character (4)
+# Hero Character (3)
 
 1 Dwarf-miner (DF)
 1 Dworin (DF)
 1 Norin (DF)
-1 Ulvûn the Owl Keeper (ML)
 
 # Hero Resource (3)
 
@@ -121,8 +120,8 @@ Pool
 
 # Stage Resource (2)
 
-1 Huntsman's Garb (WH)
 1 Squire of the Hunt (WH)
+1 Wizard's Myrmidon (WH)
 
 #########
 Sideboard
@@ -154,9 +153,9 @@ Sideboard
 1 Gatherer of Loyalties (WH)
 1 Guarded Haven (WH)
 1 Hidden behind Doors of Stone (DF)
+1 Huntsman's Garb (WH)
 1 Legacy of Smiths (WH)
 1 The Great Hunt (WH)
-1 Wizard's Myrmidon (WH)
 
 #####
 Sites
