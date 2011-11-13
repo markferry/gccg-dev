@@ -658,7 +658,7 @@
 	   <attr key="keyword" value="Leader"/>
 	   <attr key="keyword" value="Olog-hai"/>
     </card>
-    <card name="Adûnaphel the Ringwraith" graphics="AdunapheltheRingwraith.jpg" text="Unique. Manifestation of Adûnaphel. Can use spirit-magic. +2 direct influence in Heralded Lord mode. -2 prowess in Fell Rider mode. As your Ringwraith, if at a Darkhaven, she may tap to cancel one hazard creature attack not played at a site against any one of your companies. {cyan} UEP: Errata: Unique. Manifestation of Adunaphel. Can use spirit-magic. +2 direct influence in Heralded Lord mode. As your Ringwraith, if at a Darkhaven, she may tap to cancel one hazard creature attack not played at a site against any one of your companies.">
+    <card name="Adûnaphel the Ringwraith" graphics="Adunaphel the RingwraithDC.jpg" text="Unique. Manifestation of Adûnaphel. Can use spirit-magic. +2 direct influence in Heralded Lord mode. -2 prowess in Fell Rider mode. As your Ringwraith, if at a Darkhaven, she may tap to cancel one hazard creature attack not played at a site against any one of your companies. {cyan} UEP: Errata: Unique. Manifestation of Adunaphel. Can use spirit-magic. +2 direct influence in Heralded Lord mode. As your Ringwraith, if at a Darkhaven, she may tap to cancel one hazard creature attack not played at a site against any one of your companies.">
        <attr key="unique" value="yes"/>
        <attr key="skills" value="Warrior/Scout/Diplomat"/>
        <attr key="home_site" value="Urlurtsu Nurn"/>
@@ -718,7 +718,7 @@
        <attr key="type" value="Minion Character"/>
        <attr key="influence" value="5"/>
     </card>
-    <card name="Khamûl the Ringwraith" graphics="KhamultheRingwraith.jpg" text="Unique. Manifestation of Khamûl the Easterling. Can use sorcery. -2 direct influence in Heralded Lord mode. +1 prowess in Fell Rider mode. -2 to the body of any Elf character targeted by a strike from Khamûl. As your Ringwraith, one Ringwraith follower in his company may be controlled with no influence. You may bring this follower into play during your organization phase. {cyan} UEP: Unique. Manifestation of Khamul the Easterling. Can use sorcery. -2 direct influence in Heralded Lord mode. +1 prowess in Fell Rider mode. +2 to all body checks resulting from failed strikes against Khamul. As your Ringwraith, one Ringwraith follower in his company may be controlled with no influence. You may bring this follower into play during your organization phase.">
+    <card name="Khamûl the Ringwraith" graphics="Khamul the RingwraithDC.jpg" text="Unique. Manifestation of Khamul the Easterling. Can use sorcery. -2 direct influence in Heralded Lord mode. +1 prowess in Fell Rider mode. +2 to all body checks resulting from failed strikes against or successful strikes from Khamul. As your Ringwraith, one Ringwraith follower in his company may be controlled with no influence. You may bring this follower into play during your organization phase.">
        <attr key="unique" value="yes"/>
        <attr key="skills" value="Warrior/Ranger/Diplomat"/>
        <attr key="home_site" value="Dol Guldur"/>
