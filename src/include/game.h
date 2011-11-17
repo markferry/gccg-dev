@@ -443,7 +443,7 @@ namespace CCG
 	/// Constructor.
 	Deck(int num,Object* parent,string name) : Object(num,parent,name)
 	{size=100;}
-	/// Desctructor.
+	/// Destructor.
 	virtual ~Deck()
 	{}
 
@@ -456,6 +456,9 @@ namespace CCG
 	/// Remove top card of the deck if available.
 	int DelTop()
 	{int ret=-1; if(cards.size()) {ret=cards.back(); cards.pop_back(); grp.redraw=true;} return ret;}
+	/// Remove all cards from the deck.
+	void DelAll()
+	{cards.clear(); grp.redraw=true;}
 	/// Remove the card at position 'i' counting from the top.
 	void Del(int index);
 	/// Size of the deck.
@@ -957,6 +960,7 @@ namespace CCG
 	Evaluator::Data cardbox(const Evaluator::Data&);
 	Evaluator::Data center_of(const Evaluator::Data&);
 	Evaluator::Data change_card(const Evaluator::Data&);
+	Evaluator::Data clear_deck(const Evaluator::Data&);
 	Evaluator::Data create_book(const Evaluator::Data&);
 	Evaluator::Data create_cardbox(const Evaluator::Data&);
 	Evaluator::Data create_deck(const Evaluator::Data&);

@@ -1204,18 +1204,14 @@ namespace Driver
 		goto out_of_memory;
 	    SDL_FreeSurface(tmp);
 					
-	    tmp=zoomSurface(newcard,double(size)/100.0,double(size)/100.0,SMOOTHING_ON);
+	    tmp=zoomSurface(newcard,double(size)/100.0,double(size)/100.0,SMOOTHING_OFF);
 	    SDL_FreeSurface(newcard);
 	    newcard=tmp;
 
 	    if(!newcard)
 		goto out_of_memory;
 	}
-	else if(angle == 0 && size==100)
-	{
-		// do nothing
-	}
-	else if((angle == 90 || angle == 180 || angle == 270 || angle==360) && size==100)
+	else if(angle)
 	{
 	    // Circumvent buggy SDL_rotozoom and check if there is memory.
 	    tmp=SDL_CreateRGBSurface(SDL_SWSURFACE,scrw,scrh,screen->format->BitsPerPixel,screen->format->Rmask,screen->format->Gmask,screen->format->Bmask,screen->format->Amask);
@@ -1226,31 +1222,18 @@ namespace Driver
 	    int a=angle;
 	    if(a)
 		a=360-angle;
-	    tmp=rotozoomSurface(newcard,double(a),double(size)/100.0,SMOOTHING_OFF);
+	    if(a%90)
+		tmp=rotozoomSurface(newcard,double(a),double(size)/100.0,SMOOTHING_ON);
+	    else
+		// 90-degree rotations can be made exact without smoothing
+		tmp=rotozoomSurface(newcard,double(a),double(size)/100.0,SMOOTHING_OFF);
 	    SDL_FreeSurface(newcard);
 	    newcard=tmp;
 			
 	    if(!newcard)
 		goto out_of_memory;
 	}
-	else if(angle != 100)
-	{
-	    // Circumvent buggy SDL_rotozoom and check if there is memory.
-	    tmp=SDL_CreateRGBSurface(SDL_SWSURFACE,scrw,scrh,screen->format->BitsPerPixel,screen->format->Rmask,screen->format->Gmask,screen->format->Bmask,screen->format->Amask);
-	    if(!tmp)
-		goto out_of_memory;
-	    SDL_FreeSurface(tmp);
-			
-	    int a=angle;
-	    if(a)
-		a=360-angle;
-	    tmp=rotozoomSurface(newcard,double(a),double(size)/100.0,SMOOTHING_ON);
-	    SDL_FreeSurface(newcard);
-	    newcard=tmp;
-			
-	    if(!newcard)
-		goto out_of_memory;
-	}
+	// otherwise size and angle are both unchanged, so do nothing
 		
 	// Save it to the cache.
 			
