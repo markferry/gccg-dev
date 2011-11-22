@@ -24,31 +24,31 @@ Deck
 
 # Hazard (31)
 
-1 Ambusher (TW)
-1 An Unexpected Outpost (DM)
-2 Black Crows (FB)
-2 Dwarven Warparty (DF)
-1 Elf-lord Revealed in Wrath (LE)
+2 An Unexpected Outpost (DM)
+1 Chill Them with Fear (LE)
+1 Decision of the White Council (FB)
+1 Dwarven Warparty (DF)
+1 Elf-lord Revealed in Wrath* (FB)
 1 Elven Wards (FB)
 1 Elves upon Errantry (LE)
+3 Errand-riders of Gondor (WR)
 1 Eärcaraxë at Home (TD)
 1 Foolish Words (LE)
 1 Frightful Guardian (GW)
-1 Galadhrim (AS)
-1 His Own Master (RS)
-1 Khuzadrepa Ahunt (GW)
+1 Fruitless Victory (NE)
+1 Lord of the Woods (FB)
 1 Master of the House (AS)
 1 Never Seen Him (DM)
-1 Ninevet (DF)
 2 Nobody's Friend (DM)
-1 Power Built by Waiting (AS)
-2 Rain-drake (TD)
-1 Sellswords Between Charters (LE)
-1 Sons of Kings (LE)
-2 Terror from the Deeps (DF)
-1 The Reach of Ulmo (DM)
+1 Pallando the Soul-keeper (AS)
+1 Returned Beyond All Hope (AS)
+1 Sons of Elrond (FB)
+2 Sons of Kings (LE)
+2 Steward's Guard (AS)
+1 The Watchful Peace (DF)
+1 Twilight (LE)
 1 Wandering Eldar (LE)
-2 Watcher in the Water (LE)
+1 Watchers at the Gate (WR)
 
 # Hero Character (5)
 
@@ -60,43 +60,34 @@ Deck
 
 # Hero Resource (27)
 
-1 Adamant Helmet (TD)
 1 Anglachel (NW)
 1 Barrow-blade (DM)
-1 Belegaer (TD)
+2 Belegaer (TD)
 1 Elves of Edhellond (FP)
 3 Gates of Morning (TW)
 1 Glamdring (TW)
 1 Great Seagull (NW)
 1 Habergeon of Silver (TD)
+1 Marvels Told (TD)
+1 Men of Lebennin (TW)
 2 Not at Home (TD)
 2 Reforging (NW)
 1 Scabbard of Chalcedony (TD)
 1 Shipwrights of Lindon (FB)
 2 Smoke Rings (DM)
 2 Star of High Hope (TD)
-1 Sword of Gondolin (TW)
 1 The Cock Crows (TW)
-2 The Wind Is Turning (WR)
+1 The Wind Is Turning (WR)
 1 Ulmo's Watch (FB)
 1 Valiant Sword (TD)
-
-# Minion Character (2)
-
-1 Elwen (DM)
-1 Nimloth (DM)
-
-# Minion Resource (1)
-
-1 Black Sails (SL)
 
 # Stage Resource (6)
 
 1 Arsenal of Lindon (FB)
 1 Clad for War (DF)
 2 Hidden Haven (WH)
-1 Keeper of the Passage (FB)
 1 Kinsman and Ambassador (FB)
+1 The Sea's Prowess (FB)
 
 ####
 Pool
@@ -122,39 +113,36 @@ Pool
 
 # Stage Resource (2)
 
-1 The Sea's Prowess (FB)
+1 Keeper of the Passage (FB)
 1 Thrall of the Voice (WH)
 
 #########
 Sideboard
 #########
 
-# Hazard (6)
+# Hazard (9)
 
 1 An Article Missing (DM)
+1 Arthadan Rangers (LE)
 1 Cunning Foes (DM)
-1 Faladrim (FB)
+1 Elves upon Errantry (LE)
+1 Galadhrim (AS)
 1 Greed (TW)
 1 Hard to Tame (DF)
-1 Muster Disperses (TW)
+1 Lure of Expedience (LE)
+1 The Reach of Ulmo (DM)
 
-# Hero Resource (13)
+# Hero Resource (11)
 
-1 Belegaer (TD)
-1 Elves of the House (FB)
 1 Hair of Uinen (FB)
+1 Hauberk of Bright Mail (TW)
 1 Kindling of the Spirit (TW)
-1 Knights of Dol Amroth (TW)
 1 Linyuilë (KN)
-1 Palantír of Elostirion [H] (TW)
 2 Sail to the West (FB)
+1 Sword of Gondolin (TW)
 1 Swordmaster (DF)
 1 The Evenstar (TW)
 2 The Old Thrush (TW)
-
-# Stage Resource (1)
-
-1 Sworn to the Lord (FB)
 
 #####
 Sites
@@ -164,18 +152,17 @@ Sites
 
 2 Grey Havens@ (FB)
 
-# Fallen Site (3)
+# Fallen Site (2)
 
 1 Edhellond [F] (FB)
-1 Lórien [F] (FB)
 1 Rivendell [F] (FB)
 
-# Hero Site (25)
+# Hero Site (21)
 
 1 Achrond [H] (NW)
 1 Amon Anlug [H] (NW)
 1 Andoloki [H] (NW)
-1 Dol Amroth [H] (TW)
+1 Barrow-downs [H] (TW)
 1 Ei Missa [H] (NW)
 1 Evermist [H] (NW)
 1 Gobel Mírlond [H] (AS)
@@ -185,15 +172,12 @@ Sites
 1 Isles of the Dead that Live [H] (TW)
 1 Kylmätalo [H] (NW)
 1 Linnarthurras [H] (NW)
-1 Minas Tirith [H] (TW)
 1 Mount Rerir [H] (FB)
 1 Pelargir [H] (TW)
-1 Pieni Satama [H] (NW)
 1 Ruined Signal Tower [H] (TW)
 1 Stone-circle [H] (TW)
 1 Tharagrondost [H] (WR)
 1 Thaurung [H] (NW)
-1 The White Towers [H] (TW)
 1 Tol Morven [H] (NW)
 1 Tolfalas [H] (TW)
-1 Umbar [H] (SL)
+

@@ -12,10 +12,9 @@ Deck
 
 1 Wose Elite Hunter (WR)
 
-# Dual Resource (6)
+# Dual Resource (5)
 
 1 Beasts of the Wood (WH)
-1 Get You Gone (WR)
 1 Ghostbane (KN)
 1 Great Falcons of Mirkwood (GW)
 2 Old Drûg (WR)
@@ -26,74 +25,76 @@ Deck
 
 # Hazard (33)
 
-1 An Unexpected Outpost (DM)
-2 Black Crows (FB)
-2 Come at Need (AS)
-1 Despair of the Heart (TW)
-3 Drought (SL)
-1 Earth-tremors (DM)
-1 Ent in Search of the Entwives (LE)
+2 An Unexpected Outpost (DM)
+1 Black Crows (FB)
+1 Bregalad (FB)
+1 Come at Need (AS)
+1 Curse him, Root and Branch! (FB)
+1 Drought (SL)
+2 Ent in Search of the Entwives (LE)
 1 Fladrif (FB)
 2 Gloom (TW)
+1 Great Northern Bear (GW)
 1 Huorn (TW)
 1 Huorn (LE)
+1 Lord of the Eagles (DF)
+1 Lure of Nature (TW)
 1 Marsh-drake (TD)
-2 Memories of Axe-wielders (TI)
+1 Memories of Axe-wielders (TI)
 1 Nameless Thing (DM)
+1 Nature's Revenge (WH)
 2 Old Man Willow (TW)
 1 Orc-watch (TW)
-1 Peril Returned (TD)
+2 Peril Returned (TD)
 1 Rain-drake (TD)
-1 Sand-drake (SL)
-1 Sentinel of the Grove (FB)
-1 Sloth Bear (SL)
-3 Tree-herder (FB)
+2 Sentinel of the Grove (FB)
+2 Tree-herder (FB)
 1 Twilight (LE)
-1 Vultures (SL)
-
-# Minion Character (1)
-
-1 Ôm-buri-Ôm (DM)
+1 Wrath of the Olvar (FB)
 
 # Hero Character (6)
 
-1 Heledwen (NW)
 1 Mallorn-dweller (FB)
 1 Striuk'ir (NW)
 1 Taurnil (RS)
 1 Wood-elf (FB)
+1 Wídfara (TI)
 1 Ôn-Ikana (SL)
 
-# Hero Resource (24)
+# Hero Resource (22)
 
 1 A Chance Meeting (TW)
 2 Almost Felt You Liked the Forest! (TI)
 1 Beechbone (TI)
 1 Cup of Farewell (DM)
-1 Elven Cloak (TW)
 2 Ent-draughts (TW)
 1 Ent-moot (TI)
 1 Ents of Fangorn (TW)
 2 Escape (TW)
-2 Ford (TW)
+1 Ford (TW)
 1 Halfling Strength (TW)
 1 Leaflock (TW)
-1 Refuge (TD)
+1 Smoke Rings (DM)
 2 Tempering Friendship (TW)
-1 The Great Battle of Our Time (WR)
 1 The Wind Is Turning (WR)
 1 Treebeard (TW)
-1 Trickery (TD)
+2 Trickery (TD)
 1 Woses of the Drúadan Forest (TW)
+
+# Minion Character (1)
+
+1 Ôm-buri-Ôm (DM)
 
 # Minion Resource (1)
 
 1 Blackbole (LE)
 
-# Stage Resource (2)
+# Stage Resource (5)
 
-1 Hidden Haven (WH)
+2 Hidden Haven (WH)
+1 In Accord with Nature (FB)
 1 Radagast's Black Bird (WH)
+1 The Trees have Ears (FB)
 
 ####
 Pool
@@ -124,26 +125,30 @@ Pool
 
 # Stage Resource (3)
 
-1 A Mind Alike (TI)
 1 Master of Shapes (WH)
 1 Pocketed Robes (WH)
+1 Wizard's Myrmidon (WH)
 
 #########
 Sideboard
 #########
 
-# Dual Resource (4)
+# Dual Resource (3)
 
-2 Dirwood Spear (WR)
+1 Dirwood Spear (WR)
 1 Stone Mace (WR)
 1 Wose Blowpipe (WR)
 
-# Hazard (1)
+# Hazard (4)
 
-1 Curse him, Root and Branch! (FB)
+1 Early Harvest (AS)
+1 He is lost to us (FB)
+1 Sand Devil (SL)
+1 Sand-drake (SL)
 
-# Hero Resource (9)
+# Hero Resource (10)
 
+1 Bounty of the Earth-maidens (CP)
 1 Bow of the Galadhrim (AS)
 1 Elf-stone (TW)
 1 Entwives (TI)
@@ -158,13 +163,10 @@ Sideboard
 
 1 Crept Along Cleverly (WH)
 
-# Stage Resource (5)
+# Stage Resource (2)
 
+1 An Untimely Brood (WH)
 1 Girdle of Radagast (WH)
-1 Guarded Haven (WH)
-1 In Accord with Nature (FB)
-1 The Trees have Ears (FB)
-1 Wizard's Myrmidon (WH)
 
 #####
 Sites
@@ -179,20 +181,14 @@ Sites
 
 2 Rhosgobel [F] (WH)
 
-# Hero Site (29)
+# Hero Site (21)
 
 1 Amon Hen [H] (TW)
-1 Amon Lhaw [H] (TI)
-1 Auz Azunan [H] (SL)
 1 Bag End [H] (TW)
-1 Bandit Lair [H] (TW)
 1 Buhr Widu [H] (TD)
-1 Cair Andros [H] (WR)
-1 Ceber Fanuin [H] (FB)
-1 Cerin Amroth [H] (FB)
 1 Drúadan Forest [H] (TW)
-1 Eagles' Eyrie [H] (TW)
-1 Elyamû [H] (ML)
+1 Geann a-Lisch [H] (AS)
+1 Glittering Caves [H] (TW)
 1 Gyogorasag Sanctuary [H] (GW)
 1 Hermit's Hill [H] (DM)
 1 Hyvät Kalat [H] (NW)
@@ -200,17 +196,18 @@ Sites
 1 Ligr Wodaize Berne [H] (NW)
 1 Lind-or-Burúm [H] (TI)
 1 Logath Camp [H] (CP)
+1 Moria [H] (TW)
 1 Mountains of Mirkwood [H] (GW)
-1 Pred [H] (SL)
 1 Rhosgobel [H] (TW)
-1 Shrel-Kain [H] (TW)
+1 Ruined Signal Tower [H] (TW)
 1 The Carrock [H] (DF)
 1 The Riddle Caves [H] (KN)
-1 The Stones [H] (TW)
-1 The Tower of Birds [H] (SL)
 1 Wellinghall [H] (TW)
-1 Yatali Clan-hold [H] (BO)
+1 Wose Passage-hold [H] (TW)
 
-# Minion Site (1)
+# Minion Site (3)
 
 1 Caras Amarth [M] (FB)
+1 Cor Angaladh [M] (FB)
+1 Mountains of Mirkwood [M] (GW)
+
