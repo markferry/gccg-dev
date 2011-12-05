@@ -163,7 +163,7 @@
        <attr key="body" value="-"/>
        <attr key="prowess" value="10"/>
        <attr key="playable" value="{w}{w}{R}"/>
-       <attr key="subclass" value="Dragon"/>
+       <attr key="subclass" value="Drake"/>
        <attr key="rarity" value="CA2"/>
        <attr key="class" value="Creature"/>
        <attr key="type" value="Hazard"/>

@@ -846,7 +846,7 @@
        <attr key="playable" value="{w}{w}{R}"/>
        <attr key="body" value="-"/>
        <attr key="prowess" value="10"/>
-       <attr key="subclass" value="Dragon"/>
+       <attr key="subclass" value="Drake"/>
        <attr key="rarity" value="CB+CS1"/>
        <attr key="class" value="Creature"/>
        <attr key="type" value="Hazard"/>
@@ -1010,7 +1010,7 @@
        <attr key="playable" value="{w}{w}{b}{s}"/>
        <attr key="body" value="6"/>
        <attr key="prowess" value="12"/>
-       <attr key="subclass" value="Animals"/>
+       <attr key="subclass" value="Animals, Eagles"/>
        <attr key="rarity" value="R"/>
        <attr key="class" value="Creature"/>
        <attr key="type" value="Hazard"/>
