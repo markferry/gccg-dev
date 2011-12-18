@@ -1296,7 +1296,7 @@
        <attr key="type" value="Hazard"/>
 	   <attr key="keyword" value="Corruption"/>
     </card>
-    <card name="Heedless Revelry" graphics="HeedlessRevelry.jpg" text="Playable on a non-Ringwraith company that is not moving. Make a roll (or draw a #) for each untapped non-Wizard character in the company; modify this roll by -2 for hero characters. If the result is greater than the character's mind, the character becomes tapped. Alternatively, may be revealed as an on-guard card on a company in response to the play of an item, ally, or faction. Tap all untapped non-Ringwraith, non-Wizard characters in the company.">
+    <card name="Heedless Revelry" graphics="HeedlessRevelryDC.jpg" text="Playable on a non-Ringwraith company that is not moving. Make a roll (or draw a #) for each untapped non-Wizard character in the company; modify this roll by -2 for hero characters. If the result is greater than the character's mind, the character becomes tapped. Alternatively, may be revealed as an on-guard card on a company in response to the play of an item, ally, or faction. Tap all untapped non-Ringwraith, non-Wizard characters in the company.">
        <attr key="rarity" value="R"/>
        <attr key="class" value="Short-event"/>
        <attr key="type" value="Hazard"/>
@@ -1344,7 +1344,7 @@
        <attr key="type" value="Hazard"/>
 	   <attr key="keyword" value="Corruption"/>
     </card>
-    <card name="Lure of Nature" graphics="LureofNature.jpg" text="Corruption. Playable on a non-Hobbit, non-Dwarf, non-Orc, non-Ringwraith character. Target character receives 2 corruption points and makes a corruption check at the end of his movement/hazard phase for each Wilderness [{w}] in his company's site path. During his organization phase, the character may tap to attempt to remove this card by making a roll (drawing a #) - if the result is greater than 4, discard this card. Cannot be duplicated on a given character.">
+    <card name="Lure of Nature" graphics="LureofNatureDC.jpg" text="Corruption. Playable on a non-Hobbit, non-Dwarf, non-Orc, non-Ringwraith character. Target character receives 2 corruption points and makes a corruption check at the end of his movement/hazard phase for each Wilderness [{w}] in his company's site path. During his organization phase, the character may tap to attempt to remove this card by making a roll (drawing a #) - if the result is greater than 4, discard this card. Cannot be duplicated on a given character.">
        <attr key="corruption" value="2"/>
        <attr key="rarity" value="CB+CS1"/>
        <attr key="class" value="Permanent-event"/>
@@ -1379,7 +1379,7 @@
        <attr key="class" value="Permanent-event"/>
        <attr key="type" value="Hazard"/>
     </card>
-    <card name="Plague" graphics="Plague.jpg" text="Playable on a non-Ringwraith, non-Wizard, non-Elf character at or moving to a non-Haven, non-Ruins &amp; Lairs site. At the end of your opponent's turn, each non-Ringwraith, non-Wizard, non-Elf character at the same site as the target must make a roll (draw a #) modified by -2. If the result is greater than the character's body, he is wounded or he is eliminated if he is already wounded. Discard this card during the target's organization phase if he is at a Darkhaven.">
+    <card name="Plague" graphics="PlagueDC.jpg" text="Playable on a non-Ringwraith, non-Wizard, non-Elf character at or moving to a non-Haven, non-Ruins &amp; Lairs site. At the end of your opponent's turn, each non-Ringwraith, non-Wizard, non-Elf character at the same site as the target must make a roll (draw a #) modified by -2. If the result is greater than the character's body, he is wounded or he is eliminated if he is already wounded. Discard this card during the target's organization phase if he is at a Darkhaven.">
        <attr key="rarity" value="R"/>
        <attr key="class" value="Permanent-event"/>
        <attr key="type" value="Hazard"/>
@@ -1436,7 +1436,7 @@
        <attr key="class" value="Permanent-event"/>
        <attr key="type" value="Hazard"/>
     </card>
-    <card name="Stay Her Appetite" graphics="StayHerAppetite.jpg" text="Playable on an ally. Make a roll (draw a #). If the result plus the ally's mind is greater than your opponent's unused general influence plus its controlling character's unused direct influence plus five, the ally attacks its controlling character (detainment attack against a hero). This attack has 1 strike and prowess equal to the ally's normal prowess plus a dice roll (drawn #). Discard the ally if it attacks and is not defeated.">
+    <card name="Stay Her Appetite" graphics="StayHerAppetiteDC.jpg" text="Playable on an ally. Make a roll (draw a #). If the result plus the ally's mind is greater than your opponent's unused general influence plus its controlling character's unused direct influence plus five, the ally attacks its controlling character (detainment attack against a hero). This attack has 1 strike and prowess equal to the ally's normal prowess plus a dice roll (drawn #). Discard the ally if it attacks and is not defeated.">
        <attr key="rarity" value="R"/>
        <attr key="class" value="Short-event"/>
        <attr key="type" value="Hazard"/>
@@ -1468,7 +1468,7 @@
        <attr key="type" value="Hazard"/>
 	   <attr key="keyword" value="Environment"/>
     </card>
-    <card name="Veils Flung Away" graphics="VeilsFlungAway.jpg" text="Playable on a company moving in a Wilderness [{w}], Borlder-land [{b}], or Free-domain [{f}] if Doors of Night is not in play; does not count against the hazard limit. Make a body check  modified by -1 for each character. Determine if each Orc or Troll character is discarded as indicated on their cards. Otherwise, the body checks have no effect unless an untapped character fails his check, in which case he becomes tapped">
+    <card name="Veils Flung Away" graphics="VeilsFlungAwayDC.jpg" text="Playable on a company moving in a Wilderness [{w}], Borlder-land [{b}], or Free-domain [{f}] if Doors of Night is not in play; does not count against the hazard limit. Make a body check  modified by -1 for each character. Determine if each Orc or Troll character is discarded as indicated on their cards. Otherwise, the body checks have no effect unless an untapped character fails his check, in which case he becomes tapped">
        <attr key="rarity" value="U"/>
        <attr key="class" value="Short-event"/>
        <attr key="type" value="Hazard"/>
@@ -1690,7 +1690,7 @@
        <attr key="class" value="Short-event"/>
        <attr key="type" value="Minion Resource"/>
     </card>
-    <card name="Deeper Shadow" graphics="DeeperShadow.jpg" text="Magic. Shadow-magic. Playable during the movement/hazard phase on a moving shadow-magic-using character. In character's site path, change a Ruins &amp; Lairs [{R}] to a Shadow-hold [{S}] or one Wilderness [{w}] to a Shadow-land [{s}]. Alternatively, decrease the hazard limit against his company by one (to no minimum). Unless he is a Ringwraith, he makes a corruption check modified by -3.">
+    <card name="Deeper Shadow" graphics="DeeperShadowDC.jpg" text="Magic. Shadow-magic. Playable during the movement/hazard phase on a moving shadow-magic-using character. In character's site path, change a Ruins &amp; Lairs [{R}] to a Shadow-hold [{S}] or one Wilderness [{w}] to a Shadow-land [{s}]. Alternatively, decrease the hazard limit against his company by one (to no minimum). Unless he is a Ringwraith, he makes a corruption check modified by -3.">
        <attr key="magic" value="Shadow-magic"/>
        <attr key="rarity" value="U"/>
        <attr key="class" value="Short-event"/>
@@ -2206,7 +2206,7 @@
        <attr key="class" value="Man Faction"/>
        <attr key="type" value="Minion Resource"/>
     </card>
-    <card name="Ice-orcs" graphics="Iceorcs.jpg" text="Unique. Playable at any Ruins &amp; Lairs [{R}] in Forochel or Withered Heath if the influence check is greater than 10. Once in play, the number required to influence this faction is zero. Standard Modifications: Wargs of the Forochel (+2).">
+    <card name="Ice-orcs" graphics="IceorcsDC.jpg" text="Unique. Playable at any Ruins &amp; Lairs [{R}] in Forochel or Withered Heath if the influence check is greater than 10. Once in play, the number required to influence this faction is zero. Standard Modifications: Wargs of the Forochel (+2).">
        <attr key="unique" value="yes"/>
        <attr key="mp" value="4"/>
        <attr key="rarity" value="R"/>
@@ -2394,7 +2394,7 @@
        <attr key="class" value="Man Faction"/>
        <attr key="type" value="Minion Resource"/>
     </card>
-    <card name="Woses of the Eryn Vorn" graphics="WosesoftheErynVorn.jpg" text="Unique. Playable at The Worthy Hills if the influence check is greater than 11.">
+    <card name="Woses of the Eryn Vorn" graphics="WosesoftheErynVornDC.jpg" text="Unique. Playable at The Worthy Hills if the influence check is greater than 11.">
        <attr key="unique" value="yes"/>
        <attr key="mp" value="3"/>
        <attr key="rarity" value="R"/>

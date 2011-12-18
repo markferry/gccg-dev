@@ -857,7 +857,7 @@
        <attr key="class" value="Permanent-event"/>
        <attr key="type" value="Hazard"/>
     </card>
-    <card name="Reluctant Final Parting" graphics="ReluctantFinalParting.jpg" text="Discard any ally if its currnet site is an Under-deeps site or if its current site's nearest Haven is not the same as the nearest Haven for the site at which the ally can be played. Determine nearest Haven using site cards of the same alignment (minion/hero) as the ally. Discard this card when any play deck is exhausted. Cannot be duplicated.">
+    <card name="Reluctant Final Parting" graphics="ReluctantFinalPartingDC.jpg" text="Discard any ally if its currnet site is an Under-deeps site or if its current site's nearest Haven is not the same as the nearest Haven for the site at which the ally can be played. Determine nearest Haven using site cards of the same alignment (minion/hero) as the ally. Discard this card when any play deck is exhausted. Cannot be duplicated.">
        <attr key="rarity" value="U2"/>
        <attr key="class" value="Permanent-event"/>
        <attr key="type" value="Hazard"/>
@@ -1255,7 +1255,7 @@
        <attr key="type" value="Hero Resource"/>
 	   <attr key="keyword" value="Stolen Knowledge"/>
     </card>
-    <card name="Mallorn" graphics="Mallorn.jpg" text="Unique. Playable at Bag End only if Earth of Galadriel's Orchard is stored there. Bag End becomes a Haven for the purposes of healing and bringing characters into play. Bag End can untap during its owner's untap phase. If Bag End is discarded, return it to its location deck. All Hobbit factions are worth +1 marshalling points.">
+    <card name="Mallorn" graphics="MallornDC.jpg" text="Unique. Playable at Bag End only if Earth of Galadriel's Orchard is stored there. Bag End becomes a Haven for the purposes of healing and bringing characters into play. Bag End can untap during its owner's untap phase. If Bag End is discarded, return it to its location deck. All Hobbit factions are worth +1 marshalling points.">
        <attr key="unique" value="yes"/>
        <attr key="mp" value="3"/>
        <attr key="rarity" value="R2"/>
@@ -1294,7 +1294,7 @@
        <attr key="type" value="Hero Resource"/>
 	   <attr key="keyword" value="Stolen Knowledge"/>
     </card>
-    <card name="Rebuild the Town" graphics="RebuildtheTown.jpg" text="Playable during the site phase on a non-Dragon's lair, non-Under-deeps Ruins &amp; Lairs. The site becomes a Border-hold and loses all automatic-attacks. Discard Rebuild the Town when the site is discarded or returned to its location deck.">
+    <card name="Rebuild the Town" graphics="RebuildtheTownDC.jpg" text="Playable during the site phase on a non-Dragon's lair, non-Under-deeps Ruins &amp; Lairs. The site becomes a Border-hold and loses all automatic-attacks. Discard Rebuild the Town when the site is discarded or returned to its location deck.">
        <attr key="rarity" value="C2"/>
        <attr key="class" value="Permanent-event"/>
        <attr key="type" value="Hero Resource"/>
@@ -1346,7 +1346,7 @@
 	   <attr key="keyword" value="Light Enchantment"/>
 	   <attr key="keyword" value="Information"/>
     </card>
-    <card name="The Windlord Found Me" graphics="TheWindlordFoundMe.jpg" text="Playable at an untapped Isengard, Shadow-hold, or Dark-hold during the site phase. Tap the site. The company faces an Orc attack (4 strikes with 9 prowess). Afterwards, a character may tap and place this card under him. If you do not place this card with a character after the attack, discard it. That character may not untap until after this card is stored in a Haven during the organization phase. When this card is stored, and if your Wizard is not already in play, you may search your play deck or discard pile for a Wizard and play him at that Haven (does not count towards the one character per turn limit). Cannot be duplicated by a given player.">
+    <card name="The Windlord Found Me" graphics="TheWindlordFoundMeDC.jpg" text="Playable at an untapped Isengard, Shadow-hold, or Dark-hold during the site phase. Tap the site. The company faces an Orc attack (4 strikes with 9 prowess). Afterwards, a character may tap and place this card under him. If you do not place this card with a character after the attack, discard it. That character may not untap until after this card is stored in a Haven during the organization phase. When this card is stored, and if your Wizard is not already in play, you may search your play deck or discard pile for a Wizard and play him at that Haven (does not count towards the one character per turn limit). Cannot be duplicated by a given player.">
        <attr key="mp" value="3"/>
        <attr key="rarity" value="U2"/>
        <attr key="class" value="Permanent-event"/>
@@ -1475,7 +1475,7 @@
        <attr key="mind" value="3"/>
 	   <attr key="keyword" value="Hobbit"/>
     </card>
-    <card name="Noble Hound" graphics="NobleHound.jpg" text="Playable at any tapped or untapped Border-hold. In all cases, Noble Hound must be assigned a strike before any strike can be assigned to its controlling character. Discard Noble Hound to cancel any effect that would take its controlling character prisoner (does not protect other characters from being taken prisoner). If Noble Hound is tapped or wounded, treat it as though it were untapped for the purposes of assigning strikes.">
+    <card name="Noble Hound" graphics="NobleHoundDC.jpg" text="Playable at any tapped or untapped Border-hold. In all cases, Noble Hound must be assigned a strike before any strike can be assigned to its controlling character. Discard Noble Hound to cancel any effect that would take its controlling character prisoner (does not protect other characters from being taken prisoner). If Noble Hound is tapped or wounded, treat it as though it were untapped for the purposes of assigning strikes.">
        <attr key="mp" value="1"/>
        <attr key="body" value="6"/>
        <attr key="prowess" value="3"/>

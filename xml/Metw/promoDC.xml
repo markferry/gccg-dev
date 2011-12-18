@@ -19,7 +19,7 @@
        <attr key="class" value="Permanent-event"/>
        <attr key="type" value="Hazard"/>
     </card>
-    <card name="Neeker-breekers" graphics="Neekerbreekers.jpg" text="Animals. Does not effect Wizards. Each character in the company faces one strike. His prowess against such a strike is equal to his mind attribute. Any character that would normally be wounded is only tapped intstead - no body checks are made.">
+    <card name="Neeker-breekers" graphics="NeekerbreekersDC.jpg" text="Animals. Does not effect Wizards. Each character in the company faces one strike. His prowess against such a strike is equal to his mind attribute. Any character that would normally be wounded is only tapped intstead - no body checks are made.">
        <attr key="strikes" value="1/each"/>
        <attr key="mp" value="1"/>
        <attr key="body" value="-"/>

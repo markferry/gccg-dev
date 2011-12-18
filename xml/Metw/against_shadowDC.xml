@@ -354,7 +354,7 @@
        <attr key="class" value="Short-event"/>
        <attr key="type" value="Hazard"/>
     </card>
-    <card name="Summons from Long Sleep" graphics="SummonsfromLongSleep.jpg" text="Place a Dragon or Drake face up &quot;off to the side&quot; with this card. You may play this creature as though it were in your hand with +2 prowess. Summons from Long Sleep is discarded when the creature attacks.">
+    <card name="Summons from Long Sleep" graphics="SummonsfromLongSleepDC.jpg" text="Place a Dragon or Drake face up &quot;off to the side&quot; with this card. You may play this creature as though it were in your hand with +2 prowess. Summons from Long Sleep is discarded when the creature attacks.">
        <attr key="rarity" value="C2"/>
        <attr key="class" value="Permanent-event"/>
        <attr key="type" value="Hazard"/>
@@ -560,7 +560,7 @@
        <attr key="mind" value="1"/>
     </card>
 
-    <card name="Great Lord of Goblin-gate" graphics="GreatLordofGoblingate.jpg" text="Unique. Playable at Goblin-gate. Tap to give +2 prowess to all Orcs in its company: against one attack or in company versus company combat.">
+    <card name="Great Lord of Goblin-gate" graphics="GreatLordofGoblingateDC.jpg" text="Unique. Playable at Goblin-gate. Tap to give +2 prowess to all Orcs in its company: against one attack or in company versus company combat.">
        <attr key="unique" value="yes"/>
        <attr key="mp" value="2"/>
        <attr key="body" value="7"/>
@@ -646,7 +646,7 @@
        <attr key="type" value="Minion Resource"/>
     </card>
 
-    <card name="Hold Rebuilt and Repaired" graphics="HoldRebuiltandRepaired.jpg" text="Playable during the site phase on a non-Dragon's lair, non-Under-deeps Ruins and Lairs. The site becomes a Shadow-hold and all automatic-attacks become detainment. Discard this card when the site is discarded or returned to its location deck.">
+    <card name="Hold Rebuilt and Repaired" graphics="HoldRebuiltandRepairedDC.jpg" text="Playable during the site phase on a non-Dragon's lair, non-Under-deeps Ruins and Lairs. The site becomes a Shadow-hold and all automatic-attacks become detainment. Discard this card when the site is discarded or returned to its location deck.">
        <attr key="rarity" value="C2"/>
        <attr key="class" value="Permanent-event"/>
        <attr key="type" value="Minion Resource"/>
@@ -696,7 +696,7 @@
        <attr key="type" value="Minion Resource"/>
     </card>
 
-    <card name="Padding Feet" graphics="PaddingFeet.jpg" text="Playable during  the site phase on a lone scout minion (no other characters or allies in his company) at the same site as an opponent hero company containing a hobbit. Also playable on a lone minion controlling Stinker. If during a following site phase target character is at the same site as the Hobbit, tap this card. This card never untaps. If then during a following site phase, target character is at the same site as the Hobbit, invert this card. If inverted, this card may be stored at a Darkhaven for 5 MP.">
+    <card name="Padding Feet" graphics="PaddingFeetDC.jpg" text="Playable during  the site phase on a lone scout minion (no other characters or allies in his company) at the same site as an opponent hero company containing a hobbit. Also playable on a lone minion controlling Stinker. If during a following site phase target character is at the same site as the Hobbit, tap this card. This card never untaps. If then during a following site phase, target character is at the same site as the Hobbit, invert this card. If inverted, this card may be stored at a Darkhaven for 5 MP.">
        <attr key="rarity" value="R2"/>
        <attr key="class" value="Permanent-event"/>
        <attr key="type" value="Minion Resource"/>
@@ -960,7 +960,7 @@
 	   <attr key="keyword" value="Battle-gear"/>
     </card>
 
-    <card name="Iron Shield of Old" graphics="IronShieldofOld.jpg" text="Shield. Playable at any Under-deeps Shadow-hold or Ruins and Lairs. +2 to all rolls required for bearer's company to move to an adjacent Under-deeps site. Warrior only: tap this items to make one strike against the bearer ineffectual.">
+    <card name="Iron Shield of Old" graphics="IronShieldofOldDC.jpg" text="Shield. Playable at any Under-deeps Shadow-hold or Ruins and Lairs. +2 to all rolls required for bearer's company to move to an adjacent Under-deeps site. Warrior only: tap this items to make one strike against the bearer ineffectual.">
        <attr key="corruption" value="3"/>
        <attr key="mp" value="2"/>
        <attr key="rarity" value="C2"/>
