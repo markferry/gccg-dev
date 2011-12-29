@@ -687,6 +687,7 @@
        <attr key="rarity" value="U3"/>
        <attr key="class" value="Permanent-event"/>
        <attr key="type" value="Minion Resource"/>
+	   <attr key="keyword" value="startable"/>
     </card>
 
     <card name="Our Own Wolves" graphics="OurOwnWolves.jpg" text="Magic. Spirit-magic. Playable on a company with a spirit-magic using character facing an attack. Each wolf ally gets +3 prowess against the attack. Following the attack, the controller of each wolf ally faces an attack: one strike with the ally's normal prowess +3. If the strike of an attack is successful, discard the wolf ally. Caster makes a corruption check modified by -3.">

@@ -373,6 +373,7 @@
        <attr key="rarity" value="U3"/>
        <attr key="class" value="Permanent-event"/>
        <attr key="type" value="Minion Resource"/>
+	   <attr key="keyword" value="startable"/>
     </card>
     <card name="Piercing All Shadows" graphics="PiercingAllShadows.jpg" text="Playable during the organization phase on a ranger. Target ranger may tap to cancel all hazard effects for the rest of the turn that: force his company to return to its site of origin or that tap his company's current or new site. If so tapped, target ranger makes a corruption check. Cannot be duplicated in a given company.">
        <attr key="corruption" value="3"/>

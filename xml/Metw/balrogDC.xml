@@ -279,6 +279,7 @@
        <attr key="rarity" value="C1"/>
        <attr key="class" value="Permanent-event"/>
        <attr key="type" value="Hero Resource"/>
+	   <attr key="keyword" value="startable"/>
     </card>
     <card name="Show Things Unbidden" graphics="ShowThingsUnbidden.jpg" text="Playable during the organization phase on Galadriel if untapped and at Lórien. Tap Galadriel. Opponent must choose and reveal to you 3 non-environment hazards from his hand and shuffle them into his play deck. If these are not available, opponent must reveal his hand to you and shuffle all non-environment hazards there into his play deck.">
        <attr key="rarity" value="C1"/>
@@ -355,6 +356,7 @@
        <attr key="rarity" value="C1"/>
        <attr key="class" value="Permanent-event"/>
        <attr key="type" value="Minion Resource"/>
+	   <attr key="keyword" value="startable"/>
     </card>
     <card name="Evil Things Lingering" graphics="EvilThingsLingering.jpg" text="Unique. Balrog specific. Spawn. Playable at The Under-galleries, The Under-courts, or Remains of Thangorodrim. Discard this ally if its company moves using region or starter movement. If this ally's controlling character is not The Balrog, your opponent makes a roll during your organization phase and subtracts four . The controlling character is eliminated if the result is greater than his mind.">
        <attr key="unique" value="yes"/>
@@ -475,6 +477,7 @@
        <attr key="rarity" value="C2"/>
        <attr key="class" value="Permanent-event"/>
        <attr key="type" value="Minion Resource"/>
+	   <attr key="keyword" value="startable"/>
     </card>
     <card name="Great Fissure" graphics="GreatFissure.jpg" text="Balrog specific. Target and cancel any effect (declared earlier in the same chain of effects) that would cancel an attack by The Balrog's company against an opponent's company. Alternatively, cancel an attack against a company at, or moving to or from, an Under-deeps site.">
        <attr key="specific" value="Balrog"/>
@@ -541,6 +544,7 @@
        <attr key="rarity" value="C2"/>
        <attr key="class" value="Permanent-event"/>
        <attr key="type" value="Minion Resource"/>
+	   <attr key="keyword" value="startable"/>
     </card>
     <card name="Out He Sprang" graphics="OutHeSprang.jpg" text="Balrog specific. If Great Shadow is not in play, The Balrog may move with region movement (overriding his card) to an Under-deeps surface site or from an Under-deeps surface site. Based on his marshalling point (MP) total, he may use the following number of regions: 0-8 MP 1 region; 9-16 MP 2 regions; 17-24 MP 3 regions; 25+ MP 4 regions. This region allowance may not be modified by any other effects except A More Evil Hour.">
        <attr key="specific" value="Balrog"/>
