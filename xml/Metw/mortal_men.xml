@@ -83,7 +83,7 @@
 			 <attr key="keyword" value="Stature card"/>
 		</card>
 		<card name="Gwaith-i-Mirdain" graphics="GwaithiMirdain.jpg" text="Unique. Playable if you tap an Elf sage or discard a Lost Knowledge resource from play. Ring tests at sites in Hollin are modified by +1. Additionally, any Elf or Dwarf sage may tap to make non-unique ore resources playable at sites in Hollin (as if at the appropriate Under-deeps site). When this card is discarded from play, you may take one Ringlore, Secrets of their Forging or Secrets of Their Making from your discard pile to your hand.">
-			 <attr key="type" value="Hero Resource"/>
+			 <attr key="type" value="Dual Resource"/>
 			 <attr key="rarity" value="R"/>
 			 <attr key="unique" value="yes"/>
 			 <attr key="class" value="Long-event"/>
@@ -207,7 +207,7 @@
 			 <attr key="class" value="Permanent-event"/>
 		</card>
 		<card name="One Ring to Rule Them All..." graphics="One Ring to Rule Them All.jpg" text="Unique. Playable on The One Ring. If the bearer of The One Ring is an avatar your GI is increased by +4. All other characters in the company bearing a ring special item have their mind halved (round down) and their CC modified by an additional -1. This card is worth 1 mp for each such character, and bearer’s CC are modified by -1 for each such character. The is no limit to the bearer’s company size.">
-			 <attr key="type" value="Hero Resource"/>
+			 <attr key="type" value="Dual Resource"/>
 			 <attr key="rarity" value="R"/>
 			 <attr key="unique" value="yes"/>
 			 <attr key="class" value="Permanent-event"/>
