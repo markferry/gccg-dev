@@ -845,6 +845,7 @@
        <attr key="type" value="Hero Resource"/>
 	   <attr key="keyword" value="Battle-gear"/>
 	   <attr key="keyword" value="Hoard Item"/>
+	   <attr key="keyword" value="Warrior only"/>
     </card>
     <card name="Belegaer" graphics="BelegaerDC.jpg" text="Playable during organization phase on a company moving without region cards. Company may move from a site of origin in one of the following regions to a new site in one of the following regions: Lindon, Elven Shores, Eriadoran Coast, Andrast Coast, Bay of Belfalas, Mouths of the Anduin, Enedhwaith, Old Pûkel-land, Andrast, Anfalas, Belfalas, Lebennin, and Harondor. The site path is [ccc] and the hazard limit is decreased by two to a minimum of two.">
        <attr key="rarity" value="C1"/>
@@ -865,6 +866,7 @@
        <attr key="type" value="Hero Resource"/>
 	   <attr key="keyword" value="Battle-gear"/>
 	   <attr key="keyword" value="Hoard Item"/>
+	   <attr key="keyword" value="Warrior only"/>
     </card>
     <card name="Burglary" graphics="Burglary.jpg" text="Tap a character to make a burglary attempt at a site in lieu of facing its automatic-attacks. Tap the site and make a roll modified by +2 if the character is a scout and +3 if he is a hobbit. If the result is greater than 10, an item normally playable at the site may be played with the character. If the attempt fails, the character must face all automatic attacks alone.">
        <attr key="rarity" value="C2"/>
@@ -948,6 +950,7 @@
        <attr key="type" value="Hero Resource"/>
 	   <attr key="keyword" value="Battle-gear"/>
 	   <attr key="keyword" value="Hoard Item"/>
+	   <attr key="keyword" value="Warrior only"/>
     </card>
     <card name="Fast Asleep" graphics="FastAsleep.jpg" text="+3 to one burglary attempt. Alternatively, -2 to the prowess of one automatic-attack.">
        <attr key="rarity" value="C2"/>
@@ -1064,6 +1067,7 @@
        <attr key="rarity" value="C2"/>
        <attr key="class" value="Short-event"/>
        <attr key="type" value="Hero Resource"/>
+	   <attr key="keyword" value="Ranger only"/>
     </card>
     <card name="Map to Mithril" graphics="MaptoMithril.jpg" text="Playable on a Dwarf during the site phase at a site at which &quot;Information&quot; is playable. Tap the Dwarf and site. Tap Map to Mithril if bearer is ever at Moria; this card never untaps. If Map to Mithril is at a Dwarf-hold and it is tapped, the bearer may tap himself and place this card with a non-unique weapon in his company. This gives the weapon a +3 prowess bonus.">
        <attr key="corruption" value="2"/>
@@ -1144,6 +1148,7 @@
        <attr key="rarity" value="C2"/>
        <attr key="class" value="Short-event"/>
        <attr key="type" value="Hero Resource"/>
+	   <attr key="keyword" value="Diplomat only"/>
     </card>
     <card name="Refuge" graphics="Refuge.jpg" text="Playable only if you discard an Elf from your hand and only at the end of the organization phase on a company using region cards with the last one being a Wilderness [{w}]. (Play regions face-up.) This card is used as a site card, Free-hold [{F}] (cards drawn: 1/1). The company may only leave this site using region movement. Characters at this site heal as though they were in a haven [{H}]. Discard Refuge when the company moves to a new site.">
        <attr key="rarity" value="C2"/>
@@ -1233,6 +1238,7 @@
        <attr key="rarity" value="C2"/>
        <attr key="class" value="Short-event"/>
        <attr key="type" value="Hero Resource"/>
+	   <attr key="keyword" value="Scout only"/>
     </card>
     <card name="Twice-baked Cakes" graphics="TwicebakedCakes.jpg" text="Playable only at a Free-hold [{F}] or Border-hold [{B}]. May also be played if the site is tapped. Discard during organization phase to allow its bearer's company to play two addtional region cards.">
        <attr key="corruption" value="1"/>
@@ -1251,6 +1257,7 @@
        <attr key="type" value="Hero Resource"/>
 	   <attr key="keyword" value="Battle-gear"/>
 	   <attr key="keyword" value="Hoard Item"/>
+	   <attr key="keyword" value="Warrior only"/>
     </card>
     <card name="Vanish in Sunlight!" graphics="VanishinSunlight.jpg" text="Modify the prowess of one Nazgûl or Undead attack by -2 (by -4 if Gates of Morning is in play).">
        <attr key="rarity" value="U2"/>

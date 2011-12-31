@@ -159,6 +159,7 @@
 			 <attr key="cp" value="3"/>
 			 <attr key="keyword" value="Axe"/>
 			 <attr key="keyword" value="Battle-gear"/>
+			 <attr key="keyword" value="Warrior only"/>
 		</card>
 		<card name="Bears of the Carrock" graphics="Bears of the Carrock.jpg" text="Unique. Playable at Beorn's House or The Carrock if the influence check is greater than 9. Standard Modifications: Sprautabern or a character with home site Beorn's House (+3), Beornings (+2). Rotate this card 90° (or place a token) if you play Beorning Skin-changers as a creature, or to cancel Beorning Skin-changers if played against any of your companies. This faction is worth 1 extra mp for each time rotated (to a maximum of 4).">
 			 <attr key="type" value="Hero Resource"/>
@@ -330,6 +331,7 @@
 			 <attr key="type" value="Dual Resource"/>
 			 <attr key="rarity" value="C"/>
 			 <attr key="class" value="Short-event"/>
+			 <attr key="keyword" value="Warrior only"/>
 		</card>
 		<card name="Dís" graphics="Dis.jpg" text="Unique. Longbeard. May not be among the starting characters. +4 EI against Fili, Frerin, Kili, Thorin III Stonehelm or any manifestation of Thorin II. If at a Dwarf-hold you may discard Dís during your organization and replace her with any manifestation of Fili, Frerin, Kili, Thorin II or Thorin III Stonehelm; character may be taken from hand, discard pile or play deck (reshuffle).">
 			 <attr key="type" value="Hero Character"/>
@@ -487,6 +489,7 @@
 			 <attr key="cp" value="2"/>
 			 <attr key="keyword" value="Axe"/>
 			 <attr key="keyword" value="Battle-gear"/>
+			 <attr key="keyword" value="Warrior only"/>
 		</card>
 		<card name="Dwarven-galleries" graphics="Dwarvengalleries.jpg" text="Dwarf-lord specific. Playable if you have at least 5 P. tap: during your end-of-turn phase to take Gnawed Ways, Into Dark Tunnels, or Secret Ways from your play deck or discard pile into hand (reshuffle). Additionally, you receive full mp for To the Uttermost Foundations. Cannot be duplicated by a given player.">
 			 <attr key="type" value="Stage Resource"/>
@@ -1502,6 +1505,7 @@
 			 <attr key="class" value="Permanent-event"/>
 			 <attr key="mp" value="1"/>
 			 <attr key="keyword" value="Information"/>
+			 <attr key="keyword" value="Sage only"/>
 		</card>
 		<card name="Ta-Fa-Lisch" graphics="TaFaLisch.jpg" text="Undead. 3 strikes. Playable at any Ancient Dwarf-ruin or site containing a hoard. Unless the attack is cancelled or defeated, place this card with the site to which it was keyed. Place Ta-fa-lisch with the first character to play an item at the site. Character faces an attack from this creature at the start of every movement/hazard phase (as if a single character company, not counting against the hazard limit) until it is defeated or the item it was transfered with is stored or leaves play (then remove this card from the game).">
 			 <attr key="type" value="Hazard"/>
@@ -1709,7 +1713,7 @@
 			 <attr key="rarity" value="C"/>
 			 <attr key="class" value="Permanent-event"/>
 		</card>
-		<card name="Warhammer" graphics="Warhammer.jpg" text="Weapon. Two-handed. Warrior only: +2 prowess to a maximum of 8 (+3 against Trolls to a maximum of 9, if borne by a Dwarf).">
+		<card name="War Mattock" graphics="War Mattock.jpg" text="Weapon. Two-handed. Warrior only: +2 prowess to a maximum of 8 (+3 against Trolls to a maximum of 9, if borne by a Dwarf).">
 			 <attr key="type" value="Hero Resource"/>
 			 <attr key="rarity" value="C"/>
 			 <attr key="class" value="Major Item"/>
@@ -1718,6 +1722,7 @@
 			 <attr key="cp" value="2"/>
 			 <attr key="keyword" value="Battle-gear"/>
 			 <attr key="keyword" value="Two-handed"/>
+			 <attr key="keyword" value="Warrior only"/>
 		</card>
 		<card name="We Must Away!" graphics="We Must Away.jpg" text="Playable at the end of the organization phase on a moving company that contains at least 2 Dwarves. Untap all characters in the company. The company may move an additional region this turn (to a maximum of 6). Cannot be duplicated on a given company.">
 			 <attr key="type" value="Hero Resource"/>

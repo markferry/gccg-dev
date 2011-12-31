@@ -664,6 +664,7 @@
 			 <attr key="mp" value="3"/>
 			 <attr key="cp" value="4(3)"/>
 			 <attr key="keyword" value="Battle-gear"/>
+			 <attr key="keyword" value="Warrior only"/>
 	</card>
 	<card name="Attuning the Blade" graphics="Attuning the Blade.jpg" text="Ritual. Sage only. Playable during the site phase at a site where Information is playable. taTap a sage; place this card on a non-unique minor or major weapon item in the company and choose a type: Giant, Orc, Troll, Undead or Wolf. The weapon gives +2 prowess or -1 body against strikes of the chosen type. Sage makes a CC modified by -2.">
 			 <attr key="type" value="Hero Resource"/>
@@ -671,6 +672,7 @@
 			 <attr key="class" value="Permanent-event"/>
 			 <attr key="keyword" value="Ritual"/>
 	         <attr key="keyword" value="Information"/>
+			 <attr key="keyword" value="Sage only"/>
 	</card>
 	<card name="Blood of Huan" graphics="Blood of Huan.jpg" text="Playable on a Noble Hound controlled by an Elf or a non-overt ranger. +1 to body. The Noble Hound is considered an Elf character for the purpose of cards that modify prowess. tap: allow target Noble Hound to face any number of strikes from an attack. Each strike sequence must be faced separately. Cannot be duplicated on a given Noble Hound.">
 			 <attr key="type" value="Hero Resource"/>
@@ -685,6 +687,7 @@
 			 <attr key="class" value="Minor Item"/>
 			 <attr key="cp" value="1"/>
 			 <attr key="keyword" value="Battle-gear"/>
+			 <attr key="keyword" value="Warrior only"/>
 	</card>
 	<card name="Choose a Mortal Life" graphics="Choose a Mortal Life.jpg" text="Playable on Arwen, Elladan or Elrohir. +1 EI against Dúnedain. Target character is considered to be a Dúnadan (as well as an Elf). Additionally, The Burden of Time cannot be played on him. Cannot be duplicated on a given character.">
 			 <attr key="type" value="Hero Resource"/>
@@ -726,7 +729,6 @@
 			 <attr key="influence" value="+1"/>
 			 <attr key="mp" value="2"/>
 			 <attr key="cp" value="1"/>
-			 <attr key="keyword" value="Ring"/>
 			 <attr key="keyword" value="Lesser Ring"/>
 	</card>
 	<card name="Elf-friend" graphics="Elffriend.jpg" text="Playable on a non-Wizard, non-Elf, non-overt character at an Elf-hold. Target character receives +2 EI against Elves, and suffers no negative modification according to his race when attempting to influence Elf factions. Additionally, target character is also considered an Elf for non-environment and non-item resource effects or cards. Cannot be duplicated on a given character.">
@@ -792,6 +794,7 @@
 			 <attr key="mp" value="2"/>
 			 <attr key="cp" value="2"/>
 			 <attr key="keyword" value="Battle-gear"/>
+			 <attr key="keyword" value="Warrior only"/>
 	</card>
 	<card name="Great Friendship" graphics="Great Friendship.jpg" text="Playable on Gimli or Legolas, if both are in the same company and after defeating an attack. Tap Gimli and Legolas if untapped. +1 to body for both characters. If either is controlled by the other he costs only 3 points of influence to control. Both may tap to give +3 to any roll made by the other. You may discard this card to let either character take a strike assigned to the other, to cancel an influence attempt against either character, or to cancel the effects of a hazard that would remove either character from the company. Discard this card if either character leaves active play. Cannot be duplicated.">
 			 <attr key="type" value="Hero Resource"/>
@@ -910,6 +913,8 @@
 			 <attr key="mp" value="4"/>
 			 <attr key="cp" value="3(2)"/>
 			 <attr key="keyword" value="Battle-gear"/>
+			 <attr key="keyword" value="Sage only"/>
+			 <attr key="keyword" value="Warrior only"/>
 	</card>
     <card name="The High Sea" graphics="The High Sea.jpg" text="Unique. Playable on a non-avatar Elf character in any out of play pile, if you discard (for no effect) from hand a Favor of the Valar or Returned Beyond All Hope. May also be played on an Elf placed “off to the side” with Sail to the West. Make a roll, adding the character’s mind; if the result is greater than 10, the character may be brought into play under GI at Grey Havens (discard Sail to the West). Otherwise, discard this card. Alternatively, playable on an Elf with mind 6 or more placed “off to the side” with Sail to the West. The character is worth full mp to you.">
 			 <attr key="type" value="Hero Resource"/>
@@ -957,6 +962,7 @@
 			 <attr key="mp" value="3"/>
 			 <attr key="cp" value="2"/>
 			 <attr key="keyword" value="Battle-gear"/>
+			 <attr key="keyword" value="Warrior only"/>
 	</card>
 	<card name="Very Active Governess" graphics="Very Active Governess.jpg" text="Unique. Playable on Galadriel if Royal Duo isin play. Once per phase Galadriel may make a CC: if still in play afterwards she may untap.">
 			 <attr key="type" value="Hero Resource"/>
@@ -1246,6 +1252,7 @@
 			 <attr key="cp" value="1"/>
 			 <attr key="sp" value="2"/>
 			 <attr key="specific" value="Thranduil"/>
+			 <attr key="keyword" value="Warrior only"/>
 	</card>
 	<card name="The Sea's Prowess" graphics="The Seas Prowess.jpg" text="Unique. Círdan specific. Place this card on Círdan if he is in play. You may play Kindling of the Spirit on Círdan as if he were a Wizard. tap: during your end-of-turn phase (if on Círdan) to take one Belegaer, The Reach of Ulmo, or Kindling of the Spirit from your discard pile to your hand.">
 			 <attr key="type" value="Stage Resource"/>
@@ -1284,6 +1291,7 @@
 			 <attr key="class" value="Permanent-event"/>
 			 <attr key="mp" value="1(4)"/>
 			 <attr key="keyword" value="Stolen Knowledge"/>
+			 <attr key="keyword" value="Scout only"/>
 	</card>
     <card name="Knowledge of Nenya" graphics="Knowledge of Nenya.jpg" text="Stolen knowledge. Elf only. Playable during the site phase at Lórien on an Elf in a covert company, if Galadriel is thereor is not in play. Target Elf faces an attack: Elf — 1 strike with 12 prowess (detainment; cannot be cancelled). If the strike is successful the character is taken prisoner at Lórien (Rescue-attack: exact duplicate of all automatic-attacks). Otherwise tap the character or discard this card. This card may be stored at Barad-dûr or a Darkhaven [K]. If stored it is worth 4 mp and all characters with Lórien as a home site receive +1 mind. Cannot be duplicated.">
 			 <attr key="type" value="Minion Resource"/>
@@ -1308,7 +1316,6 @@
 			 <attr key="influence" value="+2(+5)"/>
 			 <attr key="mp" value="5"/>
 			 <attr key="cp" value="5"/>
-			 <attr key="keyword" value="Ring"/>
 			 <attr key="keyword" value="Elven Ring"/>
 	</card>
     <card name="Ring of Ruby" graphics="Ring of Ruby.jpg" text="Unique. Elven Ring. Playable on any character that taps after CvCC, if opponent’s Gandalf was wounded during the combat. May also be played at any Elf- or Dwarf-hold, if you have a stored Knowledge of Narya and neither a manifestation of Gandalf nor Realm of Narya is in play.Values in parenthesis apply to an Elf bearer. Narya may not be played. tap: at any time to untap up to 2 characters in the company; bearer makes a CC modified by -2.">
@@ -1321,7 +1328,6 @@
 			 <attr key="influence" value="+2(+4)"/>
 			 <attr key="mp" value="5"/>
 			 <attr key="cp" value="5"/>
-			 <attr key="keyword" value="Ring"/>
 			 <attr key="keyword" value="Elven Ring"/>
 	</card>
 	<card name="Ring of Saphire" graphics="Ring of Saphire.jpg" text="Unique. Elven Ring. Playable on any character that taps after CvCC, if opponent’s Elrond was wounded during the combat. May also be played at Rivendell if you have a stored Knowledge of Vilya and no manifestation of Elrond is in play.Values in parenthesis apply to an Elf bearer. Vilya may not be played. taBearer may tap during the organization phase to take any one minion resource event from your discard pile to your hand (show opponent). Bearer makes a CC modified by -1.">
@@ -1334,7 +1340,6 @@
 			 <attr key="influence" value="+3(+5)"/>
 			 <attr key="mp" value="5"/>
 			 <attr key="cp" value="5"/>
-			 <attr key="keyword" value="Ring"/>
 			 <attr key="keyword" value="Elven Ring"/>
 	</card>
 	<card name="They Are Accounted For" graphics="They Are Accounted For.jpg" text="Black player only. All ring tests are modified by: +1 for every Elven Ring in play; +1 for every 2 Dwarven Rings in play; +1 for every 3 Man Rings in play; and +1 for every 5 other rings in play. Discard this card if The One Ring comes into play. Cannot be duplicated.">

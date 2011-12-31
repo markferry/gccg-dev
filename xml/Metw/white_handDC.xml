@@ -357,6 +357,7 @@
        <attr key="rarity" value="C4"/>
        <attr key="class" value="Short-event"/>
        <attr key="type" value="Minion Resource"/>
+	   <attr key="keyword" value="Ranger only"/>
     </card>
     <card name="The Fiery Blade" graphics="TheFieryBlade.jpg" text="Playable on your Ringwraith or a Ringwraith follower. Each strike against the Ringwraith receives -1 body (-2 body and -2 prowess against The Witch- king). Discard The Fiery Blade after a strike against the Ringwraith fails or if the Ringwraith has Morgul-blade. Cannot be duplicated.">
        <attr key="rarity" value="R3"/>
@@ -425,6 +426,7 @@
        <attr key="type" value="Minion Resource"/>
 	   <attr key="keyword" value="Battle-gear"/>
 	   <attr key="keyword" value="Technology"/>
+	   <attr key="keyword" value="Warrior only"/>
     </card>
     <card name="Vile Fumes" graphics="VileFumes.jpg" text="Technology. Playable at a tapped or untapped Shadow-hold, Dark-hold, or a site with a Dwarf automatic-attack. Discard during the site phase at a Border- hold or Shadow- hold to make all versions of the site Ruins and Lairs. Its normal automatic-attacks are replaced with: Gas - each character faces 1 strike with 7 prowess (cannot be canceled). Keep Vile Fumes with the site until the site is discarded or returned to its location deck.">
        <attr key="corruption" value="1"/>
@@ -729,6 +731,7 @@
        <attr key="rarity" value="U3"/>
        <attr key="class" value="Permanent-event"/>
        <attr key="type" value="Stage Resource"/>
+	   <attr key="keyword" value="Warrior only"/>
     </card>
     <card name="Await the Onset" graphics="AwaittheOnset.jpg" text="Gandalf specific. Playable if you are Gandalf and have at least: 12 stage points, two protected Wizardhavens, 4 factions, and 6 characters. Each faction you play after Await the Onset is worth 1 marshalling point regardless of other cards in play (place these factions under Await the Onset). Each of your marshalling point cards in a company not in one of your Wizardhavens when the game ends is worth 1 marshalling point regardless of other cards in play. Cannot be duplicated.">
        <attr key="sp" value="3"/>
@@ -792,6 +795,7 @@
        <attr key="rarity" value="R3"/>
        <attr key="class" value="Permanent-event"/>
        <attr key="type" value="Stage Resource"/>
+	   <attr key="keyword" value="Sage only"/>
     </card>
     <card name="Pallando's Apprentice" graphics="PallandosApprentice.jpg" text="Unique. Pallando specific. Sage only. Playable on a non-Hobbit, non-Dwarf sage character at one of your Wizardhavens (or in your starting company). +1 to his direct influence. This character requires 2 points of influence to control and may only be controlled by general influence or Pallando. This character may tap to use a Palantír he bears.">
        <attr key="unique" value="yes"/>
@@ -800,6 +804,7 @@
        <attr key="rarity" value="U3"/>
        <attr key="class" value="Permanent-event"/>
        <attr key="type" value="Stage Resource"/>
+	   <attr key="keyword" value="Sage only"/>
     </card>
     <card name="Pallando's Hood" graphics="PallandosHood.jpg" text="Unique. Pallando specific. Place this card on Pallando if he is in play. If on Pallando, you may tap Pallando's Hood during your end-of-turn phase to take Gifts as Given of Old, Wizard's Voice, or Eyes of Mandos from your discard pile to your hand.">
        <attr key="unique" value="yes"/>

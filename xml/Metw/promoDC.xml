@@ -37,6 +37,7 @@
        <attr key="class" value="Minor Item"/>
        <attr key="type" value="Hero Resource"/>
 	   <attr key="keyword" value="Battle-gear"/>
+	   <attr key="keyword" value="Warrior only"/>
     </card>
     <card name="More Alert than Most" graphics="MoreAlertthanMost.jpg" text="The number of strikes of any attack that chooses defending characters is reduced by one (to a minimum of one) - by two if Gates of Morning is in play. Discard when such attack is defeated. Cannot be duplicated.">
        <attr key="rarity" value="P"/>
@@ -98,6 +99,7 @@
        <attr key="class" value="Minor Item"/>
        <attr key="type" value="Dual Resource"/>
 	   <attr key="keyword" value="Battle-gear"/>
+	   <attr key="keyword" value="Scout only"/>
     </card>
     <card name="The Iron Crown" graphics="TheIronCrown.jpg" text="Unique. Whenever bearer makes an influence check, he must also make a corruption check. If the bearer is not a Hobbit: he receives +1 to body to a maximum of 10; he receives +4 to direct influence; and he may tap The Iron Crown to cancel an attack by Orcs, Trolls, or Men against his company.">
        <attr key="unique" value="yes"/>

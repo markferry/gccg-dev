@@ -1944,6 +1944,7 @@
        <attr key="rarity" value="U"/>
        <attr key="class" value="Permanent-event"/>
        <attr key="type" value="Hero Resource"/>
+	   <attr key="keyword" value="Sage only"/>
     </card>
     <card name="Anduin River" graphics="AnduinRiver.jpg" text="Playable at the end of the organization phase on a company containing a ranger. If the company uses region cards for its site path, tap the ranger to move as if the following pairs of regions were adjacent: Rohan and Dagorlad, Anórien and Dagorlad, Anórien and Ithilien, Lebennin and Ithilien, Lebennin and Harondor. Otherwise, if the site moved to is in one of the regions listed above, the hazard limit is reduced by two (to a minimum of two). Cannot be duplicated on a given company.">
        <attr key="rarity" value="CB2"/>
@@ -1961,6 +1962,7 @@
        <attr key="influence" value="0(1)"/>
 	   <attr key="keyword" value="Battle-gear"/>
 	   <attr key="keyword" value="Information"/>
+	   <attr key="keyword" value="Sage only"/>
     </card>
     <card name="Army of the Dead" graphics="ArmyoftheDeadDC.jpg" text="Unique. Playable at Vale of Erech. May only be played by Aragorn II or Elessar on the same turn that he plays Paths of the Dead. May not be influenced by an opponent. {cyan} UEP: Unique. Playable at the Vale of Erech. May only be played by Aragorn II on the same turn that he uses the special movement of Paths of the Dead. May not be influenced by an opponent.">
        <attr key="unique" value="yes"/>
@@ -2009,6 +2011,7 @@
        <attr key="rarity" value="CA"/>
        <attr key="class" value="Short-event"/>
        <attr key="type" value="Hero Resource"/>
+	   <attr key="keyword" value="Warrior only"/>
     </card>
     <card name="Blue Mountain Dwarves" graphics="BlueMountainDwarves.jpg" text="Unique. Playable at Blue Mountain Dwarf-hold if the influence check is greater than 9. Standard modifications: Elves (-2), Dwarves (+2).">
        <attr key="unique" value="yes"/>
@@ -2041,6 +2044,7 @@
        <attr key="rarity" value="CA"/>
        <attr key="class" value="Short-event"/>
        <attr key="type" value="Hero Resource"/>
+	   <attr key="keyword" value="Scout only"/>
     </card>
     <card name="Cracks of Doom" graphics="CracksofDoomDC.jpg" text="Only playable during the site phase, if The One Ring is at Mount Doom. Its bearer must make a corruption check modified by -4. If successful, The One Ring is destroyed and its bearer's player wins.">
        <attr key="rarity" value="U"/>
@@ -2073,6 +2077,7 @@
        <attr key="type" value="Hero Resource"/>
 	   <attr key="keyword" value="Lore"/>
 	   <attr key="keyword" value="Information"/>
+	   <attr key="keyword" value="Sage only"/>
     </card>
     <card name="Dunlendings" graphics="Dunlendings.jpg" text="Unique. Playable at Dunnish Clan-hold if the influence check is greater than 9. Standard Modifications: Men (-1), Dúnedain (-1), Dwarves (-1).">
        <attr key="unique" value="yes"/>
@@ -2284,6 +2289,7 @@
        <attr key="class" value="Short-event"/>
        <attr key="type" value="Hero Resource"/>
 	   <attr key="keyword" value="Information"/>
+	   <attr key="keyword" value="Sage only"/>
     </card>
     <card name="Favor of the Valar" graphics="FavoroftheValar.jpg" text="Unique. Playable during your organization phase. Shuffle your hand and your discard pile into you play deck (site cards remain in the discard pile). Draw a new hand of 8 cards. Remove Favor of the Valar from the game.">
        <attr key="unique" value="yes"/>
@@ -2371,6 +2377,7 @@
        <attr key="class" value="Major Item"/>
        <attr key="type" value="Hero Resource"/>
 	   <attr key="keyword" value="Battle-gear"/>
+	   <attr key="keyword" value="Warrior only"/>
     </card>
     <card name="Gwaihir" graphics="GwaihirDC.jpg" text="Unique. Playable at Eagles' Eyrie. If his company's size is two or less, you may discard Gwaihir during the organization phase to allow his company to move to any site that is not in a Shadow-land [{s}] or Dark-domain [{d}]; only hazard creatures keyed to the site may be played on a company that moves in this fashion.">
        <attr key="unique" value="yes"/>
@@ -2402,6 +2409,7 @@
        <attr key="class" value="Major Item"/>
        <attr key="type" value="Hero Resource"/>
 	   <attr key="keyword" value="Battle-gear"/>
+	   <attr key="keyword" value="Warrior only"/>
     </card>
     <card name="Healing Herbs" graphics="HealingHerbsDC.jpg" text="The bearer can tap and discard this item to heal a character in his company, changing the character's status from wounded to well and untapped. Alternatively, the bearer can tap and discard this item to untap a character that is not wounded. {green} DCE: a character does not have to tap anymore to use the healing effects">
        <attr key="corruption" value="1"/>
@@ -2413,6 +2421,7 @@
        <attr key="rarity" value="R"/>
        <attr key="class" value="Short-event"/>
        <attr key="type" value="Hero Resource"/>
+	   <attr key="keyword" value="Scout only"/>
     </card>
     <card name="Hillmen" graphics="Hillmen.jpg" text="Unique. Playable at Cameth Brin if the influence check is greater than 9. Standard Modifications: Men (+1).">
        <attr key="unique" value="yes"/>
@@ -2489,6 +2498,7 @@
        <attr key="rarity" value="CB2"/>
        <attr key="class" value="Short-event"/>
        <attr key="type" value="Hero Resource"/>
+	   <attr key="keyword" value="Diplomat only"/>
     </card>
     <card name="Lossoth" graphics="Lossoth.jpg" text="Unique. Playable at Lossadan Camp if the influence check is greater than 8. Standard Modifications: Men (+1).">
        <attr key="unique" value="yes"/>
@@ -2501,11 +2511,13 @@
        <attr key="rarity" value="R"/>
        <attr key="class" value="Short-event"/>
        <attr key="type" value="Hero Resource"/>
+	   <attr key="keyword" value="Scout only"/>
     </card>
     <card name="Lucky Strike" graphics="LuckyStrike.jpg" text="Warrior only. Make two rolls (or draw two #'s) against a strike and shoose one of the two results to use.">
        <attr key="rarity" value="CA"/>
        <attr key="class" value="Short-event"/>
        <attr key="type" value="Hero Resource"/>
+	   <attr key="keyword" value="Warrior only"/>
     </card>
     <card name="Magic Ring of Courage" graphics="MagicRingofCourage.jpg" text="Magic Ring. Playable only with a Gold Ring and after a test indicates a Magic Ring. Gives the bearer warrior skill. If the bearer is already a warrior, he gets +2 to prowess. May not be duplicated on a given character.">
        <attr key="corruption" value="2"/>
@@ -2630,6 +2642,7 @@
        <attr key="rarity" value="CA"/>
        <attr key="class" value="Short-event"/>
        <attr key="type" value="Hero Resource"/>
+	   <attr key="keyword" value="Warrior only"/>
     </card>
     <card name="Narsil" graphics="Narsil.jpg" text="Unique. Weapon. +1 to prowess and direct influence.">
        <attr key="unique" value="yes"/>
@@ -2696,6 +2709,7 @@
        <attr key="class" value="Greater Item"/>
        <attr key="type" value="Hero Resource"/>
 	   <attr key="keyword" value="Palantír"/>
+	   <attr key="keyword" value="Sage only"/>
     </card>
     <card name="Palantír of Elostirion" graphics="PalantirofElostirionDC.jpg" text="Unique. Palantír. Playable only at The White Towers. Discard if the bearer moves. If the bearer is a sage, he may tap Palantír of Elostirion to remove one corruption card from an Elf or a Wizard under your control. Bearer makes a corruption check.">
        <attr key="unique" value="yes"/>
@@ -2821,6 +2835,7 @@
        <attr key="type" value="Hero Resource"/>
 	   <attr key="keyword" value="Information"/>
 	   <attr key="keyword" value="Lore"/>
+	   <attr key="keyword" value="Sage only"/>
     </card>
     <card name="Rescue Prisoners" graphics="RescuePrisonersDC.jpg" text="Playable at an already tapped Dark-hold [{D}] or Shadow-hold [{S}] during the site phase. The company faces a spider attack (2 strikes with 7 prowess). If no characters are untapped after the attack, discard Rescue Prisoners. Otherwise, you may tap 1 character in the company and put Rescue Prisoners under his control. That character may not untap until Rescue Prisoners is stored at a Haven [{H}], Border-hold [{B}], or Free-hold [{F}] during his organization phase. You receive the marshalling points for this card only when it is stored. Cannot be duplicated at a given site.">
        <attr key="mp" value="(2)"/>
@@ -2849,11 +2864,13 @@
        <attr key="type" value="Hero Resource"/>
 	   <attr key="keyword" value="Lore"/>
 	   <attr key="keyword" value="Information"/>
+	   <attr key="keyword" value="Sage only"/>
     </card>
     <card name="Risky Blow" graphics="RiskyBlow.jpg" text="Warrior only against one strike. +3 to prowess and -1 to body.">
        <attr key="rarity" value="CA"/>
        <attr key="class" value="Short-event"/>
        <attr key="type" value="Hero Resource"/>
+	   <attr key="keyword" value="Warrior only"/>
     </card>
     <card name="Roäc the Raven" graphics="RoactheRavenDC.jpg" text="Unique. Playable at any site in Northern Rhovanion. Tap and discard to attempt to bring any faction into play - treat this influence check as though it were made by a diplomat.">
        <attr key="unique" value="yes"/>
@@ -2952,6 +2969,7 @@
        <attr key="rarity" value="CA"/>
        <attr key="class" value="Short-event"/>
        <attr key="type" value="Hero Resource"/>
+	   <attr key="keyword" value="Scout only"/>
     </card>
     <card name="Sting" graphics="Sting.jpg" text="Unique. Weapon. +1 prowess to a maximum of 8, +2 to a Hobbit's prowess to a maximum of 8.">
        <attr key="unique" value="yes"/>
@@ -2985,6 +3003,7 @@
        <attr key="class" value="Major Item"/>
        <attr key="type" value="Hero Resource"/>
 	   <attr key="keyword" value="Battle-gear"/>
+	   <attr key="keyword" value="Warrior only"/>
     </card>
     <card name="Tempering Friendship" graphics="TemperingFriendship.jpg" text="+4 to an influence attempt against a faction.">
        <attr key="rarity" value="CB2"/>
@@ -2995,11 +3014,13 @@
        <attr key="rarity" value="CA2"/>
        <attr key="class" value="Short-event"/>
        <attr key="type" value="Hero Resource"/>
+	   <attr key="keyword" value="Sage only"/>
     </card>
     <card name="Test of Lore" graphics="TestofLore.jpg" text="Sage only, and only if a character in his company has a Gold Ring. Play to test a Gold Ring; subtract one from the result of the roll (or draw).">
        <attr key="rarity" value="CA2"/>
        <attr key="class" value="Short-event"/>
        <attr key="type" value="Hero Resource"/>
+	   <attr key="keyword" value="Sage only"/>
     </card>
     <card name="The Arkenstone" graphics="TheArkenstoneDC.jpg" text="Unique. +3 to bearer's direct influence against Dwarves and Dwarf factions. If held by a Dwarf, The Arkenstone gives 5 marshalling points and 4 corruption points. The Arkenstone may be tapped to untap a Dwarf character in the same company, but target Dwarf must make a corruption check modified by -2. {green} DCE: Add: Hoard item.">
        <attr key="unique" value="yes"/>
@@ -3062,11 +3083,13 @@
        <attr key="rarity" value="R"/>
        <attr key="class" value="Permanent-event"/>
        <attr key="type" value="Hero Resource"/>
+	   <attr key="keyword" value="Sage only"/>
     </card>
     <card name="Thorough Search" graphics="ThoroughSearchDC.jpg" text="Scout only. Tap a scout during the site phase to allow another character in his company to play a minor, major, or gold ring item normally found at its current site. The company must face any automatic-attack for its current site at least once during this site phase. This does not tap the site, and Thorough Search can be played at a site that is already tapped.">
        <attr key="rarity" value="CA"/>
        <attr key="class" value="Short-event"/>
        <attr key="type" value="Hero Resource"/>
+	   <attr key="keyword" value="Scout only"/>
     </card>
     <card name="Tom Bombadil" graphics="TomBombadilDC.jpg" text="Unique. Playable at Old Forest. Tap to cancel the effects of one hazard that targets any company, or an entity associated with a company, moving to a site in:  Arthedain, Cardolan, Rhudaur, or The Shire. Discard Tom Bombadil if his company moves to a site that is not in: Arthedain, Cardolan, Rhudaur, or The Shire.">
        <attr key="unique" value="yes"/>
@@ -3116,6 +3139,7 @@
        <attr key="rarity" value="U"/>
        <attr key="class" value="Short-event"/>
        <attr key="type" value="Hero Resource"/>
+	   <attr key="keyword" value="Sage only"/>
     </card>
     <card name="Vanishment" graphics="Vanishment.jpg" text="Spell. Wizard only. Cancels an attack against the Wizard's company. Wizard makes a corruption check modified by -2.">
        <attr key="magic" value="Spell"/>

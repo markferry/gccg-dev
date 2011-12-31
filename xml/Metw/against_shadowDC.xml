@@ -442,6 +442,8 @@
        <attr key="rarity" value="R2"/>
        <attr key="class" value="Permanent-event"/>
        <attr key="type" value="Hero Resource"/>
+	   <attr key="keyword" value="Ranger only"/>
+	   <attr key="keyword" value="Scout only"/>
     </card>
     <card name="The Sun Unveiled" graphics="TheSunUnveiled.jpg" text="Playable on a character at a Free-hold if Gates of Morning is in play. Remove all hazard permanent-events on the character and, if tapped, untap him.">
        <attr key="rarity" value="C3"/>
@@ -584,13 +586,12 @@
        <attr key="class" value="Short-event"/>
        <attr key="type" value="Minion Resource"/>
     </card>
-
     <card name="The Ash Mountain Deeps" graphics="TheAshMountainDeeps.jpg" text="Ranger only. If his company uses region movement, it may move as if the following regions are adjacent: Dagorlad and Gorgoroth, Horse Plains and Gorgoroth. The company faces a detainment attack at the beginning of its movement/hazard phase: Orcs - 4 strikes at 6. Alternatively, if the site moved to is in one of the regions listed above, the hazard limit is reduced by one (to a minimum of 2).">
        <attr key="rarity" value="C2"/>
        <attr key="class" value="Short-event"/>
        <attr key="type" value="Minion Resource"/>
+	   <attr key="keyword" value="Ranger only"/>
     </card>
-
     <card name="The Dark Power" graphics="TheDarkPower.jpg" text="Playable only if you are Sauron. +3 to an influence check against a faction. If the check is not successful, shuffle the faction into your play deck.">
        <attr key="rarity" value="U3"/>
        <attr key="class" value="Short-event"/>
@@ -644,6 +645,7 @@
        <attr key="rarity" value="C2"/>
        <attr key="class" value="Short-event"/>
        <attr key="type" value="Minion Resource"/>
+	   <attr key="keyword" value="Scout only"/>
     </card>
 
     <card name="Hold Rebuilt and Repaired" graphics="HoldRebuiltandRepairedDC.jpg" text="Playable during the site phase on a non-Dragon's lair, non-Under-deeps Ruins and Lairs. The site becomes a Shadow-hold and all automatic-attacks become detainment. Discard this card when the site is discarded or returned to its location deck.">
@@ -663,6 +665,7 @@
        <attr key="rarity" value="C3"/>
        <attr key="class" value="Short-event"/>
        <attr key="type" value="Minion Resource"/>
+	   <attr key="keyword" value="Diplomat only"/>
     </card>
 
     <card name="Legendary Stair" graphics="LegendaryStair.jpg" text="Playable if the company's new site is an Under-deeps site. At the end of the turn, the company may replace its new site card with its site of origin card.">
@@ -675,21 +678,20 @@
        <attr key="rarity" value="C2"/>
        <attr key="class" value="Short-event"/>
        <attr key="type" value="Minion Resource"/>
+	   <attr key="keyword" value="Ranger only"/>
     </card>
-
     <card name="The Mountains of Shadow Deeps" graphics="TheMountainsofShadowDeeps.jpg" text="Ranger only. If his company uses region movement, it may move as if the following regions were adjacent: Ithilien and Gorgoroth, Ithilien and Nurn, Harondor and Nurn. The company faces a detainment attack - Orcs - 4 strikes at 6 prowess. Alternatively, if the site moved to is one of the regions listed above, the hazard limit is reduced by two (to a minimum of two).">
        <attr key="rarity" value="C2"/>
        <attr key="class" value="Short-event"/>
        <attr key="type" value="Minion Resource"/>
+	   <attr key="keyword" value="Ranger only"/>
     </card>
-
     <card name="Orders from Lugbúrz" graphics="OrdersfromLugburz.jpg" text="Playable on a company. May be played with a starting company in lieu of a minor item. This company may contain a Troll leader in addition to another leader. +1 to all corruption checks by followers of Troll leaders in this company. Discard is Ren is your Ringwraith or when a leader leaves the company. Cannot be duplicated on a given company.">
        <attr key="rarity" value="U3"/>
        <attr key="class" value="Permanent-event"/>
        <attr key="type" value="Minion Resource"/>
 	   <attr key="keyword" value="startable"/>
     </card>
-
     <card name="Our Own Wolves" graphics="OurOwnWolves.jpg" text="Magic. Spirit-magic. Playable on a company with a spirit-magic using character facing an attack. Each wolf ally gets +3 prowess against the attack. Following the attack, the controller of each wolf ally faces an attack: one strike with the ally's normal prowess +3. If the strike of an attack is successful, discard the wolf ally. Caster makes a corruption check modified by -3.">
        <attr key="magic" value="Spirit-magic"/>
        <attr key="rarity" value="R2"/>
@@ -759,8 +761,8 @@
        <attr key="rarity" value="C2"/>
        <attr key="class" value="Short-event"/>
        <attr key="type" value="Minion Resource"/>
+	   <attr key="keyword" value="Ranger only"/>
     </card>
-
     <card name="The Under-roads" graphics="TheUnderroads.jpg" text="The roll required for minions to move between adjacent Under-deeps sites is decreased by 3. Discards and prohibits the subsequent play of The Way is Shut.">
        <attr key="rarity" value="C2"/>
        <attr key="class" value="Long-event"/>
@@ -785,6 +787,7 @@
        <attr key="rarity" value="C2"/>
        <attr key="class" value="Short-event"/>
        <attr key="type" value="Minion Resource"/>
+	   <attr key="keyword" value="Ranger only"/>
     </card>
 
     <card name="World Gnawed by the Nameless" graphics="WorldGnawedbytheNameless.jpg" text="Playable during the movement/hazard phase on a company moving to an Under-deeps site. At the end of its movement/hazard phase, target company attempts to move to an additional Under-deeps site which it has not attempted to move to yet this turn. Another site card is played and a movement/hazard phase immediately follows. Return this card to your hand. All hazard creatures the company faces this turn keyed to Shadow-holds attack normally, not as detainment.">
@@ -923,6 +926,7 @@
        <attr key="type" value="Minion Resource"/>
 	   <attr key="keyword" value="Axe"/>
 	   <attr key="keyword" value="Battle-gear"/>
+	   <attr key="keyword" value="Warrior only"/>
     </card>
 
     <card name="Dwarven Ring of Thélor's Tribe" graphics="DwarvenRingofThelorsTribe.jpg" text="Unique. Dwarven Ring. Tap a Dwarf bearer to search your play deck and/or discard pile for one or two minor items to put in your hand. Bearer then makes a corruption check modified by +2.">
@@ -968,6 +972,7 @@
        <attr key="class" value="Special Item"/>
        <attr key="type" value="Minion Resource"/>
 	   <attr key="keyword" value="Battle-gear"/>
+	   <attr key="keyword" value="Warrior only"/>
     </card>
 
     <card name="Necklace of Girion" graphics="NecklaceofGirion.jpg" text="Unique. Playable at the Lonely Mountain. Bearer receives +3 DI against Men and Man Factions. If bearer is at a Border-hold during his site phase, he can make a corruption check, and, if successful, discard this item to play up to 3 non-unique minor and/or major items with his company. Characters need not tap.">
@@ -1015,6 +1020,7 @@
        <attr key="type" value="Minion Resource"/>
 	   <attr key="keyword" value="Battle-gear"/>
 	   <attr key="keyword" value="Hoard Item"/>
+	   <attr key="keyword" value="Warrior only"/>
     </card>
 
     <card name="Thrall-ring" graphics="Thrallring.jpg" text="Mind Ring. -1 mind, +1 DI. Cannot be duplicated on a given character.">
@@ -1040,7 +1046,6 @@
        <attr key="type" value="Minion Resource"/>
 	   <attr key="keyword" value="Mind Ring"/>
     </card>
-
     <card name="Usriev of Treachery" graphics="UsrievofTreachery.jpg" text="Hoard Item. Weapon. Bearer must have a prowess of 5 or greater to wield this item. Warrior only: +1 prowess to a maximum of 8 (+2 vs. Elves to a maximum of 9). Bearer may choose to face 2 strikes from 1 attack.">
        <attr key="corruption" value="1"/>
        <attr key="mp" value="1"/>
@@ -1049,8 +1054,8 @@
        <attr key="type" value="Minion Resource"/>
 	   <attr key="keyword" value="Battle-gear"/>
 	   <attr key="keyword" value="Hoard Item"/>
+	   <attr key="keyword" value="Warrior only"/>
     </card>
-
     <card name="Cirith Gorgor" graphics="CirithGorgor.jpg" back="1" text="">
        <attr key="unique" value="yes"/>
        <attr key="haven" value="Lórien"/>

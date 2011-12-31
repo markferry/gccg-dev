@@ -1368,6 +1368,7 @@
        <attr key="type" value="Hero Resource"/>
        <attr key="influence" value="+2"/>
 	   <attr key="keyword" value="Battle-gear"/>
+	   <attr key="keyword" value="Warrior only"/>
     </card>
     <card name="Dragon-helm" graphics="Dragonhelm.jpg" text="Unique. Playable at any Under-deep Dark-hold (D) or Shadow-hold (S). Helmet. Warrior only: +1 prowess; +2 body (to a maximum of 10); +3 direct influence. Tap Dragon-helm to cancel one attack by Dragons or Drakes.">
        <attr key="unique" value="yes"/>
@@ -1380,6 +1381,7 @@
        <attr key="type" value="Hero Resource"/>
        <attr key="influence" value="+3"/>
 	   <attr key="keyword" value="Battle-gear"/>
+	   <attr key="keyword" value="Warrior only"/>
     </card>
     <card name="Dwarven Light-stone" graphics="DwarvenLightstone.jpg" text="Playable at any Under-deep site. +2 to all rolls required for bearer's company to move to an adjacent site in the Under-deeps. Tap Dwarven Light-stone: to modify by -2 the prowess of one attack for which &quot;weapons do not modify the target's prowess&quot; (e.g., Trap, Lava Flow, etc.), or to modify by -2 the prowess of one Orc or Troll attack.">
        <attr key="corruption" value="1"/>
