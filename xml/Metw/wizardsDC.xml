@@ -3182,7 +3182,7 @@
        <attr key="class" value="Short-event"/>
        <attr key="type" value="Hero Resource"/>
     </card>
-    <card name="Wizard's Ring" graphics="WizardsRingDC.jpg" text="Wizard only. Playable only at a Haven [{H}]. Cannot be stored, stolen, or transferred. May not be duplicated on a given Wizard. Bearer makes a corruption check when this item is played.">
+    <card name="Wizard's Ring" graphics="WizardsRingDC.jpg" text="Wizard only. Playable only at a Haven [{H}]. Cannot be played from Rumours of Rings. Cannot be stored, stolen, or transferred. May not be duplicated on a given Wizard. Bearer makes a corruption check when this item is played.">
        <attr key="corruption" value="4"/>
        <attr key="mp" value="2"/>
        <attr key="body" value="-"/>
