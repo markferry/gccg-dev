@@ -16,7 +16,7 @@ Deck
 
 # Elf-lord Character (4)
 
-4 Elrond [E] (FB)
+4 Elrond Half-elven (FB)
 
 # Hazard (33)
 
@@ -130,7 +130,7 @@ Sideboard
 # Hazard (5)
 
 1 Ash-drake (NE)
-1 Drawn to its Master (NM)
+1 Drawn to Its Master (NM)
 1 Drought (SL)
 1 Lost in Free-domains (TW)
 1 Wyrmsiege (DF)
@@ -149,7 +149,7 @@ Sideboard
 1 Jewel of Beleriand (AS)
 1 Power Against the Shadow (AS)
 1 Ring of Barahir (WR)
-1 Sûlhelka (FB)
+1 Sulhelka (FB)
 1 Wielded Twice (TD)
 
 # Stage Resource (2)
@@ -163,9 +163,9 @@ Sites
 
 # Elf-lord Site (2)
 
-2 Rivendell@ (FB)
+2 Rivendell [E] (FB)
 
-# Fallen Site (1)
+# Fallen-wizard Site (1)
 
 1 Grey Havens [F] (FB)
 
@@ -198,4 +198,3 @@ Sites
 1 The Willow Dingle [H] (RS)
 1 Tol Lamfirith [H] (KN)
 1 Zarak Dûm [H] (TD)
-

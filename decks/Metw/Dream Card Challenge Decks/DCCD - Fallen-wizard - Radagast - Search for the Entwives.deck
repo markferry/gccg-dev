@@ -29,7 +29,7 @@ Deck
 1 Black Crows (FB)
 1 Bregalad (FB)
 1 Come at Need (AS)
-1 Curse him, Root and Branch! (FB)
+1 Curse Him, Root and Branch! (FB)
 1 Drought (SL)
 2 Ent in Search of the Entwives (LE)
 1 Fladrif (FB)
@@ -94,7 +94,7 @@ Deck
 2 Hidden Haven (WH)
 1 In Accord with Nature (FB)
 1 Radagast's Black Bird (WH)
-1 The Trees have Ears (FB)
+1 The Trees Have Ears (FB)
 
 ####
 Pool
@@ -142,7 +142,7 @@ Sideboard
 # Hazard (4)
 
 1 Early Harvest (AS)
-1 He is lost to us (FB)
+1 He Is Lost to Us (FB)
 1 Sand Devil (SL)
 1 Sand-drake (SL)
 
@@ -172,14 +172,11 @@ Sideboard
 Sites
 #####
 
-# Fallen Site (2)
+# Fallen-wizard Site (4)
 
 1 Lórien [F] (FB)
-1 Thranduil's Halls [F] (FB)
-
-# Fallen-wizard Site (2)
-
 2 Rhosgobel [F] (WH)
+1 Thranduil's Halls [F] (FB)
 
 # Hero Site (21)
 
@@ -210,4 +207,3 @@ Sites
 1 Caras Amarth [M] (FB)
 1 Cor Angaladh [M] (FB)
 1 Mountains of Mirkwood [M] (GW)
-

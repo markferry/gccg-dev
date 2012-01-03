@@ -14,7 +14,7 @@ Deck
 
 # Elf-lord Character (4)
 
-4 Círdan [E] (FB)
+4 Círdan the Shipwright (FB)
 
 # Grey Agent Character (3)
 
@@ -50,13 +50,14 @@ Deck
 1 Wandering Eldar (LE)
 1 Watchers at the Gate (WR)
 
-# Hero Character (5)
+# Hero Character (6)
 
 1 Andovon Pathdal (FB)
 1 Annalena (TW)
 1 Elven Handmaid (FB)
 1 Galdor (TD)
 1 Shipwright (FB)
+1 Tharúdan (FB)
 
 # Hero Resource (27)
 
@@ -97,13 +98,12 @@ Pool
 
 1 Dúnadan Mariner (WR)
 
-# Hero Character (5)
+# Hero Character (4)
 
 1 Círdor (FB)
 1 Emissary of the House (FB)
 1 Gildor Inglorion (TW)
 1 Shipwright (FB)
-1 Tharudan (FB)
 
 # Hero Resource (3)
 
@@ -150,9 +150,9 @@ Sites
 
 # Elf-lord Site (2)
 
-2 Grey Havens@ (FB)
+2 Grey Havens [E] (FB)
 
-# Fallen Site (2)
+# Fallen-wizard Site (2)
 
 1 Edhellond [F] (FB)
 1 Rivendell [F] (FB)
@@ -180,4 +180,3 @@ Sites
 1 Thaurung [H] (NW)
 1 Tol Morven [H] (NW)
 1 Tolfalas [H] (TW)
-
