@@ -2206,6 +2206,7 @@
        <attr key="rarity" value="R"/>
        <attr key="class" value="Long-event"/>
        <attr key="type" value="Hero Resource"/>
+	   <attr key="keyword" value="Song"/>
     </card>
     <card name="Elf-stone" graphics="Elfstone.jpg" text="+2 to direct influence used agains an Elf character or an Elf faction. May not be duplicated on a given character.">
        <attr key="corruption" value="1"/>

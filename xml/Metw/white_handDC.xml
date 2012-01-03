@@ -201,6 +201,7 @@
        <attr key="rarity" value="C4"/>
        <attr key="class" value="Short-event"/>
        <attr key="type" value="Hazard"/>
+	   <attr key="keyword" value="Song"/>
     </card>
     <card name="Flotsam and Jetsam" graphics="FlotsamandJetsam.jpg" text="If a player has 15 or fewer cards in his play deck (20 or fewer if a Fallen-wizard), all effects are automatically canceled which allow him to search through or look at any portion of his play deck or discard pile outside of the normal sequence of play. Discard when any play deck is exhausted. Cannot be duplicated.">
        <attr key="rarity" value="R3"/>
