@@ -178,7 +178,7 @@ image.metw_map=(,);
 image.metw_map_colors=(,);
 object.metw_map=(,);
 metw_map_current=1;
-metw_map_total=5;
+metw_map_total=6;
 
 color2region=(,);
 color2region{1}=(,);
@@ -499,7 +499,92 @@ color2region{5}{(122,0,37)}="Yellow Mountains - Eastern Spur";
 color2region{5}{(0,166,82)}="Yellow Mountains";
 color2region{5}{(124,197,118)}="Zajantak";
 
-#
+color2region{6}=(,);
+color2region{6}{(255,247,154)}="Arysis";
+color2region{6}{(255,255,3)}="Bay of Drêl";
+color2region{6}{(200,178,155)}="Bay of Felaya";
+color2region{6}{(1,91,126)}="Bay of Tulwang";
+color2region{6}{(153,134,117)}="Bellazen";
+color2region{6}{(82,195,190)}="Bosiri";
+color2region{6}{(237,20,91)}="Bozisha-Miraz";
+color2region{6}{(122,244,255)}="Chennacatt";
+color2region{6}{(60,170,100)}="Clyan";
+color2region{6}{(1,255,255)}="Coast of Harad";
+color2region{6}{(13,1,77)}="Curinshiban";
+color2region{6}{(244,152,157)}="Dune Sea";
+color2region{6}{(254,242,0)}="Dûshera";
+color2region{6}{(237,0,140)}="Ered Harmal";
+color2region{6}{(84,71,65)}="Erim Póa";
+color2region{6}{(96,57,18)}="Felaya";
+color2region{6}{(33,22,133)}="Gan";
+color2region{6}{(245,150,120)}="Heb Aaraan";
+color2region{6}{(162,134,192)}="Hyarmenfalas";
+color2region{6}{(46,49,146)}="Isfahan";
+color2region{6}{(99,4,96)}="Isra";
+color2region{6}{(0,116,107)}="Kes Arik";
+color2region{6}{(254,198,137)}="Kirmlesra";
+color2region{6}{(10,110,111)}="Kurryan Bay";
+color2region{5}{(163,210,156)}="Lurmsakûn";
+color2region{6}{(242,108,79)}="Mardruak";
+color2region{6}{(150,13,50)}="Mardruak Cape";
+color2region{6}{(237,27,36)}="Mirror of Fire";
+color2region{6}{(55,47,45)}="Né Tava";
+color2region{6}{(115,115,115)}="Nûrad";
+color2region{6}{(0,119,162)}="Sára Bask";
+color2region{6}{(142,142,142)}="Seznebab";
+color2region{6}{(142,198,63)}="Siakan";
+color2region{6}{(198,156,108)}="Suza Sumar";
+color2region{6}{(188,233,233)}="The Sundering Seas";
+color2region{6}{(0,114,54)}="Tulwang";
+color2region{6}{(240,110,170)}="Ûsakan";
+color2region{6}{(122,0,37)}="Yellow Mountains - Eastern Spur";
+color2region{6}{(237,185,1)}="Yellow Mountains - Western Spur";
+color2region{6}{(0,166,82)}="Yellow Mountains";
+color2region{6}{(124,197,118)}="Zajantak";
+
+color2region{6}{(237,25,91)}="Elorna";
+color2region{6}{(137,25,91)}="Hyarn";
+color2region{6}{(37,25,91)}="Cleft of Goats";
+color2region{6}{(37,85,91)}="Hyarnustar Coast";
+color2region{6}{(137,85,91)}="Mirëdor";
+color2region{6}{(237,85,91)}="Drêl";
+color2region{6}{(237,185,91)}="Pel";
+color2region{6}{(237,85,191)}="Tumag";
+color2region{6}{(237,85,1)}="Mag";
+color2region{6}{(237,185,111)}="Ûsakan Bay";
+color2region{6}{(237,185,11)}="Hathor";
+color2region{6}{(237,15,11)}="Tantûrak";
+color2region{6}{(237,15,101)}="Shores of Maquatostoth";
+color2region{6}{(237,151,101)}="Tâliran";
+color2region{6}{(37,151,101)}="Koros Bay";
+color2region{6}{(37,51,101)}="Mûlambur";
+color2region{6}{(7,51,101)}="Geshaan";
+color2region{6}{(7,251,101)}="Tuktan";
+color2region{6}{(7,251,1)}="Methran Cape";
+color2region{6}{(71,251,1)}="Drenâd";
+color2region{6}{(71,251,17)}="Straight of Tumag";
+color2region{6}{(71,51,27)}="Mûmakan";
+color2region{6}{(71,151,27)}="Koronandë";
+color2region{6}{(71,151,127)}="Sakal an-Khâr";
+color2region{6}{(71,151,227)}="East Bay of Ormal";
+color2region{6}{(71,251,227)}="Mûmakan Coasts";
+color2region{6}{(3,34,69)}="Pel Bight";
+color2region{6}{(3,4,69)}="Zurghôr";
+color2region{6}{(3,114,69)}="Lyneria";
+color2region{6}{(3,114,169)}="Chey Sart";
+color2region{6}{(3,214,169)}="Harshandatt";
+color2region{6}{(3,214,109)}="Olyas Kriis";
+color2region{6}{(213,241,109)}="Ammu Baj";
+color2region{6}{(3,141,109)}="Kythor";
+color2region{6}{(113,141,109)}="Orgothraath";
+color2region{6}{(213,141,109)}="Shores of Ormal";
+color2region{6}{(213,241,9)}="Ered Ormal";
+color2region{6}{(213,24,9)}="Bulchyades";
+color2region{6}{(13,24,9)}="Chy";
+color2region{6}{(138,24,9)}="Bulchyades";
+
+
+
 # GAME FUNCTIONS
 # ==============
 
