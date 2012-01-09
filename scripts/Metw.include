@@ -541,7 +541,6 @@ color2region{6}{(122,0,37)}="Yellow Mountains - Eastern Spur";
 color2region{6}{(237,185,1)}="Yellow Mountains - Western Spur";
 color2region{6}{(0,166,82)}="Yellow Mountains";
 color2region{6}{(124,197,118)}="Zajantak";
-
 color2region{6}{(237,25,91)}="Elorna";
 color2region{6}{(137,25,91)}="Hyarn";
 color2region{6}{(37,25,91)}="Cleft of Goats";
