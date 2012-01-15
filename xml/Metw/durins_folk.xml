@@ -1552,7 +1552,8 @@
 			 <attr key="region" value="Anduin Vales"/>
 			 <attr key="haven" value="Lórien"/>
 			 <attr key="playable" value="Information, Items (minor)"/>
-			 <attr key="auto_attack" value="you may play Eagle Mounts here as if at Eagles Eyrie."/>
+			 <attr key="special" value="you may play Eagle Mounts here as if at Eagles Eyrie."/>
+			 <attr key="auto_attack" value="Animals. Bears - 2 strikes with 6 prowess (detainment against a company containing a character with home site Beorn's House)"/>
 		</card>
 		<card name="The Carrock" graphics="The Carrock2.jpg" back="1" text="">
 			 <attr key="type" value="Minion Site"/>
