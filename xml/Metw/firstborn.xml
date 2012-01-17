@@ -173,6 +173,7 @@
 			 <attr key="mind" value="10"/>
 			 <attr key="influence" value="6"/>
 			 <attr key="home_site" value="Rivendell"/>
+			 <attr key="race" value="Elf"/>
 			 <attr key="keyword" value="Half-elf"/>
 			 <attr key="keyword" value="Noldo"/>
 			 <attr key="keyword" value="Sinda"/>
