@@ -705,7 +705,7 @@
 	</card>
 	<card name="Cloak of Many Colors" graphics="Cloak of Many Colors.jpg" text="Discard if not borne by a Wizard or an Elf sage with mind 7 or more. tap: gain one of the following abilities until the end of the turn. * increase your hand size by 1;* draw an extra card for each Wilderness [w] bearer’s company moves through;* ttbearer may tap to test a gold ring;* tbearer may tap during the end-of-turn phase to bring one spell or ritual from your discard pile to your hand;* if at a Haven [H], bearer may join any company facing a creature attack and face a strike;Bearer makes a mCC when this item becomes tapped. Cannot be duplicated by a given player.">
 			 <attr key="type" value="Hero Resource"/>
-			 <attr key="rarity" value="R"/>
+			 <attr key="rarity" value="U"/>
 			 <attr key="class" value="Greater Item"/>
 			 <attr key="mp" value="3"/>
 			 <attr key="cp" value="3"/>
@@ -806,7 +806,7 @@
 	</card>	
 	<card name="Greenwood the Great" graphics="Greenwood the Great.jpg" text="Information. Playable on a character after the successful play of a faction at a site in Mirkwood. Tap the character. Discard this card to take a character or resource only playable at a site in Mirkwood from your discard pile to your hand. Alternatively, discard this card when CvCC is declared at a site in Mirkwood to untap all unwounded characters in the company and give them +1 prowess this turn. Cannot be duplicated by a given player.">
 			 <attr key="type" value="Hero Resource"/>
-			 <attr key="rarity" value="U"/>
+			 <attr key="rarity" value="C"/>
 			 <attr key="class" value="Permanent-event"/>
 			 <attr key="keyword" value="Information"/>
 	</card>
@@ -830,10 +830,9 @@
 			 <attr key="mind" value="+1"/>
 			 <attr key="keyword" value="startable"/>
 	</card>
-	
 	<card name="Light of the Lady" graphics="Light of the Lady.jpg" text="Unique. Playable on Galadriel. If she is at Lórien you may now bring Lady of the Golden Wood into play from your hand, discard pile or sideboard (overriding any conflicting rules). Discard Lady of the Golden Wood if Galadriel is not at Lórien. Additionally, if you are Galadriel, this card gives 1 P and you may play True Fána on Lady Galadriel as if she were a Wizard: modify her prowess for True Fána by +2 (+4 if Nenya has been played the same turn).">
 			 <attr key="type" value="Hero Resource"/>
-			 <attr key="rarity" value="C"/>
+			 <attr key="rarity" value="R"/>
 			 <attr key="unique" value="yes"/>
 			 <attr key="class" value="Permanent-event"/>
 			 <attr key="sp" value="1"/>
