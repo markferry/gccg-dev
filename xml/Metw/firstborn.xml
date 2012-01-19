@@ -1023,6 +1023,7 @@
 			 <attr key="class" value="Permanent-event"/>
 			 <attr key="mp" value="1"/>
 			 <attr key="sp" value="3"/>
+			 <attr key="specific" value="Elf-lord"/>
 	</card>
 	<card name="Arsenal of Lindon" graphics="Arsenal of Lindon.jpg" text="Unique. Círdan specific. Whenever a battle-gear item is stored at Grey Havens it must be placed under this card instead. Items under this card are considered “off to the side” and yield no mp. You may play any item under Arsenal of Lindon at Grey Havens (as if from hand). If during your organization phase there are at least 3 items under this card, you may take one non-unique, non-hoard minor or major battle-gear item from your sideboard or discard pile and place it under this card. If there are at least 4 items under Arsenal of Lindon it is worth 2 mp. Discard this card if Grey Havens is not in play.">
 			 <attr key="type" value="Stage Resource"/>
@@ -1226,6 +1227,7 @@
 			 <attr key="rarity" value="U"/>
 			 <attr key="class" value="Permanent-event"/>
 			 <attr key="sp" value="2"/>
+			 <attr key="specific" value="Lord-player"/>
 	</card>
 	<card name="The Elf-king" graphics="The Elfking.jpg" text="Unique. Elf-lord only. Playable on your Elf-lord, if you have in play at least: 12 stage points, 4 unique Elf characters, 1 unique Elf faction, and if your Elf-lord controls a stage card giving at least 1 CP and an item giving a combined mp / CP of 7 or more. Discard if these conditions are not met. The region in which your protected Lord-haven [h]H] is located becomes a Free-domain [f].">
 			 <attr key="type" value="Stage Resource"/>
@@ -1263,7 +1265,7 @@
 			 <attr key="sp" value="2"/>
 			 <attr key="specific" value="Círdan"/>
 	</card>
-	<card name="The Trees Have Ears" graphics="The Trees Have Ears.jpg" text="Playable only if you are Gandalf, Radagastor Thranduil. Each time an opponent’s company moves through the region of your avatar’s current site (or region adjacent) you may look at 2 random cards from his hand for each Wilderness [w] in that company’s site path.Cannot be duplicated by a given player.">
+	<card name="The Trees Have Ears" graphics="The Trees Have Ears.jpg" text="Playable only if you are Gandalf, Radagast or Thranduil. Each time an opponent’s company moves through the region of your avatar’s current site (or region adjacent) you may look at 2 random cards from his hand for each Wilderness [w] in that company’s site path.Cannot be duplicated by a given player.">
 			 <attr key="type" value="Stage Resource"/>
 			 <attr key="rarity" value="C"/>
 			 <attr key="class" value="Permanent-event"/>
@@ -1275,6 +1277,7 @@
 			 <attr key="class" value="Permanent-event"/>
 			 <attr key="influence" value="+1"/>
 			 <attr key="sp" value="1"/>
+			 <attr key="specific" value="Lord-player"/>
 	</card>
 	<card name="Wardens of the Woodland Realm" graphics="Wardens of the Woodland Realm.jpg" text="Unique. Thranduil specific. Place this card on Thranduil if he is in play. Woodland Realm becomes a Wilderness [w]. Any attack against any of your companies keyed to this region may be cancelled by discarding from hand a creature with an asterix (*) which could be played keyed to this region. tap: during your end-turn-phase to take one Elf-path or Refuge from your discard pile to your hand.">
 			 <attr key="type" value="Stage Resource"/>

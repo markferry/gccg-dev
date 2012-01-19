@@ -487,6 +487,7 @@
        <attr key="rarity" value="R3"/>
        <attr key="class" value="Permanent-event"/>
        <attr key="type" value="Stage Resource"/>
+	   <attr key="specific" value="Fallen-wizard"/>
     </card>
     <card name="A Strident Spawn" graphics="AStridentSpawn.jpg" text="Unique. Playable if you are Pallando or Saruman and have 6 or more stage points and a protected Wizardhaven. Each of your Half-orcs requires one less point of influence to control. During your organization phase, you may take one Half- orc character from your discard pile to your hand. You may play Half-orc characters at your Wizardhavens, and even if your Fallen-wizard is not there. Cannot be duplicated by a given player.">
        <attr key="unique" value="yes"/>
@@ -495,6 +496,7 @@
        <attr key="rarity" value="U3"/>
        <attr key="class" value="Permanent-event"/>
        <attr key="type" value="Stage Resource"/>
+	   <attr key="specific" value="Fallen-wizard"/>
     </card>
     <card name="An Untimely Brood" graphics="AnUntimelyBrood.jpg" text="Playable if you are Radagast or Alatar and have 6 or more stage points and a protected Wizardhaven. One non-unique ally with a mind of 1 is playable at one of your tapped or untapped protected Wizardhavens each of your site phases. Cannot be duplicated by a given player.">
        <attr key="sp" value="4"/>
@@ -502,12 +504,14 @@
        <attr key="rarity" value="C3"/>
        <attr key="class" value="Permanent-event"/>
        <attr key="type" value="Stage Resource"/>
+	   <attr key="specific" value="Fallen-wizard"/>
     </card>
     <card name="Bad Company" graphics="BadCompany.jpg" text="You may play Orc and Troll characters and include them in your starting company. Cannot be duplicated by a given player.">
        <attr key="sp" value="2"/>
        <attr key="rarity" value="C3"/>
        <attr key="class" value="Permanent-event"/>
        <attr key="type" value="Stage Resource"/>
+	   <attr key="specific" value="Fallen-wizard"/>
     </card>
     <card name="Blind to All Else" graphics="BlindtoAllElse.jpg" text="Your ring items are each worth full marshalling points. Cannot be duplicated by a given player.">
        <attr key="sp" value="2"/>
@@ -539,6 +543,7 @@
        <attr key="rarity" value="U3"/>
        <attr key="class" value="Permanent-event"/>
        <attr key="type" value="Stage Resource"/>
+	   <attr key="specific" value="Fallen-wizard"/>
     </card>
     <card name="Fortress of the Towers" graphics="FortressoftheTowers.jpg" text="Unique. May not be a starting stage card. Playable if you are Alatar, Pallando, or Saruman. Playable on The White Towers. The White Towers is protected. Other Fallen- wizards may not use the Wizardhaven card for The White Towers. Cards that give marshalling points are not playable at the site by your opponent in all cases. Discard this card when the site is discarded or returned to its location deck.">
        <attr key="unique" value="yes"/>
@@ -546,6 +551,7 @@
        <attr key="rarity" value="U3"/>
        <attr key="class" value="Permanent-event"/>
        <attr key="type" value="Stage Resource"/>
+	   <attr key="specific" value="Fallen-wizard"/>
     </card>
     <card name="Gatherer of Loyalties" graphics="GathererofLoyalties.jpg" text="Playable if you have more than 3 stage points. Your unique factions are each worth 2 marshalling points. If you are Alatar, your unique Dragon factions are each worth 4 marshalling points. If you are Pallando, your unique factions normally worth 3 or more marshalling points are each worth 3 marshalling points. Cannot be duplicated by a given player.">
        <attr key="sp" value="3"/>
@@ -571,6 +577,7 @@
        <attr key="rarity" value="U3"/>
        <attr key="class" value="Permanent-event"/>
        <attr key="type" value="Stage Resource"/>
+	   <attr key="specific" value="Fallen-wizard"/>
     </card>
     <card name="Guarded Haven" graphics="GuardedHaven.jpg" text="Playable on one of your Wizardhavens other than Isengard, The White Towers, or Rhosgobel. The site is protected. Cards that give marshalling points are not playable at the site by your opponent in all cases. Cannot be duplicated on a given site.">
        <attr key="sp" value="1"/>
@@ -621,6 +628,7 @@
        <attr key="rarity" value="U3"/>
        <attr key="class" value="Permanent-event"/>
        <attr key="type" value="Stage Resource"/>
+	   <attr key="specific" value="Fallen-wizard"/>
     </card>
     <card name="Thrall of the Voice" graphics="ThralloftheVoice.jpg" text="Instead of a normal character, during your organization phase you may bring into play one character (including a minion agent) with up to a 6 mind. Place this card with the character. -1 to his mind to a minimum of 1. Such a character may also be in your starting company.">
        <attr key="sp" value="1"/>
@@ -639,6 +647,7 @@
        <attr key="rarity" value="C3"/>
        <attr key="class" value="Permanent-event"/>
        <attr key="type" value="Stage Resource"/>
+	   <attr key="specific" value="Fallen-wizard"/>
     </card>
     <card name="Wizard's Trove" graphics="WizardsTrove.jpg" text="You may play The White Tree at one of your Wizardhavens if Sapling of the White Tree is stored there. Place Wizard's Trove with The White Tree - which is worth full marshalling points. Your Wizardhaven becomes protected. Ignore the text of The White Tree. Alternatively, you may store one miscellaneous marshalling point card at one of your Wizardhavens. Any reference to the site where the card can normally be stored are transferred instead to the Wizardhaven. Place Wizard's Trove with the stored card - which is worth full marshalling points.">
        <attr key="sp" value="1"/>
@@ -653,6 +662,7 @@
        <attr key="class" value="Orc Faction"/>
        <attr key="type" value="Stage Resource"/>
 	   <attr key="keyword" value="Half-orc"/>
+	   <attr key="specific" value="Fallen-wizard"/>
     </card>
     <card name="Half-orcs" graphics="Halforcs.jpg" text="Playable at one of your protected Wizardhavens (if tapped or untapped) if you have A Strident Spawn in play and if the influence check is greater than 9.">
        <attr key="sp" value="1"/>
@@ -661,6 +671,7 @@
        <attr key="class" value="Orc Faction"/>
        <attr key="type" value="Stage Resource"/>
 	   <attr key="keyword" value="Half-orc"/>
+	   <attr key="specific" value="Fallen-wizard"/>
     </card>
     <card name="Keys of Orthanc" graphics="KeysofOrthanc.jpg" text="Unique. Playable at Minas Tirith. During your organization phase, you may: take The Fortress of Isen card from your play deck or discard pile to your hand or discard The Fortress of Isen card if in play by another player. Reshuffle your play deck if searched.">
        <attr key="unique" value="yes"/>

@@ -491,7 +491,7 @@
 			 <attr key="keyword" value="Battle-gear"/>
 			 <attr key="keyword" value="Warrior only"/>
 		</card>
-		<card name="Dwarven-galleries" graphics="Dwarvengalleries.jpg" text="Dwarf-lord specific. Playable if you have at least 5 P. tap: during your end-of-turn phase to take Gnawed Ways, Into Dark Tunnels, or Secret Ways from your play deck or discard pile into hand (reshuffle). Additionally, you receive full mp for To the Uttermost Foundations. Cannot be duplicated by a given player.">
+		<card name="Dwarven Galleries" graphics="Dwarven Galleries.jpg" text="Dwarf-lord specific. Playable if you have at least 5 P. tap: during your end-of-turn phase to take Gnawed Ways, Into Dark Tunnels, or Secret Ways from your play deck or discard pile into hand (reshuffle). Additionally, you receive full mp for To the Uttermost Foundations. Cannot be duplicated by a given player.">
 			 <attr key="type" value="Stage Resource"/>
 			 <attr key="rarity" value="U"/>
 			 <attr key="class" value="Permanent-event"/>
