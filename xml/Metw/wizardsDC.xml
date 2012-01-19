@@ -3049,7 +3049,7 @@
        <attr key="unique" value="yes"/>
        <attr key="mp" value="3"/>
        <attr key="rarity" value="U"/>
-       <attr key="class" value="Eagle Faction"/>
+       <attr key="class" value="Animal Faction"/>
        <attr key="type" value="Hero Resource"/>
     </card>
     <card name="The Mithril-coat" graphics="TheMithrilcoat.jpg" text="Unique. Armor. +3 body (to a maximum of 10).">
