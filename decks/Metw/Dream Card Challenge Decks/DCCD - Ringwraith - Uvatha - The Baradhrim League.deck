@@ -1,7 +1,7 @@
 #
 # GCCG v0.9.6.3 Middle-earth deck
 #
-#      dccd - Ringwraith - Uvatha - The Baradhrim League
+#      DCCD - Ringwraith - Uvatha - The Baradhrim League
 #
 
 ####
@@ -99,9 +99,12 @@ Pool
 Sideboard
 #########
 
-# Hazard (1)
+# Hazard (4)
 
+1 Agburanar Ahunt (TD)
 1 Lure of Expedience (LE)
+1 Nameless Thing (DM)
+1 Variag Horse-raiders (CP)
 
 # Minion Resource (16)
 
@@ -126,7 +129,7 @@ Sideboard
 Sites
 #####
 
-# Minion Site (24)
+# Minion Site (25)
 
 1 Adan Tomb [M] (CP)
 1 Amrûn [M] (SL)
@@ -152,4 +155,3 @@ Sites
 1 Tol Buruth [M] (NE)
 1 Variag Camp [M] (LE)
 1 Wain-Easterling Camp [M] (CP)
-
