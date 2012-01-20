@@ -1447,7 +1447,7 @@
        <attr key="type" value="Hazard"/>
 	   <attr key="keyword" value="Environment"/>
     </card>
-    <card name="Thrice Outnumbered" graphics="ThriceOutnumbered.jpg" text="Each player may take one Man hazard creature from his discard pile and shuffle it into his play deck at the end of each turn. Discard this card or a Man hazard creature from your hand at the end of opponent's organization phase. Discard when any play deck is exhausted. Cannot be duplicated.">
+    <card name="Thrice Outnumbered" graphics="ThriceOutnumberedDC.jpg" text="Each player may take one Man hazard creature from his discard pile and shuffle it into his play deck at the end of each turn. Discard this card or a Man hazard creature from your hand at the end of opponent's organization phase. Discard when any play deck is exhausted. Cannot be duplicated.">
        <attr key="rarity" value="U"/>
        <attr key="class" value="Permanent-event"/>
        <attr key="type" value="Hazard"/>
