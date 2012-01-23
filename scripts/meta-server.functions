@@ -1973,7 +1973,7 @@ def AddCards
 }
 
 #
-# TransferMoney(player name, change) - Add or substract money from the player.
+# TransferMoney(player name, change) - Add or subtract money from the player.
 #
 def TransferMoney
 {

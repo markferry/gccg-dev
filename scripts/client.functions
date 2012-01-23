@@ -1707,6 +1707,31 @@ def CommandClearcache
 HELP{"any"}{"clearcache"}=("","clear out book variables",NULL,
 "Remove all cached variables dealing with the cardbook. In case of new cards being added to the game, you may need to clear cache before the cards are recognized.");
 
+def CommandReconnect
+{
+  push(c);
+  if(server == NULL)
+    c=1;
+  elseif(!net_isopen(server))
+    c=1;
+  if(c)
+  {
+#   no effect if already in chat mode
+    SetMode("chat");
+    
+    server = NULL;
+    forall('DelRoomPlayer(#[0])',room.players);
+    forall('DelRoomTable(#[0])',room.tables);
+    InitializeConnection();
+    
+    sleep(1);
+    Send("RefreshChatRoom",NULL);
+  }
+  c=pop();
+}
+HELP{"any"}{"reconnect"}=("","reconnect to server",NULL,
+"If you have lost connection to the meta server, this will attempt to put you back in the chatroom without having to close and reopen the program.");
+
 #
 # CommandWho() - Implementation of /who command.
 #
@@ -2114,8 +2139,37 @@ def CommandFind
    i=pop();
 }
 
-HELP{"any"}{"find"}=("card_name","seach for a card",NULL,
+HELP{"any"}{"find"}=("card_name","search for a card",NULL,
 "Find a card having a name {yellow}card_name{white}. If exact name was not found, then search for cards with the name containing a text {yellow}card_name{white}. If found either way, show the collection if not already visible. Then turn to page containing the card found. If already in such page, search for the next page containing the card qualifying the search criteria.");
+
+#
+# CommandSets() - Implementation of /find command.
+#
+def CommandSets
+{
+  if(length(ARG))
+  {
+    push(c);
+    c=images(join(ARG," "));
+    if(c==(,))
+    {
+      c=fuzzy_images(join(ARG," "));
+      if(length(c))
+        c=images(name(c[0]));
+    }
+    if(length(c)==1)
+      Msg("{gold}"+name(c[0])+"{white} only appears in "+set_of(c[0])+".");
+    elseif(length(c))
+      Msg("{gold}"+name(c[0])+"{white} appears in: "+join(forall('set_of(#)',c),", ")+".");
+    else
+      Msg("{red}Unrecognized card name.")
+      
+    c=pop();
+  
+  }
+}
+HELP{"any"}{"sets"}=("card_name","find a card's sets",NULL,
+"Print a list of card sets in which {yellow}card_name{white} appears. If the card_name string appears in more than one possible card, it uses the first matching name.");
 
 #
 # ChatCommandRd() - Implementation of /rd command in chat mode.
@@ -2779,6 +2833,12 @@ def CreateHand
 
   if(ARG[1]!=me)
     set_attr(ARG[0],"tiny",1);
+  else
+  {
+#   create vertical buffer space so "Revealed" message will show cleanly
+    add_text(ARG[0]," ");
+    add_text(ARG[0]," ");
+  }
 
   y=pop();
 }
@@ -4605,34 +4665,34 @@ def EditDel
 #
 # EditCreateDeck(deck name) - Create a new deck and select it as current deck.
 #
-  def EditCreateDeck
+def EditCreateDeck
+{
+  if(ARG=="")
+    Msg("{red}You must give a valid deck name.");
+  else
   {
-    if(ARG=="")
-      Msg("{red}You must give a valid deck name.");
-    else
-    {
-      decks{ARG}=NewDeck();
-      deck.part="deck";
-      SelectDeck(ARG);
-      set_attr(deck.box,"visible",1);
-    }
+    decks{ARG}=NewDeck();
+    deck.part="deck";
+    SelectDeck(ARG);
+    set_attr(deck.box,"visible",1);
   }
+}
 
 #
 # CreateEmptyDeck() - Create a new unnamed deck and display help about deckbuilding.
 #
-  def CreateEmptyDeck
-  {
-    decks{"{blue}New Deck{white}"}=NewDeck();
-    deck.part="deck";
-    SelectDeck("{blue}New Deck{white}");
-    set_attr(deck.box,"visible",1);
-    Msg("{sz20}{yellow}Deckbuilding Help");
-    Msg("To give your new deck a name, type {yellow}/renamedeck [deckname]{white}. To create another deck without bringing up this help, type {yellow}/newdeck [deckname]{white}.");
-    Msg("You can open the list of cards with {yellow}Ctrl+B{white} if you haven't already, then scroll through it with the mouse wheel or with {yellow}PgUp{white} and {yellow}PgDn{white} keys.");
-    Msg("You can also go directly to the next page that has a particular card you want, by typing {yellow}/find [cardname]{white}.");
-    Msg("Clicking on a card with the mouse wheel (or using {yellow}Ctrl+A{white}) adds a copy to the deck; left-clicking removes a copy. Right-clicking offers these options and more.");
-  }
+def CreateEmptyDeck
+{
+  decks{"{blue}New Deck{white}"}=NewDeck();
+  deck.part="deck";
+  SelectDeck("{blue}New Deck{white}");
+  set_attr(deck.box,"visible",1);
+  Msg("{sz20}{yellow}Deckbuilding Help");
+  Msg("To give your new deck a name, type {yellow}/renamedeck [deckname]{white}. To create another deck without bringing up this help, type {yellow}/newdeck [deckname]{white}.");
+  Msg("You can open the list of cards with {yellow}Ctrl+B{white} if you haven't already, then scroll through it with the mouse wheel or with {yellow}PgUp{white} and {yellow}PgDn{white} keys.");
+  Msg("You can also go directly to the next page that has a particular card you want, by typing {yellow}/find [cardname]{white}.");
+  Msg("Clicking on a card with the mouse wheel (or using {yellow}Ctrl+A{white}) adds a copy to the deck; left-clicking removes a copy. Right-clicking offers these options and more.");
+}
 
 #
 # TEXT INPUT AND EDIT
@@ -6095,6 +6155,13 @@ def PlayKeyControlKeyF
 {
   if(object.number)
     Send("Flip",object.number);
+  if(object.number == hand[me])
+  {
+    if(has_text(object.number,"{shadow}{orange}Revealed"))
+      del_text(object.number,"{shadow}{orange}Revealed");
+    else
+      add_text(object.number,"{shadow}{orange}Revealed");
+  }
 }
 
 #
@@ -6724,6 +6791,7 @@ def MyCollectionMenu
       }
     }
     b=b+(("Show card text w/ errata","Ctrl+H",""),);
+    b=b+(("Search for other versions","","CommandSets(card.name)"),);
   }
   else
   {

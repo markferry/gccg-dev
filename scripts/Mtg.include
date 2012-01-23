@@ -3,7 +3,7 @@
 # =========
 
 # Size of columns of the decklist in pixels.
-DECKBOX_SIZE=(20,260,120);
+DECKBOX_SIZE=(20,220,80);
 # Number of cards in hand.
 HANDSIZE=7;
 # keep-tapped text
@@ -74,14 +74,15 @@ game.bindings=(
 GAME_MENU{"Main Menu - Play"}=(
  (1,"{hr}","",""),
  (1,"Play Colorless Token","",'Send("Transfer",(1,("out.of.play",1),("play",0)))'),
- (1,"Play Black Token","",'Send("Transfer",(1,("out.of.play",2),("play",0)))'),
- (1,"Play Blue Token","",'Send("Transfer",(1,("out.of.play",3),("play",0)))'),
- (1,"Play Green Token","",'Send("Transfer",(1,("out.of.play",4),("play",0)))'),
- (1,"Play Red Token","",'Send("Transfer",(1,("out.of.play",5),("play",0)))'),
  (1,"Play White Token","",'Send("Transfer",(1,("out.of.play",6),("play",0)))'),
+ (1,"Play Blue Token","",'Send("Transfer",(1,("out.of.play",3),("play",0)))'),
+ (1,"Play Black Token","",'Send("Transfer",(1,("out.of.play",2),("play",0)))'),
+ (1,"Play Red Token","",'Send("Transfer",(1,("out.of.play",5),("play",0)))'),
+ (1,"Play Green Token","",'Send("Transfer",(1,("out.of.play",4),("play",0)))'),
  (1,"{hr}","",""),
  (1,"Select Token Type...","","TokenSubmenu()"),
- (1,"Select Innistrad Transformed...","","ISDSubmenu()"),
+ (1,"Innistrad Transformed Card...","","ISDSubmenu()"),
+ (1,"Dark Ascension Transformed Card...","","DKASubmenu()"),
  (1,"{hr}","",""),
  (1,"Play Jitte Counter","",'Send("Transfer",(1,("out.of.play",7),("play",0)))'),
  (1,"Play Storm Counter","",'Send("Transfer",(1,("out.of.play",8),("play",0)))'),
@@ -107,10 +108,10 @@ GAME_MENU{"A Card"}=(
 FILTER_OPTIONS=(
  ("Sealed deck","first(book_entry(card.book,#))",(1,"[color]","[name]")),
  "{hr}",
- ("Common","left(Attr('rarity',#),1)=='C'",(1,"[age]","[color]","[name]")),
- ("Uncommon","left(Attr('rarity',#),1)=='U'",(1,"[age]","[color]","[name]")),
- ("Rare","left(Attr('rarity',#),1)=='R'",(1,"[age]","[color]","[name]")),
- ("Mythic","left(Attr('rarity',#),1)=='M'",(1,"[age]","[color]","[name]")),
+ ("Common","find('C',Attr('rarity',#))!=NULL",(1,"[age]","[color]","[name]")),
+ ("Uncommon","find('U',Attr('rarity',#))!=NULL",(1,"[age]","[color]","[name]")),
+ ("Rare","find('R',Attr('rarity',#))!=NULL",(1,"[age]","[color]","[name]")),
+ ("Mythic","find('M',Attr('rarity',#))!=NULL",(1,"[age]","[color]","[name]")),
  "{hr}",
  ("White spells","find('White',Attr('color',#))!=NULL",(1,"[age]","[color]","[name]")),
  ("Blue spells","find('Blue',Attr('color',#))!=NULL",(1,"[age]","[color]","[name]")),
@@ -125,9 +126,9 @@ FILTER_OPTIONS=(
  ("Creatures","find('Creature',Attr('type',#))!=NULL",(1,"[color]","[name]")),
  ("Enchantments","find('Enchant',Attr('type',#))!=NULL",(1,"[type]","[color]","[name]")),
  ("Lands","find('Land',Attr('type',#))!=NULL",(1,"[age]","[name]")),
- ("Planeswalkers","find('Planeswalker',Attr('type',#))!=NULL",(1,"[age]","[name]")),
  ("Instants","find('Instant',Attr('type',#))!=NULL",(1,"[color]","[name]")),
  ("Sorceries","find('Sorcery',Attr('type',#))!=NULL",(1,"[color]","[name]")),
+ ("Planeswalkers","find('Planeswalker',Attr('type',#))!=NULL",(1,"[age]","[name]")),
  "{hr}",
  ("Tribal Creatures","TribalLegal(#) && TypeLegal('Vintage',#)",("[subtype]","[color]","[name]")),
  ("Vintage Restricted","TypeRestricted('Vintage',#)",(1,"[age]","[color]","[name]")),
@@ -275,25 +276,44 @@ def ISDSubmenu
 {
   Submenu("Select Transform",(
    ("Bloodline Keeper -> Lord of Lineage","",'Send("Transfer",(1,("out.of.play",126),("play",0)))'),
-   ("Civilized Scholar -> Homicidal Brute","",'Send("Transfer",(1,("out.of.play",127),("play",0)))'),
-   ("Cloistered Youth -> Unholy Fiend","",'Send("Transfer",(1,("out.of.play",128),("play",0)))'),
-   ("Daybreak Ranger -> Nightfall Predator","",'Send("Transfer",(1,("out.of.play",129),("play",0)))'),
-   ("Delver of Secrets -> Insectile Aberration","",'Send("Transfer",(1,("out.of.play",130),("play",0)))'),
-   ("Garruk Relentless -> Garruk, the Veil-Cursed","",'Send("Transfer",(1,("out.of.play",131),("play",0)))'),
-   ("Gatstaf Shepherd -> Gatstaf Howler","",'Send("Transfer",(1,("out.of.play",132),("play",0)))'),
-   ("Grizzled Outcasts -> Krallenhorde Wantons","",'Send("Transfer",(1,("out.of.play",133),("play",0)))'),
-   ("Hanweir Watchkeep -> Bane of Hanweir","",'Send("Transfer",(1,("out.of.play",134),("play",0)))'),
-   ("Instigator Gang -> Wildblood Pack","",'Send("Transfer",(1,("out.of.play",135),("play",0)))'),
-   ("Kruin Outlaw -> Terror of Kruin Pass","",'Send("Transfer",(1,("out.of.play",136),("play",0)))'),
-   ("Ludevic's Test Subject -> Ludevic's Abomination","",'Send("Transfer",(1,("out.of.play",137),("play",0)))'),
-   ("Mayor of Avabruck -> Howlpack Alpha","",'Send("Transfer",(1,("out.of.play",138),("play",0)))'),
-   ("Reckless Waif -> Merciless Predator","",'Send("Transfer",(1,("out.of.play",139),("play",0)))'),
+   ("{blue}Civilized Scholar -> {red}Homicidal Brute","",'Send("Transfer",(1,("out.of.play",127),("play",0)))'),
+   ("{yellow}Cloistered Youth -> {black}Unholy Fiend","",'Send("Transfer",(1,("out.of.play",128),("play",0)))'),
+   ("{green}Daybreak Ranger -> Nightfall Predator","",'Send("Transfer",(1,("out.of.play",129),("play",0)))'),
+   ("{blue}Delver of Secrets -> Insectile Aberration","",'Send("Transfer",(1,("out.of.play",130),("play",0)))'),
+   ("{green}Garruk Relentless -> Garruk, the {black}Veil-Cursed","",'Send("Transfer",(1,("out.of.play",131),("play",0)))'),
+   ("{green}Gatstaf Shepherd -> Gatstaf Howler","",'Send("Transfer",(1,("out.of.play",132),("play",0)))'),
+   ("{green}Grizzled Outcasts -> Krallenhorde Wantons","",'Send("Transfer",(1,("out.of.play",133),("play",0)))'),
+   ("{red}Hanweir Watchkeep -> Bane of Hanweir","",'Send("Transfer",(1,("out.of.play",134),("play",0)))'),
+   ("{red}Instigator Gang -> Wildblood Pack","",'Send("Transfer",(1,("out.of.play",135),("play",0)))'),
+   ("{red}Kruin Outlaw -> Terror of Kruin Pass","",'Send("Transfer",(1,("out.of.play",136),("play",0)))'),
+   ("{blue}Ludevic's Test Subject -> Ludevic's Abomination","",'Send("Transfer",(1,("out.of.play",137),("play",0)))'),
+   ("{green}Mayor of Avabruck -> Howlpack Alpha","",'Send("Transfer",(1,("out.of.play",138),("play",0)))'),
+   ("{red}Reckless Waif -> Merciless Predator","",'Send("Transfer",(1,("out.of.play",139),("play",0)))'),
    ("Screeching Bat -> Stalking Vampire","",'Send("Transfer",(1,("out.of.play",140),("play",0)))'),
-   ("Thraben Sentry -> Thraben Militia","",'Send("Transfer",(1,("out.of.play",141),("play",0)))'),
-   ("Tormented Pariah -> Rampaging Werewolf","",'Send("Transfer",(1,("out.of.play",142),("play",0)))'),
-   ("Ulvenwald Mystics -> Ulvenwald Primordials","",'Send("Transfer",(1,("out.of.play",143),("play",0)))'),
-   ("Village Ironsmith -> Ironfang","",'Send("Transfer",(1,("out.of.play",144),("play",0)))'),
-   ("Villagers of Estwald -> Howlpack of Estwald","",'Send("Transfer",(1,("out.of.play",145),("play",0)))'),
+   ("{yellow}Thraben Sentry -> Thraben Militia","",'Send("Transfer",(1,("out.of.play",141),("play",0)))'),
+   ("{red}Tormented Pariah -> Rampaging Werewolf","",'Send("Transfer",(1,("out.of.play",142),("play",0)))'),
+   ("{green}Ulvenwald Mystics -> Ulvenwald Primordials","",'Send("Transfer",(1,("out.of.play",143),("play",0)))'),
+   ("{red}Village Ironsmith -> Ironfang","",'Send("Transfer",(1,("out.of.play",144),("play",0)))'),
+   ("{green}Villagers of Estwald -> Howlpack of Estwald","",'Send("Transfer",(1,("out.of.play",145),("play",0)))')
+  ));
+}
+
+def DKASubmenu 
+{
+  Submenu("Select Transform",(
+  ("{red}Afflicted Deserter -> Werewolf Ransacker","",'Send("Transfer",(1,("out.of.play",146),("play",0)))'),
+  ("{128,128,128}Chalice of Life -> Chalice of Death","",'Send("Transfer",(1,("out.of.play",147),("play",0)))'),
+  ("Chosen of Markov -> Markov's Servant","",'Send("Transfer",(1,("out.of.play",148),("play",0)))'),
+  ("{128,128,128}Elbrus, the Binding Blade -> {black}Withengar Unbound","",'Send("Transfer",(1,("out.of.play",149),("play",0)))'),
+  ("{red}Hinterland Hermit -> Hinterland Scourge","",'Send("Transfer",(1,("out.of.play",150),("play",0)))'),
+  ("{gold}Huntmaster of the Fells -> Ravager of the Fells","",'Send("Transfer",(1,("out.of.play",151),("play",0)))'),
+  ("{green}Lambholt Elder -> Silverpelt Werewolf","",'Send("Transfer",(1,("out.of.play",152),("play",0)))'),
+  ("{yellow}Loyal Cathar -> {black}Unhallowed Cathar","",'Send("Transfer",(1,("out.of.play",153),("play",0)))'),
+  ("{red}Mondronen Shaman -> Tovolar's Magehunter","",'Send("Transfer",(1,("out.of.play",154),("play",0)))'),
+  ("Ravenous Demon -> Archdemon of Greed","",'Send("Transfer",(1,("out.of.play",155),("play",0)))'),
+  ("{green}Scorned Villager -> Moonscarred Werewolf","",'Send("Transfer",(1,("out.of.play",156),("play",0)))'),
+  ("{blue}Soul Seizer -> Ghastly Haunting","",'Send("Transfer",(1,("out.of.play",157),("play",0)))'),
+  ("{green}Wolfbitten Captive -> Krallenhorde Killer","",'Send("Transfer",(1,("out.of.play",158),("play",0)))'),
   ));
 }
 
@@ -434,6 +454,7 @@ def TokenSubmenuH
    ("Homunculus 0/1 (A)","",'Send("Transfer",(1,("out.of.play",54),("play",0)))'),
    ("Horror 4/4 (B)","",'Send("Transfer",(1,("out.of.play",55),("play",0)))'),
    ("Horror */* (C)","",'Send("Transfer",(1,("out.of.play",107),("play",0)))'),
+   ("Human 1/1 (W)","",'Send("Transfer",(1,("out.of.play",159),("play",0)))'),
   ));
 }
 
@@ -544,6 +565,7 @@ def TokenSubmenuU
 def TokenSubmenuV 
 {
   Submenu("Select Token",(
+   ("Vampire 1/1 (B, lifelink)","",'Send("Transfer",(1,("out.of.play",160),("play",0)))'),
    ("Vampire */* (B)","",'Send("Transfer",(1,("out.of.play",122),("play",0)))'),
    ("Voja 2/2 (GW)","",'Send("Transfer",(1,("out.of.play",91),("play",0)))'),   
   ));
@@ -598,7 +620,7 @@ def PlayExileMenu
 # ============
 
 #
-# KeyShiftControlKeyX() - Put a card to exile.
+# KeyControlKeyX() - Put a card to exile.
 #
 def KeyControlKeyX
 {

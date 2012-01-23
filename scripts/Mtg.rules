@@ -1,6 +1,5 @@
 deck_rules=(,);
-#server_description="Vin/Leg/Mod/Ext/Std/Com/HL";
-server_description="Various (with ISD)";
+server_description="Universal (DKA)";
 
 deck_rules{"Empty"}=(,);
 deck_rules{"Empty"}{""}=(
@@ -188,7 +187,7 @@ deck_rules{"Modern"}{""}=(
 
   ("RuleCardLimitEach",("Ancestral Vision","Ancient Den","Bitterblossom","Blazing Shoal","Chrome Mox","Cloudpost","Dark Depths","Dread Return","Glimpse of Nature","Golgari Grave-Troll","Great Furnace","Green Sun's Zenith","Hypergenesis","Jace, the Mind Sculptor","Mental Misstep","Ponder","Preordain","Rite of Flame","Seat of the Synod","Sensei's Divining Top","Skullclamp","Stoneforge Mystic","Sword of the Meek","Tree of Tales","Umezawa's Jitte","Valakut, the Molten Pinnacle","Vault of Whispers",0)),
 
-  ("RuleAllowedSetsReprint",("8TH","9TH","XE","M10","M11","M12","MR","DS","FD","CK","BK","SK","RA","GP","DI","CS","TS","PC","FS","LRW","MOR","SM","EVE","ALA","CFX","ARE", "ZDK","WWK","ROE","SOM","MBS","NPH","ISD",4)),
+  ("RuleAllowedSetsReprint",("8TH","9TH","XE","M10","M11","M12","MR","DS","FD","CK","BK","SK","RA","GP","DI","CS","TS","PC","FS","LRW","MOR","SM","EVE","ALA","CFX","ARE","ZDK","WWK","ROE","SOM","MBS","NPH","ISD","DKA",4)),
 
 );
 
@@ -215,7 +214,7 @@ deck_rules{"Extended"}{""}=(
   ("RuleCardLimitAny","Relentless Rats"),
 
   ("RuleCardLimitEach",("Jace, the Mind Sculptor","Mental Misstep","Ponder","Preordain","Stoneforge Mystic",0)),
-  ("RuleAllowedSetsReprint",("M10","M11","M12","ALA","CFX","ARE", "ZDK","WWK","ROE","SOM","MBS","NPH","ISD",4)),
+  ("RuleAllowedSetsReprint",("M10","M11","M12","ALA","CFX","ARE","ZDK","WWK","ROE","SOM","MBS","NPH","ISD","DKA",4)),
 
 );
 
@@ -239,29 +238,8 @@ deck_rules{"Standard"}{""}=(
   ("RuleCardLimitAny","Swamp"),
   ("RuleCardLimitAny","Plains"),
   
-  ("RuleAllowedSetsReprint",("SOM","MBS","NPH","M12","ISD",4)),
+  ("RuleAllowedSetsReprint",("SOM","MBS","NPH","M12","ISD","DKA",4)),
 );
-
-#deck_rules{"ZDK/SOM Standard"}=(,);
-#deck_rules{"ZDK/SOM Standard"}{"deck"}=(
-#  ("RuleDeckMinimum",60),
-#  ("RulePass",NULL),
-#);
-#deck_rules{"ZDK/SOM Standard"}{"sideboard"}=(
-#  ("RuleDeckSizes",(0,15)),
-#  ("RulePass",NULL),
-#);
-#deck_rules{"ZDK/SOM Standard"}{""}=(
-#  ("RuleCardLimitAny","Island"),
-#  ("RuleCardLimitAny","Forest"),
-#  ("RuleCardLimitAny","Mountain"),
-#  ("RuleCardLimitAny","Swamp"),
-#  ("RuleCardLimitAny","Plains"),
-#
-#  ("RuleCardLimitAny","Relentless Rats"),
-#  
-#  ("RuleAllowedSetsReprint",("ZDK","WWK","ROE","M11","SOM","MBS","NPH","M12",4)),
-#);
 
 #########
 # BLOCK #
@@ -605,7 +583,7 @@ deck_rules{"Innistrad Block"}{""}=(
   ("RuleCardLimitAny","Swamp"),
   ("RuleCardLimitAny","Plains"),
 
-  ("RuleAllowedSetsReprint",("ISD",4)),
+  ("RuleAllowedSetsReprint",("ISD","DKA",4)),
 );
 
 ##########
