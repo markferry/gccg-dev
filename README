@@ -33,6 +33,10 @@ git checkout svn-core
 git merge remotes/svn-core
 git checkout master
 git subtree merge -P core --squash -m "merge changes to git subtree" svn-core
+git checkout git-core
+git merge svn-core    # fast forward
+git push github master
+git push github git-core:svn-core
 @]
 
 !! Push upstream svn
