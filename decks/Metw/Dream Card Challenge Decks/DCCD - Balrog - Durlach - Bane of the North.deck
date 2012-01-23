@@ -1,5 +1,5 @@
 #
-# GCCG v0.9.6 Middle-earth deck
+# GCCG v0.9.6.3 Middle-earth deck
 #
 #      DCCD - Balrog - Durlach - Bane of the North
 #
@@ -14,7 +14,7 @@ Deck
 
 # Dual Resource (3)
 
-1 Ancient Rite (NE)
+1 Ancient Rite (WR)
 1 Grinding Ice (NW)
 1 Rings of Power (NM)
 
@@ -147,7 +147,7 @@ Sites
 1 Ei Missa [M] (NW)
 1 Evermist [M] (NW)
 1 Gondring's Lair [M] (NW)
-1 Kula Dulakurth [M] (NW)
+1 Kala Dulakurth [M] (NW)
 1 Kylmätalo [M] (NW)
 1 Leiri [M] (NW)
 1 Linnarthurras [M] (NW)
@@ -161,8 +161,7 @@ Sites
 1 Thaurung [M] (NW)
 1 The Pits of Angband [M] (ML)
 1 Thilgon's Tomb [M] (NW)
-1 Tol Morven [M] (NW)
+1 Tol Morwen [M] (NW)
 1 Tol Ringurthur [M] (ML)
 1 Vasaran Ahjo [M] (NW)
 1 Zayandaur [M] (ML)
-

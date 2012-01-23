@@ -58,7 +58,7 @@ Deck
 1 Orophin (TW)
 1 Taurnil (RS)
 
-# Hero Resource (24)
+# Hero Resource (25)
 
 1 A Friend or Three (TW)
 1 Ancient Knowledge (FB)
@@ -77,6 +77,7 @@ Deck
 1 Royal Duo (FB)
 1 Safe from the Shadow (AS)
 2 Smoke Rings (DM)
+1 Test of Lore (TW)
 1 The Wind Is Turning (WR)
 1 Thorough Search (TW)
 
@@ -85,12 +86,11 @@ Deck
 1 Crept Along Cleverly (WH)
 1 Voices of Malice (LE)
 
-# Stage Resource (5)
+# Stage Resource (4)
 
-1 Blind to All Else (WH)
+1 Lady of Many Gifts (FB)
 1 Ring of Water (FB)
 1 Sworn to the Lord (FB)
-1 Trusted Councellor (FB)
 1 Wizard's Trove (WH)
 
 ####
@@ -99,8 +99,8 @@ Pool
 
 # Hero Character (3)
 
-1 Celeborn, Lord of Lorien (FB)
-1 Rumil (FB)
+1 Celeborn, Lord of Lórien (FB)
+1 Rúmil (FB)
 1 Wood-elf (FB)
 
 # Hero Resource (2)
@@ -118,8 +118,8 @@ Pool
 
 # Stage Resource (2)
 
-1 Lady of many Gifts (FB)
-1 Order of Jewel and Ring-smiths  (FB)
+1 Order of Jewel and Ring-smiths (FB)
+1 Trusted Counsellor (FB)
 
 #########
 Sideboard
@@ -127,13 +127,14 @@ Sideboard
 
 # Hazard (4)
 
-1 Drawn to its Master (NM)
+1 Drawn to Its Master (NM)
 1 Muster Disperses (TW)
 1 Terror of Halifirien (TI)
 1 The Sea Is Unrelenting (SL)
 
 # Hero Resource (14)
 
+1 Cup of Farewell (DM)
 1 Dwarven Ring of Thélor's Tribe [H] (TW)
 1 Elf-stone (TW)
 1 Leaf Brooch (DM)
@@ -144,9 +145,8 @@ Sideboard
 1 Phial of Galadriel (DM)
 1 Rush along Recklessly (WR)
 1 Star-glass (TW)
-1 Test of Lore (TW)
 1 Three Golden Hairs (TD)
-1 Very active Governess (FB)
+1 Very Active Governess (FB)
 1 Waybread (TD)
 
 # Minion Resource (2)
@@ -160,9 +160,9 @@ Sites
 
 # Elf-lord Site (2)
 
-2 Lórien@ (FB)
+2 Lórien [E] (FB)
 
-# Fallen Site (2)
+# Fallen-wizard Site (2)
 
 1 Rivendell [F] (FB)
 1 Thranduil's Halls [F] (FB)
