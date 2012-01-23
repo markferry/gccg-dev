@@ -1,5 +1,5 @@
 #
-# GCCG v0.9.6 Middle-earth deck
+# GCCG v0.9.6.3 Middle-earth deck
 #
 #      DCCD - Dunadan-lord - Imrahil - Leader of the Faithful
 #
@@ -16,7 +16,7 @@ Deck
 
 4 Prince Imrahil (WR)
 
-# Hazard (32)
+# Hazard (33)
 
 1 Ambush! (TI)
 2 An Unexpected Outpost (DM)
@@ -29,7 +29,7 @@ Deck
 2 Ent in Search of the Entwives (LE)
 1 Galadhrim (AS)
 3 Great Secrets Buried There (DM)
-1 He is lost to us (FB)
+1 He Is Lost to Us (FB)
 1 Lord of the Eagles (DF)
 1 Men of the Wood (GW)
 1 Mensharag (TI)
@@ -48,7 +48,7 @@ Deck
 1 Annalena (TW)
 1 Duilin (WR)
 1 Duinhir (WR)
-1 Tharudan (FB)
+1 Tharúdan (FB)
 
 # Hero Resource (29)
 
@@ -146,7 +146,7 @@ Sites
 
 1 Deeps of Fuinur (SL)
 
-# Fallen Site (2)
+# Fallen-wizard Site (2)
 
 1 Edhellond [F] (FB)
 1 Grey Havens [F] (FB)

@@ -1,0 +1,176 @@
+#
+# GCCG v0.9.6.3 Middle-earth deck
+#
+#      DCCD - Ringwraith - Dwar - Wild Wolves in the Mark
+#
+
+####
+Deck
+####
+
+# Hazard (35)
+
+1 An Unexpected Outpost (DM)
+1 Caran-carach (NE)
+1 Despair of the Heart (LE)
+2 Doors of Night (TW)
+1 Doors of Night (LE)
+1 Eyes of the Shadow (DM)
+1 Glutan (RS)
+2 Hobgoblins (TD)
+1 Hobgoblins (LE)
+1 Host of Bats (TD)
+2 Legacy of Carcaroth (NW)
+1 Orc-guard (TW)
+1 Orc-watch (TW)
+1 Orc-watch (LE)
+1 Peril Returned (TD)
+1 Pierced by Many Wounds (DM)
+1 Slip Treacherously (AS)
+1 The Pack at the Door (NW)
+1 Twilight (LE)
+1 Wake of War (TW)
+2 Wake of War (LE)
+1 War-wargs (NW)
+1 War-wolves (NW)
+1 Wargs (TW)
+1 Wargs (LE)
+1 Were-wolf (NW)
+2 Where the Wargs Howl (NW)
+1 Wolf-riders (TD)
+2 Wolves (TW)
+
+# Minion Character (10)
+
+3 Dwar the Ringwraith (LE)
+1 Lugdush (WH)
+3 Orc Grunt (NE)
+1 Squint-eyed Brute (WH)
+1 Uglúk (WH)
+1 Ûvatha the Ringwraith (LE)
+
+# Minion Resource (35)
+
+1 All Thought Bent upon It (LE)
+1 Breeder's Stock (KN)
+2 Broad-headed Spear (LE)
+2 Burning Rick, Cot, and Tree (LE)
+1 Call to Arms (KN)
+2 Driven as by a Madness (AS)
+1 Gifts as Given of Old (LE)
+1 Goblins of Goblin-gate (LE)
+3 Hold Rebuilt and Repaired (AS)
+1 I'll Report You (LE)
+1 Old Cache (LE)
+1 Orcs of Isengard (TI)
+1 Our Own Wolves (AS)
+1 Palantír of Orthanc [M] (LE)
+1 Records Unread (AS)
+1 Sharkû (TI)
+2 Swarm of Bats (LE)
+2 The Tormented Earth (AS)
+1 The Warg-king (LE)
+1 Voices of Malice (LE)
+1 War-warg (LE)
+2 War-wolf (LE)
+1 We Must Join with Him (TI)
+2 Weigh All Things to a Nicety (LE)
+1 Wolf-steed (NW)
+1 Wolves Feed (KN)
+
+####
+Pool
+####
+
+# Minion Character (5)
+
+1 Bulrakur (NE)
+1 Durba (NW)
+1 Gaurhir (NE)
+1 Grishnákh (LE)
+1 Virsh (NE)
+
+# Minion Resource (3)
+
+1 Dog-lord of Waw (CP)
+1 Orc-endurance (NE)
+1 Orc-pouch (NE)
+
+#########
+Sideboard
+#########
+
+# Dual Resource (1)
+
+1 Essay on Ringcraft (FB)
+
+# Hazard (3)
+
+1 Uiendarlaif (CP)
+1 War-wolves (NW)
+1 White Wolves (NW)
+
+# Minion Resource (16)
+
+1 Black Rider (LE)
+1 Dwar Unleashed (LE)
+1 Flaming Torch (NE)
+1 Magic Ring of Delusion (LE)
+1 Misty Mountain Wargs (LE)
+1 Orc-draughts (LE)
+1 Orc-liquor (LE)
+1 Poison (LE)
+2 Saw-toothed Blade (LE)
+1 Slew the Great Warrior (TI)
+1 War-warg (LE)
+1 White Mountain Wolves (LE)
+1 Wolf-den (NE)
+1 Wolf-steed (NW)
+1 Wolves of Isengard (TI)
+
+#####
+Sites
+#####
+
+# Minion Site (40)
+
+1 Amon Hen [M] (LE)
+1 Amon Lhaw [M] (TI)
+1 Amon Lind [M] (FB)
+1 Bag End [M] (LE)
+1 Bree [M] (LE)
+1 Calembel [M] (WR)
+1 Cameth Brin [M] (LE)
+1 Carn Dûm [M] (LE)
+1 Cirith Helkaloke [M] (GW)
+1 Creb Durga [M] (KN)
+1 Dimrill Dale [M] (LE)
+1 Dol Guldur [M] (LE)
+1 Dunharrow [M] (LE)
+1 Dunnish Clan-hold [M] (LE)
+1 Durthang [M] (WR)
+1 Edhellond [M] (AS)
+1 Ettenmoors [M] (LE)
+1 Geann a-Lisch [M] (LE)
+1 Glittering Caves [M] (LE)
+1 Goblin-gate [M] (LE)
+1 Helm's Deep [M] (TI)
+1 Hermit's Hill [M] (LE)
+1 Isengard [M] (LE)
+1 Isildur's Tomb [M] (TI)
+1 Mathlaburg [M] (GW)
+1 Michel Delving [M] (RS)
+1 Minas Morgul [M] (LE)
+1 Moria [M] (LE)
+1 Morkai [M] (KN)
+1 Mount Gundabad [M] (LE)
+1 Ost-in-Edhil [M] (LE)
+1 Ruined Signal Tower [M] (LE)
+1 Sarn Goriwing [M] (LE)
+1 Sonotor's Mound [M] (DF)
+1 Stone-circle [M] (LE)
+1 Telpemár [M] (FB)
+1 Tharagrondost [M] (WR)
+1 The Stones [M] (LE)
+1 The White Towers [M] (LE)
+1 Weathertop [M] (AS)

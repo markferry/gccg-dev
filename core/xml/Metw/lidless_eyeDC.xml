@@ -55,7 +55,7 @@
        <attr key="type" value="Minion Character"/>
        <attr key="mind" value="6"/>
        <attr key="influence" value="1"/>
-	   <attr key="keyword" value="Silvan"/>
+	   <attr key="keyword" value="Noldo"/>
     </card>
     <card name="Carambor" graphics="Carambor.jpg" text="Unique. May tap at the end of his company's movement/hazard phase to allow it to move to an additional site on the same turn. Another site card may be played and another movement/hazard phase immediately follows for his company. The new site path must contain at least one Wilderness [{w}].">
        <attr key="unique" value="yes"/>
@@ -658,7 +658,7 @@
 	   <attr key="keyword" value="Leader"/>
 	   <attr key="keyword" value="Olog-hai"/>
     </card>
-    <card name="Adûnaphel the Ringwraith" graphics="AdunapheltheRingwraith.jpg" text="Unique. Manifestation of Adûnaphel. Can use spirit-magic. +2 direct influence in Heralded Lord mode. -2 prowess in Fell Rider mode. As your Ringwraith, if at a Darkhaven, she may tap to cancel one hazard creature attack not played at a site against any one of your companies. {cyan} UEP: Errata: Unique. Manifestation of Adunaphel. Can use spirit-magic. +2 direct influence in Heralded Lord mode. As your Ringwraith, if at a Darkhaven, she may tap to cancel one hazard creature attack not played at a site against any one of your companies.">
+    <card name="Adûnaphel the Ringwraith" graphics="Adunaphel the RingwraithDC.jpg" text="Unique. Manifestation of Adûnaphel. Can use spirit-magic. +2 direct influence in Heralded Lord mode. -2 prowess in Fell Rider mode. As your Ringwraith, if at a Darkhaven, she may tap to cancel one hazard creature attack not played at a site against any one of your companies. {cyan} UEP: Errata: Unique. Manifestation of Adunaphel. Can use spirit-magic. +2 direct influence in Heralded Lord mode. As your Ringwraith, if at a Darkhaven, she may tap to cancel one hazard creature attack not played at a site against any one of your companies.">
        <attr key="unique" value="yes"/>
        <attr key="skills" value="Warrior/Scout/Diplomat"/>
        <attr key="home_site" value="Urlurtsu Nurn"/>
@@ -718,7 +718,7 @@
        <attr key="type" value="Minion Character"/>
        <attr key="influence" value="5"/>
     </card>
-    <card name="Khamûl the Ringwraith" graphics="KhamultheRingwraith.jpg" text="Unique. Manifestation of Khamûl the Easterling. Can use sorcery. -2 direct influence in Heralded Lord mode. +1 prowess in Fell Rider mode. -2 to the body of any Elf character targeted by a strike from Khamûl. As your Ringwraith, one Ringwraith follower in his company may be controlled with no influence. You may bring this follower into play during your organization phase. {cyan} UEP: Unique. Manifestation of Khamul the Easterling. Can use sorcery. -2 direct influence in Heralded Lord mode. +1 prowess in Fell Rider mode. +2 to all body checks resulting from failed strikes against Khamul. As your Ringwraith, one Ringwraith follower in his company may be controlled with no influence. You may bring this follower into play during your organization phase.">
+    <card name="Khamûl the Ringwraith" graphics="Khamul the RingwraithDC.jpg" text="Unique. Manifestation of Khamul the Easterling. Can use sorcery. -2 direct influence in Heralded Lord mode. +1 prowess in Fell Rider mode. +2 to all body checks resulting from failed strikes against or successful strikes from Khamul. As your Ringwraith, one Ringwraith follower in his company may be controlled with no influence. You may bring this follower into play during your organization phase.">
        <attr key="unique" value="yes"/>
        <attr key="skills" value="Warrior/Ranger/Diplomat"/>
        <attr key="home_site" value="Dol Guldur"/>
@@ -846,7 +846,7 @@
        <attr key="playable" value="{w}{w}{R}"/>
        <attr key="body" value="-"/>
        <attr key="prowess" value="10"/>
-       <attr key="subclass" value="Dragon"/>
+       <attr key="subclass" value="Drake"/>
        <attr key="rarity" value="CB+CS1"/>
        <attr key="class" value="Creature"/>
        <attr key="type" value="Hazard"/>
@@ -1010,7 +1010,7 @@
        <attr key="playable" value="{w}{w}{b}{s}"/>
        <attr key="body" value="6"/>
        <attr key="prowess" value="12"/>
-       <attr key="subclass" value="Animals"/>
+       <attr key="subclass" value="Animals, Eagles"/>
        <attr key="rarity" value="R"/>
        <attr key="class" value="Creature"/>
        <attr key="type" value="Hazard"/>
@@ -1296,7 +1296,7 @@
        <attr key="type" value="Hazard"/>
 	   <attr key="keyword" value="Corruption"/>
     </card>
-    <card name="Heedless Revelry" graphics="HeedlessRevelry.jpg" text="Playable on a non-Ringwraith company that is not moving. Make a roll (or draw a #) for each untapped non-Wizard character in the company; modify this roll by -2 for hero characters. If the result is greater than the character's mind, the character becomes tapped. Alternatively, may be revealed as an on-guard card on a company in response to the play of an item, ally, or faction. Tap all untapped non-Ringwraith, non-Wizard characters in the company.">
+    <card name="Heedless Revelry" graphics="HeedlessRevelryDC.jpg" text="Playable on a non-Ringwraith company that is not moving. Make a roll (or draw a #) for each untapped non-Wizard character in the company; modify this roll by -2 for hero characters. If the result is greater than the character's mind, the character becomes tapped. Alternatively, may be revealed as an on-guard card on a company in response to the play of an item, ally, or faction. Tap all untapped non-Ringwraith, non-Wizard characters in the company.">
        <attr key="rarity" value="R"/>
        <attr key="class" value="Short-event"/>
        <attr key="type" value="Hazard"/>
@@ -1344,7 +1344,7 @@
        <attr key="type" value="Hazard"/>
 	   <attr key="keyword" value="Corruption"/>
     </card>
-    <card name="Lure of Nature" graphics="LureofNature.jpg" text="Corruption. Playable on a non-Hobbit, non-Dwarf, non-Orc, non-Ringwraith character. Target character receives 2 corruption points and makes a corruption check at the end of his movement/hazard phase for each Wilderness [{w}] in his company's site path. During his organization phase, the character may tap to attempt to remove this card by making a roll (drawing a #) - if the result is greater than 4, discard this card. Cannot be duplicated on a given character.">
+    <card name="Lure of Nature" graphics="LureofNatureDC.jpg" text="Corruption. Playable on a non-Hobbit, non-Dwarf, non-Orc, non-Ringwraith character. Target character receives 2 corruption points and makes a corruption check at the end of his movement/hazard phase for each Wilderness [{w}] in his company's site path. During his organization phase, the character may tap to attempt to remove this card by making a roll (drawing a #) - if the result is greater than 4, discard this card. Cannot be duplicated on a given character.">
        <attr key="corruption" value="2"/>
        <attr key="rarity" value="CB+CS1"/>
        <attr key="class" value="Permanent-event"/>
@@ -1379,7 +1379,7 @@
        <attr key="class" value="Permanent-event"/>
        <attr key="type" value="Hazard"/>
     </card>
-    <card name="Plague" graphics="Plague.jpg" text="Playable on a non-Ringwraith, non-Wizard, non-Elf character at or moving to a non-Haven, non-Ruins &amp; Lairs site. At the end of your opponent's turn, each non-Ringwraith, non-Wizard, non-Elf character at the same site as the target must make a roll (draw a #) modified by -2. If the result is greater than the character's body, he is wounded or he is eliminated if he is already wounded. Discard this card during the target's organization phase if he is at a Darkhaven.">
+    <card name="Plague" graphics="PlagueDC.jpg" text="Playable on a non-Ringwraith, non-Wizard, non-Elf character at or moving to a non-Haven, non-Ruins &amp; Lairs site. At the end of your opponent's turn, each non-Ringwraith, non-Wizard, non-Elf character at the same site as the target must make a roll (draw a #) modified by -2. If the result is greater than the character's body, he is wounded or he is eliminated if he is already wounded. Discard this card during the target's organization phase if he is at a Darkhaven.">
        <attr key="rarity" value="R"/>
        <attr key="class" value="Permanent-event"/>
        <attr key="type" value="Hazard"/>
@@ -1436,7 +1436,7 @@
        <attr key="class" value="Permanent-event"/>
        <attr key="type" value="Hazard"/>
     </card>
-    <card name="Stay Her Appetite" graphics="StayHerAppetite.jpg" text="Playable on an ally. Make a roll (draw a #). If the result plus the ally's mind is greater than your opponent's unused general influence plus its controlling character's unused direct influence plus five, the ally attacks its controlling character (detainment attack against a hero). This attack has 1 strike and prowess equal to the ally's normal prowess plus a dice roll (drawn #). Discard the ally if it attacks and is not defeated.">
+    <card name="Stay Her Appetite" graphics="StayHerAppetiteDC.jpg" text="Playable on an ally. Make a roll (draw a #). If the result plus the ally's mind is greater than your opponent's unused general influence plus its controlling character's unused direct influence plus five, the ally attacks its controlling character (detainment attack against a hero). This attack has 1 strike and prowess equal to the ally's normal prowess plus a dice roll (drawn #). Discard the ally if it attacks and is not defeated.">
        <attr key="rarity" value="R"/>
        <attr key="class" value="Short-event"/>
        <attr key="type" value="Hazard"/>
@@ -1447,7 +1447,7 @@
        <attr key="type" value="Hazard"/>
 	   <attr key="keyword" value="Environment"/>
     </card>
-    <card name="Thrice Outnumbered" graphics="ThriceOutnumbered.jpg" text="Each player may take one Man hazard creature from his discard pile and shuffle it into his play deck at the end of each turn. Discard this card or a Man hazard creature from your hand at the end of opponent's organization phase. Discard when any play deck is exhausted. Cannot be duplicated.">
+    <card name="Thrice Outnumbered" graphics="ThriceOutnumberedDC.jpg" text="Each player may take one Man hazard creature from his discard pile and shuffle it into his play deck at the end of each turn. Discard this card or a Man hazard creature from your hand at the end of opponent's organization phase. Discard when any play deck is exhausted. Cannot be duplicated.">
        <attr key="rarity" value="U"/>
        <attr key="class" value="Permanent-event"/>
        <attr key="type" value="Hazard"/>
@@ -1468,7 +1468,7 @@
        <attr key="type" value="Hazard"/>
 	   <attr key="keyword" value="Environment"/>
     </card>
-    <card name="Veils Flung Away" graphics="VeilsFlungAway.jpg" text="Playable on a company moving in a Wilderness [{w}], Borlder-land [{b}], or Free-domain [{f}] if Doors of Night is not in play; does not count against the hazard limit. Make a body check  modified by -1 for each character. Determine if each Orc or Troll character is discarded as indicated on their cards. Otherwise, the body checks have no effect unless an untapped character fails his check, in which case he becomes tapped">
+    <card name="Veils Flung Away" graphics="VeilsFlungAwayDC.jpg" text="Playable on a company moving in a Wilderness [{w}], Borlder-land [{b}], or Free-domain [{f}] if Doors of Night is not in play; does not count against the hazard limit. Make a body check  modified by -1 for each character. Determine if each Orc or Troll character is discarded as indicated on their cards. Otherwise, the body checks have no effect unless an untapped character fails his check, in which case he becomes tapped">
        <attr key="rarity" value="U"/>
        <attr key="class" value="Short-event"/>
        <attr key="type" value="Hazard"/>
@@ -1596,6 +1596,7 @@
        <attr key="rarity" value="CB+CS1"/>
        <attr key="class" value="Short-event"/>
        <attr key="type" value="Minion Resource"/>
+	   <attr key="keyword" value="Scout only"/>
     </card>
     <card name="Adûnaphel Unleashed" graphics="AdunaphelUnleashed.jpg" text="Playable on any attack against Adûnaphel the Ringwraith (as your Ringwraith) if she is the only character in her company. The number of strikes of the attack is reduced to one and the attack's body is modified by -2. Alternatively, playable on any attack by a lone Adûnaphel the Ringwraith (as your Ringwraith). You choose defending characters. Any resulting body checks for defending characters are modified by +2. Cannot be duplicated on a given attack.">
        <attr key="rarity" value="R"/>
@@ -1612,6 +1613,7 @@
        <attr key="class" value="Short-event"/>
        <attr key="type" value="Minion Resource"/>
 	   <attr key="keyword" value="Information"/>
+	   <attr key="keyword" value="Sage only"/>
     </card>
     <card name="An Untimely Whisper" graphics="AnUntimelyWhisper.jpg" text="Opponent reveals to you 5 random cards at once from his hand.">
        <attr key="rarity" value="U"/>
@@ -1643,6 +1645,7 @@
        <attr key="rarity" value="R"/>
        <attr key="class" value="Short-event"/>
        <attr key="type" value="Minion Resource"/>
+	   <attr key="keyword" value="Sage only"/>
     </card>
     <card name="Black Rider" graphics="BlackRiderDC.jpg" text="Black Rider mode. Playable at a Darkhaven [{K}] during the organization phase on your Ringwraith’s own company. The company may move to a non-Darkhaven site. Invert this card if the company has moved from a non-Darkhaven site to a Darkhaven [{K}]. If inverted, discard this card and any other Ringwraith followers in the company during your organization phase. Cannot be duplicated on a given company.">
        <attr key="rarity" value="CB+CS1"/>
@@ -1653,11 +1656,13 @@
        <attr key="rarity" value="CB+CS1"/>
        <attr key="class" value="Short-event"/>
        <attr key="type" value="Minion Resource"/>
+	   <attr key="keyword" value="Warrior only"/>
     </card>
     <card name="Bold Thrust" graphics="BoldThrust.jpg" text="Warrior only. Warrior receives +3 to prowess and -1 to body against one strike.">
        <attr key="rarity" value="CB+CS1"/>
        <attr key="class" value="Short-event"/>
        <attr key="type" value="Minion Resource"/>
+	   <attr key="keyword" value="Warrior only"/>
     </card>
     <card name="Burning Rick, Cot, and Tree" graphics="BurningRickCotandTree.jpg" text="Playable at an already tapped Border-hold [{B}] during the site phase. The company faces two attacks (Men - 4 strikes with 7 prowess, 1 strike with 9 prowess). If no characters are untapped after the attack, discard this card. Otherwise, you may tap one character in the company and put this card in your marshalling point pile. Discard any factions you have in play that are playable at that site. Cannot be duplicated at a given site.">
        <attr key="mp" value="2"/>
@@ -1674,6 +1679,7 @@
        <attr key="rarity" value="U"/>
        <attr key="class" value="Short-event"/>
        <attr key="type" value="Minion Resource"/>
+	   <attr key="keyword" value="Scout only"/>
     </card>
     <card name="Come By Night Upon Them" graphics="ComeByNightUponThem.jpg" text="Playable on a Border-hold [{B}]. -1 to the prowess of all automatic-attacks at the site (-2 if Doors of Night is in play). The first item played at the site does not tap the site.">
        <attr key="rarity" value="R"/>
@@ -1684,13 +1690,15 @@
        <attr key="rarity" value="U"/>
        <attr key="class" value="Short-event"/>
        <attr key="type" value="Minion Resource"/>
+	   <attr key="keyword" value="Sage only"/>
     </card>
     <card name="Crooked Promptings" graphics="CrookedPromptings.jpg" text="Diplomat only. +3 to any one influence check by a character in a diplomat's company or +2 to a corruption check by a character in his company.">
        <attr key="rarity" value="CB"/>
        <attr key="class" value="Short-event"/>
        <attr key="type" value="Minion Resource"/>
+	   <attr key="keyword" value="Diplomat only"/>
     </card>
-    <card name="Deeper Shadow" graphics="DeeperShadow.jpg" text="Magic. Shadow-magic. Playable during the movement/hazard phase on a moving shadow-magic-using character. In character's site path, change a Ruins &amp; Lairs [{R}] to a Shadow-hold [{S}] or one Wilderness [{w}] to a Shadow-land [{s}]. Alternatively, decrease the hazard limit against his company by one (to no minimum). Unless he is a Ringwraith, he makes a corruption check modified by -3.">
+    <card name="Deeper Shadow" graphics="DeeperShadowDC.jpg" text="Magic. Shadow-magic. Playable during the movement/hazard phase on a moving shadow-magic-using character. In character's site path, change a Ruins &amp; Lairs [{R}] to a Shadow-hold [{S}] or one Wilderness [{w}] to a Shadow-land [{s}]. Alternatively, decrease the hazard limit against his company by one (to no minimum). Unless he is a Ringwraith, he makes a corruption check modified by -3.">
        <attr key="magic" value="Shadow-magic"/>
        <attr key="rarity" value="U"/>
        <attr key="class" value="Short-event"/>
@@ -1721,6 +1729,7 @@
        <attr key="rarity" value="U"/>
        <attr key="class" value="Permanent-event"/>
        <attr key="type" value="Minion Resource"/>
+	   <attr key="keyword" value="Sage only"/>
     </card>
     <card name="Forced March" graphics="ForcedMarch.jpg" text="Playable at the end of the movement/hazard phase on a company that moved to a Darkhaven. The company may move to an additional site this turn. Another site card may be played and another movement/hazard phase immediately follows for that company.">
        <attr key="rarity" value="CB+CS1"/>
@@ -1758,11 +1767,13 @@
        <attr key="rarity" value="CB+CS1"/>
        <attr key="class" value="Short-event"/>
        <attr key="type" value="Minion Resource"/>
+	   <attr key="keyword" value="Ranger only"/>
     </card>
     <card name="Hide in Dark Places" graphics="HideinDarkPlaces.jpg" text="Scout only. Playable during the organization phase on a scout whose company is not moving. All hazard creature attacks against the scout's company this turn are canceled.">
        <attr key="rarity" value="U"/>
        <attr key="class" value="Short-event"/>
        <attr key="type" value="Minion Resource"/>
+	   <attr key="keyword" value="Scout only"/>
     </card>
     <card name="Hoarmûrath Unleashed" graphics="HoarmurathUnleashed.jpg" text="Playable on Hoarmûath the Ringwraith (as your Ringwraith). Cancel an attack against any one of your companies.">
        <attr key="rarity" value="R"/>
@@ -1773,6 +1784,7 @@
        <attr key="rarity" value="R"/>
        <attr key="class" value="Short-event"/>
        <attr key="type" value="Minion Resource"/>
+	   <attr key="keyword" value="Diplomat only"/>
     </card>
     <card name="I'll Be At Your Heels" graphics="IllBeAtYourHeels.jpg" text="Command. Playable on a leader during the organization phase. Return all other command cards on target leader to your hand when this card is played. -2 to leader's direct  influence (to a minimum of 0) and +1 to all corruption checks by characters in his company. You may return this card to your hand during any organization phase.">
        <attr key="rarity" value="CB+CS1"/>
@@ -1898,6 +1910,7 @@
        <attr key="rarity" value="U"/>
        <attr key="class" value="Short-event"/>
        <attr key="type" value="Minion Resource"/>
+	   <attr key="keyword" value="Scout only"/>
     </card>
     <card name="Orc-mounts" graphics="Orcmounts.jpg" text="Playable during the organization phase on a moving overt company. The hazard limit against the company increases by two and the prowess of any hazard creatures played against it this turn is modified by -1. Cannot be duplicated on a given company.">
        <attr key="rarity" value="R"/>
@@ -1940,6 +1953,8 @@
        <attr key="rarity" value="R"/>
        <attr key="class" value="Short-event"/>
        <attr key="type" value="Minion Resource"/>
+	   <attr key="keyword" value="Diplomat only"/>
+	   <attr key="keyword" value="Scout only"/>
     </card>
     <card name="Secrets of Their Forging" graphics="SecretsofTheirForging.jpg" text="Sage only. Playable on a sage during the site phase at a site where Information is playable if a character in his company has a gold ring item. Tap the sage and the site. You may replace the gold ring with a special item ring from your hand (except for The One Ring) for which the gold ring could normally be tested. Discard the gold ring item.">
        <attr key="rarity" value="U"/>
@@ -1947,6 +1962,7 @@
        <attr key="type" value="Minion Resource"/>
 	   <attr key="keyword" value="Lore"/>
 	   <attr key="keyword" value="Information"/>
+	   <attr key="keyword" value="Sage only"/>
     </card>
     <card name="Seize Prisoners" graphics="SeizePrisoners.jpg" text="Playable during the site phase at an already tapped Free-hold [{F}]. The company faces an attack (attack type as first automatic-attack at site-3 strikes with 8 prowess). If no characters are untapped after the attack, discard Seize Prisoners. Otherwise, tap 1 character in the company and put Seize Prisoners under his control. No marshalling points are received and that character may not untap until Seize Prisoners is stored at a Darkhaven, Shadow-hold [{S}], or Dark-hold [{D}] during his organization phase. Cannot be  duplicated at a given site.">
        <attr key="mp" value="(2)"/>
@@ -1976,6 +1992,7 @@
        <attr key="rarity" value="R"/>
        <attr key="class" value="Short-event"/>
        <attr key="type" value="Minion Resource"/>
+	   <attr key="keyword" value="Scout only"/>
     </card>
     <card name="Some Secret Art of Flame" graphics="SomeSecretArtofFlame.jpg" text="Magic. Sorcery. Playable on a sorcery-using character facing an attack. +4 prowess for the character against the attack. Unless he is a Ringwraith, character makes a corruption check modified by -4. Cannot be duplicated against a given attack.">
        <attr key="magic" value="Sorcery"/>
@@ -2014,11 +2031,13 @@
        <attr key="rarity" value="U"/>
        <attr key="class" value="Short-event"/>
        <attr key="type" value="Minion Resource"/>
+	   <attr key="keyword" value="Warrior only"/>
     </card>
     <card name="Test of Fire" graphics="TestofFire.jpg" text="Sage only. Play to test a gold ring in a sage's company.">
        <attr key="rarity" value="CB+CS1"/>
        <attr key="class" value="Short-event"/>
        <attr key="type" value="Minion Resource"/>
+	   <attr key="keyword" value="Sage only"/>
     </card>
     <card name="That Ain't No Secret" graphics="ThatAintNoSecret.jpg" text="Playable during the site phase on an untapped character at a site where Information is playable. Tap the character (but not the site). No marshalling points are received until this card is stored at a Darkhaven during the Character's organization phase.">
        <attr key="mp" value="(1)"/>
@@ -2050,6 +2069,7 @@
        <attr key="rarity" value="R"/>
        <attr key="class" value="Short-event"/>
        <attr key="type" value="Minion Resource"/>
+	   <attr key="keyword" value="Warrior only"/>
     </card>
     <card name="Tidings of Death" graphics="TidingsofDeath.jpg" text="-1 to each influence check against a faction, but for each influence check make an additional roll (or draw an additional #) and choose which result to use. May also be played as a hero resource.">
        <attr key="rarity" value="R"/>
@@ -2082,6 +2102,7 @@
        <attr key="rarity" value="CB"/>
        <attr key="class" value="Short-event"/>
        <attr key="type" value="Minion Resource"/>
+	   <attr key="keyword" value="Sage only"/>
     </card>
     <card name="The Water's Tithe" graphics="TheWatersTithe.jpg" text="Magic. Sorcery. Playable on a non-Ringwraith sorcery-using character during the organization phase. If using region movement, the Character's company may play up to two additional region cards. Character makes a corruption check modified by -3.">
        <attr key="magic" value="Sorcery"/>
@@ -2114,6 +2135,7 @@
        <attr key="class" value="Short-event"/>
        <attr key="type" value="Minion Resource"/>
 	   <attr key="keyword" value="Lore"/>
+	   <attr key="keyword" value="Sage only"/>
     </card>
     <card name="The Witch-king Unleashed" graphics="TheWitchkingUnleashed.jpg" text="Playable on The Witch-king (as your Ringwraith). +5 to his direct influence this turn. Cannot be duplicated on a given turn.">
        <attr key="rarity" value="R"/>
@@ -2206,7 +2228,7 @@
        <attr key="class" value="Man Faction"/>
        <attr key="type" value="Minion Resource"/>
     </card>
-    <card name="Ice-orcs" graphics="Iceorcs.jpg" text="Unique. Playable at any Ruins &amp; Lairs [{R}] in Forochel or Withered Heath if the influence check is greater than 10. Once in play, the number required to influence this faction is zero. Standard Modifications: Wargs of the Forochel (+2).">
+    <card name="Ice-orcs" graphics="IceorcsDC.jpg" text="Unique. Playable at any Ruins &amp; Lairs [{R}] in Forochel or Withered Heath if the influence check is greater than 10. Once in play, the number required to influence this faction is zero. Standard Modifications: Wargs of the Forochel (+2).">
        <attr key="unique" value="yes"/>
        <attr key="mp" value="4"/>
        <attr key="rarity" value="R"/>
@@ -2394,7 +2416,7 @@
        <attr key="class" value="Man Faction"/>
        <attr key="type" value="Minion Resource"/>
     </card>
-    <card name="Woses of the Eryn Vorn" graphics="WosesoftheErynVorn.jpg" text="Unique. Playable at The Worthy Hills if the influence check is greater than 11.">
+    <card name="Woses of the Eryn Vorn" graphics="WosesoftheErynVornDC.jpg" text="Unique. Playable at The Worthy Hills if the influence check is greater than 11.">
        <attr key="unique" value="yes"/>
        <attr key="mp" value="3"/>
        <attr key="rarity" value="R"/>
@@ -2421,7 +2443,9 @@
        <attr key="rarity" value="U"/>
        <attr key="class" value="Greater Item"/>
        <attr key="type" value="Minion Resource"/>
+	   <attr key="keyword" value="Mace"/>
 	   <attr key="keyword" value="Battle-gear"/>
+	   <attr key="keyword" value="Warrior only"/>
     </card>
     <card name="Black-hide Shield" graphics="BlackhideShield.jpg" text="Shield. +1 to body to a maximum of 9.">
        <attr key="corruption" value="1"/>
@@ -2429,6 +2453,7 @@
        <attr key="class" value="Minor Item"/>
        <attr key="type" value="Minion Resource"/>
 	   <attr key="keyword" value="Battle-gear"/>
+	   <attr key="keyword" value="Warrior only"/>
     </card>
     <card name="Black-mail Coat" graphics="BlackmailCoat.jpg" text="Armor. Warrior only: +2 to body to a maximum of 9.">
        <attr key="corruption" value="1"/>
@@ -2437,6 +2462,7 @@
        <attr key="class" value="Major Item"/>
        <attr key="type" value="Minion Resource"/>
 	   <attr key="keyword" value="Battle-gear"/>
+	   <attr key="keyword" value="Warrior only"/>
     </card>
     <card name="Blazon of the Eye" graphics="BlazonoftheEye.jpg" text="+2 to direct influence against factions. Cannot be duplicated on a given character.">
        <attr key="corruption" value="1"/>
@@ -2458,6 +2484,7 @@
        <attr key="class" value="Major Item"/>
        <attr key="type" value="Minion Resource"/>
 	   <attr key="keyword" value="Battle-gear"/>
+	   <attr key="keyword" value="Warrior only"/>
     </card>
     <card name="Dwarven Ring of Barin's Tribe" graphics="DwarvenRingofBarinsTribe.jpg" text="Unique. Dwarven Ring. Playable only with a Gold Ring and after a test indicates a Dwarven Ring. +2 (+7) direct influence. Values in parentheses apply to a Dwarf bearer. Tap a Dwarf bearer to search your play deck and/or discard pile for a major or gold ring item playable at the bearer's site. This item must be played immediately or discarded; reshuffle the play deck. Bearer then makes a corruption check modified by +2.">
        <attr key="unique" value="yes"/>
@@ -2532,6 +2559,7 @@
        <attr key="class" value="Major Item"/>
        <attr key="type" value="Minion Resource"/>
 	   <attr key="keyword" value="Battle-gear"/>
+	   <attr key="keyword" value="Warrior only"/>
     </card>
     <card name="The Iron Crown" graphics="TheIronCrown.jpg" text="Unique. +1 to body to a maximum of 10. +4 to direct influence. Bearer may tap The Iron Crown to cancel an attack by Orcs, Trolls, or Men against his company. At the end of his untap phase, if the bearer is not a Ringwraith, he must make a corruption check. May be stored at Barad-dûr for 5 marshalling points.">
        <attr key="unique" value="yes"/>
@@ -2678,6 +2706,7 @@
        <attr key="class" value="Greater Item"/>
        <attr key="type" value="Minion Resource"/>
 	   <attr key="keyword" value="Palantír"/>
+	   <attr key="keyword" value="Sage only"/>
     </card>
     <card name="Palantír of Elostirion" graphics="PalantirofElostirion.jpg" text="Unique. Palantír. Playable at The White Towers. Discard if the bearer moves. If the bearer is a sage: your hand size increases by one and the bearer is able to use this Palantír this turn if he taps. With its bearer able to use a Palantír, tap Palantír of Elostirion to draw a card. Bearer then makes a corruption check.">
        <attr key="unique" value="yes"/>

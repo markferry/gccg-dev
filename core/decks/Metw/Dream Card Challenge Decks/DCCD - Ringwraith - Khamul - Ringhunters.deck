@@ -1,5 +1,5 @@
 #
-# GCCG v0.9.6 Middle-earth deck
+# GCCG v0.9.6.3 Middle-earth deck
 #
 #      DCCD - Ringwraith - Khamul - Ringhunters
 #
@@ -37,7 +37,7 @@ Deck
 1 Lesser Spiders (LE)
 1 Ninevet (DF)
 1 Pierced by Many Wounds (DM)
-2 Protecting their Domain (FB)
+2 Protecting Their Domain (FB)
 1 Seized upon the Bearer (RS)
 1 Spiders Huge and Horrible (NE)
 1 Taint of the Wilds (RS)
@@ -66,7 +66,7 @@ Deck
 1 Gold Ring that Sauron Fancies (LE)
 1 Grimbúrz (NE)
 1 High Helm (LE)
-1 Hionvor of Womawas Druz (CP)
+1 Hionvor of Womawas Drus (CP)
 1 Not Slay Needlessly (LE)
 1 Overlord of Dol Guldur (NE)
 1 Ruse (LE)
@@ -94,7 +94,7 @@ Pool
 
 # Minion Resource (3)
 
-1 Hionvor of Womawas Druz (CP)
+1 Hionvor of Womawas Drus (CP)
 1 Saw-toothed Blade (LE)
 1 Whispers of Rings (BA)
 
@@ -170,4 +170,3 @@ Sites
 1 Strayhold [M] (NE)
 1 The Lonely Mountain [M] (LE)
 1 Thranduil's Halls [M] (LE)
-

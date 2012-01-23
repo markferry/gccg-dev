@@ -392,6 +392,30 @@ Data Table::put_deck_bottom(const Data& args)
     return int(deck->Size());
 }
 
+/// clear_deck(d) - Remove all cards from the deck
+/// $d$, then redraw it. Return number of cards removed.
+Data Table::clear_deck(const Data& args)
+{
+    int dck;
+	
+    dck=GetInteger("clear_deck",args);
+
+    OBJECTVAR(deck,Deck,dck);
+    
+    int ds = deck->Size();
+
+    if(ds)
+    {
+	int w=deck->grp.w,h=deck->grp.h,x=deck->grp.x,y=deck->grp.y;
+	deck->DelAll();
+	deck->RecalculateSize();
+	
+	Refresh(x,y,w,h);
+    }
+	
+    return ds;
+}
+
 /// create_msgbox(x_0,y_0,n,s,w,h,L) - Create a message box to the position
 /// $(x_0,y_0)$. Object number is $n$, name is $s$ and the size of the box is $w\times h$.
 /// Return the object number of the message box created. The maximum
@@ -3380,7 +3404,7 @@ void Table::InitializeLibrary()
     parser.SetFunction("add_text",&Table::add_text);
     parser.SetFunction("attach",&Table::attach);
     parser.SetFunction("beep",&Table::beep);
-	parser.SetFunction("blink",&Table::blink);
+    parser.SetFunction("blink",&Table::blink);
     parser.SetFunction("book_entry",&Table::book_entry);
     parser.SetFunction("book_cards",&Table::book_cards);
     parser.SetFunction("book_last_page",&Table::book_last_page);
@@ -3397,6 +3421,7 @@ void Table::InitializeLibrary()
     parser.SetFunction("cardbox",&Table::cardbox);
     parser.SetFunction("center_of",&Table::center_of);
     parser.SetFunction("change_card",&Table::change_card);
+    parser.SetFunction("clear_deck",&Table::clear_deck);
     parser.SetFunction("create_book",&Table::create_book);
     parser.SetFunction("create_cardbox",&Table::create_cardbox);
     parser.SetFunction("create_deck",&Table::create_deck);
@@ -3457,7 +3482,7 @@ void Table::InitializeLibrary()
     parser.SetFunction("refresh",&Table::_refresh);
     parser.SetFunction("redraw",&Table::redraw);
     parser.SetFunction("replace_cardbox_recenter",&Table::replace_cardbox_recenter);
-	parser.SetFunction("replace_cardbox",&Table::replace_cardbox);
+    parser.SetFunction("replace_cardbox",&Table::replace_cardbox);
     parser.SetFunction("screen2table",&Table::screen2table);
     parser.SetFunction("set_attr",&Table::set_attr);
     parser.SetFunction("set_bgcolor",&Table::set_bgcolor);
@@ -3483,9 +3508,9 @@ void Table::InitializeLibrary()
     parser.SetFunction("untap",&Table::untap);
     parser.SetFunction("untapped",&Table::untapped);
     parser.SetFunction("w",&Table::w);
-	parser.SetFunction("load_sound",&Table::load_sound);
-	parser.SetFunction("play_sound",&Table::play_sound);
-	parser.SetFunction("card_sound",&Table::card_sound);
+    parser.SetFunction("load_sound",&Table::load_sound);
+    parser.SetFunction("play_sound",&Table::play_sound);
+    parser.SetFunction("card_sound",&Table::card_sound);
     parser.SetFunction("get_command",&Table::get_command);
 
     parser.SetFunction("InputSplit",&Table::InputSplit);
