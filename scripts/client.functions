@@ -2980,33 +2980,45 @@ def Message
 
     if(con==server.meta)
     {
+      to_msg = 0;
+      hilight = 0;
+      
       if(substr(m,0,6)=="{blue}")
-        Msg(left(time(),5)+" "+m+"{reset}");
-
-      if(mode=="chat")
+        to_msg = 1;
+      elseif(substr(m,0,23)=="{gold}* you whisper to ")
       {
-        if(substr(m,0,6)!="{blue}")
-          Msg(left(time(),5)+" "+m+"{reset}");
-
+        to_msg = 1;
+        hilight = 1;
+      }
+      elseif(substr(m,0,6)=="{gold}" && find("whispers:",m))
+      {
+        to_msg = 1;
+        hilight = 2;
+      }
+      elseif(mode=="chat")
+      {
+        to_msg = 1;
+        
         if(find(uc((split(username,"-"))[0]),uc(m))!=NULL)
         {
           if(substr(m,8,length(username))!=username || left(m,8)=="Welcome ")
-            MsgChat(left(time(),5)+" "+m+"{reset}");
-          else
-          {
-            if(find((split(substr(m,10+length(username)),":"))[0],forall("(#)[1][0]",room.players))!=NULL)
-              MsgChat(left(time(),5)+" "+m+"{reset}");
-          }
+            hilight = 2;
+          elseif(find((split(m,":"))[1],forall("(#)[1][0]",room.players))!=NULL)
+            hilight = 1;
         }
       }
       else
       {
-        MsgChat(left(time(),5)+" "+m+"{reset}");
+        highlight = 1;
       }
-
-	  if(find(uc((split(username,"-"))[0]),uc(m))!=NULL && substr(m,8,length(username))!=username)
-		InitVisualAlert();	  
-	}
+      
+      if(to_msg)
+        Msg(left(time(),5)+" "+m+"{reset}");
+      if(hilight)
+        MsgChat(left(time(),5)+" "+m+"{reset}");
+      if(hilight == 2)
+        InitVisualAlert();
+    }
     else
       Msg(left(time(),5)+" "+m+"{reset}");
   }
