@@ -3009,7 +3009,7 @@ def Message
       }
       else
       {
-        highlight = 1;
+        hilight = 1;
       }
       
       if(to_msg)
