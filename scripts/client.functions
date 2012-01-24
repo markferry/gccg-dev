@@ -3003,7 +3003,7 @@ def Message
         {
           if(substr(m,8,length(username))!=username || left(m,8)=="Welcome ")
             hilight = 2;
-          elseif(find((split(m,":"))[1],forall("(#)[1][0]",room.players))!=NULL)
+          elseif(find((split(m,": "))[1],forall("(#)[1][0]",room.players))!=NULL)
             hilight = 1;
         }
       }
