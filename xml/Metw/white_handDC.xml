@@ -129,7 +129,7 @@
        <attr key="influence" value="12"/>
 	   <attr key="keyword" value="Avatar"/>
     </card>
-    <card name="Sly Southerner" graphics="SlySoutherner.jpg" text="Half-orc. Discard on a body check result of 9. {red}: Balrog offical rules: Home Site changes to: Any non-Dark-hold Under-deeps site.">
+    <card name="Sly Southerner" graphics="SlySouthernerDC.jpg" text="Half-orc. Discard on a body check result of 9. {red}: Balrog offical rules: Home Site changes to: Any non-Dark-hold Under-deeps site.">
        <attr key="skills" value="Warrior/Scout"/>
        <attr key="mp" value="0"/>
        <attr key="home_site" value="Any Dark-hold"/>
@@ -142,7 +142,7 @@
        <attr key="influence" value="0"/>
 	   <attr key="keyword" value="Half-orc"/>
     </card>
-    <card name="Squint-eyed Brute" graphics="SquinteyedBrute.jpg" text="Half-orc. Discard on a body check result of 9. {red}: Balrog offical rules: Home Site changes to: Any non-Dark-hold Under-deeps site.">
+    <card name="Squint-eyed Brute" graphics="SquinteyedBruteDC.jpg" text="Half-orc. Discard on a body check result of 9. {red}: Balrog offical rules: Home Site changes to: Any non-Dark-hold Under-deeps site.">
        <attr key="skills" value="Warrior"/>
        <attr key="mp" value="0"/>
        <attr key="home_site" value="Any Dark-hold"/>
@@ -579,7 +579,7 @@
        <attr key="type" value="Stage Resource"/>
 	   <attr key="specific" value="Fallen-wizard"/>
     </card>
-    <card name="Guarded Haven" graphics="GuardedHaven.jpg" text="Playable on one of your Wizardhavens other than Isengard, The White Towers, or Rhosgobel. The site is protected. Cards that give marshalling points are not playable at the site by your opponent in all cases. Cannot be duplicated on a given site.">
+    <card name="Guarded Haven" graphics="GuardedHavenDC.jpg" text="Playable on one of your Wizardhavens other than Isengard, The White Towers, or Rhosgobel. The site is protected. Cards that give marshalling points are not playable at the site by your opponent in all cases. Cannot be duplicated on a given site.">
        <attr key="sp" value="1"/>
        <attr key="mp" value="1"/>
        <attr key="rarity" value="U3"/>
