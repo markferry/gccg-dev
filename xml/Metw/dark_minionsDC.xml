@@ -1466,7 +1466,7 @@
        <attr key="mind" value="2"/>
 	   <attr key="keyword" value="Maia"/>
     </card>
-    <card name="Mistress Lobelia" graphics="MistressLobelia.jpg" text="Unique. Manifestation of Lobelia Sackville-Baggins. May only be played at Bag End or Bree. Discard this card if her company moves to any site other than Bree, Old Forest, The White Towers, or a site in The Shire. Tap Mistress Lobelia to search your discard pile or play deck for any one item, ally, or faction playable at her current site. Place the resource in your hand and reshuffle your play deck.">
+    <card name="Mistress Lobelia" graphics="MistressLobeliaDC.jpg" text="Unique. Manifestation of Lobelia Sackville-Baggins. May only be played at Bag End or Bree. Discard this card if her company moves to any site other than Bree, Old Forest, The White Towers, or a site in The Shire. Tap Mistress Lobelia to search your discard pile or play deck for any one item, ally, or faction playable at her current site. Place the resource in your hand and reshuffle your play deck.">
        <attr key="unique" value="yes"/>
        <attr key="mp" value="1"/>
        <attr key="body" value="9"/>

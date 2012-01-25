@@ -371,7 +371,7 @@
        <attr key="class" value="Short-event"/>
        <attr key="type" value="Minion Resource"/>
     </card>
-    <card name="Open to the Summons" graphics="OpentotheSummons.jpg" text="Playable on a minion company. One agent minion may be played with target company at a Darkhaven - place this card with the agent. -1 to his mind to a minimum of 1. This card may be played with a starting company in lieu of a minor item. When played as such, reveal it when starting companies are determined as if it were a character. Cannot be duplicated on a given character.">
+    <card name="Open to the Summons" graphics="OpentotheSummonsDC.jpg" text="Playable on a minion company. One agent minion may be played with target company at a Darkhaven - place this card with the agent. -1 to his mind to a minimum of 1. This card may be played with a starting company in lieu of a minor item. When played as such, reveal it when starting companies are determined as if it were a character. Cannot be duplicated on a given character.">
        <attr key="rarity" value="U3"/>
        <attr key="class" value="Permanent-event"/>
        <attr key="type" value="Minion Resource"/>
@@ -437,7 +437,7 @@
        <attr key="type" value="Minion Resource"/>
 	   <attr key="keyword" value="Technology"/>
     </card>
-    <card name="Deep Mines" graphics="DeepMines.jpg" back="1" text="A company may move to this site only from one of your protected Wizardhavens and only if you have more than 6 stage points. The protected Wizardhaven is the surface site for Deep Mines (i.e., the sites are adjacent and the movement roll required to move between them is 0). You receive the three stage points if any of your companies are at the site. May be duplicated in location deck. Cannot be duplicated on a given Wizardhaven.">
+    <card name="Deep Mines" graphics="DeepMinesDC.jpg" back="1" text="A company may move to this site only from one of your protected Wizardhavens and only if you have more than 6 stage points. The protected Wizardhaven is the surface site for Deep Mines (i.e., the sites are adjacent and the movement roll required to move between them is 0). You receive the three stage points if any of your companies are at the site. May be duplicated in location deck. Cannot be duplicated on a given Wizardhaven.">
        <attr key="sp" value="3"/>
        <attr key="draw" value="1"/>
        <attr key="region" value="Under-deeps"/>
@@ -456,7 +456,7 @@
        <attr key="type" value="Fallen-wizard Site"/>
 	   <attr key="keyword" value="Orc-hold"/>
     </card>
-    <card name="Rhosgobel" graphics="Rhosgobel.jpg" back="1" text="">
+    <card name="Rhosgobel" graphics="RhosgobelDC.jpg" back="1" text="">
        <attr key="sp" value="1"/>
        <attr key="draw" value="2"/>
        <attr key="region" value="Southern Mirkwood"/>
@@ -489,7 +489,7 @@
        <attr key="type" value="Stage Resource"/>
 	   <attr key="specific" value="Fallen-wizard"/>
     </card>
-    <card name="A Strident Spawn" graphics="AStridentSpawn.jpg" text="Unique. Playable if you are Pallando or Saruman and have 6 or more stage points and a protected Wizardhaven. Each of your Half-orcs requires one less point of influence to control. During your organization phase, you may take one Half- orc character from your discard pile to your hand. You may play Half-orc characters at your Wizardhavens, and even if your Fallen-wizard is not there. Cannot be duplicated by a given player.">
+    <card name="A Strident Spawn" graphics="AStridentSpawnDC.jpg" text="Unique. Playable if you are Pallando or Saruman and have 6 or more stage points and a protected Wizardhaven. Each of your Half-orcs requires one less point of influence to control. During your organization phase, you may take one Half- orc character from your discard pile to your hand. You may play Half-orc characters at your Wizardhavens, and even if your Fallen-wizard is not there. Cannot be duplicated by a given player.">
        <attr key="unique" value="yes"/>
        <attr key="sp" value="4"/>
        <attr key="mp" value="1"/>
@@ -537,7 +537,7 @@
        <attr key="class" value="Permanent-event"/>
        <attr key="type" value="Stage Resource"/>
     </card>
-    <card name="The Fortress of Isen" graphics="TheFortressofIsen.jpg" text="Unique. May not be a starting stage card. Playable if you are Alatar, Pallando, or Saruman. Playable on Isengard. Isengard is protected. Other Fallen-wizards may not use the Wizardhaven card for Isengard. Cards that give marshalling points are not playable at the site by your opponent in all cases. Discard this card when the site is discarded or returned to its location deck.">
+    <card name="The Fortress of Isen" graphics="TheFortressofIsenDC.jpg" text="Unique. May not be a starting stage card. Playable if you are Alatar, Pallando, or Saruman. Playable on Isengard. Isengard is protected. Other Fallen-wizards may not use the Wizardhaven card for Isengard. Cards that give marshalling points are not playable at the site by your opponent in all cases. Discard this card when the site is discarded or returned to its location deck.">
        <attr key="unique" value="yes"/>
        <attr key="sp" value="3"/>
        <attr key="rarity" value="U3"/>
@@ -545,7 +545,7 @@
        <attr key="type" value="Stage Resource"/>
 	   <attr key="specific" value="Fallen-wizard"/>
     </card>
-    <card name="Fortress of the Towers" graphics="FortressoftheTowers.jpg" text="Unique. May not be a starting stage card. Playable if you are Alatar, Pallando, or Saruman. Playable on The White Towers. The White Towers is protected. Other Fallen- wizards may not use the Wizardhaven card for The White Towers. Cards that give marshalling points are not playable at the site by your opponent in all cases. Discard this card when the site is discarded or returned to its location deck.">
+    <card name="Fortress of the Towers" graphics="FortressoftheTowersDC.jpg" text="Unique. May not be a starting stage card. Playable if you are Alatar, Pallando, or Saruman. Playable on The White Towers. The White Towers is protected. Other Fallen- wizards may not use the Wizardhaven card for The White Towers. Cards that give marshalling points are not playable at the site by your opponent in all cases. Discard this card when the site is discarded or returned to its location deck.">
        <attr key="unique" value="yes"/>
        <attr key="sp" value="3"/>
        <attr key="rarity" value="U3"/>
