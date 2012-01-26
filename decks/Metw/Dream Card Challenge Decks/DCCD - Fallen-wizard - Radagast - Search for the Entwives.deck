@@ -1,7 +1,7 @@
 #
 # GCCG v0.9.6.3 Middle-earth deck
 #
-#      DCCD - Fallen-wizard - Radagast - Search for the Entwives
+#      DCCD - Fallen-wizard - Radagast - Search of the Entwives
 #
 
 ####
@@ -172,13 +172,17 @@ Sideboard
 Sites
 #####
 
+# Dual Site (1)
+
+1 The Ghost-caves (KN)
+
 # Fallen-wizard Site (4)
 
 1 Lórien [F] (FB)
 2 Rhosgobel [F] (WH)
 1 Thranduil's Halls [F] (FB)
 
-# Hero Site (21)
+# Hero Site (20)
 
 1 Amon Hen [H] (TW)
 1 Bag End [H] (TW)
@@ -190,7 +194,6 @@ Sites
 1 Hermit's Hill [H] (DM)
 1 Hyvät Kalat [H] (NW)
 1 Isengard [H] (TW)
-1 Ligr Wodaize Berne [H] (NW)
 1 Lind-or-Burúm [H] (TI)
 1 Logath Camp [H] (CP)
 1 Moria [H] (TW)
