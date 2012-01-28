@@ -888,7 +888,7 @@
 	</card>
 	<card name="Shipwrights of Lindon" graphics="Shipwrights of Lindon.jpg" text="Playable on a character with home site Grey Havens. If moving to a Port or site in a Coastal Sea [c] region, you may discard (for no effect) one Fair Sailing, Great Ship, Stars or The Evenstar from hand and tap target character to replace the company’s new site with a Port or site in a Coastal Sea region; this site must be in the same or an adjacent region as the site originally moved to. You may discard this card to bring one Fair Sailing, Stars or The Evenstar from your discard pile to your play deck (reshuffle). Cannot be duplicated on a given character.">
 			 <attr key="type" value="Hero Resource"/>
-			 <attr key="rarity" value="U"/>
+			 <attr key="rarity" value="C"/>
 			 <attr key="class" value="Permanent-event"/>
 	</card>
     <card name="Soul-piercing" graphics="Soulpiercing.jpg" text="Playable on Galadriel. One of your opponent’s characters at Galadriel’s current site (your choice) must make a CCmodified by -2. If the character fails this CC you may look at opponent’s hand. Otherwise opponent may remove a corruption card from the character. Cannot be duplicated on a given turn for a given character">
@@ -1127,9 +1127,9 @@
 			 <attr key="sp" value="1"/>
 			 <attr key="specific" value="Galadriel"/>
 	</card>
-	<card name="Legendary Hunt" graphics="Legendary Hunt.jpg" text="Unique. Thranduil specific. Playable on Thranduil if he isin a company with at least 3 Elf warriors, if The King’s Hunting is in play and you have at least 7 P. Discard this card if these requirements are not met. You may play The Hunt on Thranduil as if he were Alatar. tap: during your end-of-turn-phase to take one The Hunt from your discard pile to your hand. If Thranduil defeats a creature using The Hunt, you may invert this card to bring one The Great Hunt from your sideboard to your deck (reshuffle), which may be played as if you were Alatar.">
+	<card name="Legendary Hunt" graphics="Legendary Hunt.jpg" text="Unique. Thranduil specific. Playable on Thranduil if he is in a company with at least 3 Elf warriors, if The King’s Hunting is in play and you have at least 7 P. Discard this card if these requirements are not met. You may play The Hunt on Thranduil as if he were Alatar. tap: during your end-of-turn-phase to take one The Hunt from your discard pile to your hand. If Thranduil defeats a creature using The Hunt, you may invert this card to bring one The Great Hunt from your sideboard to your deck (reshuffle), which may be played as if you were Alatar.">
 			 <attr key="type" value="Stage Resource"/>
-			 <attr key="rarity" value="C"/>
+			 <attr key="rarity" value="U"/>
 			 <attr key="unique" value="yes"/>
 			 <attr key="class" value="Permanent-event"/>
 			 <attr key="sp" value="3"/>
@@ -1353,7 +1353,7 @@
 	</card>
     <card name="Amon Lind" graphics="Amon Lind.jpg" back="1" text="">
 			 <attr key="type" value="Hero Site"/>
-			 <attr key="rarity" value="U or C"/>
+			 <attr key="rarity" value="U"/>
 			 <attr key="unique" value="yes"/>
 			 <attr key="site_type" value="{B}"/>
 			 <attr key="site_path" value="{w}{w}{w}"/>
