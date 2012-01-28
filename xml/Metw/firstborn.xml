@@ -721,7 +721,7 @@
 			 <attr key="cp" value="2"/>
 			 <attr key="keyword" value="Staff"/>
 	</card>
-	<card name="Elenya" graphics="Elenya.jpg" text="Unique. Lesser Ring. Only playable at Telpemár if the company discards (for no effect) a Lost Knowledge card it controls.+1 to body to a maximum of 9. +1 to EI. tap: modify the prowess and body of an Orc, Troll or Undead attack against the company by -1 for each Stars, Star of High Hope or The Evenstar played this turn. Bearer makes a CC.">
+	<card name="Elenya" graphics="Elenya.jpg" text="Unique. Lesser Ring. Only playable at Telpëmar if the company discards (for no effect) a Lost Knowledge card it controls.+1 to body to a maximum of 9. +1 to EI. tap: modify the prowess and body of an Orc, Troll or Undead attack against the company by -1 for each Stars, Star of High Hope or The Evenstar played this turn. Bearer makes a CC.">
 			 <attr key="type" value="Hero Resource"/>
 			 <attr key="rarity" value="U"/>
 			 <attr key="unique" value="yes"/>
@@ -769,7 +769,7 @@
 			 <attr key="class" value="Elf Faction"/>
 			 <attr key="mp" value="1(2)"/>
 	</card>
-	<card name="Essay on Ringcraft" graphics="Essay on Ringcraft.jpg" text="Lost Knowledge. Playable at Amon Lind, Ostelan or Ost-in-Edhil. If bearer is a sage or Elf with mind 5 or more and at a Haven [H], he may and replace this item with a Lesser Ring or Magic Ring item, which may also be taken from your discard pile, sideboard or play deck (shuffle if searched).">
+	<card name="Essay on Ringcraft" graphics="Essay on Ringcraft.jpg" text="Lost Knowledge. Playable at Amon Lind, Osteledan or Ost-in-Edhil. If bearer is a sage or Elf with mind 5 or more and at a Haven [H], he may and replace this item with a Lesser Ring or Magic Ring item, which may also be taken from your discard pile, sideboard or play deck (shuffle if searched).">
 			 <attr key="type" value="Dual Resource"/>
 			 <attr key="rarity" value="U"/>
 			 <attr key="class" value="Special Item"/>
@@ -1634,7 +1634,7 @@
 			 <attr key="auto_attack" value="Undead — 3 strikes with 9 prowess; cannot be cancelled by a skill card; each character wounded must make a CC"/>
 			 <attr key="special" value="Non-Nazgûl creatures keyed to the siteattack normally, not as detainment. Characters at this site have their CC modified by -1."/>
 	</card>
-    <card name="Ostelan" graphics="Ostelan.jpg" back="1" text="">
+    <card name="Osteledan" graphics="Osteledan.jpg" back="1" text="">
 			 <attr key="type" value="Hero Site"/>
 			 <attr key="rarity" value="C"/>
 			 <attr key="unique" value="yes"/>
@@ -1649,7 +1649,7 @@
 			 <attr key="keyword" value="Dungeon"/>
 	         <attr key="keyword" value="Hidden site"/>
 	</card>
-	<card name="Ostelan" graphics="Ostelan2.jpg" back="1" text="">
+	<card name="Osteledan" graphics="Osteledan2.jpg" back="1" text="">
 			 <attr key="type" value="Minion Site"/>
 			 <attr key="rarity" value="U"/>
 			 <attr key="unique" value="yes"/>
@@ -1719,7 +1719,7 @@
 			 <attr key="special" value="Elrond specific. This site is a protected Lordhaven [H]. If one of your companies is at this site, all attacks against it are cancelled. Characters with Rivendell as a home site may be brought into play at this site regardless of the presence of any other character."/>
 			 <attr key="keyword" value="Elf-hold"/>
 	</card>
-	<card name="Telpemár" graphics="Telpemar.jpg" back="1" text="">
+	<card name="Telpëmar" graphics="Telpemar.jpg" back="1" text="">
 			 <attr key="type" value="Hero Site"/>
 			 <attr key="rarity" value="U"/>
 			 <attr key="unique" value="yes"/>
@@ -1733,7 +1733,7 @@
 			 <attr key="auto_attack" value="(1st) Men — 2 strikes with 7 prowess; (2nd)* Trap — 1 strike with 10 prowess"/>
 			 <attr key="special" value="* 2nd automatic-attack need only be faced if the company intends to play a gold ring item."/>
 	</card>
-	<card name="Telpemár" graphics="Telpemar2.jpg" back="1" text="">
+	<card name="Telpëmar" graphics="Telpemar2.jpg" back="1" text="">
 			 <attr key="type" value="Minion Site"/>
 			 <attr key="rarity" value="C"/>
 			 <attr key="unique" value="yes"/>
