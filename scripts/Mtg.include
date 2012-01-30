@@ -454,7 +454,6 @@ def TokenSubmenuH
    ("Homunculus 0/1 (A)","",'Send("Transfer",(1,("out.of.play",54),("play",0)))'),
    ("Horror 4/4 (B)","",'Send("Transfer",(1,("out.of.play",55),("play",0)))'),
    ("Horror */* (C)","",'Send("Transfer",(1,("out.of.play",107),("play",0)))'),
-   ("Human 1/1 (W)","",'Send("Transfer",(1,("out.of.play",159),("play",0)))'),
   ));
 }
 
@@ -565,7 +564,6 @@ def TokenSubmenuU
 def TokenSubmenuV 
 {
   Submenu("Select Token",(
-   ("Vampire 1/1 (B, lifelink)","",'Send("Transfer",(1,("out.of.play",160),("play",0)))'),
    ("Vampire */* (B)","",'Send("Transfer",(1,("out.of.play",122),("play",0)))'),
    ("Voja 2/2 (GW)","",'Send("Transfer",(1,("out.of.play",91),("play",0)))'),   
   ));
