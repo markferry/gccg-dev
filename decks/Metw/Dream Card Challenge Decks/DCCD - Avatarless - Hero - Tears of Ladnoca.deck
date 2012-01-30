@@ -18,13 +18,12 @@ Deck
 2 Dúnadan Mariner (WR)
 1 Manari Akaji (SL)
 
-# Dual Resource (11)
+# Dual Resource (10)
 
 1 Covshek-pust (SL)
 1 Desert Amber (SL)
 2 Guinarnen (SL)
 1 Harad [D] (SL)
-1 Share of the Treasure (GW)
 2 Southron Scimitar (SL)
 3 Zûrafy (SL)
 
@@ -32,31 +31,31 @@ Deck
 
 2 An Unexpected Outpost (DM)
 1 Arthadan Rangers (LE)
-1 Beacons Alight (WR)
-2 Black Crows (FB)
+2 Beacons Alight (WR)
+1 Black Crows (FB)
+1 Chance of Being Lost (DM)
 1 Chill Them with Fear (LE)
 1 Doors of Night (TW)
 1 Doubled Vigilance (DM)
-2 Errand-riders of Gondor (WR)
+3 Errand-riders of Gondor (WR)
 1 Falathrim (FB)
 1 Frightful Guardian (GW)
 1 Galadhrim (AS)
 3 Great Secrets Buried There (DM)
 1 Marsh-drake (LE)
 1 Nameless Thing (DM)
-1 Power Built by Waiting (AS)
 1 Rain-drake (TD)
 1 Redoubled Force (DM)
 1 Returned Beyond All Hope (AS)
 1 Sand-drake (SL)
-2 Seafaring Bellakarin (SL)
+1 Seafaring Bellakarin (SL)
 1 Shifting Paths (FB)
 1 Slayer (LE)
 2 Sons of Kings (LE)
 1 Stench of Mordor (LE)
 1 Steward's Guard (AS)
+1 True Fire-drake (TD)
 2 Twilight (TW)
-1 Winged Fire-drake (TD)
 
 # Hero Character (4)
 
@@ -68,7 +67,7 @@ Deck
 # Hero Resource (25)
 
 1 Dark Quarrels (TW)
-2 Dodge (TW)
+1 Dodge (TW)
 3 Dreams of Lore (TW)
 1 Erû's Gift (NM)
 1 Forlindaal (SL)
@@ -83,7 +82,7 @@ Deck
 3 Smoke Rings (DM)
 1 Staff of Medra (SL)
 1 The Wind Is Turning (WR)
-2 Travelling Merchants (SL)
+3 Travelling Merchants (SL)
 1 Trickery (TD)
 
 ####
@@ -110,34 +109,34 @@ Pool
 Sideboard
 #########
 
-# Dual Resource (4)
+# Dual Resource (3)
 
-1 Desert Screamers (SL)
 1 Fated Individual (TI)
 1 Oliphaunt (SL)
 1 Well of Junast (SL)
 
-# Hazard (5)
+# Hazard (7)
 
-1 Canadras Ahunt (NW)
+1 Ash-drake (NE)
+1 Camthalion (FP)
 1 Capricious Spirit (RS)
 1 He Is Lost to Us (FB)
 1 Stormcrow (TD)
 1 Too Narrow a Hole (GW)
+1 Wyrmsiege (DF)
 
-# Hero Resource (11)
+# Hero Resource (10)
 
 1 Clan Másra (SL)
 1 Far-sight (TW)
+1 Here, There, or Yonder (TD)
 1 Hwanin (SL)
-1 Many Turns and Doublings (TD)
 1 Narsil (TW)
 1 No Strangers at this Time (AS)
 1 Not at Home (TD)
 1 Reforging (NW)
 1 Refuge (TD)
 1 Tears of Ladnoca (SL)
-1 Travelling Merchants (SL)
 
 #####
 Sites
@@ -151,8 +150,8 @@ Sites
 # Hero Site (28)
 
 1 Abandoned Caravansary [H] (SL)
-1 Adûn-Tarîk [H] (SL)
 1 An Karagmir [H] (SL)
+1 Ankruz [H] (SL)
 1 Bozisha-Dar [H] (SL)
 1 Bûr Esmer [H] (SL)
 1 Charnesra [H] (SL)
@@ -163,8 +162,8 @@ Sites
 1 Khibil Êphalak [H] (SL)
 1 Khorsâj [H] (SL)
 1 Killing Fields [H] (SL)
-1 Korlea [H] (SL)
 1 Lighthouse at the Cape of Octopuses [H] (SL)
+1 Maresh [H] (SL)
 1 Monastery of the True Faith [H] (SL)
 1 Oasis of Fult [H] (SL)
 1 Pelican Islands [H] (SL)
@@ -178,3 +177,4 @@ Sites
 1 Tûl Póac [H] (SL)
 1 Urud-an-Khibil [H] (SL)
 1 Ûrêzâyan [H] (SL)
+
