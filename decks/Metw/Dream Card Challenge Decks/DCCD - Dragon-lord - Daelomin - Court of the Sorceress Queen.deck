@@ -1,7 +1,7 @@
 #
 # GCCG v0.9.6.3 Middle-earth deck
 #
-#      DCCD - Dragon-lord - Daelomin - Court of Sorceress Queen
+#      DCCD - Dragon-lord - Daelomin - Court of the Sorceress Queen
 #
 
 ####
@@ -67,12 +67,12 @@ Deck
 1 Goblins of Goblin-gate (LE)
 1 Great Army of the North (BA)
 2 Hunger (GW)
-1 Hunting (GW)
 1 Mating Duel (GW)
 1 Old and Cunning (GW)
 1 Orcs of Gundabad (LE)
 1 Orcs of Mirkwood (LE)
-1 Secret Book (AS)
+1 Rage Past Description (GW)
+1 Records Unread (AS)
 1 Snow-trolls (NW)
 1 That Ain't No Secret (LE)
 3 The Tormented Earth (AS)
@@ -127,9 +127,9 @@ Sideboard
 1 Dragon's Nest (GW)
 1 Fall on Them with Speed (GW)
 1 Great Strength (GW)
+1 Hunting (GW)
 1 Memories of Ancalagon (GW)
 1 Orcs of His Dominion (GW)
-1 Records Unread (AS)
 1 Scales and Jewels (GW)
 1 Spell-bound (GW)
 1 Veil Removed (GW)
