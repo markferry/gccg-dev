@@ -381,7 +381,7 @@ color2region{4}{(128,255,0)}="Anórien";
 color2region{4}{(25,150,0)}="Arthedain";
 color2region{4}{(248,148,148)}="Arysis";
 color2region{4}{(0,0,255)}="Bay of Belfalas";
-color2region{4}{(188,233,233)}="Belegaer";
+color2region{4}{(188,233,233)}="The Sundering Seas";
 color2region{4}{(100,100,100)}="Belfalas";
 color2region{4}{(200,100,200)}="Brown Lands";
 color2region{4}{(25,200,150)}="Cardolan";
@@ -580,7 +580,7 @@ color2region{6}{(213,141,109)}="Shores of Ormal";
 color2region{6}{(213,241,9)}="Ered Ormal";
 color2region{6}{(213,24,9)}="Bulchyades";
 color2region{6}{(13,24,9)}="Chy";
-color2region{6}{(138,24,9)}="Bulchyades";
+color2region{6}{(138,24,9)}="West Bay of Ormal";
 
 
 
