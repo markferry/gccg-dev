@@ -3605,7 +3605,7 @@ def CommandDelgame
 #
 def CommandWhisper
 {
-  if (!ARG[0])
+  if (length(ARG)<2)
     Reply("You can't whisper without a name or message.");
   else if(PlayerNumber(ARG[0]) >= 0)
   {

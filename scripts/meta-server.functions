@@ -2889,7 +2889,9 @@ def CommandYell
 #
 def CommandWhisper
 {
-  if(Con(ARG[0]) >= 0)
+  if(length(ARG)<2)
+    Reply("{red}You can't whisper without a name and message.");
+  else if(Con(ARG[0]) >= 0)
   {
     Reply("{gold}* you whisper to "+ARG[0]+": "+join(tail(ARG)," "));
     Send(Con(ARG[0]),("Message","{gold}"+User()+" whispers: "+join(tail(ARG)," ")));
