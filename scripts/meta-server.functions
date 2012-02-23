@@ -1749,7 +1749,10 @@ def SetPrice
   p=toreal(ARG[1]);
   if(r < 1)
     Reply("{red}Invalid card.");
-  else if(p < 0.01)
+    
+# "p + 1 <= p" is only true for values of infinity or Not-a-Number
+#   which can interfere with client actions and lead to money exploits
+  else if(p < 0.01 || p + 1 <= p)
     Reply("{red}Invalid price.");   
   else
   {
@@ -2890,7 +2893,7 @@ def CommandYell
 def CommandWhisper
 {
   if(length(ARG)<2)
-    Reply("{red}You can't whisper without a name and message.");
+    Reply("{red}You need to supply a name and message.");
   else if(Con(ARG[0]) >= 0)
   {
     Reply("{gold}* you whisper to "+ARG[0]+": "+join(tail(ARG)," "));
