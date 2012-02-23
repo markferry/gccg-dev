@@ -19,21 +19,22 @@ if(!port)
 def InitDistributions
 {
   distribution=(,);
+# BE products have custom procedure
   distribution{"AN"}=(,);
-  distribution{"AN"}{"booster"}=((6,"C"),(2,"U"));
+  distribution{"AN"}{"booster"}=((5,"C"),(2,"U"),(1,"R"));
   distribution{"AQ"}=(,);
-  distribution{"AQ"}{"booster"}=((6,"C"),(2,"U"));
+  distribution{"AQ"}{"booster"}=((5,"C"),(2,"U"),(1,"R"));
   distribution{"LG"}=(,);
   distribution{"LG"}{"booster"}=((11,"C"),(3,"U"),(1,"R"));
   distribution{"DK"}=(,);
-  distribution{"DK"}{"booster"}=((6,"C"),(2,"U"));
+  distribution{"DK"}{"booster"}=((5,"C"),(2,"U"),(1,"R"));
   distribution{"FE"}=(,);
-  distribution{"FE"}{"booster"}=((6,"C"),(2,"U"));
+  distribution{"FE"}{"booster"}=((5,"C"),(2,"U"),(1,"R"));
   distribution{"IA"}=(,);
   distribution{"IA"}{"booster"}=((11,"C"),(3,"U"),(1,"R"));
   distribution{"IA"}{"starter"}=((22,"L+L"),(26,"C"),(9,"U"),(3,"R"));
   distribution{"HL"}=(,);
-  distribution{"HL"}{"booster"}=((6,"C"),(2,"U"));
+  distribution{"HL"}{"booster"}=((5,"C"),(2,"U"),(1,"R"));
   distribution{"AL"}=(,);
   distribution{"AL"}{"booster"}=((8,"C"),(3,"U"),(1,"R"));
   distribution{"MI"}=(,);
@@ -185,8 +186,7 @@ def InitDistributions
   distribution{"NPH"}{"booster"}=((1,"L"),(10,"C"),(3,"U"),(1,"R+R+M"));
   distribution{"ISD"}=(,);
   distribution{"ISD"}{"booster"}=((1,"L"),(9,"C"),(3,"U"),(1,"R+R+M"),(1,"SC+SC+SC+SC+SC+SC+SC+SC+SC+SC+SC+SU+SU+SU+SU+SU+SU+SR+SR+SM"));
-  distribution{"DKA"}=(,);
-  distribution{"DKA"}{"booster"}=((1,"L"),(9,"C"),(3,"U"),(1,"R+R+M"),(1,"SC+SC+SC+SC+SC+SC+SC+SC+SC+SC+SC+SC+SU+SU+SU+SU+SU+SU+SR+SR+SM"));
+# DKA products have custom procedure
 }
 
 #
@@ -239,6 +239,20 @@ def ProduceBE_Starter
     p[i]=random(cards{"BE"}{"L"});
   if(random(121) < 4)
     p[i+1]=random(cards{"BE"}{"L"});
+  return(p);
+  p=pop();
+}
+
+#
+# ProduceDKA_Booster() - Produce Dark Ascension booster.
+#
+def ProduceDKA_Booster
+{
+  push(p);
+  p=RandomCardSet("DKA",((10,"C"),(3,"U"),(1,"R+R+M"),(1,"SC+SC+SC+SC+SC+SC+SC+SC+SC+SC+SC+SC+SU+SU+SU+SU+SU+SU+SR+SR+SM")));
+
+# the only reason this needs a custom function: basic land is pulled in from another set
+  p[0]=random(cards{"ISD"}{"L"});
   return(p);
   p=pop();
 }
