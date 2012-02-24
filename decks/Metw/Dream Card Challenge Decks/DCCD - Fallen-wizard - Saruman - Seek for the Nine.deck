@@ -49,6 +49,12 @@ Deck
 1 Watcher in the Water (LE)
 1 Weariness of the Heart (TW)
 
+# Hero Character (3)
+
+1 Peath (TW)
+1 Wacho (TW)
+1 Éothain (TI)
+
 # Hero Resource (21)
 
 1 A Chance Meeting (TW)
@@ -70,8 +76,9 @@ Deck
 1 When I Know Anything (TD)
 1 Wizard's Flame (TW)
 
-# Minion Character (4)
+# Minion Character (5)
 
+1 Dunlending Spy (LE)
 1 Eradan (LE)
 1 Hador (LE)
 1 Leärdinoth (NE)
@@ -100,20 +107,16 @@ Pool
 1 Harngorin (SL)
 1 Khursh (BO)
 
-# Hero Character (4)
+# Hero Character (1)
 
 1 Ceorl (TI)
-1 Peath (TW)
-1 Wacho (TW)
-1 Éothain (TI)
 
 # Hero Resource (1)
 
 1 Black Arrow (PR)
 
-# Minion Character (3)
+# Minion Character (2)
 
-1 Dunlending Spy (LE)
 1 Layos (LE)
 1 Nevido Smôd (LE)
 
@@ -202,4 +205,3 @@ Sites
 1 Tol Buruth [H] (NE)
 1 Turukulon's Lair [H] (TI)
 1 Wain-Easterling Camp [H] (CP)
-
