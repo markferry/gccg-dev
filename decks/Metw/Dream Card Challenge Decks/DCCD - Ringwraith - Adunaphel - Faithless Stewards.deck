@@ -26,7 +26,6 @@ Deck
 1 Ambusher (TW)
 1 An Unexpected Outpost (DM)
 1 Angmarim Tribesmen (KN)
-1 Assassin (NE)
 1 Corsairs of Umbar (TW)
 1 Dunlending Raiders (TD)
 1 Fruitless Victory (NE)
@@ -45,6 +44,7 @@ Deck
 1 Taint of Glory (WR)
 2 Thrice Outnumbered (LE)
 1 Thrice Told Tales (RS)
+1 Tidings of Bold Spies (LE)
 1 Twilight (TW)
 
 # Minion Character (9)
@@ -110,8 +110,8 @@ Sideboard
 1 Bardings (GW)
 1 Cardolanian Whalers (NW)
 1 Corsairs of Umbar (TW)
-1 No Escape from My Magic (TD)
 1 Variag Horse-raiders (CP)
+1 Wielder's Curse (GW)
 
 # Minion Resource (13)
 
@@ -162,3 +162,4 @@ Sites
 1 Tolfalas [M] (AS)
 1 Umbar [M] (SL)
 1 Vamag [M] (SL)
+
