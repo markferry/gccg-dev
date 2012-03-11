@@ -1,5 +1,5 @@
 #
-# GCCG v0.9.6 Middle-earth deck
+# GCCG v0.9.6.3 Middle-earth deck
 #
 #      DCCD - Balrog - Felagrog - Lord and Usurper
 #
@@ -82,7 +82,7 @@ Pool
 
 # Minion Resource (3)
 
-1 Flaming Torch (NE)
+1 Fizzling Torch (NE)
 1 Foul-smelling Paste (LE)
 1 Trophy-belt (NE)
 
@@ -148,4 +148,3 @@ Sites
 1 Raider-hold [M] (LE)
 1 Steel Fall [M] (GW)
 1 The Wind Throne [M] (LE)
-
