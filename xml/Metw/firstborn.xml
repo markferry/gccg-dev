@@ -1333,7 +1333,7 @@
 			 <attr key="cp" value="5"/>
 			 <attr key="keyword" value="Elven Ring"/>
 	</card>
-	<card name="Ring of Saphire" graphics="Ring of Saphire.jpg" text="Unique. Elven Ring. Playable on any character that taps after CvCC, if opponent’s Elrond was wounded during the combat. May also be played at Rivendell if you have a stored Knowledge of Vilya and no manifestation of Elrond is in play.Values in parenthesis apply to an Elf bearer. Vilya may not be played. taBearer may tap during the organization phase to take any one minion resource event from your discard pile to your hand (show opponent). Bearer makes a CC modified by -1.">
+	<card name="Ring of Sapphire" graphics="Ring of Sapphire.jpg" text="Unique. Elven Ring. Playable on any character that taps after CvCC, if opponent’s Elrond was wounded during the combat. May also be played at Rivendell if you have a stored Knowledge of Vilya and no manifestation of Elrond is in play.Values in parenthesis apply to an Elf bearer. Vilya may not be played. taBearer may tap during the organization phase to take any one minion resource event from your discard pile to your hand (show opponent). Bearer makes a CC modified by -1.">
 			 <attr key="type" value="Minion Resource"/>
 			 <attr key="rarity" value="R"/>
 			 <attr key="unique" value="yes"/>
