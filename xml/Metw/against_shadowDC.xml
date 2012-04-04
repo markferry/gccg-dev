@@ -820,7 +820,7 @@
 	   <attr key="keyword" value="Cold-dragon"/>
 	   <attr key="keyword" value="Winged"/>
     </card>
-    <card name="Black Númenóreans" graphics="BlackNumenoreans.jpg" text="Unique. Playable at Gobel Mirlond if influence check is greater gran 8. Modifications: Umbarean Corsairs (+2).">
+    <card name="Black Númenóreans" graphics="BlackNumenoreans.jpg" text="Unique. Playable at Gobel Mírlond if influence check is greater gran 8. Modifications: Umbarean Corsairs (+2).">
        <attr key="unique" value="yes"/>
        <attr key="mp" value="2"/>
        <attr key="rarity" value="U2"/>
@@ -1098,7 +1098,7 @@
        <attr key="rarity" value="U2"/>
        <attr key="type" value="Hero Site"/>
        <attr key="site_path" value="{w}{f}{c}{w}"/>
-	   <attr key="keyword" value="Man-hold"/>
+	   <attr key="keyword" value="Dúnadan-hold"/>
 	   <attr key="keyword" value="Port"/>
     </card>
 
@@ -1408,7 +1408,7 @@
        <attr key="rarity" value="R2"/>
        <attr key="type" value="Minion Site"/>
        <attr key="site_path" value="{s}{w}"/>
-	   <attr key="keyword" value="Dunadan-hold"/>
+	   <attr key="keyword" value="Dúnadan-hold"/>
 	   <attr key="keyword" value="Elf-hold"/>
     </card>
     <card name="The Sulfur-deeps" graphics="TheSulfurdeeps.jpg" back="1" text="">

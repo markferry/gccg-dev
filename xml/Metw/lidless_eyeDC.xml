@@ -3110,7 +3110,7 @@
        <attr key="class" value=""/>
        <attr key="type" value="Minion Site"/>
        <attr key="site_path" value="{s}{w}{f}{f}{f}"/>
-	   <attr key="keyword" value="Dunadan-hold"/>
+	   <attr key="keyword" value="Dúnadan-hold"/>
 	   <attr key="keyword" value="Man-hold"/>
 	   <attr key="keyword" value="Port"/>
     </card>
@@ -3276,7 +3276,7 @@
        <attr key="class" value=""/>
        <attr key="type" value="Minion Site"/>
        <attr key="site_path" value="{s}{w}{w}"/>
-	   <attr key="keyword" value="Dunadan-hold"/>
+	   <attr key="keyword" value="Dúnadan-hold"/>
 	   <attr key="keyword" value="Man-hold"/>
 	   <attr key="keyword" value="Port"/>
     </card>
@@ -3486,7 +3486,7 @@
        <attr key="type" value="Minion Site"/>
        <attr key="site_path" value="{s}{w}{f}"/>
 	   <attr key="keyword" value="Battleground"/>
-	   <attr key="keyword" value="Dunadan-hold"/>
+	   <attr key="keyword" value="Dúnadan-hold"/>
 	   <attr key="keyword" value="Man-hold"/>
     </card>
     <card name="Moria" graphics="Moria.jpg" back="1" text="">
@@ -3595,7 +3595,7 @@
        <attr key="class" value=""/>
        <attr key="type" value="Minion Site"/>
        <attr key="site_path" value="{s}{w}{f}{f}"/>
-	   <attr key="keyword" value="Dunadan-hold"/>
+	   <attr key="keyword" value="Dúnadan-hold"/>
 	   <attr key="keyword" value="Man-hold"/>
 	   <attr key="keyword" value="Port"/>
 	   <attr key="keyword" value="Port on Anduin"/>

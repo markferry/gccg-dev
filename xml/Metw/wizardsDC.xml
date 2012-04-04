@@ -3451,7 +3451,7 @@
        <attr key="site_path" value="{w}{f}"/>
        <attr key="rarity" value="CB"/>
        <attr key="type" value="Hero Site"/>
-	   <attr key="keyword" value="Dunadan-hold"/>
+	   <attr key="keyword" value="Dúnadan-hold"/>
 	   <attr key="keyword" value="Port"/>
     </card>
     <card name="Dol Guldur" graphics="DolGuldur.jpg" back="1" text="">
@@ -3630,7 +3630,7 @@
        <attr key="site_path" value="{w}{b}{f}{w}"/>
        <attr key="rarity" value="F1"/>
        <attr key="type" value="Hero Site"/>
-	   <attr key="keyword" value="Dunadan-hold"/>
+	   <attr key="keyword" value="Dúnadan-hold"/>
     </card>
     <card name="Himring" graphics="Himring.jpg" back="1" text="">
        <attr key="unique" value="yes"/>
@@ -3788,7 +3788,7 @@
        <attr key="rarity" value="F2"/>
        <attr key="type" value="Hero Site"/>
 	   <attr key="keyword" value="Battleground"/>
-	   <attr key="keyword" value="Dunadan-hold"/>
+	   <attr key="keyword" value="Dúnadan-hold"/>
 	   <attr key="keyword" value="Man-hold"/>
     </card>
     <card name="Moria" graphics="Moria.jpg" back="1" text="">
@@ -3885,7 +3885,7 @@
        <attr key="site_path" value="{w}{b}{f}"/>
        <attr key="rarity" value="CB"/>
        <attr key="type" value="Hero Site"/>
-	   <attr key="keyword" value="Dunadan-hold"/>
+	   <attr key="keyword" value="Dúnadan-hold"/>
 	   <attr key="keyword" value="Port"/>
 	   <attr key="keyword" value="Port on Anduin"/>
     </card>
