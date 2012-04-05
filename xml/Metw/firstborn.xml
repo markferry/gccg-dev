@@ -157,7 +157,7 @@
 			 <attr key="mind" value="6"/>
 			 <attr key="influence" value="2"/>
 			 <attr key="mp" value="2"/>
-			 <attr key="home_site" value="any Elf-hold Port"/>
+			 <attr key="home_site" value="Any Elf-hold Port"/>
 			 <attr key="skills" value="Warrior/Diplomat"/>
 			 <attr key="race" value="Elf"/>
 			 <attr key="keyword" value="Sinda"/>
@@ -187,7 +187,7 @@
 			 <attr key="body" value="7"/>
 			 <attr key="mind" value="2"/>
 			 <attr key="influence" value="0"/>
-			 <attr key="home_site" value="any Elf-hold"/>
+			 <attr key="home_site" value="Any Elf-hold"/>
 			 <attr key="skills" value="Sage"/>
 			 <attr key="race" value="Elf"/>
 			 <attr key="keyword" value="Silvan"/>
@@ -311,7 +311,7 @@
 			 <attr key="influence" value="2"/>
 			 <attr key="mp" value="3"/>
 			 <attr key="cp" value="(+2)"/>
-			 <attr key="home_site" value="none"/>
+			 <attr key="home_site" value="None"/>
 			 <attr key="specific" value="Sauron"/>
 			 <attr key="skills" value="Warrior/Sage"/>
 			 <attr key="race" value="Elf"/>
@@ -338,7 +338,7 @@
 			 <attr key="mind" value="3"/>
 			 <attr key="influence" value="0"/>
 			 <attr key="mp" value="1"/>
-			 <attr key="home_site" value="any Elf-hold Port"/>
+			 <attr key="home_site" value="Any Elf-hold Port"/>
 			 <attr key="skills" value="Warrior/Sage"/>
 			 <attr key="race" value="Elf"/>
 			 <attr key="keyword" value="Sinda"/>
@@ -381,7 +381,7 @@
 			 <attr key="mind" value="3"/>
 			 <attr key="influence" value="0"/>
 			 <attr key="mp" value="1"/>
-			 <attr key="home_site" value="any Elf-hold in Mirkwood"/>
+			 <attr key="home_site" value="Any Elf-hold in Mirkwood"/>
 			 <attr key="skills" value="Warrior/Ranger"/>
 			 <attr key="race" value="Elf"/>
 			 <attr key="keyword" value="Silvan"/>	
