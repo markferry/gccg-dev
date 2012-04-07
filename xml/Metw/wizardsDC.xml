@@ -14,7 +14,7 @@
        <attr key="type" value="Hazard"/>
        <attr key="class" value="Creature"/>
     </card>
-    <card name="Adûnaphel" graphics="AdunaphelDC.jpg" text="Unique. Nazgûl (7th). May be played as a hazard creature (with one strike) or as a permanent-event. As a creature, may also be played keyed to Brown Lands, Dagorlad, Gorgoroth, and Western Mirkwood; and may also be played at sites in these regions. If played as a permanent-event, it will remain in play until tapped during the opponent's movement/hazard phase (tapping counts against the hazard limit). When tapped, Adûnaphel becomes a short-event and causes any one character to tap. {green} DCE: As a creature, may also be played keyed to Hyarmenfalas, Nurn, Chelkar, and Gorgoroth">
+    <card name="Adûnaphel" graphics="AdunaphelDC.jpg" text="Unique. Nazgûl (7th). May be played as a hazard creature (with one strike) or as a permanent-event. As a creature, may also be played keyed to Brown Lands, Dagorlad, Gorgoroth, and Western Mirkwood, Chelkar, Hyarmenfalas and Nurn; and may also be played at sites in these regions. If played as a permanent-event, it will remain in play until tapped during the opponent's movement/hazard phase (tapping counts against the hazard limit). When tapped, Adûnaphel becomes a short-event and causes any one character to tap.">
        <attr key="unique" value="yes"/>
        <attr key="strikes" value="1"/>
        <attr key="mp" value="5"/>
@@ -38,7 +38,7 @@
        <attr key="type" value="Hazard"/>
 	   <attr key="keyword" value="Cold-dragon"/>
     </card>
-    <card name="Akhôrahil" graphics="AkhorahilDC.jpg" text="Unique. Nazgûl (5th). May be played as a hazard creature (with one strike) or as a permanent-event. As a creature, may also be played keyed to Harondor, Horse Plains, Gorgoroth, and Khand; and may also be played at sites in those regions. If played as a permanent-event, it will remain in play until tapped during the opponent's movement/hazard phase (tapping counts against the hazard limit). When tapped, Akhôrahil becomes a short-event and modifies any one character's body by -1 for the rest of this turn. {green} DCE: As a creature, may also be played keyed to Bozisha-Miraz, Chelkar, Chennacatt, Curinshiban and Seznebab.">
+    <card name="Akhôrahil" graphics="AkhorahilDC.jpg" text="Unique. Nazgûl (5th). May be played as a hazard creature (with one strike) or as a permanent-event. As a creature, may also be played keyed to Harondor, Horse Plains, Gorgoroth, Khand, Chennacatt, Curinshiban and Seznebab; and may also be played at sites in those regions. If played as a permanent-event, it will remain in play until tapped during the opponent's movement/hazard phase (tapping counts against the hazard limit). When tapped, Akhôrahil becomes a short-event and modifies any one character's body by -1 for the rest of this turn.">
        <attr key="unique" value="yes"/>
        <attr key="strikes" value="1"/>
        <attr key="mp" value="5"/>
@@ -124,7 +124,7 @@
        <attr key="class" value="Creature"/>
        <attr key="type" value="Hazard"/>
     </card>
-    <card name="&quot;Bert&quot; (Bûrat)" graphics="BertBuratDC.jpg" text="Unique. Troll. One strike. If played after &quot;William&quot; or &quot;Tom&quot; and if keyed to the same site path against the same company, each character wounded by &quot;Bert&quot; must discard all non-special items he bears.{green} DCE: Add a body value of 5.">
+    <card name="&quot;Bert&quot; (Bûrat)" graphics="BertBuratDC.jpg" text="Unique. Troll. One strike. If played after &quot;William&quot; or &quot;Tom&quot; and if keyed to the same site path against the same company, each character wounded by &quot;Bert&quot; must discard all non-special items he bears.">
        <attr key="unique" value="yes"/>
        <attr key="strikes" value="1"/>
        <attr key="mp" value="1"/>
@@ -157,7 +157,7 @@
        <attr key="class" value="Short-event"/>
        <attr key="type" value="Hazard"/>
     </card>
-    <card name="Cave-drake" graphics="CavedrakeDC.jpg" text="Dragon. Two strikes. Attacker chooses defending characters. Two Wildernesses [{w}] in site path are required. {green} DCE: Replace Dragon, with: Drake">
+    <card name="Cave-drake" graphics="CavedrakeDC.jpg" text="Drake. Two strikes. Attacker chooses defending characters. Two Wildernesses [{w}] in site path are required.">
        <attr key="strikes" value="2"/>
        <attr key="mp" value="1"/>
        <attr key="body" value="-"/>
@@ -213,7 +213,7 @@
        <attr key="class" value="Creature"/>
        <attr key="type" value="Hazard"/>
     </card>
-    <card name="Daelomin" graphics="Daelomin.jpg" text="Unique. May be played at Dancing Spire. Dragon. Three strikes. Attacker chooses defending characters. If Doors of Night is in play, may also be played keyed to Grey Mountain Narrows, Iron Hills, Northern Rhovanion, and Withered Heath; and may also be played at site in these regions. {green} DCE: If Doors of Night is in play, may also be played keyed to Grey Mountain Narrows, Southern Rhovanion, Northern Rhovanion, and Withered Heath; and may also be played  at site in these regions.">
+    <card name="Daelomin" graphics="Daelomin.jpg" text="Unique. May be played at Dancing Spire. Dragon. Three strikes. Attacker chooses defending characters. If Doors of Night is in play, may also be played keyed to Grey Mountain Narrows, Iron Hills, Northern Rhovanion, and Withered Heath; and may also be played at site in these regions.">
        <attr key="unique" value="yes"/>
        <attr key="strikes" value="3"/>
        <attr key="mp" value="4"/>
@@ -250,7 +250,7 @@
        <attr key="type" value="Hazard"/>
 	   <attr key="keyword" value="Environment"/>
     </card>
-    <card name="Dwar of Waw" graphics="DwarofWawDC.jpg" text="Unique. Nazgûl (3rd). May be played as a hazard creature (with one strike) or as a permanent-event. As a creature, may also be played keyed to Harondor, Imlad Morgul, Gorgoroth, and Ithilien; and may also be played at sites in these regions. If played as a permanent-event, it will remain in play until tapped during the opponent's movement/hazard phase (tapping counts against the hazard limit). When tapped, Dwar of Waw becomes a short-event and gives +1 prowess to all Wolf, Spider and Animal attacks until the end of the turn. {green} DCE: As a creature, may also be played keyed to Dagorlad, Imlad Morgul, Udûn, and Gorgoroth; and may also be played at sites in these regions.">
+    <card name="Dwar of Waw" graphics="DwarofWawDC.jpg" text="Unique. Nazgûl (3rd). May be played as a hazard creature (with one strike) or as a permanent-event. As a creature, may also be played keyed to Harondor, Imlad Morgul, Gorgoroth, Ithilien and Udûn; and may also be played at sites in these regions. If played as a permanent-event, it will remain in play until tapped during the opponent's movement/hazard phase (tapping counts against the hazard limit). When tapped, Dwar of Waw becomes a short-event and gives +1 prowess to all Wolf, Spider and Animal attacks until the end of the turn.">
        <attr key="unique" value="yes"/>
        <attr key="strikes" value="1"/>
        <attr key="mp" value="5"/>
@@ -362,7 +362,7 @@
        <attr key="class" value="Creature"/>
        <attr key="type" value="Hazard"/>
     </card>
-    <card name="Hoarmûrath of Dír" graphics="HoarmurathofDirDC.jpg" text="Unique. Nazgûl (6th). May be played as a hazard creature (with one strike) or as a permanent-event. As a creature, may also be played keyed to Dagorlad, Ithilien, Gorgoroth, and Khand; and may also be played at sites in these regions. If played as a permanent-event, it will remain in play until tapped during the opponent's movement/hazard phase (tapping counts against the hazard limit). When tapped, Hoarmûrath of Dír becomes a short-event and gives +1 strike to any one attack. {green} DCE: As a creature, may also be played keyed to Imlad Morgul, Ûdun, Azjan, and Gorgoroth, and may also be played at sites in these regions.">
+    <card name="Hoarmûrath of Dír" graphics="HoarmurathofDirDC.jpg" text="Unique. Nazgûl (6th). May be played as a hazard creature (with one strike) or as a permanent-event. As a creature, may also be played keyed to Dagorlad, Ithilien, Gorgoroth, Khand, Azjan, Ukal Sêj and Talath Uichel; and may also be played at sites in these regions. If played as a permanent-event, it will remain in play until tapped during the opponent's movement/hazard phase (tapping counts against the hazard limit). When tapped, Hoarmûrath of Dír becomes a short-event and gives +1 strike to any one attack.">
        <attr key="unique" value="yes"/>
        <attr key="strikes" value="1"/>
        <attr key="mp" value="5"/>
@@ -385,7 +385,7 @@
        <attr key="class" value="Creature"/>
        <attr key="type" value="Hazard"/>
     </card>
-    <card name="Indûr Dawndeath" graphics="IndurDawndeathDC.jpg" text="Unique. Nazgûl (4th). May be played as a hazard creature (with one strike) or as a permanent-event. As a creature, may also be played keyed to Harondor, Imlad Morgul, Gorgoroth, and Khand; and may also be played at sites in these regions. If played as a permanent-event, it will remain in play until tapped during the opponent's movement/hazard phase (tapping counts against the hazard limit). When tapped, Indûr Dawndeath becomes a short-event and makes any wounded character discard an item (but not a ring). {green} DEC: As a creature, may also be played keyed to Nurn, Horse Plains, Khand, and Gorgoroth; and may also be played at sites in these regions.">
+    <card name="Indûr Dawndeath" graphics="IndurDawndeathDC.jpg" text="Unique. Nazgûl (4th). May be played as a hazard creature (with one strike) or as a permanent-event. As a creature, may also be played keyed to Harondor, Imlad Morgul, Gorgoroth, Khand, Koronandë, Mûmakan and Tuktan; and may also be played at sites in these regions. If played as a permanent-event, it will remain in play until tapped during the opponent's movement/hazard phase (tapping counts against the hazard limit). When tapped, Indûr Dawndeath becomes a short-event and makes any wounded character discard an item (but not a ring).">
        <attr key="unique" value="yes"/>
        <attr key="strikes" value="1"/>
        <attr key="mp" value="5"/>
@@ -397,7 +397,7 @@
        <attr key="class" value="Creature/Permanent-event"/>
        <attr key="type" value="Hazard"/>
     </card>
-    <card name="Khamûl the Easterling" graphics="KhamultheEasterlingDC.jpg" text="Unique. Nazgûl (2nd). May be played as a hazard creature (with one strike) or as a permanent-event. As a creature, may also be played keyed to Brown Lands, Heart of Mirkwood, Gorgoroth, and Southern Mirkwood; may also be played at sites in those regions. If played as a permanent-event, it will remain in play until tapped during the opponent's movement/hazard phase (tapping counts against the hazard limit). When tapped, Khamûl the Easterling becomes a short-event and forces opponent to discard one card of his choice for every Nazgûl permanent-event in play (including this one).">
+    <card name="Khamûl the Easterling" graphics="KhamultheEasterlingDC.jpg" text="Unique. Nazgûl (2nd). May be played as a hazard creature (with one strike) or as a permanent-event. As a creature, may also be played keyed to Brown Lands, Heart of Mirkwood, Gorgoroth, Southern Mirkwood, Harrhûn and Horse Plains; may also be played at sites in those regions. If played as a permanent-event, it will remain in play until tapped during the opponent's movement/hazard phase (tapping counts against the hazard limit). When tapped, Khamûl the Easterling becomes a short-event and forces opponent to discard one card of his choice for every Nazgûl permanent-event in play (including this one).">
        <attr key="unique" value="yes"/>
        <attr key="strikes" value="1"/>
        <attr key="mp" value="6"/>
@@ -630,7 +630,7 @@
        <attr key="class" value="Creature"/>
        <attr key="type" value="Hazard"/>
     </card>
-    <card name="Orc-warriors" graphics="Orcwarriors.jpg" text="Orcs. Three strikes. {green} DCE: May also be played keyed to a Desert symbol">
+    <card name="Orc-warriors" graphics="Orcwarriors.jpg" text="Orcs. Three strikes.">
        <attr key="strikes" value="3"/>
        <attr key="mp" value="1"/>
        <attr key="body" value="-"/>
@@ -679,7 +679,7 @@
        <attr key="class" value="Creature"/>
        <attr key="type" value="Hazard"/>
     </card>
-    <card name="Ren the Unclean" graphics="RentheUncleanDC.jpg" text="Unique. Nazgûl (8th). May be played as a hazard creature (with one strike) or as a permanent-event. As a creature, may also be played keyed to Dagorlad, Ithilien, Gorgoroth, and Horse Plains; and may also be played at sites in these regions. If played as a permanent-event, it will remain in play until tapped during the opponent's movement/hazard phase (tapping counts against the hazard limit). When tapped, Ren the Unclean becomes a short-event: each character in play must make a corruption check. {green} DCE: As a creature, may also be played keyed to Nurad, Nuriag, Chey Sart, and Gorgoroth; and may also be played at sites in these regions.">
+    <card name="Ren the Unclean" graphics="RentheUncleanDC.jpg" text="Unique. Nazgûl (8th). May be played as a hazard creature (with one strike) or as a permanent-event. As a creature, may also be played keyed to Dagorlad, Ithilien, Gorgoroth, Horse Plains, Chey Sart, Nûrad and Orgothraath; and may also be played at sites in these regions. If played as a permanent-event, it will remain in play until tapped during the opponent's movement/hazard phase (tapping counts against the hazard limit). When tapped, Ren the Unclean becomes a short-event: each character in play must make a corruption check.">
        <attr key="unique" value="yes"/>
        <attr key="strikes" value="1"/>
        <attr key="mp" value="5"/>
@@ -847,7 +847,7 @@
        <attr key="class" value="Creature"/>
        <attr key="type" value="Hazard"/>
     </card>
-    <card name="&quot;Tom&quot; (Tûma)" graphics="TomTumaDC.jpg" text="Unique. Troll. One strike. If played after &quot;Bert&quot; or &quot;William&quot; and if keyed to the same site path against the same company, each character wounded by &quot;Tom&quot; must discard all non-special items he bears. Two Wildernesses [{w}] in site path are required. {green} DCE: Add a body value of 5.">
+    <card name="&quot;Tom&quot; (Tûma)" graphics="TomTumaDC.jpg" text="Unique. Troll. One strike. If played after &quot;Bert&quot; or &quot;William&quot; and if keyed to the same site path against the same company, each character wounded by &quot;Tom&quot; must discard all non-special items he bears. Two Wildernesses [{w}] in site path are required.">
        <attr key="unique" value="yes"/>
        <attr key="strikes" value="1"/>
        <attr key="mp" value="1"/>
@@ -876,7 +876,7 @@
        <attr key="type" value="Hazard"/>
 	   <attr key="keyword" value="Environment"/>
     </card>
-    <card name="Ûvatha the Horseman" graphics="UvathatheHorsemanDC.jpg" text="Unique. Nazgûl (9th). May be played as a hazard creature (with one strike) or as a permanent-event. As a creature, may also be played keyed to Harondor, Horse Plains, Gorgoroth, and Khand; and may also be played at sites in these regions. If played as a permanent-event, it will remain in play until tapped during the opponent's movement/hazard phase (tapping counts against the hazard limit). When tapped, Ûvatha the Horseman becomes a short-event and you may bring one hazard creature from your discard pile to your hand. {green}  DCE: As a creature, may also be played keyed to Gap of Khand, Horse Plains, Gorgoroth, and Khand; and may also be played at sites in these regions.">
+    <card name="Ûvatha the Horseman" graphics="UvathatheHorsemanDC.jpg" text="Unique. Nazgûl (9th). May be played as a hazard creature (with one strike) or as a permanent-event. As a creature, may also be played keyed to Harondor, Horse Plains, Gorgoroth, Khand, Gap of Khand, Harrhûn, and Nuriag; and may also be played at sites in these regions. If played as a permanent-event, it will remain in play until tapped during the opponent's movement/hazard phase (tapping counts against the hazard limit). When tapped, Ûvatha the Horseman becomes a short-event and you may bring one hazard creature from your discard pile to your hand.">
        <attr key="unique" value="yes"/>
        <attr key="strikes" value="1"/>
        <attr key="mp" value="5"/>
@@ -921,7 +921,7 @@
        <attr key="type" value="Hazard"/>
 	   <attr key="keyword" value="Corruption"/>
     </card>
-    <card name="&quot;William&quot; (Wûluag)" graphics="WilliamWuluagDC.jpg" text="Unique. Troll. One strike. If played after &quot;Bert&quot; or &quot;Tom&quot; and if keyed to the same site path against the same company, each character wounded by &quot;William&quot; must discard all non-special items he bears. {green} DCE: Add a body value of 5.">
+    <card name="&quot;William&quot; (Wûluag)" graphics="WilliamWuluagDC.jpg" text="Unique. Troll. One strike. If played after &quot;Bert&quot; or &quot;Tom&quot; and if keyed to the same site path against the same company, each character wounded by &quot;William&quot; must discard all non-special items he bears.">
        <attr key="unique" value="yes"/>
        <attr key="strikes" value="1"/>
        <attr key="mp" value="1"/>
@@ -933,7 +933,7 @@
        <attr key="class" value="Creature"/>
        <attr key="type" value="Hazard"/>
     </card>
-    <card name="Witch-king of Angmar" graphics="WitchkingofAngmarDC.jpg" text="Unique. Nazgûl (1st). May be played as a hazard creature (with one strike) or as a permanent-event. As a creature, may also be played keyed to Angmar, Gundabad, Gorgoroth, and Imlad Morgul; and may also be played at sites in these regions. If played as a permanent-event, it will remain in play until tapped during the opponent's movement/hazard phase (tapping counts against the hazard limit). When tapped, Witch-king of Angmar becomes a long-event and causes all Shadow-holds [{S}] to become Dark-holds [{D}].">
+    <card name="Witch-king of Angmar" graphics="WitchkingofAngmarDC.jpg" text="Unique. Nazgûl (1st). May be played as a hazard creature (with one strike) or as a permanent-event. As a creature, may also be played keyed to Angmar, Gundabad, Gorgoroth, Imlad Morgul, Ithilien, Harondor and Hyarmenfalas; and may also be played at sites in these regions. If played as a permanent-event, it will remain in play until tapped during the opponent's movement/hazard phase (tapping counts against the hazard limit). When tapped, Witch-king of Angmar becomes a long-event and causes all Shadow-holds [{S}] to become Dark-holds [{D}].">
        <attr key="unique" value="yes"/>
        <attr key="strikes" value="1"/>
        <attr key="mp" value="6"/>
@@ -1026,7 +1026,7 @@
        <attr key="mind" value="9"/>
        <attr key="influence" value="3"/>
     </card>
-    <card name="Arinmîr" graphics="ArinmirDC.jpg" text="Unique. +2 direct influence against the Variags faction. {green} DCE: Replace with: +2 direct influence against Elves of Edhellond faction.">
+    <card name="Arinmîr" graphics="ArinmirDC.jpg" text="Unique. +2 direct influence against the Elves of Edhellond faction.">
        <attr key="unique" value="yes"/>
        <attr key="skills" value="Sage/Diplomat"/>
        <attr key="mp" value="1"/>
@@ -1387,13 +1387,13 @@
        <attr key="mind" value="2"/>
        <attr key="influence" value="0"/>
     </card>
-    <card name="Erkenbrand" graphics="ErkenbrandDC.jpg" text="Unique. +2 direct influence against the Riders of Rohan faction. {green} DCE: Replace with: Helm’s Deep; +2 direct influence against the Men of Westfold faction.">
+    <card name="Erkenbrand" graphics="ErkenbrandDC.jpg" text="Unique. +2 direct influence against the Men of Westfold faction.">
        <attr key="unique" value="yes"/>
        <attr key="skills" value="Warrior"/>
        <attr key="mp" value="1"/>
        <attr key="body" value="6"/>
        <attr key="prowess" value="5"/>
-       <attr key="home_site" value="Edoras"/>
+       <attr key="home_site" value="Helm's Deep"/>
        <attr key="rarity" value="F1"/>
        <attr key="race" value="Man"/>
        <attr key="type" value="Hero Character"/>
@@ -2412,7 +2412,7 @@
 	   <attr key="keyword" value="Battle-gear"/>
 	   <attr key="keyword" value="Warrior only"/>
     </card>
-    <card name="Healing Herbs" graphics="HealingHerbsDC.jpg" text="The bearer can tap and discard this item to heal a character in his company, changing the character's status from wounded to well and untapped. Alternatively, the bearer can tap and discard this item to untap a character that is not wounded. {green} DCE: a character does not have to tap anymore to use the healing effects">
+    <card name="Healing Herbs" graphics="HealingHerbsDC.jpg" text="The bearer discard this item to heal a character in his company, changing the character's status from wounded to well and untapped. Alternatively, the bearer can tap and discard this item to untap a character that is not wounded.">
        <attr key="corruption" value="1"/>
        <attr key="rarity" value="CA2"/>
        <attr key="class" value="Minor Item"/>
@@ -2954,7 +2954,7 @@
        <attr key="class" value="Man Faction"/>
        <attr key="type" value="Hero Resource"/>
     </card>
-    <card name="Star-glass" graphics="StarglassDC.jpg" text="Tap bearer of Star-glass to cancel an attack by Undead or to modify the prowess of a spiders, animals, or wolves attack by -2. Bearer makes a corruption check. {green} DCE: Add: Tap Star-glass to cancel an attack by Undead or to modify the prowess of a spiders, animals, or wolves attack by -2. Bearer makes a corruption check when this item becomes tapped.">
+    <card name="Star-glass" graphics="StarglassDC.jpg" text="Tap Star-glass to cancel an attack by Undead or to modify the prowess of a spiders, animals, or wolves attack by -2. Bearer makes a corruption check.">
        <attr key="corruption" value="1"/>
        <attr key="rarity" value="U"/>
        <attr key="class" value="Minor Item"/>
@@ -2989,7 +2989,7 @@
        <attr key="class" value="Permanent-event"/>
        <attr key="type" value="Hero Resource"/>
     </card>
-    <card name="Sun" graphics="SunDC.jpg" text="Environment. The prowess of each Dúnadan is modified by +1. Additionally, if Gates of Morning is in play, the prowess of each automatic-attack and hazard creature is modified by -1 and the prowess of each Man and Dúnadan is modified by +1. Cannot be duplicated. {green} DCE: Remove: the prowess of each automatic-attack and hazard creature is modified by -1 and Replace with: the prowess of each automatic-attack (at non-minion sites) and hazard creature without an asterix (*) is modified by -1 ">
+    <card name="Sun" graphics="SunDC.jpg" text="Environment. The prowess of each Dúnadan is modified by +1. Additionally, if Gates of Morning is in play, the prowess of each automatic-attack (at non-minion sites) and hazard creature without an asterix (*) is modified by -1 and the prowess of each Man and Dúnadan is modified by +1. Cannot be duplicated.">
        <attr key="rarity" value="U"/>
        <attr key="class" value="Long-event"/>
        <attr key="type" value="Hero Resource"/>
@@ -3023,7 +3023,7 @@
        <attr key="type" value="Hero Resource"/>
 	   <attr key="keyword" value="Sage only"/>
     </card>
-    <card name="The Arkenstone" graphics="TheArkenstoneDC.jpg" text="Unique. +3 to bearer's direct influence against Dwarves and Dwarf factions. If held by a Dwarf, The Arkenstone gives 5 marshalling points and 4 corruption points. The Arkenstone may be tapped to untap a Dwarf character in the same company, but target Dwarf must make a corruption check modified by -2. {green} DCE: Add: Hoard item.">
+    <card name="The Arkenstone" graphics="TheArkenstoneDC.jpg" text="Unique. Hoard item. +3 to bearer's direct influence against Dwarves and Dwarf factions. If held by a Dwarf, The Arkenstone gives 5 marshalling points and 4 corruption points. The Arkenstone may be tapped to untap a Dwarf character in the same company, but target Dwarf must make a corruption check modified by -2.">
        <attr key="unique" value="yes"/>
        <attr key="corruption" value="2(4)"/>
        <attr key="mp" value="2(5)"/>
@@ -3045,7 +3045,7 @@
        <attr key="type" value="Hero Resource"/>
 	   <attr key="keyword" value="Environment"/>
     </card>
-    <card name="The Great Eagles" graphics="TheGreatEaglesDC.jpg" text="Unique. Playable at Eagles' Eyrie if the influence check is greater than 9. Standard Modifications: none. {green} DCE: Replace: Eagle Faction, with: Animal Faction">
+    <card name="The Great Eagles" graphics="TheGreatEaglesDC.jpg" text="Unique. Playable at Eagles' Eyrie if the influence check is greater than 9. Standard Modifications: none.">
        <attr key="unique" value="yes"/>
        <attr key="mp" value="3"/>
        <attr key="rarity" value="U"/>
@@ -3833,7 +3833,7 @@
        <attr key="type" value="Hero Site"/>
 	   <attr key="keyword" value="Orc-hold"/>
     </card>
-    <card name="Mount Gundabad" graphics="MountGundabadDC.jpg" back="1" text="{green} DCE: Replace automatic-attack with: Orcs - 4 strikes with 8 prowess ">
+    <card name="Mount Gundabad" graphics="MountGundabadDC.jpg" back="1" text="">
        <attr key="unique" value="yes"/>
        <attr key="haven" value="Lórien"/>
        <attr key="draw" value="2"/>

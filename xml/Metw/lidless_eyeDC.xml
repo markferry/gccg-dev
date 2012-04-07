@@ -840,7 +840,7 @@
        <attr key="class" value="Creature"/>
        <attr key="type" value="Hazard"/>
     </card>
-    <card name="Cave-drake" graphics="CavedrakeDC.jpg" text="Dragon. Two strikes. Attacker chooses defending characters. {green} DCE: Replace Dragon, with: Drake">
+    <card name="Cave-drake" graphics="CavedrakeDC.jpg" text="Drake. Two strikes. Attacker chooses defending characters.">
        <attr key="strikes" value="2"/>
        <attr key="mp" value="1"/>
        <attr key="playable" value="{w}{w}{R}"/>

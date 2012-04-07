@@ -1312,14 +1312,14 @@
        <attr key="site_path" value="{w}{w}{c}"/>
     </card>
 
-    <card name="Isles of the Dead that Live" graphics="IslesoftheDeadthatLiveDC.jpg" back="1" text="{green} DCE: Change: Tap an overt character not a covert">
+    <card name="Isles of the Dead that Live" graphics="IslesoftheDeadthatLiveDC.jpg" back="1" text="">
        <attr key="unique" value="yes"/>
        <attr key="haven" value="Geann a-Lisch"/>
        <attr key="draw" value="1"/>
        <attr key="region" value="Eriadoran Coast"/>
        <attr key="site_type" value="{R}"/>
        <attr key="playable" value="Items (minor, major, gold ring)"/>
-       <attr key="special" value="A covert company must tap an untapped character (if available) if this site is revealed as its new site."/>
+       <attr key="special" value="An overt company must tap an untapped character (if available) if this site is revealed as its new site."/>
        <attr key="draw_opp" value="2"/>
        <attr key="auto_attack" value="Undead - 2 strikes with 8 prowess; each character wounded must make a corruption check modified by -2"/>
        <attr key="rarity" value="U2"/>
