@@ -478,7 +478,8 @@ Data Table::clear_msgbox(const Data& args)
     MessageBox* box=dynamic_cast<MessageBox*>(obj);
     
     box->Clear();
-    
+    Refresh(box);
+
     return Null;
 }
 
