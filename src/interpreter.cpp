@@ -2954,10 +2954,7 @@ Data Table::listbox_set_deck(const Data& args)
 	{
 	    box->SetEntry(r,0,ToString((*k).second));
 	    if(cards_missing[(*k).first])
-	    {
-		 box->SetEntry(r,1,(*k).first+" {right}{red}("+ToString(cards_missing[(*k).first])+")");
-		 ret.AddList(Data((*k).first,-(cards_missing[(*k).first])));
-	    }
+	      box->SetEntry(r,1,(*k).first+" {right}{red}("+ToString(cards_missing[(*k).first])+")");
 	    else
 		box->SetEntry(r,1,(*k).first);
 
@@ -2975,6 +2972,11 @@ Data Table::listbox_set_deck(const Data& args)
 	r2=r-1;
 	listbox_sort_rows(Data(args[0],r1,r2,2,1));
     }
+    
+    map<string,int>::iterator k;
+    for(k=cards_missing.begin(); k!=cards_missing.end(); k++)
+      if(cards_missing[(*k).first])
+        ret.AddList(Data((*k).first,-(cards_missing[(*k).first])));
 
     refresh=old_refresh;
     Refresh(box);
