@@ -467,6 +467,21 @@ Data Table::create_msgbox(const Data& args)
     return num;
 }
 
+/// clear_msgbox(o) - Remove all lines from the message box $o$. Throw error if $o$ is not a message box.
+Data Table::clear_msgbox(const Data& args)
+{
+    Object* obj=GetObject("clear_msgbox",args);
+    
+    if(obj->Type() != TypeMessageBox)
+	throw LangErr("clear_msgbox","Object is not a message box.");
+	
+    MessageBox* box=dynamic_cast<MessageBox*>(obj);
+    
+    box->Clear();
+    
+    return Null;
+}
+
 /// create_hand(x,y,n,s) - Create a hand object at $(x,y)$. It's object
 /// number is $n$ and name $s$. Return $n$.
 Data Table::create_hand(const Data& args)
@@ -1174,6 +1189,34 @@ Data Table::msgbox_scroll(const Data& args)
 	Refresh(box);
 	
     return box->Offset();
+}
+
+/// msgbox_search(o,t) - Search the message box $o$ for lines containing the text $t$.
+/// Returns list of matching lines. Returns {\tt NULL} if $o$ is not a message box.
+Data Table::msgbox_search(const Data& args)
+{
+    if(!args.IsList() || args.Size() != 2 || !args[0].IsInteger())
+	ArgumentError("msgbox_search",args);
+
+    Object* obj=GetObject("msgbox_search",args[0]);
+    string str=GetString("msgbox_search",args[1]);
+
+    if(obj->Type() != TypeMessageBox)
+	return Null;
+	
+    MessageBox* box=dynamic_cast<MessageBox*>(obj);
+    
+    Data ret;
+    ret.MakeList();
+    
+    deque<string> text = box->Messages();
+    deque<string>::iterator i;
+    
+    for(i = text.begin(); i < text.end(); i++)
+      if ((*i).find(str)!=string::npos)
+        ret.AddList(*i);
+
+    return ret;
 }
 
 /// get_attr(o,a) - Get the current value of the widget flag $a$ of the
@@ -2834,10 +2877,12 @@ Data Table::listbox_clear(const Data& args)
     return Null;
 }
 
+
 /// listbox_set_deck(l,D,b) - Clear list box $l$ and construct deck
 /// listing of the deck $D$ as it's new content. Check missing cards
 /// from a card book $b$. Deck $D$ is hashmap from the part names of
 /// the deck to the list of card numbers contained in each part.
+/// Return dictionary of missing cards.
 Data Table::listbox_set_deck(const Data& args)
 {
     if(!args.IsList(3) || !args[0].IsInteger() || !args[1].IsList() || !args[2].IsInteger())
@@ -2860,6 +2905,8 @@ Data Table::listbox_set_deck(const Data& args)
     map<string,int> total_count; // Number of cards in deck all parts combined.
     map<int,int> card_count; // Number of cards with single image in total.
 
+    Data ret;
+    ret.MakeList();
     // Loop over deck parts.
     for(size_t i=0; i<L.Size(); i++)
     {
@@ -2902,11 +2949,15 @@ Data Table::listbox_set_deck(const Data& args)
 	order_opt=game.Option("deck order");
 
 	list<int> images;
+	
 	for(k=part_count.begin(); k!=part_count.end(); k++)
 	{
 	    box->SetEntry(r,0,ToString((*k).second));
 	    if(cards_missing[(*k).first])
-		box->SetEntry(r,1,(*k).first+" {right}{red}("+ToString(cards_missing[(*k).first])+")");
+	    {
+		 box->SetEntry(r,1,(*k).first+" {right}{red}("+ToString(cards_missing[(*k).first])+")");
+		 ret.AddList(Data((*k).first,-(cards_missing[(*k).first])));
+	    }
 	    else
 		box->SetEntry(r,1,(*k).first);
 
@@ -2928,7 +2979,7 @@ Data Table::listbox_set_deck(const Data& args)
     refresh=old_refresh;
     Refresh(box);
 
-    return Null;
+    return ret;
 }
 
 /// listbox_scroll(l,\delta) - Scroll list box content by $\delta$
@@ -2943,7 +2994,7 @@ Data Table::listbox_scroll(const Data& args)
     int f=box->First();
 	
     if(d==0)
-	return Null;
+	return f;
     if(d < 0)
     {
 	f=f+d;
@@ -2956,7 +3007,7 @@ Data Table::listbox_scroll(const Data& args)
 	
     Refresh(box);
 	
-    return Null;
+    return box->First();
 }
 
 /// listbox_sort_rows(l,r_1,r_2,c) - Sort rows $r_1$--$r_2$ of the
@@ -3422,6 +3473,7 @@ void Table::InitializeLibrary()
     parser.SetFunction("center_of",&Table::center_of);
     parser.SetFunction("change_card",&Table::change_card);
     parser.SetFunction("clear_deck",&Table::clear_deck);
+    parser.SetFunction("clear_msgbox",&Table::clear_msgbox);
     parser.SetFunction("create_book",&Table::create_book);
     parser.SetFunction("create_cardbox",&Table::create_cardbox);
     parser.SetFunction("create_deck",&Table::create_deck);
@@ -3463,9 +3515,10 @@ void Table::InitializeLibrary()
     parser.SetFunction("load_image",&Table::load_image);
     parser.SetFunction("lower",&Table::lower);
     parser.SetFunction("message",&Table::message);
-    parser.SetFunction("msgbox_scroll",&Table::msgbox_scroll);
     parser.SetFunction("mouse",&Table::mouse);
     parser.SetFunction("move_object",&Table::move_object);
+    parser.SetFunction("msgbox_scroll",&Table::msgbox_scroll);
+    parser.SetFunction("msgbox_search",&Table::msgbox_search);
     parser.SetFunction("object_data",&Table::object_data);
     parser.SetFunction("object_name",&Table::object_name);
     parser.SetFunction("object_type",&Table::object_type);
