@@ -14,7 +14,7 @@ SERVER_FILES=games.dat
 
 # mythos/ files included in mythos-data package
 DATA_NAME:=gccg-mythos-data
-DATA_VERSION:=11072901
+DATA_VERSION:=11072903
 DATA_XML:=<module name=\"mythos-data\" version=\"${DATA_VERSION}\"></module>
 DATA_PACKAGE:=${DATA_NAME}-${DATA_VERSION}.tgz
 DATA_FILES=xml/Mythos
