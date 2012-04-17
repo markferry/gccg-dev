@@ -44,11 +44,11 @@ client: build-dirs
 	           | gzip -f -c --rsyncable > ../${PKG_PATH}/${CLIENT_PACKAGE}
 
 data: build-dirs
-	cd mythos && tar -cvf ../${PKG_PATH}/${DATA_PACKAGE} ${DATA_FILES} \
+	cd mythos && tar -cv ${DATA_FILES} \
 	           | gzip -f -c --rsyncable > ../${PKG_PATH}/${DATA_PACKAGE}
 
 graphics: build-dirs
-	cd mythos && tar -cvf ../${PKG_PATH}/${GRAPHICS_PACKAGE} ${GRAPHICS_FILES} \
+	cd mythos && tar -cv ${GRAPHICS_FILES} \
 	           | gzip -f -c --rsyncable > ../${PKG_PATH}/${GRAPHICS_PACKAGE}
 
 dist-dirs:
