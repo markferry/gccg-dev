@@ -1102,7 +1102,7 @@
 			 <attr key="mind" value="6"/>
 			 <attr key="influence" value="2"/>
 			 <attr key="mp" value="2"/>
-			 <attr key="home_site" value="Any Dwarf-hold"/>
+			 <attr key="home_site" value="Any Dwarf-hold in Wilderland"/>
 			 <attr key="skills" value="Warrior/Sage/Diplomat"/>
 			 <attr key="race" value="Dwarf"/>
 			 <attr key="keyword" value="Longbeard"/>
@@ -1653,7 +1653,7 @@
 			 <attr key="mind" value="7"/>
 			 <attr key="influence" value="2"/>
 			 <attr key="mp" value="2"/>
-			 <attr key="home_site" value="Any Dwarf-hold"/>
+			 <attr key="home_site" value="Any Dwarf-hold in Wilderland"/>
 			 <attr key="skills" value="Warrior/Scout/Ranger"/>
 			 <attr key="race" value="Dwarf"/>
 			 <attr key="keyword" value="Longbeard"/>
