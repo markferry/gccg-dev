@@ -1544,6 +1544,42 @@ if(!load("products"))
 	<h3><?h2("Details of game defining XML")?></h3>
 	<h3><?h2("Card placement algorithm")?></h3>
 	
+	<h3><?h2("Packaging a game module for client installation")?></h3>
+	Game modules will allow a client to install a game from an online repository.
+	the first part documents how to create and provide the modules. The second
+	part how to use the client to use it.
+	<p>
+	A game module can consist of several packages. Possibly one can divide it into
+	a xml tables and exectuables package, a graphics package and a decks package.
+	These packages and their content one defines in xml/packages.xml. Each module
+	is labelled with a name and a version. The inclusion of files is via include 
+	single file, a list specified via wildcards or a whole directory, see example: <br>
+	<pre>
+	 <module name="GameA" version="X.Y.Z"> <br>
+		<include file="GameA.extension"/> <br>
+		<include files="directoryA/GameA*.extension"/> <br>
+		<include dir="directoryA"/> <br>
+	</module> <br>
+	</pre>
+	The script call "./gccg_package b" creates all modules defined in packages.xml 
+	in build/modules as tgz archives. It also creates a list available.xml of those 
+	packages together with their version number. <br>
+	</p>
+	<p>
+	The modules in build/modules are supposed to be provided in a repository 
+	directory on a server for a client to fetch. The client needs the URL of 
+	the repository added in /xml/installed.xml The command 
+	<pre> perl gccg_package source add <URL> </pre> does that or it can also be 
+	added by hand in the installed.xml directly: <br>
+	<pre> 
+	<source url="http://domain.name/gccg-repository-name/"/> 
+	</pre>
+	Fetching modules with a client is performed with
+	<pre >perl gccg_package install core client fonts [windows32] [module names] </pre> <br>
+	Note that the client checks versions and skips those that are outdated or already 
+	installed locally. So you need to update version labels.
+	</p>
+	
 	<p><hr>
 	  [Rest details to be given later. These are just copy paste from my
 	  personal notes and probably also outdated.]
