@@ -31,12 +31,13 @@ git push github master
 git svn fetch svn-core
 git checkout svn-core
 git merge remotes/svn-core
-git checkout master
-git subtree merge -P core --squash -m "merge changes to git subtree" svn-core
-git checkout git-core
+git checkout -f master # force because of mythos subtree "overwrite"
+git subtree merge -P core --squash -m "merge upstream svn to core subtree" svn-core
+git checkout git-core # warning: mythos dir not empty
 git merge svn-core    # fast forward
 git push github master
 git push github git-core:svn-core
+git checkout -f master
 @]
 
 !! Push upstream svn
