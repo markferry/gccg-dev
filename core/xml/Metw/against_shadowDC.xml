@@ -87,7 +87,7 @@
        <attr key="influence" value="0"/>
     </card>
 
-    <card name="Alatar the Hunter" graphics="AlatartheHunterDC.jpg" text="Unique. Maia. Manifestation of Alatar. Two strikes. Attacker chooses defending characters. Detainment and -3 prowess against hero companies. Discard this card if Alatar comes into play. May be played keyed to Free-domains and Free-holds and to Andrast, Old Pûkel Gap, Anfalas, Lamedon, Belfalas or Anórien; or at sites in these regions. As a permanent-event, all Maia attacks receive +1 prowess and strike and attacker chooses defending characters. Discard when any play deck is exhausted. {green} DCE: add Kykurian Kyn, Lotan, Dyr, Forruhn, Harrhun to the listed regions, delete Lebennin, Belfalas and Anorien.">
+    <card name="Alatar the Hunter" graphics="AlatartheHunterDC.jpg" text="Unique. Maia. Manifestation of Alatar. Two strikes. Attacker chooses defending characters. Detainment and -3 prowess against hero companies. Discard this card if Alatar comes into play. May be played keyed to Free-domains and Free-holds and to Andrast, Old Pûkel Gap, Anfalas, Lamedon, Dyr, Forrhûn, Harrhûn, Kykurian Kyn, or Lotan; or at sites in these regions. As a permanent-event, all Maia attacks receive +1 prowess and strike and attacker chooses defending characters. Discard when any play deck is exhausted.">
        <attr key="unique" value="yes"/>
        <attr key="strikes" value="2"/>
        <attr key="mp" value="6* "/>
@@ -112,7 +112,7 @@
        <attr key="class" value="Creature"/>
        <attr key="type" value="Hazard"/>
     </card>
-    <card name="Dwarven Travelers" graphics="DwarvenTravelersDC.jpg" text="Dwarves. Three strikes. Detainment against hero and covert companies. May be played keyed to Wilderness, Border-lands, Ruins and Lairs and Border-holds. Maia hazard creatures may be keyed to Border-hold or Ruins and Lairs against any company that has faces Dwarven Travelers this turn. {green} DCE: Dwarven Travelers only permits maia, which are manifastation of wizards, to be played after them.">
+    <card name="Dwarven Travelers" graphics="DwarvenTravelersDC.jpg" text="Dwarves. Three strikes. Detainment against hero and covert companies. Maia hazard creatures that are manifestations of Wizards may be keyed to Border-hold or Ruins and Lairs against any company that has faces Dwarven Travelers this turn.">
        <attr key="strikes" value="3"/>
        <attr key="mp" value="1*"/>
        <attr key="playable" value="{w}{b}{R}{B}"/>
@@ -123,7 +123,7 @@
        <attr key="class" value="Creature"/>
        <attr key="type" value="Hazard"/>
     </card>
-    <card name="Galadhrim" graphics="GaladhrimDC.jpg" text="Elves. Three strikes. Detainment and -2 prowess against hero companies. Playable keyed to Lindon, Rhudaur, Wold &amp; Foothills, or Anfalas; or at non-Haven sites in these regions. Characters wounded by an attack from Galadhrim must discard all their items. {green} DCE: add any region containing a hero haven to the listed regions.">
+    <card name="Galadhrim" graphics="GaladhrimDC.jpg" text="Elves. Three strikes. Detainment and -2 prowess against hero companies. Playable keyed to Lindon, Rhudaur, Wold &amp; Foothills, Anfalas, or any region containing a hero Haven; or at non-Haven sites in these regions. Characters wounded by an attack from Galadhrim must discard all their items.">
        <attr key="strikes" value="3"/>
        <attr key="mp" value="2*"/>
        <attr key="body" value="7"/>
@@ -201,7 +201,7 @@
        <attr key="class" value="Creature/Permanent-event"/>
        <attr key="type" value="Hazard"/>
     </card>
-    <card name="Pallando the Soul-keeper" graphics="PallandotheSoulkeeperDC.jpg" text="Unique. Maia. Manifestation of Pallando. Two strikes. Detainment and -3 prowess against hero companies. Discard this card if Pallando comes into play. May be played keyed to Free-domains and Free-holds and may also be played keyed to Lindon, Númeriador, Arthedain, or Cardolan; or at sites in these regions. As a permanent-event, the next non-Ringwraith minion discarded from play is instead eliminated. Discard when a minion is so eliminated. {green} DCE: add Chy, Hathor or any region in Sirayn to the listed regions.">
+    <card name="Pallando the Soul-keeper" graphics="PallandotheSoulkeeperDC.jpg" text="Unique. Maia. Manifestation of Pallando. Two strikes. Detainment and -3 prowess against hero companies. Discard this card if Pallando comes into play. May be played keyed to Free-domains and Free-holds and may also be played keyed to Lindon, Númeriador, Arthedain, Cardolan, Chy, Hathor or any region of Sirayn; or at sites in these regions. As a permanent-event, the next non-Ringwraith minion discarded from play is instead eliminated. Discard when a minion is so eliminated.">
        <attr key="unique" value="yes"/>
        <attr key="strikes" value="2"/>
        <attr key="mp" value="6*"/>
@@ -820,7 +820,7 @@
 	   <attr key="keyword" value="Cold-dragon"/>
 	   <attr key="keyword" value="Winged"/>
     </card>
-    <card name="Black Númenóreans" graphics="BlackNumenoreans.jpg" text="Unique. Playable at Gobel Mirlond if influence check is greater gran 8. Modifications: Umbarean Corsairs (+2).">
+    <card name="Black Númenóreans" graphics="BlackNumenoreans.jpg" text="Unique. Playable at Gobel Mírlond if influence check is greater gran 8. Modifications: Umbarean Corsairs (+2).">
        <attr key="unique" value="yes"/>
        <attr key="mp" value="2"/>
        <attr key="rarity" value="U2"/>
@@ -1098,7 +1098,7 @@
        <attr key="rarity" value="U2"/>
        <attr key="type" value="Hero Site"/>
        <attr key="site_path" value="{w}{f}{c}{w}"/>
-	   <attr key="keyword" value="Man-hold"/>
+	   <attr key="keyword" value="Dúnadan-hold"/>
 	   <attr key="keyword" value="Port"/>
     </card>
 
@@ -1312,14 +1312,14 @@
        <attr key="site_path" value="{w}{w}{c}"/>
     </card>
 
-    <card name="Isles of the Dead that Live" graphics="IslesoftheDeadthatLiveDC.jpg" back="1" text="{green} DCE: Change: Tap an overt character not a covert">
+    <card name="Isles of the Dead that Live" graphics="IslesoftheDeadthatLiveDC.jpg" back="1" text="">
        <attr key="unique" value="yes"/>
        <attr key="haven" value="Geann a-Lisch"/>
        <attr key="draw" value="1"/>
        <attr key="region" value="Eriadoran Coast"/>
        <attr key="site_type" value="{R}"/>
        <attr key="playable" value="Items (minor, major, gold ring)"/>
-       <attr key="special" value="A covert company must tap an untapped character (if available) if this site is revealed as its new site."/>
+       <attr key="special" value="An overt company must tap an untapped character (if available) if this site is revealed as its new site."/>
        <attr key="draw_opp" value="2"/>
        <attr key="auto_attack" value="Undead - 2 strikes with 8 prowess; each character wounded must make a corruption check modified by -2"/>
        <attr key="rarity" value="U2"/>
@@ -1408,7 +1408,7 @@
        <attr key="rarity" value="R2"/>
        <attr key="type" value="Minion Site"/>
        <attr key="site_path" value="{s}{w}"/>
-	   <attr key="keyword" value="Dunadan-hold"/>
+	   <attr key="keyword" value="Dúnadan-hold"/>
 	   <attr key="keyword" value="Elf-hold"/>
     </card>
     <card name="The Sulfur-deeps" graphics="TheSulfurdeeps.jpg" back="1" text="">

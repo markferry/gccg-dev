@@ -1224,8 +1224,9 @@ namespace Driver
 		a=360-angle;
 	    if(a%90)
 		tmp=rotozoomSurface(newcard,double(a),double(size)/100.0,SMOOTHING_ON);
-	    else
-		// 90-degree rotations can be made exact without smoothing
+            else
+		//multiples of 90 degrees allow straightforward translation
+		//so no smoothing necessary
 		tmp=rotozoomSurface(newcard,double(a),double(size)/100.0,SMOOTHING_OFF);
 	    SDL_FreeSurface(newcard);
 	    newcard=tmp;

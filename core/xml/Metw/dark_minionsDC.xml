@@ -425,7 +425,7 @@
        <attr key="rarity" value="U2"/>
        <attr key="agent" value="yes"/>
        <attr key="race" value="Hobbit"/>
-       <attr key="class" value=""/>
+       <attr key="class" value="Hazard Agent"/>
        <attr key="type" value="Hazard"/>
        <attr key="mind" value="3"/>
        <attr key="influence" value="1"/>
@@ -442,7 +442,7 @@
        <attr key="rarity" value="R2"/>
        <attr key="agent" value="yes"/>
        <attr key="race" value="Hobbit"/>
-       <attr key="class" value=""/>
+       <attr key="class" value="Hazard Agent"/>
        <attr key="type" value="Hazard"/>
        <attr key="mind" value="4"/>
        <attr key="influence" value="0"/>

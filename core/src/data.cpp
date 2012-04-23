@@ -413,7 +413,7 @@ namespace Evaluator
 	    Data ret;
 
 	    if(arg.type!=ListType)
-		throw LangErr("Data::operator-(const Data& )","Cannot substract list and non-list");
+		throw LangErr("Data::operator-(const Data& )","Cannot subtract list and non-list");
 	    ret.MakeList();
 
 	    if(IsDatabase() || arg.IsDatabase())
