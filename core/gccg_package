@@ -96,7 +96,7 @@ sub read_xml_document
 			if(!@file_cache)
 			{
 			    print "Reading files...\n";
-			    open(DIR,"find . -follow 2>/dev/null |");
+			    open(DIR,"find .. -follow 2>/dev/null |");
 			    while(<DIR>)
 			    {
 				chomp;
@@ -980,14 +980,14 @@ elsif(($#ARGV==1 or $#ARGV==0) and ($ARGV[0] eq "build" or $ARGV[0] eq "b"))
 	# Rebuild modules not found from store.
 	if($#ARGV==1)
 	{
-		if(-f $ARGV[1])
-		{
-			$build_list=$ARGV[1];
-		}
-		else
-		{
+		#if(-f $ARGV[1])
+		#{
+		#	$build_list=$ARGV[1];
+		#}
+		#else
+		#{
 			$module=$ARGV[1];
-		}
+		#}
 	}
 	print "Building $module...\n";
 	read_xml_document($build_list,"build");

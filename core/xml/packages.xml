@@ -7,6 +7,7 @@
   <source url="http://www.reneploetz.de/gccg/"/>
   <source url="http://lotrtcgdb.com/files/gccg/"/>
   <source url="http://markferry.net/gccg/"/>
+  <source url="http://games.phtn.de/gccg/"/>  
   <module name="core" version="1.0.1">
 	<include file="decks"/>
 	<include file="doc"/>
@@ -181,26 +182,6 @@
 	<include files="scripts/Poker*"/>
 	<include files="graphics/Poker/*.png"/>
 	<include files="graphics/Poker/*.jpg"/>
-  </module>
-  <module name="nr" version="1.1">
-	<include file="Nr"/>
-	<include file="Nr.bat"/>
-	<include file="xml/nr.xml"/>
-	<include dir="lib/Nr"/>
-	<include dir="decks/Nr"/>
-	<include dir="scripts/Nr"/>
-	<include files="xml/Nr/*.xml"/>
-	<include file="scripts/Nr-common.include"/>
-	<include file="scripts/Nr.include"/>
-	<include files="scripts/Nr*.rules"/>
-	<include files="graphics/Nr/*.png"/>
-	<include files="graphics/Nr/*.jpg"/>
-  </module>
-  <module name="nr-server" version="1.1">
-	<include file="scripts/Nr-factory-server.include"/>
-	<include file="scripts/Nr-meta-server.include"/>
-	<include file="scripts/Nr-server.include"/>
-	<include file="nr-sample.conf"/>
   </module>
   <module name="mtg-cards-000" version="16">
     <include file="graphics/Mtg/Angel44W.jpg"/>
@@ -720,15 +701,6 @@
   <module name="lotr-cards-020" version="2">
 	<include dir="graphics/Lotr/Ages"/>
   </module>
-  <module name="nr-cards-001" version="1">
-	<include dir="graphics/Nr/netrunner"/>
-  </module>
-  <module name="nr-cards-002" version="1">
-	<include dir="graphics/Nr/proteus"/>
-  </module>
-  <module name="nr-cards-003" version="1">
-	<include dir="graphics/Nr/classic"/>
-  </module>
   <module name="mythos" version="0.3.1">
     <include file="Mythos"/>
     <include file="Mythos.bat"/>
@@ -740,4 +712,62 @@
     <include file="xml/mythos.xml"/>
     <include file="xml/Mythos/mythos_basecards.xml"/>
   </module>
+  <module name="coc-server" version="0.1">
+	<include file="scripts/Cthulhu-factory-server.include"/>	
+	<include file="scripts/Cthulhu-meta-server.include"/>	
+	<include file="scripts/Cthulhu-server.include"/>	
+	<include file="conf/Cthulhu/cthulhu-sample"/>
+  </module>  
+  <module name="coc" version="0.2">
+	<include file="scripts/Cthulhu.include"/>	
+	<include file="scripts/Cthulhu-common.include"/>	
+	<include file="scripts/Cthulhu.rules"/>	
+	<include dir="data/Cthulhu"/>
+	<include file="xml/cthulhu.xml"/>
+	<include file="Cthulhu"/>
+	<include file="Cthulhu.bat"/>
+  </module>  
+  <module name="coc-official-sets" version="0.1">
+	<include dir="xml/Cthulhu"/>
+	<include dir="graphics/Cthulhu"/>
+  </module>  
+  <module name="coc-decks" version="0.1">
+	<include dir="decks/Cthulhu"/> 
+  </module>  
+
+  <module name="nr" version="1.1">
+	<include file="Nr"/>
+	<include file="Nr.bat"/>
+	<include file="xml/nr.xml"/>
+	<include dir="lib/Nr"/>
+	<include dir="scripts/Nr"/>
+	<include file="xml/Nr/nr_basecards.xml"/>
+	<include file="scripts/Nr-common.include"/>
+	<include file="scripts/Nr.include"/>
+	<include files="scripts/Nr*.rules"/>
+	<include files="graphics/Nr/*.png"/>
+	<include files="graphics/Nr/*.jpg"/>
+  </module>
+  <module name="nr-server" version="1.1">
+	<include file="scripts/Nr-factory-server.include"/>
+	<include file="scripts/Nr-meta-server.include"/>
+	<include file="scripts/Nr-server.include"/>
+	<include file="nr-sample.conf"/>
+  </module>
+  <module name="nr-official-sets" version="1.0">
+	<include dir="graphics/Nr/netrunner"/>
+	<include file="xml/Nr/netrunner.xml"/>
+	<include dir="graphics/Nr/proteus"/>
+	<include file="xml/Nr/proteus.xml"/>
+	<include dir="graphics/Nr/classic"/>
+	<include file="xml/Nr/classic.xml"/>
+  </module>
+  <module name="nr-virtual-sets" version="1.0">
+	<include dir="graphics/Nr/openwar"/>
+	<include file="xml/Nr/openwar.xml"/>
+  </module>
+  <module name="nr-decks" version="1.0">
+	<include dir="decks/Nr"/>
+  </module>
+  
 </modules>
