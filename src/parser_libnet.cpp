@@ -538,7 +538,7 @@ namespace Evaluator
 				}
 
 			SDLNet_TCP_AddSocket(client_socketset, tcpsock);
-			
+
 			if(con==-1)
 			{
 				connections.push_back(tcpsock);

@@ -423,6 +423,9 @@ namespace CCG
 	void ScrollUp();
 	/// Scroll messages one line down if possible.
 	void ScrollDown();
+	/// Clear all messages.
+	void Clear()
+	{content.clear(); linestyle.clear(); offset=0;}
 	/// Return lines to skip from bottom.
 	int Offset() const
 	{return offset;}
@@ -961,6 +964,7 @@ namespace CCG
 	Evaluator::Data center_of(const Evaluator::Data&);
 	Evaluator::Data change_card(const Evaluator::Data&);
 	Evaluator::Data clear_deck(const Evaluator::Data&);
+	Evaluator::Data clear_msgbox(const Evaluator::Data&);
 	Evaluator::Data create_book(const Evaluator::Data&);
 	Evaluator::Data create_cardbox(const Evaluator::Data&);
 	Evaluator::Data create_deck(const Evaluator::Data&);
@@ -1004,6 +1008,7 @@ namespace CCG
 	Evaluator::Data lower(const Evaluator::Data&);
 	Evaluator::Data message(const Evaluator::Data&);
 	Evaluator::Data msgbox_scroll(const Evaluator::Data&);
+	Evaluator::Data msgbox_search(const Evaluator::Data&);
 	Evaluator::Data mouse(const Evaluator::Data&);
 	Evaluator::Data move_object(const Evaluator::Data&);
 	Evaluator::Data name(const Evaluator::Data&);

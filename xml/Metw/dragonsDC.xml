@@ -89,7 +89,7 @@
        <attr key="class" value="Creature"/>
        <attr key="type" value="Hazard"/>
     </card>
-    <card name="Cruel Caradhras" graphics="CruelCaradhrasDC.jpg" text="Playable on a company using region movement to move through one of the following regions (and not stopping at a site therein): High Pass, Redhorn Gate, Angmar, Gundabad, Grey Mountain Narrows, Imlad Morgul, Bosiri, Cleft of Goats, Clyan, Dragon Gap and Narthalf. Each character in target company must face one strike (not an attack) of 8 prowess which cannot be cancelled. Any resulting body check is modified by +1. {green} DCE: Add: Type Rock Fallweapons do not modify.">
+    <card name="Cruel Caradhras" graphics="CruelCaradhrasDC.jpg" text="Playable on a company using region movement to move through one of the following regions (and not stopping at a site therein): High Pass, Redhorn Gate, Angmar, Gundabad, Grey Mountain Narrows, Imlad Morgul, Bosiri, Cleft of Goats, Clyan, Dragon Gap and Narthalf. Each character in target company must face one strike (not an attack) of 8 prowess which cannot be cancelled. Any resulting body check is modified by +1.">
        <attr key="rarity" value="U2"/>
        <attr key="class" value="Short-event"/>
        <attr key="type" value="Hazard"/>
@@ -581,7 +581,7 @@
        <attr key="type" value="Hazard"/>
 	   <attr key="keyword" value="Environment"/>
     </card>
-    <card name="Sleepless Malice" graphics="SleeplessMaliceDC.jpg" text="One Undead hazard creature against each company doesn't count against its hazard limit. Additionally, if Doors of Night is in play, any non-unique Undead hazard creature may be played keyed to Ruins and Lairs. Cannot be duplicated. {green} DCE: Added in: any non-unique undead . . .">
+    <card name="Sleepless Malice" graphics="SleeplessMaliceDC.jpg" text="One Undead hazard creature against each company doesn't count against its hazard limit. Additionally, if Doors of Night is in play, any non-unique Undead hazard creature may be played keyed to Ruins and Lairs. Cannot be duplicated.">
        <attr key="rarity" value="U2"/>
        <attr key="class" value="Long-event"/>
        <attr key="type" value="Hazard"/>
@@ -691,7 +691,7 @@
        <attr key="type" value="Hazard"/>
 	   <attr key="keyword" value="Winged"/>
     </card>
-    <card name="Winds of Wrath" graphics="WindsofWrathDC.jpg" text="Playable only if Doors of Night is in play. Replace the new site card of a moving company with a Coastal Sea [{c}] in its site path with a card from your location deck that has a Coastal Sea [{c}] in its site path. {green} DCE: Playable only if Doors of Night is in play. Replace the new site card of a moving company with a Coastal Sea [{c}] in its site path with a card from your location deck that is 3 Coastal Sea [{c}] regions plus any one extra region away from their new current site.">
+    <card name="Winds of Wrath" graphics="WindsofWrathDC.jpg" text="Playable only if Doors of Night is in play. Replace the new site card of a moving company with a Coastal Sea [{c}] in its site path with a card from your location deck that has a Coastal Sea [{c}] in its site path (to a maximum of 4 regions away from the original site of destination).">
        <attr key="rarity" value="R2"/>
        <attr key="class" value="Short-event"/>
        <attr key="type" value="Hazard"/>
