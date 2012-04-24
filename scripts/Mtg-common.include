@@ -78,12 +78,13 @@ def TribalLegal
 #
 def CreateTypeLegalTable
 {
-  push(s);
   lasttype=ARG;
   if(!isdict(TYPE_LEGAL))
     TYPE_LEGAL=(,);
   if(!has_entry(ARG,TYPE_LEGAL))
   {
+    push(r);
+    push(s);
     TYPE_LEGAL{ARG}=copy(-1,last(cards())+1);
     genlimit = 0;
     for(r)(deck_rules{ARG}{""})
@@ -140,8 +141,9 @@ def CreateTypeLegalTable
           TYPE_LEGAL{ARG}[c]=genlimit;
       }
     }
+    s=pop();
+    r=pop();
   }
-  s=pop();
 }
 
 #
@@ -158,6 +160,6 @@ def TypeLegal
 #
 def TypeRestricted
 {
-  CreateTypeLegalTable(ARG[0]);
-  return(TYPE_LEGAL{ARG[0]}{ARG[1]}==1);
+  if(lasttype != ARG[0]) CreateTypeLegalTable(ARG[0]);
+  return(TYPE_LEGAL{ARG[0]}[ARG[1]]==1);
 }

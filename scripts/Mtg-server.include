@@ -11,7 +11,7 @@
 #
 #  Functions:
 #
-# SetUpPlayer(p) - create necessary strucrures for player 'p'
+# SetUpPlayer(p) - create necessary structures for player 'p'
 #
 
 screen.width=1024;
@@ -19,8 +19,8 @@ screen.height=768;
 port=29200;
 meta.port=29100;
 
-if(server.name=="NO.DEFAULT.SERVER.FOR.THIS.GAME")
-  server.name="gccgmeta.sytes.net";
+if(meta.server=="NO.DEFAULT.SERVER.FOR.THIS.GAME")
+  meta.server="gccgmeta.sytes.net";
 
 #
 # GAME SPECIFIC FUNCTIONS
@@ -37,6 +37,7 @@ def InitServerHook
   visible.me[i]{"exile"}=1;
   visible.opp[i]{"exile"}=1;
  }
+ if(server_flags == NULL) server_flags = " ";
 }
 
 #
@@ -55,5 +56,7 @@ def SetUpPlayer
 #
 def InitialScore
 {
-  return(20);
+  initscore = 20;
+  if (HasFlag("team")) initscore = (initscore * 3 * players_wanted) / 8;
+  return(initscore);
 }

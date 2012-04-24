@@ -8,21 +8,21 @@ DECKBOX_SIZE=(20,220,80);
 HANDSIZE=7;
 # keep-tapped text
 STRING_KEEP_TAPPED="{T}";
-# minor version number for filter alogrithm
+# keep-untapped text
+STRING_KEEP_UNTAPPED="{UT}";
+# minor version number for filter algorithm
 BOOK_FILTER_VERSION_MINOR=".27";
 # Default export format.
 DEFAULT_EXPORT_FORMAT="Gccg";
 # default book sorting criteria.
 BOOK_DEFAULT_SORT=("[age]","[color]","[name]");
-# next card played will be imprinted
+# if imprint>0, next card played will be imprinted
 imprint=0;
-
 # Servers
 if(server.name=="NO.DEFAULT.SERVER.FOR.THIS.GAME")
   server.name="gccgmeta.sytes.net";
-if(!port)
-  port=29100;
-  
+#  server.name="localhost";
+
 # lobby background color
 BGCOLOR=(98,52,23);
 # lobby foreground color
@@ -54,11 +54,13 @@ rarity.display{"M"}="{red}";
 rarity.display{"P"}="{154,77,154}";
 rarity.display{"S"}="{154,77,154}";
 
+if(!port)
+  port=29100;
+
 # Products following default naming scheme are now handled automatically, so only exceptional cases need listing here
 product.image=(,);
 product.image{"Limited Edition Beta booster"}="Beta_booster.jpg";
 product.image{"Limited Edition Beta starter"}="Beta_starter.jpg";
-
 
 game.bindings=(
   ("KeyControlKey1","{orange}During untap phase...",),
@@ -113,11 +115,11 @@ FILTER_OPTIONS=(
  ("Rare","find('R',Attr('rarity',#))!=NULL",(1,"[age]","[color]","[name]")),
  ("Mythic","find('M',Attr('rarity',#))!=NULL",(1,"[age]","[color]","[name]")),
  "{hr}",
- ("White spells","find('White',Attr('color',#))!=NULL",(1,"[age]","[color]","[name]")),
- ("Blue spells","find('Blue',Attr('color',#))!=NULL",(1,"[age]","[color]","[name]")),
- ("Black spells","find('Black',Attr('color',#))!=NULL",(1,"[age]","[color]","[name]")),
- ("Red spells","find('Red',Attr('color',#))!=NULL",(1,"[age]","[color]","[name]")),
- ("Green spells","find('Green',Attr('color',#))!=NULL",(1,"[age]","[color]","[name]")),
+ ("White","find('White',Attr('color',#))!=NULL",(1,"[age]","[color]","[name]")),
+ ("Blue","find('Blue',Attr('color',#))!=NULL",(1,"[age]","[color]","[name]")),
+ ("Black","find('Black',Attr('color',#))!=NULL",(1,"[age]","[color]","[name]")),
+ ("Red","find('Red',Attr('color',#))!=NULL",(1,"[age]","[color]","[name]")),
+ ("Green","find('Green',Attr('color',#))!=NULL",(1,"[age]","[color]","[name]")),
  ("Multicolored","find(' ',Attr('color',#))!=NULL",(1,"[age]","[color]","[name]")),
  ("Colorless","find(Attr('color',#),'ArtifactLandColorless')!=NULL",(1,"[age]","[name]")),
  "{hr}",
@@ -133,28 +135,11 @@ FILTER_OPTIONS=(
  ("Tribal Creatures","TribalLegal(#) && TypeLegal('Vintage',#)",("[subtype]","[color]","[name]")),
  ("Vintage Restricted","TypeRestricted('Vintage',#)",(1,"[age]","[color]","[name]")),
  ("Legacy Banned","!TypeLegal('Legacy',#)",(1,"[age]","[color]","[name]")),
- ("Commander Banned","!TypeLegal('Commander',#)",(1,"[color]","[age]","[name]")),
- ("Highlander Banned","!TypeLegal('Highlander',#)",(1,"[color]","[age]","[name]")),
+ ("Commander Banned","!TypeLegal('Commander',#)",(1,"[age]","[color]","[name]")),
+ ("Highlander Banned","!TypeLegal('Highlander',#)",(1,"[age]","[color]","[name]")),
  ("Modern Legal","TypeLegal('Modern',#)",(1,"[age]","[color]","[name]")),
- ("Extended Legal","TypeLegal('Extended',#)",(1,"[color]","[age]","[name]")),
- ("Standard Legal","TypeLegal('Standard',#)",(1,"[color]","[age]","[name]")),
- "{hr}",
-# ("Standard (2011) Legal","TypeLegal('Type 2 (2011)',#)",(1,"[color]","[age]","[name]")),
-# ("Standard (2010) Legal","TypeLegal('Type 2 (2010)',#)",(1,"[color]","[age]","[name]")),
-# ("Standard (2009) Legal","TypeLegal('Type 2 (2009)',#)",(1,"[color]","[age]","[name]")),
-# ("Standard (2008) Legal","TypeLegal('Type 2 (2008)',#)",(1,"[color]","[age]","[name]")),
-# ("Standard (2007) Legal","TypeLegal('Type 2 (2007)',#)",(1,"[color]","[age]","[name]")),
-# ("Standard (2006) Legal","TypeLegal('Type 2 (2006)',#)",(1,"[color]","[age]","[name]")),
-# ("Standard (2005) Legal","TypeLegal('Type 2 (2005)',#)",(1,"[color]","[age]","[name]")),
-# ("Standard (2004) Legal","TypeLegal('Type 2 (2004)',#)",(1,"[color]","[age]","[name]")),
-# ("Standard (2003) Legal","TypeLegal('Type 2 (2003)',#)",(1,"[color]","[age]","[name]")),
-# ("Standard (2002) Legal","TypeLegal('Type 2 (2002)',#)",(1,"[color]","[age]","[name]")),
-# ("Standard (2001) Legal","TypeLegal('Type 2 (2001)',#)",(1,"[color]","[age]","[name]")),
-# ("Standard (2000) Legal","TypeLegal('Type 2 (2000)',#)",(1,"[color]","[age]","[name]")),
-# ("Standard (1999) Legal","TypeLegal('Type 2 (1999)',#)",(1,"[color]","[age]","[name]")),
-# ("Standard (1998) Legal","TypeLegal('Type 2 (1998)',#)",(1,"[color]","[age]","[name]")),
-# ("Standard (1997) Legal","TypeLegal('Type 2 (1997)',#)",(1,"[color]","[age]","[name]")),
-# "{hr}",
+ ("Extended Legal","TypeLegal('Extended',#)",(1,"[age]","[color]","[name]")),
+ ("Standard Legal","TypeLegal('Standard',#)",(1,"[age]","[color]","[name]"))
 );
 
 FILTER_FUNCTIONS=(,);
@@ -321,7 +306,6 @@ def DKASubmenu
 # TokenSubmenu() - Create a submenu of token options.
 # 
 
-
 def TokenSubmenu
 {
   Submenu("Select Token",(
@@ -352,6 +336,7 @@ def TokenSubmenu
 def TokenSubmenuA 
 {
   Submenu("Select Token",(
+   ("{blue}{sz12}<back>","","TokenSubmenu()"),
    ("Angel 4/4 (W, flying)","",'Send("Transfer",(1,("out.of.play",9),("play",0)))'),
    ("Avatar */* (W)","",'Send("Transfer",(1,("out.of.play",10),("play",0)))'),
   ));
@@ -360,6 +345,7 @@ def TokenSubmenuA
 def TokenSubmenuB 
 {
   Submenu("Select Token",(
+   ("{blue}{sz12}<back>","","TokenSubmenu()"),
    ("Bear 2/2 (G)","",'Send("Transfer",(1,("out.of.play",11),("play",0)))'),
    ("Beast 3/3 (G)","",'Send("Transfer",(1,("out.of.play",12),("play",0)))'),
    ("Beast 4/4 (G)","",'Send("Transfer",(1,("out.of.play",13),("play",0)))'),
@@ -376,6 +362,7 @@ def TokenSubmenuB
 def TokenSubmenuC 
 {
   Submenu("Select Token",(
+   ("{blue}{sz12}<back>","","TokenSubmenu()"),
    ("Cat 1/1 (R)","",'Send("Transfer",(1,("out.of.play",20),("play",0)))'),
    ("Cat 2/1 (B)","",'Send("Transfer",(1,("out.of.play",21),("play",0)))'),
    ("Cat 2/2 (W)","",'Send("Transfer",(1,("out.of.play",113),("play",0)))'),
@@ -387,18 +374,21 @@ def TokenSubmenuC
 def TokenSubmenuD 
 {
   Submenu("Select Token",(
-   ("Play Demon */* (B, flying)","",'Send("Transfer",(1,("out.of.play",23),("play",0)))'),
-   ("Play Dragon 1/1 (RG, flying, devour)","",'Send("Transfer",(1,("out.of.play",24),("play",0)))'),
-   ("Play Dragon 4/4 (R, flying)","",'Send("Transfer",(1,("out.of.play",25),("play",0)))'),
-   ("Play Dragon 5/5 (R, flying)","",'Send("Transfer",(1,("out.of.play",26),("play",0)))'),
-   ("Play Dragon Spirit 5/5 (U, flying)","",'Send("Transfer",(1,("out.of.play",27),("play",0)))'),
-   ("Play Drake 2/2 (UG, flying)","",'Send("Transfer",(1,("out.of.play",28),("play",0)))'),
+   ("{blue}{sz12}<back>","","TokenSubmenu()"),
+   ("Demon */* (B, flying)","",'Send("Transfer",(1,("out.of.play",23),("play",0)))'),
+   ("Demon 5/5 (B, flying)","",'Send("Transfer",(1,("out.of.play",160),("play",0)))'),
+   ("Dragon 1/1 (RG, flying, devour)","",'Send("Transfer",(1,("out.of.play",24),("play",0)))'),
+   ("Dragon 4/4 (R, flying)","",'Send("Transfer",(1,("out.of.play",25),("play",0)))'),
+   ("Dragon 5/5 (R, flying)","",'Send("Transfer",(1,("out.of.play",26),("play",0)))'),
+   ("Dragon Spirit 5/5 (U, flying)","",'Send("Transfer",(1,("out.of.play",27),("play",0)))'),
+   ("Drake 2/2 (UG, flying)","",'Send("Transfer",(1,("out.of.play",28),("play",0)))'),
   ));
 }
    
 def TokenSubmenuE
 {
   Submenu("Select Token",(
+   ("{blue}{sz12}<back>","","TokenSubmenu()"),
    ("Eldrazi Spawn 0/1 (C)","",'Send("Transfer",(1,("out.of.play",101),("play",0)))'),
    ("Elemental 1/1 (R, haste)","",'Send("Transfer",(1,("out.of.play",29),("play",0)))'),
    ("Elemental 2/2 (U, flying)","",'Send("Transfer",(1,("out.of.play",30),("play",0)))'),
@@ -422,6 +412,7 @@ def TokenSubmenuE
 def TokenSubmenuF
 {
   Submenu("Select Token",(
+   ("{blue}{sz12}<back>","","TokenSubmenu()"),
    ("Faerie 1/1 (U, flying)","",'Send("Transfer",(1,("out.of.play",43),("play",0)))'),
    ("Faerie Rogue 1/1 (B, flying)","",'Send("Transfer",(1,("out.of.play",44),("play",0)))'),
    ("Faerie Rogue 1/1 (BU, flying)","",'Send("Transfer",(1,("out.of.play",45),("play",0)))'),
@@ -431,6 +422,7 @@ def TokenSubmenuF
 def TokenSubmenuG 
 {
   Submenu("Select Token",(
+   ("{blue}{sz12}<back>","","TokenSubmenu()"),
    ("Gargoyle 3/4 (A, flying)","",'Send("Transfer",(1,("out.of.play",115),("play",0)))'),
    ("Germ 0/0 (B)","",'Send("Transfer",(1,("out.of.play",103),("play",0)))'),
    ("Giant Warrior 4/4 (GR, haste)","",'Send("Transfer",(1,("out.of.play",46),("play",0)))'),
@@ -449,17 +441,22 @@ def TokenSubmenuG
 def TokenSubmenuH 
 {
   Submenu("Select Token",(
+   ("{blue}{sz12}<back>","","TokenSubmenu()"),
    ("Hellion 4/4 (R)","",'Send("Transfer",(1,("out.of.play",106),("play",0)))'),
    ("Hippo 1/1 (G)","",'Send("Transfer",(1,("out.of.play",53),("play",0)))'),
-   ("Homunculus 0/1 (A)","",'Send("Transfer",(1,("out.of.play",54),("play",0)))'),
+   ("Homunculus 0/1 (AU)","",'Send("Transfer",(1,("out.of.play",54),("play",0)))'),
+   ("Homunculus 2/2 (U)","",'Send("Transfer",(1,("out.of.play",159),("play",0)))'),
    ("Horror 4/4 (B)","",'Send("Transfer",(1,("out.of.play",55),("play",0)))'),
    ("Horror */* (C)","",'Send("Transfer",(1,("out.of.play",107),("play",0)))'),
+   ("Human 1/1 (R)","",'Send("Transfer",(1,("out.of.play",165),("play",0)))'),
+   ("Human 1/1 (W)","",'Send("Transfer",(1,("out.of.play",163),("play",0)))'),
   ));
 }
 
 def TokenSubmenuI 
 {
   Submenu("Select Token",(
+   ("{blue}{sz12}<back>","","TokenSubmenu()"),
    ("Illusion 1/1 (U, flying)","",'Send("Transfer",(1,("out.of.play",56),("play",0)))'),
    ("Illusion 2/2 (U)","",'Send("Transfer",(1,("out.of.play",117),("play",0)))'),
    ("Insect 1/1 (G)","",'Send("Transfer",(1,("out.of.play",57),("play",0)))'),
@@ -470,6 +467,7 @@ def TokenSubmenuI
 def TokenSubmenuK 
 {
   Submenu("Select Token",(
+   ("{blue}{sz12}<back>","","TokenSubmenu()"),
    ("Kaldra 4/4 (C)","",'Send("Transfer",(1,("out.of.play",58),("play",0)))'),
    ("Kavu 3/3 (B)","",'Send("Transfer",(1,("out.of.play",59),("play",0)))'),
    ("Kithkin Soldier 1/1 (W)","",'Send("Transfer",(1,("out.of.play",60),("play",0)))'),   
@@ -481,6 +479,7 @@ def TokenSubmenuK
 def TokenSubmenuL 
 {
   Submenu("Select Token",(
+   ("{blue}{sz12}<back>","","TokenSubmenu()"),
    ("Lizard 2/2 (G)","",'Send("Transfer",(1,("out.of.play",62),("play",0)))'),
   ));
 }
@@ -488,6 +487,7 @@ def TokenSubmenuL
 def TokenSubmenuM 
 {
   Submenu("Select Token",(
+   ("{blue}{sz12}<back>","","TokenSubmenu()"),
    ("Marit Lage 20/20 (B)","",'Send("Transfer",(1,("out.of.play",63),("play",0)))'),
    ("Merfolk 1/1 (U)","",'Send("Transfer",(1,("out.of.play",120),("play",0)))'),
    ("Merfolk Wizard 1/1 (U)","",'Send("Transfer",(1,("out.of.play",64),("play",0)))'),
@@ -498,6 +498,7 @@ def TokenSubmenuM
 def TokenSubmenuO 
 {
   Submenu("Select Token",(
+   ("{blue}{sz12}<back>","","TokenSubmenu()"),
    ("Ogre 3/3 (R)","",'Send("Transfer",(1,("out.of.play",108),("play",0)))'),
    ("Ooze */* (G)","",'Send("Transfer",(1,("out.of.play",66),("play",0)))'),
   ));
@@ -506,6 +507,7 @@ def TokenSubmenuO
 def TokenSubmenuP 
 {
   Submenu("Select Token",(
+   ("{blue}{sz12}<back>","","TokenSubmenu()"),
    ("Pentavite 1/1 (A, flying)","",'Send("Transfer",(1,("out.of.play",67),("play",0)))'),
    ("Pest 0/1 (A)","",'Send("Transfer",(1,("out.of.play",68),("play",0)))'),
    ("Pincher 2/2 (A)","",'Send("Transfer",(1,("out.of.play",69),("play",0)))'),
@@ -516,6 +518,7 @@ def TokenSubmenuP
 def TokenSubmenuR 
 {
   Submenu("Select Token",(
+   ("{blue}{sz12}<back>","","TokenSubmenu()"),
    ("Rat 1/1 (B)","",'Send("Transfer",(1,("out.of.play",70),("play",0)))'),
    ("Reflection */* (W)","",'Send("Transfer",(1,("out.of.play",71),("play",0)))'),   
    ("Rukh 4/4 (R, flying)","",'Send("Transfer",(1,("out.of.play",72),("play",0)))'),
@@ -525,6 +528,7 @@ def TokenSubmenuR
 def TokenSubmenuS 
 {
   Submenu("Select Token",(
+   ("{blue}{sz12}<back>","","TokenSubmenu()"),
    ("Saproling 1/1 (G)","",'Send("Transfer",(1,("out.of.play",73),("play",0)))'),
    ("Shapeshifter 1/1 (C, changeling)","",'Send("Transfer",(1,("out.of.play",74),("play",0)))'),
    ("Skeleton 1/1 (B)","",'Send("Transfer",(1,("out.of.play",75),("play",0)))'),
@@ -538,6 +542,7 @@ def TokenSubmenuS
    ("Spirit 1/1 (C)","",'Send("Transfer",(1,("out.of.play",82),("play",0)))'),
    ("Spirit 1/1 (BW, flying)","",'Send("Transfer",(1,("out.of.play",83),("play",0)))'),
    ("Spirit 1/1 (W, flying)","",'Send("Transfer",(1,("out.of.play",84),("play",0)))'),
+   ("Spirit 1/1 (U, flying)","",'Send("Transfer",(1,("out.of.play",166),("play",0)))'),
    ("Squirrel 1/1 (G)","",'Send("Transfer",(1,("out.of.play",85),("play",0)))'),
   ));
 }
@@ -545,6 +550,7 @@ def TokenSubmenuS
 def TokenSubmenuT 
 {
   Submenu("Select Token",(
+   ("{blue}{sz12}<back>","","TokenSubmenu()"),
    ("Thopter 1/1 (AU, flying)","",'Send("Transfer",(1,("out.of.play",86),("play",0)))'),
    ("Thopter 1/1 (A, flying)","",'Send("Transfer",(1,("out.of.play",111),("play",0)))'),
    ("Thrull 0/1 (B)","",'Send("Transfer",(1,("out.of.play",87),("play",0)))'),
@@ -557,6 +563,7 @@ def TokenSubmenuT
 def TokenSubmenuU 
 {
   Submenu("Select Token",(
+   ("{blue}{sz12}<back>","","TokenSubmenu()"),
    ("Urami 5/5 (B)","",'Send("Transfer",(1,("out.of.play",90),("play",0)))'),
   ));
 }
@@ -564,6 +571,9 @@ def TokenSubmenuU
 def TokenSubmenuV 
 {
   Submenu("Select Token",(
+   ("{blue}{sz12}<back>","","TokenSubmenu()"),
+   ("Vampire 1/1 (B, lifelink)","",'Send("Transfer",(1,("out.of.play",164),("play",0)))'),
+   ("Vampire 2/2 (B, flying)","",'Send("Transfer",(1,("out.of.play",161),("play",0)))'),
    ("Vampire */* (B)","",'Send("Transfer",(1,("out.of.play",122),("play",0)))'),
    ("Voja 2/2 (GW)","",'Send("Transfer",(1,("out.of.play",91),("play",0)))'),   
   ));
@@ -572,13 +582,15 @@ def TokenSubmenuV
 def TokenSubmenuW 
 {
   Submenu("Select Token",(
+   ("{blue}{sz12}<back>","","TokenSubmenu()"),
    ("Warrior 1/1 (R)","",'Send("Transfer",(1,("out.of.play",92),("play",0)))'),
    ("Wasp 1/1 (A, flying)","",'Send("Transfer",(1,("out.of.play",93),("play",0)))'),
+   ("Wolf 1/1 (B, deathtouch)","",'Send("Transfer",(1,("out.of.play",162),("play",0)))'),
    ("Wolf 2/2 (G)","",'Send("Transfer",(1,("out.of.play",94),("play",0)))'),
    ("Worm 1/1 (BG)","",'Send("Transfer",(1,("out.of.play",95),("play",0)))'),
    ("Wurm 3/3 (A, deathouch)","",'Send("Transfer",(1,("out.of.play",123),("play",0)))'),
    ("Wurm 3/3 (A, lifelink)","",'Send("Transfer",(1,("out.of.play",124),("play",0)))'),
-   ("Wurm 6/6 (B, Trample)","",'Send("Transfer",(1,("out.of.play",96),("play",0)))'),
+   ("Wurm 6/6 (B, trample)","",'Send("Transfer",(1,("out.of.play",96),("play",0)))'),
    ("Wurm 6/6 (G)","",'Send("Transfer",(1,("out.of.play",97),("play",0)))'),
   ));
 }
@@ -586,6 +598,7 @@ def TokenSubmenuW
 def TokenSubmenuZ 
 {
   Submenu("Select Token",(
+   ("{blue}{sz12}<back>","","TokenSubmenu()"),
    ("Zombie 2/2 (B)","",'Send("Transfer",(1,("out.of.play",98),("play",0)))'),
    ("Zombie Giant 5/5 (B)","",'Send("Transfer",(1,("out.of.play",125),("play",0)))'),
    ("Zombie Wizard 1/1 (BU)","",'Send("Transfer",(1,("out.of.play",99),("play",0)))'),
@@ -685,9 +698,9 @@ def KeyShiftControlKeyT
 }
 
 #
-# KeyShiftControlKeyI() - Produce {UT}.
+# KeyShiftControlKeyQ() - Produce {UT}.
 #
-def KeyShiftControlKeyI
+def KeyShiftControlKeyQ
 {
     Input("{UT}");
 }
@@ -725,10 +738,68 @@ def PlayKeyControlKeyI
   if(card.number!=NULL)
   {
     imprint=1;
-    Say("{orange}Imprint/Equip...");
     TryTransferTo("play",card.number==0);
   }
 }
+
+
+#
+# PlayKeyControlKeyO() - Tap out.
+#
+def PlayKeyControlKeyO
+{
+  for(c)(inplay(me))
+  {
+    cd = card_data(c);
+    if(find("Land",Attr("type",cd[2])) != NULL && cd[1] == 0)
+    {
+      if(isfunction("TapHook"))
+      {
+        if(call("TapHook",c))
+          Send("Rotate",(c,90));
+      }
+      else
+        Send("Rotate",(c,90));
+    }
+  }
+}
+
+#
+# PlayKeyControlKeyM() - Mass attack.
+#
+def PlayKeyControlKeyM
+{
+  for(c)(inplay(me))
+  {
+    cd = card_data(c);
+    if(find("Creature",Attr("type",cd[3])) != NULL && cd[1] == 0)
+    {
+      if(isfunction("TapHook"))
+      {
+        if(call("TapHook",c))
+          Send("Rotate",(c,90));
+      }
+      else
+        Send("Rotate",(c,90));
+    }
+  }
+  Send("Say","{orange}Attack!");
+}
+
+def PlayCommandTapout
+{
+  PlayKeyControlKeyO();
+}
+
+def PlayCommandAlpha
+{
+  PlayKeyControlKeyM();
+}
+
+HELP{"play"}{"tapout"}=("","tap all lands",NULL,
+"Tap all your lands. You can shortcut this with {yellow}Ctrl+O{white}.");
+HELP{"play"}{"alpha"}=("","attack with all creatures",NULL,
+"Tap all your creatures and make a declaration of attack. You can shortcut this with {yellow}Ctrl+M{white}.");
 
 #
 # HOOKS
@@ -853,138 +924,6 @@ def UntapHook
     return(1);
 }
 
-#
-# KeyControlKeyH() - Handler for key Control+H.
-#
-def KeyControlKeyH
-{
-  push(c);
-  c=CheckForCard();
-  if(c==NULL)
-  {
-    if(object.number)
-      Msg("This is "+object_name(object.number)+".");
-  }
-  else
-  {
-    if(card_back(c) != c)
-    {
-      push(b);
-      push(s);
-      push(set);
-      push(rarity);
-      push(cost);
-      push(color);
-      push(type);
-      push(subtype);
-      push(power);
-      push(toughness);
-      push(loyalty);
-      push(flipname);
-      push(fliptext);
-      push(flipcolor);
-      push(fliptype);
-      push(flipsubtype);
-      push(flippower);
-      push(fliptoughness);
-      
-      
-      Msg("{hr}");
-            
-      s="";           
-      set="";
-      rarity="";
-      cost="";
-      color="";
-      type="";
-      subtype="";
-      power="";
-      toughness="";
-      loyalty="";
-      flipname="";
-      fliptext="";
-      flipcolor="";
-      fliptype="";
-      flipsubtype="";
-      flippower="";
-      fliptoughness="";
-      
-      for(b)((("set",set_of(c)),)+attrs(c))
-      {
-        if(b[1]!="")
-        {
-        	if(b[0]=="set")
-        		set="{yellow}Set:{white} "+ L(b[1]) + "   ";
-        	else if(b[0]=="rarity")
-        		rarity="{yellow}Rarity:{white} "+ L(b[1]) + "   ";
-        	else if(b[0]=="cost")
-        		cost="{yellow}Cost:{white} "+ L(b[1]) + "  ";
-        	else if(b[0]=="color")
-        		color="{yellow}Color:{white} "+ L(b[1]) + "   ";
-        	else if(b[0]=="type")
-        		type="{yellow}Type:{white} "+ L(b[1]) + " ";
-        	else if(b[0]=="subtype")
-        		subtype="- "+ L(b[1]) + "   ";
-        	else if(b[0]=="power")
-        		power="{yellow}Power/Toughness:{white} "+ L(b[1]) + "/";
-        	else if(b[0]=="toughness")
-        		toughness=L(b[1]) + "   ";
-        	else if(b[0]=="loyalty")
-        		loyalty="{yellow}Loyalty:{white} "+ L(b[1]) + " ";
-            else if(b[0]=="flipname")
-        		flipname=L(b[1]);
-            else if(b[0]=="fliptext")
-        		fliptext=L(b[1]);
-           	else if(b[0]=="flipcolor")
-        		flipcolor="{yellow}FlipColor:{white} "+ L(b[1]) + "   ";
-        	else if(b[0]=="fliptype")
-        		fliptype="{yellow}FlipType:{white} "+ L(b[1]) + " ";
-        	else if(b[0]=="flipsubtype")
-        		flipsubtype="- "+ L(b[1]) + "   ";
-        	else if(b[0]=="flippower")
-        		flippower="{yellow}FlipPower/Toughness:{white} "+ L(b[1]) + "/";
-        	else if(b[0]=="fliptoughness")
-        		fliptoughness=L(b[1]) + "   ";
-        	else
-        		s="";        	
-        }
-      }
-      
-      Msg("{sz20}{yellow}"+name(c)+"{sz12}");
-      Msg(set + rarity + cost + color);
-      Msg(text(c));
-      Msg(type + subtype + power + toughness + loyalty);
-      Msg("{sz15}{yellow}"+flipname+"{sz12}");
-      Msg(fliptext);
-      Msg(flipcolor + fliptype + flipsubtype + flippower + fliptoughness);
-
-
-      flipname=pop();
-      fliptext=pop();
-      flipcolor=pop();
-      fliptype=pop();
-      flipsubtype=pop();
-      flippower=pop();
-      fliptoughness=pop();
-      set=pop();
-      rarity=pop();
-      cost=pop();
-      color=pop();
-      type=pop();
-      subtype=pop();
-      power=pop();
-      toughness=pop();
-      loyalty=pop();
-      s=pop();
-      b=pop();
-    }
-    else
-      Msg("This is "+object_name(object.number)+".");
-  }
-
-  c=pop();
-}
-
 # PLAYING CARDS
 # =============
 
@@ -998,12 +937,11 @@ def PlaySorcery
     PlayCard(ARG);
     imprint=0;
   }
+  else if (options{"playtograve"}=="on")
+    Send("Transfer",(1,("play",ARG[0],0),("deck.top",discard)));
   else
-  {
-    PlayCard(ARG);
-  }
+    PlayCard(ARG);    
 }
-
 
 #
 # PlayInstant(card number,is face down?) - Play an instant card.
@@ -1014,14 +952,12 @@ def PlayInstant
 }
 
 #
-# OBSOLETE!!!
+# the Interrupt type only remains on a single Unglued card because those cards never receive errata
 #
-# PlayInterrupt(card number,is face down?) - Play an interrupt card.
-#
-#def PlayInterrupt
-#{
-#  PlaySorcery(ARG);
-#}
+def PlayInterrupt
+{
+  PlaySorcery(ARG);
+}
 
 #
 # LOCATION TABLES
@@ -1048,7 +984,7 @@ def InitializeLocationTables
 # category description is called as a primary category, the second one
 # is called as a group and third as a subgroup.
 #
-# Hera are some preset variables to use:
+# Here are some preset variables to use:
 #
 # findspace.facedown - face down status set for last FindSpace request
 # findspace.orientation - orientation set for last FindSpace request
@@ -1061,16 +997,16 @@ rules.category=(
 	'findspace.facedown','("permanent","")'
   ),
   (
+	'type==NULL','("permanent","")'
+  ),
+  (
+	'find("Instant",type)!=NULL || find("Sorcery",type)!=NULL','("spell","")'
+  ),
+  (
 	'find("Land",type)!=NULL','("land",name(card))'
   ),
   (
-	'type=="Enchantment"','("permanent",name(card))'
-  ),
-  (
-	'type=="World Enchantment"','("wenchantment","")'
-  ),
-  (
-	'type=="Sorcery" || type=="Instant" || type=="Instant // Instant" || type=="Instant // Sorcery" || type=="Sorcery // Instant" || type=="Sorcery // Sorcery" || type=="Tribal Sorcery" || type=="Tribal Instant"','("spell","")'
+	'type=="World Enchantment"','("wenchantment",name(card))'
   ),
   (
 	'1','("permanent",name(card))'
@@ -1105,15 +1041,13 @@ rules.category=(
 #   findspace.card - card number of the card
 #     (("StacksByGroup",8*(card.xstep+10)-36,36,-24,12,0,0),),
 
-
 rules.coordinate=(
   (("land",),(
-     (("StacksByGroup",90,card.ystep+48,6,12,card.xstep+10,0),),
-     (("OffscreenEnabled","yes"),),
+     (("StacksByGroup",90,180,6,12,card.xstep+10,0),),
      (("AutoRaiseGroupTail","yes"),)
   )),
   (("permanent",),(
-     (("StacksByGroup",90,8,6,12,card.xstep+10,0),),
+     (("StacksByGroup",90,15,6,12,card.xstep+10,0),),
      (("AutoRaiseGroupTail","yes"),)
   )),
   (("wenchantment",),(
@@ -1139,4 +1073,5 @@ rules.coordinate=(
 # - list of object numbers may contain "free" entries denoting removed cards
 #   and "reserved" entries denoting cards that are coming to play soon
 # - initial coordinates are positions of top left corner of cards
+
 }

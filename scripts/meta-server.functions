@@ -1,6 +1,6 @@
 #
 #    Gccg - Generic collectible card game.
-#    Copyright (C) 2001,2002,2003,2004 Tommi Ronkainen
+#    Copyright (C) 2001-2012 Tommi Ronkainen
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -182,8 +182,8 @@ BET_BONUS_MULTIPLIER=1.0;
 LOSER_PERCENTAGE=0.20;
 DRAW_PERCENTAGE=1.00;
 SET_BONUS_MULTIPLIER=0.5;
-PLAYSET_BONUS_MULTIPLIER=2;
 PLAYSET_COUNT=0;
+PLAYSET_BONUS_MULTIPLIER=SET_BONUS_MULTIPLIER*PLAYSET_COUNT;
 
 REQUIRE_VERSION="0.8.9";
 REQUIRE_GAME_VERSION="0.9.3";
@@ -1461,7 +1461,7 @@ def Give
     if(!is_user(arg[0]))
       Reply("{red}Unknown user '"+arg[0]+"'.");
     elseif(User()!="God" && User()!="Guard" && User()!="Judge" && m>100.0)
-      Reply("{red}Give command is restricted to administrators.");
+      Reply("{red}Only administrators can give more than $100.00.");
     elseif(Con(arg[0]) < 0  && User()!="Guard" && User()!="God")
       Reply("{red}"+arg[0]+" is not here.");
     elseif(arg[0]==User() && arg[0]!="God")
@@ -1592,7 +1592,7 @@ def GiveCards
     push(m);
     push(n);
     cards=unique(sort(tail(ARG)));
-    cards=forall("(count(#,cards),#)",cards);
+    cards=forall("(count(#,tail(ARG)),#)",cards);
     transfer=(,);
     c=0;
     
@@ -1607,7 +1607,7 @@ def GiveCards
         {
 #         user is representing too many cards; trim the request to what they can actually send
           if(n[1] < n[0])
-            transfer=transfer+(n[0] - n[1]);
+            transfer=transfer+(n[0] - n[1], m[1]);
         }
         else
           transfer=transfer+m;
@@ -1753,7 +1753,7 @@ def SetPrice
 # "p + 1 <= p" is only true for values of infinity or Not-a-Number
 #   which can interfere with client actions and lead to money exploits
   else if(p < 0.01 || p + 1 <= p)
-    Reply("{red}Invalid price.");   
+    Reply("{red}Invalid price.");
   else
   {
     p=min_price(r);
@@ -2680,7 +2680,7 @@ def CommandRegisterplayset
       if(count(s,users{User()}[3][6]))
         Reply("{red}You have already registered a playset of "+set.data{s}[0]+".");
       else if(!count(s,users{User()}[3][2]))
-        Reply("{red}You have not yet registered "+set.data{s}[0]+".");
+        Reply("{red}You have to register a set of "+set.data{s}[0]+" before registering a playset.");
       else if(Mode()!="")
         Reply("{red}Cannot register in "+Mode()+" mode.");
       else

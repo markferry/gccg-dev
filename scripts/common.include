@@ -611,9 +611,16 @@ def RuleLimitByExpression
 #
 def RuleMinProxies
 {
-  if(ARG[0] > d[1][1])
+  if(isdict(deck_status))
+  {
+    if(ARG[0] > deck_status{player.name[player][1]}[0])
+      RuleViolation("Needs at least "+tostr(ARG[0])+" proxies");
+  }
+  else if(!isdict(cards_missing))
+    RuleViolation("This client version cannot check this format");
+  else if(ARG[0] > sum(flatten(values(cards_missing))))
     RuleViolation("Needs at least "+tostr(ARG[0])+" proxies");
-
+  
   return(ARG[1]);
 }
 
@@ -623,14 +630,21 @@ def RuleMinProxies
 #
 def RuleMaxProxies
 {
-  if(ARG[0] < d[1][1])
+  if(isdict(deck_status))
+  {
+    if(ARG[0] < deck_status{player.name[player][1]}[0])
+      RuleViolation("No more than "+tostr(ARG[0])+" proxies");
+  }
+  else if(!isdict(cards_missing))
+    RuleViolation("This client version cannot check this format");
+  else if(ARG[0] < sum(flatten(values(cards_missing))))
     RuleViolation("No more than "+tostr(ARG[0])+" proxies");
-
+  
   return(ARG[1]);
 }
 
 #
-# RuleCheckExpression((description, expression),list of cards) - Evaluate expression by subtituting card list to # and report description if failed.
+# RuleCheckExpression((description, expression),list of cards) - Evaluate expression by substituting card list to # and report description if failed.
 #
 def RuleCheckExpression
 {

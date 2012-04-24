@@ -187,6 +187,8 @@ def InitDistributions
   distribution{"ISD"}=(,);
   distribution{"ISD"}{"booster"}=((1,"L"),(9,"C"),(3,"U"),(1,"R+R+M"),(1,"SC+SC+SC+SC+SC+SC+SC+SC+SC+SC+SC+SU+SU+SU+SU+SU+SU+SR+SR+SM"));
 # DKA products have custom procedure
+  distribution{"AVR"}=(,);
+  distribution{"AVR"}{"booster"}=((1,"L"),(10,"C"),(3,"U"),(1,"R+R+M"));
 }
 
 #

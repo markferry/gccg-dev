@@ -1,6 +1,6 @@
 #
 #    Gccg - Generic collectible card game.
-#    Copyright (C) 2001,2002,2003,2004 Tommi Ronkainen
+#    Copyright (C) 2001-2012 Tommi Ronkainen
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -88,7 +88,7 @@
 # server_description - info line to send to the meta server
 # server_flags - a string of space-separated customizable options
 # stack.src[player] - last src from which each player has moved a card to play.stack
-# share.hand - who has decided to share their hand
+# share.hand[player] - who has decided to share their hand
 # table{object number}
 #   0 card number
 #   1 owner
@@ -100,7 +100,7 @@
 #   7 parent (0 if none)
 #   8 list of attachmets
 # table.stack_order - stacking order of cards object numbers on table (last is the topmost)
-# teamspeak - whose messages will only reach teammates by default
+# teamspeak[player] - whose messages will only reach teammates by default
 # time.change - last clock time when timer was given
 # time.spent - a list of seconds spent by each player
 # time.player - current player who's time is counting
@@ -534,6 +534,11 @@ def StartGame
     SendAll("Message","{hr}");
   }
 
+  if(HasFlag("team"))
+  {
+    SendAll("Message","This is a team game. You can use {yellow}/wt{white} to whisper to team, {yellow}/ts{white} to make all messages team-whispers by default, and {yellow}/sh{white} to show your hand to the team.");
+  }
+
   if(isfunction("StartGameHook"))
     call("StartGameHook",players);
 
@@ -757,8 +762,8 @@ def Log
     println(date()+" "+time()+" "+substr(ARG,5));
   else
     println(date()+" "+time()+" "+ARG);
-  if(HasFlag("private"))
-    write_file(SavePath()+"logs/"+tostr(port)+".log",(date()+" "+time()+" "+ARG,));
+#  if(HasFlag("private"))
+#    write_file(SavePath()+"logs/"+tostr(port)+".log",(date()+" "+time()+" "+ARG,));
 }
 
 #
@@ -1122,6 +1127,23 @@ def ResultAccepted
     if(result.accepted[i]!=1 && Plr2Con(i)!=NULL)
       return(0);
   }
+}
+
+#
+# OppositeResult(result type) - Return opposite of the given result.
+#
+def OppositeResult
+{
+  if(ARG == "win")
+    return("lose");
+  else if(ARG == "lose")
+    return("win");
+  else if(ARG == "draw")
+    return("draw");
+  else if(ARG == "undecided")
+    return("undecided");
+  else
+    return(NULL);
 }
 
 #
@@ -1814,7 +1836,7 @@ def Take.DeckTop
 }
 
 #
-# Take.DeckBottom(vis.self,vis.opp,object number) - Take a card from the top of the deck.
+# Take.DeckBottom(vis.self,vis.opp,object number) - Take a card from the bottom of the deck.
 #
 def Take.DeckBottom
 {
@@ -1953,6 +1975,9 @@ def Put.Table
     b=toint(card_attr("flipid",ARG[0]));
     theoretical_visibility_self=0;
     theoretical_visibility_others=0;
+# Use the special value "3" to mark face-down cards where incoming watchers
+# should receive the flipid version during SendFullGameStatus
+    ARG[6]=3;
   }
   table{next_object}=(ARG[0],player,d[0],d[1],o,ARG[6],(,),0,(,));
   table.stack_order=table.stack_order+(next_object,);
@@ -2441,7 +2466,28 @@ def Say
     else if (waitfor > 0)
     {
       ARG = lc(ARG);
-      if((ARG == "me" || ARG == "i") && (player % 2 || player >= waitfor))
+      if(!(player % 2) && player < waitfor)
+      {
+        push(p);
+        for(p)(players)
+        {
+          if(lc(player.name{p})==ARG && (p % 2 || p >= waitfor))
+          {
+            AssignPlayer(player.name{p},waitfor);
+            waitfor = waitfor + 2;
+            p = players;
+            if(waitfor >= players_wanted)
+            {
+              waitfor = -1;
+              StartGame();
+            }
+            else
+              SendAll("Message","{green}The team still needs another member. Again, type {yellow}me{green} to volunteer.");
+          }
+        }
+        p=pop();
+      }
+      else if((ARG == "me" || ARG == "i") && (player % 2 || player >= waitfor))
       {
         AssignPlayer(player.name{player},waitfor);
         waitfor = waitfor + 2;
@@ -2487,40 +2533,43 @@ def WatcherSay
 #
 # DeclareResult(win|lose|draw|undecided,optional sub type) - Declare the result of the game.
 #
-  def DeclareResult
+def DeclareResult
+{
+# declaring a loss after someone else's declared win (etc.) should count as acceptance, not a new result
+  if(result != NULL && player != result.declared_by && result == OppositeResult(ARG[0]))
+    AcceptResult();
+  else if(count(ARG[0],AcceptableResult()) || ARG[0]=="undecided")
   {
-    if(count(ARG[0],AcceptableResult()) || ARG[0]=="undecided")
-    {
-      result=ARG[0];
-      result.subtype=ARG[1];
-      result.declared_by=player;
-      result.accepted=copy(0,players_wanted);
-      result.accepted[player]=1;
-      SendAll("Message","{green}"+player.name{player}+" declares game result: "+result+" "+result.subtype);
-    }
-    else
-       Send(player,("Message","{red}Only acceptable results are: "+AcceptableResult()+("undecided",)));
-
+    result=ARG[0];
+    result.subtype=ARG[1];
+    result.declared_by=player;
+    result.accepted=copy(0,players_wanted);
+    result.accepted[player]=1;
+    SendAll("Message","{green}"+player.name{player}+" declares game result: "+result+" "+result.subtype);
+    
     if(ResultAccepted())
       EndGame();
   }
+  else
+     Send(player,("Message","{red}Only acceptable results are: "+AcceptableResult()+("undecided",)));
+}
 
 #
 #  AcceptResult() - Give acceptance to the currently declared result.
 #
-  def AcceptResult
-  {   
-    if(result != NULL)
-    {
-      result.accepted[player]=1;
-      SendAll("Message","{green}"+player.name{player}+" accepts game result declared by "+player.name{result.declared_by});
-    }
-    else
-      Send(player,("Message","{red}Nobody has declared game result yet"));
-
-    if(ResultAccepted())
-      EndGame();
+def AcceptResult
+{   
+  if(result != NULL)
+  {
+    result.accepted[player]=1;
+    SendAll("Message","{green}"+player.name{player}+" accepts game result declared by "+player.name{result.declared_by});
   }
+  else
+    Send(player,("Message","{red}Nobody has declared game result yet"));
+
+  if(ResultAccepted())
+    EndGame();
+}
 
 #
 #  ShuffleDeck(object number) - Shuffle deck or hand.
@@ -2586,12 +2635,21 @@ def ShuffleDeck
     {
       MsgVerbObject("shuffle",ARG);
       hand[o]=shuffle(hand[o]);
-      for(i)(length(hand[o]))
-        SendAll("DelHand",(o,0));
-      for(i)(hand[o])
+      
+      if(visible.opp[o]{"hand"})
+        SendAll("SetHand",(o,hand[o]));
+      else if(share.hand[o] && HasFlag("team"))
       {
-        Send(o,("PutHand",(o,Image(i,visible.me[o]{"hand"}))));
-        SendOther(o,("PutHand",(o,Image(i,visible.opp[o]{"hand"}))));
+        push(player);
+        player=o;
+        SendTeam("SetHand",(player,hand[player]));
+        SendOpp("SetHand",(player,card_back(hand[player]))));
+        player=pop();
+      }
+      else
+      {
+        Send(o,("SetHand",(o,hand[o])));
+        SendOther(o,("SetHand",(o,card_back(hand[o]))));
       }
     }
     o=pop();
@@ -3049,7 +3107,10 @@ def Flip
       table{ARG}[5]=1;
       MsgVerbObject("hide",ARG);
       c=toint(Attr("flipid",table{ARG}[0]));
+      
       if (!c) c=card_back(table{ARG}[0]);
+      else table{ARG}[5]=3;
+      
       SendAll("ReplaceTable",(ARG,c));
       c=pop();
     }
@@ -3060,7 +3121,13 @@ def Flip
     {
       visible.opp[player]{"hand"}=0;
       MsgVerbObject("hide",ARG);
-      SendOther(player,("SetHand",(player,card_back(hand[player]))));
+      if(share.hand[player] && HasFlag("team"))
+      {
+        SendTeam("SetHand",(player,hand[player]));
+        SendOpp("SetHand",(player,card_back(hand[player])));
+      }
+      else
+        SendOther(player,("SetHand",(player,card_back(hand[player]))));
     }
     else
     {
@@ -3369,6 +3436,7 @@ def CommandSavegame
   SendAll("Message","{green}Saving game '"+n+"'...");
   savegame=(,);
   savegame{"active"}=active;
+  savegame{"avatars"}=avatar.pos;
   savegame{"decks"}=decks;
   savegame{"deck_status"}=deck_status;
   savegame{"server_status"}=(bet,game.data);
@@ -3381,7 +3449,6 @@ def CommandSavegame
   savegame{"table"}=table;
   savegame{"table.stack_order"}=table.stack_order;
   savegame{"transfers"}=transfers;
-  savegame{"avatars"}=avatar.pos;
   if(isfunction("SavegameHook"))
     savegame{"special"}=SavegameHook();
 
@@ -3524,6 +3591,7 @@ def CommandLoadgame
     }
 
     active=savegame{"active"};
+    avatar.pos=savegame{"avatars"};
     decks=savegame{"decks"};
     hand=savegame{"hand"};
     markers=savegame{"markers"};
@@ -3541,9 +3609,6 @@ def CommandLoadgame
 
     for(p)(players)
       CreatePlayerObjects(p);
-
-    if(has_entry("avatars",savegame))
-       avatar.pos=savegame{"avatars"};
 
     FullUpdate();
      
@@ -3802,7 +3867,7 @@ def SendFullGameStatus
     if(table{o}[5])
     {
       c=toint(Attr("flipid",table{o}[0]));
-      if (!c) c=card_back(table{o}[0]);
+      if (!c || table{o}[5] < 3) c=card_back(table{o}[0]);
       xy=CoordToPlr(table{o}[2],table{o}[3],ARG);
       Send(ARG,("PutTable",(o,xy[0],xy[1],OriToPlr(table{o}[4],ARG),Image(table{o}[0],0,c),table{o}[1],Image(table{o}[0],ARG==table{o}[1] && !c,c))));
     }
