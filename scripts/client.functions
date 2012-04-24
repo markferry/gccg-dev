@@ -7788,9 +7788,9 @@ def MouseControlMiddleClick
     else
     {
       if(card.name!=NULL && card_back(card.number) != card.number)
-        Input("'"card.name+"' ");
+        Input("'"+card.name+"' ");
       else if(card.number!=NULL && object.number!=NULL)
-         Input("'"name((card_data(object.number))[3])+"' ");
+         Input("'"+name((card_data(object.number))[3])+"' ");
       else if(object.name != NULL && object.name != "")
       {
         if(left(object.name,7)=="Player ")
