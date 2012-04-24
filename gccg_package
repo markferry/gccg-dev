@@ -639,8 +639,14 @@ sub uncompress
 sub install_modules
 {
 	fetch_module_lists(1);
+	my @inst;
 
-	install_module($_) for(module_match("updated",@_));
+	for(module_match("updated",@_))
+	{
+		remove_module($_) if($_ ne "core" and $module{"installed"}{$_} ne "");
+		push @inst, $_;
+	}
+	install_module($_) for (@inst);		
 }
 
 #
@@ -665,8 +671,6 @@ sub install_module
 		}
 		else
 		{
-			remove_module($name) if($name ne "core" and $module{"installed"}{$name} ne "");
-			
 			print "Installing module ".$name."\n";
 			
 			if(uncompress($file))
@@ -711,6 +715,37 @@ sub install_module
 }
 
 #
+# get_modules(list of modules or expressions) - Download (don't install) a list of modules.
+#
+sub get_modules
+{
+	fetch_module_lists(1);
+
+	get_module($_) for(module_match("available",@_));
+}
+
+#
+# get_module(module name) - Download (don't install) single module.
+#
+sub get_module
+{
+	my $name=shift;
+	
+	die "$0: no such module as ".$name if not is_module($name);
+	
+	print "Fetching ".$url{"available"}{$name}."\n";
+	my $file=fetch_file($url{"available"}{$name});
+	if ($file eq "")
+	{
+		print "FAILED\n";
+	}
+	else
+	{
+		print "Downloaded $name as $file\n";
+	}
+}
+
+#
 # remove_modules(list of modules or expressions) - Uninstall a modules.
 #
 sub remove_modules
@@ -750,13 +785,16 @@ sub remove_module
 sub update_modules
 {
 	fetch_module_lists(1);
+	my @inst;
 	foreach $m (keys(%{$module{"updated"}}))
 	{
 		if($module{"installed"}{$m} ne "" and is_newer($module{"updated"}{$m},$module{"installed"}{$m}))
 		{
-			install_module($m);
+			remove_module($m) if($m ne "core");
+			push @inst, $m;
 		}
 	}
+	install_module($_) for (@inst);
 }
 
 #
@@ -1041,6 +1079,12 @@ elsif($#ARGV>=1 and ($ARGV[0] eq "install" or $ARGV[0] eq "i"))
 	shift @ARGV;
 	install_modules(@ARGV);
 }
+elsif($#ARGV>=1 and ($ARGV[0] eq "get" or $ARGV[0] eq "g"))
+{
+	read_xml_document("xml/installed.xml","installed");
+	shift @ARGV;
+	get_modules(@ARGV);
+}
 elsif($#ARGV==1 and ($ARGV[0] eq "remove" or $ARGV[0] eq "r"))
 {
 	read_xml_document("xml/installed.xml","installed");
@@ -1198,5 +1242,6 @@ else
 	print "       gccg_package source del <n>        remove n:th download source\n";
 	print "       gccg_package update                update all installed packages\n";
 	print "       gccg_package install <package>...  install new package(s)\n";
+	print "       gccg_package get <package>         download (don't install) a package\n";
 	print "       gccg_package remove <package>      remove a package\n";
 }
