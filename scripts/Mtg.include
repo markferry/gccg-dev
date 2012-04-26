@@ -3,7 +3,7 @@
 # =========
 
 # Size of columns of the decklist in pixels.
-DECKBOX_SIZE=(20,220,80);
+DECKBOX_SIZE=(20,260,120);
 # Number of cards in hand.
 HANDSIZE=7;
 # keep-tapped text
@@ -1043,7 +1043,7 @@ rules.category=(
 
 rules.coordinate=(
   (("land",),(
-     (("StacksByGroup",90,180,6,12,card.xstep+10,0),),
+     (("StacksByGroup",90,card.ystep+50,6,12,card.xstep+10,0),),
      (("AutoRaiseGroupTail","yes"),)
   )),
   (("permanent",),(

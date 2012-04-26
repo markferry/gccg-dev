@@ -657,7 +657,7 @@ def Initialize
   CreatePanel("alert",screen.width/2-w(200),h(100));
   CreatePanel("messages",w(5),h(5));
   CreatePanel("input",0,screen.height-h(16));
-  CreatePanel("player info",w(5),screen.height-h(70));
+  CreatePanel("player info",w(5),screen.height-h(90));
   CreatePanel("products",w(5),h(200));
 
   set_attr(msg.box,"ontop",20);
@@ -1167,6 +1167,8 @@ def SelectDeck
         if (l != NULL)
           listbox_scroll(deck.box,-l);
         message(deckname.box,"");
+        message(deckname.box,"");
+        message(deckname.box,"");
         message(deckname.box,"Deck: {white}"+deck.name);
         l=pop();
       }
@@ -1186,6 +1188,8 @@ def DeleteDeck
     cards_missing=listbox_set_deck(deck.box,NewDeck(),card.book);
     set_attr(deck.box,"visible",0);
     deck.name=NULL;
+    message(deckname.box,"");
+    message(deckname.box,"");
     message(deckname.box,"");
     message(deckname.box,"{red}No Deck Selected");
   }
@@ -10604,7 +10608,7 @@ def InitializePanelSystem
       0,12,1,1,
       ("highlight","fit"),
       1),
-    ("msgbox","deck name","deckname.box",0,h(16)+h(18)-2,w(130),h(16),
+    ("msgbox","deck name","deckname.box",0,h(16)+h(18)-2,w(130),h(36),
       TXCOLOR,BRCOLOR,BGCOLOR,
       2,10,1,1,
       ("highlight",),
