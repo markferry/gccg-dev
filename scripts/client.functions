@@ -10639,7 +10639,7 @@ def InitializePanelSystem
       INCOLOR,BRCOLOR,BGCOLOR,
       0,12,0,1,
       ("highlight","ontop"),
-      Z_MBOX),
+      1),
   );
   panel_structure{"products"}=(
     ("msgbox","products","products.box",0,screen.height,w(800),h(100),
