@@ -1177,11 +1177,12 @@ rules.category=(
 
 rules.coordinate=(
   (("land",),(
-     (("StacksByGroup",90,card.ystep+50,6,12,card.xstep+10,0),),
+     (("StacksByGroup",90,card.ystep+48,6,12,card.xstep+10,0),),
+     (("OffscreenEnabled","yes"),),
      (("AutoRaiseGroupTail","yes"),)
   )),
   (("permanent",),(
-     (("StacksByGroup",90,15,6,12,card.xstep+10,0),),
+     (("StacksByGroup",90,8,6,12,card.xstep+10,0),),
      (("AutoRaiseGroupTail","yes"),)
   )),
   (("wenchantment",),(
