@@ -78,6 +78,9 @@
   <cardset source="nph.xml"/>
   <cardset source="com.xml"/>
   <cardset source="m12.xml"/>
+  <cardset source="isd.xml"/>
+  <cardset source="dka.xml"/>
+  <cardset source="avr.xml"/>
   <image file="b.png" tag="{B}"/>
   <image file="g.png" tag="{G}"/>
   <image file="r.png" tag="{R}"/>

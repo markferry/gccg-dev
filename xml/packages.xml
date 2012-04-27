@@ -109,7 +109,7 @@
 	<include file="scripts/Lotr-server.include"/>
 	<include file="lotr-sample.conf"/>
   </module>
-  <module name="mtg" version="1.2.25">
+  <module name="mtg" version="1.2.28">
   	<include file="Mtg"/>
 	<include file="Mtg.bat"/>
 	<include file="xml/mtg.xml"/>
@@ -119,6 +119,8 @@
 	<include dir="scripts/Mtg"/>
 	<include file="scripts/Mtg.include"/>
 	<include file="scripts/Mtg-common.include"/>
+	<include file="scripts/common.include"/>	
+	<include file="scripts/client.functions"/>
 	<include files="scripts/Mtg*.rules"/>
 	<include files="graphics/Mtg/*.png"/>
 	<include files="graphics/Mtg/*_booster.jpg"/>
@@ -182,7 +184,7 @@
 	<include files="graphics/Poker/*.png"/>
 	<include files="graphics/Poker/*.jpg"/>
   </module>
-  <module name="mtg-cards-000" version="16">
+  <module name="mtg-cards-000" version="17">
     <include file="graphics/Mtg/Angel44W.jpg"/>
     <include file="graphics/Mtg/AvatarXXW.jpg"/>
     <include file="graphics/Mtg/Bear22G.jpg"/>
@@ -201,6 +203,7 @@
     <include file="graphics/Mtg/Centaur33G.jpg"/>
     <include file="graphics/Mtg/Construct612C.jpg"/>
     <include file="graphics/Mtg/DemonXXB.jpg"/>
+    <include file="graphics/Mtg/Demon55B.jpg"/>
     <include file="graphics/Mtg/Dragon11RG.jpg"/>
     <include file="graphics/Mtg/Dragon44R.jpg"/>
     <include file="graphics/Mtg/Dragon55R.jpg"/>
@@ -240,8 +243,11 @@
     <include file="graphics/Mtg/Hellion44R.jpg"/>
     <include file="graphics/Mtg/Hippo11G.jpg"/>
     <include file="graphics/Mtg/Homunculus01C.jpg"/>
+    <include file="graphics/Mtg/Homunculus22U.jpg"/>
     <include file="graphics/Mtg/Horror44B.jpg"/>
     <include file="graphics/Mtg/HorrorXXC.jpg"/>
+    <include file="graphics/Mtg/Human11R.jpg"/>
+    <include file="graphics/Mtg/Human11W.jpg"/>
     <include file="graphics/Mtg/Illusion11U.jpg"/>
     <include file="graphics/Mtg/Illusion22U.jpg"/>
     <include file="graphics/Mtg/Insect11G.jpg"/>
@@ -278,6 +284,7 @@
     <include file="graphics/Mtg/Spider12G.jpg"/>
     <include file="graphics/Mtg/Spirit11BW.jpg"/>
     <include file="graphics/Mtg/Spirit11C.jpg"/>
+    <include file="graphics/Mtg/Spirit11U.jpg"/>
     <include file="graphics/Mtg/Spirit11W.jpg"/>
     <include file="graphics/Mtg/Squirrel11G.jpg"/>
     <include file="graphics/Mtg/StormCounter.jpg"/>
@@ -289,9 +296,12 @@
     <include file="graphics/Mtg/TuktuktheReturned55C.jpg"/>
     <include file="graphics/Mtg/Urami55B.jpg"/>
     <include file="graphics/Mtg/VampireXXB.jpg"/>
+    <include file="graphics/Mtg/Vampire11B.jpg"/>
+    <include file="graphics/Mtg/Vampire22B.jpg"/>
     <include file="graphics/Mtg/Voja22GW.jpg"/>
     <include file="graphics/Mtg/Warrior11R.jpg"/>
     <include file="graphics/Mtg/Wasp11C.jpg"/>
+    <include file="graphics/Mtg/Wolf11B.jpg"/>
     <include file="graphics/Mtg/Wolf22G.jpg"/>
     <include file="graphics/Mtg/Worm11BG.jpg"/>
     <include file="graphics/Mtg/Wurm33Cd.jpg"/>
@@ -549,6 +559,25 @@
     <include file="graphics/Mtg/UlvenwaldPrimordials.jpg"/>
     <include file="graphics/Mtg/UnholyFiend.jpg"/>
     <include file="graphics/Mtg/WildbloodPack.jpg"/>
+  </module>
+  <module name="mtg-cards-077" version="1">
+    <include dir="graphics/Mtg/DKA"/>
+    <include file="graphics/Mtg/ArchdemonofGreed.jpg"/>
+    <include file="graphics/Mtg/ChaliceofDeath.jpg"/>
+    <include file="graphics/Mtg/GhastlyHaunting.jpg"/>
+    <include file="graphics/Mtg/HinterlandScourge.jpg"/>
+    <include file="graphics/Mtg/KrallenhordeKiller.jpg"/>
+    <include file="graphics/Mtg/MarkovsServant.jpg"/>
+    <include file="graphics/Mtg/MoonscarredWerewolf.jpg"/>
+    <include file="graphics/Mtg/RavageroftheFells.jpg"/>
+    <include file="graphics/Mtg/SilverpeltWerewolf.jpg"/>
+    <include file="graphics/Mtg/TovolarsMagehunter.jpg"/>
+    <include file="graphics/Mtg/UnhallowedCathar.jpg"/>
+    <include file="graphics/Mtg/WerewolfRansacker.jpg"/>
+    <include file="graphics/Mtg/WithengarUnbound.jpg"/>
+  </module>  
+  <module name="mtg-cards-078" version="1">
+    <include dir="graphics/Mtg/AVR"/>
   </module>
   <module name="pokemon-cards-001" version="5">
 	<include dir="graphics/Pokemon/BasicSet"/>

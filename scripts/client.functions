@@ -665,7 +665,7 @@ def Initialize
   set_attr(alert.box,"ontop",100);
   raise(alert.box);
 
-  chat_msg.box=create_msgbox(screen.width-w(403),screen.height-h(220),obj=obj+1,"chat msg",w(400),h(200),99999);
+  chat_msg.box=create_msgbox(screen.width-w(403),screen.height-h(222),obj=obj+1,"chat msg",w(400),h(200),99999);
   set_bgcolor(chat_msg.box,NULL);
   set_fgcolor(chat_msg.box,BRCOLOR);
   set_attr(chat_msg.box,"visible",1);
@@ -689,7 +689,7 @@ def Initialize
   Msg(L("{sz20}{center}Press {orange}F1{white} for help or {orange}right click{white} for menu."));
   Msg("{hr}");
 
-  card.book=create_book(w(5),h(176),obj=obj+1,"My Collection",BOOK_ROWS,BOOK_COLUMNS);
+  card.book=create_book(w(5),h(140),obj=obj+1,"My Collection",BOOK_ROWS,BOOK_COLUMNS);
   set_attr(card.book,"ontop",50);
   raise(card.book);
   set_bgcolor(card.book,BKBGCOLOR);
@@ -722,7 +722,7 @@ def Initialize
   set_attr(drag.box,"tiny",1);
   set_attr(drag.box,"ontop",1);
 
-  deck.box=create_listbox(screen.width-w(sum(DECKBOX_SIZE)+5),h(134),obj=obj+1,"Current Deck",100,("#","Name of the card",""),DECKBOX_SIZE,34,(1,0,1));
+  deck.box=create_listbox(screen.width-w(sum(DECKBOX_SIZE)+4),h(3),obj=obj+1,"Current Deck",100,("#","Name of the card",""),DECKBOX_SIZE,34,(1,0,1));
   set_attr(deck.box,"ontop",50);
   raise(deck.box);
 
@@ -1169,7 +1169,7 @@ def SelectDeck
         message(deckname.box,"");
         message(deckname.box,"");
         message(deckname.box,"");
-        message(deckname.box,"Deck: {white}"+deck.name);
+        message(deckname.box,"{white}"+deck.name);
         l=pop();
       }
     }
@@ -4137,13 +4137,13 @@ def AddRoomTable
 
     add_text(o,h+"TABLE "+ARG[0]);
     add_text(o,h+"{sz10}"+ARG[1][5]+" players, "+b+format("%.2f",ARG[1][4]));
-    add_text(o,h+"{hr}");
+#    add_text(o,h+"{hr}");
     add_text(o,h+"{sz10}"+room.tables{ARG[0]}[10]);
 
     s=first(split(room.tables{ARG[0]}[0],"."));
     if(tostr(toint(s))==s)
       s=room.tables{ARG[0]}[0];
-    add_text(o,h+"{sz12}{font3}"+s+"{sz10}/"+room.tables{ARG[0]}[1]);
+    add_text(o,h+"{sz8}"+s+":"+room.tables{ARG[0]}[1]);
 
     AvatarRecalcTable(ARG[0]);
 
@@ -10608,7 +10608,7 @@ def InitializePanelSystem
       0,12,1,1,
       ("highlight","fit"),
       1),
-    ("msgbox","deck name","deckname.box",0,h(16)+h(18)-2,w(130),h(36),
+    ("msgbox","deck name","deckname.box",0,h(16)+h(18)-2,w(130),h(18*2),
       TXCOLOR,BRCOLOR,BGCOLOR,
       2,10,1,1,
       ("highlight",),
@@ -10622,7 +10622,7 @@ def InitializePanelSystem
       1),
   );
   panel_structure{"messages"}=(
-    ("msgbox","msg","msg.box",0,0,screen.width-w(10),h(130),
+    ("msgbox","msg","msg.box",0,0,screen.width-10,h(130),
       (255,255,255),(255,255,255),NULL,
       0,12,0,0,
       ("ontop",),
