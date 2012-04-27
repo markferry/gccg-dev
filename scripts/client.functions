@@ -204,22 +204,28 @@
 # Functions:
 #
 # See reference manual.
-#
-# New ontop-levels used:
-#
-# 100 - alert
-# 60 - menus
-# 50 - deck list/collection
-# 45 - products
-# 40 - score
-# 35 - active set aside
-# 30 - hand
-# 20 - message box
-# 10 - decks
 
 #
 # CONSTANTS
 # =========
+
+#
+# New ontop-levels used:
+#
+
+Z_LOBBYCHAT = 1000;
+Z_MENU = 100;
+Z_ZOOM = 95;
+Z_BOOSTER = 90;
+Z_PRODUCTMENU = 80;
+Z_DLIST = 70;
+Z_COLLECTION = 70;
+Z_ALERT = 60;
+Z_SCORE = 50;
+Z_SASIDE = 40;
+Z_HAND = 30;
+Z_MBOX = 20;
+Z_DECKS = 10;
 
 # Version number of filtering algorithm.
 BOOK_FILTER_VERSION="0.10";
@@ -660,9 +666,9 @@ def Initialize
   CreatePanel("player info",w(5),screen.height-h(90));
   CreatePanel("products",w(5),h(200));
 
-  set_attr(msg.box,"ontop",20);
+  set_attr(msg.box,"ontop",Z_MBOX);
   raise(msg.box);
-  set_attr(alert.box,"ontop",100);
+  set_attr(alert.box,"ontop",Z_ALERT);
   raise(alert.box);
 
   chat_msg.box=create_msgbox(screen.width-w(403),screen.height-h(222),obj=obj+1,"chat msg",w(400),h(200),99999);
@@ -672,7 +678,7 @@ def Initialize
   set_attr(chat_msg.box,"highlight",1);
   set_attr(chat_msg.box,"clickable",1);
   set_attr(chat_msg.box,"draggable",1);
-  set_attr(chat_msg.box,"ontop",46);
+  set_attr(chat_msg.box,"ontop",Z_MBOX);
   raise(chat_msg.box);
 
   message(name.box,username);
@@ -690,7 +696,7 @@ def Initialize
   Msg("{hr}");
 
   card.book=create_book(w(5),h(140),obj=obj+1,"My Collection",BOOK_ROWS,BOOK_COLUMNS);
-  set_attr(card.book,"ontop",50);
+  set_attr(card.book,"ontop",Z_COLLECTION);
   raise(card.book);
   set_bgcolor(card.book,BKBGCOLOR);
   set_fgcolor(card.book,BKBRCOLOR);
@@ -709,7 +715,7 @@ def Initialize
 
   booster.box=create_cardbox(screen.width/2,screen.height/2,obj=obj+1,"Open booster");
   set_attr(booster.box,"compact",1);
-  set_attr(booster.box,"ontop",55);
+  set_attr(booster.box,"ontop",Z_BOOSTER);
 
   search.box=create_cardbox(screen.width/2,screen.height/2,obj=obj+1,"Deck search box");
   set_attr(search.box,"compact",1);
@@ -723,12 +729,12 @@ def Initialize
   set_attr(drag.box,"ontop",1);
 
   deck.box=create_listbox(screen.width-w(sum(DECKBOX_SIZE)+4),h(3),obj=obj+1,"Current Deck",100,("#","Name of the card",""),DECKBOX_SIZE,34,(1,0,1));
-  set_attr(deck.box,"ontop",50);
+  set_attr(deck.box,"ontop",Z_DLIST);
   raise(deck.box);
 
   info.box=create_cardbox(0,0,obj=obj+1,"Info");
   set_attr(info.box,"draggable",1);
-  set_attr(info.box,"ontop",59);
+  set_attr(info.box,"ontop",Z_ZOOM);
   raise(info.box);
   info.current=NULL;
   info.persistent=0;
@@ -2847,7 +2853,7 @@ def CreateHand
     y=y-220;
 
   hand[ARG[1]]=create_hand(ARG[3][0]-10,y,ARG[0],ARG[2]);
-  set_attr(hand[ARG[1]],"ontop",30);
+  set_attr(hand[ARG[1]],"ontop",Z_HAND);
   raise(hand[ARG[1]]);
 
   if(ARG[1]!=me)
@@ -2887,7 +2893,7 @@ def CreateActive
   set_attr(ARG[0],"compact",1);
   set_fgcolor(ARG[0],(0,200,4));
   set_attr(ARG[0],"highlight",1);
-  set_attr(ARG[0],"ontop",35);
+  set_attr(ARG[0],"ontop",Z_SASIDE);
   raise(ARG[0]);
   y=pop();
   x=pop();
@@ -2917,7 +2923,7 @@ def CreatePlayerIcon
 
   set_attr(ARG[0],"clickable",1);
   set_attr(ARG[0],"draggable",1);
-  set_attr(ARG[0],"ontop",1);
+  set_attr(ARG[0],"ontop",Z_MBOX);
   add_text(ARG[0],"{font4}{sz10}{shadow}"+ARG[1]);
   set_textalign(ARG[0],0);
   set_textvalign(ARG[0],2);
@@ -5951,7 +5957,7 @@ def KeyControlKeyB
 def KeyControlKeyP
 {
   TogglePanel("products");
-  set_attr(products.box,"ontop",45);
+  set_attr(products.box,"ontop",Z_PRODUCTMENU);
   raise(products.box);
 }
 
@@ -6530,7 +6536,7 @@ def Menu
   DelMenu();
   SaveMenuContext();
   menu=create_menu(mouse.x,mouse.y,menu.object,ARG[0],ARG[1]);
-  set_attr(menu,"ontop",60);
+  set_attr(menu,"ontop",Z_MENU);
   raise(menu);
 }
 
@@ -8941,7 +8947,7 @@ def InitializeScoreSystem
     set_textsize(score.object[p],20);
     set_textalign(score.object[p],2);
     set_textcolor(score.object[p],(0,242,20));
-    set_attr(score.object[p],"ontop",40);
+    set_attr(score.object[p],"ontop",Z_SCORE);
     set_attr(score.object[p],"sticky",1);
     raise(score.object[p]);
     mode_object{"watch"}=mode_object{"watch"}+(score.object[p],);
@@ -9033,7 +9039,7 @@ def CreateAvatar
   o=create_msgbox(ARG[3][0]-w(10),ARG[3][1]+h(32-2),obj=obj+1,"Player "+ARG[2],w(32+20),h(30),2);
   set_attr(o,"visible",0);
   set_attr(o,"clickable",1);
-  set_attr(o,"ontop",0);
+  set_attr(o,"ontop",Z_MBOX);
   set_textsize(o,9);
   set_textmargin(o,0);
   set_textalign(o,1);
@@ -10619,28 +10625,28 @@ def InitializePanelSystem
       (255,255,255),(255,255,255),(200,0,0),
       0,20,1,1,
       ("highlight","ontop"),
-      1),
+      Z_ALERT),
   );
   panel_structure{"messages"}=(
     ("msgbox","msg","msg.box",0,0,screen.width-10,h(130),
       (255,255,255),(255,255,255),NULL,
       0,12,0,0,
       ("ontop",),
-      99999),
+      Z_LOBBYCHAT),
   );
   panel_structure{"input"}=(
     ("msgbox","input","input.box",0,0,screen.width,h(16),
       INCOLOR,BRCOLOR,BGCOLOR,
       0,12,0,1,
       ("highlight","ontop"),
-      1),
+      Z_MBOX),
   );
   panel_structure{"products"}=(
     ("msgbox","products","products.box",0,screen.height,w(800),h(100),
       FGCOLOR,BRCOLOR,BGCOLOR,
       0,12,0,1,
       ("highlight","clickable","draggable"),
-      2),
+      Z_PRODUCTMENU),
   );
   panel_options{"player info"}=(,);
   panel_options{"alert"}=(,);
@@ -10882,7 +10888,7 @@ def UpdateProductsPanel
 
     set_attr(obj,"highlight",1);
     set_attr(obj,"clickable",1);
-    set_attr(obj,"ontop",45);
+    set_attr(obj,"ontop",Z_PRODUCTMENU+1);
     set_attr(obj,"dragparent",1);
     set_fgcolor(obj,BRCOLOR);
 
