@@ -10776,7 +10776,7 @@ def CreatePanel
       for(a)(p[14])
       {
         if(left(a,6)=="ontop=")
-          set_attr(o,"ontop",eval(toint(substr(a,6))));
+          set_attr(o,"ontop",toint(eval(substr(a,6))));
         else
           set_attr(o,a,1);
       }
