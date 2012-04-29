@@ -5163,7 +5163,7 @@ def KeyModifierDown
     c=CheckForCard();
     if(c!=NULL)
     {
-      if(find("ctrl",modifier) && Attr("flipid",c) != NULL)
+      if(find("ctrl",modifier) && length(Attr("flipid",c)))
         c=toint(Attr("flipid",c));
       replace_cardbox(info.box,c);
       info.current=c;

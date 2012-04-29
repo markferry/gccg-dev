@@ -342,14 +342,10 @@ sub read_conf
 
 	    my $cmd;
 
-	    if($servertype eq "game")
+	    if($servertype eq "game" && !exists $param{'port'})
 	    {
-		$cmd="$conf_game";
-		if (!$param{'port'})
-		{
-			$cmd="--port $port $cmd";
-			$port++;
-		}
+		$cmd="--port $port $conf_game";
+		$port++;
 	    }
 	    else
 	    {
