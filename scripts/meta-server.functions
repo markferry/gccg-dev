@@ -2894,6 +2894,8 @@ def CommandWhisper
 {
   if(length(ARG)<2)
     Reply("{red}You need to supply a name and message.");
+  else if(ARG[0] == User())
+    Reply("{red}Why are you talking to yourself?");
   else if(Con(ARG[0]) >= 0)
   {
     Reply("{gold}* you whisper to "+ARG[0]+": "+join(tail(ARG)," "));

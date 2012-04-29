@@ -44,6 +44,7 @@
 #
 # Colors:
 #
+# COLORS{colorname} - preset colors for RED, ORANGE, YELLOW, GREEN, BLUE, VIOLET, WHITE, BLACK
 # BGCOLOR - generic background color
 # FGCOLOR - generic foreground color
 # BRCOLOR - generic border color
@@ -157,6 +158,7 @@
 # player.marker_color - currently selected marker color
 # playmat.image - image number of the play mode background
 # playmat.object - object number of the play mode background
+# pm_name - name of current PM recipient
 # port - server port
 # price.default{rarity} - default prices for different rarities
 # products{product name} - list of products
@@ -222,7 +224,7 @@ Z_DLIST = 70;
 Z_COLLECTION = 70;
 Z_ALERT = 60;
 Z_SCORE = 50;
-Z_SASIDE = 40;
+Z_SETASIDE = 40;
 Z_HAND = 30;
 Z_MBOX = 20;
 Z_DECKS = 10;
@@ -275,6 +277,17 @@ DEFAULT_EXPORT_FORMAT="Gccg";
 
 # Color to use for highlighting touched objects.
 HIGHLIGHT_COLOR=(150,0,0);
+
+# Named colors
+COLORS=(,);
+COLORS{'RED'}=(250,0,0);
+COLORS{'ORANGE'}=(250,130,30);
+COLORS{'YELLOW'}=(220,220,0);
+COLORS{'GREEN'}=(0,230,0);
+COLORS{'BLUE'}=(0,0,250);
+COLORS{'VIOLET'}=(160,0,160);
+COLORS{'WHITE'}=(255,255,255);
+COLORS{'BLACK'}=(0,0,0);
 
 # List of counter colors in numeric order (0-indexed)
 COUNTER_COLORS=("Red","Green","Blue","Yellow","Orange","Black","White","Default",NULL,NULL);
@@ -545,6 +558,8 @@ def playerwants {
 
 modifier=" ";
 
+pm_name=NULL;
+
 #
 # FUNCTIONS WAITING FOR C++ IMPLEMENTATION
 # ========================================
@@ -719,7 +734,7 @@ def Initialize
 
   search.box=create_cardbox(screen.width/2,screen.height/2,obj=obj+1,"Deck search box");
   set_attr(search.box,"compact",1);
-  set_attr(search.box,"ontop",50);
+  set_attr(search.box,"ontop",Z_SETASIDE-1);
 
   select.box=create_cardbox(screen.width/2,screen.height/2,obj=obj+1,"Card select box");
   set_attr(select.box,"compact",1);
@@ -1056,7 +1071,9 @@ def SendMeta
 {
   if(mode!="" && mode !="offline")
   {
-    if(net_isopen(server.meta))
+    if(server.meta == NULL)
+      Msg("{red}Connection is already closed.");
+    elseif(net_isopen(server.meta))
       net_send(server.meta,ARG);
     else
       Msg("{red}Connection is already closed.");
@@ -1692,6 +1709,41 @@ HELP{"chat"}{"away"}=("text","toggle away status",NULL,
 "Marks you as away from the keyboard with the given text as an explantion. Without any arguments, removes away status.");
 
 #
+# ChatCommandPm(name) - Implementation of /pm command.
+#
+def ChatCommandPm
+{
+  if(!length(ARG))
+  {
+    if(pm_name != NULL)
+      EndPMSession();
+    else
+      Msg("{red}No session active.");
+  }
+  else if(ARG[0]==username)
+    Msg("{red}You can't PM yourself!");
+  else if(has_entry(ARG[0],avatar.object))
+  {
+    pm_name = ARG[0];
+    MsgChat("{hr}");
+    MsgChat("{orange}Hover over this box to whisper to "+ARG[0]);
+    if(!get_attr(chat_msg.box,"visible"))
+      Msg("Please press {yellow}F6{reset} to open the chat window.");
+  }
+  else
+    Msg("{red}No such user online.");
+}
+
+def EndPMSession
+{
+  pm_name = NULL;
+  MsgChat("{orange}PM session closed.");
+}
+
+HELP{"chat"}{"pm"}=("name","start private chat",NULL,
+"If {yellow}[name]{white} is online, start a chat session. Any message you enter while hovering the mouse over the chat box in the lower right will be a whisper directed to that user. You can end a session by typing {yellow}/pm{white} with no arguments, watching a game, or sending a message after the target signs off.");
+
+#
 # CommandRefresh() - Implementation of /refresh command.
 #
 def CommandRefresh
@@ -1750,6 +1802,8 @@ def CommandReconnect
       Send("RefreshChatRoom",NULL);
     }
   }
+  else
+    Msg("Connection is still open. Cannot reconnect.");
   c=pop();
 }
 HELP{"any"}{"reconnect"}=("","reconnect to server",NULL,
@@ -2893,7 +2947,7 @@ def CreateActive
   set_attr(ARG[0],"compact",1);
   set_fgcolor(ARG[0],(0,200,4));
   set_attr(ARG[0],"highlight",1);
-  set_attr(ARG[0],"ontop",Z_SASIDE);
+  set_attr(ARG[0],"ontop",Z_SETASIDE);
   raise(ARG[0]);
   y=pop();
   x=pop();
@@ -3007,15 +3061,21 @@ def Message
     {
       to_msg = 0;
       hilight = 0;
+
+      if(pm_name != NULL)
+      {
+        if(find("{red}No player '"+pm_name+"'",m)==0 || left(m,30)=="{red}Invalid command /whisper ")
+          EndPMSession();
+      }
       
-      if(substr(m,0,6)=="{blue}")
+      if(left(m,6)=="{blue}")
         to_msg = 1;
-      elseif(substr(m,0,23)=="{gold}* you whisper to ")
+      elseif(left(m,23)=="{gold}* you whisper to ")
       {
         to_msg = 1;
         hilight = 1;
       }
-      elseif(substr(m,0,6)=="{gold}" && find("whispers:",m))
+      elseif(left(m,6)=="{gold}" && find("whispers:",m))
       {
         to_msg = 1;
         hilight = 2;
@@ -3908,13 +3968,14 @@ def StartWatchMode
   deck_content=(,);
   ShowPlaymat();
   raise(chat_msg.box);
+  if(pm_name != NULL)
+    EndPMSession();
   MsgChat(" ");
   MsgChat("{hr}");
-  MsgChat("main chat");
+  MsgChat("main chat: hover over this box to talk");
   MsgChat("{hr}");
   MsgChat(" ");
 }
-
 #
 # LeaveWatchMode() - Cleaning operations when leaving watch mode.
 #
@@ -5369,10 +5430,15 @@ def KeyReturn
 
       if(left(i,1)=="/")
         SlashCommand(i);
-      else
+      else if(length(i))
       {
         if(object.number==chat_msg.box)
-          net_send(server.meta,("Say",i));
+        {
+          if(pm_name != NULL)
+            net_send(server.meta,("Command","/whisper "+pm_name+" "+i));
+          else
+            net_send(server.meta,("Say",i));
+        }
         else
           Say(i);
       }
@@ -6264,9 +6330,15 @@ def PlayKeyControlKeyF
   if(object.number == hand[me])
   {
     if(has_text(object.number,"{shadow}{orange}Revealed"))
+    {
+      set_fgcolor(object.number,COLORS{'ORANGE'});
       del_text(object.number,"{shadow}{orange}Revealed");
+    }
     else
+    {
+      set_fgcolor(object.number,COLORS{'GREEN'});
       add_text(object.number,"{shadow}{orange}Revealed");
+    }
   }
 }
 
@@ -7001,9 +7073,9 @@ def MenuByContext
       m=(("Show player info","/whois "+p,""),("Show want list","/want "+p,""),("Show have list","/have "+p,""),("{hr}","",""));
 
       if(p==username)
-        m=m+(("Mark away","/away Away",""),("Mark here","/away",""));
+        m=m+(("{gray}Start private chat","",""),("Mark away","/away Away",""),("Mark here","/away",""));
       else
-        m=m+(("{gray}Mark away","",""),("{gray}Mark here","",""));
+        m=m+(("Start private chat","/pm "+p,""),("{gray}Mark away","",""),("{gray}Mark here","",""));
 
       Menu("Player: "+p,m);
       m=pop();
@@ -7050,7 +7122,9 @@ def ConstructMenu
   q=(,);
   m=(,);
   
-  if(!net_isopen(server.meta))
+  if(server.meta==NULL)
+    m=((1,"{red}Reconnect to server","/reconnect",""),(1,"{hr}","",""),);
+  elseif(!net_isopen(server.meta))
     m=((1,"{red}Reconnect to server","/reconnect",""),(1,"{hr}","",""),);
 
 # Construct menu list 'm'
@@ -10624,29 +10698,29 @@ def InitializePanelSystem
     ("msgbox","alert","alert.box",0,0,w(400),h(50),
       (255,255,255),(255,255,255),(200,0,0),
       0,20,1,1,
-      ("highlight","ontop"),
-      Z_ALERT),
+      ("highlight","ontop=Z_ALERT"),
+      1),
   );
   panel_structure{"messages"}=(
-    ("msgbox","msg","msg.box",0,0,screen.width-10,h(130),
+    ("msgbox","msg","msg.box",0,0,screen.width-w(10),h(130),
       (255,255,255),(255,255,255),NULL,
       0,12,0,0,
-      ("ontop",),
-      Z_LOBBYCHAT),
+      ("ontop=Z_LOBBYCHAT",),
+      10000),
   );
   panel_structure{"input"}=(
     ("msgbox","input","input.box",0,0,screen.width,h(16),
       INCOLOR,BRCOLOR,BGCOLOR,
       0,12,0,1,
-      ("highlight","ontop"),
+      ("highlight","ontop=Z_MBOX"),
       1),
   );
   panel_structure{"products"}=(
     ("msgbox","products","products.box",0,screen.height,w(800),h(100),
       FGCOLOR,BRCOLOR,BGCOLOR,
       0,12,0,1,
-      ("highlight","clickable","draggable"),
-      Z_PRODUCTMENU),
+      ("highlight","clickable","draggable","ontop=Z_PRODUCTMENU"),
+      1),
   );
   panel_options{"player info"}=(,);
   panel_options{"alert"}=(,);
@@ -10700,7 +10774,12 @@ def CreatePanel
       set_attr(o,"visible",0);
       set_attr(o,"ontop",0);
       for(a)(p[14])
-        set_attr(o,a,1);
+      {
+        if(left(a,6)=="ontop=")
+          set_attr(o,"ontop",eval(toint(substr(a,6))));
+        else
+          set_attr(o,a,1);
+      }
 
 # Attach.
       if(root==NULL)
