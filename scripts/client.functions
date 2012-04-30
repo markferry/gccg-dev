@@ -3415,24 +3415,35 @@ def SetActive
 #
 def SetHand
 {
+  push(e);
+  e=0;
+
+  if(!get_attr(hand[ARG[0]],"tiny"))
+  {
+# if the hand started out face-down and expanded, you've willfully asked for it to be that way
+# so don't shrink even if it remains face-down afterwards (probably because of a shuffle)
+    for(c)(hand(hand[ARG[0]]))
+    {
+      if(card_back(c)==c)
+       e=1;
+    }
+  }
   repeat(length(hand(hand[ARG[0]])),"del_hand(hand[ARG[0]],0)");
   forall("put_hand(hand[ARG[0]],#)",ARG[1]);
   if(ARG[0]!=me)
   {
-    push(r);
     push(d);
     push(n);
-    r=0;
+# if someone else's hand contains face up cards, clearly it should be expanded so we can see them
     for(c)(ARG[1])
     {
       if(card_back(c)!=c)
-       r=1;
+       e=1;
     }
 
     d=object_data(hand[ARG[0]]);
 
-# Hide
-    if(r==0)
+    if(!e)
     {
       set_attr(hand[ARG[0]],"tiny",1);
       n=object_data(hand[ARG[0]]);
@@ -3441,7 +3452,6 @@ def SetHand
     }
     else
     {
-# Reveal
       set_attr(hand[ARG[0]],"tiny",0);
       n=object_data(hand[ARG[0]]);
       if(n[0]+n[2] > screen.width)
@@ -3449,8 +3459,8 @@ def SetHand
     }
     n=pop();
     d=pop();
-    r=pop();
   }
+  e=pop();
 }
 
 #

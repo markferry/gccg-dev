@@ -85,6 +85,7 @@ GAME_MENU{"Main Menu - Play"}=(
  (1,"Select Token Type...","","TokenSubmenu()"),
  (1,"Innistrad Transformed Card...","","ISDSubmenu()"),
  (1,"Dark Ascension Transformed Card...","","DKASubmenu()"),
+ (1,"Select Emblem...","","EmblemSubmenu()"),
  (1,"{hr}","",""),
  (1,"Play Jitte Counter","",'Send("Transfer",(1,("out.of.play",7),("play",0)))'),
  (1,"Play Storm Counter","",'Send("Transfer",(1,("out.of.play",8),("play",0)))'),
@@ -299,6 +300,17 @@ def DKASubmenu
   ("{green}Scorned Villager -> Moonscarred Werewolf","",'Send("Transfer",(1,("out.of.play",156),("play",0)))'),
   ("{blue}Soul Seizer -> Ghastly Haunting","",'Send("Transfer",(1,("out.of.play",157),("play",0)))'),
   ("{green}Wolfbitten Captive -> Krallenhorde Killer","",'Send("Transfer",(1,("out.of.play",158),("play",0)))'),
+  ));
+}
+
+def EmblemSubmenu 
+{
+  Submenu("Select Emblem",(
+  ("Elspeth, Knight-Errant","",'Send("Transfer",(1,("out.of.play",167),("play",0)))'),
+  ("Koth of the Hammer","",'Send("Transfer",(1,("out.of.play",168),("play",0)))'),
+  ("Sorin, Lord of Innistrad","",'Send("Transfer",(1,("out.of.play",169),("play",0)))'),
+  ("Tamiyo, the Moon Sage","",'Send("Transfer",(1,("out.of.play",170),("play",0)))'),
+  ("Venser, the Sojourner","",'Send("Transfer",(1,("out.of.play",171),("play",0)))'),
   ));
 }
 

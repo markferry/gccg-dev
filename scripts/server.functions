@@ -2643,7 +2643,7 @@ def ShuffleDeck
         push(player);
         player=o;
         SendTeam("SetHand",(player,hand[player]));
-        SendOpp("SetHand",(player,card_back(hand[player]))));
+        SendOpp("SetHand",(player,card_back(hand[player])));
         player=pop();
       }
       else

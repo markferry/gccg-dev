@@ -57,4 +57,3 @@ def CommandHand
 
 HELP{"any"}{"hand"}=("[n]","generate sample hand",NULL,
 "Shuffle up the deck and deal out a sample hand of {yellow}n{white} cards, for testing your deck's consistency without having to go to a table. If not specified, {yellow}n{white} is 7.");
-
