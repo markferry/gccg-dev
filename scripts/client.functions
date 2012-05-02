@@ -96,6 +96,7 @@
 # con - connection number causing event
 # deck - my playdeck object number
 # deck.box - object number of deck editing list
+# deck.groups{groupname} - contains decknames in each category
 # decks{deckname}{part} - decks available (each part, i.e. "deck","sideboard", etc. contains list of card numbers)
 # deck.name - name of the currently selected deck or NULL if not selected
 # deck.objects[player]{name} - object numbers of the decks
@@ -442,6 +443,8 @@ HELP{"chat"}{"users"}=("pattern","list of users",NULL,
 "Show list of all users matching wildcard {yellow}pattern{white} or all users if not given. The total number of users matching is shown instead if the list is too long.");
 HELP{"chat"}{"want"}=("player","show player's want list",NULL,
 "Asks the meta server for the want list of the given {yellow}player{white}. The have list contains all cards which he or she have marked as wanted. The cards you have for sale or you have more than {yellow}trade_limit{white}, are shown in green.");
+HELP{"chat"}{"whisper"}=("player, message","whisper to user",NULL,
+"Send a {yellow}message{white} that only the given {yellow}player{white} will receive.");
 HELP{"chat"}{"whois"}=("player","show player info",NULL,
 "Ask the meta server to describe a {yellow}player{white}. The personal data (realname, email, plan) set by the player is shown as well as his/her wealth and game play history.");
 HELP{"chat"}{"kick"}=("player","disconnect player",("God","Guard"),
@@ -842,6 +845,8 @@ def SaveAll
     save("deck.name");
   if(decks != NULL)
     save("decks");
+  if(deck.groups != NULL)
+    save("deck.groups");
   if(price.default != NULL)
     save("price.default");
   save("options");
@@ -4865,6 +4870,123 @@ def CreateEmptyDeck
 }
 
 #
+# ChatCommandAddgroup(name) - Create the named deck group.
+#
+def CommandAddgroup
+{
+  if(length(ARG))
+  {
+    gn = join(ARG," ");
+    if(has_entry(gn,deck.groups))
+      Msg("{red}You already have that deck group.");
+    else
+    {
+      deck.groups{gn}=(,);
+      Msg("Deck group '"+gn+"' added.");
+    }
+  }
+  else
+    Msg("{red}Please specify a name for the deck grouping.");
+}
+
+#
+# ChatCommandDelgroup(name) - Remove a deck group. Any decks therein will still exist, ungrouped.
+#
+def ChatCommandDelgroup
+{
+  if(!length(ARG))
+    Msg("{red}Please specify which group you want to delete.");
+  else
+  {
+    gn = join(ARG," ");
+    if(has_entry(gn,deck.groups))
+    {
+      deck.groups=del_entry(gn,deck.groups);
+      Msg("Deck group '"+gn+"' removed.");
+    }
+    else
+      Msg("{red}You don't have that deck group.");
+  }
+}
+
+#
+# GroupOf(deck name) - Return group containing the given deck name.
+# Return empty string if deck is not in a group.
+#
+def GroupOf
+{
+  return("");
+  push(g);
+  for(g)(keys(deck.groups))
+    if(find(ARG,deck.groups{g}) != NULL)
+      return(g);
+  g=pop();
+}
+
+#
+# AddDeckToGroup(group name) - Put the current deck in the specified group.
+#
+def AddDeckToGroup
+{
+  if(deck.name==NULL)
+    Msg("{red}No deck selected.");
+  else if(!has_entry(ARG,deck.groups))
+    Msg("{red}No such group.");
+  else
+  {
+    RemoveDeckFromGroup(1);
+    deck.groups{ARG}=deck.groups{ARG}+(deck.name,);
+    Msg("Deck '"+deck.name+"' added to group '"+ARG+"'.");
+  }
+}
+
+#
+# RemoveDeckFromGroup(silent?) - Take the current deck out of whatever group it's in.
+#
+def RemoveDeckFromGroup
+{
+  if(deck.name==NULL)
+    Msg("{red}No deck selected.");
+  else
+  {
+    push(g);
+    g=GroupOf(deck.name);
+    if(length(g))
+    {
+      deck.groups{g}=select("#!=deck.name",deck.groups{g});
+      if(!ARG)
+        Msg("Deck '"+deck.name+"' removed from the group '"+g+"'.");
+    }
+    g=pop();
+  }
+}
+
+def WatchCommandAddgroup
+{
+  ChatCommandAddgroup(ARG);
+}
+
+def WatchCommandDelgroup
+{
+  ChatCommandDelgroup(ARG);
+}
+
+def OfflineCommandAddgroup
+{
+  ChatCommandAddgroup(ARG);
+}
+
+def OfflineCommandDelgroup
+{
+  ChatCommandDelgroup(ARG);
+}
+
+HELP{"chat"}{"addgroup"}=("groupname","Add a new deck group",NULL,
+"Create a deck group with the given name. You can use deck groups to help organize similar decks.");
+HELP{"chat"}{"delgroup"}=("groupname","Remove a deck group",NULL,
+"If there is a deck group with the given name, remove it. Any decks you have in that group will not be deleted, but they will reappear in the main deck selection menu.");
+
+#
 # TEXT INPUT AND EDIT
 # ===================
 
@@ -5896,6 +6018,7 @@ def KeyEscape
   elseif(o==deck.box)
   {
     save("decks");
+    save("deck.groups");
     save("deck.name");
     set_attr(deck.box,"visible",0);
   }
@@ -6045,7 +6168,7 @@ def ChatKeyControlKeyE
   if(get_attr(deck.box,"visible"))
     set_attr(deck.box,"visible",0);
   else if(deck.name==NULL || !has_entry(deck.name,decks))
-      ChooseDeckMenu();
+      ChooseDeckMenu("");
   else
   {
     cards_missing=listbox_set_deck(deck.box,decks{deck.name},card.book);
@@ -6072,7 +6195,7 @@ def OfflineKeyControlKeyE
 #
 def ChatKeyControlKeyD
 {
-  ChooseDeckMenu();
+  ChooseDeckMenu("");
 }
 
 #
@@ -6641,14 +6764,55 @@ def DelMenu
 }
 
 #
-# ChooseDeckMenu() - Choose a deck.
+# ChooseDeckMenu(group name) - Choose a deck. If group name is given, only show decks from that group.
 #
 def ChooseDeckMenu
 {
-  if(length(decks) > 0)
-    Menu("Choose a deck",forall("(#,)",keys(decks)));
+  if(length(decks))
+  {
+    if(length(ARG))
+    {
+      if(!has_entry(ARG,deck.groups))
+        Msg("{red}ERROR: No such group.");
+      else if(!length(deck.groups{ARG}))
+        Msg("{red}No decks in the group.");
+      else
+      {
+        push(l);
+        l=(("{blue}<back>","","ChooseDeckMenu('')"),);
+        l=l+forall("(#,)",sort(deck.groups{ARG}));
+        Menu("Choose a deck",l);
+      }
+    }
+    else
+    {
+      push(l);
+      l=forall("('{green}'+#,'','ChooseDeckMenu(#)')",select("length(#)",keys(deck.groups)));
+      l=l+forall("(#,)",select("!length(GroupOf(#))",keys(decks)));
+      Menu("Choose a deck",l);
+      l=pop();      
+    }
+  }
   else
     Msg("{red}No decks available.");
+}
+
+#
+# ChooseGroupMenu() - Choose a group to put the current deck in.
+#
+def ChooseGroupMenu
+{
+  if(deck.name==NULL)
+    Msg("No deck selected.");
+  else if(!length(deck.groups))
+    Msg("You have no deck groups. You can create one by typing {yellow}/addgroup [groupname]{white}.");
+  else
+  {
+    push(l);
+    l=forall("('{green}'+#,'','AddDeckToGroup(#)')",keys(deck.groups));
+    l=l+(("{blue}New group...","","Msg('You can create a new group by typing {yellow}/addgroup [groupname]{white}.')"),);
+    Menu("Choose a group",l);
+  }
 }
 
 #
@@ -7238,8 +7402,13 @@ def CurrentDeckMenu
   }
   else
   {
-    m=m+(("Destroy this deck","","DeleteDeck(deck.name)"),("Select another deck","Ctrl+D",""),("Export deck","Ctrl+X",""));
-    if(length(OtherDeckFormats())>0)
+    m=m+(("Destroy this deck","","DeleteDeck(deck.name)"),("Select another deck","Ctrl+D",""),("Export deck","Ctrl+X",""),("Move deck to a group...","","ChooseGroupMenu()"));
+    if(length(GroupOf(deck.name)))
+      m=m+(("Remove deck from group","","RemoveDeckFromGroup(0)"),);
+    else
+      m=m+(("{gray}Remove deck from group","",""),);
+    
+    if(length(OtherDeckFormats()))
       m=m+(("Export deck as...","","ExportDeckMenu()"),);
     else
       m=m+(("{gray}Export deck as...","",""),);
@@ -10635,8 +10804,12 @@ def ASCIIFormatSuffix
 def ExportToFile
 {
   push(f);
+  push(g);
   push(s);
   f=tofilename(ARG[1]);
+  g=GroupOf(ARG[1]);
+  if(length(g))
+    f=tofilename(g)+"/"+f;
   
   if(!isfunction(tofnc(ARG[2])+"FormatSuffix"))
     execute(tofnc(ARG[2])+".format");
@@ -10651,6 +10824,7 @@ def ExportToFile
   Msg("Done.");
 
   s=pop();
+  g=pop();
   f=pop();
 }
 

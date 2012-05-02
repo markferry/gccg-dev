@@ -168,6 +168,8 @@ trigger "init" "game" code
     load("deck.name");
     if(!load("decks"))
       decks=(,);
+    if(!load("deck.groups"))
+      deck.groups=(,);
     SelectDeck(deck.name);
 
     InitializeConnection();
