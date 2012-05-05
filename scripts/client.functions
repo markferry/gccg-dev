@@ -1211,6 +1211,11 @@ def DeleteDeck
 {
   if(has_entry(ARG,decks))
   {
+#   remove group reference if applicable
+    g=GroupOf(ARG);
+    if(length(g)>0)
+      deck.groups{g}=deck.groups{g}-(ARG,);
+      
     decks=del_entry(ARG,decks);
     book_set_deck(card.book,NewDeck());
     cards_missing=listbox_set_deck(deck.box,NewDeck(),card.book);
@@ -2151,6 +2156,11 @@ def ChatCommandRenamedeck
 {
   if(deck.name != NULL && has_entry(deck.name,decks) && length(ARG)>=1)
   {
+#   update group reference if applicable
+    g=GroupOf(deck.name);
+    if(length(g)>0)
+      deck.groups{g}=(deck.groups{g}-(deck.name,))+(join(ARG," "),);
+      
     decks{join(ARG," ")}=decks{deck.name};
     decks=del_entry(deck.name,decks);
     SelectDeck(join(ARG," "));
@@ -2231,7 +2241,7 @@ HELP{"any"}{"find"}=("card_name","search for a card",NULL,
 #
 def CommandSets
 {
-  if(length(ARG))
+  if(length(ARG)>0)
   {
     push(c);
     c=images(join(ARG," "));
@@ -2470,7 +2480,7 @@ def ChatCommandBuy
 {
   push(p);
   push(n);
-  if(length(ARG))
+  if(length(ARG)>0)
   {
     if(tostr(toint(ARG[0]))==ARG[0])
     {
@@ -4874,7 +4884,7 @@ def CreateEmptyDeck
 #
 def CommandAddgroup
 {
-  if(length(ARG))
+  if(length(ARG)>0)
   {
     gn = join(ARG," ");
     if(has_entry(gn,deck.groups))
@@ -4951,9 +4961,9 @@ def RemoveDeckFromGroup
   {
     push(g);
     g=GroupOf(deck.name);
-    if(length(g))
+    if(length(g)>0)
     {
-      deck.groups{g}=select("#!=deck.name",deck.groups{g});
+      deck.groups{g}=deck.groups{g}-(deck.name,);
       if(!ARG)
         Msg("Deck '"+deck.name+"' removed from the group '"+g+"'.");
     }
@@ -6768,9 +6778,9 @@ def DelMenu
 #
 def ChooseDeckMenu
 {
-  if(length(decks))
+  if(length(decks)>0)
   {
-    if(length(ARG))
+    if(length(ARG)>0)
     {
       if(!has_entry(ARG,deck.groups))
         Msg("{red}ERROR: No such group.");
@@ -6875,7 +6885,7 @@ def ApplyImportDeck
       {
         Msg("{red}Import failed: "+d+".");
         d=NULL;
-        if(length(flatten(values(import.deck))))
+        if(length(flatten(values(import.deck)))>0)
           d=import.deck;
       }
       else
@@ -7403,12 +7413,12 @@ def CurrentDeckMenu
   else
   {
     m=m+(("Destroy this deck","","DeleteDeck(deck.name)"),("Select another deck","Ctrl+D",""),("Export deck","Ctrl+X",""),("Move deck to a group...","","ChooseGroupMenu()"));
-    if(length(GroupOf(deck.name)))
+    if(length(GroupOf(deck.name))>0)
       m=m+(("Remove deck from group","","RemoveDeckFromGroup(0)"),);
     else
       m=m+(("{gray}Remove deck from group","",""),);
     
-    if(length(OtherDeckFormats()))
+    if(length(OtherDeckFormats())>0)
       m=m+(("Export deck as...","","ExportDeckMenu()"),);
     else
       m=m+(("{gray}Export deck as...","",""),);
@@ -10808,7 +10818,7 @@ def ExportToFile
   push(s);
   f=tofilename(ARG[1]);
   g=GroupOf(ARG[1]);
-  if(length(g))
+  if(length(g)>0)
     f=tofilename(g)+"/"+f;
   
   if(!isfunction(tofnc(ARG[2])+"FormatSuffix"))
