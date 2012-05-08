@@ -6343,9 +6343,6 @@ def PlayKeyDelete
     InputKeyDelete();
   else
   {
-    if(search.source==discard)
-      ClearSearchbox();
-
     if(options{"discard_attached"}=="yes" && card.number!=NULL)
     {
       push(object.number);
@@ -6403,11 +6400,7 @@ def PlayKeyHome
   if(input!="")
     InputKeyHome();
   else
-  {
-    if(search.source==deck)
-      ClearSearchbox();
     TryTransferTo("deck.top",deck);
-  }
 }
 
 #
@@ -6692,8 +6685,6 @@ def PlayKeyControlKeyDelete
 #
 def PlayKeyControlKeyHome
 {
-  if(search.source==deck)
-    ClearSearchbox();
   TryTransferTo("deck.bottom",deck);
 }
 
