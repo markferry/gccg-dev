@@ -680,7 +680,10 @@ def Initialize
 
   CreatePanel("alert",screen.width/2-w(200),h(100));
   CreatePanel("messages",w(5),h(5));
-  CreatePanel("input",0,screen.height-h(16));
+  if(options{"input"}=="top")
+    CreatePanel("input",0,0);
+  else
+    CreatePanel("input",0,screen.height-h(16));
   CreatePanel("player info",w(5),screen.height-h(90));
   CreatePanel("products",w(5),h(200));
 
@@ -2354,10 +2357,19 @@ def CommandSet
     options{ARG[0]}=a;
     Msg("Setting option {green}"+ARG[0]+"{white}="+tostr(a));
     Send("Set",(ARG[0],a));
+    
+#   Some settings have immediate effect
     if(ARG[0]=="avatar" && a!="sleep")
     {
       avatar{username}=a;
       save("avatar");
+    }    
+    if(ARG[0]=="input")
+    {
+      if(a=="top")
+        CreatePanel("input",0,0);
+      else
+        CreatePanel("input",0,screen.height-h(16));
     }
   } 
   a=pop();
@@ -2365,7 +2377,22 @@ def CommandSet
 }
 
 HELP{"chat"}{"set"}=("var,value","change settings",NULL,
-"Without arguments, this command lists all options currently set. Otherwise it can be used to fine tune operating parameters of the client or the server. All settings are offered to the server. If the server accepts the setting, i.e. the given variable {yellow}var{white} is meaningful to the server, then the server side option is set to {yellow}value{white}. In any case, client-side option is set to the {yellow}value{white}.\nThe list of client-side options follows:\n  {green}nosound {yellow}<s>{white} - if set to 'yes', all sounds are disabled\n  {green}noalert {yellow}<s>{white} - if set to 'yes', visual alerts are disabled\n  {green}log {yellow}<s>{white} - if set to 'yes', print messages to stdout.\n  {green}trade_limit {yellow}<n>{white} - if you own more than {yellow}n{white} copies of the given card, consider these extra cards as tradeable (default 4)\n  {green}price {yellow}'higher'/'lower'/'same'/'default'{white} - when selling first card or pressing enter, choose price according to this setting (default 'same')\nThe list of server-side options:\n  {green}avatar {yellow}<image>{white} - choose an image presenting you (see graphics/avatar)\n{green}  email {yellow}<s>{white} - set your email address shown by /whois command to {yellow}s{white}\n  {green}plan {yellow}<s>{white} - set additional information shown by /whois command to {yellow}s{white}\n  {green}realname {yellow}<s>{white} - set your real name shown by /whois command to {yellow}s{white}\n");
+"Without arguments, this command lists all options currently set. "
++"Otherwise it can be used to fine tune operating parameters of the client or the server. "
++"All settings are offered to the server. If the server accepts the setting, it will be stored there as well. "
++"In any case, client-side option is set to {yellow}value{white}.\n"
++"The list of client-side options:\n"
++"  {green}nosound {yellow}<s>{white} - if set to 'yes', all sounds are disabled\n"
++"  {green}noalert {yellow}<s>{white} - if set to 'yes', visual alerts are disabled\n"
++"  {green}log {yellow}<s>{white} - if set to 'yes', print messages to stdout.\n"
++"  {green}trade_limit {yellow}<n>{white} - if you own more than {yellow}n{white} copies of the given card, consider these extra cards as tradeable (default 4)\n"
++"  {green}price {yellow}'higher'/'lower'/'same'/'default'{white} - when selling first card or pressing enter, choose price according to this setting (default 'higher')\n"
++"  {green}input {yellow}<s>{white} - if set to 'top', the input bar for text will be at the top of the screen instead of the bottom\n"
++"The list of server-side options:\n"
++"  {green}avatar {yellow}<image>{white} - choose an image representing you (see graphics/avatar)\n"
++"  {green}email {yellow}<s>{white} - set your email address shown by /whois command to {yellow}s{white}\n"
++"  {green}plan {yellow}<s>{white} - set additional information in /whois output to {yellow}s{white}\n"
++"  {green}realname {yellow}<s>{white} - set your real name shown by /whois command to {yellow}s{white}\n");
 
 #
 # CommandLoadimages() - Implementation of /loadimages command.
@@ -4834,7 +4861,7 @@ def EditDel
     else if(typeof(ARG[1])=="integer")
       d=select("#==ARG[1]",decks{deck.name}{ARG[0]});
     else
-      Msg("{red}Can't delete "+tostr(ARG[1])+" from the deck (this is an uncatched bug in Gccg).");
+      Msg("{red}Can't delete "+tostr(ARG[1])+" from the deck (this is an uncaught bug in Gccg).");
     if(length(d)>0)
     {
       decks{deck.name}{ARG[0]}=decks{deck.name}{ARG[0]}-d+head(d);
@@ -4904,7 +4931,7 @@ def CommandAddgroup
 #
 def ChatCommandDelgroup
 {
-  if(!length(ARG))
+  if(length(ARG)<1)
     Msg("{red}Please specify which group you want to delete.");
   else
   {
@@ -7301,6 +7328,10 @@ def ConstructMenu
     m=((1,"{red}Reconnect to server","/reconnect",""),(1,"{hr}","",""),);
   elseif(!net_isopen(server.meta))
     m=((1,"{red}Reconnect to server","/reconnect",""),(1,"{hr}","",""),);
+  elseif(server==NULL && mode=="play")
+    m=((1,"{red}Go back to main server","","SetMode('chat')"),(1,"{hr}","",""),);
+  elseif(!net_isopen(server) && mode=="play")
+    m=((1,"{red}Go back to main server","","SetMode('chat')"),(1,"{hr}","",""),);
 
 # Construct menu list 'm'
 
@@ -10986,6 +11017,24 @@ def CreatePanel
     o=pop();
     r=pop();
     root=pop();
+  }
+  else
+# Panel already exists. Move existing panel.
+  {
+    push(o);
+    push(p);
+    for(o)(length(panel_structure{ARG[0]}))
+    {
+#     Note the two different containers:
+#       panel_structure contains the specifications for putting objects in a panel;
+#       panel_objects contains their actual object numbers currently in use
+      p=panel_structure{ARG[0]}[o];
+      x=ARG[1]+p[3];
+      y=ARG[2]+p[4];
+      move_object(panel_objects{ARG[0]}[o],x,y);
+    }
+    p=pop();
+    o=pop();
   }
 }
 
