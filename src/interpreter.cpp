@@ -297,8 +297,7 @@ Data Table::deck(const Data& args)
 
 /// del_deck_top(d) - Remove a card from the top of the deck
 /// $d$. Return card number if successful and {\tt NULL} if
-/// not. $h$. Return {\tt NULL} if $i$ is not a valid index. Otherwise
-/// return card number of the removed card.
+/// not.
 Data Table::del_deck_top(const Data& args)
 {
     int dck;
@@ -311,6 +310,31 @@ Data Table::del_deck_top(const Data& args)
     {
 	int w=deck->grp.w,h=deck->grp.h;
 	int ret=deck->DelTop();
+
+	deck->RecalculateSize();
+	Refresh(deck->grp.x,deck->grp.y,w,h);
+
+	return(ret);
+    }
+	
+    return Null;
+}
+
+/// del_deck_bottom(d) - Remove a card from the bottom of the deck
+/// $d$. Return card number if successful and {\tt NULL} if
+/// not.
+Data Table::del_deck_bottom(const Data& args)
+{
+    int dck;
+	
+    dck=GetInteger("del_deck_bottom",args);
+
+    OBJECTVAR(deck,Deck,dck);
+
+    if(deck->Size())
+    {
+	int w=deck->grp.w,h=deck->grp.h;
+	int ret=deck->DelBottom();
 
 	deck->RecalculateSize();
 	Refresh(deck->grp.x,deck->grp.y,w,h);
@@ -479,7 +503,7 @@ Data Table::clear_msgbox(const Data& args)
     
     box->Clear();
     Refresh(box);
-
+    
     return Null;
 }
 
@@ -1216,6 +1240,39 @@ Data Table::msgbox_search(const Data& args)
     for(i = text.begin(); i < text.end(); i++)
       if ((*i).find(str)!=string::npos)
         ret.AddList(*i);
+
+    return ret;
+}
+
+/// msgbox_tail(o,l) - Returns the last $l$ lines of the message box $o$. If $o$ has fewer 
+/// than $l$ lines, returns entire history of $o$. Returns {\tt NULL} if $o$ is not a message box
+/// or if $l$ is zero or negative.
+Data Table::msgbox_tail(const Data& args)
+{
+    if(!args.IsList() || args.Size() != 2 || !args[0].IsInteger() || !args[1].IsInteger())
+	ArgumentError("msgbox_tail",args);
+
+    Object* obj=GetObject("msgbox_tail",args[0]);
+    int n=args[1].Integer();
+
+    if(obj->Type() != TypeMessageBox || n <= 0)
+	return Null;
+	
+    MessageBox* box=dynamic_cast<MessageBox*>(obj);
+    
+    Data ret;
+    ret.MakeList();
+    
+    deque<string> text = box->Messages();
+    deque<string>::iterator i;
+    
+    if(n >= text.size())
+      i = text.begin();
+    else
+      i = text.end() - n;
+    
+    while(i != text.end())
+        ret.AddList(*i++);
 
     return ret;
 }
@@ -3490,6 +3547,7 @@ void Table::InitializeLibrary()
     parser.SetFunction("del_cardbox_all_recenter",&Table::del_cardbox_all_recenter);
     parser.SetFunction("del_cardbox_recenter",&Table::del_cardbox_recenter);
     parser.SetFunction("del_deck",&Table::del_deck);
+    parser.SetFunction("del_deck_bottom",&Table::del_deck_top);
     parser.SetFunction("del_deck_top",&Table::del_deck_top);
     parser.SetFunction("del_hand",&Table::del_hand);
     parser.SetFunction("del_marker",&Table::del_marker);
@@ -3522,6 +3580,7 @@ void Table::InitializeLibrary()
     parser.SetFunction("move_object",&Table::move_object);
     parser.SetFunction("msgbox_scroll",&Table::msgbox_scroll);
     parser.SetFunction("msgbox_search",&Table::msgbox_search);
+    parser.SetFunction("msgbox_tail",&Table::msgbox_tail);
     parser.SetFunction("object_data",&Table::object_data);
     parser.SetFunction("object_name",&Table::object_name);
     parser.SetFunction("object_type",&Table::object_type);

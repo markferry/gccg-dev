@@ -32,12 +32,8 @@ if(meta.server=="NO.DEFAULT.SERVER.FOR.THIS.GAME")
 #
 def InitServerHook
 {
- for(i)(ARG)
- {
-  visible.me[i]{"exile"}=1;
-  visible.opp[i]{"exile"}=1;
- }
- if(server_flags == NULL) server_flags = " ";
+  GAME_PILES{'exile'}=("public",);
+  if(server_flags == NULL) server_flags = (,);
 }
 
 #
@@ -47,7 +43,7 @@ def SetUpPlayer
 {
   CreateDeck(ARG,"deck",40,50);
   CreateDeck(ARG,"discard pile",40,160);
-  CreateDeck(ARG,"sideboard",40,250);
+#  CreateDeck(ARG,"sideboard",40,250);
   CreateDeck(ARG,"exile",40,250);
 }
 

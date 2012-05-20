@@ -290,9 +290,18 @@ COLORS{'VIOLET'}=(160,0,160);
 COLORS{'WHITE'}=(255,255,255);
 COLORS{'BLACK'}=(0,0,0);
 
-# List of counter colors in numeric order (0-indexed)
-COUNTER_COLORS=("Red","Green","Blue","Yellow","Orange","Black","White","Default",NULL,NULL);
-DEFAULT_COUNTER_COLOR=7;
+# Marker colors
+MARKER_COLOR=array(10);
+
+MARKER_COLOR[0]="Red";
+MARKER_COLOR[1]="Green";
+MARKER_COLOR[2]="Blue";
+MARKER_COLOR[3]="Orange";
+MARKER_COLOR[4]="Yellow";
+MARKER_COLOR[5]="Black";
+MARKER_COLOR[6]="White";
+MARKER_COLOR[7]="Default";
+DEFAULT_MARKER_COLOR=7;
 
 # Default book order.
 BOOK_DEFAULT_SORT=("[age]","[name]");
@@ -510,7 +519,7 @@ function{"Null"}="Null";
 function{"Play"}="Play";
 function{"PlaySound"}="PlaySound";
 function{"PutActive"}="PutActive";
-function{"PutDeck"}="PutDeck";
+function{"PutDeck"}="PutDeckTop";
 function{"PutDeckBottom"}="PutDeckBottom";
 function{"PutHand"}="PutHand";
 function{"PutTable"}="PutTable";
@@ -524,6 +533,7 @@ function{"SearchDeck"}="SearchDeck";
 function{"SetActive"}="SetActive";
 function{"SetCardbook"}="SetCardbook";
 function{"SetDeck"}="SetDeck";
+function{"SetDeckTop"}="SetDeckTop";
 function{"SetHand"}="SetHand";
 function{"SetJoinGame"}="SetJoinGame";
 function{"SetMe"}="SetMe";
@@ -887,7 +897,7 @@ def SaveAll
 #
 def _InitializeGame
 {
-  player.marker_color=DEFAULT_COUNTER_COLOR;
+  player.marker_color=DEFAULT_MARKER_COLOR;
   active=array(players);
   hand=array(players);
   deck.objects=array(players);
@@ -1502,7 +1512,7 @@ def NextTarget
     push(q);
 
     c=last(targeting_queue);
-    q=select('(card_data(#))[3]==c[0] && ParentObject(#)==NULL',inplay(me));
+    q=select('(card_data(#))[2]==c[0] && ParentObject(#)==NULL',inplay(me));
     targeting_queue=head(targeting_queue);
 
     if(length(q)>0)
@@ -3111,7 +3121,11 @@ def Message
       }
       
       if(left(m,6)=="{blue}")
+      {
         to_msg = 1;
+        if(find(username+" receives",m)==6)
+          hilight=1;
+      }
       elseif(left(m,23)=="{gold}* you whisper to ")
       {
         to_msg = 1;
@@ -3159,9 +3173,9 @@ def Message
 }
 
 #
-#  PutDeck(object number,card number(s),[real cards]) - Put one or more cards to the top of the deck.
+#  PutDeckTop(object number,card number(s),[real cards]) - Put one or more cards to the top of the deck.
 #
-def PutDeck
+def PutDeckTop
 {
   PlaySound(sounds.card_pickup);
   
@@ -3226,17 +3240,19 @@ def PutDeckBottom
 }
 
 #
-#  PutHand(player number,card) - Put a card to the players hand.
+#  PutHand(player number, card[, card 2...]) - Put cards to a player's hand.
 #
 def PutHand
 {
+  push(c);
   PlaySound(sounds.card_pickup);
-  
-  put_hand(hand[ARG[0]],ARG[1]);
+  for(c)(tail(ARG))
+    put_hand(hand[ARG[0]],c);
+  c=pop();
 }
 
 #
-#  PutActive(player number,card) - Put a card to the players active set.
+#  PutActive(player number, card[, card 2...]) - Put a card to the player's active set.
 #
 def PutActive
 {
@@ -3412,8 +3428,11 @@ def DelTable
 {
   push(c);
   c=card_data(ARG);
-  if(c[0]==me)
-    DelCardInGroup(ARG);
+  if(typeof(c)=="list")
+  {
+    if(c[0]==me)
+      DelCardInGroup(ARG);
+  }
   del_object(ARG);
 
   if(isfunction("DelTableHook"))
@@ -3525,6 +3544,16 @@ def SetDeck
   
   if(isfunction("PutDeckHook"))
     call("PutDeckHook",(ARG[0],deck.class{ARG[0]},ARG[1]));
+}
+
+#
+#  SetDeckTop(object number,card number) - Change the top card of a deck.
+#
+def SetDeckTop
+{
+  del_deck_top(ARG[0]);
+  put_deck_top(ARG[0],ARG[1]);
+  deck_content{ARG}=head(deck_content{ARG})+(ARG[1],);
 }
 
 #
@@ -5756,7 +5785,7 @@ def DefaultInitialPrice
 }
 
 #
-# HandlePriceInput() - Handler for number + return, i.e. pricing.
+# HandlePriceInput() - Set price of a card.
 #
 def HandlePriceInput
 {
@@ -5805,7 +5834,7 @@ def HandlePriceInput
 }
 
 #
-# ChatKeyControlKeyS() - Handler for key Control+S in chat mode.
+# ChatKeyControlKeyS() - Add a card for sale (or remove one from want list).
 #
 def ChatKeyControlKeyS
 {
@@ -5846,14 +5875,11 @@ def ChatKeyControlKeyS
   b=pop();
 }
 
-#
-# WatchKeyControlKeyS() - Handler for key Control+S in chat mode.
-#
 def WatchKeyControlKeyS
   ChatKeyControlKeyS();
 
 #
-# ChatKeyControlKeyA() - Handler for key Control+A in chat mode.
+# ChatKeyControlKeyA() - Add a card to the deck.
 #
 def ChatKeyControlKeyA
 {
@@ -5873,20 +5899,14 @@ def ChatKeyControlKeyA
   }
 }
 
-#
-# WatchKeyControlKeyA() - Handler for key Control+A in watch mode.
-#
 def WatchKeyControlKeyA
   ChatKeyControlKeyA();
 
-#
-# OfflineKeyControlKeyA() - Handler for key Control+A in offline mode.
-#
 def OfflineKeyControlKeyA
   ChatKeyControlKeyA();
 
 #
-# ChatKeyControlKeyW() - Handler for key Control+W in chat mode.
+# ChatKeyControlKeyW() - Add a card to want list (or remove a copy from sale).
 #
 def ChatKeyControlKeyW
 {
@@ -5894,9 +5914,6 @@ def ChatKeyControlKeyW
     BookChangeForsale(card.number,-1);
 }
 
-#
-# WatchKeyControlKeyW() - Handler for key Control+W in watch mode.
-#
 def WatchKeyControlKeyW
   ChatKeyControlKeyW();
 
@@ -6125,7 +6142,7 @@ def KeyPageDown
 }
 
 #
-# KeyControlKeyPageUp() - Handler for key Control PageUp.
+# KeyControlKeyPageUp() - Scroll to previous section in card book.
 #
 def KeyControlKeyPageUp
 {
@@ -6151,7 +6168,7 @@ def KeyControlKeyPageUp
 }
 
 #
-# KeyControlKeyPageDown() - Handler for key Control PageDown.
+# KeyControlKeyPageDown() - Scroll to next section in card book.
 #
 def KeyControlKeyPageDown
 {
@@ -6177,7 +6194,7 @@ def KeyControlKeyPageDown
 }
 
 #
-# KeyControlKeyB() - Handler for key Control+B.
+# KeyControlKeyB() - Show/hide card book.
 #
 def KeyControlKeyB
 {
@@ -6188,7 +6205,7 @@ def KeyControlKeyB
 }
 
 #
-# KeyControlKeyP() - Handler for key Control+P.
+# KeyControlKeyP() - Show/hide list of products.
 #
 def KeyControlKeyP
 {
@@ -6198,7 +6215,7 @@ def KeyControlKeyP
 }
 
 #
-# ChatKeyControlKeyE() - Handler for key Control+E in chat mode.
+# ChatKeyControlKeyE() - Show/hide deck list.
 #
 def ChatKeyControlKeyE
 {
@@ -6215,60 +6232,42 @@ def ChatKeyControlKeyE
   }
 }
 
-#
-# WatchKeyControlKeyE() - Handler for key Control+E in watch mode.
-#
 def WatchKeyControlKeyE
   ChatKeyControlKeyE();
 
-#
-# OfflineKeyControlKeyE() - Handler for key Control+E in offline mode.
-#
 def OfflineKeyControlKeyE
   ChatKeyControlKeyE();
 
 #
-# ChatKeyControlKeyD() - Handler for key Control+D in chat mode.
+# ChatKeyControlKeyD() - Show deck selection menu.
 #
 def ChatKeyControlKeyD
 {
   ChooseDeckMenu("");
 }
 
-#
-# WatchKeyControlKeyD() - Handler for key Control+D in watch mode.
-#
 def WatchKeyControlKeyD
   ChatKeyControlKeyD();
 
-#
-# OfflineKeyControlKeyD() - Handler for key Control+D in offline mode.
-#
 def OfflineKeyControlKeyD
   ChatKeyControlKeyD();
 
 #
-# ChatKeyControlKeyI() - Handler for key Control+I in chat mode.
+# ChatKeyControlKeyI() - Show deck import menu.
 #
 def ChatKeyControlKeyI
 {
   ImportDeckMenu();
 }
 
-#
-# WatchKeyControlKeyI() - Handler for key Control+I in watch mode.
-#
 def WatchKeyControlKeyI
   ChatKeyControlKeyI();
 
-#
-# OfflineKeyControlKeyI() - Handler for key Control+I in offline mode.
-#
 def OfflineKeyControlKeyI
   ChatKeyControlKeyI();
 
 #
-# ChatKeyControlKeyX() - Handler for key Control+X in chat mode.
+# ChatKeyControlKeyX() - Export current deck as a text file.
 #
 def ChatKeyControlKeyX
 {
@@ -6276,15 +6275,12 @@ def ChatKeyControlKeyX
     ExportToFile(decks{deck.name},strreplace(deck.name,".","_"),DEFAULT_EXPORT_FORMAT);
 }
 
-#
-# WatchKeyControlKeyX() - Handler for key Control+X in watch mode.
-#
 def WatchKeyControlKeyX
   ChatKeyControlKeyX();
 
 
 #
-# KeyControlKeyH() - Handler for key Control+H.
+# KeyControlKeyH() - Show information about an object.
 #
 def KeyControlKeyH
 {
@@ -6362,7 +6358,7 @@ def PlayKeyControlKeyTab
 # ============================
 
 #
-# PlayKeyDelete() - Handler for key Delete in play mode.
+# PlayKeyDelete() - Move a card to discard pile.
 #
 def PlayKeyDelete
 {
@@ -6392,7 +6388,7 @@ def PlayKeyDelete
 }
 
 #
-# PlayKeyShiftKeyDelete() - Handler for key Shift+Delete in play mode.
+# PlayKeyShiftKeyDelete() - Move a card (bottom card if used on a pile) to discard pile.
 #
 def PlayKeyShiftKeyDelete
 {
@@ -6412,7 +6408,7 @@ def PlayKeyShiftKeyDelete
 }
 
 #
-# PlayKeyInsert() - Handler for key Insert in play mode.
+# PlayKeyInsert() - Move a card to hand.
 #
 def PlayKeyInsert
 {
@@ -6420,7 +6416,7 @@ def PlayKeyInsert
 }
 
 #
-# PlayKeyHome() - Handler for key Home in play mode.
+# PlayKeyHome() - Move a card to top of deck.
 #
 def PlayKeyHome
 {
@@ -6431,7 +6427,7 @@ def PlayKeyHome
 }
 
 #
-# PlayKeyEnd() - Handler for key End in play mode.
+# PlayKeyEnd() - Set a card aside.
 #
 def PlayKeyEnd
 {
@@ -6442,7 +6438,7 @@ def PlayKeyEnd
 }
 
 #
-# PlayKeyShiftKeyEnd() - Handler for key Shift+End in play mode.
+# PlayKeyShiftKeyEnd() - Set a card aside (bottom card if used on a pile).
 #
 def PlayKeyShiftKeyEnd
 {
@@ -6459,7 +6455,7 @@ def PlayKeyShiftKeyEnd
 }
 
 #
-# PlayKeyControlKeyS() - Handler for key Control+S in play mode.
+# PlayKeyControlKeyS() - Shuffle a hand or pile of cards.
 #
 def PlayKeyControlKeyS
 {
@@ -6471,7 +6467,7 @@ def PlayKeyControlKeyS
 }
 
 #
-# PlayKeyControlKeyL() - Handler for key Control+L in play mode.
+# PlayKeyControlKeyL() - Look through a pile of cards.
 #
 def PlayKeyControlKeyL
 {
@@ -6484,7 +6480,7 @@ def PlayKeyControlKeyL
 }
 
 #
-# PlayKeyControlKeyF() - Handler for key Control+F in play mode.
+# PlayKeyControlKeyF() - Reveal or hide an object.
 #
 def PlayKeyControlKeyF
 {
@@ -6506,7 +6502,7 @@ def PlayKeyControlKeyF
 }
 
 #
-# PlayKeyControlKeyP() - Handler for key Control+P in play mode.
+# PlayKeyControlKeyP() - Play a card.
 #
 def PlayKeyControlKeyP
 {
@@ -6514,7 +6510,7 @@ def PlayKeyControlKeyP
 }
 
 #
-# PlayKeyShiftControlKeyP() - Control+Shift+P: play a card face down.
+# PlayKeyShiftControlKeyP() - Play a card face down.
 #
 def PlayKeyShiftControlKeyP
 {
@@ -6522,7 +6518,7 @@ def PlayKeyShiftControlKeyP
 }
 
 #
-# PlayKeyControlKeyU() - Handler for key Control+U in play mode.
+# PlayKeyControlKeyU() - Untap all cards.
 #
 def PlayKeyControlKeyU
 {
@@ -6635,17 +6631,17 @@ def SetCounterColor
   c=ARG[0];
   if(length(cm) > c)
     c=toint(substr(cm,c,1));
-  if (COUNTER_COLORS[c] == NULL)
-    c=DEFAULT_COUNTER_COLOR;
+  if(MARKER_COLOR[c] == NULL)
+    c=DEFAULT_MARKER_COLOR;
     
-  Msg(COUNTER_COLORS[c]+" counters selected.");
+  Msg(MARKER_COLOR[c]+" counters selected.");
   player.marker_color = c;
   cm=pop();
   c=pop();
 }
 
 #
-# PlayKeyControlKeyA() - Handler for key Control+A in play mode.
+# PlayKeyControlKeyA() - Put a marker on a card.
 #
 def PlayKeyControlKeyA
 {
@@ -6654,7 +6650,7 @@ def PlayKeyControlKeyA
 }
 
 #
-# PlayKeyControlKeyD() - Handler for key Control+D in play mode.
+# PlayKeyControlKeyD() - Remove a marker from a card.
 #
 def PlayKeyControlKeyD
 {
@@ -6677,7 +6673,7 @@ def PlayKeyControlKeyD
 }
 
 #
-# PlayKeyControlKeyT() - Handler for key Control+T in play mode.
+# PlayKeyControlKeyT() - Touch an object.
 #
 def PlayKeyControlKeyT
 {
@@ -6699,8 +6695,7 @@ def PlayKeyControlKeyT
 }
 
 #
-# PlayKeyControlKeyDelete() - Handler for key Control+Delete in play
-#  mode.
+# PlayKeyControlKeyDelete() - Erase a card (move it out of play).
 #
 def PlayKeyControlKeyDelete
 {
@@ -6708,7 +6703,7 @@ def PlayKeyControlKeyDelete
 }
 
 #
-# PlayKeyControlKeyHome() - Handler for key Control+Home in play mode.
+# PlayKeyControlKeyHome() - Put a card to the bottom of the deck.
 #
 def PlayKeyControlKeyHome
 {
@@ -6716,7 +6711,7 @@ def PlayKeyControlKeyHome
 }
 
 #
-# PlayKeyControlKeyE() - Handler for key Control+E in play mode.
+# PlayKeyControlKeyE() - Declare end of turn.
 #
 def PlayKeyControlKeyE
 {
@@ -6728,7 +6723,7 @@ def PlayKeyControlKeyE
 }
 
 #
-# KeyControlKeyR() - Handler for key Control+R.
+# KeyControlKeyR() - Roll dice.
 #
 def KeyControlKeyR
 {
@@ -6736,13 +6731,16 @@ def KeyControlKeyR
 }
 
 #
-# KeyControlKeyC() - Handler for key Control+C.
+# KeyControlKeyC() - Flip a coin.
 #
 def KeyControlKeyC
 {
   Send("Roll","coin");
 }
 
+#
+# PlayKeyAltKeyD() - Duplicate a card.
+#
 def PlayKeyAltKeyD
 {
   push(c);
@@ -7323,15 +7321,23 @@ def ConstructMenu
   push(q);
   q=(,);
   m=(,);
-  
+
+# Look for applicable context menu items
+
   if(server.meta==NULL)
-    m=((1,"{red}Reconnect to server","/reconnect",""),(1,"{hr}","",""),);
+    m=m+((1,"{red}Reconnect to server","/reconnect",""),);
   elseif(!net_isopen(server.meta))
-    m=((1,"{red}Reconnect to server","/reconnect",""),(1,"{hr}","",""),);
+    m=m+((1,"{red}Reconnect to server","/reconnect",""),);
   elseif(server==NULL && mode=="play")
-    m=((1,"{red}Go back to main server","","SetMode('chat')"),(1,"{hr}","",""),);
+    m=m+((1,"{red}Go back to main server","","SetMode('chat')"),);
   elseif(!net_isopen(server) && mode=="play")
-    m=((1,"{red}Go back to main server","","SetMode('chat')"),(1,"{hr}","",""),);
+    m=m+((1,"{red}Go back to main server","","SetMode('chat')"),);
+
+  elseif(ARG=="Main Menu - Chat" && right(username,7)=="-sealed")
+    m=((1,"Leave sealed mode","/sealed end",""),);
+
+  if(length(m))
+    m=m+((1,"{hr}","",""),);
 
 # Construct menu list 'm'
 
@@ -8209,7 +8215,7 @@ def MouseLeftClickCardSelectBox
 }
 
 #
-# MouseMoveShift - Called when the mouse is moved.
+# MouseMove - Called when the mouse is moved.
 #
 def MouseMove
 {
@@ -8281,8 +8287,7 @@ def SelectDeckPart
 }
 
 #
-# MouseMiddleClickCurrentDeck() - Handler for mouse middle click on
-#  the current deck editor.
+# MouseMiddleClickCurrentDeck() - Add a card to the deck.
 #
 def MouseMiddleClickCurrentDeck
 {
@@ -8298,8 +8303,7 @@ def MouseMiddleClickCurrentDeck
 }
 
 #
-# MouseLeftClickCurrentDeck() - Handler for mouse left click on the
-#   current deck editor.
+# MouseLeftClickCurrentDeck() - Remove a card from the deck.
 #
 def MouseLeftClickCurrentDeck
 {
@@ -8323,7 +8327,7 @@ def MouseLeftClickCurrentDeck
 }
 
 #
-# MouseWheelCurrentDeck(dir) - Mouse wheel handler for deck editor (dir=0 up, dir=1 down).
+# MouseWheelCurrentDeck(dir) - Scroll deck list (0=up, 1=down).
 #
 def MouseWheelCurrentDeck
 {
@@ -8334,7 +8338,7 @@ def MouseWheelCurrentDeck
 }
 
 #
-# MouseWheelMyCollection(dir) - Mouse wheel handler for collection (dir=0 up, dir=1 down).
+# MouseWheelMyCollection(dir) - Scroll through card book pages (0=up, 1=down).
 #
 def MouseWheelMyCollection
 {
@@ -8345,7 +8349,7 @@ def MouseWheelMyCollection
 }
 
 #
-# MouseWheelMenu(dir) - Mouse wheel handler for menu (dir=0 up, dir=1 down).
+# MouseWheelMenu(dir) - Scroll through menu box (0=up, 1=down).
 #
 def MouseWheelMenu
 {
@@ -8356,7 +8360,7 @@ def MouseWheelMenu
 }
 
 #
-# MouseWheelChatMsg(dir) - Mouse wheel handler for additional chat box.
+# MouseWheelChatMsg(dir) - Scroll through secondary chat box (0= up, 1=down).
 #
 def MouseWheelChatMsg
 {
@@ -8367,7 +8371,7 @@ def MouseWheelChatMsg
 }
 
 #
-# MouseLeftClickMyCollection() - Handler for mouse left click on my collection.
+# MouseLeftClickMyCollection() - Remove a card from the deck.
 #
 def MouseLeftClickMyCollection
 {
@@ -8402,8 +8406,7 @@ def MouseLeftClickMyCollection
 }
 
 #
-# MouseMiddleClickMyCollection() - Handler for mouse middle click on
-#   my collection.
+# MouseMiddleClickMyCollection() - Add a card to the deck.
 #
 def MouseMiddleClickMyCollection
 {
@@ -8417,7 +8420,7 @@ def MouseMiddleClickMyCollection
 }
 
 #
-# MouseMiddleClickTable() - Handler for mouse middle click on table.
+# MouseMiddleClickTable() - Set ready-to-play signal if sitting at table.
 #
 def MouseMiddleClickTable
 {
@@ -8431,8 +8434,7 @@ def MouseMiddleClickTable
 }
 
 #
-# MouseMiddleClickOpenBooster() - Handler for mouse middle click
-#  opened booster.
+# MouseMiddleClickOpenBooster() - Reveal all cards in booster.
 #
 def MouseMiddleClickOpenBooster
 {
@@ -8444,7 +8446,7 @@ def MouseMiddleClickOpenBooster
 }
 
 #
-# MouseLeftClickTable() - Handler for mouse left click on table.
+# MouseLeftClickTable() - Sit at a table.
 #
 def MouseLeftClickTable
 {
@@ -8453,8 +8455,7 @@ def MouseLeftClickTable
 }
 
 #
-# MouseLeftClickOpenBooster() - Handler for mouse left click on opened
-#   booster.
+# MouseLeftClickOpenBooster() - Reveal single card in booster.
 #
 def MouseLeftClickOpenBooster
 {
@@ -8482,7 +8483,7 @@ def MouseMoveObject
   y=object.y;
 
   if(me >= 2)
-    x=x-screen.width/2;
+    x=x-((me/2) * screen.width / ((players + 1) / 2));
 
   if(object.type=="card" || object.type=="deck" || (object.type=="image" && mode=="play"))
     Send("MoveObject",(object.number,x,y));
@@ -8492,7 +8493,7 @@ def MouseMoveObject
 }
 
 #
-# MouseMiddleClickCard() - Handler for mouse middle clicking a card.
+# MouseMiddleClickCard() - Tap or untap a card.
 #
 def MouseMiddleClickCard
 {
@@ -8519,7 +8520,7 @@ def MouseMiddleClickCard
 }
 
 #
-# MouseLeftClickCard() - Handler for mouse left clicking a card.
+# MouseLeftClickCard() - Select target for a card in targeting queue.
 #
 def MouseLeftClickCard
 {
@@ -8551,7 +8552,7 @@ def MouseLeftClickCard
         xy[0]=xy[0]+t[2] + i*t[4];
         xy[1]=xy[1]+t[3] + i*t[5];
         if(me>1)
-          xy[0]=xy[0]-screen.width/2;
+          xy[0]=xy[0]-((me / 2) * screen.width / ((players + 1) / 2));
         xy=screen2table(xy);
         Send("MoveObject",(t[0],)+xy);
 
@@ -8605,7 +8606,7 @@ def MouseLeftClickCard
 }
 
 #
-# MouseLeftClickDeck() - Handler for mouse left clicking on deck.
+# MouseLeftClickDeck() - Draw a card from deck.
 #
 def MouseLeftClickDeck
 {
@@ -8614,7 +8615,7 @@ def MouseLeftClickDeck
 }
 
 #
-# MouseLeftClickHand() - Handler for mouse left clicking on hand.
+# MouseLeftClickHand() - Play a card from hand.
 #
 def MouseLeftClickHand
 {
@@ -8626,8 +8627,7 @@ def MouseLeftClickHand
 }
 
 #
-# MouseLeftClickActiveSet() - Handler for mouse left clicking on
-#   active set.
+# MouseLeftClickActiveSet() - Move card that's been set aside into hand.
 #
 def MouseLeftClickActiveSet
 {
@@ -8639,8 +8639,7 @@ def MouseLeftClickActiveSet
 }
 
 #
-# MouseLeftClickOpponentHand() - Handler for mouse left clicking on
-#   opponent's hand.
+# MouseLeftClickOpponentHand() - Shrink your expand your view of opponent's hand.
 #
 def MouseLeftClickOpponentHand
 {
@@ -8648,8 +8647,7 @@ def MouseLeftClickOpponentHand
 }
 
 #
-# MouseLeftClickDeckSearchBox() - Handler for mouse left clicking on
-#   deck search box.
+# MouseLeftClickDeckSearchBox() - Move card from search into hand.
 #
 def MouseLeftClickDeckSearchBox
 {

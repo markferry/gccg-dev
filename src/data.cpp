@@ -330,6 +330,8 @@ namespace Evaluator
 	
     Data Data::operator/(const Data& arg) const
     {
+	if(arg==Data(0))
+	    throw LangErr("Data::operator/(const Data& )","Cannot divide by zero");
 	if(type==NullType || arg.type==NullType)
 	    return Null;
 	if(type==IntegerType && arg.type==IntegerType)

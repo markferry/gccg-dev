@@ -86,7 +86,10 @@
 # result.subtype - result subtype if declared
 # score[player] - structure holding a score for a player 
 # server_description - info line to send to the meta server
-# server_flags - a string of space-separated customizable options
+# server_flags - a list of customizable options that can be toggled by players
+#   - "private" (DISABLED by default): spectators are forbidden except God, Guard, or Judge
+#   - "mute": spectators are allowed but cannot talk
+#   - "team": enables various functions to facilitate team play
 # stack.src[player] - last src from which each player has moved a card to play.stack
 # share.hand[player] - who has decided to share their hand
 # table{object number}
@@ -234,6 +237,7 @@ function{"RegisterPlayer"}="RegisterPlayer";
 function{"Score"}="Score";
 function{"UploadDeck"}="UploadDeck";
 
+# function.src and function.dst contain function names used in resolving Transfer()
 function.src=(,);
 function.src{"active"}="Take.Active";
 function.src{"deck"}="Take.Deck";
@@ -252,6 +256,16 @@ function.dst{"hand"}="Put.Hand";
 function.dst{"out.of.play"}="Put.OutOfPlay";
 function.dst{"table"}="Put.Table";
 function.dst{"play"}="Play.Card.Stage1";
+
+# GAME_PILES should have entries for all pile names in the game vocabulary
+# (game-specific includes can append entries to it)
+# Each entry is an unordered list of zero or more characteristics:
+#   - "public": pile should be face-up by default
+#   - "self_known": pile should be face-up only to its owner
+#   - "reveal_1": if someone turns this pile face-up, only the top card should be revealed
+GAME_PILES=(,);
+GAME_PILES{'deck'}=("reveal_1",);
+GAME_PILES{'discard pile'}=("public",);
 
 # DEBUG
 # =====
@@ -325,7 +339,7 @@ def InitServer
   result=NULL;
   result.accepted=copy(0,ARG);
   score=copy(0,ARG);
-  server_flags=" ";
+  server_flags=(,);
   share.hand=copy(0,ARG);
   stack.src=copy("",ARG);
   table.stack_order=(,);
@@ -341,22 +355,35 @@ def InitServer
   {
     visible.me[i]=(,);
     visible.me[i]{"active"}=1;
-    visible.me[i]{"deck"}=0;
-    visible.me[i]{"discard pile"}=1;
     visible.me[i]{"hand"}=1;
     visible.me[i]{"out.of.play"}=0;
     visible.me[i]{"table"}=1;
     visible.me[i]{"play"}=1;
-    visible.me[i]{"sideboard"}=0;
     visible.opp[i]=(,);
     visible.opp[i]{"active"}=0;
-    visible.opp[i]{"deck"}=0;
-    visible.opp[i]{"discard pile"}=1;
     visible.opp[i]{"hand"}=0;
     visible.opp[i]{"out.of.play"}=0;
     visible.opp[i]{"table"}=1;
     visible.opp[i]{"play"}=1;
-    visible.opp[i]{"sideboard"}=0;
+    
+    for(j)(GAME_PILES)
+    {
+      if(PileAttr(j[0],"public"))
+      {
+        visible.me[i]{j[0]}=1;
+        visible.opp[i]{j[0]}=1;
+      }
+      else if(PileAttr(j[0],"self_known"))
+      {
+        visible.me[i]{j[0]}=1;
+        visible.opp[i]{j[0]}=0;
+      }
+      else
+      {
+        visible.me[i]{j[0]}=0;
+        visible.opp[i]{j[0]}=0;
+      }
+    }
   }
 
   if(isfunction("InitServerHook"))
@@ -532,11 +559,6 @@ def StartGame
     SendAll("Message","{green}{sz16}You have saved game on this server.");
     SendAll("Message","{green}{sz16}You may restore it using {yellow}/loadgame{green} or delete it using{yellow} /delgame{green}.");
     SendAll("Message","{hr}");
-  }
-
-  if(HasFlag("team"))
-  {
-    SendAll("Message","This is a team game. You can use {yellow}/wt{white} to whisper to team, {yellow}/ts{white} to make all messages team-whispers by default, and {yellow}/sh{white} to show your hand to the team.");
   }
 
   if(isfunction("StartGameHook"))
@@ -1218,7 +1240,7 @@ def CoordToPlr
 #
 def CoordToSvr
 {
-  ARG[0] = ARG[0] + ((ARG[2]/2) * screen.width / ((players_wanted + 1) / 2));
+  ARG[0] = ARG[0] + ((ARG[2] / 2) * screen.width / ((players_wanted + 1) / 2));
   if(ARG[2] % 2 == 1)
   {
     ARG[0] = screen.width - ARG[0];
@@ -1389,11 +1411,23 @@ def FindDeck
   d=pop();
 }
 
+#
+# PileAttr(pile type, flag) - Check if the given type of pile has the given attribute.
+#
+def PileAttr
+{
+  if(!has_entry(ARG[0],GAME_PILES))
+    return(0);
+  else if(find(ARG[1],GAME_PILES{ARG[0]}) != NULL)
+    return(1);
+  else return(0);
+}
+
 # MESSAGE GENERATION
 # ==================
 
 #
-# MsgCards(list of cards, visibile?, options) - Convert a card list to text.
+# MsgCards(list of cards, visible?, options) - Convert a card list to text.
 #
 def MsgCards
 {
@@ -1832,6 +1866,14 @@ def Take.DeckTop
     return(last(decks{ARG[2]}[0]));
     decks{ARG[2]}[0]=head(decks{ARG[2]}[0]);
     SendAll("DelDeckTop",ARG[2]);
+    
+# we can't just use the visibility arguments ([0] and [1]) passed here
+# because this specifically cares about the visibility of the source pile
+    if(i+1==n && length(decks{ARG[2]}[0]) && PileAttr(decks{ARG[2]}[2],"reveal_1") && visible.opp[decks{ARG[2]}[1]]{decks{ARG[2]}[2]})
+    {
+      SendAll("DelDeckTop",ARG[2]);
+      SendAll("PutDeck",(ARG[2],last(decks{ARG[2]}[0])));
+    }
   }
 }
 
@@ -1854,7 +1896,8 @@ def Take.DeckBottom
 #
 def Take.SearchDeck
 {
-  push(i);
+  push(p);
+  push(l);
   push(c);
   if(has_entry(ARG[2],decks))
   {
@@ -1868,16 +1911,25 @@ def Take.SearchDeck
     else
       c=ARG[3];
 
-    i=find(c,decks{ARG[2]}[0]);
-    if(i!=NULL)
+    p=find(c,decks{ARG[2]}[0]);
+    l=length(decks{ARG[2]}[0]);
+    if(p!=NULL)
     {
-      decks{ARG[2]}[0]=index(decks{ARG[2]}[0],seq(0,length(decks{ARG[2]}[0])-1)-(i,));
-      SendAll("DelDeck",(ARG[2],i));
+      decks{ARG[2]}[0]=index(decks{ARG[2]}[0],seq(0,l-1)-(p,));
+      SendAll("DelDeck",(ARG[2],l));
       return(c);
+# as this function is called, the 'i' and 'n' variables track how many cards are being transferred
+# so by specifically leaving them intact, we can avoid pointless operations on a reveal_1 pile
+      if(i+1==n && l>1 && PileAttr(decks{ARG[2]}[2],"reveal_1") && visible.opp[decks{ARG[2]}[1]]{decks{ARG[2]}[2]})
+      {
+        SendAll("DelDeckTop",ARG[2]);
+        SendAll("PutDeck",(ARG[2],last(decks{ARG[2]}[0])));
+      }
     }
   }
   c=pop();
-  i=pop();
+  l=pop();
+  p=pop();
 }
 
 #
@@ -1898,18 +1950,26 @@ def Take.Hand
 #
 def Take.Deck
 {
-  push(i);
+  push(p);
+  push(l);
   if(has_entry(ARG[2],decks) && ARG[3]!=NULL)
   {
-    i=length(decks{ARG[2]}[0])-1-ARG[3];
-    if(i >= 0 && i < length(decks{ARG[2]}[0]))
+    l=length(decks{ARG[2]}[0]);
+    p=l-1-ARG[3];
+    if(p >= 0 && p < l)
     {
-      return(decks{ARG[2]}[0][i]);
-      decks{ARG[2]}[0]=index(decks{ARG[2]}[0],seq(0,length(decks{ARG[2]}[0])-1)-(i,));
-      SendAll("DelDeck",(ARG[2],i));
+      return(decks{ARG[2]}[0][p]);
+      decks{ARG[2]}[0]=index(decks{ARG[2]}[0],seq(0,l-1)-(p,));
+      SendAll("DelDeck",(ARG[2],p));
+      if(p && p==l-1 && PileAttr(decks{ARG[2]}[2],"reveal_1") && visible.opp[decks{ARG[2]}[1]]{decks{ARG[2]}[2]})
+      {
+        SendAll("DelDeckTop",ARG[2]);
+        SendAll("PutDeck",(ARG[2],last(decks{ARG[2]}[0])));
+      }
     }
   }
-  i=pop();
+  l=pop();
+  p=pop();
 }
 
 #
@@ -2023,11 +2083,9 @@ def Put.Table
 def Put.DeckTop
 {
   decks{ARG[3]}[0]=decks{ARG[3]}[0]+(ARG[0],);
-  if(count(decks{ARG[3]}[2],SELF_KNOWN_PILES))
-    Send(player,("PutDeck",(ARG[3],Image(ARG[0],ARG[1]),ARG[0])));
-  else
-    Send(player,("PutDeck",(ARG[3],Image(ARG[0],ARG[1]))));
-  SendOther(player,("PutDeck",(ARG[3],Image(ARG[0],ARG[2]))));
+  
+  Send(decks{ARG[3]}[1],("PutDeck",(ARG[3],Image(ARG[0],ARG[1]))));
+  SendOther(decks{ARG[3]}[1],("PutDeck",(ARG[3],Image(ARG[0],ARG[2]))));
 }
 
 #
@@ -2036,11 +2094,9 @@ def Put.DeckTop
 def Put.DeckBottom
 {
   decks{ARG[3]}[0]=(ARG[0],)+decks{ARG[3]}[0];
-  if(count(decks{ARG[3]}[2],SELF_KNOWN_PILES))
-    Send(player,("PutDeckBottom",(ARG[3],Image(ARG[0],ARG[1]),ARG[0])));
-  else
-    Send(player,("PutDeckBottom",(ARG[3],Image(ARG[0],ARG[1]))));
-  SendOther(player,("PutDeckBottom",(ARG[3],Image(ARG[0],ARG[2]))));
+  
+  Send(decks{ARG[3]}[1],("PutDeckBottom",(ARG[3],Image(ARG[0],ARG[1]))));
+  SendOther(decks{ARG[3]}[1],("PutDeckBottom",(ARG[3],Image(ARG[0],ARG[2]))));
 }
 
 #
@@ -2122,11 +2178,11 @@ def Transfer
     println("Transfer: "+tostr(ARG));
 
   if(length(ARG) < 3 || length(ARG) > 4)
-    Reply("{red}Server: Invalid transfer request.");
+    Reply("{red}Invalid transfer request (wrong number of arguments).");
   else if(length(ARG[1]) < 1)
-    Reply("{red}Server: Invalid transfer source.");
+    Reply("{red}Invalid transfer source.");
   else if(length(ARG[2]) < 1)
-    Reply("{red}Server: Invalid transfer target.");
+    Reply("{red}Invalid transfer target.");
   else
   {
 # Get transfer options.
@@ -2142,13 +2198,13 @@ def Transfer
         }
       }
 
-# Initialize number of transfers, source, destionation and cards transfered.
+# Initialize number of transfers, source, destination and cards transferred.
 
       n=toint(ARG[0]);
       src=ARG[1];
       dst=ARG[2];
 
-# Alert oppontent.
+# Alert opponent.
 
       if(has_entry(src[1],decks) && src[0]=="deck.search")
         MsgVerbObject("browse",src[1]);
@@ -2157,11 +2213,16 @@ def Transfer
 
       vissrc=src[0];
       visdst=dst[0];
+      owner_src = player;
+      owner_dst = player;
 
       if(vissrc=="deck" || vissrc=="deck.top" || vissrc=="deck.bottom" || vissrc=="deck.search")
       {
         if(has_entry(src[1],decks))
+        {
           vissrc=decks{src[1]}[2];
+          owner_src = decks{src[1]}[1];
+        }
         else
           vissrc=NULL;
       }
@@ -2176,7 +2237,10 @@ def Transfer
       if(visdst=="deck" || visdst=="deck.top" || visdst=="deck.bottom")
       {
         if(has_entry(dst[1],decks))
+        {
           visdst=decks{dst[1]}[2];
+          owner_dst = decks{dst[1]}[1];
+        }
         else
           visdst=NULL;
       }
@@ -2184,11 +2248,11 @@ def Transfer
 # Compute visibility and knowledge of card identity.
 
       if(vissrc != NULL && visdst != NULL) 
-      {  
-        theoretical_visibility_self=visible.me[player]{vissrc} || visible.me[player]{visdst};
-        theoretical_visibility_others=visible.opp[player]{vissrc} || visible.opp[player]{visdst};
-		real_visibility_self=visible.me[player]{visdst};
-		real_visibility_others=visible.opp[player]{visdst};
+      { 
+        theoretical_visibility_self=visible.me[owner_src]{vissrc} || visible.me[owner_dst]{visdst};
+        theoretical_visibility_others=visible.opp[owner_src]{vissrc} || visible.opp[owner_dst]{visdst};
+        real_visibility_self=visible.me[owner_dst]{visdst};
+        real_visibility_others=visible.opp[owner_dst]{visdst};
 
         if(src[0]=="play")
         {
@@ -2204,21 +2268,13 @@ def Transfer
         {
           if(table{src[1]}[5])
           {
-            theoretical_visibility_others=visible.opp[player]{visdst};
-            theoretical_visibility_self=visible.me[player]{visdst};
-            real_visibility_others=visible.opp[player]{visdst};
-            real_visibility_self=visible.me[player]{visdst};
+            theoretical_visibility_others=visible.opp[owner_dst]{visdst};
+            theoretical_visibility_self=visible.me[owner_dst]{visdst};
+            real_visibility_others=visible.opp[owner_dst]{visdst};
+            real_visibility_self=visible.me[owner_dst]{visdst};
           }
         }
-        else if(src[0]=="deck" || src[0]=="deck.top" || src[0]=="deck.search")
-        {
-          if(isvar("SELF_KNOWN_PILES"))
-          {
-            if(count(decks{src[1]}[2],SELF_KNOWN_PILES))
-              theoretical_visibility_self=1;
-          }
-        }
-
+        
         if(dst[0]=="play")
         {
           if(dst[1])
@@ -2229,15 +2285,6 @@ def Transfer
             {
               theoretical_visibility_self=0;
               real_visibility_self=0;
-            }
-
-            if((src[0]=="deck" || src[0]=="deck.top" || src[0]=="deck.search") && isvar("SELF_KNOWN_PILES"))
-            {
-              if(count(decks{src[1]}[2],SELF_KNOWN_PILES))
-              {
-                theoretical_visibility_self=1;
-                real_visibility_self=1;
-              }
             }
           }
         }
@@ -2371,8 +2418,10 @@ def UploadDeck
            decks{o[0]}[0]=reverse(D{o[1][2]});
          for(p)(watchers)
          {
-           if(p==player && count(decks{o[0]}[2],SELF_KNOWN_PILES))
-             Send(p,("PutDeck",(o[0],card_back(decks{o[0]}[0]),decks{o[0]}[0])));
+           if(PileAttr(decks{o[0]}[2],"public"))
+             Send(p,("PutDeck",(o[0],decks{o[0]}[0])));
+           else if(p==player && PileAttr(decks{o[0]}[2],"self_known"))
+             Send(p,("PutDeck",(o[0],decks{o[0]}[0])));
            else
              Send(p,("PutDeck",(o[0],card_back(decks{o[0]}[0]))));
          }
@@ -2580,17 +2629,8 @@ def ShuffleDeck
   {
     push(v1);
     push(v2);
-    if(count(decks{ARG}[2],SELF_KNOWN_PILES))
-    {
-      v1=0;
-      v2=0;
-      for(p)(players)
-      {
-        visible.me[p]{decks{ARG}[2]}=0;
-        visible.opp[p]{decks{ARG}[2]}=0;
-      }
-    }
-    else if(decks{ARG}[1]==player)
+    
+    if(decks{ARG}[1]==player)
     {
       v1=visible.me[player]{decks{ARG}[2]};
       v2=visible.opp[player]{decks{ARG}[2]};
@@ -2606,23 +2646,25 @@ def ShuffleDeck
     MsgVerbObject("shuffle",ARG);
     decks{ARG}[0]=shuffle(decks{ARG}[0]);
 
-    if(count(decks{ARG}[2],SELF_KNOWN_PILES))
+    if(v1)
     {
-      Send(decks{ARG}[1],("SetDeck",(ARG,card_back(decks{ARG}[0]),decks{ARG}[0])));
-      SendOther(decks{ARG}[1],("SetDeck",(ARG,card_back(decks{ARG}[0]))));
+      if(PileAttr(decks{ARG}[2],"reveal_1"))
+        Send(player,("SetDeck",(ARG,card_back(head(decks{ARG}[0]))+(last(decks{ARG}[0]),))));
+      else
+        Send(player,("SetDeck",(ARG,decks{ARG}[0])));
     }
     else
+      Send(player,("SetDeck",(ARG,card_back(decks{ARG}[0]))));
+ 
+    if(v2)
     {
-      if(v1)
-        Send(player,("SetDeck",(ARG,decks{ARG}[0])));
+      if(PileAttr(decks{ARG}[2],"reveal_1"))
+        SendOther(player,("SetDeck",(ARG,card_back(head(decks{ARG}[0]))+(last(decks{ARG}[0]),))));
       else
-        Send(player,("SetDeck",(ARG,card_back(decks{ARG}[0]))));
-   
-      if(v2)
         SendOther(player,("SetDeck",(ARG,decks{ARG}[0])));
-      else
-        SendOther(player,("SetDeck",(ARG,card_back(decks{ARG}[0]))));
     }
+    else
+      SendOther(player,("SetDeck",(ARG,card_back(decks{ARG}[0]))));
 
     v2=pop();
     v1=pop();
@@ -3078,22 +3120,37 @@ def Flip
 {
   if(has_entry(ARG,decks))
   {
-    if(visible.opp[player]{decks{ARG}[2]})
+    if(visible.opp[decks{ARG}[1]]{decks{ARG}[2]})
     {
-      visible.opp[player]{decks{ARG}[2]}=0;
-      visible.me[player]{decks{ARG}[2]}=0;
+      visible.opp[decks{ARG}[1]]{decks{ARG}[2]}=0;
       MsgVerbObject("hide",ARG);
-      SendAll("SetDeck",(ARG,card_back(decks{ARG}[0])));
+      if(PileAttr(decks{ARG}[2],"self_known"))
+      {
+        visible.me[decks{ARG}[1]]{decks{ARG}[2]}=1;
+        SendOther(decks{ARG}[1],("SetDeck",(ARG,card_back(head(decks{ARG}[0]))+(last(decks{ARG}[0]),))));
+        if(PileAttr(decks{ARG}[2],"reveal_1"))
+          Send(decks{ARG}[1]("SetDeck",(ARG,card_back(head(decks{ARG}[0]))+(last(decks{ARG}[0]),))));
+        else
+          Send(decks{ARG}[1]("SetDeck",(ARG,decks{ARG}[0])));
+      }
+      else
+      {
+        visible.me[decks{ARG}[1]]{decks{ARG}[2]}=0;
+        SendAll("SetDeck",(ARG,card_back(decks{ARG}[0])));
+      }
     }
     else
     {
-      visible.opp[player]{decks{ARG}[2]}=1;
-      visible.me[player]{decks{ARG}[2]}=1;
+      visible.opp[decks{ARG}[1]]{decks{ARG}[2]}=1;
+      visible.me[decks{ARG}[1]]{decks{ARG}[2]}=1;
       MsgVerbObject("reveal",ARG);
-      SendAll("SetDeck",(ARG,decks{ARG}[0]));
+      if(PileAttr(decks{ARG}[2],"reveal_1"))
+        SendAll("SetDeck",(ARG,card_back(head(decks{ARG}[0]))+(last(decks{ARG}[0]),)));
+      else
+        SendAll("SetDeck",(ARG,decks{ARG}[0]));
     }
   }
-  if(has_entry(ARG,table))
+  elseif(has_entry(ARG,table))
   {
     if(table{ARG}[5])
     {
@@ -3154,7 +3211,7 @@ def Flip
 }
 
 #
-# LegalityCheck() - Make lagality check for the current player's deck.
+# LegalityCheck() - Make legality check for the current player's deck.
 #
 def LegalityCheck
 {
@@ -3176,14 +3233,15 @@ def Special
 #
 def Score
 {
-  if(toint(ARG[0]) >= 0 && toint(ARG[0])<players)
+  ARG[0] = toint(ARG[0]);
+  if(ARG[0] >= 0 && ARG[0]<players)
   {
     if(HasFlag("team"))
     {
       push(p);
       for(p)(players)
       {
-        if((p-toint(ARG[0])) % 2 == 0)
+        if((p-ARG[0]) % 2 == 0)
         {
           score[p]=ARG[1];
           SendAll("Score",(p,ARG[1]));
@@ -3193,8 +3251,8 @@ def Score
     }
     else
     {
-      score[toint(ARG[0])]=ARG[1];
-      SendAll("Score",(toint(ARG[0]),ARG[1]));
+      score[ARG[0]]=ARG[1];
+      SendAll("Score",(ARG[0],ARG[1]));
     }
   }
 }
@@ -3467,7 +3525,7 @@ def CommandSavegame
 #
 def HasFlag
 {
-  if(find(" "+ARG+" ",server_flags) == NULL) return(0);
+  if(find(ARG,server_flags) == NULL) return(0);
   else return(1);
 }
 
@@ -3482,12 +3540,12 @@ def CommandOn
     f = lc(f);
     if(f == "mute" && !HasFlag("mute"))
     {
-      server_flags = server_flags+"mute ";
+      server_flags = server_flags+("mute",);
       SendAll("Message","Spectators are now muted.");
     }
     else if(0 && f == "private" && !HasFlag("private"))
     {
-      server_flags = server_flags+"private ";
+      server_flags = server_flags+("private",);
       SendAll("Message","This table is now private; spectators are not allowed.");
       if(watchers > players_wanted)
       {
@@ -3504,7 +3562,7 @@ def CommandOn
     }
     else if(f == "team" && !HasFlag("team") && players_wanted > 3 && (players_wanted % 2) == 0)
     {
-      server_flags = server_flags+"team ";
+      server_flags = server_flags+("team",);
       if(waitfor < 0)
       {
         for(p)(players)
@@ -3536,13 +3594,13 @@ def CommandOff
       {
         if(ClearFlagHook(f) == 0)
         {
-          server_flags = strreplace(server_flags," "+f+" "," ");
+          server_flags = server_flags-(f,);
           SendAll("Message",ucfirst(f)+" server flag disabled.");        
         }
       }
       else
       {
-        server_flags = strreplace(server_flags," "+f+" "," ");
+        server_flags = server_flags-(f,);
         SendAll("Message",ucfirst(f)+" server flag disabled.");
       }
     }
@@ -3764,7 +3822,7 @@ def CommandSh
 }
 
 #
-# CommandAddpile - Put a new named pile to the table.
+# CommandAddpile(pile name) - Put a new named pile to the table.
 #
 #def CommandAddpile
 #{
@@ -3790,7 +3848,7 @@ def CommandSh
 #}
 
 #
-# CommandHidepile - Remove a pile from the table.
+# CommandHidepile(pile name) - Remove a pile from the table.
 #
 #def CommandHidepile
 #{
@@ -3799,13 +3857,18 @@ def CommandSh
 #  d=lc(join(ARG," "));
 #  if (f = FindDeck(player,d))
 #  {
-#    push(p);
-#    table=del_entry(f,table);
-#    visible.me[player]{d}=0;
-#    visible.opp[player]{d}=0;
-#    MsgVerbObject("remove","the "+d+" pile");
-#    SendAll("DelTable",f);
-#    p=pop();
+#    if(has_entry(d,GAME_PILES))
+#      Reply("That is a protected game pile. You can't delete it.");
+#    else
+#    {
+#      push(p);
+#      table=del_entry(f,table);
+#      visible.me[player]{d}=0;
+#      visible.opp[player]{d}=0;
+#      MsgVerbObject("remove","the "+d+" pile");
+#      SendAll("DelTable",f);
+#      p=pop();
+#    }
 #  }
 #  f=pop();
 #  d=pop();
@@ -3833,12 +3896,7 @@ def SendFullGameStatus
       if(visible.me[decks[i][1][1]]{decks[i][1][2]})
         Send(ARG,("SetDeck",(decks[i][0],decks[i][1][0])));
       else
-      {
-        if(count(decks[i][1][2],SELF_KNOWN_PILES))
-          Send(ARG,("SetDeck",(decks[i][0],card_back(decks[i][1][0]),decks[i][1][0])));
-        else
-          Send(ARG,("SetDeck",(decks[i][0],card_back(decks[i][1][0]))));
-      }
+        Send(ARG,("SetDeck",(decks[i][0],card_back(decks[i][1][0]))));
     }
     else
     {

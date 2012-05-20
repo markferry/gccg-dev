@@ -122,7 +122,7 @@ namespace Evaluator
 				return string("");
 		}
 		else
-			ArgumentError("first",arg);
+			return Null;
 
 		return Data();
 	}
@@ -147,7 +147,7 @@ namespace Evaluator
 				return string("");
 		}
 		else
-			ArgumentError("last",arg);
+			return Null;
 
 		return Data();
 	}
@@ -167,7 +167,7 @@ namespace Evaluator
 			return better_rand(arg.Integer());
 		}
 		else
-			ArgumentError("random",arg);
+			return Null;
 
 		return Data();
 	}
@@ -216,7 +216,7 @@ namespace Evaluator
 			return ret;
 		}
 		else
-			ArgumentError("shuffle",arg);
+			return Null;
 
 		return Data();
 	}
@@ -369,13 +369,13 @@ namespace Evaluator
 	Data seq(const Data& arg)
 	{
 		if(!arg.IsList(2) || !arg[0].IsInteger() || !arg[0].IsInteger())
-			ArgumentError("seq",arg);
+			return Null;
 
 		int n1=arg[0].Integer();
 		int n2=arg[1].Integer();
 
 		if(n1 > n2)
-			return Data();
+			return Null;
 
 		Data ret;
 		ret.MakeList(size_t(n2-n1+1));
@@ -545,7 +545,7 @@ namespace Evaluator
 	Data count(const Data& arg)
 	{
 		if(!arg.IsList(2) || !arg[1].IsList())
-			ArgumentError("count",arg);
+			return Null;
 
 		const Data& L=arg[1];
 		const Data& e=arg[0];
@@ -600,7 +600,7 @@ namespace Evaluator
 	Data max(const Data& arg)
 	{
 		if(!arg.IsList())
-			ArgumentError("max",arg);
+			return Null;
 
 		const Data& L=arg;
 
@@ -620,7 +620,7 @@ namespace Evaluator
 	Data min(const Data& arg)
 	{
 		if(!arg.IsList())
-			ArgumentError("min",arg);
+			return Null;
 
 		const Data& L=arg;
 
@@ -641,7 +641,7 @@ namespace Evaluator
 	Data left(const Data& arg)
 	{
 		if(!arg.IsList(2) || !(arg[0].IsString() || arg[0].IsList()) ||!arg[1].IsInteger())
-			ArgumentError("left",arg);
+			return Null;
 
 		int n=arg[1].Integer();
 
@@ -679,7 +679,7 @@ namespace Evaluator
 	Data right(const Data& arg)
 	{
 		if(!arg.IsList(2) || !(arg[0].IsString() || arg[0].IsList()) ||!arg[1].IsInteger())
-		ArgumentError("right",arg);
+			return Null;
 
 		int n=arg[1].Integer();
 
@@ -1024,7 +1024,7 @@ namespace Evaluator
 		VECTORIZE(lc);
 
 		if(!args.IsString())
-			ArgumentError("lc",args);
+			return Null;
 
 		string s=args.String();
                 bool convert=true;
@@ -1048,7 +1048,7 @@ namespace Evaluator
 		VECTORIZE(uc);
 
 		if(!args.IsString())
-			ArgumentError("uc",args);
+			return Null;
 
 		string s=args.String();
                 bool convert=true;
@@ -1073,7 +1073,7 @@ namespace Evaluator
 		VECTORIZE(ucfirst);
 
 		if(!args.IsString())
-			ArgumentError("ucfirst",args);
+			return Null;
 
 		string s=args.String();
 		if(s.length())
@@ -1117,7 +1117,7 @@ namespace Evaluator
 		}
 		
 		if(!args.IsList(2) || !args[1].IsList())
-			ArgumentError("find",args);
+			return Null;
 
 		const Data& e=args[0];
 		const Data& L=args[1];
@@ -1132,7 +1132,7 @@ namespace Evaluator
 	Data unique(const Data& args)
 	{
 		if(!args.IsList())
-			ArgumentError("unique",args);
+			return Null;
 
 		Data ret,last;
 		ret.MakeList();
@@ -1232,7 +1232,7 @@ namespace Evaluator
 		VECTORIZE(fuzzy);
 		
 		if(!args.IsString())
-			ArgumentError("fuzzy",args);
+			return Null;
 
 		return Fuzzify(args.String());
 	}
@@ -1243,7 +1243,7 @@ namespace Evaluator
 		VECTORIZE(trim);
 		
 		if(!args.IsString())
-			ArgumentError("trim",args);
+			return Null;
 		
 		return Trim(args.String());
 	}
@@ -1255,7 +1255,7 @@ namespace Evaluator
 		VECTORIZE(read_file);
 			
 		if(!args.IsString())
-			ArgumentError("read_file",args);
+			return Null;
 			
 		string file=args.String();
 
@@ -1294,7 +1294,7 @@ namespace Evaluator
 		VECTORIZE(read_file_raw);
 			
 		if(!args.IsString())
-			ArgumentError("read_file_raw",args);
+			return Null;
 			
 		string file=args.String();
 
@@ -1497,8 +1497,6 @@ namespace Evaluator
 			return Localization::Message(args[0].String(),args[1].String());
 		if(args.IsList(3) && args[0].IsString() && args[1].IsString() && args[2].IsString())
 			return Localization::Message(args[0].String(),args[1].String(),args[2].String());
-
-		ArgumentError("L",args);
 
 		return Null;
 	}

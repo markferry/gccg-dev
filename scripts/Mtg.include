@@ -749,8 +749,13 @@ def PlayKeyControlKeyI
 {
   if(card.number!=NULL)
   {
-    imprint=1;
-    TryTransferTo("play",card.number==0);
+    if(object.type=="card")
+      ManualTarget(object.number,("attach",));
+    else
+    {
+      imprint=1;
+      TryTransferTo("play",0);
+    }
   }
 }
 
