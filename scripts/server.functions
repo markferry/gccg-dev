@@ -1916,7 +1916,7 @@ def Take.SearchDeck
     if(p!=NULL)
     {
       decks{ARG[2]}[0]=index(decks{ARG[2]}[0],seq(0,l-1)-(p,));
-      SendAll("DelDeck",(ARG[2],l));
+      SendAll("DelDeck",(ARG[2],p));
       return(c);
 # as this function is called, the 'i' and 'n' variables track how many cards are being transferred
 # so by specifically leaving them intact, we can avoid pointless operations on a reveal_1 pile
