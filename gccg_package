@@ -721,7 +721,10 @@ sub get_modules
 {
 	fetch_module_lists(1);
 
-	get_module($_) for(module_match("available",@_));
+	for(@_)
+	{
+		get_module($_) if(exists $url{"updated"}{$_});
+	}
 }
 
 #
