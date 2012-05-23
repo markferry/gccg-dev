@@ -3,7 +3,6 @@
 <modules>
   <store dir="build/modules"/>
   <source url="http://gccg.sourceforge.net/modules/"/>
-  <source url="http://www.derangedmonkey.com/bmin/"/>
   <source url="http://www.reneploetz.de/gccg/"/>
   <source url="http://lotrtcgdb.com/files/gccg/"/>
   <source url="http://markferry.net/gccg/"/>
