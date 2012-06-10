@@ -33,6 +33,10 @@ if(meta.server=="NO.DEFAULT.SERVER.FOR.THIS.GAME")
 def InitServerHook
 {
   GAME_PILES{'exile'}=("public",);
+  GAME_PILES{'sideboard'}=("self_known",);
+  GAME_PILES{'command'}=("public",);
+  GAME_PILES{'planes'}=("reveal_1",);
+  GAME_PILES{'schemes'}=("reveal_1",);
   if(server_flags == NULL) server_flags = (,);
 }
 
@@ -41,10 +45,112 @@ def InitServerHook
 #
 def SetUpPlayer
 {
-  CreateDeck(ARG,"deck",40,50);
-  CreateDeck(ARG,"discard pile",40,160);
-#  CreateDeck(ARG,"sideboard",40,250);
-  CreateDeck(ARG,"exile",40,250);
+  CreateDeck(ARG,"deck",40,45);
+  CreateDeck(ARG,"discard pile",40,155);
+  CreateDeck(ARG,"sideboard",40,245);
+  CreateDeck(ARG,"exile",40,245);
+}
+
+#
+# TransferHook() - Used for making planes and schemes go to the right piles.
+#
+def TransferHook
+{
+  if(ARG[0]==1 && (ARG[2][0]=="deck.top" || ARG[2][0]=="deck.bottom"))
+  {
+    push(c);
+    push(d);
+    c="";
+    if(ARG[1][0]=="table")
+      c=Attr("type",table{ARG[1][1]}[0]);
+    else if(ARG[1][0]=="hand")
+      c=Attr("type",hand[ARG[1][1]][ARG[1][2]]);
+    else if(ARG[1][0]=="active")
+      c=Attr("type",active[ARG[1][1]][ARG[1][2]]);
+    else if(ARG[1][0]=="deck.top")
+      c=Attr("type",last(decks{ARG[1][1]}[0]));
+    else if(ARG[1][0]=="deck.bottom")
+      c=Attr("type",first(decks{ARG[1][1]}[0]));
+    if(c=="Plane" || c=="Phenomenon")
+    {
+      if(decks{ARG[2][1]}[2]!="planes")
+      {
+        d=FindDeck(player,"planes");
+        if(d)
+          dst[1]=d;
+        else
+        {
+          for(d)(decks)
+          {
+            if(d[1][2]=="planes")
+              dst[1]=d[0];
+          }
+        }
+        if(decks{dst[1]}[2]=="planes" && (decks{ARG[2][1]}[2]=="discard pile" || decks{ARG[2][1]}[2]=="exile"))
+          dst[0]="deck.bottom";
+       
+      }
+    }
+    else if(c=="Scheme" || c=="Ongoing Scheme")
+    {
+      if(decks{ARG[2][1]}[2]!="schemes")
+      {
+        d=FindDeck(player,"schemes");
+
+        if(d)
+          dst[1]=d;
+        else
+        {
+          for(d)(decks)
+          {
+            if(d[1][2]=="schemes")
+              dst[1]=d[0];
+          }
+        }
+        if(decks{dst[1]}[2]=="schemes" && (decks{ARG[2][1]}[2]=="discard pile" || decks{ARG[2][1]}[2]=="exile"))
+          dst[0]="deck.bottom";
+      }
+    }
+    d=pop();
+    c=pop();
+  }
+}
+
+#
+# UploadDeckHook() - If a player submits a plane or scheme deck, add a pile for it.
+#
+def UploadDeckHook
+{
+  push(i);
+  if(has_entry("planes",ARG[1]))
+  {
+    i=CreateDeck(player,"planes",40,335);
+    for(p)(watchers)
+    {
+      if(p==player)
+        Send(p,("CreateDeck",(i,player,"planes",(40,335))));
+      else
+        Send(p,("CreateDeck",(i,player,"opponent planes",CoordToPlr(decks{i}[3],decks{i}[4],p))));
+    }
+    decks{i}[0]=shuffle(ARG[1]{"planes"});
+
+    SendAll("SetDeck",(i,card_back(decks{i}[0])));
+  }
+  if(has_entry("schemes",ARG[1]))
+  {
+    i=CreateDeck(player,"schemes",40,-90);
+    for(p)(watchers)
+    {
+      if(p==player)
+        Send(p,("CreateDeck",(i,player,"schemes",(40,-90))));
+      else
+        Send(p,("CreateDeck",(i,player,"opponent schemes",CoordToPlr(decks{i}[3],decks{i}[4],p))));
+    }
+    decks{i}[0]=shuffle(ARG[1]{"schemes"});
+
+    SendAll("SetDeck",(i,card_back(decks{i}[0])));
+  }
+  i=pop();
 }
 
 #

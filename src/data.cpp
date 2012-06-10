@@ -358,6 +358,36 @@ namespace Evaluator
 	throw LangErr("Data::operator%(const Data& )","Cannot divide non-integers");
     }
 
+    Data Data::operator&(const Data& arg) const
+    {
+	if(type==NullType || arg.type==NullType)
+	    return Null;
+	if(type==IntegerType && arg.type==IntegerType)
+	    return Data(n & arg.n);
+
+	throw LangErr("Data::operator&(const Data& )","Cannot compute bitmasks of non-integers");
+    }
+
+    Data Data::operator|(const Data& arg) const
+    {
+	if(type==NullType || arg.type==NullType)
+	    return Null;
+	if(type==IntegerType && arg.type==IntegerType)
+	    return Data(n | arg.n);
+
+	throw LangErr("Data::operator|(const Data& )","Cannot compute bitmasks of non-integers");
+    }
+
+    Data Data::operator^(const Data& arg) const
+    {
+	if(type==NullType || arg.type==NullType)
+	    return Null;
+	if(type==IntegerType && arg.type==IntegerType)
+	    return Data(n ^ arg.n);
+
+	throw LangErr("Data::operator^(const Data& )","Cannot compute bitmasks of non-integers");
+    }
+    
     Data Data::operator+(const Data& arg) const
     {
 	if(type==NullType || arg.type==NullType)

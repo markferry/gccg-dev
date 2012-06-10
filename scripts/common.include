@@ -700,9 +700,9 @@ def LegalityCheckRules
 }
 
 #
-# LegalityCheckRuleset(ruleset name,deck) - Return 1 if a deck matches
-#   the given ruleset. If the ruleset name is "" collect all deckparts
-#   together before check, otherwise just single part is checked.
+# LegalityCheckRuleset(ruleset name,deck) - Return 1 if a deck matches the given ruleset.
+#   If the ruleset name is "", collect all deckparts.
+#   Otherwise check the named deck parts, delimited by plus signs if more than one.
 #
 def LegalityCheckRuleset
 {
@@ -717,15 +717,20 @@ def LegalityCheckRuleset
     }
     else
     {
+      push(d);
       push(p);
+      d=(,);
       deck_rulecheck.part=r;
-      if(has_entry(r,ARG[1]))
-        p=ARG[1]{r};
-      else
-        p=(,);
-      if(!LegalityCheckRules(deck_rules{ARG[0]}{r},r,p))
+      for(p)(split(r,"+"))
+      {
+        if(has_entry(p,ARG[1]))
+          d=d+ARG[1]{p};
+      }
+        
+      if(!LegalityCheckRules(deck_rules{ARG[0]}{r},r,d))
         return(0);
       p=pop();
+      d=pop();
     }
   }
 }

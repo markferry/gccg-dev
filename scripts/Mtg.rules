@@ -1,5 +1,5 @@
 deck_rules=(,);
-server_description="Universal (AVR)";
+server_description="Universal (PC2)";
 
 deck_rules{"Empty"}=(,);
 deck_rules{"Empty"}{""}=(
@@ -7,7 +7,7 @@ deck_rules{"Empty"}{""}=(
   ("RulePass",NULL),
 );
 deck_rules{"Sealed"}=(,);
-deck_rules{"Sealed"}{""}=(
+deck_rules{"Sealed"}{"none"}=(
   ("RuleMaxProxies",0),
   ("RulePass",NULL),
 );
@@ -29,7 +29,7 @@ deck_rules{"Vintage"}{"sideboard"}=(
   ("RuleDeckSizes",(0,15)),
   ("RulePass",NULL),
 );
-deck_rules{"Vintage"}{""}=(
+deck_rules{"Vintage"}{"deck+sideboard"}=(
   
   ("RuleCardLimitAny","Island"),
   ("RuleCardLimitAny","Forest"),
@@ -64,7 +64,7 @@ deck_rules{"Legacy"}{"sideboard"}=(
   ("RuleDeckSizes",(0,15)),
   ("RulePass",NULL),
 );
-deck_rules{"Legacy"}{""}=(
+deck_rules{"Legacy"}{"deck+sideboard"}=(
   ("RuleCardLimitAny","Island"),
   ("RuleCardLimitAny","Forest"),
   ("RuleCardLimitAny","Mountain"),
@@ -92,7 +92,7 @@ deck_rules{"Commander"}{"deck"}=(
   ("RuleDeckMinimum",99),
   ("RulePass",NULL),
 );
-deck_rules{"Commander"}{""}=(
+deck_rules{"Commander"}{"deck+exile+command"}=(
   ("RuleDeckSizes",(100,)),
   ("RuleCardLimitAny","Island"),
   ("RuleCardLimitAny","Forest"),
@@ -113,15 +113,7 @@ deck_rules{"Commander"}{""}=(
   ("RulePass",NULL),
 );
 
-deck_rules{"Commander"}{"exile"}=(
-  ("RuleCardLimitEach",("Braids, Cabal Minion","Erayo, Soratami Ascendant","Rofellos, Llanowar Emissary",0)),
-  ("RulePass",NULL),
-);
-deck_rules{"Commander"}{"command"}=(
-  ("RuleCardLimitEach",("Braids, Cabal Minion","Erayo, Soratami Ascendant","Rofellos, Llanowar Emissary",0)),
-  ("RulePass",NULL),
-);
-deck_rules{"Commander"}{"sideboard"}=(
+deck_rules{"Commander"}{"exile+command"}=(
   ("RuleCardLimitEach",("Braids, Cabal Minion","Erayo, Soratami Ascendant","Rofellos, Llanowar Emissary",0)),
   ("RulePass",NULL),
 );
@@ -131,8 +123,7 @@ deck_rules{"Commander"}{"sideboard"}=(
 ##############
 
 deck_rules{"Highlander"}=(,);
-deck_rules{"Highlander"}{"deck"}=(,);
-deck_rules{"Highlander"}{""}=(
+deck_rules{"Highlander"}{"deck"}=(
   ("RuleDeckSizes",(100,)),
   ("RuleCardLimitAny","Island"),
   ("RuleCardLimitAny","Forest"),
@@ -171,7 +162,7 @@ deck_rules{"Modern"}{"sideboard"}=(
   ("RuleDeckSizes",(0,15)),
   ("RulePass",NULL),
 );
-deck_rules{"Modern"}{""}=(
+deck_rules{"Modern"}{"deck+sideboard"}=(
   ("RuleCardLimitAny","Island"),
   ("RuleCardLimitAny","Forest"),
   ("RuleCardLimitAny","Mountain"),
@@ -188,7 +179,6 @@ deck_rules{"Modern"}{""}=(
   ("RuleCardLimitEach",("Ancestral Vision","Ancient Den","Bitterblossom","Blazing Shoal","Chrome Mox","Cloudpost","Dark Depths","Dread Return","Glimpse of Nature","Golgari Grave-Troll","Great Furnace","Green Sun's Zenith","Hypergenesis","Jace, the Mind Sculptor","Mental Misstep","Ponder","Preordain","Punishing Fire","Rite of Flame","Seat of the Synod","Sensei's Divining Top","Skullclamp","Stoneforge Mystic","Sword of the Meek","Tree of Tales","Umezawa's Jitte","Valakut, the Molten Pinnacle","Vault of Whispers","Wild Nacatl",0)),
 
   ("RuleAllowedSetsReprint",("8TH","9TH","XE","M10","M11","M12","MR","DS","FD","CK","BK","SK","RA","GP","DI","CS","TS","PC","FS","LRW","MOR","SM","EVE","ALA","CFX","ARE", "ZDK","WWK","ROE","SOM","MBS","NPH","ISD","DKA","AVR",4)),
-
 );
 
 
@@ -205,7 +195,7 @@ deck_rules{"Extended"}{"sideboard"}=(
   ("RuleDeckSizes",(0,15)),
   ("RulePass",NULL),
 );
-deck_rules{"Extended"}{""}=(
+deck_rules{"Extended"}{"deck+sideboard"}=(
   ("RuleCardLimitAny","Island"),
   ("RuleCardLimitAny","Forest"),
   ("RuleCardLimitAny","Mountain"),
@@ -232,7 +222,7 @@ deck_rules{"Standard"}{"sideboard"}=(
   ("RuleDeckSizes",(0,15)),
   ("RulePass",NULL),
 );
-deck_rules{"Standard"}{""}=(
+deck_rules{"Standard"}{"deck+sideboard"}=(
   ("RuleCardLimitAny","Island"),
   ("RuleCardLimitAny","Forest"),
   ("RuleCardLimitAny","Mountain"),
@@ -255,7 +245,7 @@ deck_rules{"Standard"}{""}=(
 #  ("RuleDeckSizes",(0,15)),
 #  ("RulePass",NULL),
 #);
-#deck_rules{"Ice Age Block"}{""}=(
+#deck_rules{"Ice Age Block"}{"deck+sideboard"}=(
 #  ("RuleCardLimitAny","Island"),
 #  ("RuleCardLimitAny","Forest"),
 #  ("RuleCardLimitAny","Mountain"),
@@ -281,7 +271,7 @@ deck_rules{"Standard"}{""}=(
 #  ("RuleDeckSizes",(0,15)),
 #  ("RulePass",NULL),
 #);
-#deck_rules{"Mirage Block"}{""}=(
+#deck_rules{"Mirage Block"}{"deck+sideboard"}=(
 #  ("RuleCardLimitAny","Island"),
 #  ("RuleCardLimitAny","Forest"),
 #  ("RuleCardLimitAny","Mountain"),
@@ -302,7 +292,7 @@ deck_rules{"Standard"}{""}=(
 #  ("RuleDeckSizes",(0,15)),
 #  ("RulePass",NULL),
 #);
-#deck_rules{"Rath Block"}{""}=(
+#deck_rules{"Rath Block"}{"deck+sideboard"}=(
 #  ("RuleCardLimitAny","Island"),
 #  ("RuleCardLimitAny","Forest"),
 #  ("RuleCardLimitAny","Mountain"),
@@ -323,7 +313,7 @@ deck_rules{"Standard"}{""}=(
 #  ("RuleDeckSizes",(0,15)),
 #  ("RulePass",NULL),
 #);
-#deck_rules{"Urza Block"}{""}=(
+#deck_rules{"Urza Block"}{"deck+sideboard"}=(
 #  ("RuleCardLimitAny","Island"),
 #  ("RuleCardLimitAny","Forest"),
 #  ("RuleCardLimitAny","Mountain"),
@@ -344,7 +334,7 @@ deck_rules{"Standard"}{""}=(
 #  ("RuleDeckSizes",(0,15)),
 #  ("RulePass",NULL),
 #);
-#deck_rules{"Masques Block"}{""}=(
+#deck_rules{"Masques Block"}{"deck+sideboard"}=(
 #  ("RuleCardLimitAny","Island"),
 #  ("RuleCardLimitAny","Forest"),
 #  ("RuleCardLimitAny","Mountain"),
@@ -365,7 +355,7 @@ deck_rules{"Standard"}{""}=(
 #  ("RuleDeckSizes",(0,15)),
 #  ("RulePass",NULL),
 #);
-#deck_rules{"Invasion Block"}{""}=(
+#deck_rules{"Invasion Block"}{"deck+sideboard"}=(
 #  ("RuleCardLimitAny","Island"),
 #  ("RuleCardLimitAny","Forest"),
 #  ("RuleCardLimitAny","Mountain"),
@@ -384,14 +374,14 @@ deck_rules{"Standard"}{""}=(
 #  ("RuleDeckSizes",(0,15)),
 #  ("RulePass",NULL),
 #);
-#deck_rules{"Odyssey Block"}{""}=(
+#deck_rules{"Odyssey Block"}{"deck+sideboard"}=(
 #  ("RuleCardLimitAny","Island"),
 #  ("RuleCardLimitAny","Forest"),
 #  ("RuleCardLimitAny","Mountain"),
 #  ("RuleCardLimitAny","Swamp"),
 #  ("RuleCardLimitAny","Plains"),
 #
-#  ("RuleAllowedSetsReprint",("OD","TO","JU",4)),
+#  ("RuleAllowedSetsReprint",("OD","TO","JD",4)),
 #);
 #
 #deck_rules{"Onslaught Block"}=(,);
@@ -403,7 +393,7 @@ deck_rules{"Standard"}{""}=(
 #  ("RuleDeckSizes",(0,15)),
 #  ("RulePass",NULL),
 #);
-#deck_rules{"Onslaught Block"}{""}=(
+#deck_rules{"Onslaught Block"}{"deck+sideboard"}=(
 #  ("RuleCardLimitAny","Island"),
 #  ("RuleCardLimitAny","Forest"),
 #  ("RuleCardLimitAny","Mountain"),
@@ -422,7 +412,7 @@ deck_rules{"Standard"}{""}=(
 #  ("RuleDeckSizes",(0,15)),
 #  ("RulePass",NULL),
 #);
-#deck_rules{"Mirrodin Block"}{""}=(
+#deck_rules{"Mirrodin Block"}{"deck+sideboard"}=(
 #  ("RuleCardLimitAny","Island"),
 #  ("RuleCardLimitAny","Forest"),
 #  ("RuleCardLimitAny","Mountain"),
@@ -444,7 +434,7 @@ deck_rules{"Standard"}{""}=(
 #  ("RuleDeckSizes",(0,15)),
 #  ("RulePass",NULL),
 #);
-#deck_rules{"Kami Block"}{""}=(
+#deck_rules{"Kami Block"}{"deck+sideboard"}=(
 #  ("RuleCardLimitAny","Island"),
 #  ("RuleCardLimitAny","Forest"),
 #  ("RuleCardLimitAny","Mountain"),
@@ -463,7 +453,7 @@ deck_rules{"Standard"}{""}=(
 #  ("RuleDeckSizes",(0,15)),
 #  ("RulePass",NULL),
 #);
-#deck_rules{"Ravnica Block"}{""}=(
+#deck_rules{"Ravnica Block"}{"deck+sideboard"}=(
 #  ("RuleCardLimitAny","Island"),
 #  ("RuleCardLimitAny","Forest"),
 #  ("RuleCardLimitAny","Mountain"),
@@ -482,7 +472,7 @@ deck_rules{"Standard"}{""}=(
 #  ("RuleDeckSizes",(0,15)),
 #  ("RulePass",NULL),
 #);
-#deck_rules{"Time Block"}{""}=(
+#deck_rules{"Time Block"}{"deck+sideboard"}=(
 #  ("RuleCardLimitAny","Island"),
 #  ("RuleCardLimitAny","Forest"),
 #  ("RuleCardLimitAny","Mountain"),
@@ -501,7 +491,7 @@ deck_rules{"Standard"}{""}=(
 #  ("RuleDeckSizes",(0,15)),
 #  ("RulePass",NULL),
 #);
-#deck_rules{"Lorwyn Block"}{""}=(
+#deck_rules{"Lorwyn Block"}{"deck+sideboard"}=(
 #  ("RuleCardLimitAny","Island"),
 #  ("RuleCardLimitAny","Forest"),
 #  ("RuleCardLimitAny","Mountain"),
@@ -520,7 +510,7 @@ deck_rules{"Standard"}{""}=(
 #  ("RuleDeckSizes",(0,15)),
 #  ("RulePass",NULL),
 #);
-#deck_rules{"Alara Block"}{""}=(
+#deck_rules{"Alara Block"}{"deck+sideboard"}=(
 #  ("RuleCardLimitAny","Island"),
 #  ("RuleCardLimitAny","Forest"),
 #  ("RuleCardLimitAny","Mountain"),
@@ -539,7 +529,7 @@ deck_rules{"Standard"}{""}=(
 #  ("RuleDeckSizes",(0,15)),
 #  ("RulePass",NULL),
 #);
-#deck_rules{"Zendikar Block"}{""}=(
+#deck_rules{"Zendikar Block"}{"deck+sideboard"}=(
 #  ("RuleCardLimitAny","Island"),
 #  ("RuleCardLimitAny","Forest"),
 #  ("RuleCardLimitAny","Mountain"),
@@ -548,25 +538,25 @@ deck_rules{"Standard"}{""}=(
 #
 #  ("RuleAllowedSetsReprint",("ZEN","WWK","ROE",4)),
 #);
-
-deck_rules{"Scars Block"}=(,);
-deck_rules{"Scars Block"}{"deck"}=(
-  ("RuleDeckMinimum",60),
-  ("RulePass",NULL),
-);
-deck_rules{"Scars Block"}{"sideboard"}=(
-  ("RuleDeckSizes",(0,15)),
-  ("RulePass",NULL),
-);
-deck_rules{"Scars Block"}{""}=(
-  ("RuleCardLimitAny","Island"),
-  ("RuleCardLimitAny","Forest"),
-  ("RuleCardLimitAny","Mountain"),
-  ("RuleCardLimitAny","Swamp"),
-  ("RuleCardLimitAny","Plains"),
-
-  ("RuleAllowedSetsReprint",("SOM","MBS","NPH",4)),
-);
+#
+#deck_rules{"Scars Block"}=(,);
+#deck_rules{"Scars Block"}{"deck"}=(
+#  ("RuleDeckMinimum",60),
+#  ("RulePass",NULL),
+#);
+#deck_rules{"Scars Block"}{"sideboard"}=(
+#  ("RuleDeckSizes",(0,15)),
+#  ("RulePass",NULL),
+#);
+#deck_rules{"Scars Block"}{"deck+sideboard"}=(
+#  ("RuleCardLimitAny","Island"),
+#  ("RuleCardLimitAny","Forest"),
+#  ("RuleCardLimitAny","Mountain"),
+#  ("RuleCardLimitAny","Swamp"),
+#  ("RuleCardLimitAny","Plains"),
+#
+#  ("RuleAllowedSetsReprint",("SOM","MBS","NPH",4)),
+#);
 
 deck_rules{"Innistrad Block"}=(,);
 deck_rules{"Innistrad Block"}{"deck"}=(
@@ -577,7 +567,7 @@ deck_rules{"Innistrad Block"}{"sideboard"}=(
   ("RuleDeckSizes",(0,15)),
   ("RulePass",NULL),
 );
-deck_rules{"Innistrad Block"}{""}=(
+deck_rules{"Innistrad Block"}{"deck+sideboard"}=(
   ("RuleCardLimitAny","Island"),
   ("RuleCardLimitAny","Forest"),
   ("RuleCardLimitAny","Mountain"),
@@ -602,7 +592,7 @@ deck_rules{"Pauper"}{"sideboard"}=(
   ("RuleDeckSizes",(0,15)),
   ("RulePass",NULL),
 );
-deck_rules{"Pauper"}{""}=(
+deck_rules{"Pauper"}{"deck+sideboard"}=(
   ("RuleCardLimitAny","Island"),
   ("RuleCardLimitAny","Forest"),
   ("RuleCardLimitAny","Mountain"),
@@ -620,4 +610,27 @@ deck_rules{"Pauper"}{""}=(
   ("RuleCardLimitEach",("Cranial Plating","Frantic Search",0)),
   
   ("RuleCardLimitGeneral",4),
+);
+
+##############
+# PLANECHASE #
+##############
+
+deck_rules{"Planechase"}=(,);
+deck_rules{"Planechase"}{"planes"}=(
+  ("RuleDeckMinimum",10),
+  ("RuleLimitByExpression",(0,"Attr('type',#) != 'Plane' && Attr('type',#) != 'Phenomenon'")),
+  ("RuleCheckExpression",("No more than 20% of the planar deck can be phenomena","count('Phenomenon',Attr('type',#)) * 5 <= length(#)")),
+  ("RuleCardLimitGeneral",1),
+);
+
+#############
+# ARCHENEMY #
+#############
+
+deck_rules{"Archenemy"}=(,);
+deck_rules{"Archenemy"}{"schemes"}=(
+  ("RuleDeckMinimum",20),
+  ("RuleLimitByExpression",(0,"Attr('type',#) != 'Scheme' && Attr('type',#) != 'Ongoing Scheme'")),
+  ("RuleCardLimitGeneral",2),
 );
