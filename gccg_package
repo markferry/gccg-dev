@@ -212,9 +212,13 @@ sub write_xml_document
 			foreach $d (sort(keys(%{$dependencies{$type}{$m}})))
 			{
 				if($dependencies{$type}{$m}{$d} eq "")
+				{
 					print F "	<requires name=\"$d\" />\n";
+				}
 				else
+				{
 					print F "	<requires name=\"$d\" version=\"$dependencies{$type}{$m}{$d}\" />\n";
+				}
 			}
 			foreach $f (sort(keys(%{$files{$type}{$m}})))
 			{
@@ -858,7 +862,7 @@ sub update_modules
 		if($module{"installed"}{$_} ne "" and is_newer($module{"updated"}{$_},$module{"installed"}{$_}))
 		{
 			push @remove, $_ if($_ ne "core");
-			%inst{$_}=1;
+			$inst{$_}=1;
 		}
 	}
 	
