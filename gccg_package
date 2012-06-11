@@ -6,10 +6,10 @@
 %module=();			# $module{mode}{module name} - version numbers of updated/build/installed/available modules.
 %files=();			# $files{mode}{module name}{filename} - include or exclude flags (1 = include, 0 = exclude)
 %sources=();		# $sources{mode} - List of sources.
-%dependencies=();		# $dependencies{module name}{dependency name} - minimum version required to satisfy dependency
+%dependencies=();		# $dependencies{mode}{module name}{dependency name} - minimum version required to satisfy dependency
 @sources_fail=();   # List of source indices found without valid available.xml
 @sources_new=();    # List of new sources seen
-@inst=();		# List of modules to be installed
+%inst=();		# $inst{module name} - 1 if module is scheduled to be installed
 @remove=();		# List of modules to be removed
 $store="";			# Where to store modules built.
 %url=();			# $url{mode}{module name} - url of newest module
@@ -67,6 +67,7 @@ sub read_xml_document
 	$module{$mode}=();
 	$sources{$mode}=();
 	$files{$mode}=();
+	$dependencies{$mode}=();
 
 	open(F,$file) or die "cannot open $file";
 	while(<F>)
@@ -79,7 +80,7 @@ sub read_xml_document
 		}
 		if(m/<requires name="(.+?)"(?: version="(.*?)")? ?\/>/)
 		{
-			$dependencies{$current_module}{$1} = defined($2) ? $2 : "";
+			$dependencies{$mode}{$current_module}{$1} = defined($2) ? $2 : "";
 		}
 		elsif(m/<include file="(.+?)"\/>/)
 		{
@@ -188,7 +189,7 @@ sub read_xml_document
 }
 
 #
-# Write current status of modules to xml-file.
+# write_xml_document(file,mode) - Write current status of modules to xml-file.
 #
 sub write_xml_document
 {
@@ -208,9 +209,16 @@ sub write_xml_document
 		if($module{$type}{$m} ne "")
 		{
 			print F "  <module name=\"$m\" version=\"".$module{$type}{$m}."\">\n";
+			foreach $d (sort(keys(%{$dependencies{$type}{$m}})))
+			{
+				if($dependencies{$type}{$m}{$d} eq "")
+					print F "	<requires name=\"$d\" />\n";
+				else
+					print F "	<requires name=\"$d\" version=\"$dependencies{$type}{$m}{$d}\" />\n";
+			}
 			foreach $f (sort(keys(%{$files{$type}{$m}})))
 			{
-				print F "    <include file=\"$f\"/>\n" if($files{$type}{$m}{$f});
+				print F "	<include file=\"$f\"/>\n" if($files{$type}{$m}{$f});
 			}
 			print F "  </module>\n";
 		}
@@ -491,6 +499,7 @@ sub check_for_new
 			$module{"updated"}{$m}=$module{"available"}{$m};
 			$files{"updated"}{$m}=$files{"available"}{$m};
 			$url{"updated"}{$m}=$urlbase.module_file($m,$module{"available"}{$m});
+			$dependencies{"updated"}{$m}=$dependencies{"available"}{$m};
 		}
 	}
 }
@@ -502,34 +511,35 @@ sub check_dependencies
 {
 	foreach $m (@_)
 	{
-		if(exists $dependencies{$m})
+		if(exists $dependencies{"updated"}{$m})
 		{
-			for(sort keys %{$dependencies{$m}})
+			for(sort keys %{$dependencies{"updated"}{$m}})
 			{
+				next if $inst{$_};
 				if(!exists($module{"updated"}{$_}) && 
 				   (!exists($module{"installed"}{$_}) || 
-				    is_newer($dependencies{$m}{$_},$module{"installed"}{$_})))
+				    is_newer($dependencies{"updated"}{$m}{$_},$module{"installed"}{$_})))
 				{
 					die("Module '$m' depends on an unobtainable module '$_'");
 				}
-				elsif(is_newer($dependencies{$m}{$_},$module{"updated"}{$_})
-				        && is_newer($dependencies{$m}{$_},$module{"installed"}{$_}))
+				elsif(is_newer($dependencies{"updated"}{$m}{$_},$module{"updated"}{$_})
+				        && is_newer($dependencies{"updated"}{$m}{$_},$module{"installed"}{$_}))
 				{
-					die("Module '$m' depends on v$dependencies{$m}{$_} or newer of '$_' "
+					die("Module '$m' depends on v$dependencies{'updated'}{$m}{$_} or newer of '$_' "
 						."(only v$module{'updated'}{$_} is available)");
 				}
 				elsif($module{"installed"}{$_} eq "")
 				{
 					print "Module '$m' depends on '$_'; adding to transaction...\n";
-					push @inst, $_;
+					$inst{$_}=1;
 					check_dependencies($_);
 				}
-				elsif(is_newer($dependencies{$m}{$_},$module{"installed"}{$_}))
+				elsif(is_newer($dependencies{"updated"}{$m}{$_},$module{"installed"}{$_}))
 				{
-					print "Module '$m' depends on '$_' (v$dependencies{$m}{$_} or newer); "
+					print "Module '$m' depends on '$_' (v$dependencies{'updated'}{$m}{$_} or newer); "
 							."adding to transaction...\n";
 					push @remove, $_ if $_ ne "core";
-					push @inst, $_;
+					$inst{$_}=1;
 					check_dependencies($_);
 				}
 			}
@@ -686,18 +696,18 @@ sub uncompress
 sub install_modules
 {
 	fetch_module_lists(1);
-	@inst = ();
+	%inst = ();
 	@remove = ();
 
 	for(module_match("updated",@_))
 	{
 		push @remove, $_ if($_ ne "core" && $module{"installed"}{$_} ne "");
-		push @inst, $_;
+		$inst{$_}=1;
 	}
 	
-	check_dependencies(@inst);
+	check_dependencies(keys %inst);
 	remove_module($_) for (@remove);
-	install_module($_) for (@inst);		
+	install_module($_) for (keys %inst);		
 }
 
 #
@@ -727,6 +737,7 @@ sub install_module
 			if(uncompress($file))
 			{
 				$module{"installed"}{$name}=$module{"updated"}{$name};
+				$dependencies{"installed"}{$name}=$dependencies{"updated"}{$name};
 				%{$files{"installed"}{$name}}=();
 				if($winsystem)
 				{
@@ -839,7 +850,7 @@ sub remove_module
 sub update_modules
 {
 	fetch_module_lists(1);
-	@inst = ();
+	%inst = ();
 	@remove = ();
 
 	for(keys(%{$module{"updated"}}))
@@ -847,13 +858,13 @@ sub update_modules
 		if($module{"installed"}{$_} ne "" and is_newer($module{"updated"}{$_},$module{"installed"}{$_}))
 		{
 			push @remove, $_ if($_ ne "core");
-			push @inst, $_;
+			%inst{$_}=1;
 		}
 	}
 	
-	check_dependencies(@inst);
+	check_dependencies(keys %inst);
 	remove_module($_) for (@remove);
-	install_module($_) for (@inst);
+	install_module($_) for (keys %inst);
 }
 
 #

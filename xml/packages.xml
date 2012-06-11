@@ -267,12 +267,14 @@
     <requires name="mtg-cards-080" version="1" />
   </module>
   <module name="mtg-cards-000" version="18">
-    <include dir="graphics/Mtg/Tokens"/>
-    <include dir="graphics/Mtg/Emblems"/>
-    <include dir="graphics/Mtg/Planes"/>
-    <include dir="graphics/Mtg/Schemes"/>
-    <include file="graphics/Mtg/JitteCounter.jpg"/>
-    <include file="graphics/Mtg/StormCounter.jpg"/>
+	<include dir="graphics/Mtg/Tokens"/>
+	<include dir="graphics/Mtg/Emblems"/>
+	<include dir="graphics/Mtg/Planes"/>
+	<include dir="graphics/Mtg/Schemes"/>
+	<include file="graphics/Mtg/JitteCounter.jpg"/>
+	<include file="graphics/Mtg/StormCounter.jpg"/>
+	<include file="graphics/Mtg/planeback.jpg"/>
+	<include file="graphics/Mtg/schemeback.jpg"/>
   </module>
   <module name="mtg-cards-001" version="15">
 	<include dir="graphics/Mtg/PM"/>
@@ -338,7 +340,7 @@
 	<include dir="graphics/Mtg/P2"/>
   </module>
   <module name="mtg-cards-022" version="15">
-    <include dir="graphics/Mtg/UG"/>
+	<include dir="graphics/Mtg/UG"/>
   </module>
   <module name="mtg-cards-023" version="15">
 	<include dir="graphics/Mtg/US"/>
@@ -473,48 +475,48 @@
 	<include dir="graphics/Mtg/M10"/>
   </module>
   <module name="mtg-cards-067" version="15">
-    <include dir="graphics/Mtg/ZDK"/>
+	<include dir="graphics/Mtg/ZDK"/>
   </module>
   <module name="mtg-cards-068" version="15">
-    <include dir="graphics/Mtg/WWK"/>
+	<include dir="graphics/Mtg/WWK"/>
   </module>
   <module name="mtg-cards-069" version="15">
-    <include dir="graphics/Mtg/ROE"/>
+	<include dir="graphics/Mtg/ROE"/>
   </module>
   <module name="mtg-cards-070" version="15">
 	<include dir="graphics/Mtg/M11"/>
   </module>
   <module name="mtg-cards-071" version="15">
-    <include dir="graphics/Mtg/SOM"/>
+	<include dir="graphics/Mtg/SOM"/>
   </module>
   <module name="mtg-cards-072" version="15">
-    <include dir="graphics/Mtg/MBS"/>
+	<include dir="graphics/Mtg/MBS"/>
   </module>
   <module name="mtg-cards-073" version="15">
-    <include dir="graphics/Mtg/NPH"/>
+	<include dir="graphics/Mtg/NPH"/>
   </module>
   <module name="mtg-cards-074" version="15">
-    <include dir="graphics/Mtg/COM"/>
+	<include dir="graphics/Mtg/COM"/>
   </module>  
   <module name="mtg-cards-075" version="15">
-    <include dir="graphics/Mtg/M12"/>
+	<include dir="graphics/Mtg/M12"/>
   </module>
   <module name="mtg-cards-076" version="2">
-    <include dir="graphics/Mtg/ISD"/>
-    <include dir="graphics/Mtg/ISD_flip"/>
+	<include dir="graphics/Mtg/ISD"/>
+	<include dir="graphics/Mtg/ISD_flip"/>
   </module>
   <module name="mtg-cards-077" version="2">
-    <include dir="graphics/Mtg/DKA"/>
-    <include dir="graphics/Mtg/DKA_flip"/>
+	<include dir="graphics/Mtg/DKA"/>
+	<include dir="graphics/Mtg/DKA_flip"/>
   </module>
   <module name="mtg-cards-078" version="1">
-    <include dir="graphics/Mtg/AVR"/>
+	<include dir="graphics/Mtg/AVR"/>
   </module>
   <module name="mtg-cards-079" version="1">
-    <include dir="graphics/Mtg/PC2"/>
+	<include dir="graphics/Mtg/PC2"/>
   </module>
   <module name="mtg-cards-080" version="1">
-    <include dir="graphics/Mtg/M13"/>
+	<include dir="graphics/Mtg/M13"/>
   </module>
   <module name="pokemon-cards" version="9.0">
 	<requires name="pokemon-cards-000" version="5" />
