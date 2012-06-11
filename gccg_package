@@ -6,8 +6,11 @@
 %module=();			# $module{mode}{module name} - version numbers of updated/build/installed/available modules.
 %files=();			# $files{mode}{module name}{filename} - include or exclude flags (1 = include, 0 = exclude)
 %sources=();		# $sources{mode} - List of sources.
+%dependencies=();		# $dependencies{module name}{dependency name} - minimum version required to satisfy dependency
 @sources_fail=();   # List of source indices found without valid available.xml
 @sources_new=();    # List of new sources seen
+@inst=();		# List of modules to be installed
+@remove=();		# List of modules to be removed
 $store="";			# Where to store modules built.
 %url=();			# $url{mode}{module name} - url of newest module
 $mode;				# Section to handle "build", "installed" or "available".
@@ -73,6 +76,10 @@ sub read_xml_document
 		{
 			$module{$mode}{$1}=$2;
 			$current_module=$1;
+		}
+		if(m/<requires name="(.+?)"(?: version="(.*?)")? ?\/>/)
+		{
+			$dependencies{$current_module}{$1} = defined($2) ? $2 : "";
 		}
 		elsif(m/<include file="(.+?)"\/>/)
 		{
@@ -305,7 +312,7 @@ sub build_module
 
 	if ($module{"build"}{$name} eq $module{"available"}{$name} and -f "$store/$modulename")
 	{
-		print "Skipping module $name: version ".$module{"build"}{$name}." already build.\n";
+		print "Skipping module $name: version $module{'build'}{$name} already built.\n";
 		return;
 	}
 	
@@ -400,7 +407,6 @@ sub build_module
 sub fetch_file
 {
 	my($url) = @_;
-
 	(my $file = $url) =~ s|^.*/||;
 
 	unlink($file);
@@ -441,7 +447,6 @@ sub is_newer
 {
 	my $ver1=shift;
 	my $ver2=shift;
-#	print "$ver1 vs $ver2\n";
 	return 0 if $ver1 eq "";
 	return 1 if $ver2 eq "";
 	my @v1=split /\./,$ver1;
@@ -486,6 +491,48 @@ sub check_for_new
 			$module{"updated"}{$m}=$module{"available"}{$m};
 			$files{"updated"}{$m}=$files{"available"}{$m};
 			$url{"updated"}{$m}=$urlbase.module_file($m,$module{"available"}{$m});
+		}
+	}
+}
+
+#
+# check_dependencies(list of module names) - See if modules have any dependencies to bring in.
+#
+sub check_dependencies
+{
+	foreach $m (@_)
+	{
+		if(exists $dependencies{$m})
+		{
+			for(sort keys %{$dependencies{$m}})
+			{
+				if(!exists($module{"updated"}{$_}) && 
+				   (!exists($module{"installed"}{$_}) || 
+				    is_newer($dependencies{$m}{$_},$module{"installed"}{$_})))
+				{
+					die("Module '$m' depends on an unobtainable module '$_'");
+				}
+				elsif(is_newer($dependencies{$m}{$_},$module{"updated"}{$_})
+				        && is_newer($dependencies{$m}{$_},$module{"installed"}{$_}))
+				{
+					die("Module '$m' depends on v$dependencies{$m}{$_} or newer of '$_' "
+						."(only v$module{'updated'}{$_} is available)");
+				}
+				elsif($module{"installed"}{$_} eq "")
+				{
+					print "Module '$m' depends on '$_'; adding to transaction...\n";
+					push @inst, $_;
+					check_dependencies($_);
+				}
+				elsif(is_newer($dependencies{$m}{$_},$module{"installed"}{$_}))
+				{
+					print "Module '$m' depends on '$_' (v$dependencies{$m}{$_} or newer); "
+							."adding to transaction...\n";
+					push @remove, $_ if $_ ne "core";
+					push @inst, $_;
+					check_dependencies($_);
+				}
+			}
 		}
 	}
 }
@@ -639,13 +686,17 @@ sub uncompress
 sub install_modules
 {
 	fetch_module_lists(1);
-	my @inst;
+	@inst = ();
+	@remove = ();
 
 	for(module_match("updated",@_))
 	{
-		remove_module($_) if($_ ne "core" and $module{"installed"}{$_} ne "");
+		push @remove, $_ if($_ ne "core" && $module{"installed"}{$_} ne "");
 		push @inst, $_;
 	}
+	
+	check_dependencies(@inst);
+	remove_module($_) for (@remove);
 	install_module($_) for (@inst);		
 }
 
@@ -656,10 +707,10 @@ sub install_module
 {
 	my $name=shift;
 	
-	die "$0: no such module as ".$name if not is_module($name);
+	die "$0: no such module as $name" if not is_module($name);
 	if ($module{"updated"}{$name} eq "")
 	{
-		print "Module ".$name." is already up-to-date\n";
+		print "Module $name is already up-to-date\n";
 	}
 	else
 	{
@@ -671,7 +722,7 @@ sub install_module
 		}
 		else
 		{
-			print "Installing module ".$name."\n";
+			print "Installing module $name\n";
 			
 			if(uncompress($file))
 			{
@@ -734,10 +785,10 @@ sub get_module
 {
 	my $name=shift;
 	
-	die "$0: no such module as ".$name if not is_module($name);
+	die "$0: no such module as $name" if not is_module($name);
 	
-	print "Fetching ".$url{"available"}{$name}."\n";
-	my $file=fetch_file($url{"available"}{$name});
+	print "Fetching $url{'updated'}{$name}\n";
+	my $file=fetch_file($url{'updated'}{$name});
 	if ($file eq "")
 	{
 		print "FAILED\n";
@@ -788,15 +839,20 @@ sub remove_module
 sub update_modules
 {
 	fetch_module_lists(1);
-	my @inst;
-	foreach $m (keys(%{$module{"updated"}}))
+	@inst = ();
+	@remove = ();
+
+	for(keys(%{$module{"updated"}}))
 	{
-		if($module{"installed"}{$m} ne "" and is_newer($module{"updated"}{$m},$module{"installed"}{$m}))
+		if($module{"installed"}{$_} ne "" and is_newer($module{"updated"}{$_},$module{"installed"}{$_}))
 		{
-			remove_module($m) if($m ne "core");
-			push @inst, $m;
+			push @remove, $_ if($_ ne "core");
+			push @inst, $_;
 		}
 	}
+	
+	check_dependencies(@inst);
+	remove_module($_) for (@remove);
 	install_module($_) for (@inst);
 }
 
@@ -931,6 +987,16 @@ sub source_add
 	my $url=shift;
 
 	$url=~s/([^\/])$/$1\//;
+	
+	for(@{$sources{"installed"}})
+	{
+		if($url eq $_)
+		{
+			print "Source $url already exists\n";
+			return;
+		}
+	}
+	
 	print "Testing $url\n";
 
 	$file=fetch_file("${url}available.xml");
