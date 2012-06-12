@@ -63,7 +63,6 @@ sub read_xml_document
 {
 	my $file=shift;
 	$mode=shift;
-
 	$module{$mode}=();
 	$sources{$mode}=();
 	$files{$mode}=();
@@ -78,11 +77,11 @@ sub read_xml_document
 			$module{$mode}{$1}=$2;
 			$current_module=$1;
 		}
-		if(m/<requires name="(.+?)"(?: version="(.*?)")? ?\/>/)
+		elsif(m/<requires name="(.+?)"(?: version="(.*?)")? ?\/>/)
 		{
 			$dependencies{$mode}{$current_module}{$1} = defined($2) ? $2 : "";
 		}
-		elsif(m/<include file="(.+?)"\/>/)
+		elsif(m/<include file="(.+?)" ?\/>/)
 		{
 			my $d=$1;
 			
@@ -92,54 +91,32 @@ sub read_xml_document
 			}
 			$files{$mode}{$current_module}{$1}=1;
 		}
-		elsif(m/<include files="(.+?)"\/>/)
+		elsif(m/<include files="(.+?)" ?\/>/)
 		{
 			my $d=$1;
 			
-			while ($d=~s/(.*)\/(.+)/$1/)
+			open(DIR,"find $d -follow 2>/dev/null |");
+			while(<DIR>)
 			{
-				$files{$mode}{$current_module}{$1}=1;
-			}
-
-			if(!@file_cache)
-			{
-			    print "Reading files...\n";
-			    open(DIR,"find .. -follow 2>/dev/null |");
-			    while(<DIR>)
-			    {
 				chomp;
 				s|^\.\./[a-zA-Z]+/||;
 				next if m |/\.svn|;
 				next if m |^\.svn|;
 				next if m |~$|;
 				next if $_ eq ".";
-
-				push @file_cache,$_;
-			    }
-			    close(DIR);
-			}
-		
-			my $pat="^".pattern2regexp($1)."\$";
-			my $pat2="^module_$current_module\/".pattern2regexp($1)."\$";
-
-			for(@file_cache)
-			{
-				if(m/$pat2/)
-				{
-					s/^module_$current_module\///;
-					$files{$mode}{$current_module}{$_}=1;
-				}
-				elsif(m/$pat/)
+				$files{$mode}{$current_module}{$_}=1;
+				while ($_ =~ s/(.*\/)(.+)/$1/)
 				{
 					$files{$mode}{$current_module}{$_}=1;
 				}
 			}
+			close(DIR);
 		}
-		elsif(m/<store dir="(.+?)"\/>/)
+		elsif(m/<store dir="(.+?)" ?\/>/)
 		{
 			$store=$1;
 		}
-		elsif(m/<include dir="(.+?)"\/>/)
+		elsif(m/<include dir="(.+?)" ?\/>/)
 		{
 			my $dir=$1;
 			my $d=$dir;
@@ -180,7 +157,7 @@ sub read_xml_document
 			    close(DIR);
 			}
 		    }
-		elsif(m/<source url="(.+?)"\/>/)
+		elsif(m/<source url="(.+?)" ?\/>/)
 		{
 			push @{$sources{$mode}},$1;
 		}
@@ -195,7 +172,7 @@ sub write_xml_document
 {
 	my $file=shift;
 	my $type=shift;
-
+	
 	open(F,">$file") or die "$0: cannot write '$file'";
 	print F "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n";
 	print F "<!DOCTYPE modules SYSTEM \"modules.dtd\">\n";
@@ -330,8 +307,7 @@ sub build_module
 	
 	system("rm -rf build/tmp");
 	mkdir("build/tmp",0755);
-
-
+	
 	for $f (sort(keys(%{$files{"build"}{$name}})))
 	{
  	        $orig=$f;
@@ -344,11 +320,14 @@ sub build_module
 			}
 			elsif(-f $f || -f "module_$name/$f")
 			{
-				$dir=$f;
-
-				$dir=~s|(.*/).*|$1|;
-				$dir="" if($dir eq $f);
-				$f=~s|.*/(.*)|$1|;
+				if($f =~ m|(.*/)(.*)|)
+				{
+					$dir=$1; $f=$2;
+				}
+				else
+				{
+					$dir="";
+				}
 
 				if(-f "module_$name/$dir$f")
 				{
@@ -362,11 +341,14 @@ sub build_module
 			}
 			else
 			{
-			    $dir=$f;
-			    
-			    $dir=~s|(.*/).*|$1|;
-			    $dir="" if($dir eq $f);
-			    $f=~s|.*/(.*)|$1|;
+				if($f =~ m|(.*/)(.*)|)
+				{
+					$dir=$1; $f=$2;
+				}
+				else
+				{
+					$dir="";
+				}
 			    $ok=0;
 			    for $b (branches())
 			    {
@@ -392,13 +374,14 @@ sub build_module
 	if($name eq "core")
 	{
 		$module{"temp"}{"core"}=$module{"build"}{"core"};
+		$dependencies{"temp"}{"core"}=$dependencies{"build"}{"core"};
 		$files{"temp"}{"core"}=$files{"build"}{"core"};
 		$files{"temp"}{"core"}{"xml/installed.xml"}=1;
 		$sources{"temp"}=$sources{"build"};
 		write_xml_document("build/tmp/xml/installed.xml","temp");
 	}
 
-	my $old=module_file($name,"[0-9]*");
+	my $old=module_file($name,"[0-9.]*");
 	
 	print "Module $name: creating package $modulename\n";
 	system("cd build/tmp && tar czf ../$modulename .");
@@ -409,7 +392,9 @@ sub build_module
 	system("mv build/$modulename $store");
 	print "Writing $store/available.xml\n";
 	$module{"available"}{$name}=$module{"build"}{$name};
+	$dependencies{"available"}{$name}=$dependencies{"build"}{$name};
 	$sources{"available"}=$sources{"build"};
+	
 	write_xml_document("$store/available.xml","available");
 }
 
@@ -430,7 +415,7 @@ sub fetch_file
 		}
 	}
 
-	if($use_curl)
+	if ( $use_curl )
 	{
 		if ( system("curl $url >$file 2>/dev/null") == 0 )
 		{

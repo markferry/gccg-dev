@@ -2728,7 +2728,7 @@ def AcceptResult
   if(result != NULL)
   {
     result.accepted[player]=1;
-    SendAll("Message","{green}"+player.name{player}+" accepts offered result");
+    SendAll("Message","{green}"+player.name{player}+" accepts declared result");
   }
   else
     Send(player,("Message","{red}Nobody has declared game result yet"));

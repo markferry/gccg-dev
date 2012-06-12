@@ -5650,90 +5650,128 @@ def KeyReturn
 
 
 #
-# KeyTab() - Handler for key Tab.
+# KeyTab() - Autocomplete names or commands.
 #
 def KeyTab
 {
   if(mode!="")
   {
     push(p);
-    push(i);
     push(n);
+    push(b);
+    push(a);
+    push(word);
+    push(nw);
 
-    i=NULL;
-    p=sort(forall("(#)[1][0]",room.players));
-
-    if(tab.last_initial==NULL)
-      tab.last_initial="";
-    if(tab.last_player==NULL || tab.last_player=="")
-      tab.last_player=first(p);
-
-    if(input=="" || input=="{|}")
+    if(p=find("{|}",input))
     {
-      i=tab.last_player+": ";
-      tab.last_initial="";
-    }  
-    else if(right(input,5)==": {|}")
+      b=split(left(input,p)," ",1);
+      a=substr(input,p+3);
+    }
+    else 
     {
-      p=select("find(tab.last_initial,#)==0",p);
+      b=split(input," ",1);
+      a="";
+    }
+    
+    if(last(b)==" ")
+    {
+      nw=1;
+      b=head(b);
+      word=last(b);
+    }
+    else
+    {
+      nw=0;
+      word=last(b);
+    }
+    b=join(head(b));
+    if(word==NULL) word="";
+    
+    if(first(word)=="/")
+#   Command autocompletion
+    {
+      p=unique(sort(forall("'/'+(#)[0]",HELP{"any"}+HELP{mode})));
+      
+      if(tab.type != "command")
+      {
+        tab.last_initial = "/";
+        tab.last_item = first(p);
+        tab.type = "command";
+      }
+    }
+    else
+#   Player autocompletion
+    {
+      p=sort(forall("(#)[1][0]",room.players));
+
+      if(tab.type != "player")
+      {
+        tab.last_initial = "";
+        tab.last_item = first(p);
+        tab.type = "player";
+      }
+    }
+    
+    if(word=="" || word==" ")
+    {
+      if(b=="" && tab.type=="player" && left(a,1) != ":")
+        a=": {|}"+a;
+      else
+        a="{|}"+a;
+      
+      input=b+word+tab.last_item+a;
+      Input("");
+    }
+    else if(nw)
+    {
+      p=select("find(lc(tab.last_initial),lc(#))==0",p);
       
       if(length(p))
       {
-        n=left(input,length(input)-5);
-        if(find(n,p)!=NULL)
+        if(last(word)==":" && tab.type=="player")
         {
-          tab.last_player=p[(find(n,p)+1)%length(p)];
-          input="";
-          i=tab.last_player+": ";
+          nw = ":";
+          word=left(word,length(word)-1);
         }
-      }
-    }
-    else if(right(input,3)=="{|}")
-    {
-      n=trim(left(input,length(input)-3));
-      p=select("find(n,#)==0",p);
-      if(length(p))
-      {
-        tab.last_player=first(p);
-        tab.last_initial=n;
-        input="";
-        i=tab.last_player+": ";
-      }
-      else
-      {
-        n=split(n," ");
-        if(right(input,4)==" {|}")
+        else
+          nw="";
+        
+        if((n=find(lc(word),lc(p)))!=NULL)
         {
-          i=tab.last_player;
-          tab.last_initial="";
+          tab.last_item=p[(n+1)%length(p)];
+          input=b+tab.last_item+nw+" {|}"+a;
+          Input("");
         }
         else
         {
-          p=sort(forall("(#)[1][0]",room.players));
-          p=select("find(last(n),#)==0",p);
-          if(find(last(n),p)!=NULL)
-          {
-            p=sort(forall("(#)[1][0]",room.players));
-            p=select("find(tab.last_initial,#)==0",p);
-            tab.last_player=p[(find(last(n),p)+1)%length(p)];
-            input=left(input,length(input)-length(last(n))-3);
-            i=tab.last_player;
-          }
-          else if(length(p))
-          {
-            tab.last_player=first(p);
-            i=substr(tab.last_player,length(last(n)));
-            tab.last_initial=last(n);
-          }
+          input=b+word+nw+" "+tab.last_item+" {|}"+a;
+          Input("");
         }
       }
     }
+    else
+    {
+      p=select("find(lc(word),lc(#))==0",p);
+      if(length(p))
+      {
+        if(b=="" && tab.type=="player")
+          nw = ": {|}";
+        else
+          nw=" {|}";
+        
+        tab.last_item=first(p);
+        tab.last_initial=word;
+        input=b+tab.last_item+nw+a;
+        Input("");
+      }
+    }
 
-    if(i!=NULL)
-      Input(i);
-
+    word=pop();
+    nw=pop();
+    a=pop();
+    b=pop();
     n=pop();
-    i=pop();
     p=pop();
   }
 }

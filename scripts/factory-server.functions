@@ -1,6 +1,6 @@
 #
 #    Gccg - Generic collectible card game.
-#    Copyright (C) 2001-2012 Tommi Ronkainen
+#    Copyright (C) 2001,2002,2003,2004 Tommi Ronkainen
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -68,12 +68,22 @@ def CardsOfSetWithRarity
 def RandomCardSet
 {
   push(d);
+  push(r);
   push(pack);
   pack=(,);
   for(d)(ARG[1])
-    pack=pack+left(shuffle(flatten(forall("cards{ARG[0]}{#}",split(d[1],"+")))),d[0]);
+  {
+    for(r)(split(d[1],"+")
+    {
+      if(find("/",r)
+        pack=pack+left(shuffle(flatten(cards{first(split(r,"/"))}{last(split(r,"/"))})),d[0]);
+      else
+        pack=pack+left(shuffle(flatten(cards{ARG[0]}{r})),d[0]);
+    }
+  }
   return(pack);
   pack=pop();
+  r=pop();
   d=pop();
 }
 

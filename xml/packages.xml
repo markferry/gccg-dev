@@ -85,8 +85,8 @@
 	<include dir="localization"/>
   </module>
   <module name="mtg-server" version="1.3.4">
-	<requires name="mtg" version="1.3.4">
-	<requires name="server" version="0.9.6.2">
+	<requires name="mtg" version="1.3.4" />
+	<requires name="server" version="0.9.6.2" />
 	<include file="scripts/Mtg-factory-server.include"/>
 	<include file="scripts/Mtg-meta-server.include"/>
 	<include file="scripts/Mtg-server.include"/>
@@ -120,7 +120,7 @@
 	<include dir="scripts/Mtg"/>
 	<include file="scripts/Mtg.include"/>
 	<include file="scripts/Mtg-common.include"/>
-	<include files="scripts/Mtg*.rules"/>
+	<include files="scripts/Mtg.rules"/>
 	<include files="graphics/Mtg/*.png"/>
 	<include files="graphics/Mtg/*_booster.jpg"/>
 	<include files="graphics/Mtg/*_starter.jpg"/>
