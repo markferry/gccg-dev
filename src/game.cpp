@@ -565,6 +565,30 @@ void Deck::Del(int index)
     grp.redraw=true;
 }
 
+bool Deck::ClickableAt(int x,int y) const
+{
+	if(!Object::ClickableAt(x,y))
+		return false;
+	if(Size()<11)
+		return true;
+	
+	// Every 10 cards, the next card is drawn at an offset of (3,3).
+	// Therefore, there is a triangular arrangement of 3x3 squares at
+	// the top-right and bottom-left of the surface that are drawn as
+	// empty space (assuming the deck contains 11 or more cards).
+	int iy=(y-grp.y)/3;
+	int ix=(grp.x+grp.w-1-x)/3;
+	if(ix+iy <= (Size()-11)/10)
+		return false;
+	
+	iy=(grp.y+grp.h-1-y)/3;
+	ix=(x-grp.x)/3;
+	if(ix+iy <= (Size()-11)/10)
+		return false;
+	
+	return true;
+}
+
 void Deck::RecalculateSize()
 {
     int rot;

@@ -928,7 +928,8 @@ def _InitializeGame
 
   InitializeLocationTables();
 
-  InitializeGame();
+  if(isfunction("InitializeGame"))
+    InitializeGame();
 }
 
 #

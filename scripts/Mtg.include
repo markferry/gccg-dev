@@ -214,7 +214,7 @@ def NewDeck
 }
 
 #
-# InitializeHook() - Game specific initialization of variables.
+# InitializeHook() - Game specific program startup procedure.
 #
 def InitializeHook
 {
@@ -233,6 +233,13 @@ def InitializeHook
   set_fgcolor(schemes.book,COLORS{'BLACK'});
   set_textcolor(schemes.book,BKBRCOLOR);
   book_set_page(schemes.book,0);
+}
+
+#
+# InitializeGame() - Game specific variable setting when entering play mode.
+#
+def InitializeGame
+{
 }
 
 #

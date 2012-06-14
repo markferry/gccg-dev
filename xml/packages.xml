@@ -34,12 +34,28 @@
 	<include file="ccg_server"/>
 	<include file="ccg_text_client"/>
   </module>
+  <module name="linux-x8664" version="0.9.7.0">
+	<include file="ccg_client"/>
+	<include file="ccg_server"/>
+	<include file="ccg_text_client"/>
+  </module>
   <module name="darwin-i386" version="0.9.7.0">
 	<include file="ccg_client"/>
 	<include file="ccg_server"/>
 	<include file="ccg_text_client"/>
   </module>
+  <module name="darwin-x8664" version="0.9.7.0">
+	<include file="ccg_client"/>
+	<include file="ccg_server"/>
+	<include file="ccg_text_client"/>
+  </module>
   <module name="windows32" version="0.9.7.0">
+	<include file="ccg_client.exe"/>
+	<include file="ccg_server.exe"/>
+	<include files="*.dll"/>
+	<include file="README-SDL.txt"/>
+  </module>
+  <module name="windows64" version="0.9.7.0">
 	<include file="ccg_client.exe"/>
 	<include file="ccg_server.exe"/>
 	<include files="*.dll"/>
@@ -185,7 +201,7 @@
 	<include files="graphics/Poker/*.png"/>
 	<include files="graphics/Poker/*.jpg"/>
   </module>
-  <module name="mtg-cards" version="1.80.0">
+  <module name="mtg-cards" version="1.81.0">
     <requires name="mtg-cards-000" version="18" />
     <requires name="mtg-cards-001" version="15" />
     <requires name="mtg-cards-002" version="16" />
@@ -267,12 +283,11 @@
     <requires name="mtg-cards-078" version="1" />
     <requires name="mtg-cards-079" version="1" />
     <requires name="mtg-cards-080" version="1" />
+    <requires name="mtg-cards-081" version="1" />
   </module>
   <module name="mtg-cards-000" version="18">
 	<include dir="graphics/Mtg/Tokens"/>
 	<include dir="graphics/Mtg/Emblems"/>
-	<include dir="graphics/Mtg/Planes"/>
-	<include dir="graphics/Mtg/Schemes"/>
 	<include file="graphics/Mtg/JitteCounter.jpg"/>
 	<include file="graphics/Mtg/StormCounter.jpg"/>
   </module>
@@ -516,6 +531,10 @@
 	<include dir="graphics/Mtg/PC2"/>
   </module>
   <module name="mtg-cards-080" version="1">
+	<include dir="graphics/Mtg/Planes"/>
+	<include dir="graphics/Mtg/Schemes"/>
+  </module>
+  <module name="mtg-cards-081" version="1">
 	<include dir="graphics/Mtg/M13"/>
   </module>
   <module name="pokemon-cards" version="1.9.0">

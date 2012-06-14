@@ -491,6 +491,7 @@ namespace CCG
 	{return TypeDeck;}
 	void Draw();
 	void RecalculateSize();
+	bool ClickableAt(int x,int y) const;
 	void Dump() const;
     };
 
