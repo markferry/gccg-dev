@@ -20,7 +20,7 @@
 	<include file="tools/launch_client"/>
 	<include file="games.dat"/>
   </module>
-  <module name="source" version="0.9.6.7">
+  <module name="source" version="0.9.7.0">
 	<include dir="src"/>
 	<include files="*.bpr"/>
 	<include files="*.vcproj"/>
@@ -29,23 +29,23 @@
 	<include file="ChangeLog"/>
 	<include file="configure"/>
   </module>
-  <module name="linux-i386" version="0.9.6.1">
+  <module name="linux-i386" version="0.9.7.0">
 	<include file="ccg_client"/>
 	<include file="ccg_server"/>
 	<include file="ccg_text_client"/>
   </module>
-  <module name="darwin-i386" version="0.9.6.0">
+  <module name="darwin-i386" version="0.9.7.0">
 	<include file="ccg_client"/>
 	<include file="ccg_server"/>
 	<include file="ccg_text_client"/>
   </module>
-  <module name="windows32" version="0.9.6.0">
+  <module name="windows32" version="0.9.7.0">
 	<include file="ccg_client.exe"/>
 	<include file="ccg_server.exe"/>
 	<include files="*.dll"/>
 	<include file="README-SDL.txt"/>
   </module>
-  <module name="client" version="0.9.6.4">
+  <module name="client" version="0.9.7.0">
 	<include file="scripts/client.functions"/>
 	<include file="scripts/client.triggers"/>
 	<include file="lib/dictionary.client"/>
@@ -55,7 +55,7 @@
 	<include files="graphics/*.jpg"/>
 	<include files="sounds/*.ogg"/>
   </module>
-  <module name="server" version="0.9.6.2">
+  <module name="server" version="0.9.7.0">
 	<include file="ServerLaunch"/>
 	<include file="ServerStatus"/>
 	<include file="ServerKill"/>
@@ -86,7 +86,7 @@
   </module>
   <module name="mtg-server" version="1.3.4">
 	<requires name="mtg" version="1.3.4" />
-	<requires name="server" version="0.9.6.2" />
+	<requires name="server" version="0.9.7.0" />
 	<include file="scripts/Mtg-factory-server.include"/>
 	<include file="scripts/Mtg-meta-server.include"/>
 	<include file="scripts/Mtg-server.include"/>
@@ -126,6 +126,8 @@
 	<include files="graphics/Mtg/*_starter.jpg"/>
 	<include files="graphics/Mtg/*_token.jpg"/>
 	<include file="graphics/Mtg/mtgback.jpg"/>
+	<include file="graphics/Mtg/planeback.jpg"/>
+	<include file="graphics/Mtg/schemeback.jpg"/>
   </module>
   <module name="pokemon" version="1.2">
 	<include file="Pokemon"/>
@@ -183,7 +185,7 @@
 	<include files="graphics/Poker/*.png"/>
 	<include files="graphics/Poker/*.jpg"/>
   </module>
-  <module name="mtg-cards" version="80.0">
+  <module name="mtg-cards" version="1.80.0">
     <requires name="mtg-cards-000" version="18" />
     <requires name="mtg-cards-001" version="15" />
     <requires name="mtg-cards-002" version="16" />
@@ -273,8 +275,6 @@
 	<include dir="graphics/Mtg/Schemes"/>
 	<include file="graphics/Mtg/JitteCounter.jpg"/>
 	<include file="graphics/Mtg/StormCounter.jpg"/>
-	<include file="graphics/Mtg/planeback.jpg"/>
-	<include file="graphics/Mtg/schemeback.jpg"/>
   </module>
   <module name="mtg-cards-001" version="15">
 	<include dir="graphics/Mtg/PM"/>
@@ -518,7 +518,7 @@
   <module name="mtg-cards-080" version="1">
 	<include dir="graphics/Mtg/M13"/>
   </module>
-  <module name="pokemon-cards" version="9.0">
+  <module name="pokemon-cards" version="1.9.0">
 	<requires name="pokemon-cards-000" version="5" />
 	<requires name="pokemon-cards-001" version="4" />
 	<requires name="pokemon-cards-002" version="3" />
@@ -557,7 +557,7 @@
   <module name="pokemon-cards-009" version="1">
 	<include dir="graphics/Pokemon/NeoRevelation"/>
   </module>
-  <module name="metw-cards" version="22.0">
+  <module name="metw-cards" version="1.22.0">
 	<requires name="metw-cards-001" version="7" />
 	<requires name="metw-cards-002" version="5" />
 	<requires name="metw-cards-003" version="5" />
@@ -644,7 +644,7 @@
   <module name="metw-cards-022" version="1">
 	<include dir="graphics/Metw/DurinsFolk"/>
   </module>
-  <module name="lotr-cards" version="20.0">
+  <module name="lotr-cards" version="1.20.0">
 	<requires name="lotr-cards-001" version="5" />
 	<requires name="lotr-cards-002" version="4" />
 	<requires name="lotr-cards-003" version="4" />

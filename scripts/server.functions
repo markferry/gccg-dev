@@ -2232,7 +2232,6 @@ def Play.Card.Stage1
 #
 def Play.Card.Stage2
 {
-Log(tostr(ARG));
   if(count(ARG[2],play.stack[player]) || (card_back(ARG[2])==ARG[2] && ARG[3]))
   {
     push(c);
