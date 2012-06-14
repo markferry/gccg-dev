@@ -192,7 +192,8 @@
 # server.name - name of the game server set by --server or default
 # server.name_backup - list of backup servers or NULL
 # server.name_default - name of the default game server
-# tab.last_player - latest player name shown in tab completion
+# tab.type - type of tab completion to use ("player" or "command")
+# tab.last_item - latest item name shown in tab completion
 # tab.last_initial - latest initial part entered before pressing tab
 # table.width,table.height - width of the playarea (screen size for <= 2-player)
 # table.object[x][y] - object numbers for table images
@@ -212,10 +213,7 @@
 # CONSTANTS
 # =========
 
-#
-# New ontop-levels used:
-#
-
+# Z-levels (for deciding which objects should be placed on top of others)
 Z_LOBBYCHAT = 1000;
 Z_MENU = 100;
 Z_ZOOM = 95;
@@ -495,6 +493,7 @@ function{"CreateActive"}="CreateActive";
 function{"CreatePlayerIcon"}="CreatePlayerIcon";
 function{"CreateDeck"}="CreateDeck";
 function{"CreateHand"}="CreateHand";
+function{"DeckDelTable"}="DeckDelTable";
 function{"DelActive"}="DelActive";
 function{"DelDeck"}="DelDeck";
 function{"DelDeckBottom"}="DelDeckBottom";
@@ -694,7 +693,7 @@ def Initialize
     CreatePanel("input",0,0);
   else
     CreatePanel("input",0,screen.height-h(16));
-  CreatePanel("player info",w(5),screen.height-h(90));
+  CreatePanel("player info",w(5),screen.height-h(82));
   CreatePanel("products",w(5),h(200));
 
   set_attr(msg.box,"ontop",Z_MBOX);
@@ -702,7 +701,7 @@ def Initialize
   set_attr(alert.box,"ontop",Z_ALERT);
   raise(alert.box);
 
-  chat_msg.box=create_msgbox(screen.width-w(403),screen.height-h(222),obj=obj+1,"chat msg",w(400),h(200),99999);
+  chat_msg.box=create_msgbox(screen.width-w(403),screen.height-h(220),obj=obj+1,"chat msg",w(400),h(200),99999);
   set_bgcolor(chat_msg.box,NULL);
   set_fgcolor(chat_msg.box,BRCOLOR);
   set_attr(chat_msg.box,"visible",1);
@@ -759,7 +758,7 @@ def Initialize
   set_attr(drag.box,"tiny",1);
   set_attr(drag.box,"ontop",1);
 
-  deck.box=create_listbox(screen.width-w(sum(DECKBOX_SIZE)+4),h(3),obj=obj+1,"Current Deck",100,("#","Name of the card",""),DECKBOX_SIZE,34,(1,0,1));
+  deck.box=create_listbox(screen.width-w(sum(DECKBOX_SIZE)+4),h(135),obj=obj+1,"Current Deck",100,("#","Name of the card",""),DECKBOX_SIZE,34,(1,0,1));
   set_attr(deck.box,"ontop",Z_DLIST);
   raise(deck.box);
 
@@ -796,6 +795,9 @@ def Initialize
   sounds.single_token   = load_sound("single_token.ogg");
   sounds.multiple_token = load_sound("multiple_token.ogg");
   sounds.notify         = load_sound("notify.ogg");
+  
+  if(isfunction("InitializeHook"))
+    InitializeHook();
   
   PlaySound(sounds.launch);
   
@@ -1029,7 +1031,6 @@ def ShowHelp
     n=pop();
     m=pop();
     M=pop();
-    Msg("{hr}");
   }
 }
 
@@ -1143,7 +1144,7 @@ def RefreshCurrentDeck
   if(deck.name!=NULL && has_entry(deck.name,decks))
   {
     book_set_deck(card.book,decks{deck.name});
-    cards_missing=listbox_set_deck(deck.box,decks{deck.name},card.book); 
+    cards_missing=listbox_set_deck(deck.box,decks{deck.name},card.book);
   }
 }
 
@@ -1692,7 +1693,6 @@ def SlashCommand
   }
   c=pop();
 }
-
 
 #
 # CommandMe() - Implementation of /me command.
@@ -2381,7 +2381,7 @@ def CommandSet
       else
         CreatePanel("input",0,screen.height-h(16));
     }
-  } 
+  }
   a=pop();
   redraw(card.book);
 }
@@ -2763,10 +2763,20 @@ HELP{"any"}{"select"}=("exp","select cards to display",NULL,
 
 +join(forall('"{green}"+#+"{white}"',head(attributes())),", ")+" or {green}"+last(attributes())
 
-+"\n  {yellow}<n>{white} - an integer\n  {green}\"{yellow}<str>{green}\"{white} - a string\n  {green}name{white} - a card name\n  {green}set{white} - an abbrivation of the set\n  {green}text{white} - card text\n  {green}have{white} - number of cards you own\n  {green}want{white} - number of cards you want\n  {green}sell{white} - number of cards you have for sale\n  {green}deck{white} - number of cards in the current deck\n  {green}seller{white} - name of the seller\n  {green}price{white} - price of the card\n  {green}myprice{white} - price of the card set by me.\n"
-+"  {green}pwant({yellow}player{green}){white} - wanted by {yellow}player{white}\n"
-+"  {green}phave({yellow}player{green}){white} - sold by {yellow}player{white}\n"
-+"    to use {green}phave{white} or {green}pwant{white}, you must first do {cyan}/have {yellow}player{white} or {cyan}/want {yellow}player{white}, respectively.\n"
++"\n  {yellow}<n>{white} - an integer"
++"\n  {green}\"{yellow}<str>{green}\"{white} - a string"
++"\n  {green}name{white} - a card name"
++"\n  {green}set{white} - an abbrevation of the set"
++"\n  {green}text{white} - card text"
++"\n  {green}have{white} - number of copies you own"
++"\n  {green}want{white} - number of copies you want"
++"\n  {green}sell{white} - number of copies you have for sale"
++"\n  {green}deck{white} - number of copies in the current deck"
++"\n  {green}seller{white} - name of the seller with lowest price"
++"\n  {green}price{white} - price of the card"
++"\n  {green}myprice{white} - price of the card set by me"
++"\n  {green}pwant({yellow}player{green}){white} - wanted by {yellow}player{white} (must use {cyan}/want {yellow}player{white} first)"
++"\n  {green}phave({yellow}player{green}){white} - sold by {yellow}player{white} (must use {cyan}/have {yellow}player{white}) first)"
 );
 
 #
@@ -3257,7 +3267,7 @@ def PutHand
 def PutActive
 {
   PlaySound(sounds.card_pickup);
-  put_cardbox_recenter(active[ARG[0]],ARG[1]);
+  put_cardbox_recenter(active[ARG[0]],tail(ARG));
 }
 
 #
@@ -3422,7 +3432,7 @@ def _StartGame
 }
 
 #
-# DelTable(object number) - Del a card 'object number' from the table.
+# DelTable(object number) - Remove a card with 'object number' from the table.
 #
 def DelTable
 {
@@ -3439,6 +3449,18 @@ def DelTable
     call("DelTableHook",ARG);
 
   c=pop();
+}
+
+#
+# DeckDelTable(object number) - Remove a pile with 'object number' from the table.
+#
+def DeckDelTable
+{
+  push(o);
+  o=find(ARG,flatten(deck.objects));
+  if(o>0 && o%2)
+    del_object(ARG);
+  o=pop();
 }
 
 #
@@ -3944,7 +3966,6 @@ def StartChatMode
   MsgChat(" ");
   MsgChat("{hr}");
   MsgChat("my messages");
-  MsgChat("{hr}");
   MsgChat(" ");
 }
 
@@ -4054,9 +4075,9 @@ def StartWatchMode
   MsgChat(" ");
   MsgChat("{hr}");
   MsgChat("main chat: hover over this box to talk");
-  MsgChat("{hr}");
   MsgChat(" ");
 }
+
 #
 # LeaveWatchMode() - Cleaning operations when leaving watch mode.
 #
@@ -4851,25 +4872,30 @@ def RemoveDeckPart
 #
 def EditAdd
 {
-  push(d);
-  push(n);
+  push(o);
   if(!has_entry(deck.name,decks) || deck.name==NULL)
     Msg("{red}You must have a deck selected.");
   else if(!has_entry(ARG[0],decks{deck.name}))
     Msg("{red}Cannot add to deck: no such deck part as "+tostr(ARG[0])+".");
   else
   {
-    if(typeof(ARG[1])=="string")
-      AddToDeck(deck.name,ARG[0],ARG[1],1);
-    else if(typeof(ARG[1])=="integer")
-      decks{deck.name}{ARG[0]}=decks{deck.name}{ARG[0]} + (ARG[1],);
-    else
-      Msg("{red}Can't add "+tostr(ARG[1])+" to the deck (this is an uncaught bug in Gccg).");
+    o=1;
+    if(isfunction("EditAddHook"))
+      o=EditAddHook(ARG);
+      
+    if(o)
+    {
+      if(typeof(ARG[1])=="string")
+        AddToDeck(deck.name,ARG[0],ARG[1],1);
+      else if(typeof(ARG[1])=="integer")
+        decks{deck.name}{ARG[0]}=decks{deck.name}{ARG[0]} + (ARG[1],);
+      else
+        Msg("{red}Can't add "+tostr(ARG[1])+" to the deck (this is an uncaught bug in Gccg).");
 
-    RefreshCurrentDeck();
+      RefreshCurrentDeck();
+    }
   }
-  n=pop();
-  d=pop();
+  o=pop();
 }
 
 #
@@ -5616,7 +5642,7 @@ def KeyReturn
     done=0;
 
     if(isfunction("InputHook"))
-       done=call("InputHook",input);
+       done=InputHook(input);
 
     if(done)
       InputNewline();
@@ -5647,7 +5673,6 @@ def KeyReturn
     done=pop();
   }
 }
-
 
 #
 # KeyTab() - Autocomplete names or commands.
@@ -6090,7 +6115,7 @@ def KeyEscape
   o=o+select('get_attr(#,"visible")==1 && (object_type(#)=="menu" || object_type(#)=="cardbook" || object_type(#)=="listbox")',objects());
 
   if(isfunction("KeyEscapeHook"))
-    o=call("KeyEscapeHook",o);
+    o=KeyEscapeHook(o);
 
   o=last(select("count(#,o)",objects()));
 
@@ -6129,8 +6154,6 @@ def KeyF1
 {
   ShowHelp();
   Msg(L("Note: Use {yellow}Page Up{white} and/or {yellow}Page Down{white} keys or mouse wheel to scroll these messages."));
-  MsgChat("{hr}");
-  MsgChat(" ");
 }
 
 #
@@ -6316,6 +6339,8 @@ def ChatKeyControlKeyX
 def WatchKeyControlKeyX
   ChatKeyControlKeyX();
 
+def OfflineKeyControlKeyX
+  ChatKeyControlKeyX();
 
 #
 # KeyControlKeyH() - Show information about an object.
@@ -6352,7 +6377,7 @@ def KeyControlKeyH
       Msg(s);
       if(length(f))
       {
-        Msg("{hr}{orange}FLIP SIDE:");
+        Msg("{orange}FLIP SIDE:");
         Msg("{sz16}{yellow}"+f{'name'});
         Msg(f{'text'});
         s="";
@@ -7009,7 +7034,7 @@ def ImportDeckMenu
 #
 def ExportDeckMenu
 {
-  Menu("Export deck as..",forall('(#+" format","","ExportToFile(decks{deck.name},deck.name,\""+#+"\")")',("Gccg",)+OtherDeckFormats()));
+  Menu("Export deck as...",forall('(#+" format","","ExportToFile(decks{deck.name},deck.name,\""+#+"\")")',("Gccg",)+OtherDeckFormats()));
 }
 
 #
@@ -7474,7 +7499,7 @@ def CurrentDeckMenu
   }
   else if(EditPartname()!=NULL)
   {
-    m=m+(("Select {blue}"+EditPartname()+"{black} under construction","left click",""),); 
+    m=m+(("Select {blue}"+EditPartname()+"{black} under construction","left click",""),);
   }
   else
   {
@@ -7497,6 +7522,11 @@ def CurrentDeckMenu
   }
 
   m=m+(("{hr}","",""),("Scroll up","Page Up",""),("Scroll down","Page Down",""),("Close","Esc",'set_attr(deck.box,"visible",0)'));
+  for(p)(keys(decks{deck.name}))
+  {
+    if(p!="deck")
+      m=m+(("Remove {blue}"+p+"{black} section","","RemoveDeckPart('"+p+"')"),);
+  }
 
   m=m+ConstructMenu("Current Deck Menu");
 
@@ -7667,7 +7697,7 @@ def OpponentHandMenu
     m=m+(
 	("Force discard","",'Send("Transfer",(1,("hand",Owner(object.number),hand.card_index),("deck.top",deck.objects[Owner(object.number)]{"opponent discard pile"})))'),
 	("Reveal card","",'Send("Reveal",(object.number,hand.card_index))'),
-	("Set Aside","",'Send("Transfer",(1,("hand",Owner(object.number),hand.card_index),("active",me)))'),
+	("Set aside","",'Send("Transfer",(1,("hand",Owner(object.number),hand.card_index),("active",me)))'),
     ("{hr}","","")
 	);
   }
@@ -8186,7 +8216,7 @@ def MouseLeftDragEnd
 {
   if(dragging) 
   {
-    dragging=0; 
+    dragging=0;
     set_attr(object.number,"highlight",dragging.highlight);
   }
 }
@@ -8259,39 +8289,39 @@ def MouseMove
 {
 	if(find("shift",modifier) && info.persistent==0)
 	{
-	    push(c);
-	    c=CheckForCard();
-	    if(c!=NULL)
-	    {
-	          if(find("ctrl",modifier) && length(Attr("flipid",c)))
-                 c=toint(Attr("flipid",c));
+		push(c);
+		c=CheckForCard();
+		if(c!=NULL)
+		{
+			if(find("ctrl",modifier) && length(Attr("flipid",c)))
+				c=toint(Attr("flipid",c));
 			if(info.current==NULL)
 			{
 				raise(info.box);
 				put_cardbox(info.box,c);
-				info.current=c;	    
+				info.current=c;
 			}
 			else if(c!=info.current)
 			{
 				replace_cardbox(info.box,c);
 				info.current=c;
 			}
-	    }
+		}
 		else if(info.current!=NULL)
 		{
 			del_cardbox(info.box,0);
 			info.current=NULL;
 		}
-	    c=pop();
+		c=pop();
 	}
 	else if(info.persistent==1)
 	{
-	    push(c);
-	    c=CheckForCard();
-	    if(c!=NULL)
-	    {
-	          if(find("ctrl",modifier) && length(Attr("flipid",c)))
-                 c=toint(Attr("flipid",c));
+		push(c);
+		c=CheckForCard();
+		if(c!=NULL)
+		{
+			if(find("ctrl",modifier) && length(Attr("flipid",c)))
+				c=toint(Attr("flipid",c));
 			if(info.current==NULL)
 			{
 				raise(info.box);
@@ -8303,8 +8333,8 @@ def MouseMove
 				replace_cardbox(info.box,c);
 				info.current=c;
 			}
-	    }
-	    c=pop();
+		}
+		c=pop();
 	}
 }
 
@@ -9539,7 +9569,6 @@ def SetAwayOn
     CommandMe("away: "+ARG);
     Msg("{hr}");
     Msg("{sz20}Away log since "+time()+" starts here:");
-    Msg("{hr}");
   }
 }
 
@@ -9554,7 +9583,6 @@ def SetAwayOff
     o=away{username};
     CommandSet("avatar",o);
     CommandMe("is back");
-    Msg("{hr}");
     Msg("{sz20}Away log ends here.");
     Msg("{hr}");
     away{username}=NULL;
@@ -10930,17 +10958,17 @@ def InitializePanelSystem
   panel_objects=(,);
   panel_options=(,);
   panel_structure{"player info"}=(
-    ("msgbox","name","name.box",0,0,w(130),h(16),
+    ("msgbox","name","name.box",0,0,w(130),h(18),
       TXCOLOR,BRCOLOR,BGCOLOR,
       0,12,1,1,
       ("highlight","fit"),
       1),
-    ("msgbox","money","money.box",0,h(16)-1,w(130),h(18),
+    ("msgbox","money","money.box",0,h(18)-1,w(130),h(18),
       TXCOLOR,BRCOLOR,BGCOLOR,
       0,12,1,1,
       ("highlight","fit"),
       1),
-    ("msgbox","deck name","deckname.box",0,h(16)+h(18)-2,w(130),h(18*2),
+    ("msgbox","deck name","deckname.box",0,h(18)+h(18)-2,w(130),h(28),
       TXCOLOR,BRCOLOR,BGCOLOR,
       2,10,1,1,
       ("highlight",),
@@ -11244,7 +11272,7 @@ def UpdateProductsPanel
     set_textalign(obj,1); 
     set_textvalign(obj,2);
     add_text(obj,"{shadow}"+b[1][2][0]);
-    add_text(obj,"{shadow}"+ucfirst(b[1][2][1]));
+    add_text(obj,"{shadow}{sz10}"+ucfirst(b[1][2][1]));
     add_text(obj,"{shadow}$"+format("%.2f",b[1][1]));
 
     x=x+image_width(product.images{b[0]})+w(5);
@@ -11573,7 +11601,6 @@ def StartPlaybackMode
   MsgChat(" ");
   MsgChat("{hr}");
   MsgChat("Playback");
-  MsgChat("{hr}");
   MsgChat(" ");
 }
 

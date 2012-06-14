@@ -3,7 +3,7 @@
 # =========
 
 # Size of columns of the decklist in pixels.
-DECKBOX_SIZE=(20,260,120);
+DECKBOX_SIZE=(20,225,120);
 # Number of cards in hand.
 HANDSIZE=7;
 # keep-tapped text
@@ -57,21 +57,27 @@ rarity.display{"S"}="{154,77,154}";
 if(!port)
   port=29100;
 
-# Products following default naming scheme are now handled automatically, so only exceptional cases need listing here
+# Products following default naming scheme are now handled automatically,
+# so only exceptional cases need listing here (and none currently exist)
 product.image=(,);
-product.image{"Limited Edition Beta booster"}="Beta_booster.jpg";
-product.image{"Limited Edition Beta starter"}="Beta_starter.jpg";
+#product.image{"Limited Edition Beta booster"}="Beta_booster.jpg";
+#product.image{"Limited Edition Beta starter"}="Beta_starter.jpg";
 
 game.bindings=(
-  ("KeyControlKey1","{orange}During untap phase...",),
-  ("KeyControlKey2","{orange}During upkeep phase...",),
-  ("KeyControlKey3","{orange}During draw phase...",),
+  ("KeyControlKey1","{orange}During untap step...",),
+  ("KeyControlKey2","{orange}During upkeep...",),
+  ("KeyControlKey3","{orange}During draw step...",),
   ("KeyControlKey4","{orange}During main phase...",),
   ("KeyControlKey5","{orange}During combat phase...",),
-  ("KeyControlKey6","{orange}During discard phase...",),);
+  ("KeyControlKey6","{orange}At end of turn...",),);
 
 # MENUS
 # =====
+
+GAME_MENU{"Main Menu - Chat"}=(
+ (1,"Show/Hide {blue}Planes","","TogglePlanes()"),
+ (1,"Show/Hide {blue}Schemes","","ToggleSchemes()"),
+);
 
 GAME_MENU{"Main Menu - Play"}=(
  (1,"{hr}","",""),
@@ -85,7 +91,7 @@ GAME_MENU{"Main Menu - Play"}=(
  (1,"Select Token Type...","","TokenSubmenu()"),
  (1,"Innistrad Transformed Card...","","ISDSubmenu()"),
  (1,"Dark Ascension Transformed Card...","","DKASubmenu()"),
- (1,"Select Emblem...","","EmblemSubmenu()"),
+ (1,"Select Emblem Type...","","EmblemSubmenu()"),
  (1,"{hr}","",""),
  (1,"Play Jitte Counter","",'Send("Transfer",(1,("out.of.play",7),("play",0)))'),
  (1,"Play Storm Counter","",'Send("Transfer",(1,("out.of.play",8),("play",0)))'),
@@ -95,7 +101,6 @@ GAME_MENU{"Main Menu - Play"}=(
 
 GAME_MENU{"Current Deck Menu"}=(
  (1,"Add sideboard","","EditAddSideboard()"),
- (1,"Remove sideboard","","EditRemoveSideboard()"),
  );
 
 GAME_MENU{"Tap a card"}=(
@@ -139,8 +144,8 @@ FILTER_OPTIONS=(
  ("Commander Banned","!TypeLegal('Commander',#)",(1,"[age]","[color]","[name]")),
  ("Highlander Banned","!TypeLegal('Highlander',#)",(1,"[age]","[color]","[name]")),
  ("Modern Legal","TypeLegal('Modern',#)",(1,"[age]","[color]","[name]")),
- ("Extended Legal","TypeLegal('Extended',#)",(1,"[age]","[color]","[name]")),
- ("Standard Legal","TypeLegal('Standard',#)",(1,"[age]","[color]","[name]"))
+ ("Extended Legal","TypeLegal('Extended',#)",(1,"[color]","[age]","[name]")),
+ ("Standard Legal","TypeLegal('Standard',#)",(1,"[color]","[age]","[name]"))
 );
 
 FILTER_FUNCTIONS=(,);
@@ -209,10 +214,25 @@ def NewDeck
 }
 
 #
-# InitializeGame() - Game specific initialization of game variables.
+# InitializeHook() - Game specific initialization of variables.
 #
-def InitializeGame
+def InitializeHook
 {
+  planes.book=create_book(w(5),h(165),obj=obj+1,"Plane Browser",3,3,500);
+  book_set_index(planes.book,sort_by(("[name]",),seq(501,582),0));
+  set_attr(planes.book,"ontop",Z_COLLECTION);
+  set_bgcolor(planes.book,BKBGCOLOR);
+  set_fgcolor(planes.book,BKTXCOLOR);
+  set_textcolor(planes.book,BKBRCOLOR);
+  book_set_page(planes.book,0);
+  
+  schemes.book=create_book(w(80),h(190),obj=obj+1,"Scheme Browser",2,4,700);
+  book_set_index(schemes.book,sort_by(("[name]",),seq(701,745),0));
+  set_attr(schemes.book,"ontop",Z_COLLECTION);
+  set_bgcolor(schemes.book,BKBGCOLOR);
+  set_fgcolor(schemes.book,COLORS{'BLACK'});
+  set_textcolor(schemes.book,BKBRCOLOR);
+  book_set_page(schemes.book,0);
 }
 
 #
@@ -222,6 +242,8 @@ def StartGame
 {
   Send("UploadDeck",decks{deck.name});
   Send("ShuffleDeck",deck);
+  if(has_entry('exile',decks{deck.name}))
+    Send("Score",(me,toint(score[me])*2));
 }
 
 #
@@ -236,6 +258,18 @@ def EndGame
 #
 def ShowGameSpecificHelp
 {
+}
+
+def TogglePlanes
+{
+  set_attr(planes.book,"visible",!get_attr(planes.book,"visible"));
+  raise(planes.book);
+}
+
+def ToggleSchemes
+{
+  set_attr(schemes.book,"visible",!get_attr(schemes.book,"visible"));
+  raise(schemes.book);
 }
 
 #
@@ -253,6 +287,86 @@ def MouseLeftClickSideboard
 #
 def MouseLeftClickExile
   PlayKeyControlKeyL();
+
+#
+# MouseWheelPlaneBrowser(dir) - Scroll through planes (0=up, 1=down).
+#
+def MouseWheelPlaneBrowser
+{
+  if(ARG)
+    KeyPageDown();
+  else
+    KeyPageUp();
+}
+
+#
+# MouseWheelSchemeBrowser(dir) - Scroll through schemes (0=up, 1=down).
+#
+def MouseWheelSchemeBrowser
+{
+  if(ARG)
+    KeyPageDown();
+  else
+    KeyPageUp();
+}
+
+#
+# MouseLeftClickPlaneBrowser() - Remove a card from the planar deck.
+#
+def MouseLeftClickPlaneBrowser
+{
+  raise(object.number);
+  if(deck.name != NULL && card_back(card.number)!=card.number && card.number!=NULL && has_entry("planes",decks{deck.name}))
+    EditDel("planes",card.number);
+  book_set_deck(planes.book,decks{deck.name});
+}
+
+#
+# MouseLeftClickSchemeBrowser() - Remove a card from the scheme deck.
+#
+def MouseLeftClickSchemeBrowser
+{
+  raise(object.number);
+  if(deck.name != NULL && card_back(card.number)!=card.number && card.number!=NULL && has_entry("schemes",decks{deck.name}))
+    EditDel("schemes",card.number);
+  book_set_deck(schemes.book,decks{deck.name});
+}
+
+#
+# MouseMiddleClickPlaneBrowser() - Add a card to the planar deck.
+#
+def MouseMiddleClickPlaneBrowser
+{
+  raise(object.number);
+  if(deck.name != NULL && card_back(card.number)!=card.number && card.number!=NULL)
+  {
+    if(!has_entry('planes',decks{deck.name}))
+      decks{deck.name}{'planes'}=(card.number,);
+    else
+      decks{deck.name}{'planes'}=decks{deck.name}{'planes'} + (card.number,);
+    
+    cards_missing=listbox_set_deck(deck.box,decks{deck.name},card.book);
+    book_set_deck(planes.book,decks{deck.name});
+  }
+}
+
+#
+# MouseMiddleClickSchemeBrowser() - Add a card to the scheme deck.
+#
+def MouseMiddleClickSchemeBrowser
+{
+  raise(object.number);
+  if(deck.name != NULL && card_back(card.number)!=card.number && card.number!=NULL)
+  {
+    if(!has_entry('schemes',decks{deck.name}))
+      decks{deck.name}{'schemes'}=(card.number,);
+    else
+      decks{deck.name}{'schemes'}=decks{deck.name}{'schemes'} + (card.number,);
+    
+    cards_missing=listbox_set_deck(deck.box,decks{deck.name},card.book);
+    book_set_deck(schemes.book,decks{deck.name});
+  }
+}
 
 #
 # MENU FUNCTIONS
@@ -458,6 +572,7 @@ def TokenSubmenuH
    ("Hippo 1/1 (G)","",'Send("Transfer",(1,("out.of.play",53),("play",0)))'),
    ("Homunculus 0/1 (AU)","",'Send("Transfer",(1,("out.of.play",54),("play",0)))'),
    ("Homunculus 2/2 (U)","",'Send("Transfer",(1,("out.of.play",159),("play",0)))'),
+   ("Hornet 1/1 (A, flying, haste)","",'Send("Transfer",(1,("out.of.play",172),("play",0)))'),
    ("Horror 4/4 (B)","",'Send("Transfer",(1,("out.of.play",55),("play",0)))'),
    ("Horror */* (C)","",'Send("Transfer",(1,("out.of.play",107),("play",0)))'),
    ("Human 1/1 (R)","",'Send("Transfer",(1,("out.of.play",165),("play",0)))'),
@@ -503,6 +618,7 @@ def TokenSubmenuM
    ("Marit Lage 20/20 (B)","",'Send("Transfer",(1,("out.of.play",63),("play",0)))'),
    ("Merfolk 1/1 (U)","",'Send("Transfer",(1,("out.of.play",120),("play",0)))'),
    ("Merfolk Wizard 1/1 (U)","",'Send("Transfer",(1,("out.of.play",64),("play",0)))'),
+   ("Minion */* (B)","",'Send("Transfer",(1,("out.of.play",173),("play",0)))'),
    ("Myr 1/1 (A)","",'Send("Transfer",(1,("out.of.play",65),("play",0)))'),
   ));
 }
@@ -632,15 +748,256 @@ def PlaySideboardMenu
 #
 def PlayExileMenu
 {
-  Menu("Exile",(
-   ("Look","Ctrl+L",'PlayKeyControlKeyL()'),
-   ("Reveal/Hide pile","Ctrl+F",'PlayKeyControlKeyF()'),
-   ("Touch","Ctrl+T",'PlayKeyControlKeyT()'),
-  ));
+  push(m);
+  m=(,);
+  if(card.number!=NULL)
+  {
+    m=m+(
+	  ("Look","Ctrl+L",""),
+	  ("Shuffle","Ctrl+S",""),
+	  ("Reveal/Hide deck","Ctrl+F",""),
+      );
+  }
+
+  m=m+(
+    ("Touch","Ctrl+T",""),
+  );
+
+  Menu("Exile",m);
+  m=pop();
+}
+
+#
+# PlayPlanesMenu() - Generate menu for plane deck.
+#
+def PlayPlanesMenu
+{
+  push(m);
+  m=(,);
+  if(card.number!=NULL)
+  {
+    m=m+(
+      ("Play top card","Ctrl+P",""),
+      ("{hr}","",""),
+      ("Look","Ctrl+L",""),
+      ("Reveal/Hide deck","Ctrl+F",""),
+      ("Shuffle","Ctrl+S",""),
+    );
+  }
+
+  m=m+(
+    ("Touch","Ctrl+T",""),
+  );
+
+  Menu("Planar Deck",m);
+  m=pop();
+}
+
+#
+# PlaySchemesMenu() - Generate menu for scheme deck.
+#
+def PlaySchemesMenu
+{
+  push(m);
+  m=(,);
+  if(card.number!=NULL)
+  {
+    m=m+(
+      ("Play top card","Ctrl+P",""),
+      ("{hr}","",""),
+      ("Look","Ctrl+L",""),
+      ("Reveal/Hide deck","Ctrl+F",""),
+      ("Shuffle","Ctrl+S",""),
+    );
+  }
+
+  m=m+(
+    ("Touch","Ctrl+T",""),
+  );
+
+  Menu("Scheme Deck",m);
+  m=pop();
+}
+
+#
+# PlaneBrowserMenu() - Generate menu for plane book.
+#
+def PlaneBrowserMenu
+{
+  push(b);
+  push(m);
+
+  b=(,);
+  m="Plane Browser Menu";
+  if(card.number && mode=="play")
+  {
+    m=card.name;
+    b=b+(
+      ("Bring {blue}"+card.name+"{black} to the play","",'Send("Transfer",(1,("out.of.play",card.number),("play",0)))'),
+    );
+  }
+  else if(card.number && (mode=="chat" || mode=="watch"))
+  {
+    m=card.name;
+    if(deck.name != NULL && has_entry(deck.name,decks))
+    {
+      b=b+(("Add one to the planar deck","middle click",""),
+      ("Remove one from the planar deck","left click",""));
+    }
+    b=b+(("Show card text w/ errata","Ctrl+H",""),);
+  }
+
+  b=b+(("{hr}","",""),);
+  b=b+(("Previous page","Page Up",""),("Next page","Page Down",""));
+  b=b+(("Close","Esc",'set_attr(planes.book,"visible",0)'),);
+
+  Menu(m,b);
+
+  m=pop();
+  b=pop();
+}
+
+#
+# SchemeBrowserMenu() - Generate menu for scheme book.
+#
+def SchemeBrowserMenu
+{
+  push(b);
+  push(m);
+
+  b=(,);
+  m="Scheme Browser Menu";
+  if(card.number && mode=="play")
+  {
+    m=card.name;
+    b=b+(
+      ("Bring {blue}"+card.name+"{black} to the play","",'Send("Transfer",(1,("out.of.play",card.number),("play",0)))'),
+    );
+  }
+  else if(card.number && (mode=="chat" || mode=="watch"))
+  {
+    m=card.name;
+    if(deck.name != NULL && has_entry(deck.name,decks))
+    {
+      b=b+(("Add one to the scheme deck","middle click",""),
+      ("Remove one from the scheme deck","left click",""));
+    }
+    b=b+(("Show card text w/ errata","Ctrl+H",""),);
+  }
+
+  b=b+(("{hr}","",""),);
+  b=b+(("Previous page","Page Up",""),("Next page","Page Down",""));
+  b=b+(("Close","Esc",'set_attr(schemes.book,"visible",0)'),);
+
+  Menu(m,b);
+
+  b=pop();
 }
 
 # SPECIAL KEYS
 # ============
+
+#
+# KeyControlKeyH() - Display card information.
+#
+def KeyControlKeyH
+{
+  push(c);
+  c=CheckForCard();
+  if(c==NULL)
+  {
+    if(object.number)
+      Msg("This is "+object_name(object.number)+".");
+  }
+  else
+  {
+    if(card_back(c) != c)
+    {
+      push(b);
+             
+      set="";
+      rarity="";
+      cost="";
+      color="";
+      type="";
+      subtype="";
+      power="";
+      toughness="";
+      loyalty="";
+      flipid="";
+      flipname="";
+      fliptext="";
+      flipcolor="";
+      fliptype="";
+      flipsubtype="";
+      flippower="";
+      fliptoughness="";
+      
+      for(b)((("set",set_of(c)),)+attrs(c))
+      {
+        if(b[1]!="")
+        {
+        	if(b[0]=="set")
+        		set="{yellow}Set:{white} "+L(b[1]) + "   ";
+        	else if(b[0]=="rarity")
+        		rarity="{yellow}Rarity:{white} "+L(b[1]) + "   ";
+        	else if(b[0]=="cost")
+        		cost="{yellow}Cost:{white} "+ L(b[1]) + "  ";
+        	else if(b[0]=="color")
+        		color="{yellow}Color:{white} "+ L(b[1]) + "   ";
+        	else if(b[0]=="type")
+        		type="{yellow}Type:{white} "+ L(b[1]) + " ";
+        	else if(b[0]=="subtype")
+        		subtype="- "+ L(b[1]) + "   ";
+        	else if(b[0]=="power")
+        		power="{yellow}P/T:{white} "+ L(b[1]) + "/";
+        	else if(b[0]=="toughness")
+        		toughness=L(b[1]) + "   ";
+        	else if(b[0]=="loyalty")
+        		loyalty="{yellow}Loyalty:{white} "+ L(b[1]) + " ";
+          else if(b[0]=="flipid")
+        		flipid="    {sz12}Card ID: {white}"+L(b[1]);
+          else if(b[0]=="flipname")
+        		flipname=L(b[1]);
+          else if(b[0]=="fliptext")
+        		fliptext=L(b[1]);
+          else if(b[0]=="flipcolor")
+        		flipcolor="{yellow}Color:{white} "+ L(b[1]) + "   ";
+        	else if(b[0]=="fliptype")
+        		fliptype="{yellow}Type:{white} "+ L(b[1]) + " ";
+        	else if(b[0]=="flipsubtype")
+        		flipsubtype="- "+ L(b[1]) + "   ";
+        	else if(b[0]=="flippower")
+        		flippower="{yellow}P/T:{white} "+ L(b[1]) + "/";
+        	else if(b[0]=="fliptoughness")
+        		fliptoughness=L(b[1]) + "   ";
+        }
+      }
+      
+      Msg("{sz4}  ");
+      
+      Msg("{sz20}{yellow}"+name(c)+"    {sz12}Card ID: {white}"+c);
+      Msg(set + rarity + cost + color);
+      Msg(text(c));
+      Msg(type + subtype + power + toughness + loyalty);
+      if(flipname!="")
+      {
+        Msg("{sz4}  ");
+        Msg("{orange}FLIP SIDE: {sz15}{yellow}"+flipname+flipid);
+        Msg(fliptext);
+        Msg(flipcolor + fliptype + flipsubtype + flippower + fliptoughness);
+
+        Msg("{sz4}  ");
+      }
+
+      b=pop();
+    }
+    else
+      Msg("This is "+object_name(object.number)+".");
+  }
+
+  c=pop();
+}
 
 #
 # KeyControlKeyX() - Put a card to exile.
@@ -741,7 +1098,6 @@ def KeyShiftControlKeyZ
     Input("{Z}");
 }
 
-
 #
 # PlayKeyControlKeyI() - Imprint.
 #
@@ -749,7 +1105,7 @@ def PlayKeyControlKeyI
 {
   if(card.number!=NULL)
   {
-    if(object.type=="card")
+    if(object.type=="card" && (card_data(object.number))[0]==me)
       ManualTarget(object.number,("attach",));
     else
     {
@@ -759,6 +1115,73 @@ def PlayKeyControlKeyI
   }
 }
 
+#
+# KeyPageUp() - Handler for key PageUp.
+#
+def KeyPageUp
+{
+  if(object.name=="Current Deck")
+    listbox_scroll(deck.box,-5);
+  else if(object.number==planes.book || object.number==schemes.book)
+  {
+    push(p);
+    p=book_page(object.number);
+    p=p-1;
+    if(p < 0)
+	  p=book_last_page(object.number);
+
+    book_set_page(object.number,p);
+    p=pop();
+  }
+  else if(get_attr(card.book,"visible"))
+  {
+    push(p);
+    p=book_page(card.book);
+    p=p-1;
+    if(p < 0)
+	  p=book_last_page(card.book);
+
+    book_set_page(object.number,p);
+    p=pop();
+  }
+  else if(object.number==chat_msg.box)
+    msgbox_scroll(chat_msg.box,-7);
+  else
+    msgbox_scroll(msg.box,-7);
+}
+
+#
+# KeyPageDown() - Handler for key PageDown.
+#
+def KeyPageDown
+{
+  if(object.name=="Current Deck")
+    listbox_scroll(deck.box,5);
+  else if(object.number==planes.book || object.number==schemes.book)
+  {
+    push(p);
+    p=book_page(object.number);
+    p=p+1;
+    if(p > book_last_page(object.number))
+      p=0;
+    book_set_page(object.number,p);
+    p=pop();
+  }
+  else if(get_attr(card.book,"visible"))
+  {
+    push(p);
+    p=book_page(card.book);
+    p=p+1;
+    if(p > book_last_page(card.book))
+	  p=0;
+    SetBookPage(p);
+    p=pop();
+  }
+  else if(object.number==chat_msg.box)
+    msgbox_scroll(chat_msg.box,7);
+  else
+    msgbox_scroll(msg.box,7);
+}
 
 #
 # PlayKeyControlKeyO() - Tap out.
@@ -939,140 +1362,6 @@ def UntapHook
     return(0);
   else if((card_data(ARG))[1]!=0)
     return(1);
-}
-
-#
-# KeyControlKeyH() - Handler for key Control+H.
-#
-def KeyControlKeyH
-{
-  push(c);
-  c=CheckForCard();
-  if(c==NULL)
-  {
-    if(object.number)
-      Msg("This is "+object_name(object.number)+".");
-  }
-  else
-  {
-    if(card_back(c) != c)
-    {
-      push(b);
-      push(s);
-      push(set);
-      push(rarity);
-      push(cost);
-      push(color);
-      push(type);
-      push(subtype);
-      push(power);
-      push(toughness);
-      push(loyalty);
-      push(flipname);
-      push(fliptext);
-      push(flipcolor);
-      push(fliptype);
-      push(flipsubtype);
-      push(flippower);
-      push(fliptoughness);
-                  
-      s="";           
-      set="";
-      rarity="";
-      cost="";
-      color="";
-      type="";
-      subtype="";
-      power="";
-      toughness="";
-      loyalty="";
-      flipname="";
-      fliptext="";
-      flipcolor="";
-      fliptype="";
-      flipsubtype="";
-      flippower="";
-      fliptoughness="";
-      
-      for(b)((("set",set_of(c)),)+attrs(c))
-      {
-        if(b[1]!="")
-        {
-        	if(b[0]=="set")
-        		set="{yellow}Set:{white} "+ L(b[1]) + "   ";
-        	else if(b[0]=="rarity")
-        		rarity="{yellow}Rarity:{white} "+ L(b[1]) + "   ";
-        	else if(b[0]=="cost")
-        		cost="{yellow}Cost:{white} "+ L(b[1]) + "  ";
-        	else if(b[0]=="color")
-        		color="{yellow}Color:{white} "+ L(b[1]) + "   ";
-        	else if(b[0]=="type")
-        		type="{yellow}Type:{white} "+ L(b[1]) + " ";
-        	else if(b[0]=="subtype")
-        		subtype="- "+ L(b[1]) + "   ";
-        	else if(b[0]=="power")
-        		power="{yellow}Power/Toughness:{white} "+ L(b[1]) + "/";
-        	else if(b[0]=="toughness")
-        		toughness=L(b[1]) + "   ";
-        	else if(b[0]=="loyalty")
-        		loyalty="{yellow}Loyalty:{white} "+ L(b[1]) + " ";
-            else if(b[0]=="flipname")
-        		flipname=L(b[1]);
-            else if(b[0]=="fliptext")
-        		fliptext=L(b[1]);
-           	else if(b[0]=="flipcolor")
-        		flipcolor="{yellow}FlipColor:{white} "+ L(b[1]) + "   ";
-        	else if(b[0]=="fliptype")
-        		fliptype="{yellow}FlipType:{white} "+ L(b[1]) + " ";
-        	else if(b[0]=="flipsubtype")
-        		flipsubtype="- "+ L(b[1]) + "   ";
-        	else if(b[0]=="flippower")
-        		flippower="{yellow}FlipPower/Toughness:{white} "+ L(b[1]) + "/";
-        	else if(b[0]=="fliptoughness")
-        		fliptoughness=L(b[1]) + "   ";
-        	else
-        		s="";        	
-        }
-      }
-      
-      Msg("{sz4}  ");
-      
-      Msg("{sz20}{yellow}"+name(c)+"{sz12}");
-      Msg(set + rarity + cost + color);
-      Msg(text(c));
-      Msg(type + subtype + power + toughness + loyalty);
-      if(flipname!="")
-        Msg("{sz2}  ");
-      Msg("{sz15}{yellow}"+flipname+"{sz12}");
-      Msg(fliptext);
-      Msg(flipcolor + fliptype + flipsubtype + flippower + fliptoughness);
-
-      Msg("{sz4}  ");
-
-      flipname=pop();
-      fliptext=pop();
-      flipcolor=pop();
-      fliptype=pop();
-      flipsubtype=pop();
-      flippower=pop();
-      fliptoughness=pop();
-      set=pop();
-      rarity=pop();
-      cost=pop();
-      color=pop();
-      type=pop();
-      subtype=pop();
-      power=pop();
-      toughness=pop();
-      loyalty=pop();
-      s=pop();
-      b=pop();
-    }
-    else
-      Msg("This is "+object_name(object.number)+".");
-  }
-
-  c=pop();
 }
 
 # PLAYING CARDS

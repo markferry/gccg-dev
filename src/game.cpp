@@ -629,8 +629,7 @@ void MessageBox::ScrollDown()
 // class CardBook
 // ==============
 
-CardBook::CardBook(int num,Object* parent,const string& name,int w,int h,Evaluator::Parser<Table> *_parser) : Object(num,parent,name)
-{
+CardBook::CardBook(int num,Object* parent,const string& name,int basecard,int w,int h,Evaluator::Parser<Table> *_parser) : Object(num,parent,name){
     parser=_parser;
     rows=w;
     columns=h;
@@ -640,8 +639,8 @@ CardBook::CardBook(int num,Object* parent,const string& name,int w,int h,Evaluat
     titleh=H(25);
     toolh=titleh;
     toolw=grp.w-margin;
-    cardw=Driver::driver->CardWidth(0,table->BookCardSize(),0);
-    cardh=Driver::driver->CardHeight(0,table->BookCardSize(),0);
+    cardw=Driver::driver->CardWidth(basecard,table->BookCardSize(),0);
+    cardh=Driver::driver->CardHeight(basecard,table->BookCardSize(),0);
     tabh=1;
     tabskip=0;
     grp.text.pointsize=11;
@@ -1471,7 +1470,9 @@ Table::Table(const string& triggerfile1,bool fullscreen,bool debug,bool fulldebu
         Driver::driver->LoadFont("free/NATIONPP.TTF","windows/NATIONPP.TTF");
         Driver::driver->LoadFont("free/sfd/FreeSans.ttf","windows/arialn.ttf");
         Driver::driver->LoadFont("free/sfd/FreeSerifBold.ttf","windows/thornbcp.ttf");
-        last_font=Driver::driver->LoadFont("free/sfd/FreeSerif.ttf","windows/thorncp.ttf");
+        Driver::driver->LoadFont("free/sfd/FreeSerif.ttf","windows/thorncp.ttf");
+        Driver::driver->LoadFont("free/sfd/FreeMonoBold.ttf","windows/courierb.ttf");
+        last_font=Driver::driver->LoadFont("free/sfd/FreeMono.ttf","windows/couriern.ttf");
     }
     else
     {
@@ -1479,7 +1480,9 @@ Table::Table(const string& triggerfile1,bool fullscreen,bool debug,bool fulldebu
         Driver::driver->LoadFont("windows/NATIONPP.TTF","free/NATIONPP.TTF");
         Driver::driver->LoadFont("windows/arialn.ttf","free/sfd/FreeSans.ttf");
         Driver::driver->LoadFont("windows/thornbcp.ttf","free/sfd/FreeSerifBold.ttf");
-        last_font=Driver::driver->LoadFont("windows/thorncp.ttf","free/sfd/FreeSerif.ttf");
+        Driver::driver->LoadFont("windows/thorncp.ttf","free/sfd/FreeSerif.ttf");
+        Driver::driver->LoadFont("windows/courierb.ttf","free/sfd/FreeMonoBold.ttf");
+        last_font=Driver::driver->LoadFont("windows/couriern.ttf","free/sfd/FreeMono.ttf");
     }
 
     ::table=this;

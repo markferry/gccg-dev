@@ -1244,9 +1244,9 @@ Data Table::msgbox_search(const Data& args)
     return ret;
 }
 
-/// msgbox_tail(o,l) - Returns the last $l$ lines of the message box $o$. If $o$ has fewer 
-/// than $l$ lines, returns entire history of $o$. Returns {\tt NULL} if $o$ is not a message box
-/// or if $l$ is zero or negative.
+/// msgbox_tail(o,l) - Returns the last $l$ lines of the message box $o$.
+/// If $o$ has fewer than $l$ lines, returns entire history of $o$.
+/// Returns {\tt NULL} if $o$ is not a message box or if $l$ is zero or negative.
 Data Table::msgbox_tail(const Data& args)
 {
     if(!args.IsList() || args.Size() != 2 || !args[0].IsInteger() || !args[1].IsInteger())
@@ -2322,20 +2322,21 @@ Data Table::set_textmargin(const Data& args)
     return old;
 }
 
-/// create_book(x,y,n,s,c,r) - Create a card book named $s$ with
+/// create_book(x,y,n,s,c,r[,bc]) - Create a card book named $s$ with
 /// object number $n$ at $(x,y)$. Size of the card book is $c$ columns
 /// and $r$ rows. Note that the card book is not visible by default. Sets
 /// also variable {\tt book.last\_page} to denote the last page of the
-/// book.
+/// book. If argument $bc$ is present, each space in the card book is set
+/// to the image size of card number $bc$; otherwise use card number 0.
 Data Table::create_book(const Data& args)
 {
     string nm;
-    int num,x,y,w,h;
+    int num,x,y,w,h,bc;
 
-    if(!args.IsList(6) || !args[0].IsInteger()
-      || !args[1].IsInteger() || !args[2].IsInteger()
-      || !args[3].IsString() || !args[4].IsInteger()
-      || !args[5].IsInteger())
+    if(!(args.IsList(6) || (args.IsList(7) && args[6].IsInteger()))
+      || !args[0].IsInteger() || !args[1].IsInteger()
+      || !args[2].IsInteger() || !args[3].IsString()
+      || !args[4].IsInteger() || !args[5].IsInteger())
 	ArgumentError("create_book",args);
 
     x=args[0].Integer();
@@ -2344,11 +2345,15 @@ Data Table::create_book(const Data& args)
     nm=args[3].String();
     w=args[4].Integer();
     h=args[5].Integer();
+    if(args.IsList(7))
+      bc=args[6].Integer();
+    else
+      bc=0;
 
     if(IsObjectNumber(num))
 	throw LangErr("create_book","Object number "+ToString(num)+" already in use.");
 	
-    CardBook* book=new CardBook(num,0,nm,w,h,&parser);
+    CardBook* book=new CardBook(num,0,nm,bc,w,h,&parser);
     if(!book)
 	throw Error::Memory("Table::create_book(const Data&)");
 

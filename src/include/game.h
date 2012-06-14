@@ -650,7 +650,7 @@ namespace CCG
 
     public:
 
-	CardBook(int num,Object* parent,const string& name,int w,int h,Evaluator::Parser<Table> *parser);
+	CardBook(int num,Object* parent,const string& name,int basecard,int w,int h,Evaluator::Parser<Table> *parser);
 	virtual ~CardBook();
 
 	ObjectType Type() const
