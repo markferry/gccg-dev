@@ -34,7 +34,7 @@
 	<include file="ccg_server"/>
 	<include file="ccg_text_client"/>
   </module>
-  <module name="linux-x8664" version="0.9.7.0">
+  <module name="linux-x86_64" version="0.9.7.0">
 	<include file="ccg_client"/>
 	<include file="ccg_server"/>
 	<include file="ccg_text_client"/>
@@ -44,7 +44,7 @@
 	<include file="ccg_server"/>
 	<include file="ccg_text_client"/>
   </module>
-  <module name="darwin-x8664" version="0.9.7.0">
+  <module name="darwin-x86_64" version="0.9.7.0">
 	<include file="ccg_client"/>
 	<include file="ccg_server"/>
 	<include file="ccg_text_client"/>
