@@ -1,6 +1,6 @@
 #
 #    Gccg - Generic collectible card game.
-#    Copyright (C) 2001,2002,2003,2004 Tommi Ronkainen
+#    Copyright (C) 2001-2012 Tommi Ronkainen
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -118,23 +118,41 @@ def VersionCompare
   push(i);
 
   return(0);
-  a=split(ARG[0],".")+("0","0","0");
-  b=split(ARG[1],".")+("0","0","0");
-  i=0;
-
-  while(i<3)
+  a=split(ARG[0],".");
+  b=split(ARG[1],".");
+  i=1;
+  
+  while(i)
   {
-    if(toint(a[i]) < toint(b[i]))
-    {
-      return(1);
-      i=3;
-    }
-    else if(toint(a[i]) > toint(b[i]))
+    if(!length(b))
     {
       return(0);
-      i=3;
+      i=0;
     }
-    i=i+1;
+    else if(!length(a))
+    {
+#     version "1.0.0" is equivalent to "1.0", or "1"
+      if(max(apply("toint",b)) > 0)
+        return(1);
+      else
+        return(0);
+      i=0;
+    }
+    else if(a[0] < b[0])
+    {
+      return(1);
+      i=0;
+    }
+    else if(a[0] > b[0])
+    {
+      return(0);
+      i=0;
+    }
+    else
+    {
+      a=tail(a);
+      b=tail(b);
+    }
   }
   
   i=pop();

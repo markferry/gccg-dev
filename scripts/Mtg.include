@@ -73,11 +73,11 @@ game.bindings=(
 
 # MENUS
 # =====
-
-GAME_MENU{"Main Menu - Chat"}=(
- (1,"Show/Hide {blue}Planes","","TogglePlanes()"),
- (1,"Show/Hide {blue}Schemes","","ToggleSchemes()"),
-);
+if(!VersionCompare(VERSION,"0.9.7"))
+  GAME_MENU{"Main Menu - Chat"}=(
+    (1,"Show/Hide {blue}Planes","","TogglePlanes()"),
+    (1,"Show/Hide {blue}Schemes","","ToggleSchemes()"),
+  );
 
 GAME_MENU{"Main Menu - Play"}=(
  (1,"{hr}","",""),
@@ -218,21 +218,24 @@ def NewDeck
 #
 def InitializeHook
 {
-  planes.book=create_book(w(5),h(165),obj=obj+1,"Plane Browser",3,3,500);
-  book_set_index(planes.book,sort_by(("[name]",),seq(501,582),0));
-  set_attr(planes.book,"ontop",Z_COLLECTION);
-  set_bgcolor(planes.book,BKBGCOLOR);
-  set_fgcolor(planes.book,BKTXCOLOR);
-  set_textcolor(planes.book,BKBRCOLOR);
-  book_set_page(planes.book,0);
-  
-  schemes.book=create_book(w(80),h(190),obj=obj+1,"Scheme Browser",2,4,700);
-  book_set_index(schemes.book,sort_by(("[name]",),seq(701,745),0));
-  set_attr(schemes.book,"ontop",Z_COLLECTION);
-  set_bgcolor(schemes.book,BKBGCOLOR);
-  set_fgcolor(schemes.book,COLORS{'BLACK'});
-  set_textcolor(schemes.book,BKBRCOLOR);
-  book_set_page(schemes.book,0);
+  if(!VersionCompare(VERSION,"0.9.7"))
+  {
+    planes.book=create_book(w(5),h(165),obj=obj+1,"Plane Browser",3,3,500);
+    book_set_index(planes.book,sort_by(("[name]",),seq(501,582),0));
+    set_attr(planes.book,"ontop",Z_COLLECTION);
+    set_bgcolor(planes.book,BKBGCOLOR);
+    set_fgcolor(planes.book,BKTXCOLOR);
+    set_textcolor(planes.book,BKBRCOLOR);
+    book_set_page(planes.book,0);
+    
+    schemes.book=create_book(w(80),h(190),obj=obj+1,"Scheme Browser",2,4,700);
+    book_set_index(schemes.book,sort_by(("[name]",),seq(701,745),0));
+    set_attr(schemes.book,"ontop",Z_COLLECTION);
+    set_bgcolor(schemes.book,BKBGCOLOR);
+    set_fgcolor(schemes.book,COLORS{'BLACK'});
+    set_textcolor(schemes.book,BKBRCOLOR);
+    book_set_page(schemes.book,0);
+  }
 }
 
 #
@@ -429,6 +432,7 @@ def EmblemSubmenu
   Submenu("Select Emblem",(
   ("Elspeth, Knight-Errant","",'Send("Transfer",(1,("out.of.play",167),("play",0)))'),
   ("Koth of the Hammer","",'Send("Transfer",(1,("out.of.play",168),("play",0)))'),
+  ("Liliana of the Dark Realms","",'Send("Transfer",(1,("out.of.play",175),("play",0)))'),
   ("Sorin, Lord of Innistrad","",'Send("Transfer",(1,("out.of.play",169),("play",0)))'),
   ("Tamiyo, the Moon Sage","",'Send("Transfer",(1,("out.of.play",170),("play",0)))'),
   ("Venser, the Sojourner","",'Send("Transfer",(1,("out.of.play",171),("play",0)))'),
@@ -514,6 +518,7 @@ def TokenSubmenuD
    ("Dragon 4/4 (R, flying)","",'Send("Transfer",(1,("out.of.play",25),("play",0)))'),
    ("Dragon 5/5 (R, flying)","",'Send("Transfer",(1,("out.of.play",26),("play",0)))'),
    ("Dragon Spirit 5/5 (U, flying)","",'Send("Transfer",(1,("out.of.play",27),("play",0)))'),
+   ("Drake 2/2 (U, flying)","",'Send("Transfer",(1,("out.of.play",174),("play",0)))'),
    ("Drake 2/2 (UG, flying)","",'Send("Transfer",(1,("out.of.play",28),("play",0)))'),
   ));
 }
@@ -1112,8 +1117,16 @@ def PlayKeyControlKeyI
 {
   if(card.number!=NULL)
   {
-    if(object.type=="card" && (card_data(object.number))[0]==me)
-      ManualTarget(object.number,("attach",));
+    if(object.type=="card")
+    {
+      if((card_data(object.number))[0]==me)
+        ManualTarget(object.number,("attach",));
+      else
+      {
+        imprint=1;
+        TryTransferTo("play",0);
+      }
+    }
     else
     {
       imprint=1;
@@ -1129,7 +1142,7 @@ def KeyPageUp
 {
   if(object.name=="Current Deck")
     listbox_scroll(deck.box,-5);
-  else if(object.number==planes.book || object.number==schemes.book)
+  else if((object.number==planes.book || object.number==schemes.book) && object.number != NULL)
   {
     push(p);
     p=book_page(object.number);
@@ -1148,7 +1161,7 @@ def KeyPageUp
     if(p < 0)
 	  p=book_last_page(card.book);
 
-    book_set_page(object.number,p);
+    SetBookPage(p);
     p=pop();
   }
   else if(object.number==chat_msg.box)
@@ -1164,7 +1177,7 @@ def KeyPageDown
 {
   if(object.name=="Current Deck")
     listbox_scroll(deck.box,5);
-  else if(object.number==planes.book || object.number==schemes.book)
+  else if((object.number==planes.book || object.number==schemes.book) && object.number != NULL)
   {
     push(p);
     p=book_page(object.number);
@@ -1375,35 +1388,27 @@ def UntapHook
 # =============
 
 #
-# PlaySorcery(card number,is face down?) - Play a sorcery card.
+# PlayCard(card number,face down?) - Handler for playing a card and putting it in the right place.
 #
-def PlaySorcery
+def PlayCard
 {
-  if(imprint==1)
-  {
-    PlayCard(ARG);
-    imprint=0;
-  }
-  else if (options{"playtograve"}=="on")
+  if(options{"playtograve"}=="on" && imprint<=0 && (find("Instant",Attr("type",ARG[0]))!=NULL || find("Sorcery",Attr("type",ARG[0]))!=NULL))
     Send("Transfer",(1,("play",ARG[0],0),("deck.top",discard)));
   else
-    PlayCard(ARG);    
-}
+  {
+    push(a);
 
-#
-# PlayInstant(card number,is face down?) - Play an instant card.
-#
-def PlayInstant
-{
-  PlaySorcery(ARG);
-}
+    if(isvar("rules.category"))
+      a=FindSpace(ARG[0],0,ARG[1]);
+    else
+      a=(screen.width/2+random(seq(-20,20)),random(seq(-20,20)));
 
-#
-# the Interrupt type only remains on a single Unglued card because those cards never receive errata
-#
-def PlayInterrupt
-{
-  PlaySorcery(ARG);
+    Send("Transfer",(1,("play",ARG[0],ARG[1]),("table",a[0]+card.width/2,a[1]+card.height/2,0,ARG[1])));
+
+    awaiting_card=1;
+    imprint=0;
+    a=pop();
+  }
 }
 
 #

@@ -2334,8 +2334,13 @@ def Transfer
       {
         if(has_entry(src[1],decks))
         {
-          owner_src = decks{src[1]}[1];
-          srcname=decks{src[1]}[2];
+          if(length(decks{src[1]}[0]) > 0)
+          {
+            owner_src = decks{src[1]}[1];
+            srcname=decks{src[1]}[2];
+          }
+          else
+            srcname=NULL;
         }
         else
           srcname=NULL;
@@ -2345,9 +2350,19 @@ def Transfer
         if(!has_entry(src[1],table))
           srcname=NULL;
       }
-      else if(srcname=="active" || srcname=="hand")
+      else if(srcname=="active")
+      {
         owner_src = src[1];
-
+        if(length(active[src[1]]) <= 0)
+          srcname=NULL;
+      }
+      else if(srcname=="hand")
+      {
+        owner_src = src[1];
+        if(length(hand[src[1]]) <= 0)
+          srcname=NULL;
+      }
+      
 # Compute destination names.
 
       if(dstname=="deck" || dstname=="deck.top" || dstname=="deck.bottom")
@@ -2380,7 +2395,9 @@ def Transfer
         }
         else if(src[0]=="table")
         {
-          if(table{src[1]}[5]==1)
+          if(table{src[1]}==NULL)
+            srcname = NULL;
+          else if(table{src[1]}[5]==1)
             vissrc = table{src[1]}[9];
         }
         else if(src[0]=="deck" || src[0]=="deck.bottom" || src[0]=="deck.search")
@@ -2630,6 +2647,8 @@ def Say
     }
     else if (waitfor > 0)
     {
+      push(s);
+      s = waitfor;
       ARG = lc(ARG);
       if(!(player % 2) && player < waitfor)
       {
@@ -2652,7 +2671,7 @@ def Say
         }
         p=pop();
       }
-      else if((ARG == "me" || ARG == "i") && (player % 2 || player >= waitfor))
+      if((ARG == "me" || ARG == "i") && (player % 2 || player >= waitfor))
       {
         AssignPlayer(player.name{player},waitfor);
         waitfor = waitfor + 2;
@@ -2664,12 +2683,13 @@ def Say
         else
           SendAll("Message","{green}The team still needs another member. Again, type {yellow}me{green} to volunteer.");
       }
-      else if (ARG == "random" || ARG == "rand" || ARG == "r")
+      else if(s == waitfor && (ARG == "random" || ARG == "rand" || ARG == "r"))
       {
 #       players have already been shuffled to get to this point
         waitfor = -1;
         StartGame();
       }
+      s=pop();
     }
   }
 }
@@ -3917,9 +3937,7 @@ def CommandW
 def CommandWhisperteam
 {
   if(HasFlag("team") && player < players_wanted)
-  {
     SendTeam(player,("Message","{gold}"+player.name{player}+" (to team): "+join(ARG," ")));
-  }
   else
     Reply("{red}Cannot whisper to teammates when not on a team.");
 }

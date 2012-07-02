@@ -1,5 +1,5 @@
 deck_rules=(,);
-server_description="Universal (PC2)";
+server_description="Universal (M13)";
 
 deck_rules{"Empty"}=(,);
 deck_rules{"Empty"}{""}=(
@@ -7,11 +7,8 @@ deck_rules{"Empty"}{""}=(
   ("RulePass",NULL),
 );
 deck_rules{"Sealed"}=(,);
-deck_rules{"Sealed"}{"none"}=(
-  ("RuleMaxProxies",0),
-  ("RulePass",NULL),
-);
 deck_rules{"Sealed"}{"deck"}=(
+  ("RuleMaxProxies",0),
   ("RuleDeckMinimum",40),
   ("RulePass",NULL),
 );
@@ -78,7 +75,7 @@ deck_rules{"Legacy"}{"deck+sideboard"}=(
   ("RuleCardLimitAny","Relentless Rats"),
   
   ("RuleCardSets",("UG","UH",0)),
-  ("RuleCardLimitEach",("Amulet of Quoz","Ancestral Recall","Balance","Bazaar of Baghdad","Black Lotus","Black Vise","Bronze Tablet","Channel","Chaos Orb","Contract from Below","Darkpact","Demonic Attorney","Demonic Consultation","Demonic Tutor","Earthcraft","Falling Star","Fastbond","Flash","Frantic Search","Goblin Recruiter","Gush","Hermit Druid","Imperial Seal","Jeweled Bird","Land Tax","Library of Alexandria","Mana Crypt","Mana Drain","Mana Vault","Memory Jar","Mental Misstep","Mind Twist","Mind's Desire","Mishra's Workshop","Mox Emerald","Mox Jet","Mox Pearl","Mox Ruby","Mox Sapphire","Mystical Tutor","Necropotence","Oath of Druids","Rebirth","Shahrazad","Skullclamp","Sol Ring","Strip Mine","Survival of the Fittest","Tempest Efreet","Time Vault","Time Walk","Timetwister","Timmerian Fiends","Tinker","Tolarian Academy","Vampiric Tutor","Wheel of Fortune","Windfall","Worldgorger Dragon","Yawgmoth's Bargain","Yawgmoth's Will",0)),
+  ("RuleCardLimitEach",("Amulet of Quoz","Ancestral Recall","Balance","Bazaar of Baghdad","Black Lotus","Black Vise","Bronze Tablet","Channel","Chaos Orb","Contract from Below","Darkpact","Demonic Attorney","Demonic Consultation","Demonic Tutor","Earthcraft","Falling Star","Fastbond","Flash","Frantic Search","Goblin Recruiter","Gush","Hermit Druid","Imperial Seal","Jeweled Bird","Library of Alexandria","Mana Crypt","Mana Drain","Mana Vault","Memory Jar","Mental Misstep","Mind Twist","Mind's Desire","Mishra's Workshop","Mox Emerald","Mox Jet","Mox Pearl","Mox Ruby","Mox Sapphire","Mystical Tutor","Necropotence","Oath of Druids","Rebirth","Shahrazad","Skullclamp","Sol Ring","Strip Mine","Survival of the Fittest","Tempest Efreet","Time Vault","Time Walk","Timetwister","Timmerian Fiends","Tinker","Tolarian Academy","Vampiric Tutor","Wheel of Fortune","Windfall","Worldgorger Dragon","Yawgmoth's Bargain","Yawgmoth's Will",0)),
 
   ("RuleCardLimitGeneral",4),
 );
@@ -107,7 +104,7 @@ deck_rules{"Commander"}{"deck+exile+command"}=(
   ("RuleCardLimitAny","Relentless Rats"),
   
   ("RuleCardSets",("UG","UH",0)),
-  ("RuleCardLimitEach",("Amulet of Quoz","Bronze Tablet","Contract from Below","Darkpact","Demonic Attorney","Jeweled Bird","Rebirth","Tempest Efreet","Timmerian Fiends","Chaos Orb","Falling Star","Shahrazad","Ancestral Recall","Balance","Biorhythm","Black Lotus","Channel","Coalition Victory","Emrakul, the Aeons Torn","Fastbond","Gifts Ungiven","Karakas","Kokusho, the Evening Star","Library of Alexandria","Limited Resources","Metalworker","Mox Emerald","Mox Jet","Mox Pearl","Mox Ruby","Mox Sapphire","Painter's Servant","Panoptic Mirror","Protean Hulk","Recurring Nightmare","Staff of Domination","Sway of the Stars","Time Vault","Time Walk","Tinker","Tolarian Academy","Upheaval","Yawgmoth's Bargain",0)),
+  ("RuleCardLimitEach",("Amulet of Quoz","Bronze Tablet","Contract from Below","Darkpact","Demonic Attorney","Jeweled Bird","Rebirth","Tempest Efreet","Timmerian Fiends","Chaos Orb","Falling Star","Shahrazad","Ancestral Recall","Balance","Biorhythm","Black Lotus","Channel","Coalition Victory","Emrakul, the Aeons Torn","Fastbond","Gifts Ungiven","Griselbrand","Karakas","Kokusho, the Evening Star","Library of Alexandria","Limited Resources","Metalworker","Mox Emerald","Mox Jet","Mox Pearl","Mox Ruby","Mox Sapphire","Painter's Servant","Panoptic Mirror","Protean Hulk","Recurring Nightmare","Staff of Domination","Sundering Titan","Sway of the Stars","Time Vault","Time Walk","Tinker","Tolarian Academy","Upheaval","Yawgmoth's Bargain",0)),
 
   ("RuleCardLimitGeneral",1),
   ("RulePass",NULL),
@@ -178,7 +175,7 @@ deck_rules{"Modern"}{"deck+sideboard"}=(
 
   ("RuleCardLimitEach",("Ancestral Vision","Ancient Den","Bitterblossom","Blazing Shoal","Chrome Mox","Cloudpost","Dark Depths","Dread Return","Glimpse of Nature","Golgari Grave-Troll","Great Furnace","Green Sun's Zenith","Hypergenesis","Jace, the Mind Sculptor","Mental Misstep","Ponder","Preordain","Punishing Fire","Rite of Flame","Seat of the Synod","Sensei's Divining Top","Skullclamp","Stoneforge Mystic","Sword of the Meek","Tree of Tales","Umezawa's Jitte","Valakut, the Molten Pinnacle","Vault of Whispers","Wild Nacatl",0)),
 
-  ("RuleAllowedSetsReprint",("8TH","9TH","XE","M10","M11","M12","MR","DS","FD","CK","BK","SK","RA","GP","DI","CS","TS","PC","FS","LRW","MOR","SM","EVE","ALA","CFX","ARE", "ZDK","WWK","ROE","SOM","MBS","NPH","ISD","DKA","AVR",4)),
+  ("RuleAllowedSetsReprint",("8TH","9TH","XE","M10","M11","M12","M13","MR","DS","FD","CK","BK","SK","RA","GP","DI","CS","TS","PC","FS","LRW","MOR","SM","EVE","ALA","CFX","ARE", "ZDK","WWK","ROE","SOM","MBS","NPH","ISD","DKA","AVR",4)),
 );
 
 
@@ -205,7 +202,7 @@ deck_rules{"Extended"}{"deck+sideboard"}=(
   ("RuleCardLimitAny","Relentless Rats"),
 
   ("RuleCardLimitEach",("Jace, the Mind Sculptor","Mental Misstep","Ponder","Preordain","Stoneforge Mystic",0)),
-  ("RuleAllowedSetsReprint",("M10","M11","M12","ALA","CFX","ARE","ZDK","WWK","ROE","SOM","MBS","NPH","ISD","DKA","AVR",4)),
+  ("RuleAllowedSetsReprint",("M10","M11","M12","M13","ALA","CFX","ARE","ZDK","WWK","ROE","SOM","MBS","NPH","ISD","DKA","AVR",4)),
 
 );
 
@@ -229,7 +226,7 @@ deck_rules{"Standard"}{"deck+sideboard"}=(
   ("RuleCardLimitAny","Swamp"),
   ("RuleCardLimitAny","Plains"),
   
-  ("RuleAllowedSetsReprint",("SOM","MBS","NPH","M12","ISD","DKA","AVR",4)),
+  ("RuleAllowedSetsReprint",("SOM","MBS","NPH","M12","ISD","DKA","AVR","M13",4)),
 );
 
 #########

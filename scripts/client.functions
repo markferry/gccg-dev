@@ -234,10 +234,6 @@ BOOK_FILTER_VERSION="0.10";
 # Mininum binary version required to use this script.
 MINIMUM_VERSION="0.9.0";
 
-# How to fit tables
-TABLES_X=7;
-TABLES_Y=5;
-
 # How many cards in a row at collection
 BOOK_ROWS=3;
 
@@ -307,7 +303,7 @@ BOOK_DEFAULT_SORT=("[age]","[name]");
 # Mapping from filter function names to a pair (type,short help text).
 FILTER_FUNCTIONS=(,);
 
-# Common (all players) basic table size (independant of the display size)
+# Common (server-side) basic table size (independent of the display size)
 BASE_TABLE_WIDTH=1024;
 BASE_TABLE_HEIGHT=768;
 
@@ -710,6 +706,7 @@ def Initialize
   set_attr(chat_msg.box,"draggable",1);
   set_attr(chat_msg.box,"ontop",Z_MBOX);
   raise(chat_msg.box);
+  message(chat_msg.box,"{sz9}press {orange}F6{white} to make this box disappear or reappear");
 
   message(name.box,username);
 
@@ -919,11 +916,11 @@ def _InitializeGame
   }
   else
   {
-    table.width=BASE_TABLE_WIDTH/2;
+    table.width=BASE_TABLE_WIDTH / ((players + 1) / 2);
     table.height=BASE_TABLE_HEIGHT;
-    card.xstep=card.design.width/2;
+    card.xstep=card.design.width / ((players + 1) / 2);
     card.ystep=card.design.height;
-    set_cardsize("table",toint(game_option("table card size"))/2);
+    set_cardsize("table",toint(game_option("table card size")) * ((players + 1) / 2));
   }
 
   InitializeLocationTables();
@@ -3184,7 +3181,7 @@ def Message
 }
 
 #
-#  PutDeckTop(object number,card number(s),[real cards]) - Put one or more cards to the top of the deck.
+# PutDeckTop(object number,card number(s),[real cards]) - Put one or more cards to the top of the deck.
 #
 def PutDeckTop
 {
@@ -3460,7 +3457,7 @@ def DeckDelTable
   push(o);
   o=find(ARG,flatten(deck.objects));
   if(o>0 && o%2)
-    del_object(ARG);
+    set_attr(ARG,"visible",0);
   o=pop();
 }
 
@@ -3772,7 +3769,7 @@ def Play
 }
 
 #
-# PlayCard(card number,upside down?) - Default handler for playing card on table.
+# PlayCard(card number,face down?) - Default handler for playing card on table.
 #
 def PlayCard
 {
@@ -4937,6 +4934,8 @@ def EditCreateDeck
 {
   if(ARG=="")
     Msg("{red}You must give a valid deck name.");
+  else if(has_entry(ARG,decks))
+    Msg("{red}You already have a deck with that name.");
   else
   {
     decks{ARG}=NewDeck();
@@ -4951,15 +4950,24 @@ def EditCreateDeck
 #
 def CreateEmptyDeck
 {
-  decks{"{blue}New Deck{white}"}=NewDeck();
-  deck.part="deck";
-  SelectDeck("{blue}New Deck{white}");
-  set_attr(deck.box,"visible",1);
-  Msg("{sz20}{yellow}Deckbuilding Help");
-  Msg("To give your new deck a name, type {yellow}/renamedeck [deckname]{white}. To create another deck without bringing up this help, type {yellow}/newdeck [deckname]{white}.");
-  Msg("You can open the list of cards with {yellow}Ctrl+B{white} if you haven't already, then scroll through it with the mouse wheel or with {yellow}PgUp{white} and {yellow}PgDn{white} keys.");
-  Msg("You can also go directly to the next page that has a particular card you want, by typing {yellow}/find [cardname]{white}.");
-  Msg("Clicking on a card with the mouse wheel (or using {yellow}Ctrl+A{white}) adds a copy to the deck; left-clicking removes a copy. Right-clicking offers these options and more.");
+  if(has_entry("{blue}New Deck{white}",decks))
+  {
+    SelectDeck("{blue}New Deck{white}");
+    Msg("You already have an untitled deck which would be destroyed if you created a new one.");
+    Msg("If you still want to add a new deck, type {yellow}/renamedeck [newname]{white} first, or use {yellow}/newdeck [deckname]{white} to create a new named deck.");
+  }
+  else
+  {
+    decks{"{blue}New Deck{white}"}=NewDeck();
+    deck.part="deck";
+    SelectDeck("{blue}New Deck{white}");
+    set_attr(deck.box,"visible",1);
+    Msg("{sz20}{yellow}Deckbuilding Help");
+    Msg("To give your new deck a name, type {yellow}/renamedeck [deckname]{white}. To create another deck without bringing up this help, type {yellow}/newdeck [deckname]{white}.");
+    Msg("You can open the list of cards with {yellow}Ctrl+B{white} if you haven't already, then scroll through it with the mouse wheel or with {yellow}PgUp{white} and {yellow}PgDn{white} keys.");
+    Msg("You can also go directly to the next page that has a particular card you want, by typing {yellow}/find [cardname]{white}.");
+    Msg("Clicking on a card with the mouse wheel (or using {yellow}Ctrl+A{white}) adds a copy to the deck; left-clicking removes a copy. Right-clicking offers these options and more.");
+  }
 }
 
 #
@@ -7943,9 +7951,8 @@ def CardMenu
 
   if(card.number!=NULL)
   {
-    if(length(ConstructMenu("Tap a card")))
-      m=ConstructMenu("Tap a card");
-    else
+    m=ConstructMenu("Tap a card");
+    if(length(m) < 1)
       m=(("Tap/Untap","middle click",""),("Tap and keep tapped","","SetStayTapped()"));
 
     for(t)(TargetingOptions())
@@ -8551,10 +8558,10 @@ def MouseMoveObject
   x=object.x;
   y=object.y;
 
-  if(me >= 2)
-    x=x-((me/2) * screen.width / ((players + 1) / 2));
+  if(me>1)
+    x=x-((me/2) * BASE_TABLE_WIDTH / ((players + 1) / 2));
 
-  if(object.type=="card" || object.type=="deck" || (object.type=="image" && mode=="play"))
+  if(mode=="play" && (object.type=="card" || object.type=="deck" || object.type=="image"))
     Send("MoveObject",(object.number,x,y));
 
   y=pop();
@@ -8621,7 +8628,7 @@ def MouseLeftClickCard
         xy[0]=xy[0]+t[2] + i*t[4];
         xy[1]=xy[1]+t[3] + i*t[5];
         if(me>1)
-          xy[0]=xy[0]-((me / 2) * screen.width / ((players + 1) / 2));
+          xy[0]=xy[0]-((me / 2) * BASE_TABLE_WIDTH / ((players + 1) / 2));
         xy=screen2table(xy);
         Send("MoveObject",(t[0],)+xy);
 
@@ -9258,7 +9265,7 @@ def FindOtherCard
 #       x=first(screen2table(c[0]/2,c[1])) + ARG[3];
 #       y=last(screen2table(c[0],c[1])) + ARG[4];
 #       return (x,y);
-       return NULL;
+       return(NULL);
      }
      else
      {
@@ -10151,7 +10158,7 @@ def str2filter_rel
               {
                 e=str2filter_typetostring(e);
                 e[1][0]=strreplace(lc(e[1][0]),"cardname","\"+name(#)+\"");
-                return("find(fuzzy("+e[1][0]+"),fuzzy("+e[0][0]+"))!=NULL","s");
+                return("find(lc("+e[1][0]+"),lc("+e[0][0]+"))!=NULL","s");
               }
               else
                 return(str2filter_sum(ARG));
@@ -10904,9 +10911,9 @@ def ExportToFile
   push(g);
   push(s);
   f=tofilename(ARG[1]);
-  g=GroupOf(ARG[1]);
-  if(length(g)>0)
-    f=tofilename(g)+"/"+f;
+#  g=GroupOf(ARG[1]);
+#  if(length(g)>0)
+#    f=tofilename(g)+"/"+f;
   
   if(!isfunction(tofnc(ARG[2])+"FormatSuffix"))
     execute(tofnc(ARG[2])+".format");

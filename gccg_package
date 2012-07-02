@@ -1186,7 +1186,7 @@ elsif($#ARGV>=0 and ($ARGV[0] eq "source" or $ARGV[0] eq "src"))
 		my $url="";
 		foreach(@{$sources{"installed"}})
 		{
-			if($i == $ARGV[2])
+			if($i == $ARGV[2] || $_ eq $ARGV[2])
 			{
 				$url=$_;
 				last;
@@ -1309,8 +1309,9 @@ else
 	print "       gccg_package source                list current download sources\n";
 	print "       gccg_package source add <url>      add one download source\n";
 	print "       gccg_package source del <n>        remove n:th download source\n";
+	print "       gccg_package source del <url>      remove download source by url\n";
 	print "       gccg_package update                update all installed packages\n";
 	print "       gccg_package install <package>...  install new package(s)\n";
-	print "       gccg_package get <package>         download (don't install) a package\n";
-	print "       gccg_package remove <package>      remove a package\n";
+	print "       gccg_package get <package>         download (don't install) package(s)\n";
+	print "       gccg_package remove <package>      remove package(s)\n";
 }
