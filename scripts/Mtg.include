@@ -1392,11 +1392,18 @@ def UntapHook
 #
 def PlayCard
 {
-  if(options{"playtograve"}=="on" && imprint<=0 && (find("Instant",Attr("type",ARG[0]))!=NULL || find("Sorcery",Attr("type",ARG[0]))!=NULL))
-    Send("Transfer",(1,("play",ARG[0],0),("deck.top",discard)));
-  else
+  push(a);
+  a=1;
+  if(options{"playtograve"}=="on")
   {
-    push(a);
+    if(imprint<=0 && !ARG[1] && (find("Instant",Attr("type",ARG[0]))!=NULL || find("Sorcery",Attr("type",ARG[0]))!=NULL))
+    {
+      Send("Transfer",(1,("play",ARG[0],0),("deck.top",discard)));
+      a=0;
+    }
+  }
+  if(a)
+  {
 
     if(isvar("rules.category"))
       a=FindSpace(ARG[0],0,ARG[1]);
@@ -1407,8 +1414,8 @@ def PlayCard
 
     awaiting_card=1;
     imprint=0;
-    a=pop();
   }
+  a=pop();
 }
 
 #
