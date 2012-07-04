@@ -1229,21 +1229,31 @@ def PlayKeyControlKeyO
 #
 def PlayKeyControlKeyM
 {
+  push(a);
+  a=0;
   for(c)(inplay(me))
   {
     cd = card_data(c);
-    if(find("Creature",Attr("type",cd[3])) != NULL && cd[1] == 0)
+    if(find("Creature",Attr("type",cd[2])) != NULL && cd[1] == 0)
     {
       if(isfunction("TapHook"))
       {
         if(call("TapHook",c))
+        {
+          a=a+1;
           Send("Rotate",(c,90));
+        }
       }
       else
+      {
+        a=a+1;
         Send("Rotate",(c,90));
+      }
     }
   }
-  Send("Say","{orange}Attack!");
+  if(a)
+    Send("Say","{orange}Attack!");
+  a=pop();
 }
 
 def PlayCommandTapout
