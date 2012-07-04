@@ -527,7 +527,7 @@ sub check_dependencies
 				{
 					print "Module '$m' depends on '$_' (v$dependencies{'updated'}{$m}{$_} or newer); "
 							."adding to transaction...\n";
-					push @remove, $_ if $_ ne "core";
+					push @remove, $_;
 					$inst{$_}=1;
 					check_dependencies($_);
 				}
@@ -669,11 +669,11 @@ sub uncompress
     {
 		$r=system("gunzip -f $file");
 		$file=~s/(.*)\.tgz$/$1.tar/;
-		$r=system("tar xpf $file");
+		$r=system("tar xpf $file --exclude='xml/installed.xml'");
     }
     else
     {
-		$r=system("gunzip -c $file | tar xpf -");
+		$r=system("gunzip -c $file | tar xpf - --exclude='xml/installed.xml'");
     }
 
     return $r==0;
@@ -690,7 +690,7 @@ sub install_modules
 
 	for(module_match("updated",@_))
 	{
-		push @remove, $_ if($_ ne "core" && $module{"installed"}{$_} ne "");
+		push @remove, $_ if($module{"installed"}{$_} ne "");
 		$inst{$_}=1;
 	}
 	
@@ -730,7 +730,7 @@ sub install_module
 				%{$files{"installed"}{$name}}=();
 				if($winsystem)
 				{
-				    $file=~s/(.*)\.tgz$/$1.tar/;				
+				    $file=~s/(.*)\.tgz$/$1.tar/;
 				    system("tar tf $file > log.txt");
 				    open(FILES,"log.txt");
 				}
@@ -815,11 +815,11 @@ sub remove_module
 	my $name=shift;
 	
 	die "$0: module $name is not installed" if $module{"installed"}{$name} eq "";
-	die "$0: removing core is forbidden" if $name eq "core";
 	
 	print "Removing module $name\n";
 	for(sort {$b cmp $a} keys(%{$files{"installed"}{$name}}))
 	{
+		next if($_ eq "./xml/installed.xml");
 		if(-d $_)
 		{
 			rmdir;
@@ -846,7 +846,7 @@ sub update_modules
 	{
 		if($module{"installed"}{$_} ne "" and is_newer($module{"updated"}{$_},$module{"installed"}{$_}))
 		{
-			push @remove, $_ if($_ ne "core");
+			push @remove, $_;
 			$inst{$_}=1;
 		}
 	}
