@@ -73,9 +73,9 @@ def RandomCardSet
   pack=(,);
   for(d)(ARG[1])
   {
-    for(r)(split(d[1],"+")
+    for(r)(split(d[1],"+"))
     {
-      if(find("/",r)
+      if(find("/",r))
         pack=pack+left(shuffle(flatten(cards{first(split(r,"/"))}{last(split(r,"/"))})),d[0]);
       else
         pack=pack+left(shuffle(flatten(cards{ARG[0]}{r})),d[0]);
