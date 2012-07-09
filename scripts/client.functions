@@ -920,7 +920,7 @@ def _InitializeGame
     table.height=BASE_TABLE_HEIGHT;
     card.xstep=card.design.width / ((players + 1) / 2);
     card.ystep=card.design.height;
-    set_cardsize("table",toint(game_option("table card size")) * ((players + 1) / 2));
+    set_cardsize("table",toint(game_option("table card size")) / ((players + 1) / 2));
   }
 
   InitializeLocationTables();
