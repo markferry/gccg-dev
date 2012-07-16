@@ -52,7 +52,7 @@
 # deck_rules{game system}{part names} - Contain the list of rules
 #   which describes card limits for the given game system.
 # deck_status{player name} - (how many proxies, deck match registered, deck is in original form)
-# end.turn - who most recently declared end of turn
+# end.player - who most recently declared end of turn
 # flag.game_started - set when the game is started
 # flag.game_broken - set when on of the players has quit
 # flag.game_halted - set when some of the players has quit and there are only one player left
@@ -91,6 +91,7 @@
 #   - "private" (DISABLED by default): spectators are forbidden except God, Guard, or Judge
 #   - "mute": spectators are allowed but cannot talk
 #   - "team": enables various functions to facilitate team play
+#   - "teamscore": scores are shared among players on the same team
 # stack.src[player] - last src from which each player has moved a card to play.stack
 # table{object number}
 #   0 card number
@@ -104,6 +105,7 @@
 #   8 list of attachmets
 #   9 visibility status (if face down) - see "visible" array for usage
 # table.stack_order - stacking order of cards object numbers on table (last is the topmost)
+# team[player] - list of player numbers that count as each player's team
 # teamspeak[player] - whose messages will only reach teammates by default
 # time.change - last clock time when timer was given
 # time.spent - a list of seconds spent by each player
@@ -170,6 +172,12 @@
 # Send(connection, command) - send a command to client if still online
 # SendAll(command) - send command to all
 # SendOther(p,command) - Send command to all players except player 'p'.
+# SendTeam(p,command) - Send command to all players on player p's team.
+# SendOpp(p,command) - Send command to all players NOT on player p's team.
+# SetTeams(method[, argument]) - Fill out array of teammates according to the chosen method:
+#   "none" - no teams, or each team consists of a single player
+#   "sides" - odd player numbers vs. even numbers (players will see this as "top vs. bottom")
+#   "against" - player #[argument] is a solo team, everyone else joins together against them
 # ShuffleDeck(object number) - Shuffle deck or hand.
 # Special(data...) - Send special event to all clients.
 # StartGame() - initialize structures and send all initialization commands to clients
@@ -331,7 +339,7 @@ def InitServer
   counters.src=copy((,),ARG);
   deck.original=array(ARG);
   decks=(,);
-  end.team=-1;
+  end.player=-1;
   end.turn=copy(0,ARG);
   flag.deck_uploaded=array(ARG);
   hand.object=array(ARG);
@@ -349,12 +357,18 @@ def InitServer
   stack.src=copy("",ARG);
   table.stack_order=(,);
   table=(,);
+  team=copy((,),ARG);
   teamspeak=copy(0,ARG);
   visible=array(ARG);
   waitfor=-1;
   persistent=1;
   alive=(,);
 
+# InitServerHook might create additional pile names,
+# so let it run before setting pile visibility
+  if(isfunction("InitServerHook"))
+    InitServerHook(ARG);
+  
   for(i)(ARG)
   {
     visible[i]=(,);
@@ -364,11 +378,6 @@ def InitServer
     visible[i]{"table"}=4;
     visible[i]{"play"}=4;
 
-# InitServerHook might create additional pile names,
-# so let it run before setting pile visibility
-    if(isfunction("InitServerHook"))
-      InitServerHook(ARG);
-      
     for(j)(GAME_PILES)
     {
       if(PileAttr(j[0],"public"))
@@ -844,11 +853,8 @@ def SendAll
 #
 def SendOther
 {
-  for(i)(watchers)
-  {
-    if(i!=ARG[0])
+  for(i)(seq(0,watchers-1)-(ARG[0],))
       Send(i,ARG[1]);
-  }
 }
 
 #
@@ -856,24 +862,17 @@ def SendOther
 #
 def SendTeam
 {
-  for(i)(players)
-  {
-    if((i + ARG[0] + 1) % 2)
-      Send(i,ARG[1]);
-  }
+  for(i)(team[ARG[0]])
+    Send(i,ARG[1]);
 }
-
 
 #
 # SendOpp(player,command) - Send command to everyone other than team.
 #
 def SendOpp
 {
-  for(i)(watchers)
-  {
-    if(i >= players_wanted || (i + ARG[0]) % 2)
+  for(i)(seq(0,watchers-1)-team[ARG[0]])
       Send(i,ARG[1]);
-  }
 }
 
 #
@@ -889,13 +888,11 @@ def ReceiveData
   data=toval(ARG[1]);
 
   if(event=="open")
-  {
     ReceiveOpen(data);
-  }
-  elseif(event=="close")
-  {
+  else if(event=="close")
     ReceiveClose(data);
-  }
+  else if(data==NULL)
+    0;
   else
   {
     connection=event;
@@ -1662,12 +1659,9 @@ def MsgVerbObjectTeam
   if(length(ARG)>=4)
     n=ARG[3];
 
-  i=ARG[0] % 2;
-  while(i < players_wanted)
-  {
+  for(i)(team[ARG[0]])
     Send(i,("Message",SubjectName(i)+" "+Verb(i,ARG[1])+" "+ObjectName(i,ARG[2])+n));
-    i=i+2;
-  }
+  
   Log(SubjectName(i)+" "+Verb(i,ARG[1])+" "+ObjectName(i,ARG[2])+n);
 
   n=pop();
@@ -1773,7 +1767,7 @@ def MsgTransfer
         mask=1;
       else if(vs[0] >= 2)
       {
-        if(HasFlag("team") && i<players_wanted && (i + vs[1]) % 2 == 0)
+        if(find(i,team[vs[1]]) != NULL)
           mask=1;
       } 
       else if(vs[0] && i==vs[1])
@@ -1893,7 +1887,7 @@ def Take.DeckTop
         SendAll("DelDeckTop",ARG[2]);
         SendAll("PutDeck",(ARG[2],last(decks{ARG[2]}[0])));
       }
-      else if(ARG[0] >= 2 && HasFlag("team"))
+      else if(ARG[0] >= 2)
       {
         SendTeam(ARG[1],("DelDeckTop",ARG[2]));
         SendTeam(ARG[1],("PutDeck",(ARG[2],last(decks{ARG[2]}[0]))));
@@ -1960,7 +1954,7 @@ def Take.SearchDeck
           SendAll("DelDeckTop",ARG[2]);
           SendAll("PutDeck",(ARG[2],last(decks{ARG[2]}[0])));
         }
-        else if(v>=2 && HasFlag("team")
+        else if(v>=2)
         {
           SendTeam(ARG[1],("DelDeckTop",ARG[2]));
           SendTeam(ARG[1],("PutDeck",(ARG[2],last(decks{ARG[2]}[0]))));
@@ -2018,7 +2012,7 @@ def Take.Deck
           SendAll("DelDeckTop",ARG[2]);
           SendAll("PutDeck",(ARG[2],last(decks{ARG[2]}[0])));
         }
-        else if(v>=2 && HasFlag("team")
+        else if(v>=2)
         {
           SendTeam(ARG[1],("DelDeckTop",ARG[2]));
           SendTeam(ARG[1],("PutDeck",(ARG[2],last(decks{ARG[2]}[0]))));
@@ -2060,7 +2054,7 @@ def Put.Hand
   v=visible[ARG[3]]{"hand"};
   if(v >= 4)
     SendAll("PutHand",(ARG[3],ARG[0]));
-  else if(v >= 2 && HasFlag("team"))
+  else if(v >= 2)
   {
     SendTeam(ARG[3],("PutHand",(ARG[3],ARG[0])));
     SendOpp(ARG[3],("PutHand",(ARG[3],card_back(ARG[0]))));
@@ -2083,7 +2077,7 @@ def Put.Active
   v=visible[ARG[3]]{"active"};
   if(v >= 4)
     SendAll("PutActive",(ARG[3],ARG[0]));
-  else if(v >= 2 && HasFlag("team"))
+  else if(v >= 2)
   {
     SendTeam(ARG[3],("PutActive",(ARG[3],ARG[0])));
     SendOpp(ARG[3],("PutActive",(ARG[3],card_back(ARG[0]))));
@@ -2169,7 +2163,7 @@ def Put.DeckTop
   
   if(ARG[1] >= 4)
     SendAll("PutDeck",(ARG[3],ARG[0]));
-  else if(ARG[1] >= 2 && HasFlag("team"))
+  else if(ARG[1] >= 2)
   {
     SendTeam(ARG[2],("PutDeck",(ARG[3],ARG[0])));
     SendOpp(ARG[2],("PutDeck",(ARG[3],card_back(ARG[0]))));
@@ -2188,11 +2182,12 @@ def Put.DeckTop
 #
 def Put.DeckBottom
 {
- decks{ARG[3]}[0]=(ARG[0],)+decks{ARG[3]}[0];
-  
-  if(ARG[1] >= 4)
+  decks{ARG[3]}[0]=(ARG[0],)+decks{ARG[3]}[0];
+  if(PileAttr(decks{ARG[3]}[2],"reveal_1") && length(decks{ARG[3]}[0])>1)
+    SendAll("PutDeckBottom",(ARG[3],card_back(ARG[0])));
+  else if(ARG[1] >= 4)
     SendAll("PutDeckBottom",(ARG[3],ARG[0]));
-  else if(ARG[1] >= 2 && HasFlag("team"))
+  else if(ARG[1] >= 2)
   {
     SendTeam(ARG[2],("PutDeckBottom",(ARG[3],ARG[0])));
     SendOpp(ARG[2],("PutDeckBottom",(ARG[3],card_back(ARG[0]))));
@@ -2594,7 +2589,7 @@ def UploadDeck
      deck_status{d[1][0]}=(MakeLegalityCheck(D,0),) + deck_status{d[1][0]};
 
      if(isfunction("UploadDeckHook"))
-       UploadDeckHook(player,ARG);
+       UploadDeckHook(player,D);
   }
 
   t=pop();
@@ -2615,16 +2610,28 @@ def AcceptableResult
 #
 def Say
 {
-  if(ARG != "" && ARG!=NULL)
+  push(s);
+  s=0;
+  if(isfunction("SayHook"))
+    s=SayHook(ARG);
+  
+  if(ARG != "" && ARG!=NULL && !s)
   {
-    if (ARG=="{magenta}End of my turn" && HasFlag("team"))
+    if(ARG=="{magenta}End of my turn")
     {
-      if ((player + 1) % 2 == end.team)
-        end.turn = copy(0,players_wanted);
-      end.turn[player] = 1;
-      end.team = player % 2;
+      if(HasFlag("team") && length(team[player])>1)
+      {
+        if(end.player<0)
+          end.turn = copy(0,players_wanted);
+        else if(find(player,team[end.player]) == NULL)
+          end.turn = copy(0,players_wanted);
+        end.turn[player] = 1;
+        end.player = player;
         
-      SendAll("Message",player.name{player}+": {magenta}End of my turn (" + tostr(sum(end.turn)) + "/" + tostr(players_wanted/2) + ")");
+        SendAll("Message","{yellow}"+player.name{player}+": {magenta}End of my turn (" + tostr(sum(end.turn)) + "/" + length(team[player]) + ")");
+      }
+      else
+        SendAll("Message","{yellow}"+player.name{player}+": "+ARG);
     }
     else if(HasFlag("team") && teamspeak[player]) 
       SendTeam(player,("Message","{gold}"+player.name{player}+" (to team): "+ARG));
@@ -2647,7 +2654,6 @@ def Say
     }
     else if (waitfor > 0)
     {
-      push(s);
       s = waitfor;
       ARG = lc(ARG);
       if(!(player % 2) && player < waitfor)
@@ -2689,9 +2695,9 @@ def Say
         waitfor = -1;
         StartGame();
       }
-      s=pop();
     }
   }
+  s=pop();
 }
 
 #
@@ -2778,7 +2784,7 @@ def ShuffleDeck
       else
         SendAll("SetDeck",(ARG,decks{ARG}[0]));
     }
-    else if(v>=2 && HasFlag("team"))
+    else if(v>=2)
     {
       if(PileAttr(decks{ARG}[2],"reveal_1"))
         SendTeam(player,("SetDeck",(ARG,card_back(head(decks{ARG}[0]))+(last(decks{ARG}[0]),))));
@@ -2818,7 +2824,7 @@ def ShuffleDeck
       {
         SendAll("SetHand",(o,hand[o]));
       }
-      else if(v>=2 && HasFlag("team"))
+      else if(v>=2)
       {
         SendTeam(o,("SetHand",(player,hand[player])));
         SendOpp(o,("SetHand",(player,card_back(hand[player]))));
@@ -2851,7 +2857,7 @@ def ShuffleDeck
         for(i)(active[o])
           SendAll("PutActive",(o,Image(i,1)));
       }
-      else if(v>=2 && HasFlag("team"))
+      else if(v>=2)
       {
         for(i)(active[o])
         {
@@ -3285,7 +3291,7 @@ def Flip
       visible[decks{ARG}[1]]{decks{ARG}[2]} = v;
       MsgVerbObject("hide",ARG);
       
-      if(v >= 2 && HasFlag("team"))
+      if(v >= 2)
         SendOpp(decks{ARG}[1],("SetDeck",(ARG,card_back(decks{ARG}[0]))));
       else if(v)
         SendOther(decks{ARG}[1],("SetDeck",(ARG,card_back(decks{ARG}[0]))));
@@ -3354,7 +3360,7 @@ def Flip
       visible[player]{"hand"} = v;
       MsgVerbObject("hide",ARG);
       
-      if(v >= 2 && HasFlag("team"))
+      if(v >= 2)
         SendOpp(player,("SetHand",(player,card_back(hand[player]))));
       else
         SendOther(player,("SetHand",(player,card_back(hand[player]))));
@@ -3378,7 +3384,7 @@ def Flip
       visible[player]{"active"} = v;
       MsgVerbObject("hide","cards set aside");
       
-      if(v >= 2 && HasFlag("team"))
+      if(v >= 2)
         SendOpp(player,("SetActive",(player,card_back(active[player]))));
       else
         SendOther(player,("SetActive",(player,card_back(active[player]))));
@@ -3420,16 +3426,13 @@ def Score
   ARG[0] = toint(ARG[0]);
   if(ARG[0] >= 0 && ARG[0]<players)
   {
-    if(HasFlag("team"))
+    if(HasFlag("team") && HasFlag("teamscore"))
     {
       push(p);
-      for(p)(players)
+      for(p)(team[ARG[0]])
       {
-        if((p-ARG[0]) % 2 == 0)
-        {
-          score[p]=ARG[1];
-          SendAll("Score",(p,ARG[1]));
-        }
+        score[p]=ARG[1];
+        SendAll("Score",(p,ARG[1]));
       }
       p=pop();
     }
@@ -3690,6 +3693,7 @@ def CommandSavegame
   savegame{"server_flags"}=server_flags;
   savegame{"table"}=table;
   savegame{"table.stack_order"}=table.stack_order;
+  savegame{"team"}=team;
   savegame{"transfers"}=transfers;
   if(isfunction("SavegameHook"))
     savegame{"special"}=SavegameHook();
@@ -3709,8 +3713,7 @@ def CommandSavegame
 #
 def HasFlag
 {
-  if(count(ARG,server_flags)) return(1);
-  else return(0);
+  return(count(ARG,server_flags));
 }
 
 #
@@ -3719,10 +3722,17 @@ def HasFlag
 def CommandOn
 {
   push(f);
+  push(x);
   for(f)(ARG)
   {
     f = lc(f);
-    if(f == "mute" && !HasFlag("mute"))
+    x=0;
+    if(isfunction("SetFlagHook"))
+      x=SetFlagHook(f);
+    
+    if(x)
+      1;
+    else if(f == "mute" && !HasFlag("mute"))
     {
       server_flags = server_flags+("mute",);
       SendAll("Message","Spectators are now muted.");
@@ -3747,6 +3757,7 @@ def CommandOn
     else if(f == "team" && !HasFlag("team") && players_wanted > 3 && (players_wanted % 2) == 0)
     {
       server_flags = server_flags+("team",);
+      SetTeams("sides");
       if(waitfor < 0)
       {
         for(p)(players)
@@ -3757,9 +3768,8 @@ def CommandOn
         SendAll("Message","This is now a team game. You can use {yellow}/wt{white} to whisper to team, {yellow}/ts{white} to make all messages team-whispers by default, and {yellow}/sh{white} to show your hand to the team.");
       }
     }
-    else if(isfunction("SetFlagHook"))
-      SetFlagHook(f);
   }
+  x=pop();
   f=pop();
 }
 
@@ -3769,18 +3779,23 @@ def CommandOn
 def CommandOff
 {
   push(f);
+  push(x);
   for(f)(ARG)
   {
     f = lc(f);
+    x=0;
     if(HasFlag(f))
     {
       if(isfunction("ClearFlagHook"))
+        x=ClearFlagHook(f);
+    
+      if(x)
+        1;
+      else if(f=="team")
       {
-        if(ClearFlagHook(f) == 0)
-        {
-          server_flags = server_flags-(f,);
-          SendAll("Message",ucfirst(f)+" server flag disabled.");        
-        }
+        server_flags = server_flags-("team",);
+        SendAll("Message","Team server flag disabled.");
+        SetTeams("none");
       }
       else
       {
@@ -3789,6 +3804,7 @@ def CommandOff
       }
     }
   }
+  x=pop();
   f=pop();
 }
 
@@ -3842,6 +3858,8 @@ def CommandLoadgame
     server_flags=savegame{"server_flags"};
     table=savegame{"table"};
     table.stack_order=savegame{"table.stack_order"};
+    if(has_entry("team",savegame))
+      team=savegame{"team"};
     transfers=savegame{"transfers"};
     if(transfers==NULL)
        transfers=0;
@@ -3937,7 +3955,12 @@ def CommandW
 def CommandWhisperteam
 {
   if(HasFlag("team") && player < players_wanted)
-    SendTeam(player,("Message","{gold}"+player.name{player}+" (to team): "+join(ARG," ")));
+  {
+    if(length(team[player]) > 1)
+      SendTeam(player,("Message","{gold}"+player.name{player}+" (to team): "+join(ARG," ")));
+    else
+      Reply("{red}No teammates to whisper to.");
+  }
   else
     Reply("{red}Cannot whisper to teammates when not on a team.");
 }
@@ -4005,6 +4028,50 @@ def CommandSharehand
 def CommandSh
 {
   CommandSharehand(ARG);
+}
+
+#
+# SetTeams(method, argument) - Fill out array of teammates according to the chosen method.
+#
+def SetTeams
+{
+  if(length(tofnc(ARG[0])) > 0 && isfunction("SetTeams"+tofnc(ARG[0])))
+    call("SetTeams"+tofnc(ARG[0]),tail(ARG));
+}
+
+def SetTeamsNone
+{
+  push(p);
+  for(p)(seq(0,players_wanted-1))
+    team[p]=(p,);
+  p=pop();
+}
+
+def SetTeamsSides
+{
+  push(p);
+  push(a);
+  a=seq(0,players_wanted-1);
+  for(p)(a)
+    team[p]=select("(#+p+1) % 2",a);
+  a=pop();
+  p=pop();
+}
+
+def SetTeamsAgainst
+{
+  push(p);
+  push(a);
+  a=seq(0,players_wanted-1);
+  for(p)(a)
+  {
+    if(p==ARG[0])
+      team[p]=(p,);
+    else
+      team[p]=a-(ARG[0],);
+  }
+  a=pop();
+  p=pop();
 }
 
 #
@@ -4079,14 +4146,24 @@ def SendFullGameStatus
     if(decks[i][1][1]==ARG)
     {
       if(visible[decks[i][1][1]]{decks[i][1][2]})
-        Send(ARG,("SetDeck",(decks[i][0],decks[i][1][0])));
+      {
+        if(PileAttr(decks[i][1][2],"reveal_1"))
+          Send(ARG,("SetDeck",(decks[i][0],card_back(head(decks[i][1][0]))+(last(decks[i][1][0]),))));
+        else
+          Send(ARG,("SetDeck",(decks[i][0],decks[i][1][0])));
+      }
       else
         Send(ARG,("SetDeck",(decks[i][0],card_back(decks[i][1][0]))));
     }
     else
     {
       if(visible[decks[i][1][1]]{decks[i][1][2]} >= 4)
-        Send(ARG,("SetDeck",(decks[i][0],decks[i][1][0])));
+      {
+        if(PileAttr(decks[i][1][2],"reveal_1"))
+          Send(ARG,("SetDeck",(decks[i][0],card_back(head(decks[i][1][0]))+(last(decks[i][1][0]),))));
+        else
+          Send(ARG,("SetDeck",(decks[i][0],decks[i][1][0])));
+      }
       else
         Send(ARG,("SetDeck",(decks[i][0],card_back(decks[i][1][0]))));
     }

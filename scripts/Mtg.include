@@ -172,7 +172,7 @@ def filter_mana
   if((c=Attr("cost",ARG)) == "")
     return(0);
   else
-    return(min(apply("mana",split(Attr("cost",ARG),"//"))));
+    return(min(apply("mana",split(c,"//"))));
 }
 
 #
@@ -1011,6 +1011,16 @@ def KeyControlKeyH
   c=pop();
 }
 
+#
+# KeyControlKeyR() - Roll dice.
+#
+def KeyControlKeyR
+{
+  if(has_entry("planes",decks{deck.name}))
+    Send("Roll","1d6");
+  else
+    Send("Roll","2d6");
+}
 #
 # KeyControlKeyX() - Put a card to exile.
 #

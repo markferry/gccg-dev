@@ -2042,6 +2042,33 @@ HELP{"chat"}{"newdeck"}=("deckname","create new deck",NULL,
 "Create an empty deck with the given {yellow}deckname{white} and select it as the current deck. Opens up the deck editing list automatically. The deck is saved automatically after the editing list is closed");
 
 #
+# ChatCommandErasedeck() - Implementation of /erasedeck command.
+#
+def ChatCommandErasedeck
+{
+  if(deck.name != NULL)
+  {
+    decks{deck.name}=NewDeck();
+    deck.part="deck";
+  }
+}
+
+#
+# WatchCommandErasedeck() - Implementation of /erasedeck command.
+#
+def WatchCommandErasedeck
+    ChatCommandErasedeck(ARG);
+
+#
+# OfflineCommandErasedeck() - Implementation of /erasedeck command.
+#
+def OfflineCommandErasedeck
+    ChatCommandErasedeck(ARG);
+
+HELP{"chat"}{"erasedeck"}=("","erase deck contents",NULL,
+"Remove all cards from a decklist so you can start over with an empty deck.");
+
+#
 # CommandHelp(topic) - Implementation of /help command.
 #
 def CommandHelp
@@ -7123,14 +7150,28 @@ def MergeDeckSubmenu
 {
   if(length(decks) > 0)
   {
-    push(m);
-    m=(,);
-    for(d)(keys(decks))
+    if(length(ARG)>0)
     {
-      m=m+((d,"","MergeDeck("+tostr(d)+")"),);
+      if(!has_entry(ARG,deck.groups))
+        Msg("{red}ERROR: No such group.");
+      else if(!length(deck.groups{ARG}))
+        Msg("{red}No decks in the group.");
+      else
+      {
+        push(l);
+        l=(("{blue}<back>","","MergeDeckSubmenu('')"),);
+        l=l+forall("(#,'','MergeDeck(#)')",sort(deck.groups{ARG}));
+        Menu("Merge deck with...",l);
+      }
     }
-    Menu("Merge deck with...",m);
-    m=pop();
+    else
+    {
+      push(l);
+      l=forall("('{green}'+#,'','MergeDeckSubmenu(#)')",select("length(#)",keys(deck.groups)));
+      l=l+forall("(#,'','MergeDeck(#)')",select("!length(GroupOf(#))",keys(decks)));
+      Menu("Merge deck with...",l);
+      l=pop();      
+    }
   }
   else
     Msg("{red}No decks available.");
@@ -7527,7 +7568,9 @@ def CurrentDeckMenu
       m=m+(("Check legality for "+deck_rules[0][0],"","MakeLegalityCheck("+tostr(deck_rules[0][0])+")"),);
     else
       m=m+(("Check legality...","","CheckLegalitySubmenu()"),);
-    m=m+(("Add cards from another deck...","","MergeDeckSubmenu()"),);
+    m=m+(("Add cards from another deck...","","MergeDeckSubmenu('')"),
+         ("Remove all cards","/erasedeck",""),);
+    
   }
 
   m=m+(("{hr}","",""),("Scroll up","Page Up",""),("Scroll down","Page Down",""),("Close","Esc",'set_attr(deck.box,"visible",0)'));
