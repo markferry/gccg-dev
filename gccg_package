@@ -407,32 +407,40 @@ sub fetch_file
 	(my $file = $url) =~ s|^.*/||;
 
 	unlink($file);
-	if ( $use_LWP )
+	if($url =~ m[file://(.*)|^((?:[A-Za-z]:)?/.*)])
 	{
-		if ( system("lwp-request $url >$file 2>/dev/null") == 0 )
-		{
-			return $file if -s $file;
-		}
+		system("cp -s $+ .");
+		return $file if -s $file;
 	}
+	else
+	{
+		if($use_LWP)
+		{
+			if(system("lwp-request $url >$file 2>/dev/null") == 0)
+			{
+				return $file if -s $file;
+			}
+		}
 
-	if ( $use_curl )
-	{
-		if ( system("curl $url >$file 2>/dev/null") == 0 )
+		if($use_curl)
 		{
-			return $file if -s $file;
+			if(system("curl $url >$file 2>/dev/null") == 0)
+			{
+				return $file if -s $file;
+			}
 		}
-	}
-	
-	if ( $use_wget )
-	{
-	    if($winsystem)
-	    {
-		system("wget -t 0 $url");
-	    }
-	    else
-	    {
-		system("wget -t 0 $url >/dev/null 2>&1");
-	    }
+		
+		if($use_wget)
+		{
+		    if($winsystem)
+		    {
+				system("wget -t 0 $url");
+		    }
+		    else
+		    {
+				system("wget -t 0 $url >/dev/null 2>&1");
+		    }
+		}
 	}
 	return (-s $file)? $file : "";
 }
@@ -482,8 +490,8 @@ sub check_for_new
 	{
 		$url{"updated"}{$m}=$urlbase.module_file($m,$module{"available"}{$m}) if $url{"updated"}{$m} eq "";
 		
-		if (is_newer($module{"available"}{$m},$module{"installed"}{$m}) and
-			is_newer($module{"available"}{$m},$module{"updated"}{$m}))
+		if (is_newer($module{"available"}{$m},$module{"updated"}{$m}))
+		# && is_newer($module{"available"}{$m},$module{"installed"}{$m})
 		{
 			$module{"updated"}{$m}=$module{"available"}{$m};
 			$files{"updated"}{$m}=$files{"available"}{$m};
@@ -554,24 +562,48 @@ sub fetch_module_lists
 			$url.="/" if not $url=~m/\/$/;
 			print "Fetching module list [$idx] ${url}available.xml\n" if $verbose;
 			$idx++;
-			$file=fetch_file("${url}available.xml");
-			if ($file eq "")
+			
+			if($url =~ m[file://(.*)|^((?:[A-Za-z]:)?/.*)])
 			{
-				print "FAILED: Skipping ${url}available.xml\n" if $verbose;
-				push @sources_fail,$url;
+				if(-f "${+}available.xml")
+				{
+					read_xml_document("${+}available.xml","available");
+					check_for_new($url);
+					foreach(@{$sources{"available"}})
+					{
+						my $n=$_;
+						$n=~s/([^\/])$/$1\//;
+						push @sources_new,$n if((0==grep($n eq $_,@{$sources{"installed"}}))
+											&& 0==grep($n eq $_,@sources_new));
+					}
+				}
+				else
+				{
+					print "FAILED: Skipping ${url}available.xml\n" if $verbose;
+					push @sources_fail,$url;
+				}
 			}
 			else
 			{
-				read_xml_document($file,"available");
-				check_for_new($url);
-				foreach(@{$sources{"available"}})
+				$file=fetch_file("${url}available.xml");
+				if ($file eq "")
 				{
-					my $n=$_;
-					$n=~s/([^\/])$/$1\//;
-					push @sources_new,$n if((0==grep($n eq $_,@{$sources{"installed"}}))
-											&& 0==grep($n eq $_,@sources_new));
+					print "FAILED: Skipping ${url}available.xml\n" if $verbose;
+					push @sources_fail,$url;
 				}
-				unlink($file);
+				else
+				{
+					read_xml_document($file,"available");
+					check_for_new($url);
+					foreach(@{$sources{"available"}})
+					{
+						my $n=$_;
+						$n=~s/([^\/])$/$1\//;
+						push @sources_new,$n if((0==grep($n eq $_,@{$sources{"installed"}}))
+											&& 0==grep($n eq $_,@sources_new));
+					}
+					unlink($file);
+				}
 			}
 		}
 	}
@@ -766,6 +798,37 @@ sub install_module
 }
 
 #
+# reinstall_modules(list of modules or expressions) - Remove, download, and reinstall modules.
+#
+sub reinstall_modules
+{
+	fetch_module_lists(1);
+	%inst = ();
+	@remove = ();
+
+	for(module_match("updated",@_))
+	{
+		if(is_newer($module{"installed"}{$_},$module{"updated"}{$_}))
+		{
+			print "WARNING: Module '$_' would be downgraded from v$module{'installed'}{$_} to v$module{'updated'}{$_}\n"
+			."Is this okay? (y/n) ";
+			chomp(my $ok = <STDIN>);
+			if(lc $ok ne "y" && lc $ok ne "yes")
+			{
+				print "Skipping $_ ...\n";
+				next;
+			}
+		}
+		push @remove, $_ if($module{"installed"}{$_} ne "");
+		$inst{$_}=1;
+	}
+	
+	check_dependencies(keys %inst);
+	remove_module($_) for (@remove);
+	install_module($_) for (keys %inst);
+}
+
+#
 # get_modules(list of modules or expressions) - Download (don't install) a list of modules.
 #
 sub get_modules
@@ -918,7 +981,7 @@ sub compare_package
 }
 
 #
-# diff_modules() - Check all packages and search for differencies between
+# diff_modules() - Check all packages and search for differences between
 # current files. Return a list of failed packages.
 #
 sub diff_modules
@@ -996,19 +1059,33 @@ sub source_add
 			return;
 		}
 	}
-	
 	print "Testing $url\n";
-
-	$file=fetch_file("${url}available.xml");
-	if($file eq "")
+	
+	if($url =~ m[file://(.*)|^((?:[A-Za-z]:)?/.*)])
 	{
-		print "${url}available.xml not found.\nDiscarding URL $url\n";
+		if(-f "${+}available.xml")
+		{			
+			print "Adding new source $url\n";
+			push @{$sources{"installed"}},$url;
+		}
+		else
+		{
+			print "${url}available.xml not found.\nDiscarding local URL $url\n";
+		}
 	}
 	else
 	{
-		unlink($file);
-		print "Adding new source $url\n";
-		push @{$sources{"installed"}},$url;
+		$file=fetch_file("${url}available.xml");
+		if($file eq "")
+		{
+			print "${url}available.xml not found.\nDiscarding URL $url\n";
+		}
+		else
+		{
+			unlink($file);
+			print "Adding new source $url\n";
+			push @{$sources{"installed"}},$url;
+		}
 	}
 }
 
@@ -1147,6 +1224,12 @@ elsif($#ARGV>=1 and ($ARGV[0] eq "install" or $ARGV[0] eq "i"))
 	read_xml_document("xml/installed.xml","installed");
 	shift @ARGV;
 	install_modules(@ARGV);
+}
+elsif($#ARGV>=1 and ($ARGV[0] eq "reinstall" or $ARGV[0] eq "re"))
+{
+	read_xml_document("xml/installed.xml","installed");
+	shift @ARGV;
+	reinstall_modules(@ARGV);
 }
 elsif($#ARGV>=1 and ($ARGV[0] eq "get" or $ARGV[0] eq "g"))
 {
@@ -1312,6 +1395,7 @@ else
 	print "       gccg_package source del <url>      remove download source by url\n";
 	print "       gccg_package update                update all installed packages\n";
 	print "       gccg_package install <package>...  install new package(s)\n";
+	print "       gccg_package reinstall <package>...reinstall current package(s)\n";
 	print "       gccg_package get <package>         download (don't install) package(s)\n";
 	print "       gccg_package remove <package>      remove package(s)\n";
 }
