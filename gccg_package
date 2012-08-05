@@ -3,6 +3,7 @@
 #
 # Globals
 #
+$ver="1.0.6";		# Current version of core package
 %module=();			# $module{mode}{module name} - version numbers of updated/build/installed/available modules.
 %files=();			# $files{mode}{module name}{filename} - include or exclude flags (1 = include, 0 = exclude)
 %sources=();		# $sources{mode} - List of sources.
@@ -274,6 +275,44 @@ sub create_empty_xml
 <modules>
 </modules>
 ";
+	close(F);
+}
+
+#
+# create_empty_installed_xml() - create package database
+#
+sub create_empty_installed_xml
+{
+	if (!-d "xml")
+	{
+		mkdir("xml") or die "cannot create xml folder";
+	}
+	open(F,">xml/installed.xml") or die "cannot create package database";
+	print F qq{<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE modules SYSTEM "modules.dtd">
+<modules>
+  <source url="http://gccg.sourceforge.net/modules/"/>
+  <module name="core" version="$ver">
+	<include file="COPYING"/>
+	<include file="decks"/>
+	<include file="doc"/>
+	<include file="games.dat"/>
+	<include file="gccg_package"/>
+	<include file="graphics"/>
+	<include file="lib"/>
+	<include file="scripts"/>
+	<include file="scripts/common.include"/>
+	<include file="sounds"/>
+	<include file="tools"/>
+	<include file="tools/launch_client"/>
+	<include file="xml/"/>
+	<include file="xml/gccg-game.dtd"/>
+	<include file="xml/gccg-set.dtd"/>
+	<include file="xml/installed.xml"/>
+	<include file="xml/modules.dtd"/>
+  </module>
+</modules>
+};
 	close(F);
 }
 
@@ -882,7 +921,9 @@ sub remove_module
 	print "Removing module $name\n";
 	for(sort {$b cmp $a} keys(%{$files{"installed"}{$name}}))
 	{
-		next if($_ eq "./xml/installed.xml");
+#		never, under any circumstances, remove installed.xml because that's the package database
+		next if($_ =~ m#^(?:\./)?xml(?:/(?:installed\.xml)?)?$#);
+		
 		if(-d $_)
 		{
 			rmdir;
@@ -1132,6 +1173,12 @@ else
     }
     system("tar --help >/dev/null 2>&1")==0 or die "$0: gccg_package requires tar";
     system("gunzip --help > /dev/null 2>&1")==0 or die "$0: gccg_package requires gunzip";
+}
+
+if(!-f "xml/installed.xml")
+{
+	print "WARNING: No package database found! Creating skeleton...\n";
+	create_empty_installed_xml();
 }
 
 if( $ARGV[0] eq "status" or $ARGV[0] eq "s" )

@@ -4433,6 +4433,8 @@ def ConnectServer
 {
   if(server==server.meta)
   {
+    if(left(ARG[0],4)=="127.")
+      ARG[0] = server.name;
     Msg("Connecting to the game server "+ARG[0]+" at port "+ARG[1]);
     server=net_connect(ARG[0],ARG[1]);
     if(server==NULL)

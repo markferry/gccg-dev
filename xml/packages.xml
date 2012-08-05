@@ -4,10 +4,11 @@
   <store dir="build/modules"/>
   <source url="http://gccg.sourceforge.net/modules/"/>
   <source url="http://www.reneploetz.de/gccg/"/>
-  <source url="http://lotrtcgdb.com/files/gccg/"/>
+  <source url="http://lotrtcgwiki.com/files/gccg/"/>
   <source url="http://markferry.net/gccg/"/>
-  <source url="http://games.phtn.de/gccg/"/>  
-  <module name="core" version="1.0.4">
+  <source url="http://games.phtn.de/gccg/"/>
+  <source url="http://wtactics.org/files/gccg/modules/"/>
+  <module name="core" version="1.0.6">
 	<include file="decks"/>
 	<include file="doc"/>
 	<include file="lib"/>
