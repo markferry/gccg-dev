@@ -47,12 +47,6 @@
 			 <attr key="class" value="Permanent-event"/>
 			 <attr key="keyword" value="Disease"/>
 		</card>
-		<card name="Doom of the Noldor" graphics="Doom of the Noldor.jpg" text="Unique. For every treasure item in play normally worth any mp and for every ring item worth 3 mp or more, the hazard limit against companies containing a Noldo Elf is increased by 1, and any CC made by a Noldo for spells or transferring items is modified by -1. Additionally, cancels any effect of Favor of the Valar, Ulmo’s Watch or Hair of Uinen played by an Elf-lord or on a company containing a Noldo.">
-			 <attr key="type" value="Hazard"/>
-			 <attr key="rarity" value="R"/>
-			 <attr key="unique" value="yes"/>
-			 <attr key="class" value="Permanent-event"/>
-		</card>
 		<card name="Doomed to Die" graphics="Doomed to Die.jpg" text="As a permanent event, any character bearing a Ring for Mortal Men targeted by a stature card has his mind reduced by 3. Any character whose mind is reduced to 0 or less due to the effects of this card is eliminated; a Sauron player receives his mp as character mp. As a short event, playable on a Dúnadan or Man character with a body less than 9: character must make a CC modified by -2.">
 			 <attr key="type" value="Hazard"/>
 			 <attr key="rarity" value="C"/>
@@ -81,12 +75,6 @@
 			 <attr key="class" value="Permanent-event"/>
 			 <attr key="cp" value="7"/>
 			 <attr key="keyword" value="Stature card"/>
-		</card>
-		<card name="Gwaith-i-Mirdain" graphics="GwaithiMirdain.jpg" text="Unique. Playable if you tap an Elf sage or discard a Lost Knowledge resource from play. Ring tests at sites in Hollin are modified by +1. Additionally, any Elf or Dwarf sage may tap to make non-unique ore resources playable at sites in Hollin (as if at the appropriate Under-deeps site). When this card is discarded from play, you may take one Ringlore, Secrets of their Forging or Secrets of Their Making from your discard pile to your hand.">
-			 <attr key="type" value="Dual Resource"/>
-			 <attr key="rarity" value="R"/>
-			 <attr key="unique" value="yes"/>
-			 <attr key="class" value="Long-event"/>
 		</card>
 		<card name="Hands of a Healer" graphics="Hands of a Healer.jpg" text="Unique. Stature card. Playable on a Ring for Mortal Men, if borne by a Dúnadan or by a non-warrior Man. The body of all characters in the bearer’s company is increased by 1 (to a maximum of 9). The bearer may tap and make a CC to heal a character in his company.">
 			 <attr key="type" value="Hero Resource"/>
@@ -274,6 +262,12 @@
 			 <attr key="sp" value="3"/>
 			 <attr key="specific" value="Fallen-wizard"/>
 		</card>
+		<card name="Shadows of the Power" graphics="Shadows of the Power.jpg" text="Heralded lord mode. Playable on your Ringwraith at a Darkhaven, if you discard (for no effect) a ring item he bears (cannot be a mind ring). Your Ringwraith becomes a Warlord. +3 to his EI and -5 to your general influence. Your Ringwraith's company is in Heralded Lord mode and may use starter movement. Additionally, your Ringwraith may be in a company with non-overt characters and Half-orcs. You may bring this card to your hand during the organization phase. Cannot be duplicated by a given player.">
+			 <attr key="type" value="Minion Resource"/>
+			 <attr key="rarity" value="R"/>
+			 <attr key="class" value="Permanent-event"/>
+			 <attr key="keyword" value="heralded lord mode"/>
+		</card>
 		<card name="Slaves to the Ring" graphics="Slaves to the Ring.jpg" text="Playable on a Man or Dúnadan faction, if you have a character bearing a Ring for Mortal at the site where the faction is in play. Target faction cannot not be influenced or discarded by any means. Discard this card and target faction if you do not control a Ring for Mortal Men.">
 			 <attr key="type" value="Dual Resource"/>
 			 <attr key="rarity" value="C"/>
@@ -316,6 +310,12 @@
 			 <attr key="class" value="Permanent-event"/>
 			 <attr key="cp" value="7"/>
 			 <attr key="keyword" value="Stature card"/>
+		</card>
+		<card name="You've Put Your Finger in It" graphics="Youve Put Your Finger in It.jpg" text="Playable on a non-Wizard, non-Ringwraith character bearing a ring. The hazard limit for the character's company is increased by one for every ring item in the company. Cannot be duplicated on a given character. During the organization phase, a ranger in the target character's company may tap to attempt to remove this card. Make a roll, if the result is greater than 7 discard this card.">
+			 <attr key="type" value="Hazard"/>
+			 <attr key="rarity" value="R"/>
+			 <attr key="unique" value="yes"/>
+			 <attr key="class" value="Permanent-event"/>
 		</card>
   </cards>
 </ccg-setinfo>

@@ -37,6 +37,13 @@
 			 <attr key="sp" value="3"/>
 			 <attr key="specific" value="Dwarf-lord"/>
 		</card>
+		<card name="An Evil Fortune" graphics="An Evil Fortune.jpg" text="Balrog specific. You may play Breach the Hold on any Under-deeps Ruins &amp; Lairs [R] with a Dwarf-hold surface site (as if at The Rusted-deeps). Additionally, you may play Invade Their Domain on any Dwarf-hold (as if on Iron Hill Dwarf-hold), if its adjacent Under-deeps site has Breach the Hold played on it. Cannot be duplicated by a given player.">
+			 <attr key="type" value="Minion Resource"/>
+			 <attr key="rarity" value="C"/>
+			 <attr key="class" value="Permanent-event"/>
+			 <attr key="sp" value="2"/>
+			 <attr key="specific" value="Balrog"/>
+		</card>
 		<card name="Arda Angered" graphics="Arda Angered.jpg" text="Each Pûkel-creature, Rock Fall, and Lava Flow attack has its prowess and strikes increased by 1 (by 2 if Doors of Night is in play). Cannot be duplicated.">
 			 <attr key="type" value="Hazard"/>
 			 <attr key="rarity" value="C"/>
@@ -287,13 +294,18 @@
 			 <attr key="sp" value="1"/>
 			 <attr key="keyword" value="Battle-gear"/>
 		</card>
-		<card name="Cristals of Bilak-Khald" graphics="Cristals of BilakKhald.jpg" text="Ore. Playable during the site phase at Mines of Falek-dim or the Sulfer-deeps, on a Dwarf or a Goblin- miner. Tap the character. While on target character, make a roll during the untap phase; if the result is less than 5 target character must make a body check modified by +2. If bearer is at a Haven [H,K], he or a sage in the company may tap to place this card with a Dwarven Light-stone or Goblin Earth-plumb; any bonus the item gives is doubled.">
+		<card name="Crystals of Bilak-Khald" graphics="Crystals of BilakKhald.jpg" text="Ore. Playable during the site phase at Mines of Falek-dim or the Sulfer-deeps, on a Dwarf or a Goblin- miner. Tap the character. While on target character, make a roll during the untap phase; if the result is less than 5 target character must make a body check modified by +2. If bearer is at a Haven [H,K], he or a sage in the company may tap to place this card with a Dwarven Light-stone or Goblin Earth-plumb; any bonus the item gives is doubled. Cannot be duplicated on a given item.">
 			 <attr key="type" value="Dual Resource"/>
 			 <attr key="rarity" value="C"/>
 			 <attr key="class" value="Permanent-event"/>
 			 <attr key="mp" value="1"/>
 			 <attr key="cp" value="1"/>
 			 <attr key="keyword" value="Ore"/>
+		</card>
+		<card name="Crossing the Border" graphics="Crossing the Border.jpg" text="Playable on a company that is not moving. The company faces an attack that is an exact copy of one automatic-attack of a site in the same or an adjacent region or of an adjacent Under-deeps site (attacker’s choice).">
+			 <attr key="type" value="Hazard"/>
+			 <attr key="rarity" value="C"/>
+			 <attr key="class" value="Short-event"/>
 		</card>
 		<card name="Dáin" graphics="Dain2.jpg" text="Unique. Manifestation of Dáin II. Longbeard. Leader. +2 prowess against Orcs, + 1 prowess against Trolls, Drakes and Dragons. +2 EI against Dwarves and Men. If you are Dáin, all Man factions playable at sites in Wilderland are worth full mp. If King under the Mountain is played on him it is worth full mp, and when at the site where the Dragon was defeated you may keep 1 more card than normal in your hand. -3 mp if eliminated.">
 			 <attr key="rarity" value="C"/>
@@ -479,14 +491,14 @@
 			 <attr key="strikes" value="3"/>
 			 <attr key="subclass" value="Dwarves"/>
 		</card>
-		<card name="Dwarven-axe" graphics="Dwarvenaxe.jpg" text="Weapon. Warrior only. +2 prowess (to a maximum of 7); +3 prowess if held by a Dwarf (to a maximum of 8).">
-			 <attr key="type" value="Hero Resource"/>
+		<card name="Dwarven Axe" graphics="Dwarven Axe.jpg" text="Weapon. Warrior only. +2 prowess (to a maximum of 7); +3 prowess if held by a Dwarf (to a maximum of 8). If bearer is a minion or overt character, this item gives 3 CP.">
+			 <attr key="type" value="Dual Resource"/>
 			 <attr key="rarity" value="C"/>
 			 <attr key="class" value="Major Item"/>
 			 <attr key="prowess" value="+2(3)"/>
 			 <attr key="body" value="-"/>
 			 <attr key="mp" value="2"/>
-			 <attr key="cp" value="2"/>
+			 <attr key="cp" value="2(3)"/>
 			 <attr key="keyword" value="Axe"/>
 			 <attr key="keyword" value="Battle-gear"/>
 			 <attr key="keyword" value="Warrior only"/>
@@ -808,6 +820,13 @@
 			 <attr key="special" value="Dwarf-lord specific. This site is a protected Lordhaven. If any of your companies is at this site, all attacks against it are cancelled. Characters with Iron Hill Dwarf-hold as their home site may be brought into play under GI at this site, even if your Dwarf-lord is in play and not here."/>
 			 <attr key="keyword" value="Dwarf-hold"/>
 		</card>
+		<card name="Ironfists" graphics="Ironfists.jpg" text="Unique. Playable at Nurunkhizdín or Azagarbhun, or at Mount Gundabad if Return to Old Dwellings is played at the site, if the influence check is greater than 11. Standard Modifications: Ironfist Dwarf (+3), Longbeard Dwarf (-3) tap: make a non-unique Ore resource playable at the above named sites this turn.">
+			 <attr key="type" value="Hero Resource"/>
+			 <attr key="rarity" value="R"/>
+			 <attr key="unique" value="yes"/>
+			 <attr key="class" value="Dwarf Faction"/>
+			 <attr key="mp" value="3"/>
+		</card>
 		<card name="Ironfoot" graphics="Ironfoot.jpg" text="Unique. Armor. Place this card on a manifestation of Daín II if he is in play. +1 body to a maximum of 10. If on Dáin: tap: +2 prowess against a strike from an Animal, Orc, or Wolf attack. tap: during your end-of-turn phase to search your play deck (reshuffle) or discard pile for a Leg it Double Quick.">
 			 <attr key="type" value="Stage Resource"/>
 			 <attr key="rarity" value="R"/>
@@ -818,6 +837,12 @@
 			 <attr key="cp" value="1"/>
 			 <attr key="sp" value="1"/>
 			 <attr key="keyword" value="Battle-gear"/>
+		</card>
+		<card name="Jewel-healer" graphics="Jewelhealer.jpg" text="Playable on a non-warrior or sage Dwarf character at one of your Lord-havens [H] (or in your starting company). The character may tap and tap a jewel or ore resource in the company to heal (from wounded to tapped) one Dwarf in the company. Target Dwarf must make a CC, and the Dwarf so healed must make a body check modified by -2 (before being healed).">
+			 <attr key="type" value="Stage Resource"/>
+			 <attr key="rarity" value="U"/>
+			 <attr key="class" value="Permanent-event"/>
+			 <attr key="sp" value="2"/>
 		</card>
 		<card name="Khazadshatur" graphics="Khazadshatur.jpg" text="Unique. Helmet. Playable at Goblin-gate. +2 to body to a maximum of 9. Dwarf only: +1 EI against Dwarves. All dark enchantments targeting bearer are cancelled. tap: give +3 prowess (or +3 to the roll) against a strike for which weapons do not modify or prowess is not used to determine the result.">
 			 <attr key="type" value="Hero Resource"/>
@@ -1331,6 +1356,12 @@
 			 <attr key="class" value="Minor Item"/>
 			 <attr key="cp" value="1"/>
 		</card>
+		<card name="Profitable Trade" graphics="Profitable Trade.jpg" text="Place this card in your mp. Any unique non-aninal, non-overt, non-special faction you have in play may be placed with this card; if there is a faction under this card, any additional factions under this card must be playable at different sites in the same or an adjacent region (or in the same territory). This card is worth 2 mp if there are at least 3 factions of different race placed with it.">
+			 <attr key="type" value="Dual Resource"/>
+			 <attr key="rarity" value="C"/>
+			 <attr key="class" value="Permanent-event"/>
+			 <attr key="mp" value="(2)"/>
+		</card>
 		<card name="Promise of Treasure" graphics="Promise of Treasure.jpg" text="Dwarf-lord specific. Playable on a non-avatar Dwarf in your Dwarf-lord’s company (or in your starting company). +1 to his mind and +1 to his CC. Discard if bearer transfers an item to another character. Cannot be duplicated on a given character.">
 			 <attr key="type" value="Stage Resource"/>
 			 <attr key="rarity" value="U"/>
@@ -1353,12 +1384,6 @@
 			 <attr key="class" value="Permanent-event"/>
 			 <attr key="mp" value="(5)"/>
 		</card>
-		<card name="Return to Khazad-dûm" graphics="Return to Khazaddum.jpg" text="Playable during the site phase on a company at Moria containing a majority of Dwarves. The company faces 2 attacks: Orcs -- 5 strikes with 8 prowess; Trolls -- 1 strike with 12 prowess. Following the attacks, tap a Dwarf with mind 5 or greater or discard this card. Cannot be duplicated by a given player.">
-			 <attr key="type" value="Hero Resource"/>
-			 <attr key="rarity" value="U"/>
-			 <attr key="class" value="Permanent-event"/>
-			 <attr key="mp" value="2"/>
-		</card>
 		<card name="Return to Old Dwellings" graphics="Return to Old Dwellings.jpg" text="Playble during the site phase on an Ancient Dwarf-ruin with an automatic-attack. The company faces all automatic-attacks(including modifications) again with +2 strikes/prowess. Afterwards, opponent may search and play a creature keyable to the site from his play deck, discard pile or sideboard; none of these attacks may be cancelled. After these attacks, tap a manifestation of a Dwarf-lord in the company or discard this card. If not discarded, the site becomes untapped and a Ruins &amp; Lairs [R], loses all automatic-attacks, and you may take a Dwarf-specific resource from your sideboard to hand. If the site has an adjacent Under-deeps site, Invade their Domain may be played at the site; discard this card if successfully played. A Dwarf-lord player receives full mp for this card.">
 			 <attr key="type" value="Hero Resource"/>
 			 <attr key="rarity" value="C"/>
@@ -1369,13 +1394,6 @@
 			 <attr key="type" value="Hero Resource"/>
 			 <attr key="rarity" value="U"/>
 			 <attr key="class" value="Permanent-event"/>
-		</card>
-		<card name="Ring of Invisibility" graphics="Ring of Invisibility.jpg" text="Unique. Manifestation of The One Ring. Playable only at the Under-grottos. Bearer may make a CC to cancel a strike from a non-Nazgûl, non-Undead attack against himself. Discard this ring when tested. If tested, obtain a random value to determine which ring card may be immediately played: The One Ring (8,9,10,11,12+); a Magic Ring (1,2,3,4,5,6,7), a Lesser Ring (any result). This card is considered The One Ring for purposes of interpreting card text on any manifestation of Gollum.">
-			 <attr key="type" value="Hero Resource"/>
-			 <attr key="rarity" value="R"/>
-			 <attr key="class" value="Gold Ring Item"/>
-			 <attr key="mp" value="2"/>
-			 <attr key="cp" value="4"/>
 		</card>
 		<card name="Ruins of Belegost" graphics="Ruins of Belegost.jpg" back="1" text="">
 			 <attr key="type" value="Dual Site"/>
@@ -1462,34 +1480,6 @@
 			 <attr key="rarity" value="U"/>
 			 <attr key="class" value="Short-event"/>
 			 <attr key="keyword" value="Song"/>
-		</card>
-		<card name="Sonotor's Mound" graphics="Sonotors Mound.jpg" back="1" text="">
-			 <attr key="type" value="Hero Site"/>
-			 <attr key="rarity" value="U"/>
-			 <attr key="unique" value="yes"/>
-			 <attr key="site_type" value="{R}"/>
-			 <attr key="site_path" value="{w}{b}{w}"/>
-			 <attr key="draw" value="2"/>
-			 <attr key="draw_opp" value="2"/>
-			 <attr key="region" value="Misty Mountains - Northern Spur"/>
-			 <attr key="haven" value="Lórien"/>
-			 <attr key="playable" value="Information, Items (minor, major**) *--only if Gates of Morning or Doors of Night is in play **--only if Sun or Moon is in play"/>
-			 <attr key="auto_attack" value="Animals. Bears -- 1 strike with 9 prowess"/>
-			 <attr key="special" value="Anduin Vales; Gundabad. Contains a hoard."/>
-		</card>
-		<card name="Sonotor's Mound" graphics="Sonotors Mound2.jpg" back="1" text="">
-			 <attr key="type" value="Minion Site"/>
-			 <attr key="rarity" value="U"/>
-			 <attr key="unique" value="yes"/>
-			 <attr key="site_type" value="{R}"/>
-			 <attr key="site_path" value="{d}{b}{w}"/>
-			 <attr key="draw" value="1"/>
-			 <attr key="draw_opp" value="2"/>
-			 <attr key="region" value="Misty Mountains - Northern Spur"/>
-			 <attr key="haven" value="Dol Guldur"/>
-			 <attr key="playable" value="Information, Items* (minor, major, greater**) *--only if the company discard a Lost Knowledge card it controls-- **--non-unique battle-gear items only--"/>
-			 <attr key="auto_attack" value="Animals. Bears -- 2 strikes with 9 prowess"/>
-			 <attr key="special" value="Contains a hoard. Anduin Vales; Gundabad. Contains a hoard. Misty Mountain Wargs faction is playable at this site."/>
 		</card>
 		<card name="Strength from the Ered Engrin" graphics="Strength from the Ered Engrin.jpg" text="Unique. Dáin specific. If you have a Dwarf faction in play in Wilderland or The Northern Waste, any attacks from Ahunt Dragon manifestations against your companies in these territories receive -1 to strikes, prowess and body (after all other modifiers; to no minimum).">
 			 <attr key="type" value="Stage Resource"/>
@@ -1603,11 +1593,6 @@
 			 <attr key="sp" value="3"/>
 			 <attr key="specific" value="Dwarf-lord"/>
 		</card>
-		<card name="The Watchful Peace" graphics="The Watchful Peace.jpg" text="Hazard creatures which are manifestations of a Wizard or Elf-lord may be keyed to Border-land [b], Border-hold [B], Wilderness [w] or Ruins &amp; Lairs [R] against minion or overt companies. Additionally, if Doors of Night is not in play, each player may take one Maia permanent-event from his discard pile into hand during the end-of-turn phase. Cannot be duplicated.">
-			 <attr key="type" value="Hazard"/>
-			 <attr key="rarity" value="U"/>
-			 <attr key="class" value="Long-event"/>
-		</card>
 		<card name="The Wind-deeps" graphics="The Winddeeps.jpg" back="1" text="">
 			 <attr key="type" value="Dual Site"/>
 			 <attr key="rarity" value="U"/>
@@ -1714,12 +1699,12 @@
 			 <attr key="rarity" value="C"/>
 			 <attr key="class" value="Permanent-event"/>
 		</card>
-		<card name="War Mattock" graphics="War Mattock.jpg" text="Weapon. Two-handed. Warrior only: +2 prowess to a maximum of 8 (+3 against Trolls to a maximum of 9, if borne by a Dwarf).">
-			 <attr key="type" value="Hero Resource"/>
+		<card name="War Mattock" graphics="War Mattock.jpg" text="Weapon. Two-handed. Warrior only: +2 prowess to a maximum of 8 (+3 against Trolls to a maximum of 9, if borne by a Dwarf). If played as a minion resource, this item is only worth 1 MP.">
+			 <attr key="type" value="Dual Resource"/>
 			 <attr key="rarity" value="C"/>
 			 <attr key="class" value="Major Item"/>
 			 <attr key="prowess" value="+2/-"/>
-			 <attr key="mp" value="2"/>
+			 <attr key="mp" value="2(3)"/>
 			 <attr key="cp" value="2"/>
 			 <attr key="keyword" value="Battle-gear"/>
 			 <attr key="keyword" value="Two-handed"/>
