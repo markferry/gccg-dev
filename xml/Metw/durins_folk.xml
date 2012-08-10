@@ -1340,7 +1340,7 @@
 			 <attr key="rarity" value="C"/>
 			 <attr key="class" value="Short-event"/>
 		</card>
-		<card name="Pit-trap" graphics="Pittrap.jpg" text="Playable on-guard on an ancient Dwarf-ruin or any site with a Dwarf, Orc, or Trap automatic-attack. Reveal this card after the company has faced any automatic-attacks. Make a roll and add 2 for every scout in the company; if the result is less than 13, all characters with the same random number as the result face an attack: Trap -- 1 strike with 14 prowess; character receives +1 to his prowess if he bears any armor, helmet or shield. Any following body check is modified by +2.">
+		<card name="Pit Trap" graphics="Pit Trap.jpg" text="Playable on-guard on an ancient Dwarf-ruin or any site with a Dwarf, Orc, or Trap automatic-attack. Reveal this card after the company has faced any automatic-attacks. Make a roll and add 2 for every scout in the company; if the result is less than 13, all characters with the same random number as the result face an attack: Trap -- 1 strike with 14 prowess; character receives +1 to his prowess if he bears any armor, helmet or shield. Any following body check is modified by +2.">
 			 <attr key="type" value="Hazard"/>
 			 <attr key="rarity" value="C"/>
 			 <attr key="class" value="Short-event"/>
@@ -1490,7 +1490,7 @@
 			 <attr key="specific" value="Dáin"/>
 		</card>
 		<card name="Swordmaster" graphics="Swordmaster.jpg" text="Sage only. Playable on an untapped sage at an untapped site where Information is playable during site phase. Tap the site and the sage. Gives the sage warrior skill. If the sage is already a warrior, he can use 2weapons (both modifiers count). If he uses 2 weapons, he can not use a shield. Cannot be duplicated on a given character.">
-			 <attr key="type" value="Hero Resource"/>
+			 <attr key="type" value="Dual Resource"/>
 			 <attr key="rarity" value="U"/>
 			 <attr key="class" value="Permanent-event"/>
 			 <attr key="mp" value="1"/>
