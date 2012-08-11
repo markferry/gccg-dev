@@ -1012,7 +1012,7 @@
 			 <attr key="cp" value="+1"/>
 			 <attr key="specific" value="Galadriel"/>
 	</card>
-	<card name="Against All Councel" graphics="Against All Councel.jpg" text="Playable if you are Elrond or Thranduil and your avatar is at his home site and bears The One Ring. Only 1 Against All Council may be played on a given turn. During your end-of-turn phase your avatar must make a CC for every hero avatar and character with a mind of 8 or more at his site. If still in play afterwards, make a roll and add 1 for each Against All Council you have in play: if the result is less than 5, your avatar is eliminated. If the result is greater than 8, you win the game.">
+	<card name="Against All Counsel" graphics="Against All Counsel.jpg" text="Playable if you are Elrond or Thranduil and your avatar is at his home site and bears The One Ring. Only 1 Against All Council may be played on a given turn. During your end-of-turn phase your avatar must make a CC for every hero avatar and character with a mind of 8 or more at his site. If still in play afterwards, make a roll and add 1 for each Against All Council you have in play: if the result is less than 5, your avatar is eliminated. If the result is greater than 8, you win the game.">
 			 <attr key="type" value="Stage Resource"/>
 			 <attr key="rarity" value="R"/>
 			 <attr key="class" value="Permanent-event"/>
@@ -1154,7 +1154,7 @@
 			 <attr key="cp" value="1"/>
 			 <attr key="sp" value="1"/>
 	</card>
-	<card name="Moon Runes" graphics="Moon Runes.jpg" text="Unique. Elrond specific. Place this card on Elrondif he is in play. If on Elrond, you can play Dwarf characters and Dwarf factions and these are worth full mp to you. Additionally, Unhappy Blows and The Dark Days do not affect a company containing Elrond.">
+	<card name="Moon-runes" graphics="Moonrunes.jpg" text="Unique. Elrond specific. Place this card on Elrondif he is in play. If on Elrond, you can play Dwarf characters and Dwarf factions and these are worth full mp to you. Additionally, Unhappy Blows and The Dark Days do not affect a company containing Elrond.">
 			 <attr key="type" value="Stage Resource"/>
 			 <attr key="rarity" value="U"/>
 			 <attr key="unique" value="yes"/>
