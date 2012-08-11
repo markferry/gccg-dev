@@ -445,7 +445,7 @@
 			 <attr key="rarity" value="C"/>
 			 <attr key="class" value="Short-event"/>
 	</card>
-	<card name="Decision of the White Council" graphics="Decision of the White Council.jpg" text="Playable if there are at least 3 manifestations of Wizards and/or Elf-lords in play (4 if any of these are characters). Discard when these conditions are not met. Up to 3 hazard long-events (cannot be environments or manifestations of a unique creature) may be placed with this card. These long-events stay in play until this card is discarded. Cannot be duplicated.">
+	<card name="Decisions of the White Council" graphics="Decisions of the White Council.jpg" text="Playable if there are at least 3 manifestations of Wizards and/or Elf-lords in play (4 if any of these are characters). Discard when these conditions are not met. Up to 3 hazard long-events (cannot be environments or manifestations of a unique creature) may be placed with this card. These long-events stay in play until this card is discarded. Cannot be duplicated.">
 			 <attr key="type" value="Hazard"/>
 			 <attr key="rarity" value="U"/>
 			 <attr key="class" value="Permanent-event"/>
