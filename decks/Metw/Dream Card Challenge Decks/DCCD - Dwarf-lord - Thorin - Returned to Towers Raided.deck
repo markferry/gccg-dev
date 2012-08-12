@@ -8,9 +8,10 @@
 Deck
 ####
 
-# Dual Resource (1)
+# Dual Resource (3)
 
 1 Dwarven Art of War (DF)
+2 Dwarven Axe (DF)
 
 # Dwarf-lord Character (4)
 
@@ -53,7 +54,7 @@ Deck
 1 Pathfinder (DF)
 1 Óin (TW)
 
-# Hero Resource (25)
+# Hero Resource (23)
 
 2 A Friend or Three (TW)
 1 A More or Less Decent Giant (DF)
@@ -62,7 +63,6 @@ Deck
 2 Concealment (TW)
 1 Dark Numbers (DM)
 1 Durin's Axe (TW)
-2 Dwarven-axe (DF)
 1 Habergeon of Silver (TD)
 1 Khazadshatur (DF)
 1 Knowledge of the Enemy (DM)
@@ -125,7 +125,7 @@ Sideboard
 
 # Hazard (2)
 
-1 Elf-lord Revealed in Wrath* (FB)
+1 Elf-lord Revealed in Wrath (LE)
 1 Great Northern Bear (GW)
 
 # Hero Resource (11)
@@ -133,7 +133,7 @@ Sideboard
 1 An Unexpected Party (DM)
 1 Block (TW)
 1 Dwarven Hoard (TD)
-1 Ironfists (CP)
+1 Ironfists (DF)
 1 Kingdom under the Mountain (DF)
 1 No Strangers at this Time (AS)
 1 Noldo-lantern (DM)
@@ -160,27 +160,32 @@ Sites
 
 1 Blue Mountain Dwarf-hold [D] (DF)
 
-# Fallen-wizard Site (1)
+# Fallen-wizard Site (3)
 
 1 Deep Mines (WH)
+1 Grey Havens [F] (FB)
+1 Rivendell [F] (FB)
 
-# Hero Site (18)
+# Hero Site (21)
 
+1 Aden Scarlet's Medical Library [H] (RS)
 1 Andoloki [H] (NW)
 1 Bar-en-Ibûn [H] (DF)
 1 Barrow-downs [H] (TW)
 1 Carn Dûm [H] (TW)
 1 Cirith Helkaloke [H] (GW)
 1 Creb Durga [H] (KN)
+1 Deep Cleft [H] (GW)
 1 Giant's Isle [H] (RS)
 1 Goblin-gate [H] (TW)
 1 Gondring's Lair [H] (NW)
 1 Litash [H] (NW)
+1 Moria [H] (TW)
 1 Morkai [H] (KN)
 1 Mount Gram [H] (TW)
 1 Mount Gundabad [H] (TW)
 1 Mount Rerir [H] (FB)
-1 Sonotor's Mound [H] (DF)
+1 Thaurung [H] (NW)
 1 The Iron-deeps [H] (DM)
 1 The Under-Caves [H] (KN)
 1 Zarak Dûm [H] (TD)
