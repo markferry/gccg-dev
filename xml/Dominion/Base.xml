@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE ccg-setinfo SYSTEM "../gccg-set.dtd">
+<ccg-setinfo name="Base" dir="Base" abbrev="B" game="Dominion">
+	<cards>
+		<card name="Cellar" graphics="cellar.jpg" back="" text="+1 Action, Discard any number of cards. +1 Card per card discarded.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action"/>
+			<attr key="cost" value="2"/>
+		</card>
+		<card name="Chapel" graphics="chapel.jpg" back="" text="Trash up to 4 cards from your hand.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action"/>
+			<attr key="cost" value="2"/>
+		</card>
+		<card name="Moat" graphics="moat.jpg" back="" text="+2 Cards, When another player plays an Attack card, you may reveal this from your hand. If you do, you are unaffected by that Attack.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action - Reaction"/>
+			<attr key="cost" value="2"/>
+		</card>
+		<card name="Chancellor" graphics="chancellor.jpg" back="" text="+2 Coins, You may immediately put your deck into your discard pile.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action"/>
+			<attr key="cost" value="3"/>
+		</card>
+		<card name="Village" graphics="village.jpg" back="" text="+1 Card, +2 Actions.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action"/>
+			<attr key="cost" value="3"/>
+		</card>
+		<card name="Woodcutter" graphics="woodcutter.jpg" back="" text="+1 Buy, +2 Coins.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action"/>
+			<attr key="cost" value="3"/>
+		</card>
+		<card name="Workshop" graphics="workshop.jpg" back="" text="Gain a card costing up to 4 Coins.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action"/>
+			<attr key="cost" value="3"/>
+		</card>
+		<card name="Bureaucrat" graphics="bureaucrat.jpg" back="" text="Gain a silver card; put it on top of your deck. Each other player reveals a Victory card from his hand and puts it on his deck (or reveals a hand with no Victory cards).">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action - Attack"/>
+			<attr key="cost" value="4"/>
+		</card>
+		<card name="Feast" graphics="feast.jpg" back="" text="Trash this card. Gain a card costing up to 5 Coins.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action"/>
+			<attr key="cost" value="4"/>
+		</card>
+		<card name="Gardens" graphics="gardens.jpg" back="" text="Variable, Worth 1 Victory for every 10 cards in your deck (rounded down).">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Victory"/>
+			<attr key="cost" value="4"/>
+		</card>
+		<card name="Militia" graphics="militia.jpg" back="" text="+2 Coins, Each other player discards down to 3 cards in his hand.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action - Attack"/>
+			<attr key="cost" value="4"/>
+		</card>
+		<card name="Moneylender" graphics="moneylender.jpg" back="" text="Trash a Copper from your hand. If you do, +3 Coins.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action"/>
+			<attr key="cost" value="4"/>
+		</card>
+		<card name="Remodel" graphics="remodel.jpg" back="" text="Trash a card from your hand. Gain a card costing up to 2 Coins more than the trashed card.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action"/>
+			<attr key="cost" value="4"/>
+		</card>
+		<card name="Smithy" graphics="smithy.jpg" back="" text="+3 Cards.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action"/>
+			<attr key="cost" value="4"/>
+		</card>
+		<card name="Spy" graphics="spy.jpg" back="" text="+1 Card, +1 Action, Each player (including you) reveals the top card of his deck and either discards it or puts it back, your chouce.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action - Attack"/>
+			<attr key="cost" value="4"/>
+		</card>
+		<card name="Thief" graphics="thief.jpg" back="" text="Each other player reveals the top 2 cards of his deck. If they revealed any Treasure cards, they trash one of them that you choose. You may gain any or all of these trashed cards. They discard the other revealed cards.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action - Attack"/>
+			<attr key="cost" value="4"/>
+		</card>
+		<card name="Throne Room" graphics="throneroom.jpg" back="" text="Choose an Action card in your hand. Play it twice.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action"/>
+			<attr key="cost" value="4"/>
+		</card>
+		<card name="Council Room" graphics="councilroom.jpg" back="" text="+4 Cards, +1 Buy, Each other player draws a card.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action"/>
+			<attr key="cost" value="5"/>
+		</card>
+		<card name="Festival" graphics="festival.jpg" back="" text="+2 Actions, +1 Buy, +2 Coins.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action"/>
+			<attr key="cost" value="5"/>
+		</card>
+		<card name="Laboratory" graphics="laboratory.jpg" back="" text="+2 Cards, +1 Action.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action"/>
+			<attr key="cost" value="5"/>
+		</card>
+		<card name="Library" graphics="library.jpg" back="" text="Draw until you have 7 cards in hand. You may set aside any Action cards drawn this way, as you draw them; discard the set aside cards after you finish drawing.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action"/>
+			<attr key="cost" value="5"/>
+		</card>
+		<card name="Market" graphics="market.jpg" back="" text="+1 Card, +1 Action, +1 Buy, +1 Coin.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action"/>
+			<attr key="cost" value="5"/>
+		</card>
+		<card name="Mine" graphics="mine.jpg" back="" text="Trash a Treasure card from your hand. Gain a Treasure card costing up to 3 Coins more; put it into your hand.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action"/>
+			<attr key="cost" value="5"/>
+		</card>
+		<card name="Witch" graphics="witch.jpg" back="" text="+2 Cards, Each other player gains a Curse card.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action - Attack"/>
+			<attr key="cost" value="5"/>
+		</card>
+		<card name="Adventurer" graphics="adventurer.jpg" back="" text="Reveal cards from your deck until you reveal 2 Treasure cards. Put those Treasure cards in your hand and discard the other revealed cards.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action"/>
+			<attr key="cost" value="6"/>
+		</card>
+	</cards>
+</ccg-setinfo>

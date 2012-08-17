@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE ccg-setinfo SYSTEM "../gccg-set.dtd">
+<ccg-setinfo name="Alchemy" dir="Alchemy" abbrev="A" game="Dominion">
+	<cards>
+		<card name="Transmute" graphics="transmute.jpg" text="Trash a card from your hand. If it is an... Action card, gain a Duchy Treasure card, gain a Transmute Victory card, gain a Gold">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action"/>
+			<attr key="cost" value="1P"/>
+		</card>
+		<card name="Vineyard" graphics="vineyard.jpg" text="Worth 1 Victory for every 3 Action cards in your deck (rounded down).">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Victory"/>
+			<attr key="cost" value="1P"/>
+		</card>
+		<card name="Apothecary" graphics="apothecary.jpg" text="+1 Card +1 Action Reveal the top 4 cards of your deck. Put the revealed Coppers and Potions into your hand. Put the other cards back on top in any order.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action"/>
+			<attr key="cost" value="2 and 1P"/>
+		</card>
+		<card name="Herbalist" graphics="herbalist.jpg" text="+1 Buy +1 Coin When you discard this from play, you may put one of your Treasures from play on top of your deck.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action"/>
+			<attr key="cost" value="2"/>
+		</card>
+		<card name="Scrying Pool" graphics="scryingpool.jpg" text="+1 Action Each player (including you) reveals the top card of his deck and either discards it or puts it back, your choice. Then reveal cards from the top of your deck until revealing one that isn't an Action. Put all of your revealed cards into your hand.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action - Attack"/>
+			<attr key="cost" value="2 and 1P"/>
+		</card>
+		<card name="University" graphics="university.jpg" text="+2 Actions You may gain an Action card costing up to 5 Coins.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action"/>
+			<attr key="cost" value="2 and 1P"/>
+		</card>
+		<card name="Alchemist" graphics="alchemist.jpg" text="+2 Cards +1 Action When you discard this from play, you may put this on top of your deck if you have a Potion in play.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action"/>
+			<attr key="cost" value="3 and 1P"/>
+		</card>
+		<card name="Familiar" graphics="familiar.jpg" text="+1 Card +1 Action Each other player gains a curse.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action - Attack"/>
+			<attr key="cost" value="3 and 1P"/>
+		</card>
+		<card name="Philosopher's Stone" graphics="philosophersstone.jpg" text="When you play this, count your deck and discard pile. Worth 1 Coin per 5 cards total between them (rounded down).">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Treasure"/>
+			<attr key="cost" value="3 and P"/>
+		</card>
+		<card name="Golem" graphics="golem.jpg" text="Reveal cards from your deck until you reveal 2 Action cards other than Golem Cards. Discard the other cards, then play the Action cards in either order.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action"/>
+			<attr key="cost" value="4 and 1P"/>
+		</card>
+		<card name="Potion" graphics="potion.jpg" text="Worth 1 Potion.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Treasure"/>
+			<attr key="cost" value="4"/>
+		</card>
+		<card name="Apprentice" graphics="apprentice.jpg" text="+1 Action Trash a card from your hand. +1 Card per Coin it costs. +2 Cards if it has Potion in its cost.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action"/>
+			<attr key="cost" value="5"/>
+		</card>
+		<card name="Possession" graphics="possession.jpg" text="The player to your left takes an extra turn after this one, in which you can see all cards he can and make all decisions for him. Any cards he would gain on that turn, you gain instead; any cards of his that are trashed are set aside and returned to his discard pile at end of turn.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action"/>
+			<attr key="cost" value="6 and 1P"/>
+		</card>
+	</cards>
+</ccg-setinfo>

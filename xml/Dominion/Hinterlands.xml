@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE ccg-setinfo SYSTEM "../gccg-set.dtd">
+<ccg-setinfo name="Hinterlands" dir="Hinterlands" abbrev="H" game="Dominion">
+	<cards>
+		<card name="Border Village" graphics="bordervillage.jpg" back="" text="+1 Card, +2 Actions - When you gain this, gain a card costing less than this.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action"/>
+			<attr key="cost" value="6"/>
+		</card>
+		<card name="Cache" graphics="cache.jpg" back="" text="3 - When you gain this, gain two Coppers.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Treasure"/>
+			<attr key="cost" value="5"/>
+		</card>
+		<card name="Cartographer" graphics="cartographer.jpg" back="" text="+1 Card, +1 Action. Look at the top 4 cards of your deck. Discard any number of them. Put the rest back on top in any order.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action"/>
+			<attr key="cost" value="5"/>
+		</card>
+		<card name="Crossroads" graphics="crossroads.jpg" back="" text="Reveal your hand. +1 Card per Victory card revealed. If this is the first time you played a Crossroads this turn, +3 Actions.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action"/>
+			<attr key="cost" value="2"/>
+		</card>
+		<card name="Develop" graphics="develop.jpg" back="" text="Trash a card from your hand. Gain a card costing exactly 1 more than it and a card costing exactly 1 less than it, in either order, putting them on top of your deck.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action"/>
+			<attr key="cost" value="3"/>
+		</card>
+		<card name="Duchess" graphics="duchess.jpg" back="" text="+2 coin. Each player (including you) looks at the top card of his deck, and discards it or puts it back. - In games using this, when you gain a Duchy, you may gain a Duchess.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action"/>
+			<attr key="cost" value="2"/>
+		</card>
+		<card name="Embassy" graphics="embassy.jpg" back="" text="+5 cards, discard 3 cards - When you gain this, each other player gains a Silver.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action"/>
+			<attr key="cost" value="5"/>
+		</card>
+		<card name="Farmland" graphics="farmland.jpg" back="" text="2 VP - When you buy this, trash a card from your hand. Gain a card costing exactly 2 more than the trashed card.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Victory"/>
+			<attr key="cost" value="6"/>
+		</card>
+		<card name="Fool's Gold" graphics="foolsgold.jpg" back="" text="If this is the first time you played a Fool's Gold this turn, this is worth 1, otherwise it's worth 4 - When another player gains a Province, you may trash this from your hand. If you do, gain a Gold, putting it on your deck.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Treasure - Reaction"/>
+			<attr key="cost" value="2"/>
+		</card>
+		<card name="Haggler" graphics="haggler.jpg" back="" text="+2 - While this is in play, when you buy a card, gain a card costing less than it that is not a Victory card.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action"/>
+			<attr key="cost" value="5"/>
+		</card>
+		<card name="Highway" graphics="highway.jpg" back="" text="+1 Card, +1 Action - While this is in play, cards cost 1 less, but not less than 0.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action"/>
+			<attr key="cost" value="5"/>
+		</card>
+		<card name="Ill-Gotten Gains" graphics="illgottengains.jpg" back="" text="1. When you play this, you may gain a Copper, putting it into your hand. - When you gain this, each other player gains a Curse.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Treasure"/>
+			<attr key="cost" value="5"/>
+		</card>
+		<card name="Inn" graphics="inn.jpg" back="" text="+2 Cards, +2 Actions, Discard 2 cards. - When you gain this, look through your discard pile (including this), reveal any number of Action cards from it, and shuffle them into your deck.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action"/>
+			<attr key="cost" value="5"/>
+		</card>
+		<card name="Jack of all Trades" graphics="jackofalltrades.jpg" back="" text="Gain a Silver. Look at the top card of your deck; discard it or put it back. Draw until you have5 cards in hand. You may trash a card from your hand that is not a Treasure.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action"/>
+			<attr key="cost" value="4"/>
+		</card>
+		<card name="Mandarin" graphics="mandarin.jpg" back="" text="+3 coin. Put a card from your hand on top of your deck. When you gain this, put all Treasures you have in play on top of your deck in any order.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action"/>
+			<attr key="cost" value="5"/>
+		</card>
+		<card name="Margrave" graphics="margrave.jpg" back="" text="+3 Cards, +1 Buy. Each other player draws a card, then discards down to 3 cards in hand.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action - Attack"/>
+			<attr key="cost" value="5"/>
+		</card>
+		<card name="Noble Brigand" graphics="noblebrigand.jpg" back="" text="+1coin, When you buy this or play it, each other player reveals the top 2 cards of his deck, trashes a revealed Silver or Gold you choose, and discards the rest. If he didn't reveal a Treasure, he gains a Copper. You gain the trashed cards.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action - Attack"/>
+			<attr key="cost" value="4"/>
+		</card>
+		<card name="Nomad Camp" graphics="nomadcamp.jpg" back="" text="+1 Buy, +2 Coin - When you gain this, put it on top of your deck">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action"/>
+			<attr key="cost" value="4"/>
+		</card>
+		<card name="Oasis" graphics="oasis.jpg" back="" text="+1 Card, +1 Action, +1 Coid, Discard a card.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action"/>
+			<attr key="cost" value="3"/>
+		</card>
+		<card name="Oracle" graphics="oracle.jpg" back="" text="Each player (including you) reveals thte top 2 cards of his deck, and you choose one: either he discards them, or he puts them back on top in an order he chooses. +2 Cards.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action - Attack"/>
+			<attr key="cost" value="3"/>
+		</card>
+		<card name="Scheme" graphics="scheme.jpg" back="" text="+1 Card, +1 Action. At the start of Clean-up this turn, you may choose an Action card you have in play. If you discard it from play this turn, put it on your deck.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action"/>
+			<attr key="cost" value="3"/>
+		</card>
+		<card name="Silk Road" graphics="silkroad.jpg" back="" text="Worth 1 VP for every 4 Victory cards in your deck (round down).">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Victory"/>
+			<attr key="cost" value="4"/>
+		</card>
+		<card name="Spice Merchant" graphics="spicemerchant.jpg" back="" text="You may trash a Treasure from your hand. If you do, choose one: +2 Cards and +1 Action; or +2 Coin and +1 Buy.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action"/>
+			<attr key="cost" value="4"/>
+		</card>
+		<card name="Stables" graphics="stables.jpg" back="" text="You may discard a Treasure. If youdo, +3 Cards and +1 Action">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action"/>
+			<attr key="cost" value="5"/>
+		</card>
+		<card name="Trader" graphics="trader.jpg" back="" text="Trash a card from your hand. Gain a number of Silvers equal to its cost in coins. - When you would gain a card, you may reveal this from your hand. If you do, instead, gain a Silver.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action - Reaction"/>
+			<attr key="cost" value="4"/>
+		</card>
+		<card name="Tunnel" graphics="tunnel.jpg" back="" text="2 VP - When you discard this other than during a Clean-up phase, you may reveal it. If you do, gain a Gold.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Victory - Reaction"/>
+			<attr key="cost" value="3"/>
+		</card>
+	</cards>
+</ccg-setinfo>
