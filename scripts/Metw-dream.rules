@@ -4,25 +4,26 @@
 
 deck_rules=(,);
 server_description="Dream Cards";
+
 deck_rules{"2-deck Hero (D)"}=(,);
 deck_rules{"2-deck Hero (D)"}{""}=(
   ("RuleLimitByExpression",(0,"(set_of(#)==\"V1\" || set_of(#)==\"V2\")")),
   ("RuleCheckExpression",("Maximum mind total for agents is 36","RuleAgentMindTotal(#) <= 36")),
-  ("RuleCheckExpression",("Total number of wizards/ringwraiths","RuleCheckWizards(#,\"total\",\"H\")")),
+  ("RuleCheckExpression",("Total number of wizards/ringwraiths","RuleCheckWizards(#,\"total\",\"E\")")),
   ("RuleLimitEachByExpression",(1,"Attr(\"unique\",#)==\"yes\" && Attr(\"race\",#)!=\"Wizard\"")),
   ("RuleLimitByExpression",(999999,"Attr(\"site_type\",#)==\"{H}\"")),
-  ("RuleCardLimitGeneral",3),
+  ("RuleLimitByExpression",(5,"Attr(\"race\",#)==\"Wizard\"")),
+  ("RuleLimitGeneral",3),
 );
 deck_rules{"2-deck Hero (D)"}{"deck"}=(
   ("RuleCheckExpression",("Creature minimum 12","RuleCountCreatures(#,\"H\") >= 12.0")),
   ("RuleCheckExpression",("Hazards vs. Resources","RuleHazardResourceBalance(#,\"H\")")),
-  ("RuleCheckExpression",("Number of wizards/ringwraiths in the deck","RuleCheckWizards(#,\"deck\",\"H\")")),
+  ("RuleCheckExpression",("Number of wizards/ringwraiths in the deck","RuleCheckWizards(#,\"deck\",\"E\")")),
   ("RuleLimitByExpression",(0,"find(\"Site\",Attr(\"type\",#))!=NULL")),
   ("RuleLimitByExpression",(10,"Attr(\"type\",#)==\"Hero Character\" && Attr(\"race\",#)!=\"Wizard\"")),
-  ("RuleLimitByExpression",(3,"Attr(\"race\",#)==\"Wizard\"")),
   ("RuleDeckMinimum",60),
   ("RuleDeckMaximum",115),
-  ("RuleLimitByExpression",(0,"Attr(\"type\",#)!=\"Hero Character\" && Attr(\"type\",#)!=\"Hero Resource\" && Attr(\"type\",#)!=\"Hazard\" && (Attr(\"keyword\",#),\"agent\")!=\"yes\" && !(Attr(\"type\",#)==\"Minion Resource\" && find(\"Item\",Attr(\"class\",#))) && name(#)!=\"Tidings of Death\" && name(#)!=\"Deadly Dart\" && name(#)!=\"Sudden Call\" && name(#)!=\"Gnawed Ways\" && !=\"Dual Resource\" && Attr(\"type\",#)!\"")),
+  ("RuleLimitByExpression",(0,"Attr(\"type\",#)!=\"Hero Character\" && Attr(\"type\",#)!=\"Hero Resource\" && Attr(\"type\",#)!=\"Hazard\" && (Attr(\"keyword\",#),\"agent\")!=\"yes\" && !(Attr(\"type\",#)==\"Minion Resource\" && find(\"Item\",Attr(\"class\",#))) && name(#)!=\"Tidings of Death\" && name(#)!=\"Deadly Dart\" && name(#)!=\"Sudden Call\" && name(#)!=\"Gnawed Ways\"  && Attr(\"type\",#)!=\"Dual Resource\"")),
   ("RulePass",NULL),
 );
 deck_rules{"2-deck Hero (D)"}{"sideboard"}=(
@@ -38,10 +39,24 @@ deck_rules{"2-deck Hero (D)"}{"sideboard vs. fw"}=(
   ("RulePass",NULL),
 );
 deck_rules{"2-deck Hero (D)"}{"pool"}=(
-  ("RuleLimitByExpression",(0,"Attr(\"race\",#)==\"Wizard\"")),
+  ("RuleLimitByExpression",(1,"Attr(\"race\",#)==\"Wizard\"")),
   ("RuleLimitByExpression",(10,"Attr(\"type\",#)==\"Hero Character\" || (Attr(\"type\",#)==\"Minion Character\" && Attr(\"race\",#)==\"Elf\")")),
-  ("RuleLimitByExpression",(3,"(Attr(\"class\",#)==\"Minor Item\" || name(#)==\"Rumours of Rings\" || name(#)==\"New Closeness to his Kin\") && Attr(\"unique\",#)!=\"yes\" || name(#)==\"Welcomed by the Lord and the Lady\"  || name(#)==\"Draw Swords Together\" || name(#)==\"Grim Voiced and Grim Faced\") && Attr(\"unique\",#)!=\"yes\" |\")), || name(#)==\"Welcomed by the Lord and the Lady\"")),
-  ("RuleLimitByExpression",(3,"(Attr(\"class\",#)==\"Minor Item\" || name(#)==\"Rumours of Rings\" || name(#)==\"New Closeness to his Kin\") && Attr(\"unique\",#)!=\"yes\" || name(#)==\"Welcomed by the Lord and the Lady\"  || name(#)==\"Draw Swords Together\" || name(#)==\"Grim Voiced and Grim Faced\") && Attr(\"unique\",#)!=\"yes\" |\")), || name(#)==\"Draw Swords Together\"")),
+  ("RuleLimitByExpression",(3,"(Attr(\"class\",#)==\"Minor Item\" && Attr(\"unique\",#)!=\"yes\") 
+								|| name(#)==\"Rumours of Rings\" 
+								|| name(#)==\"New Closeness to his Kin\" 
+								|| name(#)==\"Welcomed by the Lord and the Lady\" 
+								|| name(#)==\"Draw Swords Together\" 
+								|| name(#)==\"Grim Voiced and Grim Faced\"
+								|| name(#)==\"Clan-bound\"
+								|| name(#)==\"Open Alliance\"
+								|| name(#)==\"Dernhelm\"
+								|| name(#)==\"Long They Journeyed\"
+								|| name(#)==\"Make League and Common Council\"
+								|| name(#)==\"Ranger's Gear\"
+								|| name(#)==\"Son of Eomund\"
+								|| name(#)==\"Towers Destroyed\"
+								|| name(#)==\"Welcomed by the Lord and the Lady\"")),
+  ("RulePass",NULL),
 );
 deck_rules{"2-deck Hero (D)"}{"sites"}=(
   ("RuleLimitByExpression",(1,"name(#)==\"Ancient Deep-hold\" || name(#)==\"The Wind-deeps\" || name(#)==\"The Drowning Deeps\" || name(#)==\"The Rusted-deeps\" || name(#)==\"Remains of Thangorodrim\" || Attr(\"type\",#)==\"Region\"")),
@@ -49,15 +64,17 @@ deck_rules{"2-deck Hero (D)"}{"sites"}=(
   ("RuleLimitByExpression",(0,"Attr(\"type\",#)!=\"Hero Site\"")),
   ("RulePass",NULL),
 );
+
 deck_rules{"2-deck Minion (D)"}=(,);
 deck_rules{"2-deck Minion (D)"}{""}=(
   ("RuleLimitByExpression",(0,"(set_of(#)==\"V1\" || set_of(#)==\"V2\")")),
   ("RuleCheckExpression",("Maximum mind total for agents is 36","RuleAgentMindTotal(#) <= 36")),
   ("RuleCheckExpression",("Specific cards","RuleSpecific(#)==0")),
-  ("RuleCheckExpression",("Total number of wizards/ringwraiths","RuleCheckWizards(#,\"total\",\"M\")")),
+  ("RuleCheckExpression",("Total number of wizards/ringwraiths","RuleCheckWizards(#,\"total\",\"E\")")),
   ("RuleLimitEachByExpression",(1,"Attr(\"unique\",#)==\"yes\" && Attr(\"race\",#)!=\"Ringwraith\"")),
   ("RuleLimitByExpression",(999999,"Attr(\"site_type\",#)==\"{H}\"")),
   ("RuleLimitByExpression",(9,"name(#)==\"Black Horse\"")),
+  ("RuleLimitByExpression",(3,"name(#)==\"Vein of Arda\"")),
   ("RuleCardLimitGeneral",3),
 );
 deck_rules{"2-deck Minion (D)"}{"deck"}=(
@@ -65,11 +82,12 @@ deck_rules{"2-deck Minion (D)"}{"deck"}=(
   ("RuleCheckExpression",("Hazards vs. Resources","RuleHazardResourceBalance(#,\"M\")")),
   ("RuleCheckExpression",("Number of wizards/ringwraiths in the deck","RuleCheckWizards(#,\"deck\",\"M\")")),
   ("RuleLimitByExpression",(0,"find(\"Site\",Attr(\"type\",#)) != NULL")),
-  ("RuleLimitByExpression",(10,"Attr(\"type\",#)==\"Minion Character\" && Attr(\"race\",#)!=\"Ringwraith\"")),
+  ("RuleLimitByExpression",(10,"(Attr(\"type\",#)==\"Minion Character\" || Attr(\"type\",#)==\"Dual Character\" || Attr(\"type\",#)==\"Dual Agent Character\") && Attr(\"race\",#)!=\"Ringwraith\"")),
   ("RuleLimitByExpression",(3,"Attr(\"race\",#)==\"Ringwraith\"")),
   ("RuleDeckMinimum",60),
   ("RuleDeckMaximum",115),
-  ("RuleLimitByExpression",(0,"Attr(\"type\",#)!=\"Minion Character\" && Attr(\"type\",#)!=\"Minion Resource\" && !(Attr(\"type\",#)==\"Hero Resource\" && find(\"Item\",Attr(\"class\",#))) && Attr(\"type\",#)!=\"Hazard\" && name(#)!=\"Beasts of the Wood\" && name(#)!=\"Wild Hounds\" && name(#)!=\"Gnawed Ways\" && !=\"Dual Resource\" && Attr(\"type\",#)!\"")),
+  ("RuleLimitByExpression",(3,"name(#)==\"Vein of Arda\"")),
+  ("RuleLimitByExpression",(0,"Attr(\"type\",#)!=\"Minion Character\" && Attr(\"type\",#)!=\"Minion Resource\" && !(Attr(\"type\",#)==\"Hero Resource\" && find(\"Item\",Attr(\"class\",#))) && Attr(\"type\",#)!=\"Hazard\" && name(#)!=\"Beasts of the Wood\" && name(#)!=\"Wild Hounds\" && name(#)!=\"Gnawed Ways\" && Attr(\"type\",#)!=\"Dual Resource\" ")),
   ("RulePass",NULL),
 );
 deck_rules{"2-deck Minion (D)"}{"sideboard"}=(
@@ -85,16 +103,26 @@ deck_rules{"2-deck Minion (D)"}{"sideboard vs. fw"}=(
   ("RulePass",NULL),
 );
 deck_rules{"2-deck Minion (D)"}{"pool"}=(
-  ("RuleLimitByExpression",(0,"Attr(\"race\",#)==\"Ringwraith\"")),
-  ("RuleLimitByExpression",(10,"Attr(\"type\",#)==\"Minion Character\"")),
-  ("RuleLimitByExpression",(3,"(Attr(\"class\",#)==\"Minor Item\" || name(#)==\"Open to the Summons\" || name(#)==\"Orders from Lugbúrz\" || name(#)==\"Whispers of Rings\") && Attr(\"unique\",#)!=\"yes\" || name(#)==\"A Few Trusty Lads\" || name(#)==\"Iron-home\" || name(#)==\"Foundations Remain\") && Attr(\"unique\",#)!=\"yes\" || name(#)==\"The Lord of the Rings\")")),
+  ("RuleLimitByExpression",(1,"Attr(\"race\",#)==\"Ringwraith\"")),
+  ("RuleLimitByExpression",(10,"Attr(\"type\",#)==\"Minion Character\" || Attr(\"type\",#)==\"Dual Character\" || Attr(\"type\",#)==\"Dual Agent Character\"")),
+  ("RuleLimitByExpression",(3,"(Attr(\"class\",#)==\"Minor Item\" && Attr(\"unique\",#)!=\"yes\")
+									|| name(#)==\"Open to the Summons\" 
+									|| name(#)==\"Orders from Lugbúrz\" 
+									|| name(#)==\"Whispers of Rings\"  
+									|| name(#)==\"A Few Trusty Lads\" 
+									|| name(#)==\"Iron-home\" 
+									|| name(#)==\"Foundations Remain\" 
+									|| name(#)==\"The Lord of the Rings\"
+									|| name(#)==\"The Dark Roads\"
+									|| name(#)==\"Maranya\"")),
 );
 deck_rules{"2-deck Minion (D)"}{"sites"}=(
   ("RuleLimitByExpression",(1,"name(#)==\"Ancient Deep-hold\" || name(#)==\"The Wind-deeps\" || name(#)==\"The Drowning Deeps\" || name(#)==\"The Rusted-deeps\" || name(#)==\"Remains of Thangorodrim\" || Attr(\"type\",#)==\"Region\"")),
   ("RuleLimitByExpression",(0,"name(#)==\"Old Forest\" && find(\"Site\",Attr(\"type\",#))")),
-  ("RuleLimitByExpression",(0,"Attr(\"type\",#)!=\"Minion Site\"")),
+  ("RuleLimitByExpression",(0,"Attr(\"type\",#)!=\"Minion Site\" && Attr(\"type\",#)!=\"Dual Site\"") ),
   ("RulePass",NULL),
 );
+
 deck_rules{"2-deck Fallen-wizard (D)"}=(,);
 deck_rules{"2-deck Fallen-wizard (D)"}{""}=(
   ("RuleLimitByExpression",(0,"(set_of(#)==\"V1\" || set_of(#)==\"V2\")")),
