@@ -40,7 +40,7 @@ deck_rules{"2-deck Hero (D)"}{"sideboard vs. fw"}=(
 );
 deck_rules{"2-deck Hero (D)"}{"pool"}=(
   ("RuleLimitByExpression",(1,"Attr(\"race\",#)==\"Wizard\"")),
-  ("RuleLimitByExpression",(10,"Attr(\"type\",#)==\"Hero Character\" || (Attr(\"type\",#)==\"Minion Character\" && Attr(\"race\",#)==\"Elf\")")),
+  ("RuleLimitByExpression",(10,"Attr(\"type\",#)==\"Hero Character\" || Attr(\"type\",#)==\"Dual Character\" || (Attr(\"type\",#)==\"Minion Character\" && Attr(\"race\",#)==\"Elf\")")),
   ("RuleLimitByExpression",(3,"(Attr(\"class\",#)==\"Minor Item\" && Attr(\"unique\",#)!=\"yes\") 
 								|| name(#)==\"Rumours of Rings\" 
 								|| name(#)==\"New Closeness to his Kin\" 
@@ -61,7 +61,7 @@ deck_rules{"2-deck Hero (D)"}{"pool"}=(
 deck_rules{"2-deck Hero (D)"}{"sites"}=(
   ("RuleLimitByExpression",(1,"name(#)==\"Ancient Deep-hold\" || name(#)==\"The Wind-deeps\" || name(#)==\"The Drowning Deeps\" || name(#)==\"The Rusted-deeps\" || name(#)==\"Remains of Thangorodrim\" || Attr(\"type\",#)==\"Region\"")),
   ("RuleLimitByExpression",(0,"name(#)==\"Old Forest\" && find(\"Site\",Attr(\"type\",#))")),
-  ("RuleLimitByExpression",(0,"Attr(\"type\",#)!=\"Hero Site\"")),
+  ("RuleLimitByExpression",(0,"Attr(\"type\",#)!=\"Hero Site\" && Attr(\"type\",#)!=\"Dual Site\"")),
   ("RulePass",NULL),
 );
 
@@ -75,15 +75,15 @@ deck_rules{"2-deck Minion (D)"}{""}=(
   ("RuleLimitByExpression",(999999,"Attr(\"site_type\",#)==\"{H}\"")),
   ("RuleLimitByExpression",(9,"name(#)==\"Black Horse\"")),
   ("RuleLimitByExpression",(3,"name(#)==\"Vein of Arda\"")),
+  ("RuleLimitByExpression",(5,"Attr(\"race\",#)==\"Ringwraith\" || name(#)==\"The Lidless Eye\" || name(#)==\"Sauron\" || name(#)==\"The Necromancer\"")),
   ("RuleCardLimitGeneral",3),
 );
 deck_rules{"2-deck Minion (D)"}{"deck"}=(
   ("RuleCheckExpression",("Creature minimum 12","RuleCountCreatures(#,\"M\") >= 12.0")),
   ("RuleCheckExpression",("Hazards vs. Resources","RuleHazardResourceBalance(#,\"M\")")),
-  ("RuleCheckExpression",("Number of wizards/ringwraiths in the deck","RuleCheckWizards(#,\"deck\",\"M\")")),
+  ("RuleCheckExpression",("Number of wizards/ringwraiths in the deck","RuleCheckWizards(#,\"deck\",\"E\")")),
   ("RuleLimitByExpression",(0,"find(\"Site\",Attr(\"type\",#)) != NULL")),
   ("RuleLimitByExpression",(10,"(Attr(\"type\",#)==\"Minion Character\" || Attr(\"type\",#)==\"Dual Character\" || Attr(\"type\",#)==\"Dual Agent Character\") && Attr(\"race\",#)!=\"Ringwraith\"")),
-  ("RuleLimitByExpression",(3,"Attr(\"race\",#)==\"Ringwraith\"")),
   ("RuleDeckMinimum",60),
   ("RuleDeckMaximum",115),
   ("RuleLimitByExpression",(3,"name(#)==\"Vein of Arda\"")),
@@ -117,9 +117,8 @@ deck_rules{"2-deck Minion (D)"}{"pool"}=(
 									|| name(#)==\"Maranya\"")),
 );
 deck_rules{"2-deck Minion (D)"}{"sites"}=(
-  ("RuleLimitByExpression",(1,"name(#)==\"Ancient Deep-hold\" || name(#)==\"The Wind-deeps\" || name(#)==\"The Drowning Deeps\" || name(#)==\"The Rusted-deeps\" || name(#)==\"Remains of Thangorodrim\" || Attr(\"type\",#)==\"Region\"")),
   ("RuleLimitByExpression",(0,"name(#)==\"Old Forest\" && find(\"Site\",Attr(\"type\",#))")),
-  ("RuleLimitByExpression",(0,"Attr(\"type\",#)!=\"Minion Site\" && Attr(\"type\",#)!=\"Dual Site\"") ),
+  ("RuleLimitByExpression",(0,"Attr(\"type\",#)!=\"Minion Site\" && Attr(\"type\",#)!=\"Dual Site\" && Attr(\"type\",#)!=\"Region\"")),
   ("RulePass",NULL),
 );
 
