@@ -221,7 +221,7 @@
 			 <attr key="strikes" value="1"/>
 			 <attr key="subclass" value="Orcs"/>
 		</card>
-		<card name="Borin" graphics="Borin.jpg" text="Unique. Ironfist. +1 prowess against Orcs. Wound Borin to cancel a Trap-attack (no body check is required; all strikes are considered defeated).">
+		<card name="Borin" graphics="Borin.jpg" text="Unique. Firebeard. +1 prowess against Orcs. Wound Borin to cancel a Trap-attack (no body check is required; all strikes are considered defeated).">
 			 <attr key="type" value="Hero Character"/>
 			 <attr key="rarity" value="R"/>
 			 <attr key="prowess" value="4"/>
@@ -232,7 +232,7 @@
 			 <attr key="home_site" value="Barak-shathur"/>
 			 <attr key="skills" value="Warrior/Scout"/>
 			 <attr key="race" value="Dwarf"/>
-			 <attr key="keyword" value="Ironfist"/>
+			 <attr key="keyword" value="Firebeard"/>
 		</card>
 		<card name="Born within the Mountain's Heart" graphics="Born within the Mountains Heart.jpg" text="Dwarf-lord specific. All your mp sources at Under-deeps sites count for the purpose of calling your Day of Reckoning. Any Under-deeps movement roll for your companies moving to a site where a minion company is present is automatically successful. You may discard this card (at any time) to cancel a Rock Fall attack, or to give all Dwarves at an Under-deeps site +2 prowess in CvCC. Cannot be duplicated by a given player.">
 			 <attr key="type" value="Stage Resource"/>
@@ -510,7 +510,7 @@
 			 <attr key="sp" value="2"/>
 			 <attr key="specific" value="Dwarf-lord"/>
 		</card>
-		<card name="Dworin" graphics="Dworin.jpg" text="Unique. Firebeard. +1 EI against Dwarves.+2 prowess against Orcs. tap: prevent Old Grudge from being discarded from play.">
+		<card name="Dworin" graphics="Dworin.jpg" text="Unique. Ironfist. +1 EI against Dwarves.+2 prowess against Orcs. tap: prevent Old Grudge from being discarded from play.">
 			 <attr key="type" value="Hero Character"/>
 			 <attr key="rarity" value="R"/>
 			 <attr key="prowess" value="5"/>
@@ -521,7 +521,7 @@
 			 <attr key="home_site" value="Nurunkhizdín"/>
 			 <attr key="skills" value="Warrior"/>
 			 <attr key="race" value="Dwarf"/>
-			 <attr key="keyword" value="Firebeard"/>
+			 <attr key="keyword" value="Ironfist"/>
 		</card>
 		<card name="Eagles Ahunt" graphics="Eagles Ahunt.jpg" text="Unique. Manifestation of Eagle-watch. Flying. +2 prowess against characters and allies with Flying ability. Each overt company moving through Anduin Vales, Misty Mountains, High Pass or Redhorn Gap faces an attack: Animals. Eagles -- each character faces a strike. If Gates of Morning is in play this attack also affects Dunland, Enedwaith, Gap of Isen and Grey Mountain Narrows. Unless this attack is defeated, any character in a company facing an attack from Eagles Ahunt cannot use cards requiring scout skill this turn and any ongoing effects of such cards are cancelled.">
 			 <attr key="type" value="Hazard"/>
@@ -549,7 +549,7 @@
 			 <attr key="cp" value="(-2)"/>
 			 <attr key="sp" value="3"/>
 		</card>
-		<card name="Floi" graphics="Floi.jpg" text="Unique. Ironfist. +1 prowess against Orcs.-1 to his influence attempts. May tap to support a character in his company, even if he is facing a strike from the same attack.">
+		<card name="Floi" graphics="Floi.jpg" text="Unique. Firebeard. +1 prowess against Orcs.-1 to his influence attempts. May tap to support a character in his company, even if he is facing a strike from the same attack.">
 			 <attr key="type" value="Hero Character"/>
 			 <attr key="rarity" value="R"/>
 			 <attr key="prowess" value="3"/>
@@ -560,7 +560,7 @@
 			 <attr key="home_site" value="Iron Hill Dwarf-hold"/>
 			 <attr key="skills" value="Warrior"/>
 			 <attr key="race" value="Dwarf"/>
-			 <attr key="keyword" value="Ironfist"/>
+			 <attr key="keyword" value="Firebeard"/>
 		</card>
 		<card name="Flooded to the Surface" graphics="Flooded to the Surface.jpg" text="Playable on an Under-deeps surface site if The Reach of Ulmo is in play. The site gains an additional automatic-attack which is an exact duplicate of the first automatic-attack of the adjacent Under-deeps site. Cannot be duplicated on a given site.">
 			 <attr key="type" value="Hazard"/>
@@ -590,7 +590,7 @@
 			 <attr key="sp" value="3"/>
 			 <attr key="specific" value="Thráin"/>
 		</card>
-		<card name="Frár" graphics="Frar.jpg" text="Unique. Longbeard. +1 prowess against Orcs. -1 to all of his CC.-1 to his influence attempts. tap: bring one food-item from your discard pile to your play deck (reshuffle).">
+		<card name="Frár" graphics="Frar.jpg" text="Unique. Ironfist. +1 prowess against Orcs. -1 to all of his CC.-1 to his influence attempts. tap: bring one food-item from your discard pile to your play deck (reshuffle).">
 			 <attr key="type" value="Hero Character"/>
 			 <attr key="rarity" value="R"/>
 			 <attr key="prowess" value="4"/>
@@ -601,7 +601,7 @@
 			 <attr key="home_site" value="Iron Hill Dwarf-hold"/>
 			 <attr key="skills" value="Warrior"/>
 			 <attr key="race" value="Dwarf"/>
-			 <attr key="keyword" value="Longbeard"/>
+			 <attr key="keyword" value="Ironfist"/>
 		</card>
 		<card name="Frerin" graphics="Frerin.jpg" text="Unique. Longbeard. +2 EI against Dwarves. +2 prowess against Orcs. +2 EI against the Blue Mountain Dwarves faction. Any non-stage resource playable on a manifestation of Thorin II may also be played on Frerin, if no manifestation of Thorin II is in play.">
 			 <attr key="type" value="Hero Character"/>
@@ -912,7 +912,7 @@
 			 <attr key="sp" value="2"/>
 			 <attr key="specific" value="Dwarf-lord"/>
 		</card>
-		<card name="Kori" graphics="Kori.jpg" text="Unique. Ironfist. Grey Agent. +1 prowess against Orcs and Trolls. Agent only: May use Under-deeps movement. tap: at the beginning of the site phase to create an additional automatic-attack this turn: Traps -- 2 strikes with 9 prowess. tap: during the movement/hazard phase, if at a company's new site, to prevent that company from moving again this turn.">
+		<card name="Kori" graphics="Kori.jpg" text="Unique. Firebeard. Grey Agent. +1 prowess against Orcs and Trolls. Agent only: May use Under-deeps movement. tap: at the beginning of the site phase to create an additional automatic-attack this turn: Traps -- 2 strikes with 9 prowess. tap: during the movement/hazard phase, if at a company's new site, to prevent that company from moving again this turn.">
 			 <attr key="type" value="Grey Agent Character"/>
 			 <attr key="rarity" value="R"/>
 			 <attr key="class" value="Warrior/Ranger Dwarf"/>
@@ -925,7 +925,7 @@
 			 <attr key="subclass" value="Grey Agent"/>
 			 <attr key="race" value="Dwarf"/>
 			 <attr key="keyword" value="Grey Agent"/>
-			 <attr key="keyword" value="Ironfist"/>
+			 <attr key="keyword" value="Firebeard"/>
 		</card>
 		<card name="Last of the Seven" graphics="Last of the Seven.jpg" text="Thráin specific. As a short-event playable on Thráin if no Dwarven Ring is in play; +2 to his prowess, +1 body, and+2 EI for the rest of the turn, and you may keep 1 more card than normal in your hand. Thráin makes a CC modified by -1. As a permanent-event playable on a Dwarven Ring borne by Thráin. -3 mp and -3 CP. Thráin must make a CC during his untap phase for every other Dwarven Ring in play; failing this CC you must discard a character in his company (ignore other effects). Discard if not borne by Thráin. Cannot be duplicated.">
 			 <attr key="type" value="Stage Resource"/>
@@ -984,7 +984,7 @@
 			 <attr key="special" value="Swamp. *Major items are only playable at the site if the company has defeated the automatic-attack or has faced an Undead creature keyed to the site the same turn."/>
 			 <attr key="keyword" value="Swamp"/>
 		</card>
-		<card name="Loni" graphics="Loni.jpg" text="Unique. Ironfist. +1 prowess against Orcs.-1 to all of his CC.+1 to all rolls required for Loni’s company to move to adjacent Under-deeps sites.">
+		<card name="Loni" graphics="Loni.jpg" text="Unique. Longbeard. +1 prowess against Orcs.-1 to all of his CC.+1 to all rolls required for Loni’s company to move to adjacent Under-deeps sites.">
 			 <attr key="type" value="Hero Character"/>
 			 <attr key="rarity" value="R"/>
 			 <attr key="prowess" value="2"/>
@@ -995,7 +995,7 @@
 			 <attr key="home_site" value="Iron Hill Dwarf-hold"/>
 			 <attr key="skills" value="Warrior/Scout"/>
 			 <attr key="race" value="Dwarf"/>
-			 <attr key="keyword" value="Ironfist"/>
+			 <attr key="keyword" value="Longbeard"/>
 		</card>
 		<card name="Lord of Dwarrowdelf" graphics="Lord of Dwarrowdelf.jpg" text="Unique. Dwarf-lord specific. Playable on yourDwarf-lord if he is at Moria and you have at least 8 P. He receives +5 EI against Dwarves. You receive full mp for Return to Khazad-dûm, Halls of Khazad-dûm and Reconquest of Khazad-dûm (if played successfully). Unless a manifestation of The Balrog of Moria has been defeated, discard this card if bearer ever moves outside of Redhorn Gate or its adjacent regions and/or is not at Moria or its adjacent sites.">
 			 <attr key="type" value="Stage Resource"/>
@@ -1057,7 +1057,7 @@
 			 <attr key="site_type" value="{S}"/>
 			 <attr key="draw" value="2"/>
 			 <attr key="draw_opp" value="2"/>
-			 <attr key="region" value="Dungeon"/>
+			 <attr key="region" value="Under-deeps"/>
 			 <attr key="adjacent" value="Wondrous Maps* (0), Ostigurth (7), The Under-courts (10)"/>
 			 <attr key="playable" value="Items (minor, major, gold ring)"/>
 			 <attr key="auto_attack" value="Dwarves -- 3 strikes with 10 prowess (detainment if the company contains a Dwarf majority)"/>
@@ -1078,7 +1078,6 @@
 			 <attr key="special" value=""/>
 			 <attr key="keyword" value=""/>
 		</card>
-		
 		<card name="Mining Settlement" graphics="Mining Settlement.jpg" text="Dwarf-lord specific. Playable during the site phase on a Ruins &amp; Lairs [R] that is an Ancient-Dwarf-hold or is in a mountain region. The site becomes a Dwarf-hold and one of your Lord-havens [H] and all automatic- attacks are replaced with: Dwarves -- 3 strikes with 9 prowess. Nothing is considered playable as written on the site card. If one of your companies is at this site, all attacks against it are cancelled. Other alignments may not use this site as a Haven [H]. Discard this card when the site leaves active play, or when a manifestation of the corresponding Dragon attacks at the stie. It cannot be discarded otherwise. Alternatively, playable on any Dwarf-hold: the site becomes a Protected Lord-haven [H].">
 			 <attr key="type" value="Stage Resource"/>
 			 <attr key="rarity" value="C"/>
@@ -1132,7 +1131,7 @@
 			 <attr key="race" value="Dwarf"/>
 			 <attr key="keyword" value="Longbeard"/>
 		</card>
-		<card name="Náli" graphics="Nali.jpg" text="Unique. Longbeard. +1 prowess against Orcs.-1 to all of his CC. -3 to his influence attempts.">
+		<card name="Náli" graphics="Nali.jpg" text="Unique. Firebeard. +1 prowess against Orcs.-1 to all of his CC. -3 to his influence attempts.">
 			 <attr key="type" value="Hero Character"/>
 			 <attr key="rarity" value="R"/>
 			 <attr key="prowess" value="5"/>
@@ -1144,7 +1143,7 @@
 			 <attr key="home_site" value="Iron Hill Dwarf-hold"/>
 			 <attr key="skills" value="Warrior"/>
 			 <attr key="race" value="Dwarf"/>
-			 <attr key="keyword" value="Longbeard"/>
+			 <attr key="keyword" value="Firebeard"/>
 		</card>
 		<card name="Narin" graphics="Narin.jpg" text="Unique. Ironfist. +2 EI against Dwarves. +2 prowess against Orcs. +2 EI against the Ironfists faction. If controlling Dwarven Ring of Thélor's Tribe: +1 to all of his CC and he becomes a leader and a sage.">
 			 <attr key="type" value="Hero Character"/>
@@ -1516,7 +1515,7 @@
 			 <attr key="influence" value="0"/>
 			 <attr key="mp" value="1"/>
 			 <attr key="home_site" value="Bar-en-Ibûn, Nurunkhizdín"/>
-			 <attr key="skills" value="Warrior/Sage"/>
+			 <attr key="skills" value="Warrior/Scout/Sage"/>
 			 <attr key="race" value="Dwarf"/>
 			 <attr key="keyword" value="Agent"/>
 			 <attr key="keyword" value="Firebeard"/>
