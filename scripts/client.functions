@@ -170,6 +170,7 @@
 # product.images{product name} - image number of the product picture
 # product.objects{product name} - object numbers of products
 # rarity.display{letter} - format code to apply when opening card of that rarity from pack
+# removed_card - single-card undo buffer for the card ID most recently removed from the deck
 # room.players - players in chat room (see meta-server)
 # room.tables - tables in chat room (see meta-server)
 # rules.category - list of pairs (condition,category), which is used to map a name to category
@@ -554,14 +555,14 @@ def playerhas {
   if(playerhave{ARG[0]} != NULL)
     return (find(ARG[1],playerhave{ARG[0]}) != NULL);
   else
-    return 0;
+    return(0);
 }
 
 def playerwants {
   if(playerwant{ARG[0]} != NULL)
     return (find(ARG[1],playerwant{ARG[0]}) != NULL);
   else
-    return 0;
+    return(0);
 }
 
 modifier=" ";
@@ -1198,19 +1199,14 @@ def SelectDeck
       }
       else
       {
-        push(l);
         deck.name=ARG;
         Msg("Deck '"+deck.name+"' selected.");
         RefreshCurrentDeck();
         RefreshBookForDeck(deck.name);
-        l=listbox_scroll(deck.box,0);
-        if (l != NULL)
-          listbox_scroll(deck.box,-l);
-        message(deckname.box,"");
-        message(deckname.box,"");
-        message(deckname.box,"");
-        message(deckname.box,"{white}"+deck.name);
-        l=pop();
+        listbox_scroll(deck.box,-(listbox_scroll(deck.box,0)));
+        clear_msgbox(deckname.box);
+        message(deckname.box,"Deck: {white}"+deck.name);
+        removed_card=NULL;
       }
     }
   }
@@ -1233,9 +1229,8 @@ def DeleteDeck
     cards_missing=listbox_set_deck(deck.box,NewDeck(),card.book);
     set_attr(deck.box,"visible",0);
     deck.name=NULL;
-    message(deckname.box,"");
-    message(deckname.box,"");
-    message(deckname.box,"");
+    removed_card=NULL;
+    clear_msgbox(deckname.box);
     message(deckname.box,"{red}No Deck Selected");
   }
 }
@@ -3361,12 +3356,7 @@ def DelDeckBottom
 {
   if(isfunction("DelDeckHook"))
     call("DelDeckHook",(ARG,deck.class{ARG},first(deck_content{ARG}),length(deck_content{ARG})-1));
-  if(isfunction("del_deck_bottom"))
-    del_deck_bottom(ARG);
-  else
-# the best you'll be able to do without proper support,
-# fortunately the same visual result assuming a face-down deck
-    del_deck_top(ARG);
+  del_deck_bottom(ARG);
   deck_content{ARG}=tail(deck_content{ARG});
 }
 
@@ -4890,6 +4880,11 @@ def RemoveDeckPart
     {
       decks{deck.name}=del_entry(lc(ARG),decks{deck.name});
       RefreshCurrentDeck();
+      if(lc(ARG)==deck.part)
+      {
+        deck.part="deck";
+        removed_card=NULL;
+      }
     }
   }
 }
@@ -4948,7 +4943,10 @@ def EditDel
     {
       decks{deck.name}{ARG[0]}=decks{deck.name}{ARG[0]}-d+head(d);
       if(length(d)==1)
-        Msg("Note: removed the last "+name(first(d))+" from the "+ARG[0]+".");
+      {
+        Msg("Note: removed the last "+name(d[0])+" from the "+ARG[0]+".");
+        removed_card=d[0];
+      }
       RefreshCurrentDeck();
       return(1);
     }
@@ -6017,6 +6015,24 @@ def ChatKeyControlKeyW
 
 def WatchKeyControlKeyW
   ChatKeyControlKeyW();
+
+#
+# ChatKeyControlKeyZ() - Put back a copy of the most recent card removed from the deck.
+#
+def ChatKeyControlKeyZ
+{
+  if(removed_card!= NULL)
+  {
+    EditAdd(deck.part,removed_card);
+    removed_card=NULL;
+  }
+}
+
+def WatchKeyControlKeyZ
+  ChatKeyControlKeyZ();
+
+def OfflineKeyControlKeyZ
+  ChatKeyControlKeyZ();
 
 #
 # KeyBackspace() - Handler for key Backspace.
@@ -8404,6 +8420,7 @@ def SelectDeckPart
   {
     deck.part=ARG;
     Msg("Deck part '"+ARG+"' selected.");
+    removed_card=NULL;
   }
 }
 
@@ -10738,8 +10755,13 @@ def RecognizeCard
     c=fuzzy_images(ARG);
   if(c!=(,))
   {
-	if(length(c)>1)
-		Msg("{yellow}Warning: Ambiguous name: {white}"+ARG+"{yellow} matches {white}"+join(forall('canonical_name(#)',c),", ")+"{white}");
+    if(length(c)>1)
+    {
+      Msg("{yellow}Warning: Ambiguous name: {white}"+ARG+"{yellow} matches {white}"+join(forall('canonical_name(#)',c),", ")+"{white}");
+      cb=select("(book_entry(card.book,#))[0]",c);
+      if(length(cb)>0)
+        c=cb;
+    }
     return(random(c));
   }
   c=pop();

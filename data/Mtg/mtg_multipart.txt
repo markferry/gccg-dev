@@ -1,0 +1,167 @@
+# List of MTG multipart cards
+# This file is used to look up and consolidate cards that appear in Gatherer as two or more separate entries.
+# Lines consist of a triple colon separating a card name and its handler.
+# The existing handlers are:
+# NEXT - this card should be subsumed into another card's entry, and not handled on its own
+# NEXTIMG - as above, but the card has a separate image which should be fetched if images are called for
+# SPLIT:[remainder of full card name] - other parts of the card name (delimited by " // ") are each looked up and concatenated onto the card data
+# FLIP:[flipped card name] - flipped name is looked up and added onto the current entry as "flip" attributes
+# FLIP=###:[flipped card name] - as above, but also set the flipid attribute to ###
+#
+Assault:::SPLIT: // Battery
+Battery:::NEXT
+Boom:::SPLIT: // Bust
+Bust:::NEXT
+Bound:::SPLIT: // Determined
+Determined:::NEXT
+Crime:::SPLIT: // Punishment
+Punishment:::NEXT
+Dead:::SPLIT: // Gone
+Gone:::NEXT
+Fire:::SPLIT: // Ice
+Ice:::NEXT
+Hide:::SPLIT: // Seek
+Seek:::NEXT
+Hit:::SPLIT: // Run
+Run:::NEXT
+Illusion:::SPLIT: // Reality
+Reality:::NEXT
+Life:::SPLIT: // Death
+Death:::NEXT
+Night:::SPLIT: // Day
+Day:::NEXT
+Odds:::SPLIT: // Ends
+Ends:::NEXT
+Order:::SPLIT: // Chaos
+Chaos:::NEXT
+Pain:::SPLIT: // Suffering
+Suffering:::NEXT
+Pure:::SPLIT: // Simple
+Simple:::NEXT
+Research:::SPLIT: // Development
+Development:::NEXT
+Rise:::SPLIT: // Fall
+Fall:::NEXT
+Rough:::SPLIT: // Tumble
+Tumble:::NEXT
+Spite:::SPLIT: // Malice
+Malice:::NEXT
+Stand:::SPLIT: // Deliver
+Deliver:::NEXT
+Supply:::SPLIT: // Demand
+Demand:::NEXT
+Trial:::SPLIT: // Error
+Error:::NEXT
+Wax:::SPLIT: // Wane
+Wane:::NEXT
+Who:::SPLIT: // What // When // Where // Why
+What:::NEXT
+When:::NEXT
+Where:::NEXT
+Why:::NEXT
+Nezumi Graverobber:::FLIP:Nighteyes the Desecrator
+Nighteyes the Desecrator:::NEXT
+Nezumi Shortfang:::FLIP:Stabwhisker the Odious
+Stabwhisker the Odious:::NEXT
+Jushi Apprentice:::FLIP:Tomoya the Revealer
+Tomoya the Revealer:::NEXT
+Student of Elements:::FLIP:Tobita, Master of Winds
+Tobita, Master of Winds:::NEXT
+Budoka Gardener:::FLIP:Dokai, Weaver of Life
+Dokai, Weaver of Life:::NEXT
+Orochi Eggwatcher:::FLIP:Shidako, Broodmistress
+Shidako, Broodmistress:::NEXT
+Akki Lavarunner:::FLIP:Tok-Tok, Volcano Born
+Tok-Tok, Volcano Born:::NEXT
+Initiate of Blood:::FLIP:Goka the Unjust
+Goka the Unjust:::NEXT
+Bushi Tenderfoot:::FLIP:Kenzo the Hardhearted
+Kenzo the Hardhearted:::NEXT
+Kitsune Mystic:::FLIP:Autumn-Tail, Kitsune Sage
+Autumn-Tail, Kitsune Sage:::NEXT
+Hired Muscle:::FLIP:Scarmaker
+Scarmaker:::NEXT
+Callow Jushi:::FLIP:Jaraku the Interloper
+Jaraku the Interloper:::NEXT
+Budoka Pupil:::FLIP:Ichiga, Who Topples Oaks
+Ichiga, Who Topples Oaks:::NEXT
+Cunning Bandit:::FLIP:Azamuki, Treachery Incarnate
+Azamuki, Treachery Incarnate:::NEXT
+Faithful Squire:::FLIP:Kaiso, Memory of Loyalty
+Kaiso, Memory of Loyalty:::NEXT
+Rune-Tail, Kitsune Ascendant:::FLIP:Rune-Tail's Essence
+Rune-Tail's Essence:::NEXT
+Erayo, Soratami Ascendant:::FLIP:Erayo's Essence
+Erayo's Essence:::NEXT
+Kuon, Ogre Ascendant:::FLIP:Kuon's Essence
+Kuon's Essence:::NEXT
+Homura, Human Ascendant:::FLIP:Homura's Essence
+Homura's Essence:::NEXT
+Sasaya, Orochi Ascendant:::FLIP:Sasaya's Essence
+Sasaya's Essence:::NEXT
+Bloodline Keeper:::FLIP=126:Lord of Lineage
+Lord of Lineage:::NEXTIMG
+Screeching Bat:::FLIP=140:Stalking Vampire
+Stalking Vampire:::NEXTIMG
+Civilized Scholar:::FLIP=127:Homicidal Brute
+Homicidal Brute:::NEXTIMG
+Delver of Secrets:::FLIP=130:Insectile Aberration
+Insectile Aberration:::NEXTIMG
+Ludevic's Test Subject:::FLIP=137:Ludevic's Abomination
+Ludevic's Abomination:::NEXTIMG
+Daybreak Ranger:::FLIP=129:Nightfall Predator
+Nightfall Predator:::NEXTIMG
+Garruk Relentless:::FLIP=131:Garruk, the Veil-Cursed
+Garruk, the Veil-Cursed:::NEXTIMG
+Gatstaf Shepherd:::FLIP=132:Gatstaf Howler
+Gatstaf Howler:::NEXTIMG
+Grizzled Outcasts:::FLIP=133:Krallenhorde Wantons
+Krallenhorde Wantons:::NEXTIMG
+Mayor of Avabruck:::FLIP=138:Howlpack Alpha
+Howlpack Alpha:::NEXTIMG
+Ulvenwald Mystics:::FLIP=143:Ulvenwald Primordials
+Ulvenwald Primordials:::NEXTIMG
+Villagers of Estwald:::FLIP=145:Howlpack of Estwald
+Howlpack of Estwald:::NEXTIMG
+Hanweir Watchkeep:::FLIP=134:Bane of Hanweir
+Bane of Hanweir:::NEXTIMG
+Instigator Gang:::FLIP=135:Wildblood Pack
+Wildblood Pack:::NEXTIMG
+Kruin Outlaw:::FLIP=136:Terror of Kruin Pass
+Terror of Kruin Pass:::NEXTIMG
+Reckless Waif:::FLIP=139:Merciless Predator
+Merciless Predator:::NEXTIMG
+Tormented Pariah:::FLIP=142:Rampaging Werewolf
+Rampaging Werewolf:::NEXTIMG
+Village Ironsmith:::FLIP=144:Ironfang
+Ironfang:::NEXTIMG
+Cloistered Youth:::FLIP=128:Unholy Fiend
+Unholy Fiend:::NEXTIMG
+Thraben Sentry:::FLIP=141:Thraben Militia
+Thraben Militia:::NEXTIMG
+Chalice of Life:::FLIP=147:Chalice of Death
+Chalice of Death:::NEXTIMG
+Elbrus, the Binding Blade:::FLIP=149:Withengar Unbound
+Withengar Unbound:::NEXTIMG
+Chosen of Markov:::FLIP=148:Markov's Servant
+Markov's Servant:::NEXTIMG
+Ravenous Demon:::FLIP=155:Archdemon of Greed
+Archdemon of Greed:::NEXTIMG
+Soul Seizer:::FLIP=157:Ghastly Haunting
+Ghastly Haunting:::NEXTIMG
+Lambholt Elder:::FLIP=152:Silverpelt Werewolf
+Silverpelt Werewolf:::NEXTIMG
+Scorned Villager:::FLIP=156:Moonscarred Werewolf
+Moonscarred Werewolf:::NEXTIMG
+Wolfbitten Captive:::FLIP=158:Krallenhorde Killer
+Krallenhorde Killer:::NEXTIMG
+Huntmaster of the Fells:::FLIP=151:Ravager of the Fells
+Ravager of the Fells:::NEXTIMG
+Afflicted Deserter:::FLIP=146:Werewolf Ransacker
+Werewolf Ransacker:::NEXTIMG
+Hinterland Hermit:::FLIP=150:Hinterland Scourge
+Hinterland Scourge:::NEXTIMG
+Mondronen Shaman:::FLIP=154:Tovolar's Magehunter
+Tovolar's Magehunter:::NEXTIMG
+Loyal Cathar:::FLIP=153:Unhallowed Cathar
+Unhallowed Cathar:::NEXTIMG

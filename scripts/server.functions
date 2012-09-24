@@ -287,19 +287,11 @@ if(options.debug)
 {
 
 #
-# d() - Reply the arbitrary expression to the client.
-#
-def d
-{
-  Reply(tostr(ARG));
-}
-
-#
-# CommandDebug() - This command evaluates any expression and sends result as message.
+# CommandDebug(code) - This command evaluates any expression and sends result as message.
 #
 def CommandDebug
 {
-  d(eval(join(ARG," ")));
+  Reply(tostr(eval(join(ARG," "))));
 }
 
 #
@@ -391,8 +383,8 @@ def InitServer
 }
 
 #
-# InitGame() - Because you can't call trigger("init","game") from a script.
-# Used to separate out reusable parts of that procedure.
+# InitGame() - Run repeatable parts of the game startup routine
+# (because scripts don't have access to the trigger() function).
 #
 def InitGame
 {
@@ -627,13 +619,9 @@ def PlayerNumber
 }
 
 #
-# AssignPlayer(player name,player  number) - Reassign player with the
-#   name to the number. Player having the number before reassignment
-#   gets the current player number of the player to be
-#   assigned. Note:
-#   this function does not transfer cards, only connections and scores
-#   are remapped. So, this is identical to exchanging seats in the
-#   table, but not exchanging any cards.
+# AssignPlayer(player name,player number) - Switch the named player and the player with the given number.
+#   If the player already has that number, do nothing.
+#   All objects remain in place and will take on new owners, as though the players get up and switch chairs.
 #
 def AssignPlayer
 {
@@ -814,7 +802,7 @@ def MapCon2Plr
 }
 
 #
-# Send(player, command) - Send a command to client if still online.
+# Send(player or watcher number, command) - Send a command to client if still online.
 #
 def Send
 {
@@ -4035,6 +4023,8 @@ def CommandSh
 #
 def SetTeams
 {
+  if(typeof(ARG) != "list")
+    ARG=(ARG,);
   if(length(tofnc(ARG[0])) > 0 && isfunction("SetTeams"+tofnc(ARG[0])))
     call("SetTeams"+tofnc(ARG[0]),tail(ARG));
 }

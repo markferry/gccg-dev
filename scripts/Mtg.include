@@ -73,7 +73,7 @@ game.bindings=(
 
 # MENUS
 # =====
-if(!VersionCompare(VERSION,"0.9.7"))
+#if(!VersionCompare(VERSION,"0.9.7"))
   GAME_MENU{"Main Menu - Chat"}=(
     (1,"Show/Hide {blue}Planes","","TogglePlanes()"),
     (1,"Show/Hide {blue}Schemes","","ToggleSchemes()"),
@@ -218,10 +218,10 @@ def NewDeck
 #
 def InitializeHook
 {
-  if(!VersionCompare(VERSION,"0.9.7"))
-  {
+#  if(!VersionCompare(VERSION,"0.9.7"))
+#  {
     planes.book=create_book(w(5),h(165),obj=obj+1,"Plane Browser",3,3,500);
-    book_set_index(planes.book,sort_by(("[name]",),seq(501,582),0));
+    book_set_index(planes.book,sort_by(("[name]",),seq(501,586),0));
     set_attr(planes.book,"ontop",Z_COLLECTION);
     set_bgcolor(planes.book,BKBGCOLOR);
     set_fgcolor(planes.book,BKTXCOLOR);
@@ -229,13 +229,13 @@ def InitializeHook
     book_set_page(planes.book,0);
     
     schemes.book=create_book(w(80),h(190),obj=obj+1,"Scheme Browser",2,4,700);
-    book_set_index(schemes.book,sort_by(("[name]",),seq(701,745),0));
+    book_set_index(schemes.book,sort_by(("[name]",),seq(701,750),0));
     set_attr(schemes.book,"ontop",Z_COLLECTION);
     set_bgcolor(schemes.book,BKBGCOLOR);
     set_fgcolor(schemes.book,COLORS{'BLACK'});
     set_textcolor(schemes.book,BKBRCOLOR);
     book_set_page(schemes.book,0);
-  }
+#  }
 }
 
 #
@@ -475,6 +475,7 @@ def TokenSubmenuA
   Submenu("Select Token",(
    ("{blue}{sz12}<back>","","TokenSubmenu()"),
    ("Angel 4/4 (W, flying)","",'Send("Transfer",(1,("out.of.play",9),("play",0)))'),
+   ("Assassin 1/1 (B, lethal)","",'Send("Transfer",(1,("out.of.play",176),("play",0)))'),
    ("Avatar */* (W)","",'Send("Transfer",(1,("out.of.play",10),("play",0)))'),
   ));
 }
@@ -517,6 +518,7 @@ def TokenSubmenuD
    ("Dragon 1/1 (RG, flying, devour)","",'Send("Transfer",(1,("out.of.play",24),("play",0)))'),
    ("Dragon 4/4 (R, flying)","",'Send("Transfer",(1,("out.of.play",25),("play",0)))'),
    ("Dragon 5/5 (R, flying)","",'Send("Transfer",(1,("out.of.play",26),("play",0)))'),
+   ("Dragon 6/6 (R, flying)","",'Send("Transfer",(1,("out.of.play",177),("play",0)))'),
    ("Dragon Spirit 5/5 (U, flying)","",'Send("Transfer",(1,("out.of.play",27),("play",0)))'),
    ("Drake 2/2 (U, flying)","",'Send("Transfer",(1,("out.of.play",174),("play",0)))'),
    ("Drake 2/2 (UG, flying)","",'Send("Transfer",(1,("out.of.play",28),("play",0)))'),
@@ -538,6 +540,7 @@ def TokenSubmenuE
    ("Elemental 5/5 (UR, flying)","",'Send("Transfer",(1,("out.of.play",36),("play",0)))'),
    ("Elemental 7/1 (R, trample, haste)","",'Send("Transfer",(1,("out.of.play",114),("play",0)))'),
    ("Elemental 7/7 (G, trample)","",'Send("Transfer",(1,("out.of.play",37),("play",0)))'),
+   ("Elemental 8/8 (GW, vigilance)","",'Send("Transfer",(1,("out.of.play",178),("play",0)))'),
    ("Elemental */* (G)","",'Send("Transfer",(1,("out.of.play",38),("play",0)))'),
    ("Elemental */* (R)","",'Send("Transfer",(1,("out.of.play",102),("play",0)))'),
    ("Elemental Shaman 3/1 (R)","",'Send("Transfer",(1,("out.of.play",39),("play",0)))'),
@@ -611,6 +614,7 @@ def TokenSubmenuK
    ("Kavu 3/3 (B)","",'Send("Transfer",(1,("out.of.play",59),("play",0)))'),
    ("Kithkin Soldier 1/1 (W)","",'Send("Transfer",(1,("out.of.play",60),("play",0)))'),   
    ("Knight 2/2 (W, first strike)","",'Send("Transfer",(1,("out.of.play",61),("play",0)))'),
+   ("Knight 2/2 (W, vigilance)","",'Send("Transfer",(1,("out.of.play",179),("play",0)))'),
    ("Kor Soldier 1/1 (W)","",'Send("Transfer",(1,("out.of.play",119),("play",0)))'),   
   ));
 }
@@ -661,6 +665,7 @@ def TokenSubmenuR
    ("{blue}{sz12}<back>","","TokenSubmenu()"),
    ("Rat 1/1 (B)","",'Send("Transfer",(1,("out.of.play",70),("play",0)))'),
    ("Reflection */* (W)","",'Send("Transfer",(1,("out.of.play",71),("play",0)))'),   
+   ("Rhino 4/4 (G, trample)","",'Send("Transfer",(1,("out.of.play",180),("play",0)))'),
    ("Rukh 4/4 (R, flying)","",'Send("Transfer",(1,("out.of.play",72),("play",0)))'),
   ));
 }
@@ -730,6 +735,7 @@ def TokenSubmenuW
    ("Worm 1/1 (BG)","",'Send("Transfer",(1,("out.of.play",95),("play",0)))'),
    ("Wurm 3/3 (A, deathouch)","",'Send("Transfer",(1,("out.of.play",123),("play",0)))'),
    ("Wurm 3/3 (A, lifelink)","",'Send("Transfer",(1,("out.of.play",124),("play",0)))'),
+   ("Wurm 5/5 (G, trample)","",'Send("Transfer",(1,("out.of.play",181),("play",0)))'),
    ("Wurm 6/6 (B, trample)","",'Send("Transfer",(1,("out.of.play",96),("play",0)))'),
    ("Wurm 6/6 (G)","",'Send("Transfer",(1,("out.of.play",97),("play",0)))'),
   ));

@@ -1,0 +1,93 @@
+# MTG set file specification by anonycat
+# Text prior to the first space is the set code and directory name.
+# If the last space on the line is followed by a number, that number is the expected number of cards in the set, for catching potential parse errors.
+# Text in between is the name of the set, unless it includes a triple pipe |||.
+# In that case, the text prior to that is the set name as reported by GCCG, and the text after that is the argument that needs to be passed to Gatherer in order to retrieve the appropriate cards, when substituted into the assignment (( set=|["%s"] )).
+
+PM Promo|||Promo set for Gatherer"]&name=|["Arena"]|["Giant Badger"]|["Mana Crypt"]|["Nalathni Dragon"]|["Sewers of Estark"]|["Windseeker Centaur 6
+BE Beta|||Limited Edition Beta 302
+AN Arabian Nights 92
+AQ Antiquities 100
+RV Revised Edition 306
+LG Legends 310
+DK The Dark 119
+FE Fallen Empires 187
+4TH Fourth Edition 378
+IA Ice Age 383
+HL Homelands 140
+AL Alliances 199
+MI Mirage 350
+VI Visions 167
+5TH Fifth Edition 449
+WL Weatherlight 167
+P1 Portal 222
+TE Tempest 350
+SH Stronghold 143
+EX Exodus 143
+P2 Portal Second Age 165
+UG Unglued 94
+US Urza's Saga 350
+UL Urza's Legacy 143
+6TH Sixth Edition|||Classic Sixth Edition 350
+P3 Portal Three Kingdoms 180
+UD Urza's Destiny 143
+S1 Starter|||Starter 1999 173
+MM Mercadian Masques 350
+NE Nemesis 143
+PY Prophecy 143
+IN Invasion 350
+PS Planeshift 143
+7TH Seventh Edition 350
+AP Apocalypse 143
+OD Odyssey 350
+TO Torment 143
+JD Judgment 143
+ON Onslaught 350
+LE Legions 145
+SC Scourge 143
+8TH Eighth Edition 357
+MR Mirrodin 306
+DS Darksteel 165
+FD Fifth Dawn 165
+CK Champions of Kamigawa 307
+UH Unhinged 141
+BK Betrayers of Kamigawa 165
+SK Saviors of Kamigawa 165
+9TH Ninth Edition 359
+RA Ravnica|||Ravnica: City of Guilds 306
+GP Guildpact 165
+DI Dissension 180
+CS Coldsnap 155
+TS Time Spiral|||Time Spiral"]|["Time Spiral "Timeshifted" 422
+PC Planar Chaos 165
+FS Future Sight 180
+XE Tenth Edition 383
+LRW Lorwyn 301
+MOR Morningtide 150
+SM Shadowmoor 301
+EVE Eventide 180
+ALA Shards of Alara 249
+CFX Conflux 145
+ARE Alara Reborn 145
+M10 Magic 2010 249
+ZDK Zendikar 269
+WWK Worldwake 145
+ROE Rise of the Eldrazi 248
+M11 Magic 2011 249
+SOM Scars of Mirrodin 249
+MBS Mirrodin Besieged 155
+NPH New Phyrexia 175
+COM Commander|||Magic: The Gathering-Commander 318
+M12 Magic 2012 249
+ISD Innistrad 264
+DKA Dark Ascension 158
+AVR Avacyn Restored 244
+ARC Archenemy 150
+PC1 Planechase 169
+PC2 Planechase 2012|||Planechase 2012 Edition 156
+P1P Planechase 1 Planes|||Planechase"]&special=true&type=+["Plane 41
+P2P Planechase 2 Planes|||Planechase 2012 Edition"]&special=true&type=|["Plane"]|["Phenomenon 41
+ARS Archenemy Schemes|||Archenemy"]&special=true&type=+["Scheme 45
+M13 Magic 2013 249
+RTR Return to Ravnica 274
+GTC Gatecrash 249
