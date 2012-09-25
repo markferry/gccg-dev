@@ -15,7 +15,7 @@ MTG_KEYWORDS{''}="{green}List of available keywords\n
 {yellow}A: {white}Absorb, Affinity, Amplify, Annihilator, Attach, Aura Swap.\n
 {yellow}B: {white}Banding, Bands with Other, Battle Cry, Bloodthirst, Bushido, Buyback.\n
 {yellow}C: {white}Cascade, Champion, Changeling, Channel, Chroma, Clash, Conspire, Convoke, Counter, Cumulative Upkeep, Cycling.\n
-{yellow}D: {white}Deathtouch, Defender, Delve, Devour, Domain, Double Strike, Dredge.\n
+{yellow}D: {white}Deathtouch, Defender, Delve, Detain, Devour, Domain, Double Strike, Dredge.\n
 {yellow}E: {white}Echo, Emblem, Enchant, Entwine, Epic, Equip, Evoke, Exalted.\n
 {yellow}F: {white}Fading, Fateful Hour, Fateseal, Fear, Fight, First Strike, Flanking, Flash, Flashback, Flying, Forecast, Fortify, Frenzy.\n
 {yellow}G: {white}Graft, Grandeur, Gravestorm.\n
@@ -26,12 +26,12 @@ MTG_KEYWORDS{''}="{green}List of available keywords\n
 {yellow}L: {white}Landfall, Landwalk, Level Up, Lifelink, Living Weapon.\n
 {yellow}M: {white}Madness, Metalcraft, Miracle, Modular, Morbid, Morph, Multikicker.\n
 {yellow}N: {white}Ninjutsu.\n
-{yellow}O: {white}Offering.\n
-{yellow}P: {white}Persist, Phasing, Poisonous, Proliferate, Protection, Provoke, Prowl.\n
+{yellow}O: {white}Offering, Overload.\n
+{yellow}P: {white}Persist, Phasing, Poisonous, Populate, Proliferate, Protection, Provoke, Prowl.\n
 {yellow}R: {white}Radiance, Rampage, Reach, Rebound, Recover, Regenerate, Reinforce, Replicate, Retrace, Ripple.\n
-{yellow}S: {white}Sacrifice, Scry, Shadow, Shroud, Soulbond, Soulshift, Splice, Split Second, Storm, Sunburst, Suspend, Sweep.\n
+{yellow}S: {white}Sacrifice, Scavenge, Scry, Shadow, Shroud, Soulbond, Soulshift, Splice, Split Second, Storm, Sunburst, Suspend, Sweep.\n
 {yellow}T: {white}Tap, Threshold, Trample, Transfigure, Transmute, Totem Armor, Typecycling.\n
-{yellow}U: {white}Undying, Unearth, Untap.\n
+{yellow}U: {white}Undying, Unearth, Unleash, Untap.\n
 {yellow}V: {white}Vanishing, Vigilance.\n
 {yellow}W: {white}Wither.\n
 Use {yellow}/remind [keyword]{white} or {yellow}/help remind{white}.";
@@ -64,6 +64,7 @@ MTG_KEYWORDS{'cycling'}="{yellow}Cycling{white} is an activated ability. \"Cycli
 MTG_KEYWORDS{'deathtouch'}="{yellow}Deathtouch{white} is a static ability. Any nonzero amount of damage assigned to a creature by a source with deathtouch is considered to be lethal damage, regardless of that creature's toughness.";
 MTG_KEYWORDS{'defender'}="{yellow}Defender{white} is a static ability. A creature with defender can't attack.";
 MTG_KEYWORDS{'delve'}="{yellow}Delve{white} is a static ability. \"Delve\" means \"As an additional cost to cast this spell, you may exile any number of cards from your graveyard. Each card exiled this way reduces the cost to cast this spell by {1}.\"";
+MTG_KEYWORDS{'detain'}="When you \"{yellow}detain{white}\" a permanent, it means that until the start of your next turn, that permanent can't attack or block, and its activated abilities can't be activated.";
 MTG_KEYWORDS{'devour'}="{yellow}Devour{white} is a static ability. \"Devour N\" means \"As this object enters the battlefield, you may sacrifice any number of creatures. This permanent enters the battlefield with N +1/+1 counters on it for each creature sacrificed this way.\"";
 MTG_KEYWORDS{'domain'}="{yellow}Domain{white} is an ability word. The card itself explains the referred ability.";
 MTG_KEYWORDS{'double strike'}="{yellow}Double strike{white} is a static ability. If at least one attacking or blocking creature has first strike or double strike as the combat damage step begins, the only creatures that assign combat damage in that step are those with first strike or double strike. After that step, instead of proceeding to the end of combat step, the phase gets a second combat damage step. The only creatures that assign combat damage in that step are the remaining attackers and blockers that had neither first strike nor double strike as the first combat damage step began, as well as the remaining attackers and blockers that currently have double strike. After that step, the phase proceeds to the end of combat step.";
@@ -118,9 +119,11 @@ MTG_KEYWORDS{'morph'}="{yellow}Morph{white} is a static ability. \"Morph [cost]\
 MTG_KEYWORDS{'multikicker'}="{yellow}Multikicker{white} is a variant of the {yellow}kicker{white} ability. \"Multikicker [cost]\" means \"You may pay an additional [cost] any number of times as you cast this spell.\" A multikicker cost is a kicker cost.";
 MTG_KEYWORDS{'ninjutsu'}="{yellow}Ninjutsu{white} is an activated ability. \"Ninjutsu [cost]\" means \"[Cost], Reveal this card from your hand, Return an unblocked attacking creature you control to its owner's hand: Put this card onto the battlefield from your hand tapped and attacking.\"";
 MTG_KEYWORDS{'offering'}="{yellow}Offering{white} is a static ability. \"[Subtype] offering\" means \"You may cast this card any time you could cast an instant by sacrificing a [subtype] permanent. If you do, the total cost to cast this card is reduced by the sacrificed permanent's mana cost.\"";
+MTG_KEYWORDS{'overload'}="{yellow}Overload{white} is a static ability. \"Overload [cost]\" means \"You may pay [cost] rather than pay this spell's mana cost. If you do, change the text of this spell by replacing all instances of the word 'target' with the word 'each'.\"";
 MTG_KEYWORDS{'persist'}="{yellow}Persist{white} is a triggered ability. \"Persist\" means \"When this permanent is put into a graveyard from the battlefield, if it had no -1/-1 counters on it, return it to the battlefield under its owner's control with a -1/-1 counter on it.\"";
 MTG_KEYWORDS{'phasing'}="{yellow}Phasing{white} is a static ability. During each player's untap step, before the active player untaps his or her permanents, all phased-in permanents with phasing that player controls \"phase out\". Simultaneously, all phased-out permanents that had phased out under that player's control \"phase in\".";
 MTG_KEYWORDS{'poisonous'}="{yellow}Poisonous{white} is a triggered ability. \"Poisonous N\" means \"Whenever this creature deals combat damage to a player, that player gets N poison counters.\"";
+MTG_KEYWORDS{'populate'}="To {yellow}populate{white} means to choose a creature token you control, then put another token onto the battlefield that's a copy of it.";
 MTG_KEYWORDS{'proliferate'}="To {yellow}proliferate{white} means to choose any number of permanents and/or players that have a counter, then give each exactly one additional counter of a kind that permanent or player already has.";
 MTG_KEYWORDS{'protection'}="{yellow}Protection{white} is a static ability, written \"Protection from [quality].\" A permanent or player with protection can't be targeted by spells with the stated quality and can't be targeted by abilities from a source with the stated quality. A permanent or player with protection can't be enchanted by Auras that have the stated quality. Such Auras attached to the permanent or player with protection will be put into their owners' graveyards as a state-based action. A permanent with protection can't be equipped by Equipment that have the stated quality or fortified by Fortifications that have the stated quality. Such Equipment or Fortifications become unattached from that permanent as a state-based action, but remain on the battlefield. Any damage that would be dealt by sources that have the stated quality to a permanent or player with protection is prevented. Attacking creatures with protection can't be blocked by creatures that have the stated quality.";
 MTG_KEYWORDS{'provoke'}="{yellow}Provoke{white} is a triggered ability. \"Provoke\" means \"Whenever this creature attacks, you may choose to have target creature defending player controls block this creature this combat if able. If you do, untap that creature.\"";
@@ -136,6 +139,7 @@ MTG_KEYWORDS{'replicate'}="{yellow}Replicate{white}represents both a static abil
 MTG_KEYWORDS{'retrace'}="{yellow}Retrace{white} is a static ability that functions while the card with retrace is in a player's graveyard. \"Retrace\" means \"You may cast this card from your graveyard by discarding a land card as an additional cost to cast it.\"";
 MTG_KEYWORDS{'ripple'}="{yellow}Ripple{white}is a triggered ability. \"Ripple N\" means \"When you cast this spell, you may reveal the top N cards of your library, or, if there are fewer than N cards in your library, you may reveal all the cards in your library. If you reveal cards from your library this way, you may cast any of those cards with the same name as this spell without paying their manon the bottom of your library in any order.\"";
 MTG_KEYWORDS{'sacrifice'}="To {yellow}sacrifice{white} a permanent, its controller moves it from the battlefield directly to its owner's graveyard. A player can't sacrifice something that isn't a permanent, or something that's a permanent he or she doesn't control. Sacrificing a permanent doesn't destroy it, so regeneration or other effects that replace destruction can't affect this action.";
+MTG_KEYWORDS{'scavenge'}="{yellow}Scavenge{white} is an activated ability. \"Scavenge - [cost]\" means \"[Cost], exile this card from your graveyard: Put X +1/+1 counters on target creature, where X is this card's power. Activate this ability only any time you could cast a sorcery.\"";
 MTG_KEYWORDS{'scry'}="To \"{yellow}scry{white}scry N\" means to look at the top N cards of your library, put any number of them on the bottom of your library in any order, and put the rest on top of your library in any order.";
 MTG_KEYWORDS{'shadow'}="{yellow}Shadow{white} is a static ability. A creature with shadow can't be blocked by creatures without shadow, and a creature without shadow can't be blocked by creatures with shadow.";
 MTG_KEYWORDS{'shroud'}="{yellow}Shroud{white} is a static ability. \"Shroud\" means \"This permanent or player can't be the target of spells or abilities.\"";
@@ -156,6 +160,7 @@ MTG_KEYWORDS{'totem armor'}="{yellow}Totem armor{white} is a static ability. \"T
 MTG_KEYWORDS{'typecycling'}="{yellow}Typecycling{white} is a variant of the {yellow}cycling{white} ability. \"[Type]cycling [cost]\" means \"[Cost], Discard this card: Search your library for a [type] card, reveal it, and put it into your hand. Then shuffle your library.\"";
 MTG_KEYWORDS{'undying'}="{yellow}Undying{white} is a triggered ability. \"Undying\" means \"When this permanent is put into a graveyard from the battlefield, if it had no +1/+1 counters on it, return it to the battlefield under its owner's control with a +1/+1 counter on it.\"";
 MTG_KEYWORDS{'unearth'}="{yellow}Unearth{white} is an activated ability. \"Unearth [cost]\" means \"[Cost]: Return this card from your graveyard to the battlefield. It gains haste. Exile it at the beginning of the next end step. If it would leave the battlefield, exile it instead of putting it anywhere else. Activate this ability only any time you could cast a sorcery.\"";
+MTG_KEYWORDS{'unleash'}="{yellow}Unleash{white} represents two static abilities. \"Unleash\" means \"You may have this permanent enter the battlefield with a +1/+1 counter on it\" and \"As long as this permanent has a +1/+1 counter on it, it can't block.\"";
 MTG_KEYWORDS{'untap'}="To {yellow}untap{white} a permanent, rotate it back to the upright position from a sideways position. Only tapped permanents can be untapped.";
 MTG_KEYWORDS{'vanishing'}="{yellow}Vanishing{white} represents a static and two triggered abilities. \"Vanishing N\" means \"This permanent enters the battlefield with N time counters on it,\" \"At the beginning of your upkeep, if this permanent has a time counter on it, remove a time counter from it,\" and \"When the last time counter is removed from this permanent, sacrifice it.\"";
 MTG_KEYWORDS{'vigilance'}="{yellow}Vigilance{white} is a static ability. Attacking doesn't cause creatures with vigilance to tap.";
