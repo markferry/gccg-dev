@@ -1204,7 +1204,13 @@ def SelectDeck
         RefreshCurrentDeck();
         RefreshBookForDeck(deck.name);
         listbox_scroll(deck.box,-(listbox_scroll(deck.box,0)));
-        clear_msgbox(deckname.box);
+        if(isfunction("clear_msgbox"))
+          clear_msgbox(deckname.box);
+        else
+        {
+          message(deckname.box,"");
+          message(deckname.box,"");
+        }
         message(deckname.box,"Deck: {white}"+deck.name);
         removed_card=NULL;
       }
@@ -1230,7 +1236,13 @@ def DeleteDeck
     set_attr(deck.box,"visible",0);
     deck.name=NULL;
     removed_card=NULL;
-    clear_msgbox(deckname.box);
+    if(isfunction("clear_msgbox"))
+      clear_msgbox(deckname.box);
+    else
+    {
+      message(deckname.box,"");
+      message(deckname.box,"");
+    }
     message(deckname.box,"{red}No Deck Selected");
   }
 }
@@ -2797,6 +2809,7 @@ HELP{"any"}{"select"}=("exp","select cards to display",NULL,
 +"\n  {green}myprice{white} - price of the card set by me"
 +"\n  {green}pwant({yellow}player{green}){white} - wanted by {yellow}player{white} (must use {cyan}/want {yellow}player{white} first)"
 +"\n  {green}phave({yellow}player{green}){white} - sold by {yellow}player{white} (must use {cyan}/have {yellow}player{white}) first)"
++"\n"
 );
 
 #
@@ -8174,7 +8187,7 @@ def MouseLeftClick
   if(object.number==NULL)
   {
     DelMenu();
-    if(mode=="chat")
+    if(mode=="chat" && room.players{me}[2] < 0)
       ChatCommandLeavetable();
   }
   else
