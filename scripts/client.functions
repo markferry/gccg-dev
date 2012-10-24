@@ -8187,7 +8187,7 @@ def MouseLeftClick
   if(object.number==NULL)
   {
     DelMenu();
-    if(mode=="chat" && room.players{me}[2] < 0)
+    if(mode=="chat" && room.players{me}[2] >= 0)
       ChatCommandLeavetable();
   }
   else
