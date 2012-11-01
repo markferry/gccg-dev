@@ -356,7 +356,7 @@
 			 <attr key="race" value="Elf"/>
 			 <attr key="keyword" value="Sinda"/>
 	</card>
-	<card name="Thranduil" graphics="Thranduil.jpg" text="Unique. Sinda. Manifestation of Thranduil. Leader. +3 EI against Elves. +2 EI against the Wood- elves faction. When Thranduil is at Thranduil’s Halls you may keep one more card than normal in your hand. tap: cancel an attack against his company keyed to a region or site in Mirkwood.">
+	<card name="Thranduil of Mirkwood" graphics="Thranduil of Mirkwood.jpg" text="Unique. Sinda. Manifestation of Thranduil. Leader. +3 EI against Elves. +2 EI against the Wood- elves faction. When Thranduil is at Thranduil’s Halls you may keep one more card than normal in your hand. tap: cancel an attack against his company keyed to a region or site in Mirkwood.">
 			 <attr key="type" value="Elf-lord Character"/>
 			 <attr key="rarity" value="C"/>
 		     <attr key="race" value="Elf"/>
@@ -531,7 +531,7 @@
 			 <attr key="strikes" value="1"/>
 			 <attr key="subclass" value="Awakened Plant"/>
 	</card>
-	<card name="Goldberry, Daughter of the River" graphics="Goldberry Daughter of the River.jpg" text="Unique. Manifestation of Goldberry. The hazard limit for overt companies at or moving to a site in Arthedain, Cardolan, Hollin, Old Forest, Rhudaur or The Shire is increased by one. The Oldest may be played on such a company. Additionally, every minion company moving through one of the above named regions must tap two rangers (instead of one) to cancel the effects of River or Enchanted Stream.">
+	<card name="Goldberry, the River-daughter" graphics="Goldberry the Riverdaughter.jpg" text="Unique. Manifestation of Goldberry. The hazard limit for overt companies at or moving to a site in Arthedain, Cardolan, Hollin, Old Forest, Rhudaur or The Shire is increased by one. The Oldest may be played on such a company. Additionally, every minion company moving through one of the above named regions must tap two rangers (instead of one) to cancel the effects of River or Enchanted Stream.">
 			 <attr key="type" value="Hazard"/>
 			 <attr key="rarity" value="R"/>
 			 <attr key="class" value="Permanent-event"/>
@@ -1010,6 +1010,7 @@
 			 <attr key="class" value="Permanent-event"/>
 			 <attr key="mp" value="2"/>
 			 <attr key="cp" value="+1"/>
+			 <attr key="sp" value="2"/>
 			 <attr key="specific" value="Galadriel"/>
 	</card>
 	<card name="Against All Counsel" graphics="Against All Counsel.jpg" text="Playable if you are Elrond or Thranduil and your avatar is at his home site and bears The One Ring. Only 1 Against All Council may be played on a given turn. During your end-of-turn phase your avatar must make a CC for every hero avatar and character with a mind of 8 or more at his site. If still in play afterwards, make a roll and add 1 for each Against All Council you have in play: if the result is less than 5, your avatar is eliminated. If the result is greater than 8, you win the game.">
