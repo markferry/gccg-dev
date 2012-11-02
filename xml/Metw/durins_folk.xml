@@ -441,7 +441,7 @@
 			 <attr key="sp" value="2"/>
 			 <attr key="specific" value="Dwarf-lord"/>
 		</card>
-		<card name="Dwarven Armory" graphics="Dwarven Armory.jpg" text="Playable if you have at least 2 Dwarf characters in play. Place up to 3 of the following items under this card from your hand, sideboard or discard pile when you play this card: Dwarven Chain-shirt, Miner's Pick, or Shield of Iron-bound Ash. If any of your companies is at a Dwarf-hold you may discard this card to play these items with the company (you need not tap these characters or the site).">
+		<card name="Dwarven Armoury" graphics="Dwarven Armoury.jpg" text="Playable if you have at least 2 Dwarf characters in play. Place up to 3 of the following items under this card from your hand, sideboard or discard pile when you play this card: Dwarven Chain-shirt, Miner's Pick, or Shield of Iron-bound Ash. If any of your companies is at a Dwarf-hold you may discard this card to play these items with the company (you need not tap these characters or the site).">
 			 <attr key="type" value="Hero Resource"/>
 			 <attr key="rarity" value="C"/>
 			 <attr key="class" value="Permanent-event"/>
