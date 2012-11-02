@@ -175,6 +175,12 @@
 			 <attr key="class" value="Animal Faction"/>
 			 <attr key="mp" value="1(*)"/>
 		</card>
+		<card name="Behind Doors of Stone" graphics="Behind Doors of Stone.jpg" text="Playable on a Dwarf-hold, if you discard (for no effect) a Technology item stored at or played on the site. Opponent’s companies may not enter any version of this site; agents may not move to the site. Factions you have in play at this site are never worth more than 1 mp. Additionally, the roll to move between the site and any of its adjacent Under-deeps sites is (13). Breach the Hold may be played at any of those sites (discard this card if played successfully).Any opponent may tap 3 characters or an avatar at the site to discard this card. Cannot be duplicated on a given site.">
+			 <attr key="type" value="Stage Resource"/>
+			 <attr key="rarity" value="C"/>
+			 <attr key="class" value="Permanent-event"/>
+			 <attr key="sp" value="3"/>
+		</card>
 		<card name="Bilbo's Magic Ring" graphics="Bilbos Magic Ring.jpg" text="Unique. Ring. Manifestation of The One Ring. Playable only with a Gold Ring after a test result of 10 or more (+2 if tested at a Shadow-hold [S] or Dark-hold [D], -2 if tested at a Haven [H] or Free-hold [F]). May be used to satisfy the conditions of any manifestation of Gollum, Gollum's Fate, or The Precious. +3 prowess (up to double the normal prowess), +3 body (to a maximum of 10). +3 to EI. Bearer may make a CC modified by -1 to cancel a strike (except from Undead and Nazgûl attacks). +1 CP to every character in the company. May be tested as a gold ring item. If the result is: 7 or 8, nothing happens; 9 or greater, The One Ring may be played; 6 or less, discard this card.">
 			 <attr key="type" value="Hero Resource"/>
 			 <attr key="rarity" value="R"/>
@@ -234,7 +240,7 @@
 			 <attr key="race" value="Dwarf"/>
 			 <attr key="keyword" value="Firebeard"/>
 		</card>
-		<card name="Born within the Mountain's Heart" graphics="Born within the Mountains Heart.jpg" text="Dwarf-lord specific. All your mp sources at Under-deeps sites count for the purpose of calling your Day of Reckoning. Any Under-deeps movement roll for your companies moving to a site where a minion company is present is automatically successful. You may discard this card (at any time) to cancel a Rock Fall attack, or to give all Dwarves at an Under-deeps site +2 prowess in CvCC. Cannot be duplicated by a given player.">
+		<card name="Born under the Mountains" graphics="Born under the Mountains.jpg" text="Dwarf-lord specific. All your mp sources at Under-deeps sites count for the purpose of calling your Day of Reckoning. Any Under-deeps movement roll for your companies moving to a site where a minion company is present is automatically successful. You may discard this card (at any time) to cancel a Rock Fall attack, or to give all Dwarves at an Under-deeps site +2 prowess in CvCC. Cannot be duplicated by a given player.">
 			 <attr key="type" value="Stage Resource"/>
 			 <attr key="rarity" value="C"/>
 			 <attr key="class" value="Permanent-event"/>
@@ -542,6 +548,16 @@
 		     <attr key="region_type" value="{w}"/>
 			 <attr key="keyword" value="Mountain Region"/>
 		</card>
+		<card name="Expert Treasure-hunter" graphics="Expert Treasurehunter.jpg" text="Hobbit. 1 strike. +3 prowess against Dragon characters. Attacker chooses defending character; all strikes of Expert Treasure-hunter must target the same character. May be played following a non-detainment Dwarf creature attack or at any version of a site where a hero company with a Dwarf majority is present. Make a roll for each successfull strike instead of a body check (characters are not harmed): discard an item from the company (or stored at the site) with a random number closest to the roll (opponent's choice if tied).">
+			 <attr key="type" value="Hazard"/>
+			 <attr key="rarity" value="U"/>
+			 <attr key="class" value="Creature"/>
+			 <attr key="prowess" value="12"/>
+			 <attr key="body" value="8"/>
+			 <attr key="mp" value="2*"/>
+			 <attr key="strikes" value="1"/>
+			 <attr key="subclass" value="Hobbits"/>
+		</card>
 		<card name="Fear of Kin" graphics="Fear of Kin.jpg" text="Playable on a Dwarven Ring or a greater item borne by a Dwarf-lord, if he has at least 7 P. Item gives 2 less CP (toa minimum of 1) and cannot be transferred. At the beginning of the organization phase, make a roll and add the Dwarf-lord's mind. If the result is greater than his P, the Dwarf with the highest mind in his company (other than the Dwarf-lord) and any of his followers must leave the Dwarf-lord's company and move to another site. If there are no non-follower Dwarves in his company, the company must move. Cannot be duplicated on an item. Discard when any play deck is exhausted.">
 			 <attr key="type" value="Hazard"/>
 			 <attr key="rarity" value="C"/>
@@ -775,12 +791,6 @@
 			 <attr key="strikes" value="1"/>
 			 <attr key="subclass" value="Trolls"/>
 		</card>
-		<card name="Hidden behind Doors of Stone" graphics="Hidden behind Doors of Stone.jpg" text="Playable on a Dwarf-hold, if you discard (for no effect) a Technology item stored at or played on the site. Opponent’s companies may not enter any version of this site; agents may not move to the site. Factions you have in play at this site are never worth more than 1 mp. Additionally, the roll to move between the site and any of its adjacent Under-deeps sites is (13). Breach the Hold may be played at any of those sites (discard this card if played successfully).Any opponent may tap 3 characters or an avatar at the site to discard this card. Cannot be duplicated on a given site.">
-			 <attr key="type" value="Stage Resource"/>
-			 <attr key="rarity" value="C"/>
-			 <attr key="class" value="Permanent-event"/>
-			 <attr key="sp" value="3"/>
-		</card>
 		<card name="His Beard Long and Forked" graphics="His Beard Long and Forked.jpg" text="Playable on a Dwarf character with a mind of 5 or more (4 or more if a Longbeard). Target character becomes a leader and may tap to untap a Dwarf in his company. You may start the game with this card in lieu of a minor item.">
 			 <attr key="type" value="Dual Resource"/>
 			 <attr key="rarity" value="U"/>
@@ -954,22 +964,7 @@
 			 <attr key="rarity" value="C"/>
 			 <attr key="class" value="Short-event"/>
 		</card>
-		<card name="Long Marish" graphics="Long Marish2.jpg" back="1" text="">
-			 <attr key="type" value="Minion Site"/>
-			 <attr key="rarity" value="U"/>
-			 <attr key="unique" value="yes"/>
-			 <attr key="site_type" value="{R}"/>
-			 <attr key="site_path" value="{d}{w}{w}"/>
-			 <attr key="draw" value="1"/>
-			 <attr key="draw_opp" value="2"/>
-			 <attr key="region" value="Northern Rhovanion"/>
-			 <attr key="haven" value="Dol Guldur"/>
-			 <attr key="playable" value="Items (minor, major*)"/>
-			 <attr key="auto_attack" value="Undead -- 2 strikes with 7 prowess"/>
-			 <attr key="special" value="Swamp. *Major items are only playable at the site if the company has faced an Undead creature keyed to the site the same turn."/>
-			 <attr key="keyword" value="Swamp"/>
-		</card>
-		<card name="Long Marish" graphics="Long Marish.jpg" back="1" text="">
+		<card name="Long Marshes" graphics="Long Marshes.jpg" back="1" text="">
 			 <attr key="type" value="Hero Site"/>
 			 <attr key="rarity" value="U"/>
 			 <attr key="unique" value="yes"/>
@@ -982,6 +977,21 @@
 			 <attr key="playable" value="Items (minor, major*)"/>
 			 <attr key="auto_attack" value="Undead -- 2 strikes with 7 prowess"/>
 			 <attr key="special" value="Swamp. *Major items are only playable at the site if the company has defeated the automatic-attack or has faced an Undead creature keyed to the site the same turn."/>
+			 <attr key="keyword" value="Swamp"/>
+		</card>
+		<card name="Long Marshes" graphics="Long Marshes2.jpg" back="1" text="">
+			 <attr key="type" value="Minion Site"/>
+			 <attr key="rarity" value="U"/>
+			 <attr key="unique" value="yes"/>
+			 <attr key="site_type" value="{R}"/>
+			 <attr key="site_path" value="{d}{w}{w}"/>
+			 <attr key="draw" value="1"/>
+			 <attr key="draw_opp" value="2"/>
+			 <attr key="region" value="Northern Rhovanion"/>
+			 <attr key="haven" value="Dol Guldur"/>
+			 <attr key="playable" value="Items (minor, major*)"/>
+			 <attr key="auto_attack" value="Undead -- 2 strikes with 7 prowess"/>
+			 <attr key="special" value="Swamp. *Major items are only playable at the site if the company has faced an Undead creature keyed to the site the same turn."/>
 			 <attr key="keyword" value="Swamp"/>
 		</card>
 		<card name="Loni" graphics="Loni.jpg" text="Unique. Longbeard. +1 prowess against Orcs.-1 to all of his CC.+1 to all rolls required for Loni’s company to move to adjacent Under-deeps sites.">
@@ -1025,16 +1035,6 @@
 			 <attr key="mp" value="(*)"/>
 			 <attr key="sp" value="3"/>
 			 <attr key="specific" value="Thranduil"/>
-		</card>
-		<card name="Master-thief" graphics="Masterthief.jpg" text="Hobbit. 1 strike. +3 prowess against Dragon characters. Attacker chooses defending character; all strikes of Master-thief must target the same character. May be played following a non-detainment Dwarf creature attack or at any version of a site where a hero company with a Dwarf majority is present. Make a roll for each successfull strike instead of a body check (characters are not harmed): discard an item from the company (or stored at the site) with a random number closest to the roll (opponent's choice if tied).">
-			 <attr key="type" value="Hazard"/>
-			 <attr key="rarity" value="U"/>
-			 <attr key="class" value="Creature"/>
-			 <attr key="prowess" value="12"/>
-			 <attr key="body" value="8"/>
-			 <attr key="mp" value="2*"/>
-			 <attr key="strikes" value="1"/>
-			 <attr key="subclass" value="Hobbits"/>
 		</card>
 		<card name="Mighty Was the Fallen" graphics="Mighty Was the Fallen.jpg" text="Playable on a company if a character from the company worth 2 mp or more was eliminated this turn and removed from the game (except by CC). This card may be stored at one of your Havens [H] for 1 mp. Discard this card if the company contains less than 2 characters. Cannot be duplicated for an eliminated character.">
 			 <attr key="type" value="Hero Resource"/>
@@ -1272,7 +1272,7 @@
 			 <attr key="rarity" value="C"/>
 			 <attr key="class" value="Permanent-event"/>
 		</card>
-		<card name="Orc Archers" graphics="Orc Archers.jpg" text="Playable on an Orc attack with at least 4 strikes before strikes are assigned; does not count against the hazard limit. Each character faces a strike with 6 prowess; prowess against this strike cannot be modified, but character receives +1 prowess for each armor, helmet, and/or shield he bears and is able to use. Strikes from Orc Archers are never detainment, regardless of the company, site, region, or region-type on which they are played.">
+		<card name="Orc-archers" graphics="Orcarchers.jpg" text="Playable on an Orc attack with at least 4 strikes before strikes are assigned; does not count against the hazard limit. Each character faces a strike with 6 prowess; prowess against this strike cannot be modified, but character receives +1 prowess for each armor, helmet, and/or shield he bears and is able to use. Strikes from Orc Archers are never detainment, regardless of the company, site, region, or region-type on which they are played.">
 			 <attr key="type" value="Hazard"/>
 			 <attr key="rarity" value="C"/>
 			 <attr key="class" value="Short-event"/>
