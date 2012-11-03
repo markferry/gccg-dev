@@ -1131,6 +1131,13 @@
 			 <attr key="sp" value="3"/>
 			 <attr key="specific" value="Thranduil"/>
 	</card>
+	<card name="Libraries of Imladris" graphics="Libraries of Imladris.jpg" text="Elrond specific. Playable on a sage at Rivendell(or in your starting company). Character may use spirit-magic. Additionally, if Praise to Elbereth is played all characters in the company receive +2 to their rolls for removing corruption cards untill the end of the turn. Cannot be duplicated on a given character.">
+			 <attr key="type" value="Stage Resource"/>
+			 <attr key="rarity" value="C"/>
+			 <attr key="class" value="Permanent-event"/>
+			 <attr key="sp" value="1"/>
+			 <attr key="specific" value="Elrond"/>
+	</card>
 	<card name="Long-time Visitor" graphics="Longtime Visitor.jpg" text="Unique. Elrond specific. Playable if Foster home of Royal Heirs is in play. Strider may be brought into play at Rivendell under Elrond’s EI: place this card on him when he enters play. Strider may only be controlled by Elrond or GI. You may replace Strider with Aragorn II (place this card on Aragorn), in which case he may also be controlled by Arwen.">
 			 <attr key="type" value="Stage Resource"/>
 			 <attr key="rarity" value="R"/>
@@ -1148,7 +1155,7 @@
 			 <attr key="sp" value="2"/>
 			 <attr key="specific" value="Thranduil"/>
 	</card>
-	<card name="Master Healer" graphics="Master Healer.jpg" text="Playable on Elrond or Nestador. Target character may tap to discard a dark enchantment from another character in his company. Additionally, you may play Herb-lore on him as if on Radagast (it affects him as if he were Radagast). tap: during your end-of-turn phase to take one Healing Song, Herb-lore or Warm Now be Heart and Limbs from your discard pile to your hand. Cannot be duplicated on a given character.">
+	<card name="Master-healer" graphics="Masterhealer.jpg" text="Playable on Elrond or Nestador. Target character may tap to discard a dark enchantment from another character in his company. Additionally, you may play Herb-lore on him as if on Radagast (it affects him as if he were Radagast). tap: during your end-of-turn phase to take one Healing Song, Herb-lore or Warm Now be Heart and Limbs from your discard pile to your hand. Cannot be duplicated on a given character.">
 			 <attr key="type" value="Stage Resource"/>
 			 <attr key="rarity" value="U"/>
 			 <attr key="class" value="Permanent-event"/>
@@ -1234,13 +1241,6 @@
 			 <attr key="mp" value="5"/>
 			 <attr key="sp" value="4"/>
 			 <attr key="specific" value="Elf-lord"/>
-	</card>
-	<card name="The House's Library" graphics="The Houses Library.jpg" text="Elrond specific. Playable on a sage at Rivendell(or in your starting company). Character may use spirit-magic. Additionally, if Praise to Elbereth is played all characters in the company receive +2 to their rolls for removing corruption cards untill the end of the turn. Cannot be duplicated on a given character.">
-			 <attr key="type" value="Stage Resource"/>
-			 <attr key="rarity" value="C"/>
-			 <attr key="class" value="Permanent-event"/>
-			 <attr key="sp" value="1"/>
-			 <attr key="specific" value="Elrond"/>
 	</card>
 	<card name="The King's Hunting" graphics="The Kings Hunting.jpg" text="Unique. Thranduil specific. Place this card on Thranduil if he is in play. You receive full mp for Clean the Greenwood. tap: during your end-of-turn phase (if on Thranduil) to take one warrior only resource from your discard pile to your hand.">
 			 <attr key="type" value="Stage Resource"/>
