@@ -1,7 +1,7 @@
 #
 # GCCG v0.9.6.3 Middle-earth deck
 #
-#      DCCD - Elf-lord - Thranduil - Protecter of Greenwood
+#      DCCD - Elf-lord - Thranduil - Protector of Greenwood
 #
 
 ####
@@ -14,10 +14,6 @@ Deck
 1 Elf-friend (FB)
 1 Great Falcons of Mirkwood (GW)
 1 Helecthil, Light of the North (NW)
-
-# Elf-lord Character (4)
-
-4 Thranduil [E] (FB)
 
 # Hazard (33)
 
@@ -187,7 +183,7 @@ Sites
 1 Gold Hill [H] (TD)
 1 Irerock [H] (TW)
 1 Iron Hill Dwarf-hold [H] (TW)
-1 Long Marish [H] (DF)
+1 Long Marshes [H] (DF)
 1 Long Peak [H] (GW)
 1 Mount Gundabad [H] (TW)
 1 Mountains of Mirkwood [H] (GW)
