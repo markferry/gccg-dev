@@ -695,10 +695,10 @@
 			 <attr key="type" value="Hero Resource"/>
 			 <attr key="rarity" value="U"/>
 			 <attr key="class" value="Permanent-event"/>
-			 <attr key="mp" value="(2)"/>
+			 <attr key="mp" value="1(2)"/>
 			 <attr key="keyword" value="Trophy"/>
 	</card>
-	<card name="Cloak of Many Colors" graphics="Cloak of Many Colors.jpg" text="Discard if not borne by a Wizard or an Elf sage with mind 7 or more. tap: gain one of the following abilities until the end of the turn. * increase your hand size by 1;* draw an extra card for each Wilderness [w] bearer’s company moves through;* ttbearer may tap to test a gold ring;* tbearer may tap during the end-of-turn phase to bring one spell or ritual from your discard pile to your hand;* if at a Haven [H], bearer may join any company facing a creature attack and face a strike;Bearer makes a mCC when this item becomes tapped. Cannot be duplicated by a given player.">
+	<card name="Cloak of Many Colorus" graphics="Cloak of Many Colours.jpg" text="Discard if not borne by a Wizard or an Elf sage with mind 7 or more. tap: gain one of the following abilities until the end of the turn. * increase your hand size by 1;* draw an extra card for each Wilderness [w] bearer’s company moves through;* ttbearer may tap to test a gold ring;* tbearer may tap during the end-of-turn phase to bring one spell or ritual from your discard pile to your hand;* if at a Haven [H], bearer may join any company facing a creature attack and face a strike;Bearer makes a mCC when this item becomes tapped. Cannot be duplicated by a given player.">
 			 <attr key="type" value="Hero Resource"/>
 			 <attr key="rarity" value="U"/>
 			 <attr key="class" value="Greater Item"/>
@@ -879,7 +879,7 @@
 			 <attr key="type" value="Hero Resource"/>
 			 <attr key="rarity" value="U"/>
 			 <attr key="class" value="Permanent-event"/>
-			 <attr key="mp" value="(*)"/>
+			 <attr key="mp" value="(2)"/>
 	</card>
 	<card name="Shipwrights of Lindon" graphics="Shipwrights of Lindon.jpg" text="Playable on a character with home site Grey Havens. If moving to a Port or site in a Coastal Sea [c] region, you may discard (for no effect) one Fair Sailing, Great Ship, Stars or The Evenstar from hand and tap target character to replace the company’s new site with a Port or site in a Coastal Sea region; this site must be in the same or an adjacent region as the site originally moved to. You may discard this card to bring one Fair Sailing, Stars or The Evenstar from your discard pile to your play deck (reshuffle). Cannot be duplicated on a given character.">
 			 <attr key="type" value="Hero Resource"/>
@@ -915,6 +915,7 @@
 			 <attr key="type" value="Hero Resource"/>
 			 <attr key="rarity" value="R"/>
 			 <attr key="unique" value="yes"/>
+			 <attr key="mp" value="1"/>
 			 <attr key="class" value="Permanent-event"/>
 	</card>
 	<card name="The Three Are Together" graphics="The Three Are Together.jpg" text="Unique. Playable during the organization phase on a company at a Haven [H] containing manifestations of Elrond, Galadriel and Gandalf (or Círdan if Realm of Narya is in play). +2 to prowess, +2 EI and +2 to CC for the above named characters in the company. Discard this card if one of them leaves the company.">
@@ -965,7 +966,7 @@
 			 <attr key="class" value="Permanent-event"/>
 			 <attr key="cp" value="1"/>
 	</card>
-	<card name="Welcomed by the Lord and the Lady" graphics="Welcomed by the Lord and the Lady.jpg" text="Unique. This card may only be played with your starting company in lieu of a minor item, if you have 2 Elves with home site Lórien in play. You may start the game at Lórien and bring your Wizard or Lord into play there. Discard this card if you do not control at least 2 characters with Lórien as a home site, or if you have 6 P or more.">
+	<card name="Welcomed by the Lord and Lady" graphics="Welcomed by the Lord and Lady.jpg" text="Unique. This card may only be played with your starting company in lieu of a minor item, if you have 2 Elves with home site Lórien in play. You may start the game at Lórien and bring your Wizard or Lord into play there. Discard this card if you do not control at least 2 characters with Lórien as a home site, or if you have 6 P or more.">
 			 <attr key="type" value="Hero Resource"/>
 			 <attr key="rarity" value="U"/>
 			 <attr key="unique" value="yes"/>
