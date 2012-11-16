@@ -73,7 +73,7 @@
 # options.tournament - table is in tournament mode
 # options.game{option name} - dictionary of game specific options 
 #    zero_counters_ok - if 1, generate message when adding/deleting 0 counters
-# persistent - if 1, don't close and reload XML files for next game, just reconnect to meta server
+# persistent - if >1, don't free memory and reload XML for next game, just subtract 1 and reconnect
 # play.stack - list of cards waiting for PlayStage2
 # player - player causing event
 # player.name{player number} - name of the players and watchers
@@ -212,6 +212,10 @@ MARKER_COLOR[7]="default";
 
 # Maximum inactive time
 MAX_PING=120;
+
+# Number of consecutive games to run in a single process,
+# without unloading XML files or allocated memory
+persistent=20;
 
 #
 #  VARIABLE DEFINITIONS
@@ -353,7 +357,6 @@ def InitServer
   teamspeak=copy(0,ARG);
   visible=array(ARG);
   waitfor=-1;
-  persistent=1;
   alive=(,);
 
 # InitServerHook might create additional pile names,
@@ -438,10 +441,10 @@ def EndGame
   flag.game_broken=NULL;
   flag.game_halted=NULL;
   
-  sleep(2);
-
-  if (persistent)
+  persistent = persistent - 1;
+  if (persistent > 0)
   {
+    sleep(2);
     net_close(meta.connection);
     InitServer(players_wanted);
     InitGame();

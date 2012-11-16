@@ -8,7 +8,7 @@
   <source url="http://markferry.net/gccg/"/>
   <source url="http://games.phtn.de/gccg/"/>
   <source url="http://wtactics.org/files/gccg/modules/"/>
-  <module name="core" version="1.0.6">
+  <module name="core" version="1.0.7">
 	<include file="decks"/>
 	<include file="doc"/>
 	<include file="lib"/>

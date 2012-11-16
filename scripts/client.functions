@@ -8187,8 +8187,9 @@ def MouseLeftClick
   if(object.number==NULL)
   {
     DelMenu();
-    if(mode=="chat" && room.players{me}[2] >= 0)
-      ChatCommandLeavetable();
+    if(mode=="chat")
+      if(room.players{me}[2] >= 0)
+        ChatCommandLeavetable();
   }
   else
   {
@@ -11125,7 +11126,7 @@ def CreatePanel
 
 # Create an object.
       if(p[0]=="msgbox")
-        o=call("create_"+p[0],(x,y,obj=obj+1,p[1],p[5],p[6],p[15]));
+        o=create_msgbox(x,y,obj=obj+1,p[1],p[5],p[6],p[15]);
       panel_objects{ARG[0]}=panel_objects{ARG[0]}+(o,);
       if(p[2]!=NULL)
         eval(p[2]+"=o");
@@ -11172,22 +11173,7 @@ def CreatePanel
   }
   else
 # Panel already exists. Move existing panel.
-  {
-    push(o);
-    push(p);
-    for(o)(length(panel_structure{ARG[0]}))
-    {
-#     Note the two different containers:
-#       panel_structure contains the specifications for putting objects in a panel;
-#       panel_objects contains their actual object numbers currently in use
-      p=panel_structure{ARG[0]}[o];
-      x=ARG[1]+p[3];
-      y=ARG[2]+p[4];
-      move_object(panel_objects{ARG[0]}[o],x,y);
-    }
-    p=pop();
-    o=pop();
-  }
+    MovePanel(ARG);
 }
 
 #
@@ -11248,6 +11234,20 @@ def HidePanel
 #
 def MovePanel
 {
+  push(o);
+  push(p);
+  for(o)(length(panel_structure{ARG[0]}))
+  {
+#   Note the two different containers:
+#     panel_structure contains the specifications for putting objects in a panel;
+#     panel_objects contains their actual object numbers currently in use
+    p=panel_structure{ARG[0]}[o];
+    x=ARG[1]+p[3];
+    y=ARG[2]+p[4];
+    move_object(panel_objects{ARG[0]}[o],x,y);
+  }
+  p=pop();
+  o=pop();
 }
 
 #

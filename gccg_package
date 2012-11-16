@@ -3,7 +3,7 @@
 #
 # Globals
 #
-$ver="1.0.6";		# Current version of core package
+$ver="1.0.7";		# Current version of core package
 %module=();			# $module{mode}{module name} - version numbers of updated/build/installed/available modules.
 %files=();			# $files{mode}{module name}{filename} - include or exclude flags (1 = include, 0 = exclude)
 %sources=();		# $sources{mode} - List of sources.
@@ -22,7 +22,7 @@ $winsystem=($^O eq "MSWin32");  # True if we are running on Windows
 @file_cache=();     # A file name cache.
 
 #
-# pattern2regexp(rexex) - Convert file wildcard pattern  to regexp.
+# pattern2regexp(regex) - Convert file wildcard pattern to regexp.
 #
 sub pattern2regexp($)
 {
@@ -473,11 +473,11 @@ sub fetch_file
 		{
 		    if($winsystem)
 		    {
-				system("wget -t 0 $url");
+				system("wget -t 2 $url");
 		    }
 		    else
 		    {
-				system("wget -t 0 $url >/dev/null 2>&1");
+				system("wget -t 2 $url >/dev/null 2>&1");
 		    }
 		}
 	}
@@ -710,10 +710,9 @@ sub print_status
 #
 sub make_source_updates
 {
-	my $offset=0;
-	
 	if((@sources_fail) || (@sources_new))
 	{
+		print "Trying updated sources...\n";
 		foreach(@sources_fail)
 		{
 			if($_ ne "http://gccg.sourceforge.net/modules/")
@@ -751,7 +750,7 @@ sub uncompress
 }
 
 #
-# install_modules(list of modules or expressions) - Download and install a modules.
+# install_modules(list of modules or expressions) - Download and install a list of modules.
 #
 sub install_modules
 {
@@ -761,83 +760,89 @@ sub install_modules
 
 	for(module_match("updated",@_))
 	{
-		push @remove, $_ if($module{"installed"}{$_} ne "");
-		$inst{$_}=1;
+		if(is_newer($module{"updated"}{$_},$module{"installed"}{$_}))
+		{
+			push @remove, $_ if($module{"installed"}{$_} ne "");
+			$inst{$_}=1;
+		}
+		else
+		{
+			print "Module $_ is already up-to-date; skipping...\n"
+				."     (use './gccg_package reinstall $_' to force)";
+		}
 	}
 	
 	check_dependencies(keys %inst);
+	get_module($_) for (keys %inst);	
 	remove_module($_) for (@remove);
 	install_module($_) for (keys %inst);		
 }
 
 #
-# install_module(module name) - Install single module.
+# install_module(module name) - Install a single module that was previously downloaded.
 #
 sub install_module
 {
 	my $name=shift;
 	
-	die "$0: no such module as $name" if not is_module($name);
-	if ($module{"updated"}{$name} eq "")
+	if (!is_module($name))
 	{
-		print "Module $name is already up-to-date\n";
+		print "ERROR: module '$name' doesn't exist\n";
+		return;
 	}
-	else
+	my $file=$url{'updated'}{$name};
+	$file =~ s|^.*/||;
+	if (-f $file)
 	{
-		print "Fetching ".$url{"updated"}{$name}."\n";
-		my $file=fetch_file($url{"updated"}{$name});
-		if ($file eq "")
+		print "Installing module $name\n";
+		
+		if(uncompress($file))
 		{
-			print "FAILED\n";
-		}
-		else
-		{
-			print "Installing module $name\n";
-			
-			if(uncompress($file))
+			$module{"installed"}{$name}=$module{"updated"}{$name};
+			$dependencies{"installed"}{$name}=$dependencies{"updated"}{$name};
+			%{$files{"installed"}{$name}}=();
+			if($winsystem)
 			{
-				$module{"installed"}{$name}=$module{"updated"}{$name};
-				$dependencies{"installed"}{$name}=$dependencies{"updated"}{$name};
-				%{$files{"installed"}{$name}}=();
-				if($winsystem)
-				{
-				    $file=~s/(.*)\.tgz$/$1.tar/;
-				    system("tar tf $file > log.txt");
-				    open(FILES,"log.txt");
-				}
-				else
-				{
-				    open(FILES,"gunzip -c $file | tar tf - |");
-				}
-				while(<FILES>)
-				{
-					chomp;
-					$files{"installed"}{$name}{$_}=1;
-				}
-				close(FILES);
-				write_xml_document("xml/installed.xml","installed");
-				unlink($file);
-
-				if($winsystem)
-				{
-				    unlink("log.txt");
-				}
-
-				if($name eq "windows32")
-				{
-					system("chmod +x ccg_client.exe");
-				}
+			    $file=~s/(.*)\.tgz$/$1.tar/;
+			    system("tar tf $file > log.txt");
+			    open(FILES,"log.txt");
 			}
 			else
 			{
-				die "$0: failed to uncompress $file";
+			    open(FILES,"gunzip -c $file | tar tf - |");
+			}
+			while(<FILES>)
+			{
+				chomp;
+				$files{"installed"}{$name}{$_}=1;
+			}
+			close(FILES);
+			write_xml_document("xml/installed.xml","installed");
+			unlink($file);
+
+			if($winsystem)
+			{
+			    unlink("log.txt");
+			}
+
+			if($name eq "windows32")
+			{
+				system("chmod +x ccg_client.exe");
 			}
 		}
+		else
+		{
+			print "ERROR: failed to uncompress $file\n";
+		}
+	}
+	else
+	{
+		print "ERROR: unable to find module '$name' at $file\n";
 	}
 }
 
 #
-# reinstall_modules(list of modules or expressions) - Remove, download, and reinstall modules.
+# reinstall_modules(list of modules or expressions) - Download, remove, and reinstall modules (even if version is current).
 #
 sub reinstall_modules
 {
@@ -863,6 +868,7 @@ sub reinstall_modules
 	}
 	
 	check_dependencies(keys %inst);
+	get_module($_) for (keys %inst);
 	remove_module($_) for (@remove);
 	install_module($_) for (keys %inst);
 }
@@ -881,23 +887,39 @@ sub get_modules
 }
 
 #
-# get_module(module name) - Download (don't install) single module.
+# get_module(module name) - Download a single module.
 #
 sub get_module
 {
 	my $name=shift;
+	my $e=0;
 	
-	die "$0: no such module as $name" if not is_module($name);
-	
-	print "Fetching $url{'updated'}{$name}\n";
-	my $file=fetch_file($url{'updated'}{$name});
-	if ($file eq "")
+	if(is_module($name))
 	{
-		print "FAILED\n";
+		print "Fetching $url{'updated'}{$name}\n";
+		my $file=fetch_file($url{'updated'}{$name});
+		if ($file eq "")
+		{
+			print "ERROR: module '$name' could not be downloaded properly\n";
+			$e=1;
+		}
 	}
 	else
 	{
-		print "Downloaded $name as $file\n";
+		print "ERROR: module '$name' doesn't exist\n";
+		$e=1;
+	}
+	
+	if($e)
+	{
+		#download failed, so don't remove the module or make a useless attempt to install
+		delete($inst{$name});
+		$e=0;
+		for(@remove)
+		{
+			splice @remove, $e, 1 if $_ eq $name;
+			$e++;
+		}
 	}
 }
 
@@ -938,7 +960,7 @@ sub remove_module
 }
 
 #
-# update_modules() - Update all modules
+# update_modules() - Update all modules that have a newer version reported available.
 #
 sub update_modules
 {
@@ -954,8 +976,14 @@ sub update_modules
 			$inst{$_}=1;
 		}
 	}
+	if(scalar keys %inst == 0)
+	{
+		print "All packages up to date. Nothing to do.\n";
+		return;
+	}
 	
 	check_dependencies(keys %inst);
+	get_module($_) for (keys %inst);
 	remove_module($_) for (@remove);
 	install_module($_) for (keys %inst);
 }
@@ -989,7 +1017,11 @@ sub compare_package
 	mkdir("build",0755);
 	chdir("build");
 	$file="../$file" if(substr($file,0,2) eq "..");
-	die "$0: uncompress failed" if !uncompress("$file");
+	if(!uncompress("$file"))
+	{
+		print "ERROR: uncompress of '$modulename' failed\n";
+		return;
+	}
 	open(DIR,"find .|");
 	while(<DIR>)
 	{

@@ -713,9 +713,14 @@ namespace Evaluator
 	}
 
 	Data ReadLiteral(const char*& src)
-	{
+	{		
 		while(*src && isspace(*src))
 			src++;
+		
+		if(!*src)
+		{
+			return Null;
+		}
 		
 		if(CheckFor("NULL",src))
 		{
