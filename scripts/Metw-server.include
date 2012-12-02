@@ -16,9 +16,6 @@ screen.height=768;
 port=29500;
 meta.port=29130;
 
-# What piles have known order even if not visible.
-SELF_KNOWN_PILES=("sideboard","sideboard vs. fw","sites","pool");
-
 #
 # HOOKS
 # =====
@@ -28,17 +25,11 @@ SELF_KNOWN_PILES=("sideboard","sideboard vs. fw","sites","pool");
 #
 def InitServerHook
 {
-  for(i)(ARG)
-  {
-    visible.me[i]{"discard pile"}=0;
-    visible.me[i]{"pool"}=0;
-    visible.me[i]{"sites"}=0;
-    visible.me[i]{"sideboard vs. fw"}=0;
-    visible.opp[i]{"discard pile"}=0;
-    visible.opp[i]{"pool"}=0;
-    visible.opp[i]{"sites"}=0;
-    visible.opp[i]{"sideboard vs. fw"}=0;
-  }
+  GAME_PILES{'discard pile'}=("reveal_1","protected");
+  GAME_PILES{'pool'}=("protected",);
+  GAME_PILES{'sites'}=("protected",);
+  GAME_PILES{'sideboard'}=(,);
+  GAME_PILES{'sideboard vs. fw'}=(,);
   score_adjust=(,);
 }
 
