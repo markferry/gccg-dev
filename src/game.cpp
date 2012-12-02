@@ -576,8 +576,8 @@ bool Deck::ClickableAt(int x,int y) const
 	// Therefore, there is a triangular arrangement of 3x3 squares at
 	// the top-right and bottom-left of the surface that are drawn as
 	// empty space (assuming the deck contains 11 or more cards).
-	int iy=(y-grp.y)/3;
-	int ix=(grp.x+grp.w-1-x)/3;
+	unsigned int iy=(y-grp.y)/3;
+	unsigned int ix=(grp.x+grp.w-1-x)/3;
 	if(ix+iy <= (Size()-11)/10)
 		return false;
 	

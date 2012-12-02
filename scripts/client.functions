@@ -170,7 +170,6 @@
 # product.images{product name} - image number of the product picture
 # product.objects{product name} - object numbers of products
 # rarity.display{letter} - format code to apply when opening card of that rarity from pack
-# removed_card - single-card undo buffer for the card ID most recently removed from the deck
 # room.players - players in chat room (see meta-server)
 # room.tables - tables in chat room (see meta-server)
 # rules.category - list of pairs (condition,category), which is used to map a name to category
@@ -204,6 +203,8 @@
 # timer_minute - list of timing event pairs (trigger time,command) for minute based resolution
 # transfer.options - special options to send by TryTransferTo()
 # unbind_next - if not null, next key press will be unbound
+# undo_buffer - list of (ID, qty) pairs reflecting recent changes to deck contents
+# undo.pos - current position in undo_buffer when rewinding/forwarding
 # username - name of the player
 #
 # Functions:
@@ -279,8 +280,8 @@ COLORS=(,);
 COLORS{'RED'}=(250,0,0);
 COLORS{'ORANGE'}=(250,130,30);
 COLORS{'YELLOW'}=(220,220,0);
-COLORS{'GREEN'}=(0,230,0);
-COLORS{'BLUE'}=(0,0,250);
+COLORS{'GREEN'}=(0,180,0);
+COLORS{'BLUE'}=(20,20,250);
 COLORS{'VIOLET'}=(160,0,160);
 COLORS{'WHITE'}=(255,255,255);
 COLORS{'BLACK'}=(0,0,0);
@@ -568,6 +569,9 @@ def playerwants {
 modifier=" ";
 
 pm_name=NULL;
+
+undo_buffer=(,);
+undo.pos=-1;
 
 #
 # FUNCTIONS WAITING FOR C++ IMPLEMENTATION
@@ -1212,7 +1216,8 @@ def SelectDeck
           message(deckname.box,"");
         }
         message(deckname.box,"Deck: {white}"+deck.name);
-        removed_card=NULL;
+        undo_buffer=(,);
+        undo.pos=-1;
       }
     }
   }
@@ -1235,7 +1240,8 @@ def DeleteDeck
     cards_missing=listbox_set_deck(deck.box,NewDeck(),card.book);
     set_attr(deck.box,"visible",0);
     deck.name=NULL;
-    removed_card=NULL;
+    undo_buffer=(,);
+    undo.pos=-1;
     if(isfunction("clear_msgbox"))
       clear_msgbox(deckname.box);
     else
@@ -1920,13 +1926,18 @@ def ChatCommandGive
 
     if(length(i)<=0)
       Msg("{red}No such card: "+n);
-    else if(length(i)==1)
-      Send("GiveCard",(ARG[0],i[0]));
     else
     {
-      Msg("{orange}Card name is not unique. Please specify one of the following:");
-      for(n)(i)
-        Msg("     "+canonical_name(n));
+      i=select("(book_entry(card.book,#))[0]",i);
+      if(length(i)==0)
+        Msg("{red}You don't have that card.");
+      else if(length(i)==1)
+        Send("GiveCard",(ARG[0],i[0]));
+      else
+      {
+        Msg("{orange}Card name is not unique. Please specify one of the following:");
+        Msg(join(forall('canonical_name(#)',i),"        "));
+      }
     }
 
     i=pop();
@@ -3203,7 +3214,7 @@ def Message
         MsgChat(left(time(),5)+" "+m+"{reset}");
       if(hilight == 2)
         InitVisualAlert();
-	}
+    }
     else
       Msg(left(time(),5)+" "+m+"{reset}");
   }
@@ -4838,12 +4849,17 @@ def EditCountCards
 
 #
 # AddToDeck(deck name,deck part,card name,count) - Add card(s) to the deck in the deck collection.
+# Return ID of most recent card added.
 #
 def AddToDeck
 {
   push(d);
+  push(c);
   d=select("canonical_name(#)==ARG[2]",decks{ARG[0]}{ARG[1]});
-  decks{ARG[0]}{ARG[1]}=decks{ARG[0]}{ARG[1]} - d + FindCards(length(d)+ARG[3],ARG[2]);
+  c=FindCards(length(d)+ARG[3],ARG[2]);
+  decks{ARG[0]}{ARG[1]}=decks{ARG[0]}{ARG[1]} - d + c;
+  return(last(c));
+  c=pop();
   d=pop();
 }
 
@@ -4896,7 +4912,8 @@ def RemoveDeckPart
       if(lc(ARG)==deck.part)
       {
         deck.part="deck";
-        removed_card=NULL;
+        undo_buffer=(,);
+        undo.pos=-1;
       }
     }
   }
@@ -4921,13 +4938,34 @@ def EditAdd
     if(o)
     {
       if(typeof(ARG[1])=="string")
-        AddToDeck(deck.name,ARG[0],ARG[1],1);
+        o=AddToDeck(deck.name,ARG[0],ARG[1],1);
       else if(typeof(ARG[1])=="integer")
-        decks{deck.name}{ARG[0]}=decks{deck.name}{ARG[0]} + (ARG[1],);
+      {
+        o=ARG[1];
+        decks{deck.name}{ARG[0]}=decks{deck.name}{ARG[0]} + (o,);
+      }
       else
+      {
         Msg("{red}Can't add "+tostr(ARG[1])+" to the deck (this is an uncaught bug in Gccg).");
+        o=NULL;
+      }
 
-      RefreshCurrentDeck();
+      if(o!=NULL)
+      {
+        if(undo.pos<0)
+        {
+          undo_buffer=((o,-1),);
+          undo.pos=0;
+        }
+        else if(undo_buffer[undo.pos][0]==o)
+          undo_buffer[undo.pos][1]=undo_buffer[undo.pos][1] - 1;
+        else
+        {
+          undo.pos=undo.pos+1;
+          undo_buffer=left(undo_buffer,undo.pos)+((o,-1),);
+        }
+        RefreshCurrentDeck();
+      }
     }
   }
   o=pop();
@@ -4955,11 +4993,22 @@ def EditDel
     if(length(d)>0)
     {
       decks{deck.name}{ARG[0]}=decks{deck.name}{ARG[0]}-d+head(d);
-      if(length(d)==1)
+      
+      if(undo.pos<0)
       {
-        Msg("Note: removed the last "+name(d[0])+" from the "+ARG[0]+".");
-        removed_card=d[0];
+        undo_buffer=((d[0],1),);
+        undo.pos=0;
       }
+      else if(undo_buffer[undo.pos][0]==d[0])
+        undo_buffer[undo.pos][1]=undo_buffer[undo.pos][1] + 1;
+      else
+      {
+        undo.pos=undo.pos+1;
+        undo_buffer=left(undo_buffer,undo.pos)+((d[0],1),);
+      }
+            
+      if(length(d)==1)
+        Msg("Note: removed the last "+name(d[0])+" from the "+ARG[0]+".");
       RefreshCurrentDeck();
       return(1);
     }
@@ -6030,14 +6079,38 @@ def WatchKeyControlKeyW
   ChatKeyControlKeyW();
 
 #
-# ChatKeyControlKeyZ() - Put back a copy of the most recent card removed from the deck.
+# ChatKeyControlKeyZ() - Undo the last change to the decklist (card add/remove).
+# The undo buffer will be reset when choosing a different deck or deck part, and can't rewind past that.
 #
 def ChatKeyControlKeyZ
 {
-  if(removed_card!= NULL)
+  brk=1;
+  while(undo.pos>=0 && brk)
   {
-    EditAdd(deck.part,removed_card);
-    removed_card=NULL;
+    if(undo_buffer[undo.pos][1]==0)
+      undo.pos=undo.pos-1;
+    else
+      brk=0;
+  }
+  
+  if(undo.pos<0)
+    Msg("{orange}Nothing to undo.");
+  else if(undo_buffer[undo.pos][1]>0)
+  {
+    decks{deck.name}{deck.part}=decks{deck.name}{deck.part} + copy(undo_buffer[undo.pos][0],undo_buffer[undo.pos][1]);
+    Msg("{orange}Undo:{white} Put back "+tostr(undo_buffer[undo.pos][1])+"x {card"+undo_buffer[undo.pos][0]+"}");
+    undo.pos=undo.pos-1;
+    RefreshCurrentDeck();
+  }
+  else
+  {
+    push(d);
+    d=select("#==undo_buffer[undo.pos][0]",decks{deck.name}{deck.part});
+    decks{deck.name}{deck.part}=decks{deck.name}{deck.part}-d+copy(undo_buffer[undo.pos][0],length(d)+undo_buffer[undo.pos][1]);
+    Msg("{orange}Undo:{white} Took out "+tostr(-undo_buffer[undo.pos][1])+"x {card"+undo_buffer[undo.pos][0]+"}");
+    undo.pos=undo.pos-1;
+    RefreshCurrentDeck();
+    d=pop();
   }
 }
 
@@ -6046,6 +6119,49 @@ def WatchKeyControlKeyZ
 
 def OfflineKeyControlKeyZ
   ChatKeyControlKeyZ();
+
+#
+# ChatKeyControlKeyY() - Redo an action from the undo buffer.
+#
+def ChatKeyControlKeyY
+{
+  brk=1;
+  while(undo.pos+2 <= length(undo_buffer) && brk)
+  {
+    if(undo_buffer[undo.pos+1][1]==0)
+      undo.pos=undo.pos+1;
+    else
+      brk=0;
+  }
+  
+  if(undo.pos+2>length(undo_buffer))
+    Msg("{orange}Nothing to redo.");
+  else
+  {
+    undo.pos=undo.pos+1;
+    if(undo_buffer[undo.pos][1]<0)
+    {
+      decks{deck.name}{deck.part}=decks{deck.name}{deck.part} + copy(undo_buffer[undo.pos][0],-undo_buffer[undo.pos][1]);
+      Msg("{orange}Redo:{white} Put back "+tostr(-undo_buffer[undo.pos][1])+"x {card"+undo_buffer[undo.pos][0]+"}");
+      RefreshCurrentDeck();
+    }
+    else
+    {
+      push(d);
+      d=select("#==ARG[1]",decks{deck.name}{deck.part});
+      decks{deck.name}{deck.part}=decks{deck.name}{deck.part}-d+copy(undo_buffer[undo.pos][0],length(d)-undo_buffer[undo.pos][1]);
+      Msg("{orange}Undo:{white} Took out "+tostr(-undo_buffer[undo.pos][1])+"x {card"+undo_buffer[undo.pos][0]+"}");
+      RefreshCurrentDeck();
+      d=pop();
+    }
+  }
+}
+
+def WatchKeyControlKeyY
+  ChatKeyControlKeyY();
+
+def OfflineKeyControlKeyY
+  ChatKeyControlKeyY();
 
 #
 # KeyBackspace() - Handler for key Backspace.
@@ -6147,7 +6263,7 @@ def KeyF5
 	{
 		del_cardbox(info.box,0);
 		info.current=NULL;
-	    info.persistent=0;
+		info.persistent=0;
 		Msg("Persistent infozoom is {yellow}disabled{white}.");
 	}
 	else
@@ -6429,7 +6545,7 @@ def KeyControlKeyH
       push(s);
       push(f);
       Msg("{hr}");
-      Msg("{sz20}{yellow}"+name(c));
+      Msg("{sz20}{yellow}{card"+c+"}");
       Msg(text(c));
       s="";
       f=(,);
@@ -7115,9 +7231,9 @@ def GiveCardSubmenu
   t=forall("(#)[1][0]",room.players) - (username,);
   for(p)(sort(t))
   {
-    m=m+(("Give {blue}"+name(ARG)+"{black} to {green}"+p,"",'SendMeta("GiveCard",("'+p+'",'+tostr(ARG)+'))'),);
+    m=m+(("Give {blue}{card"+ARG+"}{black} to {green}"+p,"",'SendMeta("GiveCard",("'+p+'",'+tostr(ARG)+'))'),);
   }
-  Submenu("Give {blue}"+name(ARG),m);
+  Submenu("Give {blue}{card"+ARG+"}",m);
   t=pop();
   m=pop();
 }
@@ -7600,7 +7716,7 @@ def CurrentDeckMenu
     else
       m=m+(("Check legality...","","CheckLegalitySubmenu()"),);
     m=m+(("Add cards from another deck...","","MergeDeckSubmenu('')"),
-         ("Remove all cards","/erasedeck",""),);
+         ("Remove all cards","/erasedeck",""),("Undo change","Ctrl+Z",""),("Redo change","Ctrl+Y",""));
     
   }
 
@@ -8434,7 +8550,8 @@ def SelectDeckPart
   {
     deck.part=ARG;
     Msg("Deck part '"+ARG+"' selected.");
-    removed_card=NULL;
+    undo_buffer=(,);
+    undo.pos=-1;
   }
 }
 
@@ -9277,7 +9394,7 @@ def LocationList
 #
 def TargetCard
 {
-  Msg("{yellow}Left click target for "+name(findspace.card)+"...");
+  Msg("{yellow}Left click target for {card"+findspace.card+"}...");
   targeting_queue=targeting_queue+((findspace.card,ARG[2],ARG[3],ARG[4],ARG[5],findspace.options),);
   if(players>2)
     return(table.width/2-card.design.width,table.height/2-card.design.height-25+ARG[1]*5);
@@ -11441,7 +11558,7 @@ def JudgePlayCommandLottery
        for(c)(lottery)
        {
          if(c[1][1])
-            Msg(c[1][1]+" x "+name(c[0])+" for "+c[1][0]);
+            Msg(c[1][1]+" x {card"+c[0]+"} for "+c[1][0]);
        }
      }
      else if(ARG[0]=="start")

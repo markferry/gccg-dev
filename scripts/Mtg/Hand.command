@@ -7,24 +7,24 @@ def ColorCardName
   push(color);
   color = Attr("color",ARG);
   if(find(" ",color) != NULL)
-    return(" {gold}"+name(ARG)+"{reset},");
+    return(" {gold}{card"+ARG+"}{reset},");
   else if(color == "White")
-    return(" {white}"+name(ARG)+"{reset},");
+    return(" {white}{card"+ARG+"}{reset},");
   else if(color == "Blue")
-    return(" {blue}"+name(ARG)+"{reset},");
+    return(" {blue}{card"+ARG+"}{reset},");
   else if(color == "Black")
-    return(" {gray}"+name(ARG)+"{reset},");
+    return(" {gray}{card"+ARG+"}{reset},");
   else if(color == "Red")
-    return(" {red}"+name(ARG)+"{reset},");
+    return(" {red}{card"+ARG+"}{reset},");
   else if(color == "Green")
-    return(" {green}"+name(ARG)+"{reset},");
+    return(" {green}{card"+ARG+"}{reset},");
   else if(color == "Artifact")
-    return(" {154,154,154}"+name(ARG)+"{reset},");
+    return(" {154,154,154}{card"+ARG+"}{reset},");
   else if(color == "Land")
-    return(" {154,128,77}"+name(ARG)+"{reset},");
+    return(" {154,128,77}{card"+ARG+"}{reset},");
   else if(color == "Colorless")
-    return(" {128,128,128}"+name(ARG)+"{reset},");
-  else return " "+name(ARG)+",";
+    return(" {128,128,128}{card"+ARG+"}{reset},");
+  else return " {card"+ARG+"},";
   color=pop();
 }
 
