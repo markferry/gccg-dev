@@ -2062,7 +2062,7 @@ HELP{"chat"}{"newdeck"}=("deckname","create new deck",NULL,
 #
 # ChatCommandErasedeck() - Implementation of /erasedeck command.
 #
-def ChatCommandErasedeck
+def CommandErasedeck
 {
   if(deck.name != NULL)
   {
@@ -2071,20 +2071,14 @@ def ChatCommandErasedeck
   }
 }
 
-#
-# WatchCommandErasedeck() - Implementation of /erasedeck command.
-#
-def WatchCommandErasedeck
-    ChatCommandErasedeck(ARG);
+HELP{"any"}{"erasedeck"}=("","erase deck contents",NULL,
+"Remove all cards from the current decklist, leaving only an empty deck shell so you can start over.");
 
-#
-# OfflineCommandErasedeck() - Implementation of /erasedeck command.
-#
-def OfflineCommandErasedeck
-    ChatCommandErasedeck(ARG);
+def CommandDeletedeck
+  DeleteDeck(deck.name);
 
-HELP{"chat"}{"erasedeck"}=("","erase deck contents",NULL,
-"Remove all cards from a decklist so you can start over with an empty deck.");
+HELP{"any"}{"deletedeck"}=("","delete a deck entry",NULL,
+"Delete the current deck entirely, including its entry in your list of decks.");
 
 #
 # CommandHelp(topic) - Implementation of /help command.
@@ -7700,7 +7694,7 @@ def CurrentDeckMenu
   }
   else
   {
-    m=m+(("Destroy this deck","","DeleteDeck(deck.name)"),("Select another deck","Ctrl+D",""),("Export deck","Ctrl+X",""),("Move deck to a group...","","ChooseGroupMenu()"));
+    m=m+(("Destroy this deck","/deletedeck",""),("Select another deck","Ctrl+D",""),("Export deck","Ctrl+X",""),("Move deck to a group...","","ChooseGroupMenu()"));
     if(length(GroupOf(deck.name))>0)
       m=m+(("Remove deck from group","","RemoveDeckFromGroup(0)"),);
     else
