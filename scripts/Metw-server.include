@@ -27,7 +27,7 @@ def InitServerHook
 {
   GAME_PILES{'discard pile'}=("reveal_1","protected");
   GAME_PILES{'pool'}=("protected",);
-  GAME_PILES{'sites'}=("protected",);
+  GAME_PILES{'sites'}=("protected","self_known");
   GAME_PILES{'sideboard'}=(,);
   GAME_PILES{'sideboard vs. fw'}=(,);
   score_adjust=(,);
