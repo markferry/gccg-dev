@@ -92,7 +92,7 @@
        <attr key="type" value="Hazard"/>
     </card>
 
-    <card name="Das Wueten der Eisernen Krone" graphics="DasWuetenderEisernenKrone.jpg" text="Unique. Only playable if Die Eiserne Krone (The Iron Crown) is not in play. The prowness of a strike against Orcs, Trolls, Men or Nazgûl are modified by +4. If the Target Creature are not a Nazgûl, the Creature is to discard from the game (The defender get the MPs). The Defender can also play the Die Eiserne Krone (The Iron Crown) from his hand at once.">
+    <card name="Das Wueten der Eisernen Krone" graphics="DasWuetenderEisernenKrone.jpg" text="Unique. Only playable if Die Eiserne Krone (The Iron Crown) is not in play. The prowness of a strike against Orcs, Trolls, Men or Nazgul are modified by +4. If the Target Creature are not a Nazgul, the Creature is to discard from the game (The defender get the MPs). The Defender can also play the Die Eiserne Krone (The Iron Crown) from his hand at once.">
        <attr key="unique" value="yes"/>
        <attr key="rarity" value="P"/>
        <attr key="class" value="Short-event"/>

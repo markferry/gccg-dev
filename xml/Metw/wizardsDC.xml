@@ -14,14 +14,14 @@
        <attr key="type" value="Hazard"/>
        <attr key="class" value="Creature"/>
     </card>
-    <card name="Adûnaphel" graphics="AdunaphelDC.jpg" text="Unique. Nazgûl (7th). May be played as a hazard creature (with one strike) or as a permanent-event. As a creature, may also be played keyed to Brown Lands, Dagorlad, Gorgoroth, and Western Mirkwood, Chelkar, Hyarmenfalas and Nurn; and may also be played at sites in these regions. If played as a permanent-event, it will remain in play until tapped during the opponent's movement/hazard phase (tapping counts against the hazard limit). When tapped, Adûnaphel becomes a short-event and causes any one character to tap.">
+    <card name="Adûnaphel" graphics="AdunaphelDC.jpg" text="Unique. Nazgul (7th). May be played as a hazard creature (with one strike) or as a permanent-event. As a creature, may also be played keyed to Brown Lands, Dagorlad, Gorgoroth, and Western Mirkwood, Chelkar, Hyarmenfalas and Nurn; and may also be played at sites in these regions. If played as a permanent-event, it will remain in play until tapped during the opponent's movement/hazard phase (tapping counts against the hazard limit). When tapped, Adûnaphel becomes a short-event and causes any one character to tap.">
        <attr key="unique" value="yes"/>
        <attr key="strikes" value="1"/>
        <attr key="mp" value="5"/>
        <attr key="body" value="10"/>
        <attr key="prowess" value="15"/>
        <attr key="playable" value="{d}{D}"/>
-       <attr key="subclass" value="Nazgûl"/>
+       <attr key="subclass" value="Nazgul"/>
        <attr key="rarity" value="R"/>
        <attr key="class" value="Creature/Permanent-event"/>
        <attr key="type" value="Hazard"/>
@@ -38,14 +38,14 @@
        <attr key="type" value="Hazard"/>
 	   <attr key="keyword" value="Cold-dragon"/>
     </card>
-    <card name="Akhôrahil" graphics="AkhorahilDC.jpg" text="Unique. Nazgûl (5th). May be played as a hazard creature (with one strike) or as a permanent-event. As a creature, may also be played keyed to Harondor, Horse Plains, Gorgoroth, Khand, Chennacatt, Curinshiban and Seznebab; and may also be played at sites in those regions. If played as a permanent-event, it will remain in play until tapped during the opponent's movement/hazard phase (tapping counts against the hazard limit). When tapped, Akhôrahil becomes a short-event and modifies any one character's body by -1 for the rest of this turn.">
+    <card name="Akhôrahil" graphics="AkhorahilDC.jpg" text="Unique. Nazgul (5th). May be played as a hazard creature (with one strike) or as a permanent-event. As a creature, may also be played keyed to Harondor, Horse Plains, Gorgoroth, Khand, Chennacatt, Curinshiban and Seznebab; and may also be played at sites in those regions. If played as a permanent-event, it will remain in play until tapped during the opponent's movement/hazard phase (tapping counts against the hazard limit). When tapped, Akhôrahil becomes a short-event and modifies any one character's body by -1 for the rest of this turn.">
        <attr key="unique" value="yes"/>
        <attr key="strikes" value="1"/>
        <attr key="mp" value="5"/>
        <attr key="body" value="9"/>
        <attr key="prowess" value="16"/>
        <attr key="playable" value="{d}{D}"/>
-       <attr key="subclass" value="Nazgûl"/>
+       <attr key="subclass" value="Nazgul"/>
        <attr key="rarity" value="R"/>
        <attr key="class" value="Creature/Permanent-event"/>
        <attr key="type" value="Hazard"/>
@@ -250,14 +250,14 @@
        <attr key="type" value="Hazard"/>
 	   <attr key="keyword" value="Environment"/>
     </card>
-    <card name="Dwar of Waw" graphics="DwarofWawDC.jpg" text="Unique. Nazgûl (3rd). May be played as a hazard creature (with one strike) or as a permanent-event. As a creature, may also be played keyed to Harondor, Imlad Morgul, Gorgoroth, Ithilien and Udûn; and may also be played at sites in these regions. If played as a permanent-event, it will remain in play until tapped during the opponent's movement/hazard phase (tapping counts against the hazard limit). When tapped, Dwar of Waw becomes a short-event and gives +1 prowess to all Wolf, Spider and Animal attacks until the end of the turn.">
+    <card name="Dwar of Waw" graphics="DwarofWawDC.jpg" text="Unique. Nazgul (3rd). May be played as a hazard creature (with one strike) or as a permanent-event. As a creature, may also be played keyed to Harondor, Imlad Morgul, Gorgoroth, Ithilien and Udûn; and may also be played at sites in these regions. If played as a permanent-event, it will remain in play until tapped during the opponent's movement/hazard phase (tapping counts against the hazard limit). When tapped, Dwar of Waw becomes a short-event and gives +1 prowess to all Wolf, Spider and Animal attacks until the end of the turn.">
        <attr key="unique" value="yes"/>
        <attr key="strikes" value="1"/>
        <attr key="mp" value="5"/>
        <attr key="body" value="10"/>
        <attr key="prowess" value="15"/>
        <attr key="playable" value="{d}{D}"/>
-       <attr key="subclass" value="Nazgûl"/>
+       <attr key="subclass" value="Nazgul"/>
        <attr key="rarity" value="R"/>
        <attr key="class" value="Creature/Permanent-event"/>
        <attr key="type" value="Hazard"/>
@@ -267,7 +267,7 @@
        <attr key="class" value="Long-event"/>
        <attr key="type" value="Hazard"/>
     </card>
-    <card name="Fell Beast" graphics="FellBeast.jpg" text="The number of strikes of one Nazgûl hazard creature is increased by one and its prowess is decreased by 2. Attacker chooses defending characters. Additionally, target Nazgûl may be played keyed to a Shadow-land [{s}] or Shadow-hold [{S}]. Cannot be duplicated on a given Nazgûl. {cyan} UEP: Fell Beast counts as half a creature for the purpose of deck building. {cyan} UEP: Fell Beast counts as half a creature for the purpose of deck building.">
+    <card name="Fell Beast" graphics="FellBeast.jpg" text="The number of strikes of one Nazgul hazard creature is increased by one and its prowess is decreased by 2. Attacker chooses defending characters. Additionally, target Nazgul may be played keyed to a Shadow-land [{s}] or Shadow-hold [{S}]. Cannot be duplicated on a given Nazgul. {cyan} UEP: Fell Beast counts as half a creature for the purpose of deck building. {cyan} UEP: Fell Beast counts as half a creature for the purpose of deck building.">
        <attr key="rarity" value="R"/>
        <attr key="class" value="Short-event"/>
        <attr key="type" value="Hazard"/>
@@ -362,14 +362,14 @@
        <attr key="class" value="Creature"/>
        <attr key="type" value="Hazard"/>
     </card>
-    <card name="Hoarmûrath of Dír" graphics="HoarmurathofDirDC.jpg" text="Unique. Nazgûl (6th). May be played as a hazard creature (with one strike) or as a permanent-event. As a creature, may also be played keyed to Dagorlad, Ithilien, Gorgoroth, Khand, Azjan, Ukal Sêj and Talath Uichel; and may also be played at sites in these regions. If played as a permanent-event, it will remain in play until tapped during the opponent's movement/hazard phase (tapping counts against the hazard limit). When tapped, Hoarmûrath of Dír becomes a short-event and gives +1 strike to any one attack.">
+    <card name="Hoarmûrath of Dír" graphics="HoarmurathofDirDC.jpg" text="Unique. Nazgul (6th). May be played as a hazard creature (with one strike) or as a permanent-event. As a creature, may also be played keyed to Dagorlad, Ithilien, Gorgoroth, Khand, Azjan, Ukal Sêj and Talath Uichel; and may also be played at sites in these regions. If played as a permanent-event, it will remain in play until tapped during the opponent's movement/hazard phase (tapping counts against the hazard limit). When tapped, Hoarmûrath of Dír becomes a short-event and gives +1 strike to any one attack.">
        <attr key="unique" value="yes"/>
        <attr key="strikes" value="1"/>
        <attr key="mp" value="5"/>
        <attr key="body" value="9"/>
        <attr key="prowess" value="15"/>
        <attr key="playable" value="{d}{D}"/>
-       <attr key="subclass" value="Nazgûl"/>
+       <attr key="subclass" value="Nazgul"/>
        <attr key="rarity" value="R"/>
        <attr key="class" value="Creature/Permanent-event"/>
        <attr key="type" value="Hazard"/>
@@ -385,26 +385,26 @@
        <attr key="class" value="Creature"/>
        <attr key="type" value="Hazard"/>
     </card>
-    <card name="Indûr Dawndeath" graphics="IndurDawndeathDC.jpg" text="Unique. Nazgûl (4th). May be played as a hazard creature (with one strike) or as a permanent-event. As a creature, may also be played keyed to Harondor, Imlad Morgul, Gorgoroth, Khand, Koronandë, Mûmakan and Tuktan; and may also be played at sites in these regions. If played as a permanent-event, it will remain in play until tapped during the opponent's movement/hazard phase (tapping counts against the hazard limit). When tapped, Indûr Dawndeath becomes a short-event and makes any wounded character discard an item (but not a ring).">
+    <card name="Indûr Dawndeath" graphics="IndurDawndeathDC.jpg" text="Unique. Nazgul (4th). May be played as a hazard creature (with one strike) or as a permanent-event. As a creature, may also be played keyed to Harondor, Imlad Morgul, Gorgoroth, Khand, Koronandë, Mûmakan and Tuktan; and may also be played at sites in these regions. If played as a permanent-event, it will remain in play until tapped during the opponent's movement/hazard phase (tapping counts against the hazard limit). When tapped, Indûr Dawndeath becomes a short-event and makes any wounded character discard an item (but not a ring).">
        <attr key="unique" value="yes"/>
        <attr key="strikes" value="1"/>
        <attr key="mp" value="5"/>
        <attr key="body" value="10"/>
        <attr key="prowess" value="15"/>
        <attr key="playable" value="{d}{D}"/>
-       <attr key="subclass" value="Nazgûl"/>
+       <attr key="subclass" value="Nazgul"/>
        <attr key="rarity" value="R"/>
        <attr key="class" value="Creature/Permanent-event"/>
        <attr key="type" value="Hazard"/>
     </card>
-    <card name="Khamûl the Easterling" graphics="KhamultheEasterlingDC.jpg" text="Unique. Nazgûl (2nd). May be played as a hazard creature (with one strike) or as a permanent-event. As a creature, may also be played keyed to Brown Lands, Heart of Mirkwood, Gorgoroth, Southern Mirkwood, Harrhûn and Horse Plains; may also be played at sites in those regions. If played as a permanent-event, it will remain in play until tapped during the opponent's movement/hazard phase (tapping counts against the hazard limit). When tapped, Khamûl the Easterling becomes a short-event and forces opponent to discard one card of his choice for every Nazgûl permanent-event in play (including this one).">
+    <card name="Khamûl the Easterling" graphics="KhamultheEasterlingDC.jpg" text="Unique. Nazgul (2nd). May be played as a hazard creature (with one strike) or as a permanent-event. As a creature, may also be played keyed to Brown Lands, Heart of Mirkwood, Gorgoroth, Southern Mirkwood, Harrhûn and Horse Plains; may also be played at sites in those regions. If played as a permanent-event, it will remain in play until tapped during the opponent's movement/hazard phase (tapping counts against the hazard limit). When tapped, Khamûl the Easterling becomes a short-event and forces opponent to discard one card of his choice for every Nazgul permanent-event in play (including this one).">
        <attr key="unique" value="yes"/>
        <attr key="strikes" value="1"/>
        <attr key="mp" value="6"/>
        <attr key="body" value="8"/>
        <attr key="prowess" value="18"/>
        <attr key="playable" value="{d}{D}"/>
-       <attr key="subclass" value="Nazgûl"/>
+       <attr key="subclass" value="Nazgul"/>
        <attr key="rarity" value="R"/>
        <attr key="class" value="Creature/Permanent-event"/>
        <attr key="type" value="Hazard"/>
@@ -502,12 +502,12 @@
        <attr key="type" value="Hazard"/>
 	   <attr key="keyword" value="Environment"/>
     </card>
-    <card name="Morgul-horse" graphics="Morgulhorse.jpg" text="This card allows you to place a tapped Nazgûl permanent-event back into your hand instead of discarding it. Alternatively, allows a Nazgûl to be played keyed to a Shadow-land [{s}].">
+    <card name="Morgul-horse" graphics="Morgulhorse.jpg" text="This card allows you to place a tapped Nazgul permanent-event back into your hand instead of discarding it. Alternatively, allows a Nazgul to be played keyed to a Shadow-land [{s}].">
        <attr key="rarity" value="R"/>
        <attr key="class" value="Short-event"/>
        <attr key="type" value="Hazard"/>
     </card>
-    <card name="Morgul-knife" graphics="Morgulknife.jpg" text="A Nazgûl's prowess is modified by +2. Discard if attack doesn't wound a character. Corruption. One character (attacker's choice) wounded by an attack modified by this card receives 4 corruption points (place this card under the character). If at a Haven during his untap phase, a character with this card may attempt to remove it (but he may not untap or heal). Make a roll (or draw a #): if this result is greater than 4, discard this card. Cannot be duplicated on a given Nazgûl.">
+    <card name="Morgul-knife" graphics="Morgulknife.jpg" text="A Nazgul's prowess is modified by +2. Discard if attack doesn't wound a character. Corruption. One character (attacker's choice) wounded by an attack modified by this card receives 4 corruption points (place this card under the character). If at a Haven during his untap phase, a character with this card may attempt to remove it (but he may not untap or heal). Make a roll (or draw a #): if this result is greater than 4, discard this card. Cannot be duplicated on a given Nazgul.">
        <attr key="corruption" value="4"/>
        <attr key="rarity" value="R"/>
        <attr key="class" value="Permanent-event"/>
@@ -679,14 +679,14 @@
        <attr key="class" value="Creature"/>
        <attr key="type" value="Hazard"/>
     </card>
-    <card name="Ren the Unclean" graphics="RentheUncleanDC.jpg" text="Unique. Nazgûl (8th). May be played as a hazard creature (with one strike) or as a permanent-event. As a creature, may also be played keyed to Dagorlad, Ithilien, Gorgoroth, Horse Plains, Chey Sart, Nûrad and Orgothraath; and may also be played at sites in these regions. If played as a permanent-event, it will remain in play until tapped during the opponent's movement/hazard phase (tapping counts against the hazard limit). When tapped, Ren the Unclean becomes a short-event: each character in play must make a corruption check.">
+    <card name="Ren the Unclean" graphics="RentheUncleanDC.jpg" text="Unique. Nazgul (8th). May be played as a hazard creature (with one strike) or as a permanent-event. As a creature, may also be played keyed to Dagorlad, Ithilien, Gorgoroth, Horse Plains, Chey Sart, Nûrad and Orgothraath; and may also be played at sites in these regions. If played as a permanent-event, it will remain in play until tapped during the opponent's movement/hazard phase (tapping counts against the hazard limit). When tapped, Ren the Unclean becomes a short-event: each character in play must make a corruption check.">
        <attr key="unique" value="yes"/>
        <attr key="strikes" value="1"/>
        <attr key="mp" value="5"/>
        <attr key="body" value="10"/>
        <attr key="prowess" value="15"/>
        <attr key="playable" value="{d}{D}"/>
-       <attr key="subclass" value="Nazgûl"/>
+       <attr key="subclass" value="Nazgul"/>
        <attr key="rarity" value="R"/>
        <attr key="class" value="Creature/Permanent-event"/>
        <attr key="type" value="Hazard"/>
@@ -800,12 +800,12 @@
        <attr key="class" value="Creature"/>
        <attr key="type" value="Hazard"/>
     </card>
-    <card name="The Nazgûl are Abroad" graphics="TheNazgulareAbroad.jpg" text="Nazgûl may attack the company containing the bearer of The One Ring at any site that is not a Free-hold [{F}] or Haven [{H}]. Nazgûl may attack any company possessing any ring in a Shadow-land [{s}] or Shadow-hold [{S}]. If Doors of Night is in play, at the end of each turn, each player may return one Nazgûl permanent-event from his discard pile to his hand. Cannot be duplicated.">
+    <card name="The Nazgûl are Abroad" graphics="TheNazgulareAbroad.jpg" text="Nazgul may attack the company containing the bearer of The One Ring at any site that is not a Free-hold [{F}] or Haven [{H}]. Nazgul may attack any company possessing any ring in a Shadow-land [{s}] or Shadow-hold [{S}]. If Doors of Night is in play, at the end of each turn, each player may return one Nazgul permanent-event from his discard pile to his hand. Cannot be duplicated.">
        <attr key="rarity" value="R"/>
        <attr key="class" value="Permanent-event"/>
        <attr key="type" value="Hazard"/>
     </card>
-    <card name="The Pale Sword" graphics="ThePaleSword.jpg" text="Unique. A Nazgûl's prowess is modified by +1; if used with the Witch-king of Angmar, his prowess is increased by +1 plus the number of Nazgûl permanent-events in play. Discard if attack doesn't wound a character. Corruption. One character wounded by an attack modified by this card receives 6 corruption points (place this card under the character). If at a haven [{H}] during his untap phase, a character with this card may attempt to remove it instead of untapping or healing. Make a roll (or draw a #): if this result is greater than 5, discard this card. May not be duplicated on a given Nazgûl.">
+    <card name="The Pale Sword" graphics="ThePaleSword.jpg" text="Unique. A Nazgul's prowess is modified by +1; if used with the Witch-king of Angmar, his prowess is increased by +1 plus the number of Nazgul permanent-events in play. Discard if attack doesn't wound a character. Corruption. One character wounded by an attack modified by this card receives 6 corruption points (place this card under the character). If at a haven [{H}] during his untap phase, a character with this card may attempt to remove it instead of untapping or healing. Make a roll (or draw a #): if this result is greater than 5, discard this card. May not be duplicated on a given Nazgul.">
        <attr key="unique" value="yes"/>
        <attr key="corruption" value="6"/>
        <attr key="rarity" value="R"/>
@@ -876,14 +876,14 @@
        <attr key="type" value="Hazard"/>
 	   <attr key="keyword" value="Environment"/>
     </card>
-    <card name="Ûvatha the Horseman" graphics="UvathatheHorsemanDC.jpg" text="Unique. Nazgûl (9th). May be played as a hazard creature (with one strike) or as a permanent-event. As a creature, may also be played keyed to Harondor, Horse Plains, Gorgoroth, Khand, Gap of Khand, Harrhûn, and Nuriag; and may also be played at sites in these regions. If played as a permanent-event, it will remain in play until tapped during the opponent's movement/hazard phase (tapping counts against the hazard limit). When tapped, Ûvatha the Horseman becomes a short-event and you may bring one hazard creature from your discard pile to your hand.">
+    <card name="Ûvatha the Horseman" graphics="UvathatheHorsemanDC.jpg" text="Unique. Nazgul (9th). May be played as a hazard creature (with one strike) or as a permanent-event. As a creature, may also be played keyed to Harondor, Horse Plains, Gorgoroth, Khand, Gap of Khand, Harrhûn, and Nuriag; and may also be played at sites in these regions. If played as a permanent-event, it will remain in play until tapped during the opponent's movement/hazard phase (tapping counts against the hazard limit). When tapped, Ûvatha the Horseman becomes a short-event and you may bring one hazard creature from your discard pile to your hand.">
        <attr key="unique" value="yes"/>
        <attr key="strikes" value="1"/>
        <attr key="mp" value="5"/>
        <attr key="body" value="9"/>
        <attr key="prowess" value="15"/>
        <attr key="playable" value="{d}{D}"/>
-       <attr key="subclass" value="Nazgûl"/>
+       <attr key="subclass" value="Nazgul"/>
        <attr key="rarity" value="R"/>
        <attr key="class" value="Creature/Permanent-event"/>
        <attr key="type" value="Hazard"/>
@@ -933,14 +933,14 @@
        <attr key="class" value="Creature"/>
        <attr key="type" value="Hazard"/>
     </card>
-    <card name="Witch-king of Angmar" graphics="WitchkingofAngmarDC.jpg" text="Unique. Nazgûl (1st). May be played as a hazard creature (with one strike) or as a permanent-event. As a creature, may also be played keyed to Angmar, Gundabad, Gorgoroth, Imlad Morgul, Ithilien, Harondor and Hyarmenfalas; and may also be played at sites in these regions. If played as a permanent-event, it will remain in play until tapped during the opponent's movement/hazard phase (tapping counts against the hazard limit). When tapped, Witch-king of Angmar becomes a long-event and causes all Shadow-holds [{S}] to become Dark-holds [{D}].">
+    <card name="Witch-king of Angmar" graphics="WitchkingofAngmarDC.jpg" text="Unique. Nazgul (1st). May be played as a hazard creature (with one strike) or as a permanent-event. As a creature, may also be played keyed to Angmar, Gundabad, Gorgoroth, Imlad Morgul, Ithilien, Harondor and Hyarmenfalas; and may also be played at sites in these regions. If played as a permanent-event, it will remain in play until tapped during the opponent's movement/hazard phase (tapping counts against the hazard limit). When tapped, Witch-king of Angmar becomes a long-event and causes all Shadow-holds [{S}] to become Dark-holds [{D}].">
        <attr key="unique" value="yes"/>
        <attr key="strikes" value="1"/>
        <attr key="mp" value="6"/>
        <attr key="body" value="12"/>
        <attr key="prowess" value="17"/>
        <attr key="playable" value="{d}{D}"/>
-       <attr key="subclass" value="Nazgûl"/>
+       <attr key="subclass" value="Nazgul"/>
        <attr key="rarity" value="R"/>
        <attr key="class" value="Creature/Permanent-event"/>
        <attr key="type" value="Hazard"/>
@@ -956,7 +956,7 @@
        <attr key="class" value="Creature"/>
        <attr key="type" value="Hazard"/>
     </card>
-    <card name="Words of Power and Terror" graphics="WordsofPowerandTerror.jpg" text="Modify the prowess of all characters in a company attacked by a Nazgûl by -1 until the end of the turn. Cannot be duplicated on a given company.">
+    <card name="Words of Power and Terror" graphics="WordsofPowerandTerror.jpg" text="Modify the prowess of all characters in a company attacked by a Nazgul by -1 until the end of the turn. Cannot be duplicated on a given company.">
        <attr key="rarity" value="R"/>
        <attr key="class" value="Short-event"/>
        <attr key="type" value="Hazard"/>
@@ -2470,7 +2470,7 @@
        <attr key="class" value="Dúnadan Faction"/>
        <attr key="type" value="Hero Resource"/>
     </card>
-    <card name="Lapse of Will" graphics="LapseofWill.jpg" text="The prowess of each attack is modified by -1. The prowess of each Nazgûl attack is modified by -3.">
+    <card name="Lapse of Will" graphics="LapseofWill.jpg" text="The prowess of each attack is modified by -1. The prowess of each Nazgul attack is modified by -3.">
        <attr key="rarity" value="U"/>
        <attr key="class" value="Long-event"/>
        <attr key="type" value="Hero Resource"/>
@@ -2767,7 +2767,7 @@
        <attr key="type" value="Hero Resource"/>
 	   <attr key="keyword" value="Food item"/>
     </card>
-    <card name="Praise to Elbereth" graphics="PraisetoElbereth.jpg" text="For each of your characters in play that you choose to tap, cancel one Nazgûl event or one Nazgûl attack. Additionally, if Doors of Night is in play, characters gain +1 prowess until the end of the turn.">
+    <card name="Praise to Elbereth" graphics="PraisetoElbereth.jpg" text="For each of your characters in play that you choose to tap, cancel one Nazgul event or one Nazgul attack. Additionally, if Doors of Night is in play, characters gain +1 prowess until the end of the turn.">
        <attr key="rarity" value="U"/>
        <attr key="class" value="Short-event"/>
        <attr key="type" value="Hero Resource"/>
@@ -3062,12 +3062,12 @@
        <attr key="type" value="Hero Resource"/>
 	   <attr key="keyword" value="Battle-gear"/>
     </card>
-    <card name="The Old Thrush" graphics="TheOldThrushDC.jpg" text="-3 to the prowess and body of a non-Nazgûl attack with a prowess of 13 or more. Cannot be duplicated on a given attack.">
+    <card name="The Old Thrush" graphics="TheOldThrushDC.jpg" text="-3 to the prowess and body of a non-Nazgul attack with a prowess of 13 or more. Cannot be duplicated on a given attack.">
        <attr key="rarity" value="U"/>
        <attr key="class" value="Short-event"/>
        <attr key="type" value="Hero Resource"/>
     </card>
-	<card name="The One Ring" graphics="TheOneRingDC.jpg" text="Unique. The One Ring. Playable only with a Gold Ring and after a test indicates The One Ring. +5 prowess (to a maximum of double the bearer's starting prowess). +5 body (to a maximum of 10). +5 to direct influence. Bearer may make a corruption check modified by -2 to cancel a strike; this does not work against Undead and Nazgûl strikes. +1 corruption point to every character in the bearer's company, or at the bearer's site.">
+	<card name="The One Ring" graphics="TheOneRingDC.jpg" text="Unique. The One Ring. Playable only with a Gold Ring and after a test indicates The One Ring. +5 prowess (to a maximum of double the bearer's starting prowess). +5 body (to a maximum of 10). +5 to direct influence. Bearer may make a corruption check modified by -2 to cancel a strike; this does not work against Undead and Nazgul strikes. +1 corruption point to every character in the bearer's company, or at the bearer's site.">
        <attr key="unique" value="yes"/>
        <attr key="corruption" value="6"/>
        <attr key="mp" value="6"/>
@@ -3194,7 +3194,7 @@
        <attr key="influence" value="+5"/>
 	   <attr key="keyword" value="Ring"/>
     </card>
-    <card name="Wizard's River-horses" graphics="WizardsRiverhorses.jpg" text="Spell. Wizard only. All Nazgûl events are discarded or cancels an attack against a Wizard if he is the only character in the company. Wizard makes a corruption check modified by -2.">
+    <card name="Wizard's River-horses" graphics="WizardsRiverhorses.jpg" text="Spell. Wizard only. All Nazgul events are discarded or cancels an attack against a Wizard if he is the only character in the company. Wizard makes a corruption check modified by -2.">
        <attr key="magic" value="Spell"/>
        <attr key="rarity" value="U"/>
        <attr key="class" value="Short-event"/>

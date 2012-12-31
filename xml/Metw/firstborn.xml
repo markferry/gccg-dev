@@ -505,7 +505,7 @@
 			 <attr key="class" value="Creature/Short-event"/>
 			 <attr key="prowess" value="14"/>
 			 <attr key="body" value="9"/>
-			 <attr key="mp" value="2*"/>
+			 <attr key="mp" value="3*"/>
 			 <attr key="strikes" value="2"/>
 			 <attr key="subclass" value="Awakened Plant"/>
 	</card>
@@ -645,7 +645,7 @@
 			 <attr key="rarity" value="C"/>
 			 <attr key="class" value="Permanent-event"/>
 	</card>
-	<card name="Ancient Skill and Wisdom" graphics="Ancient Skill and Wisdom.jpg" text="Playable on an Elf with mind 8 or more(7 or more if a Noldo) at a Haven [H]. Target Elf may use spells as if a Wizard (except Sacrifice of Form; if on Glorfindel he may play Sacrifice of Form on a Nazgûl or Spawn attack created by a unique hazard creature or event: keep this card with Sacrifice of Form and place both on Glorfindel when he re-enters play).">
+	<card name="Ancient Skill and Wisdom" graphics="Ancient Skill and Wisdom.jpg" text="Playable on an Elf with mind 8 or more(7 or more if a Noldo) at a Haven [H]. Target Elf may use spells as if a Wizard (except Sacrifice of Form; if on Glorfindel he may play Sacrifice of Form on a Nazgul or Spawn attack created by a unique hazard creature or event: keep this card with Sacrifice of Form and place both on Glorfindel when he re-enters play).">
 			 <attr key="type" value="Hero Resource"/>
 			 <attr key="rarity" value="C"/>
 			 <attr key="class" value="Permanent-event"/>
@@ -763,6 +763,13 @@
 			 <attr key="unique" value="yes"/>
 			 <attr key="class" value="Elf Faction"/>
 			 <attr key="mp" value="1(2)"/>
+	</card>
+	<card name="Eryn Lasgalen" graphics="Eryn Lasgalen.jpg" text="Unique. Playable if Clean the Greenwood or Pass the Doors of Dol Guldur is in play. Each of your unique factions in play at sites inMirkwood or its adjacent regions may tap to give -1 to prowess and strikes of rescue-attacks or attacks from Rescue Prisoners your companies face at sites in Mirkwood (to a minimum of 1). Additionally, if you receive mp for Profitable Trade with factions played in Wilderland, Woodland Realm becomes a Free-domain [f], Heart of Mirkwood and Western Mirkwood become Border-lands [b] and Southern Mirkwood becomes a Shadow-land [s]. Automatic- attacks at minion Free-holds [F] and Border-holds [B] in Mirkwood receive +2 prowess and cannot be cancelled. CvCC is no longer cancelled by Dol Guldur’s site effect. Hazard limit against minion companies moving through a region of Mirkwood is increased by 1.">
+			 <attr key="type" value="Hero Resource"/>
+			 <attr key="rarity" value="R"/>
+			 <attr key="unique" value="yes"/>
+			 <attr key="class" value="Permanent-event"/>
+			 <attr key="mp" value="1"/>
 	</card>
 	<card name="Essay on Ringcraft" graphics="Essay on Ringcraft.jpg" text="Lost Knowledge. Playable at Amon Lind, Osteledan or Ost-in-Edhil. If bearer is a sage or Elf with mind 5 or more and at a Haven [H], he may and replace this item with a Lesser Ring or Magic Ring item, which may also be taken from your discard pile, sideboard or play deck (shuffle if searched).">
 			 <attr key="type" value="Dual Resource"/>
@@ -898,7 +905,7 @@
 			 <attr key="unique" value="yes"/>
 			 <attr key="class" value="Long-event"/>
 	</card>
-	<card name="Sulhelka" graphics="Sulhelka.jpg" text="Unique. Playable at any Dark-hold [D], if the company has faced a Nazgûl attack the same turn. Weapon. Values in parenthesis apply to an Elf bearer. +2 EI against Elves and Dwarves. Warrior only: +3 prowess to a maximum of 9 (+4 to a maximum of 10 against Orcs, Trolls, Drakes and Undead). Sage only: tap: play Bitter Cold from your discard pile or sideboard (no CC required). Bearer cannot be affected or targeted by fire or heat attacks (e.g. Dragon’s Breath, The Black Enemy’s Wrath, Some Secret Art of Flame, etc).">
+	<card name="Sulhelka" graphics="Sulhelka.jpg" text="Unique. Playable at any Dark-hold [D], if the company has faced a Nazgul attack the same turn. Weapon. Values in parenthesis apply to an Elf bearer. +2 EI against Elves and Dwarves. Warrior only: +3 prowess to a maximum of 9 (+4 to a maximum of 10 against Orcs, Trolls, Drakes and Undead). Sage only: tap: play Bitter Cold from your discard pile or sideboard (no CC required). Bearer cannot be affected or targeted by fire or heat attacks (e.g. Dragon’s Breath, The Black Enemy’s Wrath, Some Secret Art of Flame, etc).">
 			 <attr key="type" value="Hero Resource"/>
 			 <attr key="rarity" value="R"/>
 			 <attr key="unique" value="yes"/>
@@ -928,14 +935,7 @@
 			 <attr key="mp" value="1"/>
 			 <attr key="cp" value="+2"/>
 	</card>
-	<card name="The Wood of Greenleaves" graphics="The Wood of Greenleaves.jpg" text="Unique. Playable if Clean the Greenwood or Pass the Doors of Dol Guldur is in play. Each of your unique factions in play at sites inMirkwood or its adjacent regions may tap to give -1 to prowess and strikes of rescue-attacks or attacks from Rescue Prisoners your companies face at sites in Mirkwood (to a minimum of 1). Additionally, if you receive mp for Profitable Trade with factions played in Wilderland, Woodland Realm becomes a Free-domain [f], Heart of Mirkwood and Western Mirkwood become Border-lands [b] and Southern Mirkwood becomes a Shadow-land [s]. Automatic- attacks at minion Free-holds [F] and Border-holds [B] in Mirkwood receive +2 prowess and cannot be cancelled. CvCC is no longer cancelled by Dol Guldur’s site effect. Hazard limit against minion companies moving through a region of Mirkwood is increased by 1.">
-			 <attr key="type" value="Hero Resource"/>
-			 <attr key="rarity" value="R"/>
-			 <attr key="unique" value="yes"/>
-			 <attr key="class" value="Permanent-event"/>
-			 <attr key="mp" value="1"/>
-	</card>
-	<card name="Towers Destroyed" graphics="Towers Destroyed.jpg" text="Playable on a company at Lórien or a site in Woodland Realm. May also be played on your starting company in lieu of a minor item, if youstart the game at one of these sites. tDuring the site phase at Dol Guldur the company may face an attack based on the number of times this card is rotated: none: Orcs — 3 strikes with 8 prowess; Once: Trolls — 2 strikes with 9 prowess; Twice: Nazgûl — 1 strike with 15 prowess; Thrice: Fallen-Maia — 1 strike with 20 prowess. If such an attack is defeated, tap an avatar or warrior in the company to rotate this card 90° (or place a token). If rotated 360°, place this card with Dol Guldur for 5 mp: all versions of the site become a Ruins &amp; Lairs [R]. Dol Guldur is considered a Darkhaven [kK] for starter movement only and does not leave active play. Southern Mirkwood becomes a Shadow-land [s]. Cannot be duplicated on Dol Guldur.">
+	<card name="Towers Destroyed" graphics="Towers Destroyed.jpg" text="Playable on a company at Lórien or a site in Woodland Realm. May also be played on your starting company in lieu of a minor item, if youstart the game at one of these sites. tDuring the site phase at Dol Guldur the company may face an attack based on the number of times this card is rotated: none: Orcs — 3 strikes with 8 prowess; Once: Trolls — 2 strikes with 9 prowess; Twice: Nazgul — 1 strike with 15 prowess; Thrice: Fallen-Maia — 1 strike with 20 prowess. If such an attack is defeated, tap an avatar or warrior in the company to rotate this card 90° (or place a token). If rotated 360°, place this card with Dol Guldur for 5 mp: all versions of the site become a Ruins &amp; Lairs [R]. Dol Guldur is considered a Darkhaven [kK] for starter movement only and does not leave active play. Southern Mirkwood becomes a Shadow-land [s]. Cannot be duplicated on Dol Guldur.">
 			 <attr key="type" value="Hero Resource"/>
 			 <attr key="rarity" value="U"/>
 			 <attr key="class" value="Permanent-event"/>
@@ -1031,7 +1031,7 @@
 			 <attr key="sp" value="3"/>
 			 <attr key="specific" value="Círdan"/>
 	</card>
-	<card name="Captain of the House" graphics="Captain of the House.jpg" text="Unique. Elrond specific. Playable on Glorfindel at Rivendell (or in your starting company). Glorfindel becomes a leader, requires only 6 points of influence to control and can only be controlled by Elrond or GI. He receives +1 prowess against Nazgûl, Spawn and Dragons, and the body of such strikes against him is modified by -1. Discard this card if Glorfindel is not in a company with Elrond and moves to a site that is not in Eriador or its adjacent regions. tap: during your end-of-turn phase to take one Power Against the Shadow from your discard pile to your hand.">
+	<card name="Captain of the House" graphics="Captain of the House.jpg" text="Unique. Elrond specific. Playable on Glorfindel at Rivendell (or in your starting company). Glorfindel becomes a leader, requires only 6 points of influence to control and can only be controlled by Elrond or GI. He receives +1 prowess against Nazgul, Spawn and Dragons, and the body of such strikes against him is modified by -1. Discard this card if Glorfindel is not in a company with Elrond and moves to a site that is not in Eriador or its adjacent regions. tap: during your end-of-turn phase to take one Power Against the Shadow from your discard pile to your hand.">
 			 <attr key="type" value="Stage Resource"/>
 			 <attr key="rarity" value="U"/>
 			 <attr key="unique" value="yes"/>
@@ -1629,7 +1629,7 @@
 			 <attr key="haven" value="Carn Dûm"/>
 			 <attr key="playable" value="Items (minor, major, greater)"/>
 			 <attr key="auto_attack" value="Undead — 3 strikes with 9 prowess; cannot be cancelled by a skill card; each character wounded must make a CC"/>
-			 <attr key="special" value="Non-Nazgûl creatures keyed to the siteattack normally, not as detainment. Characters at this site have their CC modified by -1."/>
+			 <attr key="special" value="Non-Nazgul creatures keyed to the siteattack normally, not as detainment. Characters at this site have their CC modified by -1."/>
 	</card>
     <card name="Osteledan" graphics="Osteledan.jpg" back="1" text="">
 			 <attr key="type" value="Dual Site"/>

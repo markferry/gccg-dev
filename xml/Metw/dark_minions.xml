@@ -543,7 +543,7 @@
        <attr key="region" value="Under-deeps"/>
        <attr key="site_type" value="{D}"/>
        <attr key="playable" value="Items (minor, major, greater)"/>
-       <attr key="special" value="If any Nazgûl permanent-event is in play, one must be used as an additional automatic-attack (attacker's choice, discard after use-ignore result of defeat)."/>
+       <attr key="special" value="If any Nazgul permanent-event is in play, one must be used as an additional automatic-attack (attacker's choice, discard after use-ignore result of defeat)."/>
        <attr key="draw_opp" value="4"/>
        <attr key="auto_attack" value="(1st) Trolls - 3 strikes with 10 prowess (2nd) Opponent may play as an automatic-attack one non-unique hazard creature from his hand normally keyed to Shadow-holds"/>
        <attr key="rarity" value="R2"/>
@@ -750,7 +750,7 @@
        <attr key="class" value="Permanent-event"/>
        <attr key="type" value="Hazard"/>
     </card>
-    <card name="Helms of Iron" graphics="HelmsofIron.jpg" text="Playable only if you have a Nazgûl permanent-event in play. Discard the Nazgûl when this card is brought into play. All Orc, Troll, and Man attacks with body have their body modified by +1; and all Orc, Troll, and Man attacks with no body have 4 body.">
+    <card name="Helms of Iron" graphics="HelmsofIron.jpg" text="Playable only if you have a Nazgul permanent-event in play. Discard the Nazgul when this card is brought into play. All Orc, Troll, and Man attacks with body have their body modified by +1; and all Orc, Troll, and Man attacks with no body have 4 body.">
        <attr key="rarity" value="U2"/>
        <attr key="class" value="Permanent-event"/>
        <attr key="type" value="Hazard"/>
@@ -760,7 +760,7 @@
        <attr key="class" value="Permanent-event"/>
        <attr key="type" value="Hazard"/>
     </card>
-    <card name="In Great Wrath" graphics="InGreatWrath.jpg" text="Playable on a Nazgûl in your discard pile that could immediatly attack. The Nazgûl attacks immediately (not counting against the hazard limit) with +2 prowess and -1 body.">
+    <card name="In Great Wrath" graphics="InGreatWrath.jpg" text="Playable on a Nazgul in your discard pile that could immediatly attack. The Nazgul attacks immediately (not counting against the hazard limit) with +2 prowess and -1 body.">
        <attr key="rarity" value="U2"/>
        <attr key="class" value="Short-event"/>
        <attr key="type" value="Hazard"/>
@@ -780,7 +780,7 @@
        <attr key="class" value="Short-event"/>
        <attr key="type" value="Hazard"/>
     </card>
-    <card name="Long Dark Reach" graphics="LongDarkReach.jpg" text="Playable on a moving company with at least one Wilderness in its site path if you have at least 10 cards in your play deck. Reveal the top seven cards of your play deck. One revealed Nazgûl, Dragon, or a non-unique creature of your choice immediatly attacks the company (regardless of its playability requirements). The creature must be playable in some region besides Coastal Sea. If the creature could not normally be played on the company, modify its prowess by -4. Shuffle all unused cards and return them to the top of your play deck.">
+    <card name="Long Dark Reach" graphics="LongDarkReach.jpg" text="Playable on a moving company with at least one Wilderness in its site path if you have at least 10 cards in your play deck. Reveal the top seven cards of your play deck. One revealed Nazgul, Dragon, or a non-unique creature of your choice immediatly attacks the company (regardless of its playability requirements). The creature must be playable in some region besides Coastal Sea. If the creature could not normally be played on the company, modify its prowess by -4. Shuffle all unused cards and return them to the top of your play deck.">
        <attr key="rarity" value="R3"/>
        <attr key="class" value="Short-event"/>
        <attr key="type" value="Hazard"/>
@@ -818,7 +818,7 @@
        <attr key="class" value="Permanent-event/Short-event"/>
        <attr key="type" value="Hazard"/>
     </card>
-    <card name="Out of the Black Sky" graphics="OutoftheBlackSky.jpg" text="Playable if Doors of Night is in play on a Nazgûl permanent-event that could immediately attack if it were in your hand. The Nazgûl immediately attacks as a creature from its permanent-event state (not counting against the hazard limit) and chooses defending characters. If the Nazgûl is defeated, place this card in opponent's marshalling point pile and remove the Nazgûl from play. Otherwise, discard this card. This can be used on an opponent's Nazgûl permanent-event as well as on your own.">
+    <card name="Out of the Black Sky" graphics="OutoftheBlackSky.jpg" text="Playable if Doors of Night is in play on a Nazgul permanent-event that could immediately attack if it were in your hand. The Nazgul immediately attacks as a creature from its permanent-event state (not counting against the hazard limit) and chooses defending characters. If the Nazgul is defeated, place this card in opponent's marshalling point pile and remove the Nazgul from play. Otherwise, discard this card. This can be used on an opponent's Nazgul permanent-event as well as on your own.">
        <attr key="mp" value="5"/>
        <attr key="rarity" value="R3"/>
        <attr key="class" value="Permanent-event"/>
@@ -868,7 +868,7 @@
        <attr key="class" value="Short-event"/>
        <attr key="type" value="Hazard"/>
     </card>
-    <card name="Scimitars of Steel" graphics="ScimitarsofSteel.jpg" text="Playable only if you have a Nazgûl permanent-event in play. Discard the Nazgûl when this card is brought into play. All Orc, Troll, and Men attacks receive +1 prowess.">
+    <card name="Scimitars of Steel" graphics="ScimitarsofSteel.jpg" text="Playable only if you have a Nazgul permanent-event in play. Discard the Nazgul when this card is brought into play. All Orc, Troll, and Men attacks receive +1 prowess.">
        <attr key="rarity" value="U2"/>
        <attr key="class" value="Permanent-event"/>
        <attr key="type" value="Hazard"/>
@@ -923,7 +923,7 @@
        <attr key="class" value="Short-event"/>
        <attr key="type" value="Hazard"/>
     </card>
-    <card name="Two or Three Tribes Present" graphics="TwoorThreeTribesPresent.jpg" text="Playable on a company moving with at least two Wildernesses, one Shadow-land, or one Dark-domainin their site path. When played, announce a creature type except Nazgûl, Undead, or Dragons (like Orcs, Men, Slayers, Drakes, etc.). For this turn, any hazard creatures of this type played against target company do not count against the hazard limit.">
+    <card name="Two or Three Tribes Present" graphics="TwoorThreeTribesPresent.jpg" text="Playable on a company moving with at least two Wildernesses, one Shadow-land, or one Dark-domainin their site path. When played, announce a creature type except Nazgul, Undead, or Dragons (like Orcs, Men, Slayers, Drakes, etc.). For this turn, any hazard creatures of this type played against target company do not count against the hazard limit.">
        <attr key="rarity" value="C2"/>
        <attr key="class" value="Short-event"/>
        <attr key="type" value="Hazard"/>
@@ -955,7 +955,7 @@
        <attr key="type" value="Hazard"/>
 	   <attr key="keyword" value="Corruption"/>
     </card>
-    <card name="Wraith-lord" graphics="Wraithlord.jpg" text="Playable on a moving company with two Dark-domains in its site path. Each Nazgûl that attacks target company this turn receives +2 prowess and lowers the body of any characters it wounds by one (for the rest of the turn). Each Nazgûl so played does not count against the hazard limit. Cannot be duplicated on a given turn.">
+    <card name="Wraith-lord" graphics="Wraithlord.jpg" text="Playable on a moving company with two Dark-domains in its site path. Each Nazgul that attacks target company this turn receives +2 prowess and lowers the body of any characters it wounds by one (for the rest of the turn). Each Nazgul so played does not count against the hazard limit. Cannot be duplicated on a given turn.">
        <attr key="rarity" value="R2"/>
        <attr key="class" value="Short-event"/>
        <attr key="type" value="Hazard"/>
@@ -1094,7 +1094,7 @@
        <attr key="type" value="Hero Resource"/>
 	   <attr key="keyword" value="Environment"/>
     </card>
-    <card name="Barrow-blade" graphics="Barrowblade.jpg" text="Tap the bearer of a Dagger of Westernesse during the site phase at a Ruins &amp; Lairs and play this with the Dagger. Dagger receives +1 prowess (+3 versus Undead and Nazgûl). Cannot be duplicated on a given Dagger.">
+    <card name="Barrow-blade" graphics="Barrowblade.jpg" text="Tap the bearer of a Dagger of Westernesse during the site phase at a Ruins &amp; Lairs and play this with the Dagger. Dagger receives +1 prowess (+3 versus Undead and Nazgul). Cannot be duplicated on a given Dagger.">
        <attr key="corruption" value="1"/>
        <attr key="mp" value="1"/>
        <attr key="rarity" value="C2"/>
@@ -1437,7 +1437,7 @@
 	   <attr key="keyword" value="Jewel"/>
 	   <attr key="keyword" value="Hoard Item"/>
     </card>
-    <card name="Noldo-lantern" graphics="Noldolantern.jpg" text="Playable at any Under-deep site. +2 to all rolls required for bearer's company to move to an adjacent site in the Under-deeps. Tap Noldo-lantern to give -2 prowess and one less strike (to a minimum of one) to any Undead, Nazgûl, Orc, or Troll attack.">
+    <card name="Noldo-lantern" graphics="Noldolantern.jpg" text="Playable at any Under-deep site. +2 to all rolls required for bearer's company to move to an adjacent site in the Under-deeps. Tap Noldo-lantern to give -2 prowess and one less strike (to a minimum of one) to any Undead, Nazgul, Orc, or Troll attack.">
        <attr key="corruption" value="2"/>
        <attr key="mp" value="2"/>
        <attr key="rarity" value="U2"/>

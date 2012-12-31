@@ -12,7 +12,7 @@
 			 <attr key="subclass" value="Animals, Vermin"/>
 			 <attr key="keyword" value="Vermin"/>
 		</card>
-		<card name="Between Two Worlds" graphics="Between Two Worlds.jpg" text="Unique. Stature card. Playable on a Ring for MortalMen if borne by a Man or Dúnadan with a normal mind of 8 or more. Bearer may tap test any gold ring item in his company. All non-Maia, non-Nazgûl, non-Undead strikes against the bearer are ineffectual. Bearer may not have followers. Bearer must make a CC to move. Bearer may not bear non-ring items.">
+		<card name="Between Two Worlds" graphics="Between Two Worlds.jpg" text="Unique. Stature card. Playable on a Ring for MortalMen if borne by a Man or Dúnadan with a normal mind of 8 or more. Bearer may tap test any gold ring item in his company. All non-Maia, non-Nazgul, non-Undead strikes against the bearer are ineffectual. Bearer may not have followers. Bearer must make a CC to move. Bearer may not bear non-ring items.">
 			 <attr key="type" value="Dual Resource"/>
 			 <attr key="rarity" value="U"/>
 			 <attr key="unique" value="yes"/>
@@ -97,7 +97,7 @@
 			 <attr key="mp" value="1"/>
 			 <attr key="keyword" value="Vermin"/>
 		</card>
-		<card name="Hunt for the Ring" graphics="Hunt for the Ring.jpg" text="For every ring item in a company one Nazgûl or Maia, or one Dúnadan or Man hazard creature with an asterix (*) may be played not counting against the hazard limit. Cannot be duplicated.">
+		<card name="Hunt for the Ring" graphics="Hunt for the Ring.jpg" text="For every ring item in a company one Nazgul or Maia, or one Dúnadan or Man hazard creature with an asterix (*) may be played not counting against the hazard limit. Cannot be duplicated.">
 			 <attr key="type" value="Hazard"/>
 			 <attr key="rarity" value="C"/>
 			 <attr key="class" value="Permanent-event"/>
@@ -213,7 +213,7 @@
 			 <attr key="class" value="Permanent-event"/>
 			 <attr key="mp" value="7"/>
 		</card>
-		<card name="Ring for Mortal Men" graphics="Ring for Mortal Men.jpg" text="White player only. Man Ring. Playable at Dol Guldur on a character bearing a gold ring item. May also be played at anysite after facing a Nazgûl attack or after initiating CvCC involving a Ringwraith. Discard the gold ring. Target character faces an attack which cannot be cancelled, redirected or made ineffectual: Fallen Maia — 1 strike with 20 prowess; if successful target character is eliminated. You may include up to 9 copies of this card in your play deck and sideboard combined. If bearer is a Man or Dúnadan with mind of 6 or more: +3 to his body (to a maximum of 10) and bearer can use spirit-magic as if a Ringwraith. Cannot be duplicated on a given character.">
+		<card name="Ring for Mortal Men" graphics="Ring for Mortal Men.jpg" text="White player only. Man Ring. Playable at Dol Guldur on a character bearing a gold ring item. May also be played at anysite after facing a Nazgul attack or after initiating CvCC involving a Ringwraith. Discard the gold ring. Target character faces an attack which cannot be cancelled, redirected or made ineffectual: Fallen Maia — 1 strike with 20 prowess; if successful target character is eliminated. You may include up to 9 copies of this card in your play deck and sideboard combined. If bearer is a Man or Dúnadan with mind of 6 or more: +3 to his body (to a maximum of 10) and bearer can use spirit-magic as if a Ringwraith. Cannot be duplicated on a given character.">
 			 <attr key="type" value="Hero Resource"/>
 			 <attr key="rarity" value="C2"/>
 			 <attr key="class" value="Special Item"/>
