@@ -400,7 +400,7 @@
        <attr key="class" value="Short-event"/>
        <attr key="type" value="Hero Resource"/>
     </card>
-    <card name="Farmer Maggot" graphics="FarmerMaggot.jpg" text="Unique. If your company faces an attack while at a site in The Shire, Arthedain, or Cardolan, you may immediately replace its site card with another site in The Shire, Arthedain, or Cardolan. If your company takes this option, the attack is canceled and this card is discarded.">
+	<card name="Farmer Maggot" graphics="FarmerMaggotDC.jpg" text="Unique. If your company faces an attack while at a site in The Shire, Old Forest, Arthedain, or Cardolan, you may immediately replace its site card with another site in The Shire, Old Forest, Arthedain, or  Cardolan (from your location deck). If your company takes this option, the attack is canceled and this card is discarded.">
        <attr key="unique" value="yes"/>
        <attr key="rarity" value="R1"/>
        <attr key="class" value="Permanent-event"/>

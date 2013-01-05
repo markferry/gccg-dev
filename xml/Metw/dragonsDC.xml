@@ -1021,7 +1021,7 @@
        <attr key="class" value="Permanent-event"/>
        <attr key="type" value="Hero Resource"/>
     </card>
-    <card name="King under the Mountain" graphics="KingundertheMountain.jpg" text="Unique. Playable on Balin, Dáin II, Thorin II, or Thráin II if his company has defeated an at home manifestation attack other than Eärcaraxë at Home. The target Dwarf receives +5 direct influence against Dwarves and Dwarf factions. The site where the Dragon was defeated becomes a Border-hold [{B}] and Dwarf-hold for all purposes and has no Dragon automatic-attacks. Only Dwarves may play items at this site.">
+    <card name="King under the Mountain" graphics="KingundertheMountainDC.jpg" text="Unique. Playable on Balin, Dáin II, Thorin II, or Thráin II if he is at the Dragon's Lair corresponding to the unique Dragon (other than Eärcaraxë) his company has defeated a non-ahunt manifestation of. The target Dwarf receives +5 EI against Dwarves. All versions of the corresponding Dragon's Lair become a Border-hold [{B}] and Dwarf-hold for all purposes and have no Dragon automatic-attacks. Only Dwarves may play items at this site.">
        <attr key="unique" value="yes"/>
        <attr key="mp" value="5"/>
        <attr key="rarity" value="R2"/>

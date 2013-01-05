@@ -630,7 +630,7 @@
        <attr key="type" value="Stage Resource"/>
 	   <attr key="specific" value="Fallen-wizard"/>
     </card>
-    <card name="Thrall of the Voice" graphics="ThralloftheVoice.jpg" text="Instead of a normal character, during your organization phase you may bring into play one character (including a minion agent) with up to a 6 mind. Place this card with the character. -1 to his mind to a minimum of 1. Such a character may also be in your starting company.">
+    <card name="Thrall of the Voice" graphics="ThralloftheVoiceDC.jpg" text="Instead of a normal character, during your organization phase you may bring into play one character (including a minion agent) with up to a 6 mind. Place this card with the character. -1 to his mind to a minimum of 1. Such a character may also be in your starting company, or brought into play at one of your Lordhavens [H].  ">
        <attr key="sp" value="1"/>
        <attr key="rarity" value="C4"/>
        <attr key="class" value="Permanent-event"/>
