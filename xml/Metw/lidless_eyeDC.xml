@@ -873,7 +873,7 @@
        <attr key="class" value="Creature"/>
        <attr key="type" value="Hazard"/>
     </card>
-    <card name="Elf-lord Revealed in Wrath" graphics="ElflordRevealedinWrath.jpg" text="Elf. One strike (detainment against hero companies). +4 prowess versus Ringwraiths. If Doors of Night is not in play, may also be played keyed to Shadow-lands [{s}]. {cyan} UEP: Elf. One strike (detainment against hero companies). +4 prowess versus Ringwraiths. If Gates of Morning is in play, may also be played keyed to Shadow-lands {s}.">
+    <card name="Elf-lord Revealed in Wrath" graphics="ElflordRevealedinWrathDC.jpg" text="{cyan} UEP - Elf. One strike (detainment against hero companies). +4 prowess versus Ringwraiths. If Gates of Morning is in play, may also be played keyed to Shadow-lands [{s}].">
        <attr key="strikes" value="1"/>
        <attr key="mp" value="3*"/>
        <attr key="playable" value="{w}{w}"/>
