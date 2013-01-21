@@ -5,9 +5,8 @@
   <source url="http://gccg.sourceforge.net/modules/"/>
   <source url="http://www.reneploetz.de/gccg/"/>
   <source url="http://lotrtcgwiki.com/files/gccg/"/>
-  <source url="http://markferry.net/gccg/"/>
   <source url="http://games.phtn.de/gccg/"/>
-  <source url="http://wtactics.org/files/gccg/modules/"/>
+  <source url="http://wtactics.org/files/gccg/modules/"/> 
   <module name="core" version="1.0.7">
 	<include file="decks"/>
 	<include file="doc"/>
@@ -30,7 +29,7 @@
 	<include file="ChangeLog"/>
 	<include file="configure"/>
   </module>
-  <module name="linux-i386" version="0.9.7.0">
+  <module name="linux-i386" version="0.9.7.0.1">
 	<include file="ccg_client"/>
 	<include file="ccg_server"/>
 	<include file="ccg_text_client"/>
@@ -62,7 +61,7 @@
 	<include files="*.dll"/>
 	<include file="README-SDL.txt"/>
   </module>
-  <module name="client" version="0.9.7.1">
+  <module name="client" version="0.9.7.3">
 	<include file="scripts/client.functions"/>
 	<include file="scripts/client.triggers"/>
 	<include file="lib/dictionary.client"/>
@@ -72,7 +71,7 @@
 	<include files="graphics/*.jpg"/>
 	<include files="sounds/*.ogg"/>
   </module>
-  <module name="server" version="0.9.7.1">
+  <module name="server" version="0.9.7.3">
 	<include file="ServerLaunch"/>
 	<include file="ServerStatus"/>
 	<include file="ServerKill"/>
@@ -101,9 +100,9 @@
 	<include dir="perl"/>
 	<include dir="localization"/>
   </module>
-  <module name="mtg-server" version="1.3.4">
-	<requires name="mtg" version="1.3.4" />
-	<requires name="server" version="0.9.7.1" />
+  <module name="mtg-server" version="1.3.6">
+	<requires name="mtg" version="1.3.6" />
+	<requires name="server" version="0.9.7.3" />
 	<include file="scripts/Mtg-factory-server.include"/>
 	<include file="scripts/Mtg-meta-server.include"/>
 	<include file="scripts/Mtg-server.include"/>
@@ -127,17 +126,28 @@
 	<include file="scripts/Lotr-server.include"/>
 	<include file="lotr-sample.conf"/>
   </module>
-  <module name="mtg" version="1.3.4">
+  <module name="mtg" version="1.3.6">
   	<include file="Mtg"/>
 	<include file="Mtg.bat"/>
 	<include file="xml/mtg.xml"/>
 	<include dir="lib/Mtg"/>
 	<include dir="xml/Mtg"/>
 	<include dir="decks/Mtg"/>
-	<include dir="scripts/Mtg"/>
 	<include file="scripts/Mtg.include"/>
 	<include file="scripts/Mtg-common.include"/>
-	<include files="scripts/Mtg.rules"/>
+	<include file="scripts/Mtg.rules"/>
+	<include file="scripts/Mtg/Apprentice.format"/>
+	<include file="scripts/Mtg/Deckstats.command"/>
+	<include file="scripts/Mtg/Deckstats.include"/>
+	<include file="scripts/Mtg/Deckstats.menu"/>
+	<include file="scripts/Mtg/Fetch.command"/>
+	<include file="scripts/Mtg/Hand.command"/>
+	<include file="scripts/Mtg/Hand.menu"/>
+	<include file="scripts/Mtg/Mulligan.command"/>
+	<include file="scripts/Mtg/Needed.command"/>
+	<include file="scripts/Mtg/Remind.command"/>
+	<include file="scripts/Mtg/Showstats.command"/>
+	<include file="scripts/Mtg/Textstats.command"/>
 	<include files="graphics/Mtg/*.png"/>
 	<include files="graphics/Mtg/*_booster.jpg"/>
 	<include files="graphics/Mtg/*_starter.jpg"/>
@@ -202,8 +212,8 @@
 	<include files="graphics/Poker/*.png"/>
 	<include files="graphics/Poker/*.jpg"/>
   </module>
-  <module name="mtg-cards" version="1.81.0">
-    <requires name="mtg-cards-000" version="18" />
+  <module name="mtg-cards" version="1.83.0">
+    <requires name="mtg-cards-000" version="21" />
     <requires name="mtg-cards-001" version="15" />
     <requires name="mtg-cards-002" version="16" />
     <requires name="mtg-cards-003" version="15" />
@@ -283,10 +293,12 @@
     <requires name="mtg-cards-077" version="2" />
     <requires name="mtg-cards-078" version="1" />
     <requires name="mtg-cards-079" version="1" />
-    <requires name="mtg-cards-080" version="1" />
-    <requires name="mtg-cards-081" version="1" />
+    <requires name="mtg-cards-080" version="2" />
+    <requires name="mtg-cards-081" version="2" />
+    <requires name="mtg-cards-082" version="1" />
+    <requires name="mtg-cards-083" version="1" />
   </module>
-  <module name="mtg-cards-000" version="18">
+  <module name="mtg-cards-000" version="21">
 	<include dir="graphics/Mtg/Tokens"/>
 	<include dir="graphics/Mtg/Emblems"/>
 	<include file="graphics/Mtg/JitteCounter.jpg"/>
@@ -531,12 +543,18 @@
   <module name="mtg-cards-079" version="1">
 	<include dir="graphics/Mtg/PC2"/>
   </module>
-  <module name="mtg-cards-080" version="1">
+  <module name="mtg-cards-080" version="2">
 	<include dir="graphics/Mtg/Planes"/>
 	<include dir="graphics/Mtg/Schemes"/>
   </module>
-  <module name="mtg-cards-081" version="1">
+  <module name="mtg-cards-081" version="2">
 	<include dir="graphics/Mtg/M13"/>
+  </module>
+  <module name="mtg-cards-082" version="1">
+	<include dir="graphics/Mtg/RTR"/>
+  </module>
+  <module name="mtg-cards-083" version="1">
+	<include dir="graphics/Mtg/GTC"/>
   </module>
   <module name="pokemon-cards" version="1.9.0">
 	<requires name="pokemon-cards-000" version="5" />

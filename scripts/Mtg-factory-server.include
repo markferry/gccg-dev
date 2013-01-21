@@ -194,6 +194,8 @@ def InitDistributions
   distribution{"M13"}{"booster"}=((1,"L"),(10,"C"),(3,"U"),(1,"R+R+M"));
   distribution{"RTR"}=(,);
   distribution{"RTR"}{"booster"}=((1,"L"),(10,"C"),(3,"U"),(1,"R+R+M"));
+  distribution{"GTC"}=(,);
+  distribution{"GTC"}{"booster"}=((1,"RTR/L"),(10,"C"),(3,"U"),(1,"R+R+M"));
 }
 
 #

@@ -4,7 +4,7 @@
 <ccg name="Magic the Gathering" dir="Mtg">
   <cardset source="mtg_basecards.xml"/>
   <cardset source="pm.xml"/>
-  <cardset source="beta.xml"/>
+  <cardset source="be.xml"/>
   <cardset source="an.xml"/>
   <cardset source="aq.xml"/>
   <cardset source="rv.xml"/>
@@ -81,6 +81,11 @@
   <cardset source="isd.xml"/>
   <cardset source="dka.xml"/>
   <cardset source="avr.xml"/>
+  <cardset source="pc2.xml"/>
+  <cardset source="m13.xml"/>
+  <cardset source="rtr.xml"/>
+  <cardset source="gtc.xml"/>
+
   <image file="b.png" tag="{B}"/>
   <image file="g.png" tag="{G}"/>
   <image file="r.png" tag="{R}"/>
@@ -111,6 +116,7 @@
   <image file="rp.png" tag="{RP}"/>
   <image file="up.png" tag="{UP}"/>
   <image file="wp.png" tag="{WP}"/>
+  <image file="p.png" tag="{P}"/>
   <image file="inf.png" tag="{inf}"/>
   <image file="half.png" tag="{half}"/>
   <image file="0.png" tag="{0}"/>
@@ -141,6 +147,7 @@
   <image file="z.png" tag="{Z}"/>
   <image file="t.png" tag="{T}"/>
   <image file="s.png" tag="{S}"/>
+  <image file="c.png" tag="{C}"/>
   <image file="ut.png" tag="{UT}"/>
 
   <option name="hand card size" value="50"/>

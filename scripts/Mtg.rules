@@ -175,7 +175,7 @@ deck_rules{"Modern"}{"deck+sideboard"}=(
 
   ("RuleCardLimitEach",("Ancestral Vision","Ancient Den","Bitterblossom","Blazing Shoal","Chrome Mox","Cloudpost","Dark Depths","Dread Return","Glimpse of Nature","Golgari Grave-Troll","Great Furnace","Green Sun's Zenith","Hypergenesis","Jace, the Mind Sculptor","Mental Misstep","Ponder","Preordain","Punishing Fire","Rite of Flame","Seat of the Synod","Sensei's Divining Top","Skullclamp","Stoneforge Mystic","Sword of the Meek","Tree of Tales","Umezawa's Jitte","Vault of Whispers","Wild Nacatl",0)),
 
-  ("RuleAllowedSetsReprint",("8TH","9TH","XE","M10","M11","M12","M13","MR","DS","FD","CK","BK","SK","RA","GP","DI","CS","TS","PC","FS","LRW","MOR","SM","EVE","ALA","CFX","ARE","ZDK","WWK","ROE","SOM","MBS","NPH","ISD","DKA","AVR","RTR",4)),
+  ("RuleAllowedSetsReprint",("8TH","9TH","XE","M10","M11","M12","M13","MR","DS","FD","CK","BK","SK","RA","GP","DI","CS","TS","PC","FS","LRW","MOR","SM","EVE","ALA","CFX","ARE","ZDK","WWK","ROE","SOM","MBS","NPH","ISD","DKA","AVR","RTR","GTC",4)),
 );
 
 
@@ -202,7 +202,7 @@ deck_rules{"Extended"}{"deck+sideboard"}=(
   ("RuleCardLimitAny","Relentless Rats"),
 
   ("RuleCardLimitEach",("Jace, the Mind Sculptor","Mental Misstep","Ponder","Preordain","Stoneforge Mystic",0)),
-  ("RuleAllowedSetsReprint",("ZDK","WWK","ROE","M11","SOM","MBS","NPH","M12","ISD","DKA","AVR","M13","RTR",4)),
+  ("RuleAllowedSetsReprint",("ZDK","WWK","ROE","M11","SOM","MBS","NPH","M12","ISD","DKA","AVR","M13","RTR","GTC",4)),
 
 );
 
@@ -226,7 +226,7 @@ deck_rules{"Standard"}{"deck+sideboard"}=(
   ("RuleCardLimitAny","Swamp"),
   ("RuleCardLimitAny","Plains"),
   
-  ("RuleAllowedSetsReprint",("ISD","DKA","AVR","M13","RTR",4)),
+  ("RuleAllowedSetsReprint",("ISD","DKA","AVR","M13","RTR","GTC",4)),
 );
 
 #########
@@ -592,7 +592,7 @@ deck_rules{"Ravnica Block 2"}{"deck+sideboard"}=(
   ("RuleCardLimitAny","Swamp"),
   ("RuleCardLimitAny","Plains"),
 
-  ("RuleAllowedSetsReprint",("RTR",4)),
+  ("RuleAllowedSetsReprint",("RTR","GTC",4)),
 );
 
 ##########

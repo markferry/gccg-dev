@@ -430,6 +430,7 @@ def DKASubmenu
 def EmblemSubmenu 
 {
   Submenu("Select Emblem",(
+  ("Domri Rade","",'Send("Transfer",(1,("out.of.play",187),("play",0)))'),
   ("Elspeth, Knight-Errant","",'Send("Transfer",(1,("out.of.play",167),("play",0)))'),
   ("Koth of the Hammer","",'Send("Transfer",(1,("out.of.play",168),("play",0)))'),
   ("Liliana of the Dark Realms","",'Send("Transfer",(1,("out.of.play",175),("play",0)))'),
@@ -505,6 +506,8 @@ def TokenSubmenuC
    ("Cat 2/1 (B)","",'Send("Transfer",(1,("out.of.play",21),("play",0)))'),
    ("Cat 2/2 (W)","",'Send("Transfer",(1,("out.of.play",113),("play",0)))'),
    ("Centaur 3/3 (G)","",'Send("Transfer",(1,("out.of.play",22),("play",0)))'),
+   ("Centaur 3/3 (G, protection from black)","",'Send("Transfer",(1,("out.of.play",182),("play",0)))'),
+   ("Cleric 1/1 (BW, reanimation)","",'Send("Transfer",(1,("out.of.play",183),("play",0)))'),
    ("Construct 6/12 (C, trample)","",'Send("Transfer",(1,("out.of.play",100),("play",0)))'),
   ));
 }
@@ -557,6 +560,7 @@ def TokenSubmenuF
    ("Faerie 1/1 (U, flying)","",'Send("Transfer",(1,("out.of.play",43),("play",0)))'),
    ("Faerie Rogue 1/1 (B, flying)","",'Send("Transfer",(1,("out.of.play",44),("play",0)))'),
    ("Faerie Rogue 1/1 (BU, flying)","",'Send("Transfer",(1,("out.of.play",45),("play",0)))'),
+   ("Frog Lizard 3/3 (G)","",'Send("Transfer",(1,("out.of.play",184),("play",0)))'),
   ));
 }
 
@@ -588,6 +592,7 @@ def TokenSubmenuH
    ("Homunculus 0/1 (AU)","",'Send("Transfer",(1,("out.of.play",54),("play",0)))'),
    ("Homunculus 2/2 (U)","",'Send("Transfer",(1,("out.of.play",159),("play",0)))'),
    ("Hornet 1/1 (A, flying, haste)","",'Send("Transfer",(1,("out.of.play",172),("play",0)))'),
+   ("Horror 1/1 (BU, flying)","",'Send("Transfer",(1,("out.of.play",185),("play",0)))'),
    ("Horror 4/4 (B)","",'Send("Transfer",(1,("out.of.play",55),("play",0)))'),
    ("Horror */* (C)","",'Send("Transfer",(1,("out.of.play",107),("play",0)))'),
    ("Human 1/1 (R)","",'Send("Transfer",(1,("out.of.play",165),("play",0)))'),
@@ -680,6 +685,7 @@ def TokenSubmenuS
    ("Sliver 1/1 (A)","",'Send("Transfer",(1,("out.of.play",76),("play",0)))'),
    ("Snake 1/1 (G)","",'Send("Transfer",(1,("out.of.play",77),("play",0)))'),
    ("Snake 1/1 (UG)","",'Send("Transfer",(1,("out.of.play",78),("play",0)))'),
+   ("Soldier 1/1 (RW)","",'Send("Transfer",(1,("out.of.play",186),("play",0)))'),
    ("Soldier 1/1 (W)","",'Send("Transfer",(1,("out.of.play",79),("play",0)))'),
    ("Soldier Ally 1/1 (W)","",'Send("Transfer",(1,("out.of.play",110),("play",0)))'),
    ("Spawn 2/2 (A)","",'Send("Transfer",(1,("out.of.play",80),("play",0)))'),
