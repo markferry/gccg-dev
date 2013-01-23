@@ -218,7 +218,7 @@
        <attr key="class" value="Permanent-event"/>
        <attr key="type" value="Hazard"/>
     </card>
-    <card name="Heart Grown Cold" graphics="HeartGrownCold.jpg" text="Fallen-wizard players must use minion site cards for hero Havens. If a Fallen-wizard has more than 4 stage points, his player must also use minion site cards for Free- holds. If a Fallen-wizard has more than 7 stage points, his player must also use minion site cards for Border-holds.">
+    <card name="Heart Grown Cold" graphics="HeartGrownColdDC.jpg" text="Fallen-wizard players must use minion site cards for hero Havens. If a Fallen-wizard has more than 4 stage points, his player must also use minion site cards for Free- holds. If a Fallen-wizard has more than 7 stage points, his player must also use minion site cards for Border-holds. Cannot be duplicated.">
        <attr key="rarity" value="U3"/>
        <attr key="class" value="Permanent-event"/>
        <attr key="type" value="Hazard"/>
