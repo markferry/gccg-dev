@@ -1,5 +1,5 @@
 deck_rules=(,);
-server_description="Universal (RTR)";
+server_description="Universal (GTC)";
 
 deck_rules{"Empty"}=(,);
 deck_rules{"Empty"}{""}=(
@@ -173,7 +173,7 @@ deck_rules{"Modern"}{"deck+sideboard"}=(
 
   ("RuleCardLimitAny","Relentless Rats"),
 
-  ("RuleCardLimitEach",("Ancestral Vision","Ancient Den","Bitterblossom","Blazing Shoal","Chrome Mox","Cloudpost","Dark Depths","Dread Return","Glimpse of Nature","Golgari Grave-Troll","Great Furnace","Green Sun's Zenith","Hypergenesis","Jace, the Mind Sculptor","Mental Misstep","Ponder","Preordain","Punishing Fire","Rite of Flame","Seat of the Synod","Sensei's Divining Top","Skullclamp","Stoneforge Mystic","Sword of the Meek","Tree of Tales","Umezawa's Jitte","Vault of Whispers","Wild Nacatl",0)),
+  ("RuleCardLimitEach",("Ancestral Vision","Ancient Den","Bitterblossom","Blazing Shoal","Bloodbraid Elf","Chrome Mox","Cloudpost","Dark Depths","Dread Return","Glimpse of Nature","Golgari Grave-Troll","Great Furnace","Green Sun's Zenith","Hypergenesis","Jace, the Mind Sculptor","Mental Misstep","Ponder","Preordain","Punishing Fire","Rite of Flame","Seat of the Synod","Seething Song","Sensei's Divining Top","Skullclamp","Stoneforge Mystic","Sword of the Meek","Tree of Tales","Umezawa's Jitte","Vault of Whispers","Wild Nacatl",0)),
 
   ("RuleAllowedSetsReprint",("8TH","9TH","XE","M10","M11","M12","M13","MR","DS","FD","CK","BK","SK","RA","GP","DI","CS","TS","PC","FS","LRW","MOR","SM","EVE","ALA","CFX","ARE","ZDK","WWK","ROE","SOM","MBS","NPH","ISD","DKA","AVR","RTR","GTC",4)),
 );
@@ -623,7 +623,7 @@ deck_rules{"Pauper"}{"deck+sideboard"}=(
   ("RuleCardSets",("UG","UH",0)),
   ("RuleLimitByExpression",(0,"find(left(Attr(\"rarity\",#),1),\"MRUPS\") != NULL && Attr(\"rarity\",#) != \"SC\"")),
   
-  ("RuleCardLimitEach",("Cranial Plating","Frantic Search",0)),
+  ("RuleCardLimitEach",("Cranial Plating","Empty the Warrens","Frantic Search","Grapeshot","Invigorate",0)),
   
   ("RuleCardLimitGeneral",4),
 );

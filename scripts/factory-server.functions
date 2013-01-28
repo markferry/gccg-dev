@@ -69,6 +69,7 @@ def RandomCardSet
 {
   push(d);
   push(r);
+  push(t);
   push(pack);
   pack=(,);
   for(d)(ARG[1])
@@ -76,10 +77,27 @@ def RandomCardSet
     dist=(,);
     for(r)(split(d[1],"+"))
     {
+      reps=1;
+      if(find("*",r))
+      {
+        t=split(r,"*");
+        if(reps=toint(t[0]))
+          r=t[1];
+        else if(reps=toint(t[1]))
+          r=t[0];
+        else
+        {
+          Log("Invalid distribution token: "+r);
+          r="";
+        }
+      }
       if(find("/",r))
-        dist=dist+cards{first(split(r,"/"))}{last(split(r,"/"))})),d[0]);
+      {
+        t=split(r,"/");
+        dist=dist+(cards{t[0]}{t[1]}*reps);
+      }
       else
-        dist=dist+cards{ARG[0]}{r};
+        dist=dist+(cards{ARG[0]}{r}*reps);
     }
     pack=pack+left(shuffle(flatten(dist)),d[0]);
   }

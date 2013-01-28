@@ -141,6 +141,10 @@ while($check =~ m[<tr class="cardItem"><td class="number">(\d*)</td>.+?multivers
 	$color=$4;
 	$rarity=$5;
 	$rarity = "S$rarity" if $flip && ($set eq "ISD" || $set eq "DKA");
+
+# The dual lands from RTR and GTC will be obtainable in DGM booster packs.
+# In order to select from only that pool, those cards need to be given a secondary rarity code.
+        $rarity = "R+RL" if $set =~ /^(?:RTR|GTC)$/ && $cardname =~ /^(?:Hallowed Fountain|Godless Shrine|Watery Grave|Steam Vents|Blood Crypt|Overgrown Tomb|Stomping Ground|Sacred Foundry|Temple Garden|Breeding Pool)$/;
 	
 	if($images)
 	{
