@@ -7,7 +7,7 @@
   <source url="http://lotrtcgwiki.com/files/gccg/"/>
   <source url="http://games.phtn.de/gccg/"/>
   <source url="http://wtactics.org/files/gccg/modules/"/> 
-  <module name="core" version="1.0.7">
+  <module name="core" version="1.0.8">
 	<include file="decks"/>
 	<include file="doc"/>
 	<include file="lib"/>

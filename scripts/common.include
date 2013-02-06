@@ -552,6 +552,7 @@ def RuleAllowedSetsReprint
   push(s);
   push(h);
   push(l);
+  push(o);
   
   l=last(ARG[0]);
   h=head(ARG[0]);
@@ -563,15 +564,17 @@ def RuleAllowedSetsReprint
   }
 
   D=ARG[1];
-  if(length(name(D)-s) > 0)
+  o=name(D)-s;
+  if(length(o))
   {
-    RuleViolation("Can only have cards from sets "+join(h,", "));
+    RuleViolation("Can only have cards from sets "+join(h,", ")+".\nExtra cards found: "+join(unique(sort(o,", "))));
     D=NULL;
   }
   else
     D=RuleCardLimitGeneral(l,D);
   
   return(D);
+  o=pop();
   l=pop();
   h=pop();
   s=pop();
@@ -592,7 +595,7 @@ def RuleLimitEachByExpression
   for(c)(unique(sort(i)))
   {
     if(count(c,i) > ARG[0][0])
-        RuleViolation("Too many: "+canonical_name(c));
+        RuleViolation("Too many: "+canonical_name(c)+" (limit "+ARG[0][0]+")");
     else
         d=d-(c,);
   }

@@ -187,7 +187,7 @@ def InitDistributions
   distribution{"ISD"}=(,);
   distribution{"ISD"}{"booster"}=((1,"L"),(9,"C"),(3,"U"),(1,"2*R+M"),(1,"11*SC+6*SU+2*SR+SM"));
   distribution{"DKA"}=(,);
-  distribution{"DKA"}{"booster"}=((1,"ISD/L"),(9,"C"),(3,"U"),(1,"R+R+M"),(1,"12*SC+6*SU+2*SR+SM"));
+  distribution{"DKA"}{"booster"}=((1,"ISD/L"),(9,"C"),(3,"U"),(1,"2*R+M"),(1,"12*SC+6*SU+2*SR+SM"));
   distribution{"AVR"}=(,);
   distribution{"AVR"}{"booster"}=((1,"L"),(10,"C"),(3,"U"),(1,"2*R+M"));
   distribution{"M13"}=(,);

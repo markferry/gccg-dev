@@ -2610,7 +2610,7 @@ def Say
   {
     if(ARG=="{magenta}End of my turn")
     {
-      if(HasFlag("team") && length(team[player])>1)
+      if(HasFlag("team"))
       {
         if(end.player<0)
           end.turn = copy(0,players_wanted);
@@ -2618,9 +2618,9 @@ def Say
           end.turn = copy(0,players_wanted);
         end.turn[player] = 1;
         end.player = player;
-        
-        SendAll("Message","{yellow}"+player.name{player}+": {magenta}End of my turn (" + tostr(sum(end.turn)) + "/" + length(team[player]) + ")");
       }
+      if(HasFlag("team") && length(team[player])>1)
+        SendAll("Message","{yellow}"+player.name{player}+": {magenta}End of my turn (" + tostr(sum(end.turn)) + "/" + length(team[player]) + ")");
       else
         SendAll("Message","{yellow}"+player.name{player}+": "+ARG);
     }
