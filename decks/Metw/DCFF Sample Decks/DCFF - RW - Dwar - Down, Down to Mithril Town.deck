@@ -1,0 +1,245 @@
+#
+# GCCG v0.9.6.3 Middle-earth deck
+#
+#      DCFF - RW - Dwar - Down, Down to Mithril Town
+#
+
+####
+Deck
+####
+
+# Dual Resource (5)
+
+1 Children of Aulë (DF)
+2 Dwarven Axe (DF)
+1 Old Grudge (DF)
+1 Origin of Stone (DF)
+
+# Hazard (37)
+
+3 An Unexpected Outpost (DM)
+1 Big Bats (FB)
+1 Black Crows (FB)
+1 Cave Worm (TD)
+1 Cave-drake (LE)
+1 Dire Wolves (TD)
+1 Dire Wolves (LE)
+3 Doors of Night (TW)
+1 Fell Winter (LE)
+2 Great Secrets Buried There (DM)
+1 Many Sorrows Befall (TD)
+1 Marsh-drake (TD)
+1 Monstrosity of Diverse Shape (BA)
+1 Pierced by Many Wounds (DM)
+1 Power Built by Waiting (AS)
+1 Rain-drake (TD)
+1 Rats! (LE)
+1 Summons from Long Sleep (AS)
+1 True Fire-drake (TD)
+3 Twilight (LE)
+1 Wake of War (TW)
+2 Wake of War (LE)
+1 Wargs (TW)
+1 Wargs (LE)
+2 Wolves (TW)
+2 Worm's Stench (TD)
+1 Ûvatha the Horseman (TW)
+
+# Minion Character (6)
+
+1 Celedhring (FB)
+4 Dwar the Ringwraith (LE)
+1 Fori the Beardless (DM)
+
+# Minion Resource (32)
+
+1 A Nice Place to Hide (LE)
+1 Ancient Black Axe (AS)
+3 Ancient Secrets (BA)
+2 Bade to Rule (LE)
+2 Crack in the Wall (LE)
+2 Crept Along Cleverly (WH)
+1 Dark Tryst (AS)
+2 Gold Ring that Sauron Fancies (LE)
+2 Iron Shield of Old (AS)
+1 Orc Quarrels (LE)
+1 Ruse (LE)
+2 Secrets of Their Forging (LE)
+1 Stinker (LE)
+1 Swift Strokes (LE)
+1 The Mithril-coat [M] (LE)
+1 The Under-roads (AS)
+1 Voices of Malice (LE)
+1 War-wolf (LE)
+2 We Have Come to Kill (LE)
+2 Weigh All Things to a Nicety (LE)
+2 World Gnawed by the Nameless (AS)
+
+####
+Pool
+####
+
+# Dual Resource (1)
+
+1 His Beard Long and Forked (DF)
+
+# Minion Character (6)
+
+1 Bróin (LE)
+1 Drór (DM)
+1 Gulla (LE)
+1 Náin (LE)
+1 Threlin (LE)
+1 Thulin II (DF)
+
+# Minion Resource (2)
+
+1 Open to the Summons (WH)
+1 Whispers of Rings (BA)
+
+#########
+Sideboard
+#########
+
+# Dual Resource (2)
+
+1 Fungi (DF)
+1 Mornaugrim (DF)
+
+# Hazard (14)
+
+1 Alone and Unadvised (AS)
+1 Balrog of Moria (TW)
+1 Bane of the Ithil-stone (TW)
+1 Doubled Vigilance (DM)
+1 Fell Turtle (TW)
+1 Greed (LE)
+1 Lost in Free-domains (TW)
+1 Nature's Revenge (WH)
+1 News of Doom (LE)
+1 Rolled down to the Sea (WH)
+1 Scatha Ahunt (TD)
+1 Siege (TW)
+1 Stormcrow (PR)
+1 Witch-king of Angmar (TW)
+
+# Hero Resource (4)
+
+1 Mithril (DM)
+3 Vein of Arda (DM)
+
+# Minion Character (1)
+
+1 Tarin (DF)
+
+# Minion Resource (19)
+
+1 Dwarf-chopper (DF)
+1 Dwarven Ring of Barin's Tribe [M] (LE)
+1 Dwarven Ring of Durin's Tribe [M] (LE)
+1 Foul-smelling Paste (LE)
+1 I'll Be At Your Heels (LE)
+1 Liquid Fire (WH)
+1 Magic Ring of Savagery (LE)
+1 Maranya (FP)
+1 No More Nonsense (LE)
+1 Petty-dwarves [M] (AS)
+1 Remnants of Old Robberies (LE)
+1 Sudden Call (LE)
+1 Swift Strokes (LE)
+1 The Balrog [M] (AS)
+1 The Under-roads (AS)
+1 Tokens to Show (AS)
+1 Treason the Greatest Foe (AS)
+1 Voices of Malice (LE)
+1 War-wolf (LE)
+
+#####
+Sites
+#####
+
+# Dual Site (8)
+
+1 Durin's Tower (DF)
+1 Mines of Angûrath (DF)
+1 Mines of Falek-dim (DF)
+1 Ruins of Belegost (DF)
+1 Ruins of Nogrod (DF)
+1 The Drowning-deeps [D] (DF)
+1 The Rusted-deeps [D] (DF)
+1 The Wind-deeps [D] (DF)
+
+# Minion Site (72)
+
+1 Amon Hen [M] (LE)
+1 Amon Lind [M] (FB)
+1 Bandit Lair [M] (LE)
+1 Bar-en-Ibûn [M] (DF)
+1 Barad-dûr [M] (LE)
+1 Barak-shathur [M] (DF)
+1 Barrow-downs [M] (LE)
+1 Beorn's House [M] (LE)
+1 Blue Mountain Dwarf-hold [M] (LE)
+1 Buhr Widu [M] (LE)
+1 Caras Amarth [M] (FB)
+1 Carn Dûm [M] (LE)
+1 Ceber Fanuin [M] (FB)
+1 Cerin Amroth [M] (FB)
+1 Cirith Gorgor [M] (LE)
+1 Cor Angaladh [M] (FB)
+1 Dancing Spire [M] (AS)
+1 Dead Marshes [M] (LE)
+1 Dimrill Dale [M] (LE)
+1 Dol Guldur [M] (LE)
+1 Dunharrow [M] (LE)
+1 Eagles' Eyrie [M] (AS)
+1 Edhellond [M] (AS)
+1 Edoras [M] (LE)
+1 Ettenmoors [M] (LE)
+1 Framsburg [M] (AS)
+1 Gaurblog Lug [M] (DF)
+1 Geann a-Lisch [M] (LE)
+1 Gladden Fields [M] (LE)
+1 Glittering Caves [M] (LE)
+1 Goblin-gate [M] (LE)
+1 Gold Hill [M] (AS)
+1 Gondmaeglom [M] (LE)
+1 Grey Havens [M] (AS)
+1 Hermit's Hill [M] (LE)
+1 Irerock [M] (AS)
+1 Iron Hill Dwarf-hold [M] (LE)
+1 Isengard [M] (LE)
+1 Lossadan Cairn [M] (LE)
+1 Lórien [M] (AS)
+1 Minas Morgul [M] (LE)
+1 Moria [M] (LE)
+1 Mount Gram [M] (LE)
+1 Mount Gundabad [M] (LE)
+1 Mount Rerir [M] (FB)
+1 Nurunkhizdín [M] (DF)
+1 Ost-in-Edhil [M] (LE)
+1 Ovir Hollow [M] (AS)
+1 Raider-hold [M] (LE)
+1 Rhosgobel [M] (AS)
+1 Rivendell [M] (AS)
+1 Sarn Goriwing [M] (LE)
+1 Shelob's Lair [M] (LE)
+1 Telpëmar [M] (FB)
+1 The Carrock [M] (DF)
+1 The Gem-deeps [M] (AS)
+1 The Iron-deeps [M] (AS)
+1 The Lonely Mountain [M] (LE)
+1 The Pûkel-deeps [M] (AS)
+1 The Stones [M] (LE)
+1 The Sulfur-deeps [M] (AS)
+1 The Under-courts [M] (AS)
+1 The Under-galleries [M] (AS)
+1 The Under-gates [M] (AS)
+1 The Under-grottos [M] (AS)
+1 The Under-leas [M] (AS)
+1 The Under-vaults [M] (AS)
+1 The Wind Throne [M] (LE)
+1 The Worthy Hills [M] (LE)
+1 Thranduil's Halls [M] (LE)
+1 Tom's House [M] (FB)
+1 Zarak Dûm [M] (LE)
