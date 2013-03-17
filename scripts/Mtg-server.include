@@ -249,7 +249,7 @@ def SayHook
         SendAll("Message","{yellow}"+player.name{player}+": "+ARG);
         archenemy=player;
         SetTeams("against",player);
-        server_flags = server_flags + ("team,") - ("teamscore",);
+        server_flags = server_flags + ("team",) - ("teamscore",);
         score[archenemy] = InitialScore(player);
         SendAll("Score",(player,score[player]));
         SendAll("Message","{cyan}Very well then. Now everyone except "+player.name{player}+" is on a team together, and can use {yellow}/sh{cyan} to show hands, or {yellow}/t MESSAGE{cyan} to talk amongst yourselves. Begin!");

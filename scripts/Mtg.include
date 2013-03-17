@@ -129,14 +129,14 @@ FILTER_OPTIONS=(
  ("Multicolored","find(' ',Attr('color',#))!=NULL",(1,"[age]","[color]","[name]")),
  ("Colorless","find(Attr('color',#),'ArtifactLandColorless')!=NULL",(1,"[age]","[name]")),
  "{hr}",
- ("Legendary","find('Legendary',Attr('type',#))!=NULL",(1,"[age]","[name]")),
+ ("Legendary","find('Legendary',Attr('type',#))!=NULL",(1,"[color]","[name]")),
  ("Artifacts","find('Artifact',Attr('type',#))!=NULL",(1,"[age]","[name]")),
- ("Creatures","find('Creature',Attr('type',#))!=NULL",(1,"[color]","[name]")),
- ("Enchantments","find('Enchant',Attr('type',#))!=NULL",(1,"[type]","[color]","[name]")),
+ ("Creatures","find('Creature',Attr('type',#))!=NULL",(1,"[age]","[color]","[name]")),
+ ("Enchantments","find('Enchant',Attr('type',#))!=NULL",(1,"[age]","[color]","[name]")),
  ("Lands","find('Land',Attr('type',#))!=NULL",(1,"[age]","[name]")),
- ("Instants","find('Instant',Attr('type',#))!=NULL",(1,"[color]","[name]")),
- ("Sorceries","find('Sorcery',Attr('type',#))!=NULL",(1,"[color]","[name]")),
- ("Planeswalkers","find('Planeswalker',Attr('type',#))!=NULL",(1,"[age]","[name]")),
+ ("Instants","find('Instant',Attr('type',#))!=NULL",(1,"[age]","[color]","[name]")),
+ ("Sorceries","find('Sorcery',Attr('type',#))!=NULL",(1,"[age]","[color]","[name]")),
+ ("Planeswalkers","find('Planeswalker',Attr('type',#))!=NULL",(1,"[color]","[name]")),
  "{hr}",
  ("Tribal Creatures","TribalLegal(#) && TypeLegal('Vintage',#)",("[subtype]","[color]","[name]")),
  ("Vintage Restricted","TypeRestricted('Vintage',#)",(1,"[age]","[color]","[name]")),
@@ -144,8 +144,8 @@ FILTER_OPTIONS=(
  ("Commander Banned","!TypeLegal('Commander',#)",(1,"[age]","[color]","[name]")),
  ("Highlander Banned","!TypeLegal('Highlander',#)",(1,"[age]","[color]","[name]")),
  ("Modern Legal","TypeLegal('Modern',#)",(1,"[age]","[color]","[name]")),
- ("Extended Legal","TypeLegal('Extended',#)",(1,"[color]","[age]","[name]")),
- ("Standard Legal","TypeLegal('Standard',#)",(1,"[color]","[age]","[name]"))
+ ("Extended Legal","TypeLegal('Extended',#)",(1,"[age]","[color]","[name]")),
+ ("Standard Legal","TypeLegal('Standard',#)",(1,"[age]","[color]","[name]"))
 );
 
 FILTER_FUNCTIONS=(,);

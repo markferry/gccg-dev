@@ -394,9 +394,7 @@ def RuleCardLimitEach
     else D=d;
   }
   else if(length(D) > length(d))
-  {
     RuleViolation("Banned cards found: "+join(unique(sort(name(D-d))),", "));
-  }
   
   return(D);
   
@@ -422,11 +420,11 @@ def RuleCanonicalCardLimitSingle
 }
 
 #
-# RuleCardLimitAny(card name, list of cards) - Remove all cards by name.
+# RuleCardLimitAny(card name[, card name 2, ...], list of cards) - Remove matching cards by name.
 #
 def RuleCardLimitAny
 {
-  return(select("name(#)!=ARG[0]",ARG[1]));
+  return(select("find(#, head(ARG))==NULL",last(ARG)));
 }
 
 #
@@ -490,9 +488,7 @@ def RuleCardSets
   s=(,);
   
   for(c)(h)
-  {
     s=s+seq(tail(set_data(c)));
-  }
   
   D=ARG[1];
   d=sort(select("count(#,s)",D));
@@ -559,15 +555,13 @@ def RuleAllowedSetsReprint
   s=(,);
   
   for(c)(h)
-  {
     s=s+name(seq(tail(set_data(c))));
-  }
 
   D=ARG[1];
   o=name(D)-s;
   if(length(o))
   {
-    RuleViolation("Can only have cards from sets "+join(h,", ")+".\nExtra cards found: "+join(unique(sort(o,", "))));
+    RuleViolation("Can only have cards from sets "+join(h,", ")+".\nExtra cards found: "+join(unique(sort(o)),", "));
     D=NULL;
   }
   else

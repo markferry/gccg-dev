@@ -203,7 +203,7 @@
 # timer_minute - list of timing event pairs (trigger time,command) for minute based resolution
 # transfer.options - special options to send by TryTransferTo()
 # unbind_next - if not null, next key press will be unbound
-# undo_buffer - list of (ID, qty) pairs reflecting recent changes to deck contents
+# undo_buffer - list of (ID, qty, from_part, to_part) pairs reflecting recent changes to deck contents
 # undo.pos - current position in undo_buffer when rewinding/forwarding
 # username - name of the player
 #
@@ -2068,6 +2068,7 @@ def CommandErasedeck
   {
     decks{deck.name}=NewDeck();
     deck.part="deck";
+    RefreshCurrentDeck();
   }
 }
 
@@ -2472,11 +2473,12 @@ def CommandEval
   push(m);
   m=join(ARG," ");
   E=eval(m);
+  Send("Say",tostr(E));
   m=pop();
 }
 
 HELP{"any"}{"eval"}=("exp","evaluate an expression",NULL,
-"This command takes an expression {yellow}exp{white} and evaluates it using gccg-script engine. The resulting value of the expression is stored to the variable {yellow}E{white}. Expression can contain more than one statements separated by semicolon. The last semicolon should be omitted.");
+"This command takes an expression {yellow}exp{white} and evaluates it using gccg-script engine. The resulting value of the expression is stored to the variable {yellow}E{white} and sent as a message. The expression may contain more than one statement, in which case all but the last one needs to be followed by a semicolon.");
 
 #
 # CommandBind(text) - Implementation of /bind command.
@@ -4940,7 +4942,7 @@ def EditAdd
       }
       else
       {
-        Msg("{red}Can't add "+tostr(ARG[1])+" to the deck (this is an uncaught bug in Gccg).");
+        Msg("{red}Bad card name argument.");
         o=NULL;
       }
 
@@ -4948,15 +4950,17 @@ def EditAdd
       {
         if(undo.pos<0)
         {
-          undo_buffer=((o,-1),);
+          undo_buffer=((o,1,"",ARG[0]),);
           undo.pos=0;
         }
-        else if(undo_buffer[undo.pos][0]==o)
+        else if(undo_buffer[undo.pos][0]==o && undo_buffer[undo.pos][2]=="" && undo_buffer[undo.pos][3]==ARG[0])
+          undo_buffer[undo.pos][1]=undo_buffer[undo.pos][1] + 1;
+        else if(undo_buffer[undo.pos][0]==o && undo_buffer[undo.pos][2]==ARG[0] && undo_buffer[undo.pos][3]=="")
           undo_buffer[undo.pos][1]=undo_buffer[undo.pos][1] - 1;
         else
         {
           undo.pos=undo.pos+1;
-          undo_buffer=left(undo_buffer,undo.pos)+((o,-1),);
+          undo_buffer=left(undo_buffer,undo.pos)+((o,1,"",ARG[0]),);
         }
         RefreshCurrentDeck();
       }
@@ -4975,7 +4979,7 @@ def EditDel
   if(!has_entry(deck.name,decks) || deck.name==NULL)
     Msg("{red}You must have a deck selected.");
   else if(!has_entry(ARG[0],decks{deck.name}))
-    Msg("{red}Cannot add to deck: no such deck part as "+tostr(ARG[0])+".");
+    Msg("{red}No such deck part as "+tostr(ARG[0])+".");
   else
   {
     if(typeof(ARG[1])=="string")
@@ -4983,26 +4987,79 @@ def EditDel
     else if(typeof(ARG[1])=="integer")
       d=select("#==ARG[1]",decks{deck.name}{ARG[0]});
     else
-      Msg("{red}Can't delete "+tostr(ARG[1])+" from the deck (this is an uncaught bug in Gccg).");
+      Msg("{red}Bad card name argument.");
     if(length(d)>0)
     {
-      decks{deck.name}{ARG[0]}=decks{deck.name}{ARG[0]}-d+head(d);
+      decks{deck.name}{ARG[0]}=decks{deck.name}{ARG[0]}-d+tail(d);
       
       if(undo.pos<0)
       {
-        undo_buffer=((d[0],1),);
+        undo_buffer=((d[0],1,ARG[0],""),);
         undo.pos=0;
       }
-      else if(undo_buffer[undo.pos][0]==d[0])
+      else if(undo_buffer[undo.pos][0]==d[0] && undo_buffer[undo.pos][2]==ARG[0] && undo_buffer[undo.pos][3]=="")
         undo_buffer[undo.pos][1]=undo_buffer[undo.pos][1] + 1;
+      else if(undo_buffer[undo.pos][0]==d[0] && undo_buffer[undo.pos][2]=="" && undo_buffer[undo.pos][3]==ARG[0])
+        undo_buffer[undo.pos][1]=undo_buffer[undo.pos][1] - 1;
       else
       {
         undo.pos=undo.pos+1;
-        undo_buffer=left(undo_buffer,undo.pos)+((d[0],1),);
+        undo_buffer=left(undo_buffer,undo.pos)+((d[0],1,ARG[0],""),);
+      }
+      
+      if(length(d)==1)
+        Msg("Note: removed the last "+name(d[0])+" from the "+ARG[0]+".");
+      RefreshCurrentDeck();
+      return(1);
+    }
+  }
+  d=pop();
+}
+
+#
+# EditMove(from part, to part, canonical name or number) - Move a card from one deck part to another.
+#
+def EditMove
+{
+  push(d);
+  if(!has_entry(deck.name,decks) || deck.name==NULL)
+    Msg("{red}You must have a deck selected.");
+  else if(!has_entry(ARG[0],decks{deck.name}))
+    Msg("{red}No such deck part as "+tostr(ARG[0])+".");
+  else if(!has_entry(ARG[1],decks{deck.name}))
+    Msg("{red}No such deck part as "+tostr(ARG[1])+".");
+  else if(ARG[0]==ARG[1])
+    Msg("{red}Why?");
+  else
+  {
+    if(typeof(ARG[2])=="string")
+      d=select("canonical_name(#)==ARG[2]",decks{deck.name}{ARG[0]});
+    else if(typeof(ARG[2])=="integer")
+      d=select("#==ARG[2]",decks{deck.name}{ARG[0]});
+    else
+      Msg("{red}Bad card name argument.");
+    if(length(d)>0)
+    {
+      decks{deck.name}{ARG[0]}=decks{deck.name}{ARG[0]}-d+tail(d);
+      decks{deck.name}{ARG[1]}=decks{deck.name}{ARG[1]}+(d[0],);
+      
+      if(undo.pos<0)
+      {
+        undo_buffer=((d[0],1,ARG[0],ARG[1]),);
+        undo.pos=0;
+      }
+      else if(undo_buffer[undo.pos][0]==d[0] && undo_buffer[undo.pos][2]==ARG[0] && undo_buffer[undo.pos][3]==ARG[1])
+        undo_buffer[undo.pos][1]=undo_buffer[undo.pos][1] + 1;
+      else if(undo_buffer[undo.pos][0]==d[0] && undo_buffer[undo.pos][2]==ARG[1] && undo_buffer[undo.pos][3]==ARG[0])
+        undo_buffer[undo.pos][1]=undo_buffer[undo.pos][1] - 1;
+      else
+      {
+        undo.pos=undo.pos+1;
+        undo_buffer=left(undo_buffer,undo.pos)+((d[0],1,ARG[0],ARG[1]),);
       }
             
       if(length(d)==1)
-        Msg("Note: removed the last "+name(d[0])+" from the "+ARG[0]+".");
+        Msg("Note: moved the last "+name(d[0])+" out of the "+ARG[0]+".");
       RefreshCurrentDeck();
       return(1);
     }
@@ -6078,6 +6135,7 @@ def WatchKeyControlKeyW
 #
 def ChatKeyControlKeyZ
 {
+  push(brk);
   brk=1;
   while(undo.pos>=0 && brk)
   {
@@ -6089,23 +6147,39 @@ def ChatKeyControlKeyZ
   
   if(undo.pos<0)
     Msg("{orange}Nothing to undo.");
-  else if(undo_buffer[undo.pos][1]>0)
-  {
-    decks{deck.name}{deck.part}=decks{deck.name}{deck.part} + copy(undo_buffer[undo.pos][0],undo_buffer[undo.pos][1]);
-    Msg("{orange}Undo:{white} Put back "+tostr(undo_buffer[undo.pos][1])+"x {card"+undo_buffer[undo.pos][0]+"}");
-    undo.pos=undo.pos-1;
-    RefreshCurrentDeck();
-  }
   else
   {
-    push(d);
-    d=select("#==undo_buffer[undo.pos][0]",decks{deck.name}{deck.part});
-    decks{deck.name}{deck.part}=decks{deck.name}{deck.part}-d+copy(undo_buffer[undo.pos][0],length(d)+undo_buffer[undo.pos][1]);
-    Msg("{orange}Undo:{white} Took out "+tostr(-undo_buffer[undo.pos][1])+"x {card"+undo_buffer[undo.pos][0]+"}");
+    if(undo_buffer[undo.pos][1]<0)
+#   Somehow the undo action ended up with a negative number. Flip it around by swapping source and destination.
+      undo_buffer[undo.pos] = (undo_buffer[undo.pos][0], -undo_buffer[undo.pos][1], undo_buffer[undo.pos][3], undo_buffer[undo.pos][2]);
+    
+#   Hey cool, I already have a dummy variable here. Might as well reuse it.
+    brk=0;
+    if(undo_buffer[undo.pos][2] != "" && has_entry(undo_buffer[undo.pos][2],decks{deck.name}))
+    {
+      brk = brk + 1;
+      decks{deck.name}{undo_buffer[undo.pos][2]} = decks{deck.name}{undo_buffer[undo.pos][2]} + copy(undo_buffer[undo.pos][0],undo_buffer[undo.pos][1]);
+    }
+    if(undo_buffer[undo.pos][3] != "" && has_entry(undo_buffer[undo.pos][3],decks{deck.name}))
+    {
+      push(d);
+      brk = brk + 2;
+      d=select("#==undo_buffer[undo.pos][0]",decks{deck.name}{undo_buffer[undo.pos][3]});
+      decks{deck.name}{undo_buffer[undo.pos][3]} = decks{deck.name}{undo_buffer[undo.pos][3]} - d + copy(undo_buffer[undo.pos][0],max(0,length(d)-undo_buffer[undo.pos][1]));
+      d=pop();
+    }
+    
+    if(brk==1)
+      Msg("{orange}Undo:{white} Put "+tostr(undo_buffer[undo.pos][1])+"x {card"+undo_buffer[undo.pos][0]+"} back in the "+undo_buffer[undo.pos][2]);
+    else if(brk==2)
+      Msg("{orange}Undo:{white} Took "+tostr(undo_buffer[undo.pos][1])+"x {card"+undo_buffer[undo.pos][0]+"} out of the "+undo_buffer[undo.pos][3]);
+    else if(brk==3)
+      Msg("{orange}Undo:{white} Moved "+tostr(undo_buffer[undo.pos][1])+"x {card"+undo_buffer[undo.pos][0]+"} from "+undo_buffer[undo.pos][3]+" back to "+undo_buffer[undo.pos][2]);
+    
     undo.pos=undo.pos-1;
     RefreshCurrentDeck();
-    d=pop();
   }
+  brk=pop();
 }
 
 def WatchKeyControlKeyZ
@@ -6119,6 +6193,7 @@ def OfflineKeyControlKeyZ
 #
 def ChatKeyControlKeyY
 {
+  push(brk);
   brk=1;
   while(undo.pos+2 <= length(undo_buffer) && brk)
   {
@@ -6134,21 +6209,34 @@ def ChatKeyControlKeyY
   {
     undo.pos=undo.pos+1;
     if(undo_buffer[undo.pos][1]<0)
+#   Somehow the redo action ended up with a negative number. Flip it around by swapping source and destination.
+      undo_buffer[undo.pos] = (undo_buffer[undo.pos][0], -undo_buffer[undo.pos][1], undo_buffer[undo.pos][3], undo_buffer[undo.pos][2]);
+    
+    brk=0;
+    if(undo_buffer[undo.pos][3] != "" && has_entry(undo_buffer[undo.pos][3],decks{deck.name}))
     {
-      decks{deck.name}{deck.part}=decks{deck.name}{deck.part} + copy(undo_buffer[undo.pos][0],-undo_buffer[undo.pos][1]);
-      Msg("{orange}Redo:{white} Put back "+tostr(-undo_buffer[undo.pos][1])+"x {card"+undo_buffer[undo.pos][0]+"}");
-      RefreshCurrentDeck();
+      brk = brk + 1;
+      decks{deck.name}{undo_buffer[undo.pos][3]} = decks{deck.name}{undo_buffer[undo.pos][3]} + copy(undo_buffer[undo.pos][0],undo_buffer[undo.pos][1]);
     }
-    else
+    if(undo_buffer[undo.pos][2] != "" && has_entry(undo_buffer[undo.pos][2],decks{deck.name}))
     {
       push(d);
-      d=select("#==ARG[1]",decks{deck.name}{deck.part});
-      decks{deck.name}{deck.part}=decks{deck.name}{deck.part}-d+copy(undo_buffer[undo.pos][0],length(d)-undo_buffer[undo.pos][1]);
-      Msg("{orange}Undo:{white} Took out "+tostr(-undo_buffer[undo.pos][1])+"x {card"+undo_buffer[undo.pos][0]+"}");
-      RefreshCurrentDeck();
+      brk = brk + 2;
+      d=select("#==undo_buffer[undo.pos][0]",decks{deck.name}{undo_buffer[undo.pos][2]});
+      decks{deck.name}{undo_buffer[undo.pos][2]} = decks{deck.name}{undo_buffer[undo.pos][2]} - d + copy(undo_buffer[undo.pos][0],max(0,length(d)-undo_buffer[undo.pos][1]));
       d=pop();
     }
+    
+    if(brk==1)
+      Msg("{orange}Redo:{white} Put "+tostr(undo_buffer[undo.pos][1])+"x {card"+undo_buffer[undo.pos][0]+"} back in the "+undo_buffer[undo.pos][3]);
+    else if(brk==2)
+      Msg("{orange}Redo:{white} Took "+tostr(undo_buffer[undo.pos][1])+"x {card"+undo_buffer[undo.pos][0]+"} out of the "+undo_buffer[undo.pos][2]);
+    else if(brk==3)
+      Msg("{orange}Redo:{white} Moved "+tostr(undo_buffer[undo.pos][1])+"x {card"+undo_buffer[undo.pos][0]+"} from "+undo_buffer[undo.pos][2]+" back to "+undo_buffer[undo.pos][3]);
+    
+    RefreshCurrentDeck();
   }
+  brk=pop();
 }
 
 def WatchKeyControlKeyY
@@ -7683,7 +7771,7 @@ def CurrentDeckMenu
     for(p)(keys(decks{deck.name}))
     {
       if(n!=p)
-        m=m+(("Move one {blue}"+EditCardname()+"{black} to {green}"+p,"","EditDel('"+n+"',"+tostr(EditCardname())+");EditAdd('"+p+"',"+tostr(EditCardname())+")"),);
+        m=m+(("Move one {blue}"+EditCardname()+"{black} to {green}"+p,"","EditMove('"+n+"','"+p+"',"+tostr(EditCardname())+")"),);
     }
     m=m+(("Find card","/find "+EditCardname(),""),);
     n=pop();

@@ -27,18 +27,7 @@ deck_rules{"Vintage"}{"sideboard"}=(
   ("RulePass",NULL),
 );
 deck_rules{"Vintage"}{"deck+sideboard"}=(
-  
-  ("RuleCardLimitAny","Island"),
-  ("RuleCardLimitAny","Forest"),
-  ("RuleCardLimitAny","Mountain"),
-  ("RuleCardLimitAny","Swamp"),
-  ("RuleCardLimitAny","Plains"),
-  ("RuleCardLimitAny","Snow-Covered Island"),
-  ("RuleCardLimitAny","Snow-Covered Forest"),
-  ("RuleCardLimitAny","Snow-Covered Mountain"),
-  ("RuleCardLimitAny","Snow-Covered Swamp"),
-  ("RuleCardLimitAny","Snow-Covered Plains"),
-  ("RuleCardLimitAny","Relentless Rats"),
+  ("RuleCardLimitAny","Plains","Island","Swamp","Mountain","Forest","Snow-Covered Plains","Snow-Covered Island","Snow-Covered Swamp","Snow-Covered Mountain","Snow-Covered Forest","Relentless Rats"),
 
   ("RuleCardSets",("UG","UH",0)),
   
@@ -62,17 +51,7 @@ deck_rules{"Legacy"}{"sideboard"}=(
   ("RulePass",NULL),
 );
 deck_rules{"Legacy"}{"deck+sideboard"}=(
-  ("RuleCardLimitAny","Island"),
-  ("RuleCardLimitAny","Forest"),
-  ("RuleCardLimitAny","Mountain"),
-  ("RuleCardLimitAny","Swamp"),
-  ("RuleCardLimitAny","Plains"),
-  ("RuleCardLimitAny","Snow-Covered Island"),
-  ("RuleCardLimitAny","Snow-Covered Forest"),
-  ("RuleCardLimitAny","Snow-Covered Mountain"),
-  ("RuleCardLimitAny","Snow-Covered Swamp"),
-  ("RuleCardLimitAny","Snow-Covered Plains"),
-  ("RuleCardLimitAny","Relentless Rats"),
+  ("RuleCardLimitAny","Plains","Island","Swamp","Mountain","Forest","Snow-Covered Plains","Snow-Covered Island","Snow-Covered Swamp","Snow-Covered Mountain","Snow-Covered Forest","Relentless Rats"),
   
   ("RuleCardSets",("UG","UH",0)),
   ("RuleCardLimitEach",("Amulet of Quoz","Ancestral Recall","Balance","Bazaar of Baghdad","Black Lotus","Black Vise","Bronze Tablet","Channel","Chaos Orb","Contract from Below","Darkpact","Demonic Attorney","Demonic Consultation","Demonic Tutor","Earthcraft","Falling Star","Fastbond","Flash","Frantic Search","Goblin Recruiter","Gush","Hermit Druid","Imperial Seal","Jeweled Bird","Library of Alexandria","Mana Crypt","Mana Drain","Mana Vault","Memory Jar","Mental Misstep","Mind Twist","Mind's Desire","Mishra's Workshop","Mox Emerald","Mox Jet","Mox Pearl","Mox Ruby","Mox Sapphire","Mystical Tutor","Necropotence","Oath of Druids","Rebirth","Shahrazad","Skullclamp","Sol Ring","Strip Mine","Survival of the Fittest","Tempest Efreet","Time Vault","Time Walk","Timetwister","Timmerian Fiends","Tinker","Tolarian Academy","Vampiric Tutor","Wheel of Fortune","Windfall","Worldgorger Dragon","Yawgmoth's Bargain","Yawgmoth's Will",0)),
@@ -91,17 +70,7 @@ deck_rules{"Commander"}{"deck"}=(
 );
 deck_rules{"Commander"}{"deck+exile+command"}=(
   ("RuleDeckSizes",(100,)),
-  ("RuleCardLimitAny","Island"),
-  ("RuleCardLimitAny","Forest"),
-  ("RuleCardLimitAny","Mountain"),
-  ("RuleCardLimitAny","Swamp"),
-  ("RuleCardLimitAny","Plains"),
-  ("RuleCardLimitAny","Snow-Covered Island"),
-  ("RuleCardLimitAny","Snow-Covered Forest"),
-  ("RuleCardLimitAny","Snow-Covered Mountain"),
-  ("RuleCardLimitAny","Snow-Covered Swamp"),
-  ("RuleCardLimitAny","Snow-Covered Plains"),
-  ("RuleCardLimitAny","Relentless Rats"),
+  ("RuleCardLimitAny","Plains","Island","Swamp","Mountain","Forest","Snow-Covered Plains","Snow-Covered Island","Snow-Covered Swamp","Snow-Covered Mountain","Snow-Covered Forest","Relentless Rats"),
   
   ("RuleCardSets",("UG","UH",0)),
   ("RuleCardLimitEach",("Amulet of Quoz","Bronze Tablet","Contract from Below","Darkpact","Demonic Attorney","Jeweled Bird","Rebirth","Tempest Efreet","Timmerian Fiends","Chaos Orb","Falling Star","Shahrazad","Ancestral Recall","Balance","Biorhythm","Black Lotus","Channel","Coalition Victory","Emrakul, the Aeons Torn","Fastbond","Gifts Ungiven","Griselbrand","Karakas","Library of Alexandria","Limited Resources","Metalworker","Mox Emerald","Mox Jet","Mox Pearl","Mox Ruby","Mox Sapphire","Painter's Servant","Panoptic Mirror","Primeval Titan","Protean Hulk","Recurring Nightmare","Staff of Domination","Sundering Titan","Sway of the Stars","Time Vault","Time Walk","Tinker","Tolarian Academy","Upheaval","Worldfire","Yawgmoth's Bargain",0)),
@@ -122,17 +91,7 @@ deck_rules{"Commander"}{"exile+command"}=(
 deck_rules{"Highlander"}=(,);
 deck_rules{"Highlander"}{"deck"}=(
   ("RuleDeckSizes",(100,)),
-  ("RuleCardLimitAny","Island"),
-  ("RuleCardLimitAny","Forest"),
-  ("RuleCardLimitAny","Mountain"),
-  ("RuleCardLimitAny","Swamp"),
-  ("RuleCardLimitAny","Plains"),
-  ("RuleCardLimitAny","Snow-Covered Island"),
-  ("RuleCardLimitAny","Snow-Covered Forest"),
-  ("RuleCardLimitAny","Snow-Covered Mountain"),
-  ("RuleCardLimitAny","Snow-Covered Swamp"),
-  ("RuleCardLimitAny","Snow-Covered Plains"),
-  ("RuleCardLimitAny","Relentless Rats"),
+  ("RuleCardLimitAny","Plains","Island","Swamp","Mountain","Forest","Snow-Covered Plains","Snow-Covered Island","Snow-Covered Swamp","Snow-Covered Mountain","Snow-Covered Forest","Relentless Rats"),
 
   ("RuleCardSets",("UG","UH",0)),
   ("RuleCardLimitEach",("Ancestral Recall", "Balance", "Black Lotus", "Chaos Orb", "Dread Return", "Enlightened Tutor", "Entomb", "Falling Star", "Fastbond", "Flash", "Grindstone", "Imperial Seal", "Library of Alexandria", "Life from the Loam", "Lion's Eye Diamond", "Mana Crypt", "Mana Vault", "Mind Twist", "Mox Emerald", "Mox Jet", "Mox Pearl", "Mox Ruby", "Mox Sapphire", "Mystical Tutor", "Skullclamp", "Sol Ring", "Strip Mine", "Survival of the Fittest", "Tolarian Academy", "Time Vault", "Time Walk", "Tinker", "Trinisphere", "Umezawa's Jitte", "Vampiric Tutor", "Wheel of Fortune", "Yawgmoth's Will", "Amulet of Quoz", "Bronze Tablet", "Contract from Below", "Darkpact", "Demonic Attorney", "Jeweled Bird", "Rebirth", "Tempest Efreet", "Timmerian Fiends",0)),
@@ -160,18 +119,7 @@ deck_rules{"Modern"}{"sideboard"}=(
   ("RulePass",NULL),
 );
 deck_rules{"Modern"}{"deck+sideboard"}=(
-  ("RuleCardLimitAny","Island"),
-  ("RuleCardLimitAny","Forest"),
-  ("RuleCardLimitAny","Mountain"),
-  ("RuleCardLimitAny","Swamp"),
-  ("RuleCardLimitAny","Plains"),
-  ("RuleCardLimitAny","Snow-Covered Island"),
-  ("RuleCardLimitAny","Snow-Covered Forest"),
-  ("RuleCardLimitAny","Snow-Covered Mountain"),
-  ("RuleCardLimitAny","Snow-Covered Swamp"),
-  ("RuleCardLimitAny","Snow-Covered Plains"),
-
-  ("RuleCardLimitAny","Relentless Rats"),
+  ("RuleCardLimitAny","Plains","Island","Swamp","Mountain","Forest","Snow-Covered Plains","Snow-Covered Island","Snow-Covered Swamp","Snow-Covered Mountain","Snow-Covered Forest","Relentless Rats"),
 
   ("RuleCardLimitEach",("Ancestral Vision","Ancient Den","Bitterblossom","Blazing Shoal","Bloodbraid Elf","Chrome Mox","Cloudpost","Dark Depths","Dread Return","Glimpse of Nature","Golgari Grave-Troll","Great Furnace","Green Sun's Zenith","Hypergenesis","Jace, the Mind Sculptor","Mental Misstep","Ponder","Preordain","Punishing Fire","Rite of Flame","Seat of the Synod","Seething Song","Sensei's Divining Top","Skullclamp","Stoneforge Mystic","Sword of the Meek","Tree of Tales","Umezawa's Jitte","Vault of Whispers","Wild Nacatl",0)),
 
@@ -193,15 +141,10 @@ deck_rules{"Extended"}{"sideboard"}=(
   ("RulePass",NULL),
 );
 deck_rules{"Extended"}{"deck+sideboard"}=(
-  ("RuleCardLimitAny","Island"),
-  ("RuleCardLimitAny","Forest"),
-  ("RuleCardLimitAny","Mountain"),
-  ("RuleCardLimitAny","Swamp"),
-  ("RuleCardLimitAny","Plains"),
-
-  ("RuleCardLimitAny","Relentless Rats"),
-
+  ("RuleCardLimitAny","Plains","Island","Swamp","Mountain","Forest","Relentless Rats"),
+  
   ("RuleCardLimitEach",("Jace, the Mind Sculptor","Mental Misstep","Ponder","Preordain","Stoneforge Mystic",0)),
+  
   ("RuleAllowedSetsReprint",("ZDK","WWK","ROE","M11","SOM","MBS","NPH","M12","ISD","DKA","AVR","M13","RTR","GTC",4)),
 
 );
@@ -220,11 +163,7 @@ deck_rules{"Standard"}{"sideboard"}=(
   ("RulePass",NULL),
 );
 deck_rules{"Standard"}{"deck+sideboard"}=(
-  ("RuleCardLimitAny","Island"),
-  ("RuleCardLimitAny","Forest"),
-  ("RuleCardLimitAny","Mountain"),
-  ("RuleCardLimitAny","Swamp"),
-  ("RuleCardLimitAny","Plains"),
+  ("RuleCardLimitAny","Plains","Island","Swamp","Mountain","Forest"),
   
   ("RuleAllowedSetsReprint",("ISD","DKA","AVR","M13","RTR","GTC",4)),
 );
@@ -243,16 +182,7 @@ deck_rules{"Standard"}{"deck+sideboard"}=(
 #  ("RulePass",NULL),
 #);
 #deck_rules{"Ice Age Block"}{"deck+sideboard"}=(
-#  ("RuleCardLimitAny","Island"),
-#  ("RuleCardLimitAny","Forest"),
-#  ("RuleCardLimitAny","Mountain"),
-#  ("RuleCardLimitAny","Swamp"),
-#  ("RuleCardLimitAny","Plains"),
-#  ("RuleCardLimitAny","Snow-Covered Island"),
-#  ("RuleCardLimitAny","Snow-Covered Forest"),
-#  ("RuleCardLimitAny","Snow-Covered Mountain"),
-#  ("RuleCardLimitAny","Snow-Covered Swamp"),
-#  ("RuleCardLimitAny","Snow-Covered Plains"),
+#  ("RuleCardLimitAny","Plains","Island","Swamp","Mountain","Forest","Snow-Covered Plains","Snow-Covered Island","Snow-Covered Swamp","Snow-Covered Mountain","Snow-Covered Forest"),
 #  
 #  ("RuleCardLimitEach",("Amulet of Quoz","Thawing Glaciers","Zuran Orb",0)),
 #
@@ -269,11 +199,7 @@ deck_rules{"Standard"}{"deck+sideboard"}=(
 #  ("RulePass",NULL),
 #);
 #deck_rules{"Mirage Block"}{"deck+sideboard"}=(
-#  ("RuleCardLimitAny","Island"),
-#  ("RuleCardLimitAny","Forest"),
-#  ("RuleCardLimitAny","Mountain"),
-#  ("RuleCardLimitAny","Swamp"),
-#  ("RuleCardLimitAny","Plains"),
+#  ("RuleCardLimitAny","Plains","Island","Swamp","Mountain","Forest"),
 #  
 #  ("RuleCardLimitSingle",("Squandered Resources",0)),
 #
@@ -290,11 +216,7 @@ deck_rules{"Standard"}{"deck+sideboard"}=(
 #  ("RulePass",NULL),
 #);
 #deck_rules{"Rath Block"}{"deck+sideboard"}=(
-#  ("RuleCardLimitAny","Island"),
-#  ("RuleCardLimitAny","Forest"),
-#  ("RuleCardLimitAny","Mountain"),
-#  ("RuleCardLimitAny","Swamp"),
-#  ("RuleCardLimitAny","Plains"),
+#  ("RuleCardLimitAny","Plains","Island","Swamp","Mountain","Forest"),
 #  
 #  ("RuleCardLimitSingle",("Cursed Scroll",0)),
 #
@@ -311,11 +233,7 @@ deck_rules{"Standard"}{"deck+sideboard"}=(
 #  ("RulePass",NULL),
 #);
 #deck_rules{"Urza Block"}{"deck+sideboard"}=(
-#  ("RuleCardLimitAny","Island"),
-#  ("RuleCardLimitAny","Forest"),
-#  ("RuleCardLimitAny","Mountain"),
-#  ("RuleCardLimitAny","Swamp"),
-#  ("RuleCardLimitAny","Plains"),
+#  ("RuleCardLimitAny","Plains","Island","Swamp","Mountain","Forest"),
 #  
 #  ("RuleCardLimitEach",("Gaea's Cradle","Memory Jar","Serra's Sanctum","Time Spiral","Tolarian Academy","Voltaic Key","Windfall",0)),
 #
@@ -332,11 +250,7 @@ deck_rules{"Standard"}{"deck+sideboard"}=(
 #  ("RulePass",NULL),
 #);
 #deck_rules{"Masques Block"}{"deck+sideboard"}=(
-#  ("RuleCardLimitAny","Island"),
-#  ("RuleCardLimitAny","Forest"),
-#  ("RuleCardLimitAny","Mountain"),
-#  ("RuleCardLimitAny","Swamp"),
-#  ("RuleCardLimitAny","Plains"),
+#  ("RuleCardLimitAny","Plains","Island","Swamp","Mountain","Forest"),
 #
 #  ("RuleCardLimitEach",("Lin Sivvi, Defiant Hero","Rishadan Port",0)),
 #
@@ -353,11 +267,7 @@ deck_rules{"Standard"}{"deck+sideboard"}=(
 #  ("RulePass",NULL),
 #);
 #deck_rules{"Invasion Block"}{"deck+sideboard"}=(
-#  ("RuleCardLimitAny","Island"),
-#  ("RuleCardLimitAny","Forest"),
-#  ("RuleCardLimitAny","Mountain"),
-#  ("RuleCardLimitAny","Swamp"),
-#  ("RuleCardLimitAny","Plains"),
+#  ("RuleCardLimitAny","Plains","Island","Swamp","Mountain","Forest"),
 #
 #  ("RuleAllowedSetsReprint",("IN","PS","AP",4)),
 #);
@@ -372,11 +282,7 @@ deck_rules{"Standard"}{"deck+sideboard"}=(
 #  ("RulePass",NULL),
 #);
 #deck_rules{"Odyssey Block"}{"deck+sideboard"}=(
-#  ("RuleCardLimitAny","Island"),
-#  ("RuleCardLimitAny","Forest"),
-#  ("RuleCardLimitAny","Mountain"),
-#  ("RuleCardLimitAny","Swamp"),
-#  ("RuleCardLimitAny","Plains"),
+#  ("RuleCardLimitAny","Plains","Island","Swamp","Mountain","Forest"),
 #
 #  ("RuleAllowedSetsReprint",("OD","TO","JD",4)),
 #);
@@ -391,11 +297,7 @@ deck_rules{"Standard"}{"deck+sideboard"}=(
 #  ("RulePass",NULL),
 #);
 #deck_rules{"Onslaught Block"}{"deck+sideboard"}=(
-#  ("RuleCardLimitAny","Island"),
-#  ("RuleCardLimitAny","Forest"),
-#  ("RuleCardLimitAny","Mountain"),
-#  ("RuleCardLimitAny","Swamp"),
-#  ("RuleCardLimitAny","Plains"),
+#  ("RuleCardLimitAny","Plains","Island","Swamp","Mountain","Forest"),
 #
 #  ("RuleAllowedSetsReprint",("ON","LE","SC",4)),
 #);
@@ -410,12 +312,7 @@ deck_rules{"Standard"}{"deck+sideboard"}=(
 #  ("RulePass",NULL),
 #);
 #deck_rules{"Mirrodin Block"}{"deck+sideboard"}=(
-#  ("RuleCardLimitAny","Island"),
-#  ("RuleCardLimitAny","Forest"),
-#  ("RuleCardLimitAny","Mountain"),
-#  ("RuleCardLimitAny","Swamp"),
-#  ("RuleCardLimitAny","Plains"),
-#  ("RuleCardLimitAny","Relentless Rats"),
+#  ("RuleCardLimitAny","Plains","Island","Swamp","Mountain","Forest","Relentless Rats"),
 #
 #  ("RuleCardLimitEach",("AEther Vial","Ancient Den","Arcbound Ravager","Darksteel Citadel","Disciple of the Vault","Great Furnace","Seat of the Synod","Skullclamp","Tree of Tales","Vault of Whispers",0)),
 #  
@@ -432,11 +329,7 @@ deck_rules{"Standard"}{"deck+sideboard"}=(
 #  ("RulePass",NULL),
 #);
 #deck_rules{"Kami Block"}{"deck+sideboard"}=(
-#  ("RuleCardLimitAny","Island"),
-#  ("RuleCardLimitAny","Forest"),
-#  ("RuleCardLimitAny","Mountain"),
-#  ("RuleCardLimitAny","Swamp"),
-#  ("RuleCardLimitAny","Plains"),
+#  ("RuleCardLimitAny","Plains","Island","Swamp","Mountain","Forest"),
 #
 #  ("RuleAllowedSetsReprint",("CK","BK","SK",4)),
 #);
@@ -451,11 +344,7 @@ deck_rules{"Standard"}{"deck+sideboard"}=(
 #  ("RulePass",NULL),
 #);
 #deck_rules{"Ravnica Block"}{"deck+sideboard"}=(
-#  ("RuleCardLimitAny","Island"),
-#  ("RuleCardLimitAny","Forest"),
-#  ("RuleCardLimitAny","Mountain"),
-#  ("RuleCardLimitAny","Swamp"),
-#  ("RuleCardLimitAny","Plains"),
+#  ("RuleCardLimitAny","Plains","Island","Swamp","Mountain","Forest"),
 #
 #  ("RuleAllowedSetsReprint",("RA","GP","DI",4)),
 #);
@@ -470,11 +359,7 @@ deck_rules{"Standard"}{"deck+sideboard"}=(
 #  ("RulePass",NULL),
 #);
 #deck_rules{"Time Block"}{"deck+sideboard"}=(
-#  ("RuleCardLimitAny","Island"),
-#  ("RuleCardLimitAny","Forest"),
-#  ("RuleCardLimitAny","Mountain"),
-#  ("RuleCardLimitAny","Swamp"),
-#  ("RuleCardLimitAny","Plains"),
+#  ("RuleCardLimitAny","Plains","Island","Swamp","Mountain","Forest"),
 #
 #  ("RuleAllowedSetsReprint",("TS","PC","FS",4)),
 #);
@@ -489,11 +374,7 @@ deck_rules{"Standard"}{"deck+sideboard"}=(
 #  ("RulePass",NULL),
 #);
 #deck_rules{"Lorwyn Block"}{"deck+sideboard"}=(
-#  ("RuleCardLimitAny","Island"),
-#  ("RuleCardLimitAny","Forest"),
-#  ("RuleCardLimitAny","Mountain"),
-#  ("RuleCardLimitAny","Swamp"),
-#  ("RuleCardLimitAny","Plains"),
+#  ("RuleCardLimitAny","Plains","Island","Swamp","Mountain","Forest"),
 #
 #  ("RuleAllowedSetsReprint",("LOR","MOR","SM","EVE",4)),
 #);
@@ -508,11 +389,7 @@ deck_rules{"Standard"}{"deck+sideboard"}=(
 #  ("RulePass",NULL),
 #);
 #deck_rules{"Alara Block"}{"deck+sideboard"}=(
-#  ("RuleCardLimitAny","Island"),
-#  ("RuleCardLimitAny","Forest"),
-#  ("RuleCardLimitAny","Mountain"),
-#  ("RuleCardLimitAny","Swamp"),
-#  ("RuleCardLimitAny","Plains"),
+#  ("RuleCardLimitAny","Plains","Island","Swamp","Mountain","Forest"),
 #
 #  ("RuleAllowedSetsReprint",("ALA","CFX","ARE",4)),
 #);
@@ -527,11 +404,7 @@ deck_rules{"Standard"}{"deck+sideboard"}=(
 #  ("RulePass",NULL),
 #);
 #deck_rules{"Zendikar Block"}{"deck+sideboard"}=(
-#  ("RuleCardLimitAny","Island"),
-#  ("RuleCardLimitAny","Forest"),
-#  ("RuleCardLimitAny","Mountain"),
-#  ("RuleCardLimitAny","Swamp"),
-#  ("RuleCardLimitAny","Plains"),
+#  ("RuleCardLimitAny","Plains","Island","Swamp","Mountain","Forest"),
 #
 #  ("RuleAllowedSetsReprint",("ZEN","WWK","ROE",4)),
 #);
@@ -546,11 +419,7 @@ deck_rules{"Standard"}{"deck+sideboard"}=(
 #  ("RulePass",NULL),
 #);
 #deck_rules{"Mirrodin Block 2"}{"deck+sideboard"}=(
-#  ("RuleCardLimitAny","Island"),
-#  ("RuleCardLimitAny","Forest"),
-#  ("RuleCardLimitAny","Mountain"),
-#  ("RuleCardLimitAny","Swamp"),
-#  ("RuleCardLimitAny","Plains"),
+#  ("RuleCardLimitAny","Plains","Island","Swamp","Mountain","Forest"),
 #
 #  ("RuleAllowedSetsReprint",("SOM","MBS","NPH",4)),
 #);
@@ -565,11 +434,7 @@ deck_rules{"Innistrad Block"}{"sideboard"}=(
   ("RulePass",NULL),
 );
 deck_rules{"Innistrad Block"}{"deck+sideboard"}=(
-  ("RuleCardLimitAny","Island"),
-  ("RuleCardLimitAny","Forest"),
-  ("RuleCardLimitAny","Mountain"),
-  ("RuleCardLimitAny","Swamp"),
-  ("RuleCardLimitAny","Plains"),
+  ("RuleCardLimitAny","Plains","Island","Swamp","Mountain","Forest"),
 
   ("RuleCardLimitEach",("Intangible Virtue","Lingering Souls",0)),
 
@@ -586,11 +451,7 @@ deck_rules{"Ravnica Block 2"}{"sideboard"}=(
   ("RulePass",NULL),
 );
 deck_rules{"Ravnica Block 2"}{"deck+sideboard"}=(
-  ("RuleCardLimitAny","Island"),
-  ("RuleCardLimitAny","Forest"),
-  ("RuleCardLimitAny","Mountain"),
-  ("RuleCardLimitAny","Swamp"),
-  ("RuleCardLimitAny","Plains"),
+  ("RuleCardLimitAny","Plains","Island","Swamp","Mountain","Forest"),
 
   ("RuleAllowedSetsReprint",("RTR","GTC",4)),
 );
@@ -609,16 +470,7 @@ deck_rules{"Pauper"}{"sideboard"}=(
   ("RulePass",NULL),
 );
 deck_rules{"Pauper"}{"deck+sideboard"}=(
-  ("RuleCardLimitAny","Island"),
-  ("RuleCardLimitAny","Forest"),
-  ("RuleCardLimitAny","Mountain"),
-  ("RuleCardLimitAny","Swamp"),
-  ("RuleCardLimitAny","Plains"),
-  ("RuleCardLimitAny","Snow-Covered Island"),
-  ("RuleCardLimitAny","Snow-Covered Forest"),
-  ("RuleCardLimitAny","Snow-Covered Mountain"),
-  ("RuleCardLimitAny","Snow-Covered Swamp"),
-  ("RuleCardLimitAny","Snow-Covered Plains"),
+  ("RuleCardLimitAny","Plains","Island","Swamp","Mountain","Forest","Snow-Covered Plains","Snow-Covered Island","Snow-Covered Swamp","Snow-Covered Mountain","Snow-Covered Forest"),
 
   ("RuleCardSets",("UG","UH",0)),
   ("RuleLimitByExpression",(0,"find(left(Attr(\"rarity\",#),1),\"MRUPS\") != NULL && Attr(\"rarity\",#) != \"SC\"")),
