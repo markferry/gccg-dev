@@ -187,7 +187,7 @@
        <attr key="type" value="Hazard"/>
 	   <attr key="keyword" value="Sea-dragon"/>
     </card>
-    <card name="Eärcaraxë Ahunt" graphics="EarcaraxeAhunt.jpg" text="Unique. Any company moving in Andrast Coast, Bay of Belfalas, Eriadoran Coast, and/or Andrast immediately faces one Dragon attack (considered a hazard creature attack) -- 3 strikes at 15/6 (attacker chooses defending characters). If Doors of Night is in play, this attack also affects: Old Pûkel-land, Enedhwaith, Anfalas, and any Coastal Sea [{c}] region (or region type).">
+    <card name="Eärcaraxë Ahunt" graphics="EarcaraxeAhuntDC.jpg" text="Unique. Any company moving in Andrast Coast, Bay of Belfalas, Eriadoran Coast, and/or Andrast immediately faces one Dragon attack (considered a hazard creature attack) -- 3 strikes at 15/6 (attacker chooses defending characters). If Doors of Night is in play, this attack also affects: Old Pûkel-land, Enedhwaith, Anfalas, and any Coastal Sea [{c}] region adjacent to The Sundering Seas.">
        <attr key="unique" value="yes"/>
        <attr key="strikes" value="3"/>
        <attr key="mp" value="4"/>
@@ -267,7 +267,7 @@
        <attr key="class" value="Long-event"/>
        <attr key="type" value="Hazard"/>
     </card>
-    <card name="Ice-drake" graphics="Icedrake.jpg" text="Drake. Two strikes. May be played keyed to Elven Shores, Forochel, Angmar, Gundabad, Grey Mountain Narrows, and Withered Heath.">
+    <card name="Ice-drake" graphics="IcedrakeDC.jpg" text="Drake. Two strikes. May be played keyed to Elven Shores, Forochel, Angmar, Gundabad, Grey Mountains, Grey Mountain Narrows, Withered Heath, and any Deep Wilderness [{w} {w}]region in The Northern Waste.">
        <attr key="strikes" value="2"/>
        <attr key="mp" value="1"/>
        <attr key="body" value="-"/>
