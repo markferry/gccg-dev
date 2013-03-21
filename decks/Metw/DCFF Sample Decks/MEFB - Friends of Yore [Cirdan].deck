@@ -36,10 +36,11 @@ Deck
 1 Nature's Revenge (WH)
 1 Old Man Willow (TW)
 1 Out of Practise (DF)
-3 Parsimony of Seclusion (TD)
+2 Parsimony of Seclusion (TD)
 2 Protecting Their Domain (FB)
 1 Saruman the Wise (AS)
 2 Sentinel of the Grove (FB)
+1 Terror from the Deeps (DF)
 2 Twilight (LE)
 2 Watcher in the Water (LE)
 2 Wrath of the Olvar (FB)
@@ -58,11 +59,10 @@ Deck
 3 Blood of Huan (FB)
 3 Gates of Morning (TW)
 1 Hauberk of Bright Mail (TW)
-1 Legendary Hoard (TD)
+1 Longbottom Leaf (BA)
 2 Marvels Told (TD)
 1 Men of Anfalas (TW)
 1 Men of Lamedon (TW)
-1 Men of Lebennin (TW)
 1 Nenseldë the Wingild (TD)
 3 Noble Hound (DM)
 1 Sail to the West (FB)
@@ -73,6 +73,7 @@ Deck
 1 Token of Goodwill (DM)
 1 Twice-baked Cakes (TD)
 1 Ulmo's Watch (FB)
+1 Wormsbane (TD)
 
 # Stage Resource (5)
 
@@ -118,27 +119,28 @@ Pool
 Sideboard
 #########
 
-# Hazard (14)
+# Hazard (13)
 
 1 Agburanar Ahunt (TD)
 1 Alone and Unadvised (AS)
 1 Bairanax Ahunt (TD)
 1 Call of Home (LE)
 1 Covetous Thoughts (LE)
+1 Crossing the Border (DF)
 1 Eärcaraxë Ahunt (TD)
-1 Eärcaraxë at Home (TD)
 1 Falathrim (FB)
 1 News of Doom (LE)
 1 Ninevet (DF)
 1 Stay Her Appetite (LE)
-1 Terror from the Deeps (DF)
 1 The Reach of Ulmo (DM)
 1 The Roving Eye (LE)
 
-# Hero Resource (23)
+# Hero Resource (24)
 
 1 A Friend of Yore (FB)
+1 Adamant Helmet (TD)
 1 Belegaer (TD)
+1 Cloudless Day (TD)
 1 Crisfuin (FB)
 1 Echo of All Joy (TD)
 1 Elves of Edhellond (FP)
@@ -146,9 +148,11 @@ Sideboard
 1 Emerald of Doriath (TD)
 1 Great-road (TW)
 1 Great-shield of Rohan (TW)
+1 Hair of Uinen (FB)
 1 Healing Song (FB)
 1 Kindling of the Spirit (TW)
-2 Longbottom Leaf (BA)
+1 Longbottom Leaf (BA)
+1 Men of Lebennin (TW)
 1 Moon (TW)
 1 Sail to the West (FB)
 1 Smoke Rings (DM)
@@ -156,8 +160,6 @@ Sideboard
 1 The High Sea (FB)
 2 The Old Thrush (TW)
 1 Tower Guard of Minas Tirith (TW)
-1 Valiant Sword (TD)
-1 Wormsbane (TD)
 
 # Minion Resource (1)
 
@@ -172,9 +174,17 @@ Sideboard
 Sideboard vs. fw
 ################
 
-# Hazard (2)
+# Hazard (10)
 
+1 Blind to the West (WH)
+1 Call of the Deeps (DF)
+1 Cast from the Order (WH)
+1 Choked with Vanity (FB)
 2 He Is Lost to Us (FB)
+1 Inner Rot (WH)
+1 Ire of the East (WH)
+1 Power Relinquished to Artifice (WH)
+1 The Dark Days (FB)
 
 #####
 Sites
@@ -226,3 +236,4 @@ Sites
 1 Variag Camp [H] (TW)
 1 Wose Passage-hold [H] (TW)
 1 Zarak Dûm [H] (TD)
+
