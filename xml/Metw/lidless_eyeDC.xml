@@ -2437,7 +2437,7 @@
        <attr key="type" value="Minion Resource"/>
 	   <attr key="keyword" value="Mind Ring"/>
     </card>
-    <card name="Black Mace" graphics="BlackMace.jpg" text="Weapon. Warrior only: +3 prowess to a maximum of 10 (+4 to a maximum of 10 against Elves).">
+    <card name="Black Mace" graphics="BlackMace.jpg" text="Mace. Weapon. Two-handed. Warrior only: +3 prowess to a maximum of 10 (+4 to a maximum of 10 against Elves).">
        <attr key="corruption" value="3"/>
        <attr key="mp" value="2"/>
        <attr key="rarity" value="U"/>
@@ -2445,6 +2445,7 @@
        <attr key="type" value="Minion Resource"/>
 	   <attr key="keyword" value="Mace"/>
 	   <attr key="keyword" value="Battle-gear"/>
+	   <attr key="keyword" value="Two-handed"/>
 	   <attr key="keyword" value="Warrior only"/>
     </card>
     <card name="Black-hide Shield" graphics="BlackhideShield.jpg" text="Shield. +1 to body to a maximum of 9.">
@@ -2804,7 +2805,7 @@
        <attr key="rarity" value="U"/>
        <attr key="class" value="Greater Item"/>
        <attr key="type" value="Minion Resource"/>
-	   <attr key="keyword" value="Lore"/>
+	   <attr key="keyword" value="Lost Knowledge"/>
     </card>
     <card name="Shadow-cloak" graphics="Shadowcloak.jpg" text="Tap Shadow-cloak to cancel one hazard creature strike against bearer keyed by type to a Shadow-land [{s}], Shadow-hold [{S}], Dark-domain [{d}], or Dark-hold [{D}]. Cannot be duplicated on a given character.">
        <attr key="corruption" value="1"/>

@@ -1233,6 +1233,7 @@
        <attr key="rarity" value="U2"/>
        <attr key="class" value="Minor Item"/>
        <attr key="type" value="Hero Resource"/>
+	   <attr key="keyword" value="Lost Knowledge"/>
     </card>
     <card name="Trickery" graphics="Trickery.jpg" text="Scout only against an Orc, Troll, Man, Elf, Slayer, Awakened Plant, or Giant attack against his company. Make a roll (or draw a #); if the result is greater than 5, the attack is cancelled.">
        <attr key="rarity" value="C2"/>
@@ -1326,7 +1327,7 @@
        <attr key="class" value="Permanent-event"/>
        <attr key="type" value="Hero Resource"/>
     </card>
-    <card name="Wormsbane" graphics="Wormsbane.jpg" text="Unique. Weapon. +2 to prowess to a maximum of 9 (+4 to prowess to a maximum of 12 and -2 to strike's body against a Dragon or Drake strike).">
+    <card name="Wormsbane" graphics="Wormsbane.jpg" text="Unique. Weapon. Two-handed. +2 to prowess to a maximum of 9 (+4 to prowess to a maximum of 12 and -2 to strike's body against a Dragon or Drake strike).">
        <attr key="unique" value="yes"/>
        <attr key="corruption" value="2"/>
        <attr key="mp" value="4"/>
@@ -1336,6 +1337,7 @@
        <attr key="class" value="Greater Item"/>
        <attr key="type" value="Hero Resource"/>
 	   <attr key="keyword" value="Battle-gear"/>
+	   <attr key="keyword" value="Two-handed"/>
     </card>
     <card name="Buhr Widu" graphics="BuhrWidu.jpg" back="1" text="">
        <attr key="unique" value="yes"/>

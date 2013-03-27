@@ -917,7 +917,7 @@
        <attr key="type" value="Minion Resource"/>
     </card>
 
-    <card name="Ancient Black Axe" graphics="AncientBlackAxe.jpg" text="Unique. Weapon. Playable at any Under-deeps Shadow-hold [{S}]. +2 DI. Warrior only: +3 prowess (to a maximum of 11); -1 to strike's body; tap item to make a character at site automatically pass a corruption check (bearer makes a corruption check).">
+    <card name="Ancient Black Axe" graphics="AncientBlackAxe.jpg" text="Unique. Weapon. Two-handed. Playable at any Under-deeps Shadow-hold [{S}]. +2 DI. Warrior only: +3 prowess (to a maximum of 11); -1 to strike's body; tap item to make a character at site automatically pass a corruption check (bearer makes a corruption check).">
        <attr key="unique" value="yes"/>
        <attr key="corruption" value="4"/>
        <attr key="mp" value="4"/>
@@ -926,6 +926,7 @@
        <attr key="type" value="Minion Resource"/>
 	   <attr key="keyword" value="Axe"/>
 	   <attr key="keyword" value="Battle-gear"/>
+	   <attr key="keyword" value="Two-handed"/>
 	   <attr key="keyword" value="Warrior only"/>
     </card>
 
@@ -1037,6 +1038,7 @@
        <attr key="rarity" value="U2"/>
        <attr key="class" value="Minor Item"/>
        <attr key="type" value="Minion Resource"/>
+	   <attr key="keyword" value="Lost Knowledge"/>
     </card>
 
     <card name="Troth-ring" graphics="Trothring.jpg" text="Mind Ring. -1 mind, -1 to body checks. Cannot be duplicated on a given character.">

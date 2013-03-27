@@ -1357,7 +1357,7 @@
        <attr key="class" value="Short-event"/>
        <attr key="type" value="Hero Resource"/>
     </card>
-    <card name="Aiglos" graphics="Aiglos.jpg" text="Unique. Playable at any Under-deep Dark-hold or Shadow-hold. Weapon. Warrior only: +2 prowess (+5 if Doors of Night is in play) (to a maximum of 11); +1 body (to a maximum of 10); -2 to target's body; +3 direct influence against Elves and Elf factions.">
+    <card name="Aiglos" graphics="Aiglos.jpg" text="Unique. Playable at any Under-deep Dark-hold or Shadow-hold. Weapon. Two-handed. Warrior only: +2 prowess (+5 if Doors of Night is in play) (to a maximum of 11); +1 body (to a maximum of 10); -2 to target's body; +3 direct influence against Elves and Elf factions.">
        <attr key="unique" value="yes"/>
        <attr key="corruption" value="3"/>
        <attr key="mp" value="5"/>
@@ -1368,6 +1368,7 @@
        <attr key="type" value="Hero Resource"/>
        <attr key="influence" value="+2"/>
 	   <attr key="keyword" value="Battle-gear"/>
+	   <attr key="keyword" value="Two-handed"/>
 	   <attr key="keyword" value="Warrior only"/>
     </card>
     <card name="Dragon-helm" graphics="Dragonhelm.jpg" text="Unique. Playable at any Under-deep Dark-hold (D) or Shadow-hold (S). Helmet. Warrior only: +1 prowess; +2 body (to a maximum of 10); +3 direct influence. Tap Dragon-helm to cancel one attack by Dragons or Drakes.">

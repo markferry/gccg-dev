@@ -524,6 +524,7 @@
        <attr key="rarity" value="U3"/>
        <attr key="class" value="Permanent-event"/>
        <attr key="type" value="Stage Resource"/>
+	   <attr key="keyword" value="Ore"/>
     </card>
     <card name="Double-dealing" graphics="Doubledealing.jpg" text="Playable on a site. If the site is a minion site, you may play appropriate hero resources there. If the site is a hero site, you may play appropriate minion resources there. Discard when this site is discarded or returned to your location deck.">
        <attr key="sp" value="1"/>

@@ -2086,7 +2086,7 @@
        <attr key="class" value="Man Faction"/>
        <attr key="type" value="Hero Resource"/>
     </card>
-    <card name="Durin's Axe" graphics="DurinsAxe.jpg" text="Unique. Weapon. +2 prowess (+4 if held by a Dwarf) to a maximum of 9. If held by a Dwarf, 4 marshalling points and 3 corruption points.">
+    <card name="Durin's Axe" graphics="DurinsAxe.jpg" text="Unique. Axe. Weapon. Two-handed. +2 prowess (+4 if held by a Dwarf) to a maximum of 9. If held by a Dwarf, 4 marshalling points and 3 corruption points.">
        <attr key="unique" value="yes"/>
        <attr key="corruption" value="2(3)"/>
        <attr key="mp" value="2(4)"/>
@@ -2097,6 +2097,7 @@
        <attr key="type" value="Hero Resource"/>
 	   <attr key="keyword" value="Axe"/>
 	   <attr key="keyword" value="Battle-gear"/>
+	   <attr key="keyword" value="Two-handed"/>
     </card>
     <card name="Dwarven Ring of Barin's Tribe" graphics="DwarvenRingofBarinsTribe.jpg" text="Unique. Dwarven Ring. Playable only with a Gold Ring and after a test indicates a Dwarven Ring. Values in parentheses and brackets apply to a Dwarf bearer. Tap a Dwarf bearer to search your play deck for a major item playable at the bearer's site. Play this item immediately or discard; reshuffle the play deck. Bearer makes a corruption check modified by +2.">
        <attr key="unique" value="yes"/>
@@ -2444,6 +2445,7 @@
        <attr key="class" value="Minor Item"/>
        <attr key="type" value="Hero Resource"/>
        <attr key="influence" value="0(2)"/>
+	   <attr key="keyword" value="Instrument"/>
     </card>
     <card name="Horses" graphics="HorsesDC.jpg" text="Playable only at the end of the organization phase. Hazard limit for a company is decreased by two (to a minimum of 2). The prowess of any hazard creatures played against this company is modified by +2.">
        <attr key="rarity" value="CA"/>
@@ -2904,7 +2906,7 @@
        <attr key="rarity" value="U"/>
        <attr key="class" value="Greater Item"/>
        <attr key="type" value="Hero Resource"/>
-	   <attr key="keyword" value="Lore"/>
+	   <attr key="keyword" value="Lost Knowledge"/>
     </card>
     <card name="Secret Entrance" graphics="SecretEntrance.jpg" text="Only playable at the end of the organization phase; may not be played on a company that is moving to a site in a Dark-domain [{d}]. Tap a sage in the company, and no hazard creatures keyed to the site may be played on the company.">
        <attr key="rarity" value="R"/>
