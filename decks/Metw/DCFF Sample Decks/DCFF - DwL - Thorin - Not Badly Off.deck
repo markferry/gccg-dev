@@ -1,16 +1,16 @@
 #
 # GCCG v0.9.6.3 Middle-earth deck
 #
-#      DCFF - DwL - Thorin - Not Badly Off
+#      DCGO - DwL - Thorin - Not Badly Off - AV
 #
 
 ####
 Deck
 ####
 
-# Dual Resource (5)
+# Dual Resource (4)
 
-2 Dwarven Cunning (DF)
+1 Dwarven Cunning (DF)
 1 Fungi (DF)
 2 Old Grudge (DF)
 
@@ -18,7 +18,7 @@ Deck
 
 4 Thorin (DF)
 
-# Hazard (34)
+# Hazard (33)
 
 1 Alone and Unadvised (AS)
 2 An Unexpected Outpost (DM)
@@ -41,14 +41,13 @@ Deck
 1 Power Built by Waiting (AS)
 1 Saruman the Wise (AS)
 2 Trolls from the Mountains (AS)
-3 Twilight (TW)
+2 Twilight (TW)
 1 Umagaur the Pale (DM)
 1 Wild Trolls (LE)
 1 Ûvatha the Horseman (TW)
 
 # Hero Character (9)
 
-1 Attack-lord (DF)
 1 Bifur (TW)
 1 Bofur (TW)
 1 Dís (DF)
@@ -56,11 +55,13 @@ Deck
 1 Fíli (TW)
 1 Glóin (TW)
 1 Kíli (TW)
+1 Nori (TW)
 1 Óin (TW)
 
-# Hero Resource (18)
+# Hero Resource (19)
 
 1 Blue Mountain Dwarves (TW)
+1 Clan Bonds (DF)
 3 Dwarven Light-stone (DM)
 2 Forgotten Scrolls (DM)
 1 Marvels Told (TD)
@@ -80,11 +81,11 @@ Deck
 1 Back to the Fray (LE)
 1 Iron Shield of Old (AS)
 
-# Stage Resource (10)
+# Stage Resource (9)
 
 1 Born under the Mountains (DF)
 1 Deep Mountain Fortress (DF)
-2 Delver's Harvest (WH)
+1 Delver's Harvest (WH)
 1 Dwarven Alchemist (DF)
 1 Dwarven Galleries (DF)
 1 Great Miners (DF)
@@ -129,26 +130,19 @@ Pool
 Sideboard
 #########
 
-# Dual Resource (1)
-
-1 War Mattock (DF)
-
 # Hazard (3)
 
-1 Durin's Bane (DM)
-1 Itangast (TD)
-1 Lady of the Golden Wood (AS)
+1 Drowning Seas (TW)
+1 Lost in Free-domains (TW)
+1 News of Doom (LE)
 
-# Hero Character (6)
+# Hero Character (3)
 
-1 Dori (TW)
-1 Dwalin (TW)
+1 Attack-lord (DF)
 1 Dwarven Miner (DF)
 1 King's Advisor (DF)
-1 Nori (TW)
-1 Ori (TW)
 
-# Hero Resource (19)
+# Hero Resource (21)
 
 1 An Unexpected Party (DM)
 1 Battle-axe of the Fallen (DF)
@@ -158,6 +152,8 @@ Sideboard
 1 Dwarven Hoard (TD)
 2 Gems of Arda (DM)
 1 Hoard Gathering (DF)
+1 Into Dark Tunnels (DM)
+1 Knowledge of the Enemy (DM)
 3 Longbottom Leaf (BA)
 1 Marvels Told (TD)
 1 Petty-dwarves [H] (AS)
@@ -167,23 +163,22 @@ Sideboard
 1 The Arkenstone [H] (TW)
 1 Value Food and Cheer (DF)
 
-# Minion Resource (4)
+# Minion Resource (3)
 
 1 Blasting Fire (WH)
 1 Liquid Fire (WH)
-1 No More Nonsense (LE)
 1 Old Prejudice (LE)
 
-# Stage Resource (12)
+# Stage Resource (10)
 
 1 A Good Bit Laid By (DF)
 2 Deep Mountain Fortress (DF)
-1 Delver's Harvest (WH)
-2 Earth-eater (WH)
+1 Earth-eater (WH)
 1 Gnawed Ways (WH)
+1 Kheleglin (FP)
 1 Legacy of Smiths (WH)
 1 Mischief in a Mean Way (WH)
-2 New Tunnels (DF)
+1 New Tunnels (DF)
 1 Not Badly Off (DF)
 
 #####
@@ -204,7 +199,7 @@ Sites
 
 3 Deep Mines (WH)
 
-# Hero Site (16)
+# Hero Site (17)
 
 1 Bar-en-Ibûn [H] (DF)
 1 Barrow-downs [H] (TW)
@@ -221,4 +216,5 @@ Sites
 1 The Under-leas [H] (DM)
 1 The Under-vaults [H] (DM)
 1 The Wind Throne [H] (TW)
+1 The Worthy Hills [H] (AS)
 1 Weathertop [H] (TW)
