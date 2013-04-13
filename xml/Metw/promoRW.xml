@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE ccg-setinfo SYSTEM "../gccg-set.dtd">
+<ccg-setinfo name="Promotional" dir="PromoRW" abbrev="PR" game="Middle-earth">
+  <cards>
+
+    <card name="Fury of the Iron Crown" graphics="FuryoftheIronCrown.jpg" text="Unique.  Manifestation of the Iron Crown.  Playable on a non-detainment orc, troll, man, or Nazgûl attack.  The attack receives +4 prowess.  After the attack is faced, it is automatically defeated, and The Iron Crown may be placed from the defender’s hand with any member of the defending company.">
+       <attr key="unique" value="yes"/>
+       <attr key="rarity" value="P"/>
+       <attr key="class" value="Short-event"/>
+       <attr key="type" value="Hazard"/>
+    </card>
+    <card name="Neeker-breekers" graphics="Neekerbreekers.jpg" text="Detainment.  Each non-avatar character is assigned a strike.
+Special: Instead of prowess, a character’s mind is used as the base prowess when facing the strike.">
+       <attr key="strikes" value="1/each"/>
+       <attr key="mp" value="1"/>
+       <attr key="body" value="-"/>
+       <attr key="playable" value="{b}{w}{s}{d}{R}"/>
+       <attr key="prowess" value="7"/>
+       <attr key="rarity" value="P"/>
+       <attr key="subclass" value="Animals"/>
+       <attr key="type" value="Hazard"/>
+       <attr key="class" value="Creature"/>
+    </card>
+    <card name="Black Arrow" graphics="BlackArrow.jpg" text="Action: If borne by a warrior, tap this item to give -1 prowess and -1 body to an attack the bearer is facing.
+Trigger: If the bearer is not a Man, discard this item when it is tapped.">
+       <attr key="corruption" value="1"/>
+       <attr key="rarity" value="P"/>
+       <attr key="class" value="Minor Item"/>
+       <attr key="type" value="Hero Resource"/>
+    </card>
+    <card name="Ireful Flames" graphics="IrefulFlames.jpg" text="Items are not playable at The Lonely Mountain, Irerock, Gold Hill, and/or Zarak Dûm.
+Action: A player may reveal and discard from his hand an item that would normally be playable at one of the aforementioned sites to cancel the effects of this card until the end of the turn.">
+       <attr key="rarity" value="P"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Hazard"/>
+    </card>
+    <card name="Fatty Bolger" graphics="FattyBolger.jpg" text="Unique.  If played during the organization phase, may only be brought into play at Bag End.  +1 to corruption checks.
+Action: You may tap Fatty Bolger when a Hobbit in his company is facing a strike to cancel it.  -1 Corruption.">
+       <attr key="unique" value="yes"/>
+       <attr key="corruption" value="-1"/>
+       <attr key="skills" value="Scout"/>
+       <attr key="mp" value="1"/>
+       <attr key="body" value="8"/>
+       <attr key="prowess" value="1"/>
+       <attr key="home_site" value="Bag End"/>
+       <attr key="rarity" value="P"/>
+       <attr key="race" value="Hobbit"/>
+       <attr key="type" value="Hero Character"/>
+       <attr key="mind" value="3"/>
+       <attr key="influence" value="0"/>
+    </card>
+    <card name="The Arkenstone" graphics="TheArkenstone.jpg" text="Unique.  Playable at the Lonely Mountain.  Bearer receives +5 EI against Dwarves and +5 to influence checks against Dwarf factions.  The mind of all Dwarves increases by one.">
+       <attr key="unique" value="yes"/>
+       <attr key="corruption" value="3"/>
+       <attr key="mp" value="3"/>
+       <attr key="rarity" value="P"/>
+       <attr key="class" value="Special Item"/>
+       <attr key="type" value="Minion Resource"/>
+       <attr key="influence" value="(+5)"/>
+    </card>
+    <card name="Deadly Dart" graphics="DeadlyDart.jpg" text="Action: If bearer is a Scout, tap this item to give -1 strike to a minimum of one and -1 body to an attack.">
+       <attr key="corruption" value="2"/>
+       <attr key="rarity" value="P"/>
+       <attr key="class" value="Minor Item"/>
+       <attr key="type" value="Minion Resource"/>
+    </card>
+    <card name="The Iron Crown" graphics="TheIronCrown.jpg" text="Unique.  Helmet.  Action: You may tap this item when the bearer is facing an orc, troll, or man attack to cancel it.
+Action Trigger: The bearer makes a corruption check every time he makes an influence check.">
+       <attr key="unique" value="yes"/>
+       <attr key="corruption" value="5"/>
+       <attr key="mp" value="4"/>
+       <attr key="body" value="+1"/>
+       <attr key="rarity" value="P"/>
+       <attr key="class" value="Greater Item"/>
+       <attr key="type" value="Hero Resource"/>
+       <attr key="influence" value="+4"/>
+	   <attr key="keyword" value="Helmet"/>
+    </card>
+  </cards>
+</ccg-setinfo>

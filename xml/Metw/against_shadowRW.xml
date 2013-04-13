@@ -1,0 +1,1699 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE ccg-setinfo SYSTEM "../gccg-set.dtd">
+<ccg-setinfo name="Against the Shadow" dir="AgainstShadowRW" abbrev="AS" game="Middle-earth">
+  <cards>
+
+    <card name="Bûrat" graphics="Burat.jpg" text="Unique.  May not be a starting character.  If played during the organization phase, Tûma and/or Wûluag may also be played at the same site.  Discard on a body check result equal to his body.
+Action: Tap Bûrat if in the same company to untap Tûma or Wûluag">
+       <attr key="unique" value="yes"/>
+       <attr key="skills" value="Warrior/Ranger"/>
+       <attr key="mp" value="1"/>
+       <attr key="home_site" value="Any non-Under-Deeps Ruins and Lairs"/>
+       <attr key="prowess" value="5"/>
+       <attr key="body" value="8"/>
+       <attr key="rarity" value="U2"/>
+       <attr key="race" value="Troll"/>
+       <attr key="type" value="Minion Character"/>
+       <attr key="mind" value="4"/>
+       <attr key="influence" value="0"/>
+    </card>
+
+    <card name="Mauhúr" graphics="Mauhur.jpg" text="Unique.  Leader.  +2 EI against Orc characters.  +2 to influence checks against Orc factions.">
+       <attr key="unique" value="yes"/>
+       <attr key="skills" value="Warrior"/>
+       <attr key="mp" value="2"/>
+       <attr key="home_site" value="Dol Guldur"/>
+       <attr key="body" value="9"/>
+       <attr key="prowess" value="6"/>
+       <attr key="rarity" value="R2"/>
+       <attr key="race" value="Orc"/>
+       <attr key="type" value="Minion Character"/>
+       <attr key="mind" value="5"/>
+       <attr key="influence" value="0"/>
+    </card>
+
+    <card name="Mîonid" graphics="Mionid.jpg" text="Unique.  If facing an Animal, Spider, or Awakened Plant strike, +1 to prowess.">
+       <attr key="unique" value="yes"/>
+       <attr key="skills" value="Warrior/Ranger"/>
+       <attr key="mp" value="1"/>
+       <attr key="home_site" value="Variag Camp"/>
+       <attr key="body" value="8"/>
+       <attr key="prowess" value="5"/>
+       <attr key="rarity" value="U2"/>
+       <attr key="race" value="Man"/>
+       <attr key="type" value="Minion Character"/>
+       <attr key="mind" value="4"/>
+       <attr key="influence" value="0"/>
+    </card>
+
+    <card name="Perchen" graphics="Perchen.jpg" text="Unique.  Action: Tap Perchen to cancel a Man attack against his company.">
+       <attr key="unique" value="yes"/>
+       <attr key="skills" value="Scout/Diplomat"/>
+       <attr key="mp" value="2"/>
+       <attr key="home_site" value="Dunnish Clan-hold"/>
+       <attr key="body" value="9"/>
+       <attr key="prowess" value="3"/>
+       <attr key="rarity" value="U2"/>
+       <attr key="race" value="Man"/>
+       <attr key="type" value="Minion Character"/>
+       <attr key="mind" value="5"/>
+       <attr key="influence" value="2"/>
+    </card>
+
+    <card name="Tûma" graphics="Tuma.jpg" text="Unique.  May not be a starting character.  If played during the organization phase, Bûrat and/or Wûluag may also be played at the same site.  Discard on a body check result equal to his body.
+Action: Tap Tûma if in the same company to untap Bûrat or Wûluag.">
+       <attr key="unique" value="yes"/>
+       <attr key="skills" value="Warrior"/>
+       <attr key="mp" value="1"/>
+       <attr key="home_site" value="Any Ruins and Lairs"/>
+       <attr key="body" value="8"/>
+       <attr key="prowess" value="6"/>
+       <attr key="rarity" value="U2"/>
+       <attr key="race" value="Troll"/>
+       <attr key="type" value="Minion Character"/>
+       <attr key="mind" value="4"/>
+       <attr key="influence" value="0"/>
+    </card>
+
+    <card name="Wûluag" graphics="Wuluag.jpg" text="Unique.  May not be a starting character.  If played during the organization phase, Bûrat and/or Tûma may also be played at the same site.  Discard on a body check result equal to his body.
+Action: Tap Wûluag if in the same company to untap Bûrat or Tûma.">
+       <attr key="unique" value="yes"/>
+       <attr key="skills" value="Warrior/Scout"/>
+       <attr key="mp" value="1"/>
+       <attr key="home_site" value="Any Ruins and Lairs"/>
+       <attr key="body" value="8"/>
+       <attr key="prowess" value="5"/>
+       <attr key="rarity" value="U2"/>
+       <attr key="race" value="Troll"/>
+       <attr key="type" value="Minion Character"/>
+       <attr key="mind" value="4"/>
+       <attr key="influence" value="0"/>
+    </card>
+
+    <card name="Alatar the Hunter" graphics="AlatartheHunter.jpg" text="Unique.   Manifestation of Alatar.  Two strikes.  Attacker assigns all strikes.  Detainment against a Wizard or Fallen Wizard player’s companies.  May be keyed to Andrast, Old Pûkel-Gap, Anfalas, Lamedon, Lebennin, Belfalas, Anórien, and to sites in these regions.
+Special: May also be played as a permanent event.  If so, the following apply:
+All Maia attacks receive +1 strike and +1 prowess for each Maia in play as a permanent event.
+Trigger: If any player reveals Alatar from his hand, discard this card.">
+       <attr key="unique" value="yes"/>
+       <attr key="strikes" value="2"/>
+       <attr key="mp" value="6* "/>
+       <attr key="playable" value="{f}{F}"/>
+       <attr key="body" value="9"/>
+       <attr key="prowess" value="13"/>
+       <attr key="subclass" value="Maia"/>
+       <attr key="rarity" value="R2+U1"/>
+       <attr key="class" value="Creature"/>
+       <attr key="type" value="Hazard"/>
+    </card>
+
+    <card name="Durin's Folk" graphics="DurinsFolk.jpg" text="Five strikes.  Detainment against covert companies.  May be keyed to Númeriador, The Shire, Withered Heath, Northern Rhovanion, Iron Hills, Redhorn Gate, and to sites in these regions.">
+       <attr key="strikes" value="5"/>
+       <attr key="mp" value="2* "/>
+       <attr key="playable" value=""/>
+       <attr key="body" value="4"/>
+       <attr key="prowess" value="8"/>
+       <attr key="subclass" value="Dwarves"/>
+       <attr key="rarity" value="C3"/>
+       <attr key="class" value="Creature"/>
+       <attr key="type" value="Hazard"/>
+    </card>
+    <card name="Dwarven Travelers" graphics="DwarvenTravelers.jpg" text="Three strikes.  Detainment against covert companies.  +3 prowess against overt companies.">
+       <attr key="strikes" value="3"/>
+       <attr key="mp" value="1*"/>
+       <attr key="playable" value="{w}{b}{R}{B}"/>
+       <attr key="body" value="-"/>
+       <attr key="prowess" value="8"/>
+       <attr key="subclass" value="Dwarves"/>
+       <attr key="rarity" value="C3"/>
+       <attr key="class" value="Creature"/>
+       <attr key="type" value="Hazard"/>
+    </card>
+    <card name="Galadhrim" graphics="Galadhrim.jpg" text="Three strikes.  Detainment against a Wizard player’s companies.  May be keyed to Lindon, Rhudaur, Wold &amp; Foothills, Anfalas, and to sites in these regions.
+Special: A defending character must discard all items he bears if a strike against him succeeds.">
+       <attr key="strikes" value="3"/>
+       <attr key="mp" value="2*"/>
+       <attr key="body" value="7"/>
+       <attr key="prowess" value="11"/>
+       <attr key="subclass" value="Elves"/>
+       <attr key="rarity" value="C2"/>
+       <attr key="class" value="Creature"/>
+       <attr key="type" value="Hazard"/>
+    </card>
+    <card name="Gandalf the White Rider" graphics="GandalftheWhiteRider.jpg" text="Unique.  Manifestation of Gandalf.  Two strikes.  Detainment against a Wizard or Fallen Wizard player’s companies.  May be keyed to Arthedain, The Shire, Rhudaur, Lindon, Wold &amp; Foothills, Anfalas, and to sites in these regions.
+Special: May also be played as a permanent event.  If so, the following apply:
+The hazard limit against all overt companies increases by one.
+Trigger: If any player reveals Gandalf from their hand, discard this card.">
+       <attr key="unique" value="yes"/>
+       <attr key="strikes" value="2"/>
+       <attr key="mp" value="6*"/>
+       <attr key="playable" value="{f}{F}"/>
+       <attr key="body" value="9"/>
+       <attr key="prowess" value="13"/>
+       <attr key="subclass" value="Maia"/>
+       <attr key="rarity" value="R2"/>
+       <attr key="class" value="Creature"/>
+       <attr key="type" value="Hazard"/>
+    </card>
+    <card name="Knights of the Prince" graphics="KnightsofthePrince.jpg" text="Unique.  Four strikes.  Detainment against a Wizard or Fallen Wizard player’s companies.  May be keyed to Anfalas, Belfalas, Lamedon, Lebennin, Anórien, and to sites in these regions.
+Special: Unless the attack is canceled, tap all untapped characters in the defending company after the attack is faced.">
+       <attr key="unique" value="yes"/>
+       <attr key="strikes" value="4"/>
+       <attr key="mp" value="3*"/>
+       <attr key="body" value="8"/>
+       <attr key="prowess" value="10"/>
+       <attr key="subclass" value="Dúnedain"/>
+       <attr key="rarity" value="R2"/>
+       <attr key="class" value="Creature"/>
+       <attr key="type" value="Hazard"/>
+    </card>
+    <card name="Lady of the Golden Wood" graphics="LadyoftheGoldenWood.jpg" text="Unique.  Manifestation of Galadriel.  One strike.  Detainment against a Wizard player’s companies.  May be keyed to Wold &amp; Foothills and to sites in this region.
+Special: May be played as a permanent event.  If so, the following apply:
+If a Ringwraith or Balrog player declares any action that would allow them to search through their opponent’s play deck or discard pile, that action is canceled.  If the action was a card play action, the card is returned to its owner’s hand.
+Trigger: If any player reveals Galadriel from their hand discard this card.">
+       <attr key="unique" value="yes"/>
+       <attr key="strikes" value="1"/>
+       <attr key="mp" value="3*"/>
+       <attr key="body" value="10"/>
+       <attr key="prowess" value="12"/>
+       <attr key="subclass" value="Elves"/>
+       <attr key="rarity" value="R2"/>
+       <attr key="class" value="Creature"/>
+       <attr key="type" value="Hazard"/>
+    </card>
+    <card name="Lord of the Carrock" graphics="LordoftheCarrock.jpg" text="Unique.  Manifestation of Beorn.  One strike.  Detainment against a Wizard player’s companies.  May be keyed to Anduin Vales, Woodland Realm, Western Mirkwood, Wold &amp; Foothills, High Pass, Redhorn Gate, and to sites in these regions.
+Special: May be played as a Long Event.  If so, the following applies:
+Each company using region movement that passes through Anduin Vales must return to their site of origin.">
+       <attr key="unique" value="yes"/>
+       <attr key="strikes" value="1"/>
+       <attr key="mp" value="3*"/>
+       <attr key="body" value="9"/>
+       <attr key="prowess" value="16"/>
+       <attr key="subclass" value="Animals Men"/>
+       <attr key="rarity" value="R2"/>
+       <attr key="class" value="Creature"/>
+       <attr key="type" value="Hazard"/>
+    </card>
+    <card name="Lord of the Haven" graphics="LordoftheHaven.jpg" text="Unique.  Manifestation of Círdan.  One strike.  Detainment against a Wizard player’s companies.  May be keyed by name to Lindon or any c region; may also be keyed to sites in these regions.
+Special: May also be played as a short event.  If so, the following applies.
+Playable on a company with a c in their site path.  Tap up to two characters in the company.">
+       <attr key="unique" value="yes"/>
+       <attr key="strikes" value="1"/>
+       <attr key="mp" value="3*"/>
+       <attr key="body" value="9"/>
+       <attr key="prowess" value="13"/>
+       <attr key="subclass" value="Elves"/>
+       <attr key="rarity" value="R2"/>
+       <attr key="class" value="Creature"/>
+       <attr key="type" value="Hazard"/>
+    </card>
+    <card name="Master of the House" graphics="MasteroftheHouse.jpg" text="Unique.  Manifestation of Elrond.  One strike.  Detainment against a Wizard player’s companies.  May be keyed to Rhudaur, Arthedain, High Pass, The Shire, Cardolan, and to sites in these regions.
+Special: May be played as a permanent event.  If so the following apply:
+Each player may bring one Elf hazard creature from their discard pile to their hand at the end of the turn after resolving hand size.
+Trigger: If any player reveals Elrond from their hand, discard this card.">
+       <attr key="unique" value="yes"/>
+       <attr key="strikes" value="1"/>
+       <attr key="mp" value="3*"/>
+       <attr key="body" value="9"/>
+       <attr key="prowess" value="14"/>
+       <attr key="subclass" value="Elves"/>
+       <attr key="rarity" value="R2"/>
+       <attr key="class" value="Creature"/>
+       <attr key="type" value="Hazard"/>
+    </card>
+    <card name="Pallando the Soul-keeper" graphics="PallandotheSoulkeeper.jpg" text="Unique.  Two strikes.  Detainment against a Wizard or Fallen Wizard player’s companies.  May be keyed to Lindon, Númeriador, Arthedain, Cardolan, and to sites in these regions..
+Special: For each successful non-detainment strike, the defending character is not harmed.  Instead, place the character off to the side with this card.  After the attack is faced, if any characters are placed off to the side, this card becomes a permanent event host which takes the characters prisoner at the nearest F to the company’s site (hazard player’s choice).  Rescue attack: Maia — 2 strikes at 13 prowess.
+Trigger: If any player reveals Pallando from their hand, discard this card.">
+       <attr key="unique" value="yes"/>
+       <attr key="strikes" value="2"/>
+       <attr key="mp" value="6*"/>
+       <attr key="playable" value="{f}{F}"/>
+       <attr key="body" value="9"/>
+       <attr key="prowess" value="13"/>
+       <attr key="subclass" value="Maia"/>
+       <attr key="rarity" value="R2"/>
+       <attr key="class" value="Creature"/>
+       <attr key="type" value="Hazard"/>
+	<attr key="keyword" value="Prisoner"/>
+    </card>
+    <card name="Radagast the Tamer" graphics="RadagasttheTamer.jpg" text="Unique.  Manifestation of Radagast.  Two strikes.  Detainment against a Wizard of Fallen Wizard player’s companies.  May be keyed to Southern Mirkwood, Western Mirkwood, Woodland Realm, Heart of Mirkwood, and to sites in these regions.
+Special: May be played as a permanent event.  If so, the following apply:
+At the end of the turn, each player may bring one Animal or Awakened Plant hazard creature from their discard pile to their hand after resolving hand size.
+Trigger: Any player may reveal Radagast from their hand to discard this card.">
+       <attr key="unique" value="yes"/>
+       <attr key="strikes" value="2"/>
+       <attr key="mp" value="6*"/>
+       <attr key="playable" value="{f}{F}"/>
+       <attr key="body" value="9"/>
+       <attr key="prowess" value="13"/>
+       <attr key="subclass" value="Maia"/>
+       <attr key="rarity" value="R2"/>
+       <attr key="class" value="Creature"/>
+       <attr key="type" value="Hazard"/>
+    </card>
+    <card name="Saruman the Wise" graphics="SarumantheWise.jpg" text="Unique.  Manifestation of Saruman.  Three strikes.  Detainment against a Wizard or Fallen Wizard player’s companies.  May be keyed to Gap Of Isen, Rohan, Enedhwaith, Old Pûkel-Land, and to sites in these regions.
+Special: May be played as a permanent event.  If so, the following apply:
+-1 to all Ring Tests.
+Trigger: Any player may reveal Saruman from their hand to discard this card.">
+       <attr key="unique" value="yes"/>
+       <attr key="strikes" value="3"/>
+       <attr key="mp" value="6*"/>
+       <attr key="playable" value="{f}{F}"/>
+       <attr key="body" value="9"/>
+       <attr key="prowess" value="13"/>
+       <attr key="subclass" value="Maia"/>
+       <attr key="rarity" value="R2"/>
+       <attr key="class" value="Creature"/>
+       <attr key="type" value="Hazard"/>
+    </card>
+    <card name="Steward's Guard" graphics="StewardsGuard.jpg" text="Five strikes.  Detainment against covert companies.  May be keyed to Wold &amp; Foothills, Rohan, Anórien, Lebennin, Brown Lands, Dagorlad, Ithilien, Harondor, and to sites in these regions.
+Special: May also be played as a long event.  If so, the following applies:
+All Dúnedain attacks with no body receive 4 body.">
+       <attr key="strikes" value="5"/>
+       <attr key="mp" value="1*"/>
+       <attr key="body" value="-"/>
+       <attr key="prowess" value="8"/>
+       <attr key="subclass" value="Dúnedain"/>
+       <attr key="rarity" value="C2"/>
+       <attr key="class" value="Creature"/>
+       <attr key="type" value="Hazard"/>
+    </card>
+    <card name="Stout Men of Gondor" graphics="StoutMenofGondor.jpg" text="Six strikes.  Detainment against covert companies.  May be keyed to Old Pûkel-Land, Old Pûkel-Gap, Andrast, Anfalas, Lamedon, Belfalas, Lebennin, Anórien, Rohan, and to sites in these regions.">
+       <attr key="strikes" value="6"/>
+       <attr key="mp" value="1*"/>
+       <attr key="body" value="-"/>
+       <attr key="prowess" value="7"/>
+       <attr key="subclass" value="Dúnedain"/>
+       <attr key="rarity" value="C3"/>
+       <attr key="class" value="Creature"/>
+       <attr key="type" value="Hazard"/>
+    </card>
+    <card name="Trolls from the Mountains" graphics="TrollsfromtheMountains.jpg" text="Three strikes.  May be keyed to Ettenmoors.">
+       <attr key="strikes" value="3"/>
+       <attr key="mp" value="2"/>
+       <attr key="playable" value="{w}{w}{w}"/>
+       <attr key="body" value="5"/>
+       <attr key="prowess" value="12"/>
+       <attr key="subclass" value="Trolls"/>
+       <attr key="rarity" value="C2"/>
+       <attr key="class" value="Creature"/>
+       <attr key="type" value="Hazard"/>
+    </card>
+    <card name="A Lie in Your Eyes" graphics="ALieinYourEyes.jpg" text="Playable on a untapped non-avatar character with a mind less than 4.   Tap the character.">
+       <attr key="rarity" value="R2"/>
+       <attr key="class" value="Short-event"/>
+       <attr key="type" value="Hazard"/>
+    </card>
+    <card name="Alone and Unadvised" graphics="AloneandUnadvised.jpg" text="All characters gain a corruption point for each character less than four in their company unless the company contains an avatar.  May not be duplicated by a given player.">
+       <attr key="corruption" value="4"/>
+       <attr key="rarity" value="C3"/>
+       <attr key="class" value="Long-event"/>
+       <attr key="type" value="Hazard"/>
+    </card>
+    <card name="Come at Need" graphics="ComeatNeed.jpg" text="You may place an ally with a prowess attribute from your hand off to the side with this card.  The ally gives no mp.
+Action: If a company moves to the ally’s home site, you may use one against the hazard limit to create an attack of the ally’s race.  The attack has one strike, a prowess equal to seven plus the ally’s prowess, and a body equal to the ally’s body.  This attack is detainment if the home site and the ally are both hero or both minion.  If a non-detainment attack is defeated, the ally is eliminated and your opponent receives its mp as kill mp.  Otherwise, both are discarded.
+Action: You may discard this card during the organization phase to return the ally to your hand.">
+       <attr key="rarity" value="C2"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Hazard"/>
+    </card>
+    <card name="Early Harvest" graphics="EarlyHarvest.jpg" text="Playable on a faction whose current region is a b.  Target faction gives no mp.  Remove this card from the game when it would otherwise be discarded.">
+       <attr key="rarity" value="C2"/>
+       <attr key="class" value="Long-event"/>
+       <attr key="type" value="Hazard"/>
+    </card>
+    <card name="Enchanted Stream" graphics="EnchantedStream.jpg" text="Unique.  Playable on a company moving with region movement if there is at least one w in its site path.  Company’s new site becomes a site in that w (their choice).  Company may not move from their current site.
+Action: Tap all Rangers to a minimum of one in the company to discard this card.">
+       <attr key="rarity" value="C3"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Hazard"/>
+    </card>
+    <card name="Fealty Under Trial" graphics="FealtyUnderTrial.jpg" text="Corruption.
+Action: Target character makes a corruption check at the end of every organization phase if he controls any resources which can be stored.
+Trigger: Discard if the character controls no resources that can be stored.">
+       <attr key="rarity" value="C2"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Hazard"/>
+	<attr key="keyword" value="Corruption"/>
+	<attr key="corruption" value="2"/>
+    </card>
+    <card name="FEAR! FIRE! FOES!" graphics="FEARFIREFOES.jpg" text="Playable on a F or B.  An additional automatic-attack is created at the site: 5 strikes at 8 prowess (detainment, no type).
+Discard at the end of the turn.">
+       <attr key="rarity" value="C3"/>
+       <attr key="class" value="Short-event"/>
+       <attr key="type" value="Hazard"/>
+    </card>
+    <card name="Full of Froth and Rage" graphics="FullofFrothandRage.jpg" text="All Spider and Animal attacks receive +2 prowess.  Discard if a Spider or Animal attack is defeated.  Cannot be duplicated.">
+       <attr key="rarity" value="C2"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Hazard"/>
+    </card>
+    <card name="Near to Hear a Whisper" graphics="NeartoHearaWhisper.jpg" text="Action Trigger: If a company may enter a site during the site phase and chooses not to, any Agent at the site may attack the company.">
+       <attr key="rarity" value="R2"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Hazard"/>
+    </card>
+    <card name="One Foe to Breed a War" graphics="OneFoetoBreedaWar.jpg" text="Playable on a wounded non-avatar character.  The first strike of each attack is assigned to this character.
+Trigger: The next time target character would otherwise heal, discard this card instead.">
+       <attr key="rarity" value="R2"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Hazard"/>
+    </card>
+    <card name="Pilfer Anything Unwatched" graphics="PilferAnythingUnwatched.jpg" text="Playable on a revealed Agent at their home site.
+Action: Use one against the hazard limit and tap the Agent to tap any character with the same home site as the Agent’s current site.
+Trigger: If the Agent is not revealed or not at their home site, discard this card.">
+       <attr key="rarity" value="U1"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Hazard"/>
+    </card>
+    <card name="Power Built by Waiting" graphics="PowerBuiltbyWaiting.jpg" text="Action: Tap this card during a company’s movement/hazard phase to increase the hazard limit by one.  This card does not untap during your untap phase.
+Action: You may use two against a company’s hazard limit to untap this card.">
+       <attr key="rarity" value="C3"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Hazard"/>
+    </card>
+    <card name="Returned Beyond All Hope" graphics="ReturnedBeyondAllHope.jpg" text="Playable on an Elf, Dwarf, Dúnadan, or Maia hazard creature in your discard pile.  Bring the creature to your hand or
+Playable on your Maia permanent event.  Return the Maia event to your hand or
+Playable on your eliminated Maia or Elf in your opponent’s mp pile.  Make a roll.  If the result is greater than 8, return the Maia or Elf to your hand and place this card in your opponent’s mp pile — your opponent receives this card’s mp.">
+       <attr key="mp" value="2"/>
+       <attr key="rarity" value="C2"/>
+       <attr key="class" value="Short-event"/>
+       <attr key="type" value="Hazard"/>
+    </card>
+    <card name="Ride Against the Enemy" graphics="RideAgainsttheEnemy.jpg" text="You may place a character from your hand off to the side with this card.  The character gives no  mp.
+Action: If a company moves to the character’s home site, you may use one against the hazard limit to create an attack of the character’s race.  This attack has one strike, a prowess equal to seven plus the character’s prowess, and body equal to the character’s.  This attack is detainment if the home site and the character are both hero or both minion.  If a non-detainment attack is defeated, the character is eliminated and your opponent receives its mp as kill mp.  Otherwise, both cards are discarded.
+Action: During the organization phase, you may discard this card to return the character to your hand.">
+       <attr key="rarity" value="C3"/>
+       <attr key="class" value="Short-event"/>
+       <attr key="type" value="Hazard"/>
+    </card>
+    <card name="Short Legs Are Slow" graphics="ShortLegsAreSlow.jpg" text="Playable on a Hobbit.  When declaring region movement, his company may play one less region card to a minimum of two.">
+       <attr key="rarity" value="U3"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Hazard"/>
+    </card>
+    <card name="Slip Treacherously" graphics="SlipTreacherously.jpg" text="Tap all untapped items in play which may tap for an effect.  Additionally, any Minor Items which may be discarded for an effect are discarded.">
+       <attr key="rarity" value="C3"/>
+       <attr key="class" value="Short-event"/>
+       <attr key="type" value="Hazard"/>
+    </card>
+    <card name="Summons from Long Sleep" graphics="SummonsfromLongSleep.jpg" text="You may place one Dragon or Drake creature off to the side with this card.  You may play such a creature as though it were in your hand.
+Trigger: Discard when such a creature is so played.">
+       <attr key="rarity" value="C2"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Hazard"/>
+    </card>
+    <card name="Trouble on All Borders" graphics="TroubleonAllBorders.jpg" text="Playable on a unique faction in play.
+Action Trigger: Any company moving through the faction’s current region faces an attack.  The attack is the same type as the faction and has a number of strikes equal to the faction’s mp and a prowess equal to the influence number.  The attack is detainment if both the faction and the company are minion or hero.  Cannot be duplicated on a given faction.">
+       <attr key="rarity" value="C2"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Hazard"/>
+    </card>
+    <card name="Turning Hope to Despair" graphics="TurningHopetoDespair.jpg" text="Playable on a company facing a non-detainment attack from a Unique hazard creature.  If the attack is not defeated, each character in the company makes a roll and adds his mind.  If the result is less than 11, the character splits off from the company and forms his own company with the same site path as his original company.  The character continues the movement/hazard phase as though he were in his own company with a hazard limit of one.">
+       <attr key="rarity" value="C3"/>
+       <attr key="class" value="Short-event"/>
+       <attr key="type" value="Hazard"/>
+    </card>
+    <card name="Unhappy Blows" graphics="UnhappyBlows.jpg" text="Playable on a detainment attack before strikes are assigned.  The attack becomes non-detainment.  Modify any body checks resulting from successful strikes by -3.  Remove this card from the game after the attack is faced.">
+       <attr key="rarity" value="R2"/>
+       <attr key="class" value="Short-event"/>
+       <attr key="type" value="Hazard"/>
+    </card>
+    <card name="Will Shaken" graphics="WillShaken.jpg" text="This card cannot be played.  If your opponent looks at cards from your hand due to the use of one of his abilities and sees Will Shaken, place this card in his mp pile.  This card takes precendence over any effect which would place it elsewhere.  This card increases the mp requirement to end the game for that player by two.
+Action: Your opponent may skip his turn to discard this card.">
+       <attr key="mp" value="-2"/>
+       <attr key="rarity" value="R2"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Hazard"/>
+    </card>
+    <card name="All the Bells Ringing" graphics="AlltheBellsRinging.jpg" text="Playable before strikes are assigned when facing Company vs Company Combat.  Cancel the attack.">
+       <attr key="rarity" value="U3"/>
+       <attr key="class" value="Short-event"/>
+       <attr key="type" value="Hero Resource"/>
+    </card>
+    <card name="Alliance of the Free Peoples" graphics="AllianceoftheFreePeoples.jpg" text="Playable by a Wizard player.  If at least one hero Dwarf faction, one hero Elf faction, and one hero Man faction is in play, all your hero Dwarf factions, hero Elf factions, and hero Man factions give an additional mp.  May not be duplicated by a given player.">
+       <attr key="rarity" value="R2"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Hero Resource"/>
+    </card>
+    <card name="Biter and Beater!" graphics="BiterandBeater.jpg" text="Playable on a company facing an attack; also playable during your opponent’s site phase.  Each bearer of a Sword of Gondolin, Glamdring, or Orcrist receives +2 to prowess when facing an orc strike, and the strike’s body is modified by -1.">
+       <attr key="rarity" value="C2"/>
+       <attr key="class" value="Short-event"/>
+       <attr key="type" value="Hero Resource"/>
+    </card>
+    <card name="Drughu" graphics="Drughu.jpg" text="Playable by a Wizard player.  Your Wose factions are worth an additional mp.  May not be duplicated by a given player.">
+       <attr key="rarity" value="U3"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Hero Resource"/>
+    </card>
+    <card name="Farmer Maggot" graphics="FarmerMaggot.jpg" text="Unique.  Special Movement: If one of your companies faces an attack while at a site in The Shire, Arthedain, or Cardolan, you may, before strikes are assigned, discard this card to immediately replace the company's site card with another site card in The Shire, Arthedain, or Cardolan from your location deck.  The attack is considered faced, but no strikes are assigned.">
+       <attr key="unique" value="yes"/>
+       <attr key="rarity" value="R1"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Hero Resource"/>
+    </card>
+    <card name="Glamour of Excellence" graphics="GlamourofExcellence.jpg" text="May not be played by a Fallen Wizard player.  Playable on a company at a B or F.  Make a roll for each hazard permanent-event on characters in the company that a roll can discard; these rolls are modified by +3.  Discard each hazard according to the result as written on their card.">
+       <attr key="rarity" value="C3"/>
+       <attr key="class" value="Short-event"/>
+       <attr key="type" value="Hero Resource"/>
+    </card>
+    <card name="Mount Slain" graphics="MountSlain.jpg" text="Playable during any player’s turn if a Ringwraith or Nazgûl strike against one of your characters fails.">
+       <attr key="mp" value="2"/>
+       <attr key="rarity" value="R2"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Hero Resource"/>
+    </card>
+    <card name="No Strangers at this Time" graphics="NoStrangersatthisTime.jpg" text="Playable during the site phase on a F or B if you have played a faction there.  This site is never discarded.  All detainment attacks at all versions of this site against minion companies instead attack normally.  Cannot be duplicated on a given site.">
+       <attr key="mp" value="1"/>
+       <attr key="rarity" value="C3"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Hero Resource"/>
+    </card>
+    <card name="Orc-mail" graphics="Orcmail.jpg" text="Armor.  As a hero item, may only be borne by a Hobbit or Dwarf.  As a minion item, may only be borne by an Orc.
+Action: If bearer is facing an Orc strike, tap this item to cancel it.">
+       <attr key="rarity" value="R2"/>
+       <attr key="class" value="Minor Item"/>
+       <attr key="type" value="Dual Resource"/>
+	<attr key="keyword" value="Armor"/>
+	<attr key="body" value="+1"/>
+    </card>
+    <card name="Power Against the Shadow" graphics="PowerAgainsttheShadow.jpg" text="Playable during opponent’s site phase on a company being attacked by a minion company before strikes are assigned.  All hero characters receive +3 prowess.  Discard at the end of the turn.  Cannot be duplicated on a given company.">
+       <attr key="rarity" value="C3"/>
+       <attr key="class" value="Short-event"/>
+       <attr key="type" value="Hero Resource"/>
+    </card>
+    <card name="Safe from the Shadow" graphics="SafefromtheShadow.jpg" text="Hero characters may store resources during the end-of-turn phase as though it were their organization phase.  May not be duplicated by a given player.">
+       <attr key="rarity" value="C2"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Hero Resource"/>
+    </card>
+    <card name="Spies Feared" graphics="SpiesFeared.jpg" text="Playable on a site if a Scout is there.  Automatic-attacks at any version of this site cannot be canceled.
+Trigger: Discard this card if you do not have a Scout at the site.">
+       <attr key="rarity" value="R2"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Hero Resource"/>
+	<attr key="keyword" value="Scout"/>
+    </card>
+    <card name="The Sun Unveiled" graphics="TheSunUnveiled.jpg" text="Playable by a Wizard player on a character at a F if Gates of Morning is in play.  Remove all hazard permanent-events on the character and, if tapped, untap him.">
+       <attr key="rarity" value="C3"/>
+       <attr key="class" value="Short-event"/>
+       <attr key="type" value="Hero Resource"/>
+    </card>
+    <card name="Tower Raided" graphics="TowerRaided.jpg" text="Playable at Barad-Dûr during the site phase if you tap an untapped character there.">
+       <attr key="mp" value="6"/>
+       <attr key="rarity" value="R2"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Hero Resource"/>
+    </card>
+    <card name="Angmarim" graphics="Angmarim.jpg" text="Unique.  Standard Modifications: Wizard -5, Fallen Wizard -5, Men +1">
+       <attr key="unique" value="yes"/>
+       <attr key="mp" value="3"/>
+       <attr key="rarity" value="R1"/>
+       <attr key="class" value="Man Faction"/>
+       <attr key="type" value="Hero Resource"/>
+	<attr key="home_site" value="Carn Dûm"/>
+	<attr key="mind" value="11"/>
+    </card>
+    <card name="Haradrim" graphics="Haradrim.jpg" text="Unique.  Standard Modifications: Wizard -5, Fallen Wizard -5, Dúnedain -2, Elves -2, Dwarves -2.">
+       <attr key="unique" value="yes"/>
+       <attr key="mp" value="4"/>
+       <attr key="rarity" value="R2"/>
+       <attr key="class" value="Man Faction"/>
+       <attr key="type" value="Hero Resource"/>
+	<attr key="home_site" value="Southron Oasis"/>
+	<attr key="mind" value="9"/>
+    </card>
+    <card name="Nûrniags" graphics="Nurniags.jpg" text="Unique.  Standard Modifications: Wizard -5, Fallen Wizard -5, Men +1">
+       <attr key="unique" value="yes"/>
+       <attr key="mp" value="5"/>
+       <attr key="rarity" value="R1"/>
+       <attr key="class" value="Man Faction"/>
+       <attr key="type" value="Hero Resource"/>
+	<attr key="home_site" value="Nûrniag Camp"/>
+	<attr key="mind" value="13"/>
+    </card>
+    <card name="Petty-dwarves" graphics="Pettydwarves.jpg" text="Unique.  Standard Modifications: Elves -2, Dwarves +2">
+       <attr key="unique" value="yes"/>
+       <attr key="mp" value="2"/>
+       <attr key="rarity" value="R2"/>
+       <attr key="class" value="Dwarf Faction"/>
+       <attr key="type" value="Hero Resource"/>
+	<attr key="home_site" value="The Worthy Hills"/>
+	<attr key="mind" value="10"/>
+    </card>
+    <card name="Wain-easterlings" graphics="Waineasterlings.jpg" text="Unique.  Standard Modifications: Wizard -5, Dúnedain -2">
+       <attr key="unique" value="yes"/>
+       <attr key="mp" value="3"/>
+       <attr key="rarity" value="U2"/>
+       <attr key="class" value="Man Faction"/>
+       <attr key="type" value="Hero Resource"/>
+	<attr key="home_site" value="Easterling Camp"/>
+	<attr key="mind" value="8"/>
+    </card>
+    <card name="Woses of Eryn Vorn" graphics="WosesofErynVorn.jpg" text="Unique.">
+       <attr key="unique" value="yes"/>
+       <attr key="mp" value="2"/>
+       <attr key="rarity" value="U2"/>
+       <attr key="class" value="Wose Faction"/>
+       <attr key="type" value="Hero Resource"/>
+	<attr key="home_site" value="The Worthy Hills"/>
+	<attr key="mind" value="10"/>
+    </card>
+    <card name="Bow of the Galadhrim" graphics="BowoftheGaladhrim.jpg" text="May only be borne by an Elf.
+Action: Tap this item to cancel a strike from a Ringwraith against any character in the bearer’s company.">
+       <attr key="unique" value="yes"/>
+       <attr key="corruption" value="1"/>
+       <attr key="mp" value="2"/>
+       <attr key="rarity" value="U2"/>
+       <attr key="class" value="Major Item"/>
+       <attr key="type" value="Hero Resource"/>
+	<attr key="keyword" value="Elf"/>
+    </card>
+    <card name="The Ithil-stone" graphics="TheIthilstone.jpg" text="Unique.  Palantír.  Playable at Barad-Dûr.  To play this card, make a roll and add the number of Scouts in the company.  You may play this card if the result is greater than 9.  Bane of the Ithil-Stone is discarded and cannot be played.">
+       <attr key="unique" value="yes"/>
+       <attr key="corruption" value="4"/>
+       <attr key="mp" value="5"/>
+       <attr key="rarity" value="R1"/>
+       <attr key="class" value="Special Item"/>
+       <attr key="type" value="Hero Resource"/>
+	   <attr key="keyword" value="Palantír"/>
+    </card>
+    <card name="Jewel of Beleriand" graphics="JewelofBeleriand.jpg" text="May not be a starting item.
+Action: Tap this item and make a roll.  If the result is greater than 6, the bearer untaps.  Cannot be duplicated on a given character.">
+       <attr key="corruption" value="1"/>
+       <attr key="rarity" value="C2"/>
+       <attr key="class" value="Minor Item"/>
+       <attr key="type" value="Hero Resource"/>
+    </card>
+    <card name="Balrog Of Morgoth" graphics="BalrogOfMorgoth.jpg" text="Unique.  Spawn.  Manifestation of the Balrog.
+Action: During the organization phase, make a roll modified by -2.  If the result is greater than this ally’s controller’s mind, the controller is eliminated.
+Trigger: If any player reveals The Balrog from their hand, discard this card.
+Trigger: Discard Balrog of Morgoth if his company moves and is not using Under-deeps movement.">
+       <attr key="unique" value="yes"/>
+       <attr key="mp" value="4"/>
+       <attr key="body" value="9"/>
+       <attr key="prowess" value="13"/>
+       <attr key="rarity" value="R2"/>
+       <attr key="class" value="Warrior Ally"/>
+       <attr key="type" value="Minion Resource"/>
+       <attr key="mind" value="5"/>
+	   <attr key="keyword" value="Spawn"/>
+	<attr key="home_site" value="The Under-Gates"/>
+	<attr key="influence" value="0"/>
+    </card>
+
+    <card name="Great Bats" graphics="GreatBats.jpg" text="May be played at a tapped site.  No strikes may be assigned to this ally.
+Action: Tap this ally when facing an attack to cancel one ability which allows the attack to assign the strikes of the attack.
+Trigger: Discard this ally if its controller is wounded.  May not be duplicated in a given company.">
+       <attr key="mp" value="1"/>
+       <attr key="rarity" value="C3"/>
+       <attr key="class" value="Animal Ally"/>
+       <attr key="type" value="Minion Resource"/>
+       <attr key="mind" value="1"/>
+	<attr key="home_site" value="Any Shadow-Hold"/>
+	<attr key="influence" value="0"/>
+    </card>
+
+    <card name="Great Lord of Goblin-gate" graphics="GreatLordofGoblingate.jpg" text="Unique.  Manifestation of the Great Goblin.
+Action: You may tap this Ally during the site phase to make an influence check against an Orc faction as though he were a character.">
+       <attr key="unique" value="yes"/>
+       <attr key="mp" value="2"/>
+       <attr key="body" value="7"/>
+       <attr key="prowess" value="5"/>
+       <attr key="rarity" value="R2"/>
+       <attr key="class" value="Warrior Orc Ally"/>
+       <attr key="type" value="Minion Resource"/>
+       <attr key="mind" value="3"/>
+	<attr key="home_site" value="Goblin-Gate"/>
+	<attr key="influence" value="3"/>
+    </card>
+
+    <card name="Regiment of Black Crows" graphics="RegimentofBlackCrows.jpg" text="Playable at a tapped site.  No strikes may be assigned to this ally.
+Action: Tap this ally when facing a hazard creature attack before strikes are assigned to cancel all attacks of the creature and place the creature’s card in its owner’s hand.
+Trigger: Discard this ally if its controller becomes wounded.
+May not be duplicated in a given company.
+
+">
+       <attr key="mp" value="1"/>
+       <attr key="rarity" value="C3"/>
+       <attr key="class" value="Animal Ally"/>
+       <attr key="type" value="Minion Resource"/>
+       <attr key="mind" value="1"/>
+	<attr key="home_site" value="Any non-Under-Deeps Ruins &amp; Lairs"/>
+	<attr key="influence" value="0"/>
+    </card>
+
+    <card name="Above the Abyss" graphics="AbovetheAbyss.jpg" text="Playable on a tapped non-avatar character if your opponent is not a Ringwraith player and your Ringwraith is in play.  Untap the character.">
+       <attr key="rarity" value="C3"/>
+       <attr key="class" value="Short-event"/>
+       <attr key="type" value="Minion Resource"/>
+    </card>
+
+    <card name="The Ash Mountains" graphics="TheAshMountains.jpg" text="Playable when a company containing a Ranger declares region movement during the organization phase.  The company may treat the following regions as adjacent: Dagorlad and Gorgoroth, Horse Plains and Gorgoroth.  Additionally, if the site moved to is in the above reiongs, the hazard limit is reduced by two.  The company faces an attack at the beginning of step 8 of the movement process: Orcs — 4 strikes at 8 prowess. (detainment)  Discard this card if the company contains no Rangers or at the end of the turn.
+Trigger: If this card is discarded while the company is moving, the company must return to their site of origin.">
+       <attr key="rarity" value="C2"/>
+       <attr key="class" value="Short-event"/>
+       <attr key="type" value="Minion Resource"/>
+	<attr key="keyword" value="Ranger"/>
+    </card>
+
+    <card name="The Dark Power" graphics="TheDarkPower.jpg" text="Playable on a Ringwraith making an influence check against a faction.  +3 to the influence check.  If the influence check is not successful, shuffle your copy of the faction into your play deck.">
+       <attr key="rarity" value="U3"/>
+       <attr key="class" value="Short-event"/>
+       <attr key="type" value="Minion Resource"/>
+    </card>
+
+    <card name="Dark Tryst" graphics="DarkTryst.jpg" text="Draw three cards and remove this card from the game.">
+       <attr key="rarity" value="C3"/>
+       <attr key="class" value="Short-event"/>
+       <attr key="type" value="Minion Resource"/>
+    </card>
+
+    <card name="Driven as by a Madness" graphics="DrivenasbyaMadness.jpg" text="Magic.  Spirit Magic.  Playable on a Spirit-Mage facing an attack before strikes are assigned.  All characters in his company receive +2 prowess and -1 body.  Spirit-Mage makes a corruption check modified by -3.  Discard when the attack is faced.">
+       <attr key="magic" value="Spirit-magic"/>
+       <attr key="rarity" value="U3"/>
+       <attr key="class" value="Short-event"/>
+       <attr key="type" value="Minion Resource"/>
+    </card>
+
+    <card name="Eye Never Sleeping" graphics="EyeNeverSleeping.jpg" text="Playable on a hazard creature attack if the Lidless Eye is in play.  Cancel the attack or
+Playable on a hazard permanent-event if the Lidless Eye is in play.  Discard the hazard permanent event.">
+       <attr key="rarity" value="U3"/>
+       <attr key="class" value="Short-event"/>
+       <attr key="type" value="Minion Resource"/>
+    </card>
+
+    <card name="Faithless Steward" graphics="FaithlessSteward.jpg" text="Playable on an Agent character at a H who has a F or B home site.  If the character is unwounded and at one of his B or F home sites, no factions can be played at any version of the site and you receive this card’s mp.  Cannot be duplicated on a given character.">
+       <attr key="rarity" value="R2"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Minion Resource"/>
+    </card>
+
+    <card name="Below the Deepest Delvings" graphics="BelowtheDeepestDelvings.jpg" text="Playable on a company using Under-Deeps movement during step 10 of the movement process.  The company may attempt to move to an additional site.">
+       <attr key="rarity" value="U3"/>
+       <attr key="class" value="Short-event"/>
+       <attr key="type" value="Minion Resource"/>
+    </card>
+
+    <card name="The Great Eye" graphics="TheGreatEye.jpg" text="Playable if the Lidless Eye is in play.  The hazard limit against all companies of Ringwraith players is decreased by one (to a minimum of two).">
+       <attr key="rarity" value="R2"/>
+       <attr key="class" value="Long-event"/>
+       <attr key="type" value="Minion Resource"/>
+    </card>
+
+    <card name="Hail of Darts" graphics="HailofDarts.jpg" text="Each character who taps to give a +1 modifier to another character during the strike sequence gives an additional +2 modifier.  Cannot be duplicated by a given player.">
+       <attr key="rarity" value="R2"/>
+       <attr key="class" value="Short-event"/>
+       <attr key="type" value="Minion Resource"/>
+    </card>
+
+    <card name="Hoard Well-searched" graphics="HoardWellsearched.jpg" text="Playable during the site phase on an untapped Scout at a tapped site that contains a Hoard.  Tap the Scout.  A minor or major item may be played.">
+       <attr key="rarity" value="C2"/>
+       <attr key="class" value="Short-event"/>
+       <attr key="type" value="Minion Resource"/>
+	<attr key="keyword" value="Scout"/>
+    </card>
+
+    <card name="Hold Rebuilt and Repaired" graphics="HoldRebuiltandRepaired.jpg" text="Playable during the site phase after facing any automatic-attacks on a non-Under-deeps R that does not contain a Hoard.  The site becomes a S and all automatic-attacks become detainment.">
+       <attr key="rarity" value="C2"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Minion Resource"/>
+    </card>
+
+    <card name="Hounds of Sauron" graphics="HoundsofSauron.jpg" text="Magic.  Shadow Magic.  Playable during the site phase on a Shadow-Mage in lieu of declaring an attack against a Wizard player’s company.  The company faces an attack of Animals — 4 strikes at 8 prowess or
+Playable on a Shadow-Mage facing an attack before strikes are assigned.  The number of strikes of the attack is reduced to one after all other modifiers.
+In both cases, the Shadow-Mage makes a corruption check modified by -4.">
+       <attr key="magic" value="Shadow-magic"/>
+       <attr key="rarity" value="R2"/>
+       <attr key="class" value="Short-event"/>
+       <attr key="type" value="Minion Resource"/>
+    </card>
+
+    <card name="Join With That Power" graphics="JoinWithThatPower.jpg" text="Playable on a Diplomat.  One corruption check or influence check in the Diplomat’s company is modified by adding the number of characters in the company minus one.">
+       <attr key="rarity" value="C3"/>
+       <attr key="class" value="Short-event"/>
+       <attr key="type" value="Minion Resource"/>
+	<attr key="keyword" value="Diplomat"/>
+    </card>
+
+    <card name="Legendary Stair" graphics="LegendaryStair.jpg" text="Playable on a company at a surface site.  Opponent may draw up to twice the normal number of cards for this company during step 6 of the movement process.  When the company leaves their current site, place it off to the side with this card.
+Special Movement: During the end of turn phase after hand size is resolved, if the company is at an Under-deeps site, the company may immediately replace its site card with the card placed off to the site with this card.
+In all cases, discard at the end of the turn.">
+       <attr key="rarity" value="C2"/>
+       <attr key="class" value="Short-event"/>
+       <attr key="type" value="Minion Resource"/>
+    </card>
+
+    <card name="The Misty Mountains" graphics="TheMistyMountains.jpg" text="Playable when a company containing a Ranger declares region movement during the organization phase.  The company may treat the following regions as adjacent: Rhudaur and Aduin Vales, Rhudaur and Wold &amp; Foothills, Hollin and Wold &amp; Foothills, Hollin and Fangorn, Dunland and Fangorn.  Additionally, if the site moved to is in one of the above regions, the hazard limit is decreased by two to a minimum of one.  Discard this card if the company contains no Rangers or at the end of the turn.
+Trigger: If this card is discarded while the company is moving, the company must return to their site of origin.">
+       <attr key="rarity" value="C2"/>
+       <attr key="class" value="Short-event"/>
+       <attr key="type" value="Minion Resource"/>
+	<attr key="keyword" value="Ranger"/>
+    </card>
+
+    <card name="The Mountains of Shadow" graphics="TheMountainsofShadow.jpg" text="Playable when a company containing a Ranger declares region movement during the organization phase.  The company may treat the following regions as adjacent: Ithilien and Gorgoroth, Ithilien and Nûrn, Harondor and Nûrn.  Additionally, if the site moved to is in the above regions, the hazard limit is reduced by two.  The company faces an attack at the beginning of step 8 of the movement process: Orcs — 4 strikes at 9 prowess (detainment).  Discard this card if the company contains no Rangers or at the end of the turn.
+Trigger: If this card is discarded while the company is moving, the company must return to their site of origin.">
+       <attr key="rarity" value="C2"/>
+       <attr key="class" value="Short-event"/>
+       <attr key="type" value="Minion Resource"/>
+	<attr key="keyword" value="Ranger"/>
+    </card>
+
+    <card name="Orders from Lugbúrz" graphics="OrdersfromLugburz.jpg" text="Startable.  Only playable by a Ringwraith player.  Playable on a company.  The company may contain two leaders.">
+       <attr key="rarity" value="U3"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Minion Resource"/>
+    </card>
+
+    <card name="Our Own Wolves" graphics="OurOwnWolves.jpg" text="Magic.  Spirit Magic.  Playable on a Spirit-Mage facing an attack.  Each War-Wolf, War-Warg, and/or The Warg-King receives +3 prowess.  The Spirit-Mage makes a corruption check modified by -3.  Discard after the attack is faced.">
+       <attr key="magic" value="Spirit-magic"/>
+       <attr key="rarity" value="R2"/>
+       <attr key="class" value="Short-event"/>
+       <attr key="type" value="Minion Resource"/>
+    </card>
+
+    <card name="Padding Feet" graphics="PaddingFeet.jpg" text="Playable during the site phase on a Scout at the same site as any other player’s Hobbit character, ally, or agent.
+Trigger: If during a following site phase target character enters the same site as the Hobbit, tap this card.  This card never untaps.
+Trigger: If during a site phase after this card was tapped, target charcter enters the same site as the Hobbit, invert this card.
+Action: If this card is inverted it may be stored at a H during the organization phase.  If stored, you receive this card’s mp.">
+       <attr key="rarity" value="R2"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Minion Resource"/>
+	<attr key="keyword" value="Scout"/>
+    </card>
+
+    <card name="Powers Too Dark and Terrible" graphics="PowersTooDarkandTerrible.jpg" text="Playable on a Sage if The Lidless Eye is in play.  Sage gains the Sorceror, Shadow-Mage, and Spirit-Mage skills.
+Trigger: Discard when a magic card is played on the bearer.">
+       <attr key="rarity" value="R2"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Minion Resource"/>
+	<attr key="keyword" value="Sage"/>
+    </card>
+
+    <card name="Riven Gate" graphics="RivenGate.jpg" text="Magic.  Sorcery.  Playable on a Sorceror when facing an automatic-attack at a B.  All automatic-attacks at the site are canceled and any influence attempt against a faction at the site is modified by +2.  Sorceror makes a corruption check modified by -4.  Discard at the end of the turn.">
+       <attr key="magic" value="Sorcery"/>
+       <attr key="rarity" value="R2"/>
+       <attr key="class" value="Short-event"/>
+       <attr key="type" value="Minion Resource"/>
+    </card>
+
+    <card name="Sack Over the Head" graphics="SackOvertheHead.jpg" text="Playable on a Troll when an opponent’s character would otherwise be wounded or eliminated by Company vs Company Combat in which the Troll participated.  Target character is taken prisoner and placed off to the side with this card.  The rescue site is the Troll character’s current site.  Character is automatically rescued into their own company if the Troll leaves play for any reason.">
+       <attr key="rarity" value="U3"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Minion Resource"/>
+	<attr key="keyword" value="Troll"/>
+    </card>
+
+    <card name="Steeds" graphics="Steeds.jpg" text="Playable on a covert company that has declared movement during the organization phase.  The hazard limit is decreased by 2 to a minimum of 1.  The prowess of all attacks against the company increases by 2.  Discard at the end of the turn.">
+       <attr key="rarity" value="R2"/>
+       <attr key="class" value="Short-event"/>
+       <attr key="type" value="Minion Resource"/>
+    </card>
+
+    <card name="Tokens to Show" graphics="TokenstoShow.jpg" text="Minion characters may store resources during the end-of-turn phase as though it were their organization phase.  May not be duplicated by a given player.">
+       <attr key="rarity" value="C2"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Minion Resource"/>
+    </card>
+
+    <card name="The Tormented Earth" graphics="TheTormentedEarth.jpg" text="Magic.  Sorcery.  Playable on a Sorceror facing a non-automatic-attack before strikes are assigned.  Cancel the attack or the attack receives -3 prowess.
+Sorceror makes a corruption check modified by -4.  Discard when the attack is faced.  Cannot be duplicated.">
+       <attr key="magic" value="Sorcery"/>
+       <attr key="rarity" value="U3"/>
+       <attr key="class" value="Short-event"/>
+       <attr key="type" value="Minion Resource"/>
+    </card>
+
+    <card name="Treason the Greatest Foe" graphics="TreasontheGreatestFoe.jpg" text="Playable during the site phase on one of your characters if a non-avatar opponent’s hero character is at the same site and the two characters have the same home site.  Make a roll modified by your character’s EI against that character.  If the result is greater than the character’s mind plus his player’s unused GI, discard the character and all cards he controls and place this card in your mp pile; otherwise, discard this card.">
+       <attr key="mp" value="4"/>
+       <attr key="rarity" value="R2"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Minion Resource"/>
+    </card>
+
+    <card name="Tribute Garnered" graphics="TributeGarnered.jpg" text="Playable on a faction in play.  May not be duplicated on a given faction.
+Trigger: Discard this card when any play deck is exhausted.">
+       <attr key="mp" value="1"/>
+       <attr key="rarity" value="C2"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Minion Resource"/>
+    </card>
+
+    <card name="The Undeeps of Anduin" graphics="TheUndeepsofAnduin.jpg" text="Playable when a company containing a Ranger declares region movement during the organization phase.  The company may treat the following regions as adjacent: Rohan and Dagorlad, Anórien and Dagorlad, Lebennin and Ithilien, Lebennin and Harondor.  Additionally, if the site moved to is in one of the above regions, the hazard limit is decreased by two to a minimum of one.  Discard this card if the company contains no Rangers or at the end of the turn.
+Trigger: If this card is discarded while the company is moving, the company must return to their site of origin.">
+       <attr key="rarity" value="C2"/>
+       <attr key="class" value="Short-event"/>
+       <attr key="type" value="Minion Resource"/>
+	<attr key="keyword" value="Ranger"/>
+    </card>
+
+    <card name="The Under-roads" graphics="TheUnderroads.jpg" text="The roll required for minions to move between adjacent Under-Deeps sites is decreased by 3.">
+       <attr key="rarity" value="C2"/>
+       <attr key="class" value="Long-event"/>
+       <attr key="type" value="Minion Resource"/>
+    </card>
+
+    <card name="Use Your Legs" graphics="UseYourLegs.jpg" text="Playable on an Orc when an opponent’s character would otherwise be wounded or eliminated by Company vs Company Combat in which the Orc participated.  Target character is taken prisoner and placed off to the side with this card.  The resuce site is the Orc character’s current site.  Character is automatically rescued into their own company if the Orc leaves play for any reason.  If a Hobbit is placed off to the side with this card, you receive this card’s mp.">
+       <attr key="mp" value="(2)"/>
+       <attr key="rarity" value="R2"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Minion Resource"/>
+	<attr key="keyword" value="Orc"/>
+    </card>
+
+    <card name="Well-preserved" graphics="Wellpreserved.jpg" text="Magic.  Shadow-Magic.  Playable on a wounded character in a Shadow-Mage’s company.  Wounded character becomes untapped.  Shadow-mage makes a corruption check modified by -3.
+Trigger: Discard this card if at H.">
+       <attr key="magic" value="Shadow-magic"/>
+       <attr key="rarity" value="U3"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Minion Resource"/>
+    </card>
+
+    <card name="World Gnawed" graphics="WorldGnawed.jpg" text="Playable on a company using Under-Deeps movement during step 10 of the movement process.  The company may attempt to move to an additional site they have not yet moved to this turn, and you may return this card to your hand at any time before resolving hand size.">
+       <attr key="rarity" value="R2"/>
+       <attr key="class" value="Short-event"/>
+       <attr key="type" value="Minion Resource"/>
+    </card>
+
+    <card name="Angmarim" graphics="Angmarim.1.jpg" text="Unique.  Standard Modifications: Easterlings +2, Hillmen +2">
+       <attr key="unique" value="yes"/>
+       <attr key="mp" value="1"/>
+       <attr key="rarity" value="R2"/>
+       <attr key="class" value="Man Faction"/>
+       <attr key="type" value="Minion Resource"/>
+	<attr key="home_site" value="Carn Dûm"/>
+	<attr key="mind" value="10"/>
+    </card>
+
+    <card name="Asdriags" graphics="Asdriags.jpg" text="Unique.  Standard Modifications: Nurniags +2, Variags of Khand +2, Balchoth -2">
+       <attr key="unique" value="yes"/>
+       <attr key="mp" value="2"/>
+       <attr key="rarity" value="U2"/>
+       <attr key="class" value="Man Faction"/>
+       <attr key="type" value="Minion Resource"/>
+	<attr key="home_site" value="Nûrniag Camp"/>
+	<attr key="mind" value="10"/>
+    </card>
+    <card name="Bairanax Roused" graphics="BairanaxRoused.jpg" text="Unique.  Multiple Manifestation of Bairanax.  The influence check against this faction is modified by +3 for each Major Item the influencer’s company discards and +6 for each Greater Item the influencer’s company discards.  Attacks created by Manifestations Bairanax of against your companies are canceled.
+Action Trigger: A company that moves through at least one of the following regions faces an attack: Dragon — 2 strikes at 14 prowess, 7 body (attacker assigns all strikes): Withered Heath, Grey Mountain Narrows, Anduin Vales, Gundabad.
+Special: If this attack is defeated, treat this card as a hazard creature for the purpose of determining kill mp.">
+       <attr key="unique" value="yes"/>
+       <attr key="mp" value="3"/>
+       <attr key="rarity" value="R1"/>
+       <attr key="class" value="Dragon Faction"/>
+       <attr key="type" value="Minion Resource"/>
+	<attr key="home_site" value="Ovir Hollow"/>
+	<attr key="mind" value="11"/>
+    </card>
+    <card name="Black Númenóreans" graphics="BlackNumenoreans.jpg" text="Unique.  Standard Modifications: Umbarean Corsairs +2">
+       <attr key="unique" value="yes"/>
+       <attr key="mp" value="2"/>
+       <attr key="rarity" value="U2"/>
+       <attr key="class" value="Dúnadan Faction"/>
+       <attr key="type" value="Minion Resource"/>
+	<attr key="home_site" value="Gobel Mírlond"/>
+	<attr key="mind" value="8"/>
+    </card>
+    <card name="Corsairs of Rhûn" graphics="CorsairsofRhun.jpg" text="Unique.  Standard Modifications: Easterlings +2, Men of Dorwinion -2">
+       <attr key="unique" value="yes"/>
+       <attr key="mp" value="2"/>
+       <attr key="rarity" value="U2"/>
+       <attr key="class" value="Man Faction"/>
+       <attr key="type" value="Minion Resource"/>
+	<attr key="home_site" value="Raider-Hold"/>
+	<attr key="mind" value="9"/>
+    </card>
+    <card name="Daelomin Roused" graphics="DaelominRoused.jpg" text="Unique.  Multiple Manifestation of Daelomin.  The influence check against this faction is modified by +3 for each Major Item the influencer’s company discards and +6 for each Greater Item the influencer’s company discards.  Attacks created by Manifestations Daelomin of against your companies are canceled.
+Action Trigger: A company that moves through at least one of the following regions faces an attack: Dragon — 3 strikes at 13 prowess, 8 body (attacker assigns all strikes): Withered Heath, Grey Mountain Narrows, Iron Hills, Northern Rhovanion.
+Special: If this attack is defeated, treat this card as a hazard creature for the purpose of determining kill mp.">
+       <attr key="unique" value="yes"/>
+       <attr key="mp" value="4"/>
+       <attr key="rarity" value="R1"/>
+       <attr key="class" value="Dragon Faction"/>
+       <attr key="type" value="Minion Resource"/>
+	<attr key="home_site" value="Dancing Spire"/>
+	<attr key="mind" value="12"/>
+    </card>
+    <card name="Eärcaraxë Roused" graphics="EarcaraxeRoused.jpg" text="Unique.  Multiple Manifestation of Eärcaraxë.  The influence check against this faction is modified by +3 for each Major Item the influencer’s company discards and +6 for each Greater Item the influencer’s company discards.  Attacks created by Manifestations of Ëarcaraxë against your companies are canceled.
+Action Trigger: A company that moves through at least one of the following regions faces an attack: Dragon — 2 strikes at 17 prowess, 7 body (attacker assigns all strikes): Andrast Coast, Bay of Belfalas, Eriadoran Coast, Andrast.
+Special: If this attack is defeated, treat this card as a hazard creature for the purpose of determining kill mp.">
+       <attr key="unique" value="yes"/>
+       <attr key="mp" value="4"/>
+       <attr key="rarity" value="R1"/>
+       <attr key="class" value="Dragon Faction"/>
+       <attr key="type" value="Minion Resource"/>
+	<attr key="home_site" value="Isle of the Ulond"/>
+	<attr key="mind" value="11"/>
+    </card>
+    <card name="Haradrim" graphics="Haradrim.1.jpg" text="Unique.  Standard Modifications: Southrons +2, Variags of Khand -2">
+       <attr key="unique" value="yes"/>
+       <attr key="mp" value="2"/>
+       <attr key="rarity" value="U2"/>
+       <attr key="class" value="Man Faction"/>
+       <attr key="type" value="Minion Resource"/>
+	<attr key="home_site" value="Southron Oasis"/>
+	<attr key="mind" value="9"/>
+    </card>
+
+    <card name="Itangast Roused" graphics="ItangastRoused.jpg" text="Unique.  Multiple Manifestation of Itangast.  The influence check against this faction may be modified by eliminating any number ofcharacters other than the influencer in the influencer’s company.  Each character so eliminated modifies the influence attempt by their mind.  Attacks created by Manifestations of Itangast against your companies are canceled.
+Action Trigger: A company that moves through at least one of the following regions faces an attack: Dragon —3 strikes at 18 prowess, 8 body: Withered Heath, Grey Mountain Narrows, Iron Hills, Northern Rhovanion.
+Special: If this attack is defeated, treat this card as a hazard creature for the purpose of determining kill mp.">
+       <attr key="unique" value="yes"/>
+       <attr key="mp" value="6"/>
+       <attr key="rarity" value="R1"/>
+       <attr key="class" value="Dragon Faction"/>
+       <attr key="type" value="Minion Resource"/>
+	<attr key="home_site" value="Gold Hill"/>
+	<attr key="mind" value="16"/>
+    </card>
+
+    <card name="Leucaruth Roused" graphics="LeucaruthRoused.jpg" text="Unique.  Multiple Manifestation of Leucaruth.  The influence check against this faction is modified by +3 for each Major Item the influencer’s company discards and +6 for each Greater Item the influencer’s company discards.  Attacks created by Manifestations of Leucaruth against your companies are canceled.
+Action Trigger: A company that moves through at least one of the following regions faces an attack: Dragon — 2 strikes at 17 prowess, 8 body: Withered Heath, Grey Mountain Narrows, Iron Hills, Northern Rhovanion.
+Special: If this attack is defeated, treat this card as a hazard creature for the purpose of determining kill mp.">
+       <attr key="unique" value="yes"/>
+       <attr key="mp" value="4"/>
+       <attr key="rarity" value="R1"/>
+       <attr key="class" value="Dragon Faction"/>
+       <attr key="type" value="Minion Resource"/>
+	<attr key="home_site" value="Irerock"/>
+	<attr key="mind" value="12"/>
+    </card>
+
+    <card name="Morgul-orcs" graphics="Morgulorcs.jpg" text="Unique.  Standard Modifications: Ungol-Orcs -2, Orcs of Angmar +2.  Once in play, the influence number is 0.">
+       <attr key="unique" value="yes"/>
+       <attr key="mp" value="1"/>
+       <attr key="rarity" value="R2"/>
+       <attr key="class" value="Orc Faction"/>
+       <attr key="type" value="Minion Resource"/>
+	<attr key="home_site" value="Minas Morgul"/>
+	<attr key="mind" value="9"/>
+    </card>
+
+    <card name="Nûriags" graphics="Nuriags.jpg" text="Unique.  Standard Modifications: Haradrim +2, Southrons -2">
+       <attr key="unique" value="yes"/>
+       <attr key="mp" value="2"/>
+       <attr key="rarity" value="U2"/>
+       <attr key="class" value="Man Faction"/>
+       <attr key="type" value="Minion Resource"/>
+	<attr key="home_site" value="Variag Camp"/>
+	<attr key="mind" value="9"/>
+    </card>
+
+    <card name="Orcs of Dol Guldur" graphics="OrcsofDolGuldur.jpg" text="Unique.  Standard Modifications: Orcs of Moria -2, Orcs of the Red Eye +2.  Once in play, the influence number is 0.">
+       <attr key="unique" value="yes"/>
+       <attr key="mp" value="1"/>
+       <attr key="rarity" value="R2"/>
+       <attr key="class" value="Orc Faction"/>
+       <attr key="type" value="Minion Resource"/>
+	<attr key="home_site" value="Dol Guldur"/>
+	<attr key="mind" value="8"/>
+    </card>
+
+    <card name="Petty-dwarves" graphics="Pettydwarves.1.jpg" text="Unique.">
+       <attr key="unique" value="yes"/>
+       <attr key="mp" value="3"/>
+       <attr key="rarity" value="R2"/>
+       <attr key="class" value="Dwarf Faction"/>
+       <attr key="type" value="Minion Resource"/>
+	<attr key="home_site" value="The Worthy Hills"/>
+	<attr key="mind" value="11"/>
+    </card>
+
+    <card name="Wain-easterlings" graphics="Waineasterlings.1.jpg" text="Unique.  Standard Modifications: Easterlings +2, Nûriags -2">
+       <attr key="unique" value="yes"/>
+       <attr key="mp" value="2"/>
+       <attr key="rarity" value="U2"/>
+       <attr key="class" value="Man Faction"/>
+       <attr key="type" value="Minion Resource"/>
+	<attr key="home_site" value="Easterling Camp"/>
+	<attr key="mind" value="9"/>
+    </card>
+
+    <card name="Ancient Black Axe" graphics="AncientBlackAxe.jpg" text="Unique.  Weapon.  If you are a Ringwraith player, playable at any Under-deeps S.  If you are a Balrog player, playable at any Under-deeps D.  If borne by a Warrior, bearer receives +3 prowess and the body of any strike against the bearer is modified by -1.
+Action: Tap this item to make a character in the bearer’s company automatically succeed at a corruption check; the bearer then makes a corruption check.">
+       <attr key="unique" value="yes"/>
+       <attr key="corruption" value="4"/>
+       <attr key="mp" value="4"/>
+       <attr key="rarity" value="R2"/>
+       <attr key="class" value="Special Item"/>
+       <attr key="type" value="Minion Resource"/>
+	   <attr key="keyword" value="Weapon"/>
+	<attr key="influence" value="+2"/>
+    </card>
+
+    <card name="Dwarven Ring of Thélor's Tribe" graphics="DwarvenRingofThelorsTribe.jpg" text="Unique.  Dwarven Ring.  Playable after a Ring Test indicates a Dwarven Ring.  Values in parenthesis apply to a Dwarf bearer, and a Dwarf bearer gains an additional +5 EI.
+Action: Tap a Dwarf bearer during the site phase to search your play deck or discard pile for one or two Minor Items and to place these items with any characters in the company.  Reshuffle the play deck if searched.  The Dwarf makes a corruption check modified by +2.">
+       <attr key="unique" value="yes"/>
+       <attr key="corruption" value="3(5)"/>
+       <attr key="mp" value="4"/>
+       <attr key="rarity" value="U2"/>
+       <attr key="class" value="Special Item"/>
+       <attr key="type" value="Minion Resource"/>
+	   <attr key="keyword" value="Dwarven Ring"/>
+	<attr key="prowess" value="+2(+4)"/>
+	<attr key="body" value="+1"/>
+	<attr key="influence" value="+2"/>
+    </card>
+
+    <card name="Dwarven Ring of Thrár's Tribe" graphics="DwarvenRingofThrarsTribe.jpg" text="Unique.  Dwarven Ring.  Playable after a Ring Test indicates a Dwarven Ring.  Values in parenthesis apply to a Dwarf bearer, and a Dwarf bearer gains an additional +5 EI.
+Action: Tap a Dwarf bearer during the site phase to search your play deck or discard pile for one or two Minor Items and to place these items with any characters in the company.  Reshuffle the play deck if searched.  The Dwarf makes a corruption check modified by +2.">
+       <attr key="unique" value="yes"/>
+       <attr key="corruption" value="3(5)"/>
+       <attr key="mp" value="4"/>
+       <attr key="rarity" value="U2"/>
+       <attr key="class" value="Special Item"/>
+       <attr key="type" value="Minion Resource"/>
+	   <attr key="keyword" value="Dwarven Ring"/>
+	<attr key="prowess" value="+2(+4)"/>
+	<attr key="body" value="+1"/>
+	<attr key="influence" value="+2"/>
+    </card>
+
+    <card name="Goblin Earth-plumb" graphics="GoblinEarthplumb.jpg" text="May only be borne by an Orc or Troll.  All Under-deeps movement rolls for the bearer’s company are modified by +1.">
+       <attr key="corruption" value="1"/>
+       <attr key="rarity" value="C2"/>
+       <attr key="class" value="Minor Item"/>
+       <attr key="type" value="Minion Resource"/>
+	<attr key="keyword" value="Orc"/>
+    </card>
+
+    <card name="Helm of Fear" graphics="HelmofFear.jpg" text="Helmet.  Playable by your Ringwraith during the site phase at a tapped or untapped Barad-Dûr.  This item does not tap the site when played.  This item affects a Ringwraith.  May not be transferred.  May not be duplicated by a given player.
+Action: Tap this item to cancel an attack against the bearer’s company.">
+       <attr key="unique" value="yes"/>
+       <attr key="mp" value="1"/>
+       <attr key="rarity" value="U2"/>
+       <attr key="class" value="Special Item"/>
+       <attr key="type" value="Minion Resource"/>
+	   <attr key="keyword" value="Helmet"/>
+    </card>
+
+    <card name="Iron Shield of Old" graphics="IronShieldofOld.jpg" text="Shield.  Playable at any Under-deeps S or any Under-deeps R.  All Under-deeps movement rolls for the company are modified by +2.
+Action: If bearer is a Warrior, you may tap this item to make one strike against its bearer ineffectual.">
+       <attr key="corruption" value="3"/>
+       <attr key="mp" value="2"/>
+       <attr key="rarity" value="C2"/>
+       <attr key="class" value="Special Item"/>
+       <attr key="type" value="Minion Resource"/>
+	   <attr key="keyword" value="Shield"/>
+    </card>
+
+    <card name="Necklace of Girion" graphics="NecklaceofGirion.jpg" text="Unique.  Playable at The Lonely Mountain.  Bearer receives +3 EI against Man characters.  +3 to bearer’s influence checks against Man factions.">
+       <attr key="unique" value="yes"/>
+       <attr key="corruption" value="3"/>
+       <attr key="mp" value="3"/>
+       <attr key="rarity" value="R2"/>
+       <attr key="class" value="Special Item"/>
+       <attr key="type" value="Minion Resource"/>
+    </card>
+
+    <card name="Old Treasure" graphics="OldTreasure.jpg" text="Action: You may discard this item to give +4 EI to the bearer until the end of the turn.">
+       <attr key="corruption" value="1"/>
+       <attr key="rarity" value="C2"/>
+       <attr key="class" value="Minor Item"/>
+       <attr key="type" value="Minion Resource"/>
+	   <attr key="influence" value="+1"/>
+    </card>
+
+    <card name="Records Unread" graphics="RecordsUnread.jpg" text="Cannot be included with a starting company.
+Action: Discard at a S to untap the S.
+Action: Discard at a S to make Information playable there until the end of the turn.">
+       <attr key="corruption" value="1"/>
+       <attr key="rarity" value="C2"/>
+       <attr key="class" value="Minor Item"/>
+       <attr key="type" value="Minion Resource"/>
+    </card>
+
+    <card name="Secret Book" graphics="SecretBook.jpg" text="Cannot be included with a starting company.
+Action: Discard at a F or B to untap the site.
+Action: Discard at a R to make Information playable there until the end of the turn.">
+       <attr key="corruption" value="1"/>
+       <attr key="rarity" value="C2"/>
+       <attr key="class" value="Minor Item"/>
+       <attr key="type" value="Minion Resource"/>
+    </card>
+
+    <card name="Thong of Fire" graphics="ThongofFire.jpg" text="Unique.  Hoard item.  Weapon.  May only be borne by a character with a prowess of 6 or more.  If bearer is a Warrior, he receives +1 prowess and body.  If bearer is a Warrior and facing a strike, he suffers no prowess penalty for choosing to remain untapped.">
+       <attr key="unique" value="yes"/>
+       <attr key="corruption" value="3"/>
+       <attr key="mp" value="3"/>
+       <attr key="rarity" value="R2"/>
+       <attr key="class" value="Greater Item"/>
+       <attr key="type" value="Minion Resource"/>
+	   <attr key="keyword" value="Weapon"/>
+	   <attr key="keyword" value="Hoard Item"/>
+    </card>
+
+    <card name="Thrall-ring" graphics="Thrallring.jpg" text="Mind Ring.">
+       <attr key="corruption" value="2"/>
+       <attr key="rarity" value="R2"/>
+       <attr key="class" value="Minor Item"/>
+       <attr key="type" value="Minion Resource"/>
+	   <attr key="keyword" value="Mind Ring"/>
+	<attr key="mind" value="-1"/>
+	<attr key="influence" value="+1"/>
+    </card>
+
+    <card name="Thrór's Map" graphics="ThrorsMap.jpg" text="Unique.  May only be a starting item if played with a Dwarf.
+Action: Discard during the site phase at a site with a hoard to untap it.">
+       <attr key="unique" value="yes"/>
+       <attr key="corruption" value="1"/>
+       <attr key="rarity" value="U2"/>
+       <attr key="class" value="Minor Item"/>
+       <attr key="type" value="Minion Resource"/>
+    </card>
+
+    <card name="Troth-ring" graphics="Trothring.jpg" text="Mind Ring.">
+       <attr key="corruption" value="2"/>
+       <attr key="rarity" value="R2"/>
+       <attr key="class" value="Minor Item"/>
+       <attr key="type" value="Minion Resource"/>
+	   <attr key="keyword" value="Mind Ring"/>
+	<attr key="mind" value="-1"/>
+	<attr key="body" value="+1"/>
+    </card>
+
+    <card name="Usriev of Treachery" graphics="UsrievofTreachery.jpg" text="Hoard item.  Weapon.  May only be borne by a character with a prowess of 5 or more.  If bearer is a Warrior, he receives +1 prowess and may be assigned up to two strikes from any attack, facing a separate strike sequence for each.  Bearer receives +1 to prowess when facing an Elf strike.">
+       <attr key="corruption" value="1"/>
+       <attr key="mp" value="2"/>
+       <attr key="rarity" value="C3"/>
+       <attr key="class" value="Major Item"/>
+       <attr key="type" value="Minion Resource"/>
+	   <attr key="keyword" value="Weapon"/>
+	   <attr key="keyword" value="Hoard Item"/>
+    </card>
+
+    <card name="Geann a-Lisch" graphics="GeannaLisch.jpg" back="1" text="">
+       <attr key="unique" value="yes"/>
+       <attr key="haven" value="Edhellond"/>
+       <attr key="draw" value="2"/>
+       <attr key="region" value="Old Pûkel-land"/>
+       <attr key="site_type" value="{S}"/>
+       <attr key="playable" value="Information, Items (minor, major)"/>
+       <attr key="special" value="Any Man hazard creature may be keyed to this site."/>
+       <attr key="draw_opp" value="2"/>
+       <attr key="auto_attack" value="Men - 4 strikes at 8 prowess"/>
+       <attr key="rarity" value="U2"/>
+       <attr key="type" value="Hero Site"/>
+       <attr key="site_path" value="{b}{w}{w}"/>
+    </card>
+
+    <card name="Gobel Mírlond" graphics="GobelMirlond.jpg" back="1" text="">
+       <attr key="unique" value="yes"/>
+       <attr key="haven" value="Edhellond"/>
+       <attr key="draw" value="2"/>
+       <attr key="region" value="Harondor"/>
+       <attr key="site_type" value="{B}"/>
+       <attr key="playable" value="Items (minor, major)"/>
+       <attr key="draw_opp" value="2"/>
+       <attr key="auto_attack" value="Men - 4 strikes at 9 prowess"/>
+       <attr key="rarity" value="U2"/>
+       <attr key="type" value="Hero Site"/>
+       <attr key="site_path" value="{b}{c}{c}{w}"/>
+	<attr key="special" value="Any Man hazard creature may be keyed to this site."/>
+    </card>
+
+    <card name="Nûrniag Camp" graphics="NurniagCamp.jpg" back="1" text="">
+       <attr key="unique" value="yes"/>
+       <attr key="haven" value="Lórien"/>
+       <attr key="draw" value="3"/>
+       <attr key="region" value="Nurn"/>
+       <attr key="site_type" value="{S}"/>
+       <attr key="playable" value="Items (minor, major)"/>
+       <attr key="draw_opp" value="5"/>
+       <attr key="auto_attack" value="Men — 4 strikes at 7 prowess (detainment)
+Men — 3 strikes at 8 prowess (detainment)
+Nazgûl — 1 strike at 15 prowess"/>
+       <attr key="rarity" value="U2"/>
+       <attr key="type" value="Hero Site"/>
+       <attr key="site_path" value="{w}{s}{s}{s}{d}"/>
+	   <attr key="special" value="To leave this site, make a roll during step 2 of the movement process and subtract the number of non-Diplomats in the company.  If the result is less than 7, the company may not move.
+Any Nazgûl may be keyed to this site."/>
+    </card>
+
+    <card name="Raider-hold" graphics="Raiderhold.jpg" back="1" text="">
+       <attr key="unique" value="yes"/>
+       <attr key="haven" value="Lórien"/>
+       <attr key="draw" value="3"/>
+       <attr key="region" value="Horse Plains"/>
+       <attr key="site_type" value="{B}"/>
+       <attr key="playable" value="Items (minor, major)"/>
+       <attr key="draw_opp" value="4"/>
+       <attr key="auto_attack" value="Men - 4 strikes at 9 prowess"/>
+       <attr key="rarity" value="U2"/>
+       <attr key="type" value="Hero Site"/>
+       <attr key="site_path" value="{w}{s}{s}{s}"/>
+    </card>
+
+    <card name="The Worthy Hills" graphics="TheWorthyHills.jpg" back="1" text="">
+       <attr key="unique" value="yes"/>
+       <attr key="haven" value="Rivendell"/>
+       <attr key="draw" value="1"/>
+       <attr key="region" value="Cardolan"/>
+       <attr key="site_type" value="{R}"/>
+       <attr key="playable" value="Information"/>
+       <attr key="special" value="Action: During the site phase, tap one Sage and tap one Scout at this site to untap it."/>
+       <attr key="draw_opp" value="2"/>
+       <attr key="auto_attack" value="Men - This attack has a number of strikes equal to the number of characters in the company; each strike is at 9 prowess and is detainment."/>
+       <attr key="rarity" value="U2"/>
+       <attr key="type" value="Hero Site"/>
+       <attr key="site_path" value="{w}{w}"/>
+    </card>
+
+    <card name="Dancing Spire" graphics="DancingSpire.jpg" back="1" text="">
+       <attr key="unique" value="yes"/>
+       <attr key="haven" value="Dol Guldur"/>
+       <attr key="draw" value="2"/>
+       <attr key="region" value="Withered Heath"/>
+       <attr key="site_type" value="{R}"/>
+       <attr key="playable" value="Items (minor, major, greater, gold ring)"/>
+       <attr key="draw_opp" value="2"/>
+       <attr key="auto_attack" value="Dragon - 2 strikes at 11 prowess"/>
+       <attr key="rarity" value="U2"/>
+       <attr key="type" value="Minion Site"/>
+       <attr key="site_path" value="{d}{w}{w}{w}"/>
+	<attr key="keyword" value="Hoard Site"/>
+	<attr key="special" value="Daelomin's Lair.  If a Manifestation of Daelomin has been defeated, this automatic-attack is removed.
+This site contains a hoard."/>
+    </card>
+
+    <card name="Eagles' Eyrie" graphics="EaglesEyrie.jpg" back="1" text="">
+       <attr key="unique" value="yes"/>
+       <attr key="haven" value="Dol Guldur"/>
+       <attr key="draw" value="1"/>
+       <attr key="region" value="Anduin Vales"/>
+       <attr key="site_type" value="{F}"/>
+       <attr key="playable" value="Information, Items (minor, major)"/>
+       <attr key="draw_opp" value="2"/>
+       <attr key="auto_attack" value="Animals - 2 strikes at 10 prowess; attacker assigns all strikes"/>
+       <attr key="rarity" value="U2"/>
+       <attr key="type" value="Minion Site"/>
+       <attr key="site_path" value="{d}{s}"/>
+	<attr key="keyword" value="Hoard Site"/>
+	<attr key="special" value="This site contains a hoard."/>
+    </card>
+
+    <card name="Edhellond" graphics="Edhellond.jpg" back="1" text="">
+       <attr key="unique" value="yes"/>
+       <attr key="haven" value="Geann a-Lisch"/>
+       <attr key="draw" value="3"/>
+       <attr key="region" value="Anfalas"/>
+       <attr key="site_type" value="{F}"/>
+       <attr key="playable" value="Information, Items (minor, major, greater)"/>
+       <attr key="special" value="The base hazard limit against any company moving to or at this site is modified by +2.  This site untaps during your untap phase."/>
+       <attr key="draw_opp" value="5"/>
+       <attr key="auto_attack" value="Elves — 4 strikes at 10 prowess
+Dúnedain — 3 strikes at 11 prowess
+Maia — 2 strikes at 13 prowess"/>
+       <attr key="rarity" value="R2"/>
+       <attr key="type" value="Minion Site"/>
+       <attr key="site_path" value="{w}{w}{b}"/>
+    </card>
+
+    <card name="Framsburg" graphics="Framsburg.jpg" back="1" text="">
+       <attr key="unique" value="yes"/>
+       <attr key="haven" value="Dol Guldur"/>
+       <attr key="draw" value="1"/>
+       <attr key="region" value="Anduin Vales"/>
+       <attr key="site_type" value="{R}"/>
+       <attr key="playable" value="Items (minor)"/>
+       <attr key="special" value="The first minor item played at this site during the site phase does not tap the site.
+This site contains a hoard."/>
+       <attr key="draw_opp" value="2"/>
+       <attr key="auto_attack" value="Men - 1 strike at 10 prowess"/>
+       <attr key="rarity" value="R2"/>
+       <attr key="type" value="Minion Site"/>
+       <attr key="site_path" value="{d}{s}"/>
+	<attr key="keyword" value="Hoard Site"/>
+    </card>
+
+    <card name="Glittering Caves" graphics="GlitteringCaves.jpg" back="1" text="">
+       <attr key="unique" value="yes"/>
+       <attr key="adjacent" value="Helm's Deep (0), The Pûkel-Deeps (9), The Under-Gates (6)"/>
+       <attr key="draw" value="2"/>
+       <attr key="region" value="Gap of Isen"/>
+       <attr key="site_type" value="{R}"/>
+       <attr key="playable" value="Items (minor, major, gold ring)"/>
+       <attr key="special" value="Any Undead or Pûkel-Creature may be keyed to this site."/>
+       <attr key="draw_opp" value="3"/>
+       <attr key="auto_attack" value="Undead — 3 strikes at 9 prowess
+After the first automatic-attack is faced, opponent may reveal and discard a non-unique hazard creature from his hand that may be keyed to S by type.  An automatic-attack is created with equivalent attributes and type."/>
+       <attr key="rarity" value="R2"/>
+       <attr key="type" value="Minion Site"/>
+	<attr key="keyword" value="Under-Deeps"/>
+    </card>
+
+    <card name="Gold Hill" graphics="GoldHill.jpg" back="1" text="">
+       <attr key="unique" value="yes"/>
+       <attr key="haven" value="Dol Guldur"/>
+       <attr key="draw" value="2"/>
+       <attr key="region" value="Withered Heath"/>
+       <attr key="site_type" value="{R}"/>
+       <attr key="playable" value="Items (minor, major, greater, gold ring)"/>
+       <attr key="draw_opp" value="2"/>
+       <attr key="auto_attack" value="Dragon - 1 strike at 15 prowess"/>
+       <attr key="rarity" value="U2"/>
+       <attr key="type" value="Minion Site"/>
+       <attr key="site_path" value="{d}{w}{w}{w}"/>
+	<attr key="keyword" value="Hoard Site"/>
+	<attr key="special" value="Itangast's Lair.  If a Manifestation of Itangast has been defeated, this automatic-attack is removed.
+This site contains a hoard."/>
+    </card>
+
+    <card name="Grey Havens" graphics="GreyHavens.jpg" back="1" text="">
+       <attr key="unique" value="yes"/>
+       <attr key="haven" value="Carn Dûm"/>
+       <attr key="draw" value="2"/>
+       <attr key="region" value="Lindon"/>
+       <attr key="site_type" value="{F}"/>
+       <attr key="playable" value="Information, Items (minor, major, greater)"/>
+       <attr key="special" value="The base hazard limit of any company moving to this site or at this site is modified by +2.  Information cards do not tap this site when played.
+Stolen knowledge.  When this site would otherwise be discarded, it is placed in your mp pile and is worth 3 miscellaneous mp."/>
+       <attr key="draw_opp" value="3"/>
+       <attr key="auto_attack" value="Elves — 3 strikes at 8 prowess
+Elves — 2 strikes at 10 prowess
+Maia — 2 strikes at 13 prowess
+Elf — 1 strike at 15 prowess"/>
+       <attr key="rarity" value="R2"/>
+       <attr key="type" value="Minion Site"/>
+       <attr key="site_path" value="{s}{w}{f}"/>
+	<attr key="keyword" value="Stolen Knowledge"/>
+    </card>
+
+    <card name="Himring" graphics="Himring.jpg" back="1" text="">
+       <attr key="unique" value="yes"/>
+       <attr key="haven" value="Geann a-Lisch"/>
+       <attr key="draw" value="3"/>
+       <attr key="region" value="Elven Shores"/>
+       <attr key="site_type" value="{R}"/>
+       <attr key="playable" value="Items (minor, major)"/>
+       <attr key="special" value="An overt company moving to this site taps one untapped character during step 5 of the movement process."/>
+       <attr key="draw_opp" value="3"/>
+       <attr key="auto_attack" value="Undead - 1 strike at 8 prowess"/>
+       <attr key="rarity" value="U2"/>
+       <attr key="type" value="Minion Site"/>
+       <attr key="site_path" value="{w}{c}{c}"/>
+    </card>
+
+    <card name="Irerock" graphics="Irerock.jpg" back="1" text="">
+       <attr key="unique" value="yes"/>
+       <attr key="haven" value="Dol Guldur"/>
+       <attr key="draw" value="2"/>
+       <attr key="region" value="Withered Heath"/>
+       <attr key="site_type" value="{R}"/>
+       <attr key="playable" value="Items (minor, major, greater, gold ring)"/>
+       <attr key="draw_opp" value="2"/>
+       <attr key="auto_attack" value="Dragon - 1 strike at 14 prowess"/>
+       <attr key="rarity" value="U2"/>
+       <attr key="type" value="Minion Site"/>
+       <attr key="site_path" value="{d}{w}{w}{w}"/>
+	<attr key="keyword" value="Hoard Site"/>
+	<attr key="special" value="Leucaruth's Lair.  If a Manifestation of Leucaruth has been defeated, this automatic-attack is removed.
+This site contains a hoard."/>
+    </card>
+
+    <card name="The Iron-deeps" graphics="TheIrondeeps.jpg" back="1" text="">
+       <attr key="unique" value="yes"/>
+       <attr key="adjacent" value="Carn Dûm (0), The Under-Leas (5), The Under-Vaults (6)"/>
+       <attr key="draw" value="1"/>
+       <attr key="region" value="Angmar"/>
+       <attr key="site_type" value="{D}"/>
+       <attr key="playable" value="Items (minor)"/>
+       <attr key="draw_opp" value="1"/>
+       <attr key="auto_attack" value="Trolls - 3 strikes at 9 prowess (detainment)"/>
+       <attr key="rarity" value="U2"/>
+       <attr key="type" value="Minion Site"/>
+	<attr key="keyword" value="Under-Deeps"/>
+    </card>
+
+    <card name="Isle of the Ulond" graphics="IsleoftheUlond.jpg" back="1" text="">
+       <attr key="unique" value="yes"/>
+       <attr key="haven" value="Geann a-Lisch"/>
+       <attr key="draw" value="2"/>
+       <attr key="region" value="Andrast Coast"/>
+       <attr key="site_type" value="{R}"/>
+       <attr key="playable" value="Information, Items (minor, major)"/>
+       <attr key="special" value="Eärcaraxë's Lair.  If a Manifestation of Eärcaraxë has been defeated, this automatic-attack is removed.
+This site contains a hoard."/>
+       <attr key="draw_opp" value="2"/>
+       <attr key="auto_attack" value="Dragon - 1 strike at 14 prowess"/>
+       <attr key="rarity" value="U2"/>
+       <attr key="type" value="Minion Site"/>
+       <attr key="site_path" value="{w}{w}{c}"/>
+	<attr key="keyword" value="Hoard Site"/>
+    </card>
+
+    <card name="Isles of the Dead that Live" graphics="IslesoftheDeadthatLive.jpg" back="1" text="{green} DCE: Change: Tap an overt character not a covert!">
+       <attr key="unique" value="yes"/>
+       <attr key="haven" value="Geann a-Lisch"/>
+       <attr key="draw" value="1"/>
+       <attr key="region" value="Eriadoran Coast"/>
+       <attr key="site_type" value="{R}"/>
+       <attr key="playable" value="Items (minor, major, gold ring)"/>
+       <attr key="special" value="An overt company may not move to this site.  A covert company moving to this site taps one untapped character during step 5 of the movement process."/>
+       <attr key="draw_opp" value="2"/>
+       <attr key="auto_attack" value="Undead - 1 strike at 10 prowess"/>
+       <attr key="rarity" value="U2"/>
+       <attr key="type" value="Minion Site"/>
+       <attr key="site_path" value="{w}{c}"/>
+    </card>
+    <card name="Lórien" graphics="Lorien.jpg" back="1" text="">
+       <attr key="unique" value="yes"/>
+       <attr key="haven" value="Dol Guldur"/>
+       <attr key="draw" value="2"/>
+       <attr key="region" value="Wold &amp; Foothills"/>
+       <attr key="site_type" value="{F}"/>
+       <attr key="playable" value="Information, Items (minor, major, greater, gold ring)"/>
+       <attr key="special" value="If the last automatic attack is not defeated, any character that was assigned a strike from it is taken prisoner at this site.  The rescue-attack is an exact copy of the last attack and its strikes will take characters prisoner under the same conditions.  The base hazard limit against any company moving to or at this site is modified by +2.  Items do not tap this site when played."/>
+       <attr key="draw_opp" value="4"/>
+       <attr key="auto_attack" value="Elves — 4 strikes at 8 prowess
+Elves — 3 strikes at 9 prowess
+Maia — 2 strikes at 15 prowess
+Elves — 1 strike at 10 prowess, 10 body."/>
+       <attr key="rarity" value="R2"/>
+       <attr key="type" value="Minion Site"/>
+       <attr key="site_path" value="{d}{s}{w}"/>
+    </card>
+    <card name="Old Forest" graphics="OldForest.jpg" back="1" text="">
+       <attr key="unique" value="yes"/>
+       <attr key="haven" value="Carn Dûm"/>
+       <attr key="draw" value="2"/>
+       <attr key="region" value="Cardolan"/>
+       <attr key="site_type" value="{B}"/>
+       <attr key="special" value="Action: You may tap this site during the site phase to place a Ring Special Item other than the One Ring from your hand with a character at this site.
+Action: You may tap a Sage at this site during the organization phase to untap it."/>
+       <attr key="draw_opp" value="2"/>
+       <attr key="auto_attack" value="Awakened Plant — 1 strike at 10 prowess
+Maia — 2 strikes at 15 prowess"/>
+       <attr key="rarity" value="U2"/>
+       <attr key="type" value="Minion Site"/>
+       <attr key="site_path" value="{s}{w}{w}"/>
+    </card>
+    <card name="Ovir Hollow" graphics="OvirHollow.jpg" back="1" text="">
+       <attr key="unique" value="yes"/>
+       <attr key="haven" value="Dol Guldur"/>
+       <attr key="draw" value="2"/>
+       <attr key="region" value="Grey Mountain Narrows"/>
+       <attr key="site_type" value="{R}"/>
+       <attr key="playable" value="Items (minor, major)"/>
+       <attr key="draw_opp" value="2"/>
+       <attr key="auto_attack" value="Dragon - 1 strike at 12 prowess"/>
+       <attr key="rarity" value="U2"/>
+       <attr key="type" value="Minion Site"/>
+       <attr key="site_path" value="{d}{w}{w}{s}"/>
+	<attr key="keyword" value="Hoard Site"/>
+	<attr key="special" value="Bairanax's Lair.  If a Manifestation of Bairanax has been defeated, this automatic-attack is removed.
+This site contains a hoard."/>
+    </card>
+    <card name="The Pûkel-deeps" graphics="ThePukeldeeps.jpg" back="1" text="">
+       <attr key="unique" value="yes"/>
+       <attr key="adjacent" value=" Dunharrow (0), The Gem-deeps (9), The Sulfur-deeps (9)"/>
+       <attr key="draw" value="2"/>
+       <attr key="region" value="Rohan"/>
+       <attr key="site_type" value="{R}"/>
+       <attr key="playable" value="Items (minor, major, greater, gold ring)"/>
+       <attr key="special" value="Any Undead or Pûkel-Creature may be keyed to this site."/>
+       <attr key="draw_opp" value="3"/>
+       <attr key="auto_attack" value="Pûkel-Creature — 2 strikes at 11 prowess
+After the first automatic-attack is faced, opponent may reveal and discard a non-unique hazard creature from his hand that may be keyed to S by type.  An automatic-attack is created with equivalent attributes and type."/>
+       <attr key="rarity" value="R2"/>
+       <attr key="type" value="Minion Site"/>
+	<attr key="keyword" value="Under-Deeps"/>
+    </card>
+    <card name="Rhosgobel" graphics="Rhosgobel.jpg" back="1" text="">
+       <attr key="unique" value="yes"/>
+       <attr key="haven" value="Dol Guldur"/>
+       <attr key="draw" value="1"/>
+       <attr key="region" value="Southern Mirkwood"/>
+       <attr key="site_type" value="{F}"/>
+       <attr key="playable" value="Information, Items (minor)"/>
+       <attr key="special" value="If a manifestation of Radagast is in play or has been eliminated, the second automatic-attack is removed."/>
+       <attr key="draw_opp" value="1"/>
+       <attr key="auto_attack" value="Animals — 1 strike at 10 prowess
+Maia — 1 strike at 13 prowess"/>
+       <attr key="rarity" value="R2"/>
+       <attr key="type" value="Minion Site"/>
+       <attr key="site_path" value="{d}"/>
+    </card>
+    <card name="Rivendell" graphics="Rivendell.jpg" back="1" text="">
+       <attr key="unique" value="yes"/>
+       <attr key="haven" value="Carn Dûm"/>
+       <attr key="draw" value="1"/>
+       <attr key="region" value="Rhudaur"/>
+       <attr key="site_type" value="{F}"/>
+       <attr key="playable" value="Information, Items (minor, major, greater, gold ring)"/>
+       <attr key="special" value="The base hazard limit against any company moving to or at this site is modified by +2.
+Lost Knowledge.  When this site would otherwise be discarded, instead place it in your mp pile.  It is worth 2 mp, and all your ring tests are modified by +1."/>
+       <attr key="draw_opp" value="3"/>
+       <attr key="auto_attack" value="Elves — 4 strikes at 8 prowess
+Dúnedain — 3 strikes at 10 prowess
+Dúnedain — 1 strike at 15 prowess
+Elves — 1 strike at 18 prowess"/>
+       <attr key="rarity" value="R2"/>
+       <attr key="type" value="Minion Site"/>
+       <attr key="site_path" value="{s}{w}"/>
+	   <attr key="keyword" value="Lost Knowledge"/>
+    </card>
+    <card name="The Sulfur-deeps" graphics="TheSulfurdeeps.jpg" back="1" text="">
+       <attr key="unique" value="yes"/>
+       <attr key="adjacent" value="Dol Guldur (0), The Under-Courts (4), The Under-Gates (4), The Pûkel-Deeps (9)"/>
+       <attr key="draw" value="1"/>
+       <attr key="region" value="Southern Mirkwood"/>
+       <attr key="site_type" value="{D}"/>
+       <attr key="playable" value="Items (minor)"/>
+       <attr key="draw_opp" value="1"/>
+       <attr key="auto_attack" value="Trolls - 2 strikes at 10 prowess (detainment)"/>
+       <attr key="rarity" value="U2"/>
+       <attr key="type" value="Minion Site"/>
+	<attr key="keyword" value="Under-Deeps"/>
+    </card>
+    <card name="Tolfalas" graphics="Tolfalas.jpg" back="1" text="">
+       <attr key="unique" value="yes"/>
+       <attr key="haven" value="Geann a-Lisch"/>
+       <attr key="draw" value="3"/>
+       <attr key="region" value="Mouths of the Anduin"/>
+       <attr key="site_type" value="{R}"/>
+       <attr key="playable" value="Items (minor, major, greater)"/>
+       <attr key="special" value="An overt company moving to this site taps one untapped character during step 5 of the movement process.  The only Greater Items that may be played at this site are Palantíri."/>
+       <attr key="draw_opp" value="3"/>
+       <attr key="auto_attack" value="Dúnedain — 3 strikes at 9 prowess"/>
+       <attr key="rarity" value="U2"/>
+       <attr key="type" value="Minion Site"/>
+       <attr key="site_path" value="{s}{w}{w}{c}"/>
+    </card>
+    <card name="The Under-courts" graphics="TheUndercourts.jpg" back="1" text="">
+       <attr key="unique" value="yes"/>
+       <attr key="adjacent" value="Barad-Dûr (0), The Sulfur-Deeps (4), The Under-Galleries (4)"/>
+       <attr key="draw" value="1"/>
+       <attr key="region" value="Gorgoroth"/>
+       <attr key="site_type" value="{D}"/>
+       <attr key="playable" value="Items (minor)"/>
+       <attr key="draw_opp" value="1"/>
+       <attr key="auto_attack" value="Trolls - 3 strikes at 10 prowess (detainment)"/>
+       <attr key="rarity" value="U2"/>
+       <attr key="type" value="Minion Site"/>
+	<attr key="keyword" value="Under-Deeps"/>
+    </card>
+    <card name="The Under-galleries" graphics="TheUndergalleries.jpg" back="1" text="">
+       <attr key="unique" value="yes"/>
+       <attr key="adjacent" value="Cirith Gorgor (0), The Under-Courts (4), The Sulfur-Deeps (7)"/>
+       <attr key="draw" value="2"/>
+       <attr key="region" value="Udûn"/>
+       <attr key="site_type" value="{D}"/>
+       <attr key="playable" value="Items (minor)"/>
+       <attr key="draw_opp" value="2"/>
+       <attr key="auto_attack" value="Trolls - 4 strikes at 10 prowess (detainment)"/>
+       <attr key="rarity" value="U2"/>
+       <attr key="type" value="Minion Site"/>
+	<attr key="keyword" value="Under-Deeps"/>
+    </card>
+    <card name="The Under-gates" graphics="TheUndergates.jpg" back="1" text="">
+       <attr key="unique" value="yes"/>
+       <attr key="adjacent" value="Moria (0), Glittering Caves (6), The Sulfur-Deeps (4), The Under-Grottos (7), The Under-Leas (5)"/>
+       <attr key="draw" value="2"/>
+       <attr key="region" value="Redhorn Gate"/>
+       <attr key="site_type" value="{S}"/>
+       <attr key="playable" value="Items (minor, major, greater)"/>
+       <attr key="special" value="Creatures keyed to this site are not detainment.  If a manifestation of the Balrog has been defeated, the first automatic-attack is removed."/>
+       <attr key="draw_opp" value="3"/>
+       <attr key="auto_attack" value="Spawn — 2 strikes at 18 prowess, 9 body
+After the first automatic-attack is faced, opponent may reveal and discard a non-unique hazard creature from his hand that may be keyed to R by type.  An automatic-attack is created with equivalent attributes and type."/>
+       <attr key="rarity" value="U2"/>
+       <attr key="type" value="Minion Site"/>
+	<attr key="keyword" value="Under-Deeps"/>
+    </card>
+    <card name="The Under-grottos" graphics="TheUndergrottos.jpg" back="1" text="">
+       <attr key="unique" value="yes"/>
+       <attr key="adjacent" value="Goblin-Gate (0), Glittering Caves (9), The Sulfur-Deeps (9)"/>
+       <attr key="draw" value="2"/>
+       <attr key="region" value="High Pass"/>
+       <attr key="site_type" value="{R}"/>
+       <attr key="playable" value="Items (minor, major, gold ring)"/>
+       <attr key="special" value="Any Orc creature may be keyed to this site.  +1 to all ring tests by a company at this site."/>
+       <attr key="draw_opp" value="3"/>
+       <attr key="auto_attack" value="Orcs — 4 strikes at 7 prowess
+After the first automatic-attack is faced, opponent may reveal and discard a non-unique hazard creature from his hand that may be keyed to S by type.  An automatic-attack is created with equivalent attributes and type."/>
+       <attr key="rarity" value="U2"/>
+       <attr key="type" value="Minion Site"/>
+	<attr key="keyword" value="Under-Deeps"/>
+    </card>
+    <card name="The Under-leas" graphics="TheUnderleas.jpg" back="1" text="">
+       <attr key="unique" value="yes"/>
+       <attr key="adjacent" value="Mount Gundabad (0), The Iron-Deeps (5), The Under-Grottos (7), The Under-Gates (5), The Under-Vaults (6)"/>
+       <attr key="draw" value="2"/>
+       <attr key="region" value="Gundabad"/>
+       <attr key="site_type" value="{S}"/>
+       <attr key="playable" value="Items (minor, major)"/>
+       <attr key="special" value="Any Orc may be keyed to this site.  Creatures keyed to this site are not detainment."/>
+       <attr key="draw_opp" value="2"/>
+       <attr key="auto_attack" value="Orcs — 5 strikes at 7 prowess
+After the first automatic-attack is faced, opponent may reveal and discard a non-unique hazard creature from his hand that may be keyed to R by type.  An automatic-attack is created with equivalent attributes and type."/>
+       <attr key="rarity" value="U2"/>
+        <attr key="type" value="Minion Site"/>
+	<attr key="keyword" value="Under-Deeps"/>
+    </card>
+    <card name="The Under-vaults" graphics="TheUndervaults.jpg" back="1" text="">
+       <attr key="unique" value="yes"/>
+       <attr key="adjacent" value="Mount Gram (0), The Iron-Deeps (9), The Under-Leas (9)"/>
+       <attr key="draw" value="1"/>
+       <attr key="region" value="Angmar"/>
+       <attr key="site_type" value="{R}"/>
+       <attr key="playable" value="Items (minor, major)"/>
+       <attr key="special" value="Any Undead may be keyed to this site."/>
+       <attr key="draw_opp" value="2"/>
+       <attr key="auto_attack" value="Undead — 3 strikes at 8 prowess
+After the first automatic-attack is faced, opponent may reveal and discard a non-unique hazard creature from his hand that may be keyed to S by type.  An automatic-attack is created with equivalent attributes and type."/>
+       <attr key="rarity" value="U2"/>
+       <attr key="type" value="Minion Site"/>
+	<attr key="keyword" value="Under-Deeps"/>
+    </card>
+    <card name="Weathertop" graphics="Weathertop.jpg" back="1" text="">
+       <attr key="unique" value="yes"/>
+       <attr key="haven" value="Carn Dûm"/>
+       <attr key="draw" value="1"/>
+       <attr key="region" value="Arthedain"/>
+       <attr key="site_type" value="{R}"/>
+       <attr key="playable" value="Information"/>
+       <attr key="draw_opp" value="1"/>
+       <attr key="auto_attack" value="Animals - 2 strikes at 6 prowess"/>
+       <attr key="rarity" value="U2"/>
+       <attr key="type" value="Minion Site"/>
+       <attr key="site_path" value="{s}{w}"/>
+    </card>
+    <card name="Wellinghall" graphics="Wellinghall.jpg" back="1" text="">
+       <attr key="unique" value="yes"/>
+       <attr key="haven" value="Geann a-Lisch"/>
+       <attr key="draw" value="2"/>
+       <attr key="region" value="Fangorn"/>
+       <attr key="site_type" value="{F}"/>
+       <attr key="playable" value="Items (minor, major, greater)"/>
+       <attr key="draw_opp" value="3"/>
+       <attr key="auto_attack" value="Awakened Plant — 2 strikes at 10 prowess
+Awakened Plant — 2 strikes at 10 prowess
+Awakened Plant — 1 strike at 15 prowess (neither the attack nor the strike may be canceled)"/>
+       <attr key="rarity" value="U2"/>
+       <attr key="type" value="Minion Site"/>
+       <attr key="site_path" value="{w}{b}{w}"/>
+	<attr key="special" value="You may play a Greater or Major Item at this site when you would otherwise be able to play a Minor Item."/>
+    </card>
+  </cards>
+</ccg-setinfo>
