@@ -145,7 +145,9 @@ while($check =~ m[<tr class="cardItem"><td class="number">(\d*)</td>.+?multivers
 # The dual lands from RTR and GTC will be obtainable in DGM booster packs.
 # In order to select from only that pool, those cards need to be given a secondary rarity code.
         $rarity = "R+RL" if $set =~ /^(?:RTR|GTC)$/ && $cardname =~ /^(?:Hallowed Fountain|Godless Shrine|Watery Grave|Steam Vents|Blood Crypt|Overgrown Tomb|Stomping Ground|Sacred Foundry|Temple Garden|Breeding Pool)$/;
-	
+        $rarity = "L" if $set eq "DGM" && $cardname =~ /Guildgate/;
+        $rarity = "ML" if $set eq "DGM" && $cardname eq "Maze's End";
+
 	if($images)
 	{
 		getstore("http://gatherer.wizards.com/Handlers/Image.ashx?type=card&multiverseid=$cardid","$set/$filename");
@@ -160,7 +162,7 @@ while($check =~ m[<tr class="cardItem"><td class="number">(\d*)</td>.+?multivers
 		$color="";
 		foreach(@splits)
 		{
-			if($text =~ m[">\Q$cardname ($_)\E</a>(.+?)(?:<tr>\s+<td>\s+Name:|</table>)]s)
+			if($text =~ m[">\Q$cardname ($_)\E</a>(.+?)(?:<tr>\s+<td>\s+Name|</table>)]s)
 			{
 				$attrs = $1;
 				while($attrs =~ m[<tr[^>]*>\s*<td>\s*(.+?):\s*</td>\s*<td>\s*(.*?)\s*</td>\s*</tr>]gcs)
@@ -182,7 +184,7 @@ while($check =~ m[<tr class="cardItem"><td class="number">(\d*)</td>.+?multivers
 			}
 		}
 	}
-	elsif($text =~ m[(?:">\Q$cardname\E</a>| \Q($cardname)\E</a>)(.+?)(?:<tr>\s+<td>\s+Name:|</table>)]s)
+	elsif($text =~ m[(?:">\Q$cardname\E</a>| \Q($cardname)\E</a>)(.+?)(?:<tr>\s+<td>\s+Name|</table>)]s)
 	{
 		$filename="Planes/$filename" if($set eq "P1P"||$set eq "P2P");
 		$filename="Schemes/$filename" if($set eq "ARS");
@@ -223,7 +225,7 @@ while($check =~ m[<tr class="cardItem"><td class="number">(\d*)</td>.+?multivers
 		
 	if($flip)
 	{	
-		if($text =~ m[(?:">\Q$flipname\E</a>| \Q($flipname)\E</a>)(.+?)(?:<tr>\s+<td>\s+Name:|</table>)]s)
+		if($text =~ m[(?:">\Q$flipname\E</a>| \Q($flipname)\E</a>)(.+?)(?:<tr>\s+<td>\s+Name|</table>)]s)
 		{
 			$attrs = $1;
 			%attrs=();

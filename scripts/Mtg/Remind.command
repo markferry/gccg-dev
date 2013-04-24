@@ -17,7 +17,7 @@ MTG_KEYWORDS{''}="{green}List of available keywords\n
 {yellow}C: {white}Cascade, Champion, Changeling, Channel, Chroma, Cipher, Clash, Conspire, Convoke, Counter, Cumulative Upkeep, Cycling.\n
 {yellow}D: {white}Deathtouch, Defender, Delve, Detain, Devour, Domain, Double Strike, Dredge.\n
 {yellow}E: {white}Echo, Emblem, Enchant, Entwine, Epic, Equip, Evoke, Evolve, Exalted, Extort.\n
-{yellow}F: {white}Fading, Fateful Hour, Fateseal, Fear, Fight, First Strike, Flanking, Flash, Flashback, Flying, Forecast, Fortify, Frenzy.\n
+{yellow}F: {white}Fading, Fateful Hour, Fateseal, Fear, Fight, First Strike, Flanking, Flash, Flashback, Flying, Forecast, Fortify, Fuse, Frenzy.\n
 {yellow}G: {white}Graft, Grandeur, Gravestorm.\n
 {yellow}H: {white}Haste, Haunt, Hellbent, Hexproof, Hideaway, Horsemanship.\n
 {yellow}I: {white}Imprint, Infect, Intimidate.\n
@@ -95,6 +95,7 @@ MTG_KEYWORDS{'flying'}="{yellow}Flying{white} is a static ability. A creature wi
 MTG_KEYWORDS{'forecast'}="{yellow}Forecast {white} is an activated ability. A forecast ability is written \"Forecast - [Activated ability].\" and may be activated only during the upkeep step of the card's owner and only once each turn. The controller of the forecast ability reveals the card with that ability from his or her hand as the ability is activated. That player plays with that card revealed in his or her hand until it leaves the player's hand or until a step or phase that isn't an upkeep step begins, whichever comes first.";
 MTG_KEYWORDS{'fortify'}="{yellow}Fortify{white} is an activated ability. \"Fortify [cost]\" means \"[Cost]: Attach this Fortification to target land you control. Activate this ability only any time you could cast a sorcery.\"";
 MTG_KEYWORDS{'frenzy'}="{yellow}Frenzy{white} is a triggered ability. \"Frenzy N\" means \"Whenever this creature attacks and isn't blocked, it gets +N/+0 until end of turn.\"";
+MTG_KEYWORDS{'fuse'}="{yellow}Fuse{white} is a static ability that appears on some split cards. If you are casting a split card with fuse from your hand, you may cast both halves as a single spell, paying the combined mana cost. If a fused spell resolves, follow the instructions on the left half first, followed by the right half.";
 MTG_KEYWORDS{'graft'}="{yellow}Graft{white} represents both a static ability and a triggered ability. \"Graft N\" means \"This permanent enters the battlefield with N +1/+1 counters on it\" and \"Whenever another creature enters the battlefield, if this permanent has a +1/+1 counter on it, you may move a +1/+1 counter from this permanent onto that creature.\"";
 MTG_KEYWORDS{'grandeur'}="{yellow}Grandeur{white} is an ability word related to discarding other cards with the same name from your hand. The term itself has no rules meaning.";
 MTG_KEYWORDS{'gravestorm'}="{yellow}Gravestorm{white} is a triggered ability which means \"When you cast this spell, put a copy of it onto the stack for each permanent that was put into a graveyard from the battlefield this turn. If the spell has any targets, you may choose new targets for any of the copies.\"";

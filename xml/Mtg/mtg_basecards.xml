@@ -1073,7 +1073,7 @@ At the beginning of each upkeep, if no spells were cast last turn, transform Kru
    <attr key="fliptoughness" value="3" />
    <attr key="flipid" value="18007" />
   </card>
-  <card name="Howlpack Alpha" graphics="ISD_flip/HowlpackAlpha.jpg" text="Other Werewolf and Wolf creatures you control get +1/+1.
+  <card name="Howlpack Alpha" graphics="ISD_flip/HowlpackAlpha.jpg" text="Each other creature you control that's a Werewolf or a Wolf gets +1/+1.
 At the beginning of your end step, put a 2/2 green Wolf creature token onto the battlefield.
 At the beginning of each upkeep, if a player cast two or more spells last turn, transform Howlpack Alpha.">
    <attr key="rarity" value="SR" />
@@ -1544,12 +1544,12 @@ Whenever a card is put into your graveyard from anywhere, you may return it to y
      <attr key="power" value="1"/>
      <attr key="toughness" value="1"/>
     </card>
-    <card name="Dragon" graphics="Tokens/Dragon44R.jpg" text="Flying">
+    <card name="Dragon" graphics="Tokens/Dragon66R.jpg" text="Flying">
      <attr key="color" value="Red"/>
      <attr key="type" value="Creature"/>
      <attr key="subtype" value="Dragon"/>
-     <attr key="power" value="4"/>
-     <attr key="toughness" value="4"/>
+     <attr key="power" value="6"/>
+     <attr key="toughness" value="6"/>
     </card>
     <card name="Elemental" graphics="Tokens/Elemental88GW.jpg" text="Vigilance">
      <attr key="color" value="Green White"/>
@@ -1616,7 +1616,12 @@ Whenever a card is put into your graveyard from anywhere, you may return it to y
     </card>
     <card name="Emblem: Domri Rade" graphics="Emblems/Emblem_DomriRade.jpg" text="Creatures you control have double strike, trample, hexproof, and haste.">
     </card>
-    <card name="8" graphics="" text="THIS IS A FREE SLOT, USE THIS ONE AND NEVER CREATE MORE!!!">
+    <card name="Elemental" graphics="Tokens/ElementalXXGW.jpg" text="This creature's power and toughness are each equal to the number of creatures you control.">
+     <attr key="color" value="Green White"/>
+     <attr key="type" value="Creature"/>
+     <attr key="subtype" value="Elemental"/>
+     <attr key="power" value="*"/>
+     <attr key="toughness" value="*"/>
     </card>
     <card name="9" graphics="" text="THIS IS A FREE SLOT, USE THIS ONE AND NEVER CREATE MORE!!!">
     </card>

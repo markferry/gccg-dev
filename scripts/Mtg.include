@@ -545,6 +545,7 @@ def TokenSubmenuE
    ("Elemental 7/7 (G, trample)","",'Send("Transfer",(1,("out.of.play",37),("play",0)))'),
    ("Elemental 8/8 (GW, vigilance)","",'Send("Transfer",(1,("out.of.play",178),("play",0)))'),
    ("Elemental */* (G)","",'Send("Transfer",(1,("out.of.play",38),("play",0)))'),
+   ("Elemental */* (GW)","",'Send("Transfer",(1,("out.of.play",188),("play",0)))'),
    ("Elemental */* (R)","",'Send("Transfer",(1,("out.of.play",102),("play",0)))'),
    ("Elemental Shaman 3/1 (R)","",'Send("Transfer",(1,("out.of.play",39),("play",0)))'),
    ("Elephant 3/3 (G)","",'Send("Transfer",(1,("out.of.play",40),("play",0)))'),   

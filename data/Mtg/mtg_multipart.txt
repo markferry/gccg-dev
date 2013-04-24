@@ -165,3 +165,33 @@ Mondronen Shaman:::FLIP=154:Tovolar's Magehunter
 Tovolar's Magehunter:::NEXTIMG
 Loyal Cathar:::FLIP=153:Unhallowed Cathar
 Unhallowed Cathar:::NEXTIMG
+Alive:::SPLIT: // Well
+Well:::NEXT
+Armed:::SPLIT: // Dangerous
+Dangerous:::NEXT
+Beck:::SPLIT: // Call
+Call:::NEXT
+Breaking:::SPLIT: // Entering
+Entering:::NEXT
+Catch:::SPLIT: // Release
+Release:::NEXT
+Down:::SPLIT: // Dirty
+Dirty:::NEXT
+Far:::SPLIT: // Away
+Away:::NEXT
+Flesh:::SPLIT: // Blood
+Blood:::NEXT
+Give:::SPLIT: // Take
+Take:::NEXT
+Profit:::SPLIT: // Loss
+Loss:::NEXT
+Protect:::SPLIT: // Serve
+Serve:::NEXT
+Ready:::SPLIT: // Willing
+Willing:::NEXT
+Toil:::SPLIT: // Trouble
+Trouble:::NEXT
+Turn:::SPLIT: // Burn
+Burn:::NEXT
+Wear:::SPLIT: // Tear
+Tear:::NEXT

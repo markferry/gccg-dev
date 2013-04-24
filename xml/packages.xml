@@ -7,7 +7,7 @@
   <source url="http://lotrtcgwiki.com/files/gccg/"/>
   <source url="http://games.phtn.de/gccg/"/>
   <source url="http://wtactics.org/files/gccg/modules/"/> 
-  <module name="core" version="1.0.8">
+  <module name="core" version="1.0.9">
 	<include file="decks"/>
 	<include file="doc"/>
 	<include file="lib"/>
@@ -100,8 +100,8 @@
 	<include dir="perl"/>
 	<include dir="localization"/>
   </module>
-  <module name="mtg-server" version="1.3.6">
-	<requires name="mtg" version="1.3.6" />
+  <module name="mtg-server" version="1.3.7">
+	<requires name="mtg" version="1.3.7" />
 	<requires name="server" version="0.9.7.3" />
 	<include file="scripts/Mtg-factory-server.include"/>
 	<include file="scripts/Mtg-meta-server.include"/>
@@ -126,7 +126,7 @@
 	<include file="scripts/Lotr-server.include"/>
 	<include file="lotr-sample.conf"/>
   </module>
-  <module name="mtg" version="1.3.6">
+  <module name="mtg" version="1.3.7">
   	<include file="Mtg"/>
 	<include file="Mtg.bat"/>
 	<include file="xml/mtg.xml"/>
@@ -212,8 +212,8 @@
 	<include files="graphics/Poker/*.png"/>
 	<include files="graphics/Poker/*.jpg"/>
   </module>
-  <module name="mtg-cards" version="1.83.0">
-    <requires name="mtg-cards-000" version="21" />
+  <module name="mtg-cards" version="1.84.0">
+    <requires name="mtg-cards-000" version="22" />
     <requires name="mtg-cards-001" version="15" />
     <requires name="mtg-cards-002" version="16" />
     <requires name="mtg-cards-003" version="15" />
@@ -297,8 +297,9 @@
     <requires name="mtg-cards-081" version="2" />
     <requires name="mtg-cards-082" version="1" />
     <requires name="mtg-cards-083" version="1" />
+    <requires name="mtg-cards-084" version="1" />
   </module>
-  <module name="mtg-cards-000" version="21">
+  <module name="mtg-cards-000" version="22">
 	<include dir="graphics/Mtg/Tokens"/>
 	<include dir="graphics/Mtg/Emblems"/>
 	<include file="graphics/Mtg/JitteCounter.jpg"/>
@@ -555,6 +556,9 @@
   </module>
   <module name="mtg-cards-083" version="1">
 	<include dir="graphics/Mtg/GTC"/>
+  </module>
+  <module name="mtg-cards-084" version="1">
+	<include dir="graphics/Mtg/DGM"/>
   </module>
   <module name="pokemon-cards" version="1.9.0">
 	<requires name="pokemon-cards-000" version="5" />

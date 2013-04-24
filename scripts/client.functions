@@ -2207,19 +2207,26 @@ def ChatCommandRenamedeck
 {
   if(deck.name != NULL && has_entry(deck.name,decks) && length(ARG)>=1)
   {
-#   update group reference if applicable
-    g=GroupOf(deck.name);
-    if(length(g)>0)
-      deck.groups{g}=(deck.groups{g}-(deck.name,))+(join(ARG," "),);
+    push(n);
+    n=join(ARG," ");
+    if(has_entry(n,decks)
+      Msg("{red}You already have a deck with that name.");
+    else
+    {
+#     update group reference if applicable
+      g=GroupOf(deck.name);
+      if(length(g)>0)
+        deck.groups{g}=(deck.groups{g}-(deck.name,))+(join(ARG," "),);
       
-    decks{join(ARG," ")}=decks{deck.name};
-    decks=del_entry(deck.name,decks);
-    SelectDeck(join(ARG," "));
+      decks{join(ARG," ")}=decks{deck.name};
+      decks=del_entry(deck.name,decks);
+      SelectDeck(join(ARG," "));
+    }
   }
 }
 
 HELP{"chat"}{"renamedeck"}=("name","rename deck",NULL,
-"Give new {yellow}name{white} to the current deck if selected. If there are no deck selected, this command does nothing.");
+"Give new {yellow}name{white} to the current deck if selected. If there is no deck selected, this command does nothing.");
 
 #
 # CommandPage() - Implementation of /page command.

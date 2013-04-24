@@ -85,6 +85,7 @@
   <cardset source="m13.xml"/>
   <cardset source="rtr.xml"/>
   <cardset source="gtc.xml"/>
+  <cardset source="dgm.xml"/>
 
   <image file="b.png" tag="{B}"/>
   <image file="g.png" tag="{G}"/>
