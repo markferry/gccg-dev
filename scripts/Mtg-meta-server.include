@@ -1,8 +1,7 @@
 #
 # Variables:
 #
-# promo.booster - remaining Unglued "promo" cards to give as prizes
-# promo.booster2 - remaining Unhinged "promo" cards to give as prizes
+# promo.booster{set} - remaining booster cards to give as prizes
 
 #
 # CONSTANTS
@@ -16,11 +15,14 @@ factory.port=29101;
 INITIAL_MONEY=50.0;
 GAME_BONUS=13.0;
 BET_BONUS_MULTIPLIER=1;
-LOSER_PERCENTAGE=0.20;
-DRAW_PERCENTAGE=0.15;
+LOSER_PERCENTAGE=0.2;
+DRAW_PERCENTAGE=0.4;
 PLAYSET_COUNT=4;
 
 ANONYMOUS_IP="www.wizards.com";
+
+# Order in which bonus sets need to be filled out
+REWARD_ORDER = ("UG","UH","P1","P2","P3","S1","COM","PC2");
 
 if(!load("products"))
 {
@@ -34,6 +36,8 @@ if(!load("products"))
   products{"Fallen Empires booster"}=(50000,1.45,("FE","booster"),50000);
   save("products");
 }
+
+promo.booster = (,);
 
 #
 # HOOKS
@@ -84,68 +88,181 @@ def EndGameHook
 {
   if(length(ARG[3])>1)
   {
+    push(p);
     push(c);
-    push(ready);
     for(p)(ARG[4])
     {
-#
-# Get Unglued
-#
-      if(length(promo.booster) <= 0)
-      {
-        if(net_send(factory.server,(1,"UG","booster")))
-        {
-          ready=0;
-          while(!ready)
-          {
-            c=net_get();
-            if(c!=NULL)
-            {
-              ready=1;
-              promo.booster=shuffle(flatten(toval(c[1])));
-            }
-          }
-        }
-      }
-#
-# Get Unhinged
-#
-      if(length(promo.booster2) <= 0)
-      {
-        if(net_send(factory.server,(1,"UH","booster")))
-        {
-          ready=0;
-          while(!ready)
-          {
-            c=net_get();
-            if(c!=NULL)
-            {
-              ready=1;
-              promo.booster2=shuffle(flatten(toval(c[1])));
-            }
-          }
-        }
-      }
-
       if(users{p}[4][1][0]==0)
       {
-         if(count("UG",users{UserWithoutMode(p)}[3][2]))
-         {
-           c=first(promo.booster2);
-           promo.booster2=tail(promo.booster2);
-         }
-         else
-         {
-           c=first(promo.booster);
-           promo.booster=tail(promo.booster);
-         }
-         AddCard(p,c);
-         SendAll("Message","{blue}"+p+" receives{gold} #"+c+"# {blue}as a reward for the game.");
-         if(Con(p)>-1)
-           Send(Con(p),("SetCardbook",((c,users{p}[2]{c}),)));
+         if(!has_entry("reward",users{UserWithoutMode(p)}[3][0]))
+           InitializeReward(p);
+         RewardCard(p,users{UserWithoutMode(p)}[3][0]{"reward"});
+         
+         c=random(200);
+         if(c==198)
+           RewardCard(p,"COM");
+         else if(c==199)
+           RewardCard(p,"PC2");
       }
     }
-    ready=pop();
+    p=pop();
     c=pop();
   }
+}
+
+#
+# InitializeReward(player) - Set a player's reward set to the next one they need to complete.
+#
+def InitializeReward
+{
+  push(r);
+  push(s);
+  
+  r="";
+  for(s)(REWARD_ORDER)
+  {
+    if(r=="" && !count(s,users{UserWithoutMode(ARG)}[3][2]))
+      r=s;
+  } 
+  
+  if(r=="")
+    r=s;
+  
+  users{UserWithoutMode(ARG)}[3][0]{"reward"} = r;
+  
+  s=pop();
+  r=pop();
+}
+
+#
+# RewardCard(player, set) - Give player a bonus card selected from the set.
+#
+def RewardCard
+{
+  push(p);
+  push(c);
+  push(s);
+  push(ready);
+  p=ARG[0];
+  s=ARG[1];
+  if(length(s)<1)
+  {
+    if(Con(p)>-1)
+      Send(Con(p),("Message","{red}You were supposed to get a reward card for the game, but something bad happened. Contact a server administrator."));
+    Log("Attempted to give "+p+" a reward card from bad set: "+tostr(s));
+  }
+  else
+  {
+    if(!has_entry(s,promo.booster))
+      promo.booster{s} = (,);
+  
+    if(!length(promo.booster{s}))
+    {
+      if(net_send(factory.server,(1,s,"booster")))
+      {
+        ready=0;
+        while(!ready)
+        {
+          c=net_get();
+          if(c!=NULL)
+          {
+            ready=1;
+            promo.booster{s}=shuffle(flatten(toval(c[1])));
+          }
+        }
+      }
+    }
+  }
+  
+  c=first(promo.booster{s});
+  promo.booster{s}=tail(promo.booster{s});
+  AddCard(p,c);
+  SendAll("Message","{blue}"+p+" receives{gold} #"+c+"# {blue}as a reward for the game.");
+  if(Con(p)>-1)
+    Send(Con(p),("SetCardbook",((c,users{p}[2]{c}),)));
+           
+  ready=pop();
+  s=pop();
+  c=pop();
+  p=pop();
+}
+
+#
+# SetHook(setting name, value) - Called before checking a setting to apply.
+#
+def SetHook
+{
+  push(r);
+  push(s);
+  
+  if(ARG[0]=="reward")
+  {
+    if(typeof(ARG[1])!="string")
+    {
+      if(!has_entry("reward",users{UserWithoutMode()}[3][0])
+        InitializeReward(UserWithoutMode());
+      Reply("{green}You are currently set up to receive your reward cards from {yellow}"+users{UserWithoutMode()}[3][0]{"reward"}+"{green}.");
+    }
+    else
+    {
+      s=uc(ARG[1]);
+      r=find(s,REWARD_ORDER);
+  
+      if(r != NULL)
+      {
+        push(f);
+        f=0;
+        
+# a player can always collect a reward set they've already completed
+        if(count(s,users{UserWithoutMode()}[3][2]))
+          f=1;
+# a player can always collect the first reward set
+        else if(r==0)
+          f=1;
+# otherwise, a player can only collect a reward set if all the previous sets in line are registered
+        else
+        {
+          for(s)(r)
+          {
+            if(count(REWARD_ORDER[s],users{UserWithoutMode()}[3][2]))
+              f=f+1;
+          }
+          f=f/r;
+        }
+        
+        if(f)
+        {
+          users{UserWithoutMode()}[3][0]{"reward"} = s;
+          Reply("{green}The reward cards you receive after a game will now be from {yellow}"+s+"{green}.");
+        }
+        else
+          Reply("{red}You still have other reward sets to collect before you can move on to that one.");
+        f=pop();
+      }
+      else
+        Reply("{red}That isn't a reward set. The reward sets are {yellow}"+join(REWARD_ORDER,", ")+"{red}, and they must be collected in that order.");
+    }
+  }
+  
+  s=pop();
+  r=pop();
+}
+
+#
+# RegisterHook(set) - Called after registering a set. Used for updating reward sets.
+#
+def RegisterHook
+{
+  push(i);
+  
+  i=find(ARG[0],REWARD_ORDER);
+  
+  if(i != NULL && i+1 < length(REWARD_ORDER))
+  {
+    users{User()}[3][0]{"reward"} = REWARD_ORDER[i+1];
+    Reply("{green}The reward cards you receive after a game will now be from {yellow}"+REWARD_ORDER[i+1]+"{green}.");
+    Reply("{green}If you still want to collect cards from the old set, you can use {yellow}/set reward "+REWARD_ORDER[i]+"{green}.");
+  }
+  
+  i=pop();
 }
