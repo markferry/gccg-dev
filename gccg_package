@@ -3,7 +3,7 @@
 #
 # Globals
 #
-$ver="1.0.8";		# Current version of core package
+$ver="1.0.9.1";		# Current version of core package
 %module=();			# $module{mode}{module name} - version numbers of updated/build/installed/available modules.
 %files=();			# $files{mode}{module name}{filename} - include or exclude flags (1 = include, 0 = exclude)
 %sources=();		# $sources{mode} - List of sources.
@@ -1218,8 +1218,8 @@ else
 }
 if(!$winsystem)
 {
-    ($_ = `tar --version 2>&1`)  &&  /tar / or die "$0: gccg_package requires tar";
-    ($_ = `gunzip --version 2>&1`)  &&  /gunzip / or die "$0: gccg_package requires gunzip";
+	system("tar --help >/dev/null 2>&1")==0 or die "$0: gccg_package requires tar";
+     system("gunzip --help > /dev/null 2>&1")==0 or die "$0: gccg_package requires gunzip";
 }
 
 if(!-f "xml/installed.xml")
