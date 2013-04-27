@@ -424,7 +424,6 @@ def RuleCanonicalCardLimitSingle
 #
 def RuleCardLimitAny
 {
-Msg(tostr(ARG));
   return(select("find(name(#), head(ARG))==NULL",last(ARG)));
 }
 
