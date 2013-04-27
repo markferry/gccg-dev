@@ -424,6 +424,7 @@ def RuleCanonicalCardLimitSingle
 #
 def RuleCardLimitAny
 {
+Msg(tostr(ARG));
   return(select("find(name(#), head(ARG))==NULL",last(ARG)));
 }
 
@@ -682,7 +683,12 @@ def RuleCheckExpression
 def LegalityCheckRule
 {
   if(isfunction(ARG[0][0]))
-    return(call(ARG[0][0],(ARG[0][1],ARG[2])));
+  {
+    if(length(ARG[0]) > 2)
+      return(call(ARG[0][0],(tail(ARG[0])+(ARG[2],))));
+    else
+      return(call(ARG[0][0],(ARG[0][1],ARG[2])));
+  }
   else
     println("WARNING: unknown rule "+ARG[0][0]);
 }
