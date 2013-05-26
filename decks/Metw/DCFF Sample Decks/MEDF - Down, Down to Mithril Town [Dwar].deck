@@ -8,16 +8,18 @@
 Deck
 ####
 
-# Dual Resource (5)
+# Dual Resource (9)
 
-1 Children of Aulë (DF)
+2 Children of Aulë (DF)
+1 Dwarven Art of War (DF)
 2 Dwarven Axe (DF)
-1 Old Grudge (DF)
+1 His Beard Long and Forked (DF)
+2 Old Grudge (DF)
 1 Origin of Stone (DF)
 
-# Hazard (37)
+# Hazard (36)
 
-3 An Unexpected Outpost (DM)
+2 An Unexpected Outpost (DM)
 1 Big Bats (FB)
 1 Black Crows (FB)
 1 Cave Worm (TD)
@@ -45,32 +47,30 @@ Deck
 2 Worm's Stench (TD)
 1 Ûvatha the Horseman (TW)
 
-# Minion Character (6)
+# Minion Character (8)
 
 1 Celedhring (FB)
 4 Dwar the Ringwraith (LE)
 1 Fori the Beardless (DM)
+1 Luitprand (LE)
+1 Tarin (DF)
 
-# Minion Resource (32)
+# Minion Resource (27)
 
 1 A Nice Place to Hide (LE)
 1 Ancient Black Axe (AS)
-3 Ancient Secrets (BA)
+2 Ancient Secrets (BA)
 2 Bade to Rule (LE)
 2 Crack in the Wall (LE)
-2 Crept Along Cleverly (WH)
-1 Dark Tryst (AS)
 2 Gold Ring that Sauron Fancies (LE)
 2 Iron Shield of Old (AS)
-1 Orc Quarrels (LE)
-1 Ruse (LE)
+1 Orcs of Dol Guldur (AS)
+2 Ruse (LE)
 2 Secrets of Their Forging (LE)
 1 Stinker (LE)
 1 Swift Strokes (LE)
 1 The Mithril-coat [M] (LE)
-1 The Under-roads (AS)
 1 Voices of Malice (LE)
-1 War-wolf (LE)
 2 We Have Come to Kill (LE)
 2 Weigh All Things to a Nicety (LE)
 2 World Gnawed by the Nameless (AS)
@@ -83,12 +83,13 @@ Pool
 
 1 His Beard Long and Forked (DF)
 
-# Minion Character (6)
+# Minion Character (7)
 
 1 Bróin (LE)
 1 Drór (DM)
 1 Gulla (LE)
 1 Náin (LE)
+1 Odoacer (LE)
 1 Threlin (LE)
 1 Thulin II (DF)
 
@@ -101,8 +102,9 @@ Pool
 Sideboard
 #########
 
-# Dual Resource (2)
+# Dual Resource (3)
 
+1 Dry Tunnels (DF)
 1 Fungi (DF)
 1 Mornaugrim (DF)
 
@@ -123,34 +125,31 @@ Sideboard
 1 Stormcrow (PR)
 1 Witch-king of Angmar (TW)
 
-# Hero Resource (4)
+# Hero Resource (3)
 
 1 Mithril (DM)
-3 Vein of Arda (DM)
+2 Vein of Arda (DM)
 
-# Minion Character (1)
+# Minion Resource (20)
 
-1 Tarin (DF)
-
-# Minion Resource (19)
-
+1 Ancient Secrets (BA)
+1 Blasting Fire (WH)
 1 Dwarf-chopper (DF)
 1 Dwarven Ring of Barin's Tribe [M] (LE)
 1 Dwarven Ring of Durin's Tribe [M] (LE)
 1 Foul-smelling Paste (LE)
 1 I'll Be At Your Heels (LE)
-1 Liquid Fire (WH)
+1 Magic Ring of Lies (LE)
 1 Magic Ring of Savagery (LE)
 1 Maranya (FP)
-1 No More Nonsense (LE)
+1 Minor Ring (LE)
 1 Petty-dwarves [M] (AS)
 1 Remnants of Old Robberies (LE)
-1 Sudden Call (LE)
-1 Swift Strokes (LE)
 1 The Balrog [M] (AS)
 1 The Under-roads (AS)
 1 Tokens to Show (AS)
 1 Treason the Greatest Foe (AS)
+1 Troth-ring (AS)
 1 Voices of Malice (LE)
 1 War-wolf (LE)
 
@@ -169,7 +168,7 @@ Sites
 1 The Rusted-deeps [D] (DF)
 1 The Wind-deeps [D] (DF)
 
-# Minion Site (72)
+# Minion Site (64)
 
 1 Amon Hen [M] (LE)
 1 Amon Lind [M] (FB)
@@ -190,26 +189,20 @@ Sites
 1 Dancing Spire [M] (AS)
 1 Dead Marshes [M] (LE)
 1 Dimrill Dale [M] (LE)
-1 Dol Guldur [M] (LE)
+2 Dol Guldur [M] (LE)
 1 Dunharrow [M] (LE)
 1 Eagles' Eyrie [M] (AS)
 1 Edhellond [M] (AS)
 1 Edoras [M] (LE)
-1 Ettenmoors [M] (LE)
-1 Framsburg [M] (AS)
 1 Gaurblog Lug [M] (DF)
 1 Geann a-Lisch [M] (LE)
 1 Gladden Fields [M] (LE)
 1 Glittering Caves [M] (LE)
 1 Goblin-gate [M] (LE)
-1 Gold Hill [M] (AS)
 1 Gondmaeglom [M] (LE)
-1 Grey Havens [M] (AS)
-1 Hermit's Hill [M] (LE)
 1 Irerock [M] (AS)
 1 Iron Hill Dwarf-hold [M] (LE)
 1 Isengard [M] (LE)
-1 Lossadan Cairn [M] (LE)
 1 Lórien [M] (AS)
 1 Minas Morgul [M] (LE)
 1 Moria [M] (LE)
@@ -223,7 +216,6 @@ Sites
 1 Rhosgobel [M] (AS)
 1 Rivendell [M] (AS)
 1 Sarn Goriwing [M] (LE)
-1 Shelob's Lair [M] (LE)
 1 Telpëmar [M] (FB)
 1 The Carrock [M] (DF)
 1 The Gem-deeps [M] (AS)
@@ -241,5 +233,4 @@ Sites
 1 The Wind Throne [M] (LE)
 1 The Worthy Hills [M] (LE)
 1 Thranduil's Halls [M] (LE)
-1 Tom's House [M] (FB)
-1 Zarak Dûm [M] (LE)
+
