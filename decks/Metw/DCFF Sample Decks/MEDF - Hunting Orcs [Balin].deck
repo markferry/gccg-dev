@@ -1,0 +1,239 @@
+#
+# GCCG v0.9.6.3 Middle-earth deck
+#
+#      Hunting Orcs [Balin sample]
+#
+
+####
+Deck
+####
+
+# Dual Resource (6)
+
+1 Desperate Strike (DF)
+1 Dwarf-friend (DF)
+2 Dwarven Axe (DF)
+2 War Mattock (DF)
+
+# Dwarf-lord Character (4)
+
+4 Balin [D] (DF)
+
+# Grey Agent Character (1)
+
+1 Kori (DF)
+
+# Hazard (35)
+
+1 Alatar the Hunter (AS)
+2 An Unexpected Outpost (DM)
+1 Balrog of Moria (TW)
+1 Black Crows (FB)
+3 Chill Them with Fear (LE)
+1 Decisions of the White Council (FB)
+3 Durin's Folk (AS)
+3 Dwarven Travelers (AS)
+1 Dwarven Warparty (DF)
+1 Gandalf the White Rider (AS)
+1 Lady of the Golden Wood (AS)
+1 Lord of the Eagles (DF)
+1 Lord of the Woods (FB)
+1 Mouth of Sauron (TW)
+2 Naugol (DF)
+3 Naugrim (DF)
+1 Pallando the Soul-keeper (AS)
+1 Radagast the Tamer (AS)
+2 Ride Against the Enemy (AS)
+1 Saruman the Wise (AS)
+2 The Watchful Peace (FB)
+2 Twilight (TW)
+
+# Hero Character (4)
+
+1 Bifur (TW)
+1 Bofur (TW)
+1 Frerin (DF)
+1 Óin (TW)
+
+# Hero Resource (20)
+
+2 A More or Less Decent Giant (DF)
+1 Blue Mountain Dwarves (TW)
+1 Clan Bonds (DF)
+1 Cup of Farewell (DM)
+1 Durin's Axe (TW)
+1 Echo of All Joy (TD)
+2 Great Friendship (FB)
+3 Hunting Orcs (DF)
+1 Khazadshatur (DF)
+1 Marvels Told (TD)
+2 Smoke Rings (DM)
+2 The Dwarves Are upon You! (DM)
+2 We Must Away! (DF)
+
+# Minion Character (1)
+
+1 Drór (DM)
+
+# Minion Resource (4)
+
+1 I'll Report You (LE)
+2 Swift Strokes (LE)
+1 We Have Come to Kill (LE)
+
+# Stage Resource (5)
+
+1 Balin, Dwarf of All Trades (DF)
+1 Ironfoot (DF)
+2 Mining Settlement (DF)
+1 Trusted Counsellor (FB)
+
+####
+Pool
+####
+
+# Dwarf-lord Character (2)
+
+1 Dáin (DF)
+1 Thorin (DF)
+
+# Hero Character (8)
+
+1 Bombur (TW)
+1 Dori (TW)
+1 Dworin (DF)
+1 Gimli (TW)
+1 Gimli, Son of Gloin (DF)
+1 Glóin (TW)
+1 Legolas (TW)
+1 Legolas of Greenwood (FB)
+
+# Hero Resource (3)
+
+1 Cram (TD)
+1 Healing Herbs (TW)
+1 Pipe (DF)
+
+# Stage Resource (3)
+
+1 Crimson Hood (DF)
+1 Son of Fundin (DF)
+1 Thrall of the Voice (WH)
+
+#########
+Sideboard
+#########
+
+# Dual Resource (2)
+
+1 Deadly Dart (PR)
+1 Dwarven Art of War (DF)
+
+# Hazard (12)
+
+1 Assassin (TW)
+1 Call of Home (TW)
+1 Covetous Thoughts (LE)
+1 Expert Treasure-hunter (DF)
+1 He Is Lost to Us (FB)
+1 Ibûn (DF)
+1 Lost in Free-domains (LE)
+1 Nameless Thing (DM)
+1 News of Doom (LE)
+1 Returned Beyond All Hope (AS)
+1 Stay Her Appetite (LE)
+1 The Roving Eye (LE)
+
+# Hero Character (3)
+
+1 Attack-lord (DF)
+1 King's Advisor (DF)
+1 Mountaineer (DF)
+
+# Hero Resource (19)
+
+1 Book of Mazarbul (TW)
+1 Forgotten Scrolls (DM)
+1 Gimli's Axe (DF)
+1 Gollum (TW)
+1 Halls of Khazad-dûm (DF)
+2 Longbottom Leaf (BA)
+1 Look More Closely Later (TD)
+1 Marvels Told (TD)
+1 Petty-dwarves [H] (AS)
+1 Reconquest of Khazad-dûm (DF)
+2 Return to Old Dwellings (DF)
+2 The Old Thrush (TW)
+1 Withdrawn to Mordor (DM)
+3 Wondrous Maps (TD)
+
+# Stage Resource (4)
+
+1 Folk of Durin (DF)
+1 Legacy of Smiths (WH)
+1 Lord of Dwarrowdelf (DF)
+1 The Seven Houses (DF)
+
+################
+Sideboard vs. fw
+################
+
+# Hazard (10)
+
+1 Call of the Deeps (DF)
+1 Choked with Vanity (FB)
+1 Cruel Claw Perceived (WH)
+2 He Is Lost to Us (FB)
+1 Inner Rot (WH)
+1 Nature's Revenge (WH)
+1 Power Relinquished to Artifice (WH)
+1 Something Else at Work (WH)
+1 The Dark Days (FB)
+
+#####
+Sites
+#####
+
+# Dwarf-lord Site (4)
+
+3 Blue Mountain Dwarf-hold [D] (DF)
+1 Iron Hill Dwarf-hold [D] (DF)
+
+# Fallen-wizard Site (6)
+
+2 Deep Mines (WH)
+1 Grey Havens [F] (FB)
+1 Lórien [F] (FB)
+1 Rivendell [F] (FB)
+1 Thranduil's Halls [F] (FB)
+
+# Hero Site (28)
+
+1 Amon Lind [H] (FB)
+1 Bar-en-Ibûn [H] (DF)
+1 Barrow-downs [H] (TW)
+1 Carn Dûm [H] (TW)
+1 Dimrill Dale [H] (TW)
+1 Dol Guldur [H] (TW)
+1 Gaurblog Lug [H] (DF)
+1 Geann a-Lisch [H] (AS)
+1 Glittering Caves [H] (TW)
+1 Goblin-gate [H] (TW)
+1 Himring [H] (TW)
+1 Moria [H] (TW)
+1 Mount Gram [H] (TW)
+1 Mount Gundabad [H] (TW)
+1 Mount Rerir [H] (FB)
+1 Nurunkhizdín [H] (DF)
+1 Ovir Hollow [H] (TD)
+1 Ruined Signal Tower [H] (TW)
+1 Sarn Goriwing [H] (TW)
+1 The Iron-deeps [H] (DM)
+1 The Lonely Mountain [H] (TW)
+1 The Sulfur-deeps [H] (DM)
+1 The Under-gates [H] (DM)
+1 The Under-grottos [H] (DM)
+1 The Under-leas [H] (DM)
+1 The Under-vaults [H] (DM)
+1 The Wind Throne [H] (TW)
+1 The Worthy Hills [H] (AS)

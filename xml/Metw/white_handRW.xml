@@ -1,0 +1,1171 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE ccg-setinfo SYSTEM "../gccg-set.dtd">
+<ccg-setinfo name="The White Hand" dir="WhiteHandRW" abbrev="WH" game="Middle-earth">
+  <cards>
+
+    <card name="Alatar" graphics="Alatar.jpg" text="Unique.  Avatar.  -5 mp if eliminated.  Your sources of kill mp are worth their normal value.  If you have more than 7 P, all detainment attacks against your companies become non-detainment.
+Special Movement: If at a H when one of your companies is facing an attack, Alatar may immediately join that company, moving through no regions.  This movement may occur outside the movement/hazard phase and is not subject to the normal process of movement.  After the attack is faced, Alatar must tap if untapped and make a corruption check.">
+       <attr key="unique" value="yes"/>
+       <attr key="skills" value="Warrior/Scout/Ranger/Sage"/>
+       <attr key="home_site" value="Any non-Hoard Ruins and Lairs in a Wilderness"/>
+       <attr key="prowess" value="7"/>
+       <attr key="body" value="9"/>
+       <attr key="gi" value="17"/>
+       <attr key="specific" value="Alatar"/>
+       <attr key="rarity" value="C4"/>
+       <attr key="race" value="Fallen-wizard"/>
+       <attr key="type" value="Fallen-wizard Character"/>
+       <attr key="influence" value="10"/>
+	   <attr key="keyword" value="Avatar"/>
+    </card>
+    <card name="Doeth" graphics="Doeth.jpg" text="Unique.  Half-Orc.  Does not make a company overt.  Playable if you have A Strident Spawn in play.  Discard on a body check result equal to his body.">
+       <attr key="unique" value="yes"/>
+       <attr key="skills" value="Warrior/Sage"/>
+       <attr key="mp" value="1"/>
+       <attr key="home_site" value="None"/>
+       <attr key="body" value="9"/>
+       <attr key="prowess" value="4"/>
+       <attr key="rarity" value="R2"/>
+       <attr key="race" value="Orc"/>
+       <attr key="type" value="Minion Character"/>
+       <attr key="mind" value="4"/>
+       <attr key="influence" value="0"/>
+	   <attr key="keyword" value="Half-orc"/>
+    </card>
+    <card name="Euog" graphics="Euog.jpg" text="Unique.  Half-Orc.  Does not make a company overt.  Playable if you have A Strident Spawn in play.  +2 EI against Orc characters.  +2 to influence checks against Orc factions.  Discard on a body check result equal to his body.">
+       <attr key="unique" value="yes"/>
+       <attr key="skills" value="Warrior/Diplomat"/>
+       <attr key="mp" value="2"/>
+       <attr key="home_site" value="None"/>
+       <attr key="body" value="9"/>
+       <attr key="prowess" value="5"/>
+       <attr key="rarity" value="R2"/>
+       <attr key="race" value="Orc"/>
+       <attr key="type" value="Minion Character"/>
+       <attr key="mind" value="5"/>
+       <attr key="influence" value="1"/>
+	   <attr key="keyword" value="Half-orc"/>
+	   <attr key="keyword" value="Leader"/>
+    </card>
+    <card name="Gandalf" graphics="Gandalf.jpg" text="Unique.  Avatar.  -5 mp if eliminated.  Spirit-Mage.  Your characters and hero allies are each worth full mp.
+Action: You may tap Gandalf to test a Gold Ring item in his company.
+Action: Untap Gandalf at the beginning of the Long-Event phase.">
+       <attr key="unique" value="yes"/>
+       <attr key="skills" value="Warrior/Scout/Sage/Diplomat"/>
+       <attr key="specific" value="Gandalf"/>
+       <attr key="home_site" value="Any Free-hold"/>
+       <attr key="body" value="9"/>
+       <attr key="prowess" value="6"/>
+       <attr key="gi" value="18"/>
+       <attr key="rarity" value="C4"/>
+       <attr key="race" value="Fallen-wizard"/>
+       <attr key="type" value="Fallen-wizard Character"/>
+       <attr key="influence" value="9"/>
+	   <attr key="keyword" value="Avatar"/>
+	   <attr key="keyword" value="Mage"/>
+    </card>
+    <card name="Ill-favoured Fellow" graphics="IllfavouredFellow.jpg" text="Unique.  Half-Orc.  Does not make a company overt.  Playable if you have A Strident Spawn in play.  Discard on a body check result equal to his body.  If you have A Strident Spawn in play, you may bring this card from your discard pile to your hand during the organization phase, revealing it to your opponent.">
+       <attr key="skills" value="Warrior/Ranger"/>
+       <attr key="mp" value="1"/>
+       <attr key="home_site" value="None"/>
+       <attr key="body" value="9"/>
+       <attr key="prowess" value="2"/>
+       <attr key="rarity" value="C3"/>
+       <attr key="race" value="Orc"/>
+       <attr key="type" value="Minion Character"/>
+       <attr key="mind" value="3"/>
+       <attr key="influence" value="0"/>
+	   <attr key="keyword" value="Half-orc"/>
+    </card>
+    <card name="Lugdush" graphics="Lugdush.jpg" text="Unique.  Discard on a body check result equal to his body.">
+       <attr key="unique" value="yes"/>
+       <attr key="skills" value="Warrior/Scout"/>
+       <attr key="mp" value="1"/>
+       <attr key="home_site" value="Isengard"/>
+       <attr key="body" value="8"/>
+       <attr key="prowess" value="5"/>
+       <attr key="rarity" value="U3"/>
+       <attr key="race" value="Orc"/>
+       <attr key="type" value="Minion Character"/>
+       <attr key="mind" value="4"/>
+       <attr key="influence" value="0"/>
+    </card>
+    <card name="Pallando" graphics="Pallando.jpg" text="Unique.  Avatar.  -5 mp if eliminated.  Spirit-Mage.  Your Man, Dwarf, Elf, Dúnadan, Hobbit, Orc, and Troll factions are each worth 2 mp.  Your hand size increases by one.">
+       <attr key="unique" value="yes"/>
+       <attr key="skills" value="Warrior/Ranger/Sage/Diplomat"/>
+       <attr key="specific" value="Pallando"/>
+       <attr key="home_site" value="The White Towers"/>
+       <attr key="body" value="9"/>
+       <attr key="prowess" value="5"/>
+       <attr key="gi" value="20"/>
+       <attr key="rarity" value="C4"/>
+       <attr key="race" value="Fallen-wizard"/>
+       <attr key="type" value="Fallen-wizard Character"/>
+       <attr key="influence" value="7"/>
+	   <attr key="keyword" value="Avatar"/>
+	   <attr key="keyword" value="Mage"/>
+    </card>
+    <card name="Radagast" graphics="Radagast.jpg" text="Unique.  Avatar.  -5 mp if eliminated.  Your unique Animal and Awakened Plant factions are each worth 2 mp.  Your hero allies are each worth full mp.  Hero allies Radagast controls are not discarded as indicated on their cards.  When Radagast moves, you may draw one extra card for each w in his site path.">
+       <attr key="unique" value="yes"/>
+       <attr key="specific" value="Radagast"/>
+       <attr key="skills" value="Warrior/Scout/Ranger/Diplomat"/>
+       <attr key="home_site" value="Rhosgobel"/>
+       <attr key="body" value="9"/>
+       <attr key="prowess" value="6"/>
+       <attr key="gi" value="22"/>
+       <attr key="rarity" value="C4"/>
+       <attr key="race" value="Fallen-wizard"/>
+       <attr key="type" value="Fallen-wizard Character"/>
+       <attr key="influence" value="5"/>
+	   <attr key="keyword" value="Avatar"/>
+    </card>
+    <card name="Saruman" graphics="Saruman.jpg" text="Unique.  Avatar.  -5 mp if eliminated.  Sorceror.  Your non-weapon/shield/armor/helmet items are each worth of full mp.  May use Palantíri.  At the beginning of the end-of-turn phase, you may make a corruption check to bring a spell or sorcery card from your discard pile to your hand.">
+       <attr key="unique" value="yes"/>
+       <attr key="skills" value="Scout/Ranger/Sage/Diplomat"/>
+       <attr key="specific" value="Saruman"/>
+       <attr key="home_site" value="Isengard"/>
+       <attr key="body" value="9"/>
+       <attr key="prowess" value="6"/>
+       <attr key="gi" value="15"/>
+       <attr key="rarity" value="C4"/>
+       <attr key="race" value="Fallen-wizard"/>
+       <attr key="type" value="Fallen-wizard Character"/>
+       <attr key="influence" value="12"/>
+	   <attr key="keyword" value="Avatar"/>
+	   <attr key="keyword" value="Mage"/>
+    </card>
+    <card name="Sly Southerner" graphics="SlySoutherner.jpg" text="Half-Orc.  Does not make a company overt.  Playable if you have A Strident Spawn in play.  Discard on a body check result equal to his body.  If you have A Strident Spawn in play, you may bring this card from your discard pile to your hand during the organization phase, revealing it to your opponent.">
+       <attr key="skills" value="Warrior/Scout"/>
+       <attr key="mp" value="0"/>
+       <attr key="home_site" value="None"/>
+       <attr key="body" value="9"/>
+       <attr key="prowess" value="1"/>
+       <attr key="rarity" value="C3"/>
+       <attr key="race" value="Orc"/>
+       <attr key="type" value="Minion Character"/>
+       <attr key="mind" value="2"/>
+       <attr key="influence" value="0"/>
+	   <attr key="keyword" value="Half-orc"/>
+    </card>
+    <card name="Squint-eyed Brute" graphics="SquinteyedBrute.jpg" text="Half-Orc.  Does not make a company overt.  Playable if you have A Strident Spawn in play.  Discard on a body check result equal to his body.  If you have A Strident Spawn in play, you may bring this card from your discard pile to your hand during the organization phase, revealing it to your opponent.">
+       <attr key="skills" value="Warrior"/>
+       <attr key="mp" value="0"/>
+       <attr key="home_site" value="None"/>
+       <attr key="body" value="9"/>
+       <attr key="prowess" value="3"/>
+       <attr key="rarity" value="C3"/>
+       <attr key="race" value="Orc"/>
+       <attr key="type" value="Minion Character"/>
+       <attr key="mind" value="2"/>
+       <attr key="influence" value="0"/>
+	   <attr key="keyword" value="Half-orc"/>
+    </card>
+    <card name="Uglúk" graphics="Ugluk.jpg" text="Unique.  Leader.  Discard on a body check result equal to his body.  +3 EI against Orc characters.  +3 to influence checks against Orc factions.">
+       <attr key="unique" value="yes"/>
+       <attr key="skills" value="Warrior/Ranger"/>
+       <attr key="mp" value="2"/>
+       <attr key="home_site" value="Isengard"/>
+       <attr key="body" value="9"/>
+       <attr key="prowess" value="5"/>
+       <attr key="rarity" value="R2"/>
+       <attr key="race" value="Orc"/>
+       <attr key="type" value="Minion Character"/>
+       <attr key="mind" value="5"/>
+       <attr key="influence" value="0"/>
+	   <attr key="keyword" value="Leader"/>
+    </card>
+    <card name="Goblin-faces" graphics="Goblinfaces.jpg" text="Three strikes.
+Special: When a strike of this attack succeeds, look at the top card of your opponent’s deck and place it either on the top or bottom of his deck.">
+       <attr key="strikes" value="3"/>
+       <attr key="mp" value="1"/>
+       <attr key="playable" value="{b}{s}{B}"/>
+       <attr key="body" value="-"/>
+       <attr key="prowess" value="7"/>
+       <attr key="subclass" value="Orcs"/>
+       <attr key="rarity" value="R3"/>
+       <attr key="class" value="Creature"/>
+       <attr key="type" value="Hazard"/>
+    </card>
+    <card name="Blind to the West" graphics="BlindtotheWest.jpg" text="Playable if your opponent is a Fallen Wizard at any time if he has declared the card play action of a hero resource short-event.  The resource is canceled and discarded before it resolves.  This card does not count against the hazard limit.  When this card would otherwise be discarded, remove it from the game.">
+       <attr key="rarity" value="C4"/>
+       <attr key="class" value="Short-event"/>
+       <attr key="type" value="Hazard"/>
+    </card>
+    <card name="Cast from the Order" graphics="CastfromtheOrder.jpg" text="Playable on a Fallen Wizard if your are a Wizard Player.  The Fallen Wizard’s player must use minion sites for hero B and hero F.  The Fallen Wizard’s company is overt.">
+       <attr key="rarity" value="R2"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Hazard"/>
+    </card>
+    <card name="Cruel Claw Perceived" graphics="CruelClawPerceived.jpg" text="Playable on an avatar.  His GI is modified by -1.  If he is a Fallen Wizard, he receives an additional -2 modifier for every 5 P.  If played on Fallen Saruman, he receives no penalty to GI, instead, his hand size is reduced by one for every 10 P.  May not be duplicated on a given avatar.  Discard when any play deck is exhausted.">
+       <attr key="rarity" value="R3"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Hazard"/>
+    </card>
+    <card name="Echoes of the Song" graphics="EchoesoftheSong.jpg" text="If your opponent has more than one Stage Resource card and 4 or more P, he must discard one Stage Resource card of his choice from play.  Remove this card from the game.">
+       <attr key="rarity" value="C4"/>
+       <attr key="class" value="Short-event"/>
+       <attr key="type" value="Hazard"/>
+    </card>
+    <card name="Flotsam and Jetsam" graphics="FlotsamandJetsam.jpg" text="If a player has 15 or fewer cards in his play deck, all effects which he initiaties to allow him search through any portion of his play deck or discard pile are canceled.  May not be duplicated.
+Trigger: Discard when any play deck is exhausted.">
+       <attr key="rarity" value="R3"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Hazard"/>
+    </card>
+    <card name="Fool's Bane" graphics="FoolsBane.jpg" text="Playable on a Fallen Wizard.  Influence checks he makes against Hero resources are modified by -1.  He receives an additional -2 modifier for every 6 stage points.  Cannot be duplicated on a given Fallen Wizard.  Discard when any play deck is exhausted.">
+       <attr key="rarity" value="U3"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Hazard"/>
+    </card>
+    <card name="Foul Tooth Unsheathed" graphics="FoulToothUnsheathed.jpg" text="Playable if your opponent is a Fallen Wizard and not Alatar.  Hazards without an asterisk give no mp to your opponent.  This card overrides any conflicting resources.  May not be duplicated.">
+       <attr key="rarity" value="C3"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Hazard"/>
+    </card>
+    <card name="Heart Grown Cold" graphics="HeartGrownCold.jpg" text="If a Fallen Wizard player has more than 4 P, he must use minion F unless he is Gandalf.  If a Fallen Wizard player has more than 7 P, he must use minion B.  If no minion version of such a site exists, the site may not be moved to, but is not replaced.">
+       <attr key="rarity" value="U3"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Hazard"/>
+    </card>
+    <card name="In the Grip of Ambition" graphics="IntheGripofAmbition.jpg" text="Corruption.  Playable on a Fallen Wizard or Wizard.
+Action: Once each of your organization phases, you may make a roll modified by +3 if the bearer taps.  If the result is greater than 9, discard this card.">
+       <attr key="sp" value="2(3)"/>
+       <attr key="corruption" value="1"/>
+       <attr key="rarity" value="C3"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Hazard"/>
+	   <attr key="keyword" value="Corruption"/>
+    </card>
+    <card name="Inner Rot" graphics="InnerRot.jpg" text="Corruption.  Playable on a Wizard or Fallen Wizard.  He receives an additional corruption point for every 7 P.
+Action: Bearer makes a corruption check whenever his controlling player plays a Stage Resource.
+Action: Once during each of your organization phases, you may make a roll modified by +3 if the bearer taps.  If the result is greater than 9, discard this card.">
+       <attr key="sp" value="2"/>
+       <attr key="corruption" value="1"/>
+       <attr key="rarity" value="R3"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Hazard"/>
+	   <attr key="keyword" value="Corruption"/>
+    </card>
+    <card name="Ire of the East" graphics="IreoftheEast.jpg" text="Playable if your opponent is a Fallen Wizard at any time if he has declared the card play action of a minion resource short-event.  The resource is canceled and discarded before it resolves.  This card does not count against the hazard limit.  When this card would otherwise be discarded, remove it from the game.">
+       <attr key="rarity" value="C4"/>
+       <attr key="class" value="Short-event"/>
+       <attr key="type" value="Hazard"/>
+    </card>
+    <card name="Longing for the West" graphics="LongingfortheWest.jpg" text="Corruption.  Playable on a Wizard or Fallen Wizard.
+Action: Bearer makes a corruption check at the end of his Untap phase if not at a H.
+Action: Once during each of your organization phases, you may make a roll modified by +3 if the bearer taps.  If the result is greater than 9, discard this card.">
+       <attr key="corruption" value="2"/>
+       <attr key="rarity" value="U3"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Hazard"/>
+	   <attr key="keyword" value="Corruption"/>
+    </card>
+    <card name="Mask Torn" graphics="MaskTorn.jpg" text="Fallen Wizard players may not bring characters with more than 4 mind into play.  If a Fallen Wizard player has more than 9 P, he may not bring characters with more than 3 mind into play.  Discard when any play deck is exhausted.">
+       <attr key="rarity" value="R3"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Hazard"/>
+    </card>
+    <card name="Nature's Revenge" graphics="NaturesRevenge.jpg" text="Playable on a non-H in a w or playable on a Fallen Wizard’s H if he has more than 12 P.  All versions of the site become a R and each gains an additional automatic-attack: Animals — This attack has a number of strikes equal to the number of characters in the company; each strike is at 7 prowess.">
+       <attr key="rarity" value="R3"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Hazard"/>
+    </card>
+    <card name="Power Relinquished to Artifice" graphics="PowerRelinquishedtoArtifice.jpg" text="Playable on an avatar.  If played on a Fallen Wizard, his prowess and EI are modified by a further -1 for every 5 P.  Cannot be duplicated on a given character.
+Trigger: When any play deck is exhausted, discard this card.">
+       <attr key="rarity" value="R3"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Hazard"/>
+	<attr key="influence" value="-1"/>
+	<attr key="prowess" value="-1"/>
+    </card>
+    <card name="Rolled down to the Sea" graphics="RolleddowntotheSea.jpg" text="Unique.  All players must discard a Gold Ring item from their hand or from one of their companies during the end of turn phase if possible.  If not possible, a player must reveal his hand.
+Action: Tap your avatar at a site where Information is playable to remove this card from the game.">
+       <attr key="unique" value="yes"/>
+       <attr key="rarity" value="R2"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Hazard"/>
+    </card>
+    <card name="Something Else at Work" graphics="SomethingElseatWork.jpg" text="Playable on a character.  Any influence check he makes is modified by -1 and any Ring Test in his company is modified by -1.  If he is a Fallen Wizard, he receives an additional -1 for every 4 P.  Cannot be duplicated on a given character.  Discard when any play deck is exhausted.">
+       <attr key="rarity" value="R3"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Hazard"/>
+    </card>
+    <card name="Whole Villages Roused" graphics="WholeVillagesRoused.jpg" text="All automatic-attacks are duplicated.  May not be duplicated by a given player.">
+       <attr key="rarity" value="R3"/>
+       <attr key="class" value="Long-event"/>
+       <attr key="type" value="Hazard"/>
+    </card>
+    <card name="Will You Not Come Down?" graphics="WillYouNotComeDown.jpg" text="Playable on a Fallen Wizard at a H.  The Fallen Wizard’s player must choose to either discard from play enough stage cards of his choice to reduce his stage point total below 7 or to receive 4 P.  Cannot be duplicated on a given Fallen Wizard.">
+       <attr key="sp" value="4"/>
+       <attr key="rarity" value="U3"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Hazard"/>
+    </card>
+    <card name="Noble Steed" graphics="NobleSteed.jpg" text="May be played at a tapped site.
+Action: Tap to cancel a strike from a non-automatic attack against its bearer or itself.">
+       <attr key="mp" value="1"/>
+       <attr key="body" value="8"/>
+       <attr key="prowess" value="0"/>
+       <attr key="rarity" value="C4"/>
+       <attr key="class" value="Animal Ally"/>
+       <attr key="type" value="Hero Resource"/>
+       <attr key="mind" value="1"/>
+	   <attr key="home_site" value="Any site in Rohan, Southern Rhovanion, Khand, Dorwinion, Horse Plains, Harondor."/>
+	<attr key="influence" value="0"/>
+    </card>
+    <card name="Promptings of Wisdom" graphics="PromptingsofWisdom.jpg" text="Playable during the organization phase on a Ranger.
+Action: Tap bearer to cancel all effects for the rest of the turn that would return his company to their site of origin.  Bearer makes a corruption check.
+Action: Tap this card; while this card is tapped, the bearer’s new site, site of origin, and/or current site may not be tapped by hazard effects.  Bearer makes a corruption check.">
+	   <attr key="corruption" value="2"/>
+       <attr key="rarity" value="U3"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Hero Resource"/>
+	<attr key="keyword" value="Ranger"/>
+    </card>
+    <card name="The White Council" graphics="TheWhiteCouncil.jpg" text="Playable during the organization phase if your avatar is in a H and you have more mp than your opponent.  Cannot be duplicated on a given turn.">
+       <attr key="mp" value="1"/>
+       <attr key="rarity" value="R3"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Hero Resource"/>
+    </card>
+    <card name="The White Wizard" graphics="TheWhiteWizard.jpg" text="Playable on a Wizard controlling Sacrifice Of Form.  Bearer receives +1 to corruption checks.  May not be duplicated by a given player.">
+       <attr key="unique" value="yes"/>
+       <attr key="mp" value="2"/>
+       <attr key="rarity" value="R2"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Hero Resource"/>
+	<attr key="influence" value="+2"/>
+    </card>
+    <card name="A Panoply of Wings" graphics="APanoplyofWings.jpg" text="May be played if the site is tapped.  Standard Modifications: Radagast is your avatar and in play +3.
+Action: Tap this card to make Information playable at a R in its current region.">
+       <attr key="mp" value="1"/>
+       <attr key="rarity" value="C3"/>
+       <attr key="class" value="Animal Faction"/>
+       <attr key="type" value="Hero Resource"/>
+	<attr key="home_site" value="Any non-Haven, -Shadow-Hold, -Dark-Hold in a Wilderness"/>
+	<attr key="mind" value="11"/>
+    </card>
+    <card name="Beasts of the Wood" graphics="BeastsoftheWood.jpg" text="This faction’s home site is any non-H in Woodland Realm, Western, Southern, or Heart of Mirkwood, Fangorn, or Cardolan.  May only be played by a covert company.  Standard Modifications: Radagast is your avatar and in play +3">
+       <attr key="mp" value="1"/>
+       <attr key="rarity" value="C3"/>
+       <attr key="class" value="Animal Faction"/>
+       <attr key="type" value="Dual Resource"/>
+	<attr key="home_site" value="Special"/>
+	<attr key="mind" value="11"/>
+    </card>
+    <card name="Wild Horses" graphics="WildHorses.jpg" text="This faction’s home site is any non-H in Rohan, Southern Rhovanion, Khand, Dorwinion, Horse Plains, or Harondor.  May only be influence by a character in a covert company.  May be played if the site is tapped.  Standard Modifications: A character with a matching home site +3
+Special: If one of your companies declares region movement which passes through this faction’s current region, you may move one additional region.">
+       <attr key="mp" value="1"/>
+       <attr key="rarity" value="R3"/>
+       <attr key="class" value="Animal Faction"/>
+       <attr key="type" value="Dual Resource"/>
+	<attr key="home_site" value="Special"/>
+	<attr key="mind" value="1"/>
+    </card>
+    <card name="Wild Hounds" graphics="WildHounds.jpg" text="May only be influence by a character in a covert company.  May be played if the site is tapped.  Standard Modifications: Radagast is your avatar and in play +3">
+       <attr key="mp" value="1"/>
+       <attr key="rarity" value="U3"/>
+       <attr key="class" value="Animal Faction"/>
+       <attr key="type" value="Dual Resource"/>
+	<attr key="home_site" value="Any non-Haven site in a Wilderness"/>
+	<attr key="mind" value="11"/>
+    </card>
+    <card name="The Black Council" graphics="TheBlackCouncil.jpg" text="Playable if you are a Ringwraith Player during your organization phase if your avatar is in a H and you have more mp than your opponent.  Cannot be duplicated on a given turn.">
+       <attr key="mp" value="1"/>
+       <attr key="rarity" value="R3"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Minion Resource"/>
+    </card>
+    <card name="Counterfeit" graphics="Counterfeit.jpg" text="Magic.  Spirit-Magic.  Playable on an Orc in a Spirit-Mage’s company.  The Orc does not make his company overt.  The Spirit-Mage makes a corruption check modified by -3.">
+       <attr key="magic" value="Spirit-magic"/>
+       <attr key="rarity" value="R3"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Minion Resource"/>
+    </card>
+    <card name="Crept Along Cleverly" graphics="CreptAlongCleverly.jpg" text="Playable on a Ranger facing an Animal, Spider, Dragon, Drake, or Undead attack.  Cancel the attack.">
+       <attr key="rarity" value="C4"/>
+       <attr key="class" value="Short-event"/>
+       <attr key="type" value="Minion Resource"/>
+	<attr key="keyword" value="Ranger"/>
+    </card>
+    <card name="The Fiery Blade" graphics="TheFieryBlade.jpg" text="Playable on your Ringwraith.  Each attack against the Ringwraith’s company receives -2 to body.  Discard this card after an attack against the Ringwraith’s company with a body value is defeated.  Cannot be duplicated by a given player.">
+       <attr key="rarity" value="R3"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Minion Resource"/>
+    </card>
+    <card name="Govern the Storms" graphics="GoverntheStorms.jpg" text="Magic.  Sorcery.  Playable on a Sorceror.  Sorceror makes a corruption check modified by -4.  All hazard environment effects are canceled with tap sites or force companies to return to their site of origin, and such cards may not be played.">
+       <attr key="magic" value="Sorcery"/>
+       <attr key="rarity" value="R3"/>
+       <attr key="class" value="Long-event"/>
+       <attr key="type" value="Minion Resource"/>
+    </card>
+    <card name="Open to the Summons" graphics="OpentotheSummons.jpg" text="Startable.  May not be played by a Balrog player.  
+If you start with this card, during your first organization phase, you may play one minion agent from your play deck if you have enough influence to control him.  This does not count as your character play for the turn.  Place this card with the Agent.
+Special: If not started, must be played as a Short-event with the following effect: Playable during the organization phase on your avatar at a H.  Bring one minion Agent that you have enough EI to control and could otherwise legally play from your play deck to your hand and play him as a follower of your avatar at the H.  This counts as your character play for the turn.  Remove this card from the game.">
+       <attr key="rarity" value="U3"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Minion Resource"/>
+    </card>
+    <card name="Piercing All Shadows" graphics="PiercingAllShadows.jpg" text="Playable during the organization phase on a Ranger.
+Action: Tap bearer to cancel all effects for the rest of the turn that would return his company to their site of origin.  Bearer makes a corruption check.
+Action: Tap this card; while this card is tapped, the bearer’s new site, site of origin, and/or current site may not be tapped by hazard effects.  Bearer makes a corruption check.">
+       <attr key="corruption" value="3"/>
+       <attr key="rarity" value="U3"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Minion Resource"/>
+	<attr key="keyword" value="Ranger"/>
+    </card>
+    <card name="Poison of his Voice" graphics="PoisonofhisVoice.jpg" text="Magic.  Spirit-Magic.  Playable on a hazard permanent-event on a character in a Spirit-Mage’s company.  Discard target hazard and this card or
+Playable on a Spirit-Mage Fallen Wizard.  -6 P.  Discard at the end of the turn.
+In all cases, Spirit-Mage makes a corruption check modified by -3.">
+       <attr key="magic" value="Spirit-magic"/>
+       <attr key="rarity" value="U3"/>
+       <attr key="class" value="Short-event"/>
+       <attr key="type" value="Minion Resource"/>
+    </card>
+    <card name="Sojourn in Shadows" graphics="SojourninShadows.jpg" text="Magic.  Shadow-Magic.  Playable on a Shadow-Mage facing an attack before strikes are assigned.  The Shadow-Mage may not be assigned any strikes.  Shadow-Mage makes a corruption check modified by -4.  Discard after the attack is faced.">
+       <attr key="magic" value="Shadow-magic"/>
+       <attr key="rarity" value="R3"/>
+       <attr key="class" value="Short-event"/>
+       <attr key="type" value="Minion Resource"/>
+    </card>
+    <card name="White Light Broken" graphics="WhiteLightBroken.jpg" text="Magic.  Sorcery.  Playable on a Sorceror.  All of his corruption checks are modified by +2 or the Sorceror receives -4 P.
+Sorceror makes a corruption check.
+Discard at the end of the turn.">
+       <attr key="magic" value="Sorcery"/>
+       <attr key="rarity" value="U3"/>
+       <attr key="class" value="Short-event"/>
+       <attr key="type" value="Minion Resource"/>
+    </card>
+    <card name="Blasting Fire" graphics="BlastingFire.jpg" text="Technology.  Playable at a site with a Dwarf automatic-attack.  May be played at a tapped site.
+Action: Discard to cancel all automatic-attacks at a site against the bearer’s company and to modify any influence attempts against factions at that site by +2 until the end of the turn.">
+       <attr key="corruption" value="1"/>
+       <attr key="mp" value="1"/>
+       <attr key="rarity" value="C4"/>
+       <attr key="class" value="Special Item"/>
+       <attr key="type" value="Minion Resource"/>
+	   <attr key="keyword" value="Technology"/>
+    </card>
+    <card name="Liquid Fire" graphics="LiquidFire.jpg" text="Technology.  Playable at any site with a Dwarf automatic-attack.  May be played at a tapped site.
+Action: Discard when bearer is facing an attack from a hazard creature keyed to a site before strikes are assigned to cause all strikes from all attacks of the creature to fail.  Modify any resulting body check rolls by -2.">
+       <attr key="corruption" value="1"/>
+       <attr key="mp" value="1"/>
+       <attr key="rarity" value="R3"/>
+       <attr key="class" value="Special Item"/>
+       <attr key="type" value="Minion Resource"/>
+	   <attr key="keyword" value="Technology"/>
+    </card>
+    <card name="Mechanical Bow" graphics="MechanicalBow.jpg" text="Weapon.  Technology.  Playable by a Dwarf or Orc at a site where Major Items are playable.  If bearer is a Warrior, he receives +2 to prowess.  If bearer is a Warrior and taps when facing a strike, the strike receives -1 body.">
+       <attr key="corruption" value="1"/>
+       <attr key="mp" value="1"/>
+       <attr key="body" value="-1"/>
+       <attr key="rarity" value="C4"/>
+       <attr key="class" value="Special Item"/>
+       <attr key="type" value="Minion Resource"/>
+	   <attr key="keyword" value="Weapon"/>
+	   <attr key="keyword" value="Technology"/>
+    </card>
+    <card name="Vile Fumes" graphics="VileFumes.jpg" text="Technology.  Playable at a site with a Dwarf automatic-attack.  May be played at a tapped site.
+Action: Place this card with a site during the site phase at a B or S to make all versions of the site R.  Its normal automatic-attacks are replaced with: Gas — each character is assigned a strike at 7 prowess that cannot be canceled.">
+       <attr key="corruption" value="1"/>
+       <attr key="mp" value="1"/>
+       <attr key="rarity" value="U4"/>
+       <attr key="class" value="Special Item"/>
+       <attr key="type" value="Minion Resource"/>
+	   <attr key="keyword" value="Technology"/>
+    </card>
+    <card name="Deep Mines" graphics="DeepMines.jpg" back="1" text="This site's surface site is one of your Protected H chosen at the time this card is played.
+Each player's copy of this card is considered a separate site.
+This card is always returned to the location deck.">
+	<attr key="adjacent" value="Ancient Deep-Hold (7)"/>
+       <attr key="sp" value="3"/>
+       <attr key="draw" value="1"/>
+       <attr key="region" value="Under-Deeps"/>
+       <attr key="site_type" value="{R}"/>
+       <attr key="draw_opp" value="2"/>
+       <attr key="rarity" value="C3"/>
+       <attr key="type" value="Fallen-wizard Site"/>
+	<attr key="keyword" value="Under-Deeps"/>
+    </card>
+    <card name="Isengard" graphics="Isengard.jpg" back="1" text="">
+       <attr key="draw" value="2"/>
+       <attr key="region" value="Gap of Isen"/>
+       <attr key="site_type" value="{H}"/>
+	<attr key="auto_attack" value="Maia — 3 strikes at 13 prowess"/>
+       <attr key="special" value="If you are Saruman, this automatic-attack is removed, and if any of your companies is at this site, all attacks against it are canceled."/>
+       <attr key="draw_opp" value="2"/>
+       <attr key="rarity" value="C3"/>
+       <attr key="type" value="Fallen-wizard Site"/>
+    </card>
+    <card name="Rhosgobel" graphics="Rhosgobel.jpg" back="1" text="">
+       <attr key="draw" value="2"/>
+       <attr key="region" value="Southern Mirkwood"/>
+       <attr key="site_type" value="{H}"/>
+	<attr key="auto_attack" value="Maia — 2 strikes at 13 prowess"/>
+       <attr key="special" value="If you are Radagast, this automatic-attack is removed, if any of your companies is at this site, all attacks against it are canceled, and this site is protected."/>
+       <attr key="draw_opp" value="2"/>
+       <attr key="rarity" value="C3"/>
+       <attr key="type" value="Fallen-wizard Site"/>
+    </card>
+    <card name="The White Towers" graphics="TheWhiteTowers.jpg" back="1" text="">
+       <attr key="draw" value="2"/>
+       <attr key="region" value="Arthedain"/>
+       <attr key="site_type" value="{H}"/>
+	<attr key="auto_attack" value="Maia — 2 strikes at 13 prowess"/>
+       <attr key="special" value="If you are Pallando, this automatic-attack is removed, and if any of your companies is at this site, all attacks against it are canceled."/>
+       <attr key="draw_opp" value="2"/>
+       <attr key="rarity" value="C4"/>
+       <attr key="type" value="Fallen-wizard Site"/>
+    </card>
+    <card name="Barad-Dûr" graphics="BaradDur.jpg" back="1" text="">
+	<attr key="sp" value="4"/>
+       <attr key="draw" value="2"/>
+       <attr key="region" value="Gorgoroth"/>
+       <attr key="site_type" value="{D}"/>
+       <attr key="special" value="If you have more than 10 P, automatic-attacks at this site are detainment.  Any character wounded by the automatic-attack is eliminated."/>
+       <attr key="draw_opp" value="2"/>
+       <attr key="rarity" value="C3"/>
+       <attr key="type" value="Fallen-wizard Site"/>
+       <attr key="playable" value="Items (minor, major, greater, gold ring)"/>
+	<attr key="auto_attack" value="Maia — 1 strike at 20 prowess; attacker assigns all strikes"/>
+    </card>
+    <card name="Dol Guldur" graphics="DolGuldur.jpg" back="1" text="">
+       <attr key="draw" value="2"/>
+       <attr key="region" value="Southern Mirkwood"/>
+       <attr key="site_type" value="{D}"/>
+       <attr key="special" value="If you have more than 9 P, the automatic-attacks are detainment.  Any Gold Ring Item may be played here, regardless of the playability requirement written on the item card."/>
+       <attr key="draw_opp" value="2"/>
+       <attr key="rarity" value="C3"/>
+       <attr key="type" value="Fallen-wizard Site"/>
+	<attr key="palayble" value="Items, (minor, gold ring)"/>
+	<attr key="auto_attack" value="Nazgûl - 2 strikes at 15 prowess"/>
+    </card>
+    <card name="Carn Dûm" graphics="CarnDum.jpg" back="1" text="">
+       <attr key="draw" value="2"/>
+       <attr key="region" value="Angmar"/>
+       <attr key="site_type" value="{D}"/>
+       <attr key="special" value="If you have more than 7 P, the automatic-attacks are detainment and you may not play Greater Items here."/>
+       <attr key="draw_opp" value="2"/>
+       <attr key="rarity" value="C3"/>
+       <attr key="type" value="Fallen-wizard Site"/>
+       <attr key="playable" value="Items (minor, major, greater)"/>
+	<attr key="auto_attack" value="Orcs — 4 strikes at 8 prowess
+Trolls — 2 strikes at 10 prowess"/>
+    </card>
+    <card name="Geann a-Lisch" graphics="GeannaLisch.jpg" back="1" text="">
+       <attr key="draw" value="2"/>
+       <attr key="region" value="Old Pûkel-Land"/>
+       <attr key="site_type" value="{R}"/>
+       <attr key="special" value="If you have more than 9 P, the automatic-attacks are detainment.  Resource permanent events may not be played on or at this site."/>
+       <attr key="draw_opp" value="2"/>
+       <attr key="rarity" value="C3"/>
+       <attr key="type" value="Fallen-wizard Site"/>
+       <attr key="playable" value="Items (minor, major)"/>
+	<attr key="auto_attack" value="Men — 4 strikes at 8 prowess"/>
+    </card>
+    <card name="Grey Havens" graphics="GreyHavens.jpg" back="1" text="">
+       <attr key="draw" value="2"/>
+       <attr key="region" value="Lindon"/>
+       <attr key="site_type" value="{F}"/>
+       <attr key="special" value="If you have less than 10 P, the automatic-attacks are detainment."/>
+       <attr key="draw_opp" value="2"/>
+       <attr key="rarity" value="C3"/>
+       <attr key="type" value="Fallen-wizard Site"/>
+       <attr key="playable" value="Information, Items (Minor, Major)"/>
+	<attr key="auto_attack" value=" Elves — 4 strikes at 8 prowess
+Elves — 3 strikes at 9 prowess"/>
+    </card>
+    <card name="Rivendell" graphics="Rivendell.jpg" back="1" text="">
+       <attr key="draw" value="2"/>
+       <attr key="region" value="Rhudaur"/>
+       <attr key="site_type" value="{F}"/>
+       <attr key="special" value="If you have less than 10 P, the automatic-attacks are detainment."/>
+       <attr key="draw_opp" value="2"/>
+       <attr key="rarity" value="C3"/>
+       <attr key="type" value="Fallen-wizard Site"/>
+       <attr key="playable" value="Information, Items (Minor)"/>
+	<attr key="auto_attack" value="Elves — 4 strikes at 8 prowess
+Dúnedain — 3 strikes at 9 prowess"/>
+    </card>
+    <card name="Lórien" graphics="Lorien.jpg" back="1" text="">
+       <attr key="draw" value="2"/>
+       <attr key="region" value="Wold &amp; Foothills"/>
+       <attr key="site_type" value="{F}"/>
+       <attr key="special" value="If you have less than 8 P, the automatic-attacks are detainment and you may not play Greater Items here."/>
+       <attr key="draw_opp" value="2"/>
+       <attr key="rarity" value="C3"/>
+       <attr key="type" value="Fallen-wizard Site"/>
+       <attr key="playable" value="Items (minor, major, greater)"/>
+	<attr key="auto_attack" value="Elves — 4 strikes at 8 prowess
+Elves — 3 strikes at 9 prowess
+Elves — 2 strikes at 10 prowess"/>
+    </card>
+    <card name="Edhellond" graphics="Edhellond.jpg" back="1" text="">
+       <attr key="draw" value="2"/>
+       <attr key="region" value="Anfalas"/>
+       <attr key="site_type" value="{F}"/>
+       <attr key="special" value="If you have less than 10 P, the automatic-attacks are detainment."/>
+       <attr key="draw_opp" value="2"/>
+       <attr key="rarity" value="C3"/>
+       <attr key="type" value="Fallen-wizard Site"/>
+       <attr key="playable" value="Information, Items (Minor, Major, Gold Ring)"/>
+	<attr key="auto_attack" value="Elves — 4 strikes at 8 prowess
+Dúnedain — 3 strikes at 9 prowess"/>
+    </card>
+    <card name="Ancient Deep-Hold" graphics="AncientDeepHold.jpg" back="1" text="">
+	<attr key="adjacent" value="Deep Mines (7)"/>
+       <attr key="draw" value="1"/>
+       <attr key="region" value="Under-Deeps"/>
+       <attr key="site_type" value="{R}"/>
+       <attr key="special" value="Action: You may tap your avatar at this site during the site phase to untap it."/>
+       <attr key="draw_opp" value="3"/>
+       <attr key="rarity" value="C3"/>
+       <attr key="type" value="Fallen-wizard Site"/>
+       <attr key="playable" value="Items (minor, major, greater)"/>
+	<attr key="auto_attack" value="Undead — 4 strikes at 7 prowess
+Undead — 3 strikes at 8 prowess
+Undead — 2 strikes at 9 prowess"/>
+	<attr key="keyword" value="Under-Deeps"/>
+    </card>
+    <card name="A Merrier World" graphics="AMerrierWorld.jpg" text="Playable if you have more than 7 P.  Defeated hazards are worth normal mp to you.  Cannot be duplicated by a given player.">
+       <attr key="sp" value="2"/>
+       <attr key="rarity" value="C3"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Stage Resource"/>
+    </card>
+    <card name="A New Ringlord" graphics="ANewRinglord.jpg" text="Playable on your Avatar if he bears The One Ring and is at a H.  Only one copy of this card may played in a given turn.
+Trigger: Discard if your avatar does not bear the One Ring.
+Action: Make a roll during each of your end-of-turn phases if your avatar is at a R where Information is playable.  This roll is modified by +1 for each copy of this card in play (one roll at a time is made for each copy).  If the result is less than 6, your avatar is eliminated.  If the result is greater than 9, you win the game.">
+       <attr key="sp" value="3"/>
+       <attr key="rarity" value="R3"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Stage Resource"/>
+    </card>
+    <card name="A Strident Spawn" graphics="AStridentSpawn.jpg" text="Playable if you are Pallando or Saruman and have more than 5 P and a protected H.  Each of your Half-Orc characters requires one less point of influence to control.  May not be duplicated by a given player.">
+       <attr key="unique" value="yes"/>
+       <attr key="sp" value="4"/>
+       <attr key="mp" value="1"/>
+       <attr key="rarity" value="U3"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Stage Resource"/>
+    </card>
+    <card name="An Untimely Brood" graphics="AnUntimelyBrood.jpg" text="Playable if you are Radagast or Alatar and have more than 5 P and a protected H.
+Action: Tap this card and an untapped character at a protected H during the site phase to place one non-unique ally with a mind of 1 with the character.
+Cannot be duplicated by a given player. ">
+       <attr key="sp" value="4"/>
+       <attr key="mp" value="1"/>
+       <attr key="rarity" value="C3"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Stage Resource"/>
+    </card>
+    <card name="Bad Company" graphics="BadCompany.jpg" text="You may play Orc and Troll characters and include them in your starting company.  Your companies may contain one Leader for each copy of this card you have in play.">
+       <attr key="sp" value="2"/>
+       <attr key="rarity" value="C3"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Stage Resource"/>
+    </card>
+    <card name="Blind to All Else" graphics="BlindtoAllElse.jpg" text="Your Ring Items are worth full mp.  Cannot be duplicated by a given player.">
+       <attr key="sp" value="2"/>
+       <attr key="rarity" value="C3"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Stage Resource"/>
+    </card>
+    <card name="Delver's Harvest" graphics="DelversHarvest.jpg" text="Playable during the site phase if one of your companies enters the Deep Mines site.">
+       <attr key="mp" value="1"/>
+       <attr key="rarity" value="U3"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Stage Resource"/>
+    </card>
+    <card name="Double-dealing" graphics="Doubledealing.jpg" text="Playable on a site.  Resources may be played at the site regardless of alignment.  Discard when this site is discarded or returned to your location deck.">
+       <attr key="sp" value="1"/>
+       <attr key="rarity" value="C4"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Stage Resource"/>
+    </card>
+    <card name="Earth-eater" graphics="Eartheater.jpg" text="Technology.  Playable during the site phase on one of your Delver’s Harvest cards if one of your companies enters the Deep Mines.
+Action: Tap Earth-eater to take a non-unique weapon, armor, shield, or helmet from your sideboard or discard pile to your hand.
+May not be duplicated on a given copy of Delver’s Harvest.">
+       <attr key="mp" value="1"/>
+       <attr key="rarity" value="R3"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Stage Resource"/>
+	<attr key="keyword" value="Technology"/>
+    </card>
+    <card name="Fortress of Isen" graphics="FortressofIsen.jpg" text="Saruman specific.  Playable on Isengard.  Isengard is protected.  Isengard is not discarded or returned to the location deck.  May not be duplicated.">
+       <attr key="unique" value="yes"/>
+       <attr key="sp" value="3"/>
+       <attr key="specific" value="Saruman"/>
+       <attr key="rarity" value="U3"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Stage Resource"/>
+    </card>
+    <card name="Fortress of the Towers" graphics="FortressoftheTowers.jpg" text="Pallando specific.  Playable on the White Towers.  The White Towers is protected.  The White Towers is not discarded or returned to the location deck.  May not be duplicated.">
+       <attr key="unique" value="yes"/>
+       <attr key="sp" value="3"/>
+       <attr key="specific" value="Pallando"/>
+       <attr key="rarity" value="U3"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Stage Resource"/>
+    </card>
+    <card name="Gatherer of Loyalties" graphics="GathererofLoyalties.jpg" text="Playable if you have more than 3 P.  Your unique factions are each worth 2 mp.  If you are Alatar, your unique Dragon factions are each worth 4 mp.  If you are Pallando, your unique factions normally worth 3 or more mp are each worth 3 mp.  Cannot be duplicated by a given player.">
+       <attr key="sp" value="3"/>
+       <attr key="rarity" value="C3"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Stage Resource"/>
+    </card>
+    <card name="Gnawed Ways" graphics="GnawedWays.jpg" text="Playable during the site phase if one of your companies enters the Deep Mines.  Your Deep Mines site is adjacent to any Under-deeps site whose surface site is in a region containing or adjacent to the region containing the surface site of your Deep Mines.  The movement number required to move between these sites is 7.   May not be duplicated by a given player.">
+	<attr key="mp" value="1"/>
+       <attr key="sp" value="1"/>
+       <attr key="rarity" value="R3"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Stage Resource"/>
+    </card>
+    <card name="Great Patron" graphics="GreatPatron.jpg" text="Your characters and allies that normally give 2 or more mp are each worth 2 mp.  Cannot be duplicated by a given player.">
+       <attr key="sp" value="2"/>
+       <attr key="rarity" value="C3"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Stage Resource"/>
+    </card>
+    <card name="Great Ruse" graphics="GreatRuse.jpg" text="Not startable.  Playable on a non-Under-deeps site that is normally a S if you have an overt company there.  The site becomes one  of your H and loses all automatic-attacks.  Nothing is considered playable as written on the site card.  If one of your companies is at this site, all attacks against it are canceled.  This site becomes one of your avatar’s home sites.  Other Fallen Wizards may not use this site as a H.  This card may not be discarded unless the site is discarded or returned to the location deck as a result of movement.">
+       <attr key="sp" value="1"/>
+       <attr key="rarity" value="U3"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Stage Resource"/>
+    </card>
+    <card name="Guarded Haven" graphics="GuardedHaven.jpg" text="Not startable.  Playable on Chambers In The Royal Court, Hidden Haven, Mischief In A Mean Way, or Great Ruse.  The associated site is now Protected.  Cannot be duplicated on a given stage resource.">
+       <attr key="sp" value="1"/>
+       <attr key="mp" value="1"/>
+       <attr key="rarity" value="U3"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Stage Resource"/>
+    </card>
+    <card name="Hidden Haven" graphics="HiddenHaven.jpg" text="Playable on a non-Under-deeps site that is normally a R and that does not contain a hoard.  If you start this card, the R must be in the same region as your avatar’s home site, and your company must start there.  This site becomes one of your H and loses all automatic-attacks.  Nothing is considered playable as written on the site card.  If one of your companies is at this site, all attacks against it are canceled.  This site becomes one of your avatar’s home sites.  Other Fallen Wizards may not use this site as a H.  This card may not be discarded unless the site is discarded or returned to the location deck as a result of movement.">
+       <attr key="sp" value="1"/>
+       <attr key="rarity" value="C4"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Stage Resource"/>
+    </card>
+    <card name="Legacy of Smiths" graphics="LegacyofSmiths.jpg" text="Playable if you have more than 5 P.  Your unique items are worth 2 mp.  Your non-unique items normally worth 2 or more mp are worth 2 mp.  If you are Saruman, your Weapon, Armor, Shield, and Helmet items normally worth 3 or more mp are worth 3 mp.  May not be duplicated by a given player.">
+       <attr key="sp" value="3"/>
+       <attr key="rarity" value="C3"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Stage Resource"/>
+    </card>
+    <card name="Mischief in a Mean Way" graphics="MischiefinaMeanWay.jpg" text="Not startable.  Playable during the site phase on a B.  The site becomes one of your H and loses all automatic attacks.  Nothing is considered playable as written on the site card.  If one of your companies is at this site, all attacks against it are canceled.  This site becomes one of your avatar’s home sites.  Other Fallen Wizards may not use this site as a H.  This card may not be discarded except when the site is discarded or returned to the location deck as the result of movement.">
+       <attr key="sp" value="2"/>
+       <attr key="rarity" value="R3"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Stage Resource"/>
+    </card>
+    <card name="Never Refuse" graphics="NeverRefuse.jpg" text="All corruption checks by your non-avatar characters caused by your Magic cards are modified by +2.">
+       <attr key="sp" value="2"/>
+       <attr key="rarity" value="U3"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Stage Resource"/>
+    </card>
+    <card name="Plotting Ruin" graphics="PlottingRuin.jpg" text="Playable if you have more than 5 P.  You must use minion B and F.  If no minion version of the site exists, you may move to the hero version.">
+       <attr key="sp" value="3"/>
+       <attr key="rarity" value="C3"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Stage Resource"/>
+    </card>
+    <card name="Shameful Deeds" graphics="ShamefulDeeds.jpg" text="Playable if you have more than 6 P.  Hazards with an * attack your companies normally, never as detainment.  Such hazards your companies defeat while this card is in play give you full kill mp.  Cannot be duplicated by a given player.">
+       <attr key="sp" value="4"/>
+       <attr key="rarity" value="U3"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Stage Resource"/>
+    </card>
+    <card name="Spells Born of Discord" graphics="SpellsBornofDiscord.jpg" text="Your avatar becomes a Sorceror, Spirit-Mage, and Shadow-Mage.  Cannot be duplicated by a given player.">
+       <attr key="sp" value="2"/>
+       <attr key="rarity" value="U3"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Stage Resource"/>
+    </card>
+    <card name="Thrall of the Voice" graphics="ThralloftheVoice.jpg" text="You may play a character with 6 mind.  All other restrictions apply.  Place this card with the character.  May not be duplicated on a given character.">
+       <attr key="sp" value="1"/>
+	<attr key="mind" value="-1"/>
+       <attr key="rarity" value="C4"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Stage Resource"/>
+    </card>
+    <card name="War-forges" graphics="Warforges.jpg" text="May not be played if you are Radagast.  Playable on one of your protected H if it is tapped.
+Action: You may tap War-Forges to make a non-unique minor item playable at this site this turn regardless of the tapped status of the site.  The item may be taken from your discard pile or sideboard.  Cannot be duplicated on a given site.">
+       <attr key="sp" value="2"/>
+       <attr key="rarity" value="U3"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Stage Resource"/>
+    </card>
+    <card name="Wizard's Myrmidon" graphics="WizardsMyrmidon.jpg" text="Playable on one of you non-avatar characters.  The character only requires 3 points of influence to control and may only be controlled by GI or your avatar.  Cannot be duplicated by a given player.">
+       <attr key="sp" value="1"/>
+       <attr key="rarity" value="C3"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Stage Resource"/>
+	<attr key="influence" value="=1"/>
+    </card>
+    <card name="Wizard's Trove" graphics="WizardsTrove.jpg" text="Playable on a stored resource event.  The resource gives full mp.">
+       <attr key="sp" value="1"/>
+       <attr key="rarity" value="R3"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Stage Resource"/>
+    </card>
+    <card name="Greater Half-orcs" graphics="GreaterHalforcs.jpg" text="May only be influenced by a player who has at least one Half-Orcs faction in play.  May be played at a tapped site.">
+       <attr key="sp" value="1"/>
+       <attr key="mp" value="2"/>
+       <attr key="rarity" value="R3"/>
+       <attr key="class" value="Orc Faction"/>
+       <attr key="type" value="Stage Resource"/>
+	<attr key="home_site" value="Any Protected Haven"/>
+	<attr key="mind" value="11"/>
+    </card>
+    <card name="Half-orcs" graphics="Halforcs.jpg" text="May only be influenced by a player who has A Strident Spawn in play.  May be played at a tapped site.">
+       <attr key="sp" value="1"/>
+       <attr key="mp" value="1"/>
+       <attr key="rarity" value="U3"/>
+       <attr key="class" value="Orc Faction"/>
+       <attr key="type" value="Stage Resource"/>
+	<attr key="home_site" value="Any Protected Haven"/>
+	<attr key="mind" value="9"/>
+    </card>
+    <card name="Keys of Orthanc" graphics="KeysofOrthanc.jpg" text="Unique.  Saruman specific.  Playable by Saruman at Minas Tirith.
+Action: During your organization phase, you may take Fortress Of Isen from your discard pile to your hand.">
+       <attr key="unique" value="yes"/>
+       <attr key="corruption" value="1"/>
+       <attr key="specific" value="Saruman"/>
+       <attr key="sp" value="1"/>
+       <attr key="mp" value="2"/>
+       <attr key="rarity" value="R2"/>
+       <attr key="class" value="Special Item"/>
+       <attr key="type" value="Stage Resource"/>
+    </card>
+    <card name="Keys to the White Towers" graphics="KeystotheWhiteTowers.jpg" text="Unique.  Pallando specific.  Playable by Pallando at the Barrow-Downs.
+Action: During your organization phase, you may take Fortress of the Towers from your discard pile to your hand.">
+       <attr key="unique" value="yes"/>
+       <attr key="corruption" value="1"/>
+       <attr key="specific" value="Pallando"/>
+       <attr key="sp" value="1"/>
+       <attr key="mp" value="2"/>
+       <attr key="rarity" value="R2"/>
+       <attr key="class" value="Special Item"/>
+       <attr key="type" value="Stage Resource"/>
+    </card>
+    <card name="Bow of Alatar" graphics="BowofAlatar.jpg" text="Unique.  Alatar specific.  Place this card on Alatar if he is in play.  If on Alatar, -1 to the body of any strikes he faces.
+Action: You may tap this card if Alatar is facing an attack to assign a strike to him; this takes priority over all other strike assignment abilities.">
+       <attr key="unique" value="yes"/>
+       <attr key="corruption" value="1"/>
+       <attr key="sp" value="2"/>
+       <attr key="specific" value="Alatar"/>
+       <attr key="rarity" value="R2"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Stage Resource"/>
+    </card>
+    <card name="The Great Hunt" graphics="TheGreatHunt.jpg" text="Alatar specific.  Playable if Alatar is in play and you have at least 12 P.  Your opponent reveals cards one at a time from his play deck or discard pile (your choice).  Any hazard creature revealed immediately attacks Alatar’s company.  This process stops when 5 creatures or all cards of the deck or pile have been revealed.  Reshuffle the play deck if searched.  While this card is in play, your opponent discards face-up.  Whenever your opponent discards a creature during your turn, you may choose to have it attack Alatar’s company instead.  May not be discarded.  Cannot be duplicated on a given turn.">
+       <attr key="sp" value="3"/>
+       <attr key="specific" value="Alatar"/>
+       <attr key="mp" value="1"/>
+       <attr key="rarity" value="R2"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Stage Resource"/>
+    </card>
+    <card name="Huntsman's Garb" graphics="HuntsmansGarb.jpg" text="Unique.  Alatar specific.  Place this card on Alatar if he is in play.
+Action: If on Alatar, you may tap this card during your end-of-turn phase after resolving hand size to take Risky Blow, True Fána, or The Hunt from your discard pile to your hand.">
+       <attr key="unique" value="yes"/>
+       <attr key="corruption" value="1"/>
+       <attr key="sp" value="1"/>
+       <attr key="specific" value="Alatar"/>
+       <attr key="rarity" value="U3"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Stage Resource"/>
+    </card>
+    <card name="Join the Hunt" graphics="JointheHunt.jpg" text="Unique.  Alatar specific.  Your weapon/shield/armor/helmet items in Alatar’s company are worth full mp.  Your allies with a prowess attribute in Alatar’s company are worth full mp.">
+       <attr key="unique" value="yes"/>
+       <attr key="sp" value="2"/>
+       <attr key="specific" value="Alatar"/>
+       <attr key="rarity" value="U3"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Stage Resource"/>
+    </card>
+    <card name="Oromë's Warders" graphics="OromesWarders.jpg" text="Unique.  Alatar specific.  Playable on Join the Hunt if Alatar is in play.  Cards mentioned on Join the Hunt need no longer be in Alatar’s company to give full mp.  Additionally, your Elf factions are each worth 2 mp.">
+       <attr key="unique" value="yes"/>
+       <attr key="sp" value="3"/>
+       <attr key="specific" value="Alatar"/>
+       <attr key="rarity" value="R2"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Stage Resource"/>
+    </card>
+    <card name="Squire of the Hunt" graphics="SquireoftheHunt.jpg" text="Unique.  Alatar specific.  Playable on a Warrior at a H or in your starting company.  This character requires 2 points of influence to control and may only be controlled by GI or your avatar.">
+       <attr key="unique" value="yes"/>
+       <attr key="sp" value="2"/>
+       <attr key="specific" value="Alatar"/>
+       <attr key="body" value="+1"/>
+       <attr key="prowess" value="+1"/>
+       <attr key="rarity" value="U3"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Stage Resource"/>
+	<attr key="influence" value="+1"/>
+	<attr key="keyword" value="Warrior"/>
+    </card>
+    <card name="Await the Onset" graphics="AwaittheOnset.jpg" text="Unique.  Gandalf specific.  Playable if you have at least 12 P, two protected H, 4 factions, and 6 characters.  Each faction you play after Await The Onset is placed off to the side with this card and is worth 1 mp regardless of all other cards in play.  Each of your mp in a company not in one of your H when the game ends is worth 1 mp regardless of other cards in play.">
+       <attr key="sp" value="3"/>
+       <attr key="specific" value="Gandalf"/>
+       <attr key="mp" value="5"/>
+       <attr key="rarity" value="R2"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Stage Resource"/>
+    </card>
+    <card name="Chambers in the Royal Court" graphics="ChambersintheRoyalCourt.jpg" text="Gandalf specific.  Playable on a hero F.  This site becomes a H, loses all automatic attacks, and is one of Gandalf’s home sites.  Nothing is considered playable as written on the site card.  If one of your companies is at this site, all attacks against it are canceled.  Other Fallen Wizards may not use this site as a H.  This card may not be discarded except when the site is discarded or returned to the location deck as the result of movement.">
+       <attr key="sp" value="1"/>
+       <attr key="specific" value="Gandalf"/>
+       <attr key="rarity" value="U3"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Stage Resource"/>
+    </card>
+    <card name="Gandalf's Friend" graphics="GandalfsFriend.jpg" text="Unique.  Gandalf specific.  Playable on one of your non-avatar characters at a H or in your starting company.  This character requires one point of influence to control and may only be controlled by GI or Gandalf.">
+       <attr key="unique" value="yes"/>
+       <attr key="sp" value="1"/>
+       <attr key="specific" value="Gandalf"/>
+       <attr key="rarity" value="U3"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Stage Resource"/>
+	<attr key="influence" value="+2"/>
+    </card>
+    <card name="Give Welcome to the Unexpected" graphics="GiveWelcometotheUnexpected.jpg" text="Unique.  Gandalf specific.  Place this card on Gandalf if he is in play.  If on Gandalf, your unique non-character cards normally worth 1 mp are each worth 2 mp.">
+       <attr key="unique" value="yes"/>
+       <attr key="sp" value="2"/>
+       <attr key="specific" value="Gandalf"/>
+       <attr key="rarity" value="R2"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Stage Resource"/>
+    </card>
+    <card name="Grey Embassy" graphics="GreyEmbassy.jpg" text="Unique.  Gandalf specific.  Place this card on Gandalf if he is in play.  If on Gandalf, your unique Hero factions normally worth 2 or fewer mp are each worth 2 mp.  If on Gandalf, your unique Hero factions normally worth 3 or more mp are each worth 3 mp.">
+       <attr key="unique" value="yes"/>
+       <attr key="sp" value="3"/>
+       <attr key="specific" value="Gandalf"/>
+       <attr key="rarity" value="U3"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Stage Resource"/>
+    </card>
+    <card name="The Grey Hat" graphics="TheGreyHat.jpg" text="Unique.  Gandalf specific.  Place this card on Gandalf if he is in play.
+Action: If on Gandalf, you may tap this card during your end-of-turn phase after resolving hand size to take New Friendship, Wizard’s Test, or Hobbit-Lore from your discard pile to your hand.">
+       <attr key="unique" value="yes"/>
+       <attr key="corruption" value="1"/>
+       <attr key="sp" value="1"/>
+       <attr key="specific" value="Gandalf"/>
+       <attr key="rarity" value="U3"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Stage Resource"/>
+    </card>
+    <card name="Ring of Fire" graphics="RingofFire.jpg" text="Unique.  Gandalf specific.  Manifestation of Narya.  Place on Gandalf if he is in play.
+Action: If on Gandalf, you may tap Ring of Fire to untap another character in Gandalf’s company.">
+       <attr key="unique" value="yes"/>
+       <attr key="sp" value="2"/>
+       <attr key="specific" value="Gandalf"/>
+       <attr key="rarity" value="R2"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Stage Resource"/>
+    </card>
+    <card name="Arcane School" graphics="ArcaneSchool.jpg" text="Pallando specific.  Playable on a non-Hobbit, non-Dwarf Sage at one of your H or in your starting company.  The character becomes a Sorceror, Spirit-Mage, and Shadow-Mage.  Cannot be duplicated on a given character.">
+       <attr key="sp" value="1"/>
+       <attr key="specific" value="Pallando"/>
+       <attr key="rarity" value="R3"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Stage Resource"/>
+	<attr key="keyword" value="Sage"/>
+    </card>
+    <card name="Pallando's Apprentice" graphics="PallandosApprentice.jpg" text="Unique.  Pallando specific.  Playable on a non-Hobbit, non-Dwarf Sage at a H or in your starting company.  Character requires only 2 points of influence to control and may only be controlled by GI or Pallando.  Character may use a Palantír he bears.">
+       <attr key="unique" value="yes"/>
+       <attr key="sp" value="2"/>
+       <attr key="specific" value="Pallando"/>
+       <attr key="rarity" value="U3"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Stage Resource"/>
+	<attr key="influence" value="=1"/>
+	<attr key="keyword" value="Sage"/>
+    </card>
+    <card name="Pallando's Hood" graphics="PallandosHood.jpg" text="Unique.  Pallando specific.  Place this card on Pallando if he is in play.
+Action: If on Pallando, you may tap this card during your end-of-turn phase after resolving hand size to take Gifts As Given Of Old, Wizard’s Voice, or Eye Of Mandos from your discard pile to your hand.">
+       <attr key="unique" value="yes"/>
+       <attr key="corruption" value="1"/>
+       <attr key="sp" value="1"/>
+       <attr key="specific" value="Pallando"/>
+       <attr key="rarity" value="U3"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Stage Resource"/>
+    </card>
+    <card name="Prophet of Doom" graphics="ProphetofDoom.jpg" text="Unique.  Pallando specific.  Playable if Pallando is in play and you have at least 12 P and 5 factions in play.  Pallando need not be at the appropriate site when making an influence attempt on an opponent’s resource or character.  Such an influence check is modified by half (rounded up) of your unused GI instead of Pallando’s EI.  The attempt is also modified by subtracting the number of regions between Pallando’s site and the where the influence attempt would normally be made.  Discard if you have fewer than 5 factions in play.">
+       <attr key="sp" value="3"/>
+       <attr key="specific" value="Pallando"/>
+       <attr key="mp" value="3"/>
+       <attr key="rarity" value="R2"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Stage Resource"/>
+    </card>
+    <card name="Stave of Pallando" graphics="StaveofPallando.jpg" text="Unique.  Pallando specific.  Place this card on Pallando if he is in play.
+Action: If on Pallando, you may tap Stave of Pallando during your end-of-turn phase after resolving hand size to take a faction from your discard pile to your hand.">
+       <attr key="unique" value="yes"/>
+       <attr key="corruption" value="1"/>
+       <attr key="sp" value="2"/>
+       <attr key="specific" value="Pallando"/>
+       <attr key="rarity" value="R2"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Stage Resource"/>
+    </card>
+    <card name="Truths of Doom" graphics="TruthsofDoom.jpg" text="Unique.  Pallando specific.  Your GI is increased by 6 points.  You may only use 2 of these 6 points to control characters.">
+       <attr key="unique" value="yes"/>
+       <attr key="sp" value="4"/>
+       <attr key="specific" value="Pallando"/>
+       <attr key="rarity" value="U3"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Stage Resource"/>
+    </card>
+    <card name="Friend of Secret Things" graphics="FriendofSecretThings.jpg" text="Unique.  Radagast specific.  Your companies with a size of 2 or less may play allies at tapped sites.">
+       <attr key="unique" value="yes"/>
+       <attr key="sp" value="2"/>
+       <attr key="specific" value="Radagast"/>
+       <attr key="rarity" value="U3"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Stage Resource"/>
+    </card>
+    <card name="Girdle of Radagast" graphics="GirdleofRadagast.jpg" text="Unique.  Radagast specific.  Playable on one of your protected H if Radagast is in play and you have at least 12 P and 6 unique allies and/or unique animal or awakened plant factions in play.  The region of the H and all adjacent non-c regions become w.">
+       <attr key="sp" value="3"/>
+       <attr key="specific" value="Radagast"/>
+       <attr key="mp" value="5"/>
+       <attr key="rarity" value="R2"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Stage Resource"/>
+    </card>
+    <card name="Glove of Radagast" graphics="GloveofRadagast.jpg" text="Unique.  Radagast specific.  Place this card on Radagast if he is in play.  Any non-unique ally with 1 mind, a copy of which he does not already control, is considered playable with Radagast at his site; the ally may be taken from the discard pile.  Non-unique allies may not be duplicated on Radagast.">
+       <attr key="unique" value="yes"/>
+       <attr key="corruption" value="1"/>
+       <attr key="sp" value="2"/>
+       <attr key="specific" value="Radagast"/>
+       <attr key="rarity" value="R2"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Stage Resource"/>
+    </card>
+    <card name="Master of Shapes" graphics="MasterofShapes.jpg" text="Radagast specific.  Shapeshifter.  Not startable.  Only one Shapeshifter card per player may be in play at a given time.
+Action: You may return this card to your hand during the organization phase.
+Place on Radagast if he is in play.  If on Radagast, your base GI becomes 25, his skills become Warrior/Ranger, he adopts the base attributes on this card, and his prowess is only modified by -1 if he does not tap while facing a strike.">
+       <attr key="sp" value="1"/>
+       <attr key="specific" value="Radagast"/>
+       <attr key="body" value="10"/>
+       <attr key="prowess" value="9"/>
+       <attr key="gi" value="25"/>
+       <attr key="rarity" value="U3"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Stage Resource"/>
+       <attr key="influence" value="1"/>
+	<attr key="keyword" value="Shapeshifter"/>
+    </card>
+    <card name="Pocketed Robes" graphics="PocketedRobes.jpg" text="Unique.  Radagast specific.  Place this card on Radagast if he is in play.
+Action: If on Radagast, you may tap this card during your end-of-turn phase after resolving hand size to take Crept Along Cleverly, Wizard’s River-Horses, or Herb-Lore from your discard pile to your hand.">
+       <attr key="unique" value="yes"/>
+       <attr key="sp" value="1"/>
+       <attr key="specific" value="Radagast"/>
+       <attr key="rarity" value="U3"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Stage Resource"/>
+    </card>
+    <card name="Radagast's Black Bird" graphics="RadagastsBlackBird.jpg" text="Unique.  Radagast specific.  May be played at Radagast’s current site.  May be played at a tapped site.  This ally may attempt to influence factions as though he were a character.
+Action: You may cancel a strike this ally is facing, and tap the ally if not already tapped.">
+       <attr key="unique" value="yes"/>
+       <attr key="sp" value="2"/>
+       <attr key="specific" value="Radagast"/>
+       <attr key="mp" value="1"/>
+       <attr key="body" value="8"/>
+       <attr key="prowess" value="2"/>
+       <attr key="rarity" value="U3"/>
+       <attr key="class" value="Scout/Diplomat Ally"/>
+       <attr key="type" value="Stage Resource"/>
+       <attr key="mind" value="2"/>
+       <attr key="influence" value="3"/>
+	<attr key="home_site" value="Any Wizardhaven"/>
+    </card>
+    <card name="Shifter of Hues" graphics="ShifterofHues.jpg" text="Radagast specific.  Shapeshifter.  Not startable.  Only one Shapeshifter card per player may be in play at a given time.
+Action: You may return this card to your hand during the organization phase.
+Place on Radagast if he is in play.  If on Radagast, your base GI becomes 27, his skills become Diplomat, he adopts the base attributes on this card, he may not move, and your hand size increases by one.">
+       <attr key="corruption" value="2"/>
+       <attr key="sp" value="1"/>
+       <attr key="specific" value="Radagast"/>
+       <attr key="body" value="10"/>
+       <attr key="prowess" value="6"/>
+       <attr key="gi" value="27"/>
+       <attr key="rarity" value="R3"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Stage Resource"/>
+       <attr key="influence" value="3"/>
+	<attr key="keyword" value="Shapeshifter"/>
+    </card>
+    <card name="Winged Change-master" graphics="WingedChangemaster.jpg" text="Radagast specific.  Shapeshifter.  Not startable.  Only one Shapeshifter card per player may be in play at a given time.
+Action: You may return this card to your hand during the organization phase.
+Place on Radagast if he is in play.  If on Radagast, your base GI becomes 19, his skills become Scout/Diplomat, and he adopts the base attributes on this card.
+Special Movement: If no other characters or allies except Radagast’s Black Bird are in his company, Radagast may declare as his new site any non-Under-deeps site, and hazards may only be keyed to that site during his movement/hazard phase.">
+       <attr key="sp" value="1"/>
+       <attr key="specific" value="Radagast"/>
+       <attr key="body" value="9"/>
+       <attr key="prowess" value="3"/>
+       <attr key="gi" value="19"/>
+       <attr key="rarity" value="R3"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Stage Resource"/>
+       <attr key="influence" value="8"/>
+	   <attr key="keyword" value="Shapeshifter"/>
+    </card>
+    <card name="The Forge-master" graphics="TheForgemaster.jpg" text="Unique.  Saruman specific.  Playable on an Orc or a Troll.  The character requires 2 points of influence to control and may only be controlled by GI or Saruman.
+Action: Bearer may tap during the site phase to bring one Technology card from your discard pile to your hand.">
+       <attr key="unique" value="yes"/>
+       <attr key="sp" value="2"/>
+       <attr key="specific" value="Saruman"/>
+       <attr key="rarity" value="U3"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Stage Resource"/>
+	<attr key="keyword" value="Orc"/>
+    </card>
+    <card name="Many-coloured Robes" graphics="ManycolouredRobes.jpg" text="Unique.  Saruman specific.  Place this card on Saruman if he is in play.
+Action: If on Saruman, you may tap this card during your end-of-turn phase after resolving hand size to take Ringlore, White Light Broken, or First of the Order from your discard pile to your hand.">
+       <attr key="unique" value="yes"/>
+       <attr key="corruption" value="1"/>
+       <attr key="sp" value="1"/>
+       <attr key="specific" value="Saruman"/>
+       <attr key="rarity" value="U3"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Stage Resource"/>
+    </card>
+    <card name="Man of Skill" graphics="ManofSkill.jpg" text="Unique.  Saruman specific.  This card is worth 2 mp for each resource event you have in play which required Information to be played.  Such events give no mp in all cases.">
+       <attr key="unique" value="yes"/>
+       <attr key="sp" value="2"/>
+       <attr key="specific" value="Saruman"/>
+       <attr key="rarity" value="U3"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Stage Resource"/>
+    </card>
+    <card name="Saruman's Machinery" graphics="SarumansMachinery.jpg" text="Unique.  Saruman specific.  Playable on a protected H.  One Technology item is playable at the site during your site phase whether the site is tapped or untapped.  Cannot be duplicated on a given site.">
+       <attr key="sp" value="4"/>
+       <attr key="specific" value="Saruman"/>
+       <attr key="mp" value="1"/>
+       <attr key="rarity" value="R3"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Stage Resource"/>
+    </card>
+    <card name="Saruman's Ring" graphics="SarumansRing.jpg" text="Unique.  Saruman specific.  Place this card on Saruman if he is in play.
+Action: If on Saruman, you may tap Saruman’s Ring during your end-of-turn phase after resolving hand size to take a Ring Item other than The One Ring from your discard pile to your hand.">
+       <attr key="unique" value="yes"/>
+       <attr key="corruption" value="1"/>
+       <attr key="sp" value="2"/>
+       <attr key="specific" value="Saruman"/>
+       <attr key="rarity" value="R2"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Stage Resource"/>
+    </card>
+    <card name="The White Hand" graphics="TheWhiteHand.jpg" text="Unique.  Saruman specific.  Playable on Saruman if you have the following in play: at least 12 P, at least 3 factions, A Strident Spawn, and Saruman’s Machinery.">
+       <attr key="sp" value="3"/>
+       <attr key="specific" value="Saruman"/>
+       <attr key="mp" value="6"/>
+       <attr key="body" value="+1"/>
+       <attr key="prowess" value="+1"/>
+       <attr key="rarity" value="R2"/>
+       <attr key="class" value="Permanent-event"/>
+       <attr key="type" value="Stage Resource"/>
+       <attr key="influence" value="+2"/>
+    </card>
+  </cards>
+</ccg-setinfo>

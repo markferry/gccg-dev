@@ -61,7 +61,6 @@ sub repo_path
     return $path if -d $path."/graphics/$game_dir";
 
     my $path = abs_path("../../".lc($game_dir));
-
     return $path if -d $path."/graphics/$game_dir";
 }
 
@@ -79,7 +78,6 @@ sub xml_path
 
     $path=root_path()."/xml/";
     return $path if -f "$path/$game_dir/$file";
-
 
     die "Cannot find XML path for $file";
 }
@@ -417,7 +415,7 @@ sub graphics_files
 }
 
 #
-# graphics(cardnum_path) - Path to the graphcis of the card if found.
+# graphcis(cardnum) - Path to the graphcis of the card if found.
 #
 sub graphics
 {
@@ -426,7 +424,6 @@ sub graphics
     
     my $file="graphics/$game_dir/".set_dir($set)."/".$graphics{$num};
     $file="../".info_full2name($game_name)."/$file" if !-f $file;
-
     $file="" if !-f $file;
 
     return $file;

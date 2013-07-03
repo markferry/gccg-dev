@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE ccg-setinfo SYSTEM "../gccg-set.dtd">
+<ccg-setinfo name="Promo" dir="Promo" abbrev="Pr" game="Dominion">
+	<cards>
+		<card name="Black Market" graphics="blackmarket.jpg" text="+2 Coins, Reveal the top 3 cards of the Black Market deck. You may buy one of them immediately. Put the unbought cards on the bottom of the Black Market deck in any order.  (Before the game, make a Black Market deck out of one copy of each Kingdom card not in the supply.).">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action"/>
+			<attr key="cost" value="3"/>
+		</card>
+		<card name="Envoy" graphics="envoy.jpg" text="Reveal the top 5 cards of your deck. The player to your left chooses one for you to discard. Draw the rest.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action"/>
+			<attr key="cost" value="4"/>
+		</card>
+		<card name="Walled Village" graphics="walledvillage.jpg" text="+1 Card  +2 Actions  --------------------------------  At the start of Clean-up, if you have this and no more than one other Action card in play, you may put this on top of your deck.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action"/>
+			<attr key="cost" value="4"/>
+		</card>
+		<card name="Stash" graphics="stash.jpg" text="Worth 2 Coins. When you shuffle, you may put this anywhere in your deck.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Treasure"/>
+			<attr key="cost" value="5"/>
+		</card>
+	</cards>
+</ccg-setinfo>

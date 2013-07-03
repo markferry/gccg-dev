@@ -1,3 +1,26 @@
+v0.9.7
+
+* Added server support for team games.
+* Added the ability to whisper to another player, or to all teammates.
+* Changed server visibility system to be more expressive.
+* Allow servers to reconnect after a game without closing and reloading XML files.
+* Added new deck legality procedures with less overhead.
+* Product generation now prevents duplicate cards, unless specifically requested otherwise.
+* Added support for attribute "flipid", for table-only custom back side images.
+* Allow tab completion on commands, in addition to users.
+* Allow card books to set spacing based on a specified card's dimensions.
+* Allow input bar to move to top of screen with "/set input top".
+* Added the ability to create deck groups to organize the deck selection menu.
+* Several new commands, including:
+    /newdeck to create an empty deck and display instructions
+    /clearcache to clean out book files
+    /reconnect to reconnect to server without closing the program
+    /addpart to create arbitrary named deck parts
+    /sets to look for all reprints of a named card
+* Fixed exploit where card prices could be set to infinity or Not-a-Number.
+* Fixed crashing on division or modular division by zero.
+* Added dependency tracking to gccg_package manager.
+
 
 v0.9.6
 
@@ -12,7 +35,7 @@ v0.9.6
 * New table flag --tournament for tournament games.
 * Support for Squirrel.
 * Allow secret trading in sealed mode when players in table.
-* Fix inivisibility bug on scaled counters.
+* Fix invisibility bug on scaled counters.
 * Deck registration dates stored.
 
 v0.9.5

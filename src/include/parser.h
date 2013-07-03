@@ -202,7 +202,9 @@ namespace Evaluator
 	    void EvalTerm(const char*& _src,Data& ret);
 	    /// Evaluate sum.
 	    void EvalSum(const char*& _src,Data& ret);
-	    /// Evaluate realtion.
+	    /// Evaluate bits.
+	    void EvalBit(const char*& _src,Data& ret);
+	    /// Evaluate relation.
 	    void EvalRelation(const char*& _src,Data& ret);
 	    /// Evaluate expression.
 	    void EvalExpression(const char*& _src,Data& ret);
@@ -839,6 +841,41 @@ namespace Evaluator
 	    _src=src;
 	}
 
+    template <class Application> void Parser<Application>::EvalBit(const char*& _src,Data& ret)
+	{
+	    register const char* src=_src;
+	    Data e;
+	    char op;
+		
+	    EvalSum(src,ret);
+	    EatWhiteSpace(src);
+		
+	    while((*src=='|' && *(src+1) != '|') || (*src=='&' && *(src+1) != '&') || *src=='^')
+	    {
+		op=*src;
+		src++;
+		EatWhiteSpace(src);
+		if(op=='|') //bitwise OR
+		{
+		    EvalSum(src,e);
+		    ret=ret | e;
+		}
+		else if(op=='&') //bitwise AND
+		{
+		    EvalSum(src,e);
+		    ret=ret | e;
+		}
+		else //bitwise XOR
+		{
+		    EvalSum(src,e);
+		    ret=ret ^ e;
+		}
+		EatWhiteSpace(src);
+	    }
+
+	    _src=src;
+	}
+
     template <class Application> void Parser<Application>::EvalRelation(const char*& _src,Data& ret)
 	{
 	    register const char* src=_src;
@@ -859,7 +896,7 @@ namespace Evaluator
 		return;
 	    }
 			
-	    EvalSum(src,ret);
+	    EvalBit(src,ret);
 	    EatWhiteSpace(src);
 	    while(*src=='<' || *src=='>' || *src=='=' || *src=='!')
 	    {
@@ -871,7 +908,7 @@ namespace Evaluator
 		    src++;
 		}
 			
-		EvalSum(src,e);
+		EvalBit(src,e);
 			
 		if(op=='=' && eq)
 		    ret=Data((int)(ret == e));
@@ -915,13 +952,13 @@ namespace Evaluator
 
 		if(CheckFor("||",src))
 		{
-		    EvalRelation(src,e);
-		    ret=(ret || e);
+			EvalRelation(src,e);
+			ret=(ret || e);
 		}
 		else if(CheckFor("&&",src))
 		{
-		    EvalRelation(src,e);
-		    ret=(ret && e);
+			EvalRelation(src,e);
+			ret=(ret && e);
 		}
 		else
 		    throw LangErr("Parser<Application>::EvalExpression(const char*&)","Invalid expression '"+string(_src)+"'");

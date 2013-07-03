@@ -1,0 +1,6 @@
+Mtg set XML files are not included in this Subversion repository.
+The one file that is included, mtg_basecards.xml, is responsible for holding the back of the card, as well as tokens, planes, schemes, and enough filler entries to make sure the numbering of subsequent sets will match up with the numbers used on the production server (the next set scheduled to load after mtg_basecards is pm.xml, which will start counting from 1001, then be.xml will start counting from 1007, and so on).
+
+The data/Mtg/ folder contains the necessary scripts to recreate these XML files yourself, by fetching, parsing, and reformatting data directly from Wizards of the Coast's own Gatherer service.
+
+--anonycat (Russell Jones)

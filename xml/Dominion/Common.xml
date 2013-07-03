@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE ccg-setinfo SYSTEM "../gccg-set.dtd">
+<ccg-setinfo name="Common" dir="Common" abbrev="Cn" game="Dominion">
+	<cards>
+		<card name="Copper" graphics="copper.jpg" text="1 Coin.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Treasure"/>
+			<attr key="cost" value="0"/>
+		</card>
+		<card name="Curse" graphics="curse.jpg" text="-1 Victory.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Curse"/>
+			<attr key="cost" value="0"/>
+		</card>
+		<card name="Estate" graphics="estate.jpg" text="1 Victory.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Victory"/>
+			<attr key="cost" value="2"/>
+		</card>
+		<card name="Silver" graphics="silver.jpg" text="2 Coins.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Treasure"/>
+			<attr key="cost" value="3"/>
+		</card>
+		<card name="Duchy" graphics="duchy.jpg" text="3 Victory.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Victory"/>
+			<attr key="cost" value="5"/>
+		</card>
+		<card name="Gold" graphics="gold.jpg" text="3 Coins.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Treasure"/>
+			<attr key="cost" value="6"/>
+		</card>
+		<card name="Province" graphics="province.jpg" text="6 Victory.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Victory"/>
+			<attr key="cost" value="8"/>
+		</card>
+	</cards>
+</ccg-setinfo>

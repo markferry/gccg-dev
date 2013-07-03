@@ -851,13 +851,13 @@ def MouseLeftClickPool
   PlayKeyControlKeyL();
 
 #
-# MouseLeftClickSites() - Look at sites.
+# MouseLeftClickSites() - Show a map.
 #
 def MouseLeftClickSites
   KeyControlKeyM();
 
 #
-# MouseMiddleClickSites() - Show a map.
+# MouseMiddleClickSites() - Look at sites.
 #
 def MouseMiddleClickSites
   PlayKeyControlKeyL();
@@ -1872,6 +1872,18 @@ def PutDeckHook
     else
       set_attr(ARG[0],"visible",0);
   }
+  else if(ARG[1]=="sites")
+  {
+    push(sc);
+    sc=length(deck(ARG[0]));
+    if(isfunction("clear_deck"))
+      clear_deck(ARG[0]);
+    else
+      repeat(sc,"del_deck_top(ARG[0])");
+      
+    put_deck_top(ARG[0],copy(1,sc));  
+  }
+  
 }
 
 #

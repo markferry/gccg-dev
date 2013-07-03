@@ -3,12 +3,10 @@ GENERIC
 
 v0.9.7
 
-[ ] /have player displays cards not in sell (probably: if p1 wants ACard and p2.ACardCopies > Playset ACard is shown in /have)
-[ ] gccg_package b does not include <include files=" "/> items. check find expression on gccg_package L:99 (wrong find path, it works with "..". btw -follow is deprecated)
-[ ] BUG: dived by zero error crashes
+[X] gccg_package b does not include <include files=" "/> items. check find expression on gccg_package L:99 (wrong find path, it works with "..". btw -follow is deprecated)
+[X] BUG: dived by zero error crashes
 [ ] BUG: In multiplayer games player standing on right side of table may have items auto-placed outside of right margin, even without a (("OffscreenEnabled","yes"),),
 [ ] Include monospace font (font is provided but not included )
-[ ]	Mtg users don't like order of players to be shuffled (server.functions -> StartGame && PlayerShuffle)
 [X] Added mofo's small repo to installed.xml
 [X] fixed function that places avatars on tables (now tables image height can be changed)
 [ ] Check if gccg_package diff works 
@@ -33,7 +31,7 @@ v0.9.7
 [ ] /text to add arbitrary text to card.
 [ ] Make some font size as base size and scale inline images according
     to the current font size vs base size ratio.
-[ ] Improve shuffle effect speed.
+[X] Improve shuffle effect speed.
 [ ] Transparency color scale 0-100: SDL_ALPHA_TRANSPARENT (0)-SDL_ALPHA_OPAQUE (255)
 [X]   Box drawing.
 [ ]   Text rendering.
@@ -46,7 +44,7 @@ v0.9.7
 [ ]   Looking at your pile and using it.
 [ ]   Option: shared 'removed from game' deck.
 [ ]   See if Lotr dead pile can be integrated just by moving deck to visible area.
-[ ] /set nogamesound yes.
+[X] /set nosound yes.
 [ ] Find a way to leave attributes unsorted for ctrl+h output
 [ ] Implement live update of F6 screen for player.
     Maybe also ability to comment.
@@ -57,7 +55,7 @@ v0.9.7
 [ ] Entered-flag for /who listing. Update players for status changes.
 [ ] Add phone number (similar to email) setting. Maybe some other optional contact methods as well.
 [X] Check that lc() and uc() doesn't touch {SYM}. Verify with /select .. has.
-[ ] Inform opponent about card number what he is moving when setting aside.
+[X] Inform opponent about card number what he is moving when setting aside.
 [X] Fix AvatarRecalcTable() so it could handle avatar placement on table image of different height
 [ ] Check sets and card counts announced by server and give warning if not matching.
 [ ] Some function to check if system is not functional in client. Use
@@ -90,7 +88,7 @@ Windows
 FUTURE IDEAS
 ------------
 
-[ ] Tab completion for commands too
+[X] Tab completion for commands too
 [ ] New distribution system: cleanup svn, move it to source forge (switch to p2p).
 [ ]   Make generic file resolver in C++ code able to find from normal place and svn-dir.
 [ ]   Use file resolver for every file.

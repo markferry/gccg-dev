@@ -218,7 +218,7 @@
        <attr key="class" value="Permanent-event"/>
        <attr key="type" value="Hazard"/>
     </card>
-    <card name="Heart Grown Cold" graphics="HeartGrownCold.jpg" text="Fallen-wizard players must use minion site cards for hero Havens. If a Fallen-wizard has more than 4 stage points, his player must also use minion site cards for Free- holds. If a Fallen-wizard has more than 7 stage points, his player must also use minion site cards for Border-holds.">
+    <card name="Heart Grown Cold" graphics="HeartGrownColdDC.jpg" text="Fallen-wizard players must use minion site cards for hero Havens. If a Fallen-wizard has more than 4 stage points, his player must also use minion site cards for Free- holds. If a Fallen-wizard has more than 7 stage points, his player must also use minion site cards for Border-holds. Cannot be duplicated.">
        <attr key="rarity" value="U3"/>
        <attr key="class" value="Permanent-event"/>
        <attr key="type" value="Hazard"/>
@@ -409,7 +409,7 @@
        <attr key="type" value="Minion Resource"/>
 	   <attr key="keyword" value="Technology"/>
     </card>
-    <card name="Liquid Fire" graphics="LiquidFireDC.jpg" text="Technology. Playable at a tapped or untapped Shadow-hold, Dark-hold, or a site with a Dwarf automatic-attack. Discard to cause all strikes from all attacks of a non- Dragon, non-Nazgûl, non-Balrog creature keyed to a site to fail.">
+    <card name="Liquid Fire" graphics="LiquidFireDC.jpg" text="Technology. Playable at a tapped or untapped Shadow-hold, Dark-hold, or a site with a Dwarf automatic-attack. Discard to cause all strikes from all attacks of a non- Dragon, non-Nazgul, non-Balrog creature keyed to a site to fail.">
        <attr key="corruption" value="1"/>
        <attr key="mp" value="1"/>
        <attr key="rarity" value="R3"/>
@@ -524,6 +524,7 @@
        <attr key="rarity" value="U3"/>
        <attr key="class" value="Permanent-event"/>
        <attr key="type" value="Stage Resource"/>
+	   <attr key="keyword" value="Ore"/>
     </card>
     <card name="Double-dealing" graphics="Doubledealing.jpg" text="Playable on a site. If the site is a minion site, you may play appropriate hero resources there. If the site is a hero site, you may play appropriate minion resources there. Discard when this site is discarded or returned to your location deck.">
        <attr key="sp" value="1"/>
@@ -630,7 +631,7 @@
        <attr key="type" value="Stage Resource"/>
 	   <attr key="specific" value="Fallen-wizard"/>
     </card>
-    <card name="Thrall of the Voice" graphics="ThralloftheVoice.jpg" text="Instead of a normal character, during your organization phase you may bring into play one character (including a minion agent) with up to a 6 mind. Place this card with the character. -1 to his mind to a minimum of 1. Such a character may also be in your starting company.">
+    <card name="Thrall of the Voice" graphics="ThralloftheVoiceDC.jpg" text="Instead of a normal character, during your organization phase you may bring into play one character (including a minion agent) with up to a 6 mind. Place this card with the character. -1 to his mind to a minimum of 1. Such a character may also be in your starting company, or brought into play at one of your Lordhavens [H].  ">
        <attr key="sp" value="1"/>
        <attr key="rarity" value="C4"/>
        <attr key="class" value="Permanent-event"/>

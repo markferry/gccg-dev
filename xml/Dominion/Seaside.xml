@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE ccg-setinfo SYSTEM "../gccg-set.dtd">
+<ccg-setinfo name="Seaside" dir="Seaside" abbrev="S" game="Dominion">
+	<cards>
+		<card name="Embargo" graphics="embargo.jpg" text="+2 Coins, Trash this card. Put an Embargo token on top of a Supply pile. - When a player buys a card, he gains a Curse card per Embargo token on that pile.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action"/>
+			<attr key="cost" value="2"/>
+		</card>
+		<card name="Haven" graphics="haven.jpg" text="+1 Card, +1 Action, Set aside a card from your hand face down. At the start of your next turn, put it into your hand.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action - Duration"/>
+			<attr key="cost" value="2"/>
+		</card>
+		<card name="Lighthouse" graphics="lighthouse.jpg" text="+1 Action, Now and at the start of your next turn: +1 Coin. - While this is in play, when another player plays an Attack card, it doesn't affect you.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action - Duration"/>
+			<attr key="cost" value="2"/>
+		</card>
+		<card name="Native Village" graphics="nativevillage.jpg" text="+2 Actions, Choose one: Set aside the top card of your deck face down on your Native Village mat; or put all the cards from your mat into your hand.   You may look at the cards on your mat at any time; return them to your deck at the end of the game.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action"/>
+			<attr key="cost" value="2"/>
+		</card>
+		<card name="Pearl Diver" graphics="pearldiver.jpg" text="+1 Card, +1 Action, Look at the bottom card of your deck. You may put it on top.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action"/>
+			<attr key="cost" value="2"/>
+		</card>
+		<card name="Ambassador" graphics="ambassador.jpg" text="Reveal a card from your hand. Return up to 2 copies of it from your hand to the Supply. Then each other player gains a copy of it.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action"/>
+			<attr key="cost" value="3"/>
+		</card>
+		<card name="Fishing Village" graphics="fishingvillage.jpg" text="+2 Actions, +1 Coin, At the start of your next turn: +1 Action, +1 Coin.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action - Duration"/>
+			<attr key="cost" value="3"/>
+		</card>
+		<card name="Lookout" graphics="lookout.jpg" text="+1 Action, Look at the top 3 cards of your deck. Trash one of them. Discard one of them. Put the other one on top of your deck.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action"/>
+			<attr key="cost" value="3"/>
+		</card>
+		<card name="Smugglers" graphics="smugglers.jpg" text="Gain a copy of a card costing up to 6 Coins that the player to your right gained on his last turn.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action"/>
+			<attr key="cost" value="3"/>
+		</card>
+		<card name="Warehouse" graphics="warehouse.jpg" text="+3 Card, +1 Action, Discard 3 cards.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action"/>
+			<attr key="cost" value="3"/>
+		</card>
+		<card name="Caravan" graphics="caravan.jpg" text="+1 Card, +1 Action  At the start of your next turn, +1 Card.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action - Duration"/>
+			<attr key="cost" value="4"/>
+		</card>
+		<card name="Cutpurse" graphics="cutpurse.jpg" text="+2 Coins, Each other player discards a Copper card (or reveals a hand with no Copper).">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action - Attack"/>
+			<attr key="cost" value="4"/>
+		</card>
+		<card name="Island" graphics="island.jpg" text="Set aside this and another card from your hand. Return them to your deck at the end of the game.  --------  2 VP">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action - Victory"/>
+			<attr key="cost" value="4"/>
+		</card>
+		<card name="Navigator" graphics="navigator.jpg" text="+2 Coins, Look at the top 5 cards of your deck. Either discard all of them, or put them back on top of your deck in any order.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action"/>
+			<attr key="cost" value="4"/>
+		</card>
+		<card name="Pirate Ship" graphics="pirateship.jpg" text="Choose one: Each other player reveals the top 2 cards of his deck, trashes a revealed Treasure that you choose, discards the rest, and if anyone trashed a Treasure you take a Coin token; or, +1 Coin per Coin token you've taken with Pirate Ships this game.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action - Attack"/>
+			<attr key="cost" value="4"/>
+		</card>
+		<card name="Salvager" graphics="salvager.jpg" text="+1 Buy, Trash a card from your hand. +Coins equal to its cost.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action"/>
+			<attr key="cost" value="4"/>
+		</card>
+		<card name="Sea Hag" graphics="seahag.jpg" text="Each other player discards the top card of his deck, then gains a Curse card, putting it on top of his deck.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action - Attack"/>
+			<attr key="cost" value="4"/>
+		</card>
+		<card name="Treasure Map" graphics="treasuremap.jpg" text="Trash this and another copy of Treasure Map from your hand. If you do trash two Treasure Maps, gain 4 Gold cards, putting them on top of your deck.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action"/>
+			<attr key="cost" value="4"/>
+		</card>
+		<card name="Bazaar" graphics="bazaar.jpg" text="+1 Card, +2 Actions, +1 Coin.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action"/>
+			<attr key="cost" value="5"/>
+		</card>
+		<card name="Explorer" graphics="explorer.jpg" text="You may reveal a Province card from your hand. If you do, gain a Gold card, putting it into your hand. Otherwise, gain a Silver card, putting it into your hand.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action"/>
+			<attr key="cost" value="5"/>
+		</card>
+		<card name="Ghost Ship" graphics="ghostship.jpg" text="+2 Card, Each other player with 4 or more cards in hand puts cards from his hand on top of his deck until he has 3 cards in his hand.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action - Attack"/>
+			<attr key="cost" value="5"/>
+		</card>
+		<card name="Merchant Ship" graphics="merchantship.jpg" text="Now and at the start of your next turn: +2 Coins.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action - Duration"/>
+			<attr key="cost" value="5"/>
+		</card>
+		<card name="Outpost" graphics="outpost.jpg" text="You only draw 3 cards (instead of 5) in this turn's Clean-up phase. Take an extra turn after this one. This can't cause you to take more than two consecutive turns.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action - Duration"/>
+			<attr key="cost" value="5"/>
+		</card>
+		<card name="Tactician" graphics="tactician.jpg" text="Discard your hand. If you discarded any cards this way, then at the start of your next turn, +5 Cards, +1 Buy, and +1 Action.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action - Duration"/>
+			<attr key="cost" value="5"/>
+		</card>
+		<card name="Treasury" graphics="treasury.jpg" text="+1 Card, +1 Action, +1 Coin, When you discard this from play, if you didn't buy a Victory card this turn, you may put this on top of your deck.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action"/>
+			<attr key="cost" value="5"/>
+		</card>
+		<card name="Wharf" graphics="wharf.jpg" text="Now and at the start of your next turn: +2 Cards, +1 Buy.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action - Duration"/>
+			<attr key="cost" value="5"/>
+		</card>
+	</cards>
+</ccg-setinfo>

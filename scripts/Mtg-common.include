@@ -13,10 +13,16 @@ deck_name{"deck"}="library";
 deck_name{"discard pile"}="graveyard";
 deck_name{"sideboard"}="sideboard";
 deck_name{"exile"}="exile";
+deck_name{"command"}="command zone";
+deck_name{"planes"}="planar deck";
+deck_name{"schemes"}="scheme deck";
 deck_name{"opponent deck"}="library";
 deck_name{"opponent discard pile"}="graveyard";
 deck_name{"opponent sideboard"}="sideboard";
 deck_name{"opponent exile"}="exile";
+deck_name{"opponent command"}="command zone";
+deck_name{"opponent planes"}="planar deck";
+deck_name{"opponent schemes"}="scheme deck";
 
 #
 # RuleCountBiggestPopulation(list of card numbers) - Count the biggest number of creatures having the same type.
@@ -78,15 +84,21 @@ def TribalLegal
 #
 def CreateTypeLegalTable
 {
-  push(s);
   lasttype=ARG;
   if(!isdict(TYPE_LEGAL))
     TYPE_LEGAL=(,);
   if(!has_entry(ARG,TYPE_LEGAL))
   {
+    push(r);
+    push(s);
+    push(d);
     TYPE_LEGAL{ARG}=copy(-1,last(cards())+1);
     genlimit = 0;
-    for(r)(deck_rules{ARG}{""})
+    d=(,);
+    for(r)(keys(deck_rules{ARG}))
+      if(r=="" || find("deck",r) != NULL)
+        d=d+deck_rules{ARG}{r};
+    for(r)(d)
     {
       if(r[0]=="RuleCardSet" || r[0]=="RuleCardSetReprint")
       {
@@ -140,8 +152,10 @@ def CreateTypeLegalTable
           TYPE_LEGAL{ARG}[c]=genlimit;
       }
     }
+    d=pop();
+    s=pop();
+    r=pop();
   }
-  s=pop();
 }
 
 #
@@ -158,6 +172,6 @@ def TypeLegal
 #
 def TypeRestricted
 {
-  CreateTypeLegalTable(ARG[0]);
-  return(TYPE_LEGAL{ARG[0]}{ARG[1]}==1);
+  if(lasttype != ARG[0]) CreateTypeLegalTable(ARG[0]);
+  return(TYPE_LEGAL{ARG[0]}[ARG[1]]==1);
 }

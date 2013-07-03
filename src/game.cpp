@@ -565,6 +565,30 @@ void Deck::Del(int index)
     grp.redraw=true;
 }
 
+bool Deck::ClickableAt(int x,int y) const
+{
+	if(!Object::ClickableAt(x,y))
+		return false;
+	if(Size()<11)
+		return true;
+	
+	// Every 10 cards, the next card is drawn at an offset of (3,3).
+	// Therefore, there is a triangular arrangement of 3x3 squares at
+	// the top-right and bottom-left of the surface that are drawn as
+	// empty space (assuming the deck contains 11 or more cards).
+	unsigned int iy=(y-grp.y)/3;
+	unsigned int ix=(grp.x+grp.w-1-x)/3;
+	if(ix+iy <= (Size()-11)/10)
+		return false;
+	
+	iy=(grp.y+grp.h-1-y)/3;
+	ix=(x-grp.x)/3;
+	if(ix+iy <= (Size()-11)/10)
+		return false;
+	
+	return true;
+}
+
 void Deck::RecalculateSize()
 {
     int rot;
@@ -629,8 +653,7 @@ void MessageBox::ScrollDown()
 // class CardBook
 // ==============
 
-CardBook::CardBook(int num,Object* parent,const string& name,int w,int h,Evaluator::Parser<Table> *_parser) : Object(num,parent,name)
-{
+CardBook::CardBook(int num,Object* parent,const string& name,int basecard,int w,int h,Evaluator::Parser<Table> *_parser) : Object(num,parent,name){
     parser=_parser;
     rows=w;
     columns=h;
@@ -640,8 +663,8 @@ CardBook::CardBook(int num,Object* parent,const string& name,int w,int h,Evaluat
     titleh=H(25);
     toolh=titleh;
     toolw=grp.w-margin;
-    cardw=Driver::driver->CardWidth(0,table->BookCardSize(),0);
-    cardh=Driver::driver->CardHeight(0,table->BookCardSize(),0);
+    cardw=Driver::driver->CardWidth(basecard,table->BookCardSize(),0);
+    cardh=Driver::driver->CardHeight(basecard,table->BookCardSize(),0);
     tabh=1;
     tabskip=0;
     grp.text.pointsize=11;
@@ -1471,7 +1494,9 @@ Table::Table(const string& triggerfile1,bool fullscreen,bool debug,bool fulldebu
         Driver::driver->LoadFont("free/NATIONPP.TTF","windows/NATIONPP.TTF");
         Driver::driver->LoadFont("free/sfd/FreeSans.ttf","windows/arialn.ttf");
         Driver::driver->LoadFont("free/sfd/FreeSerifBold.ttf","windows/thornbcp.ttf");
-        last_font=Driver::driver->LoadFont("free/sfd/FreeSerif.ttf","windows/thorncp.ttf");
+        Driver::driver->LoadFont("free/sfd/FreeSerif.ttf","windows/thorncp.ttf");
+        Driver::driver->LoadFont("free/sfd/FreeMonoBold.ttf","windows/courierb.ttf");
+        last_font=Driver::driver->LoadFont("free/sfd/FreeMono.ttf","windows/couriern.ttf");
     }
     else
     {
@@ -1479,7 +1504,9 @@ Table::Table(const string& triggerfile1,bool fullscreen,bool debug,bool fulldebu
         Driver::driver->LoadFont("windows/NATIONPP.TTF","free/NATIONPP.TTF");
         Driver::driver->LoadFont("windows/arialn.ttf","free/sfd/FreeSans.ttf");
         Driver::driver->LoadFont("windows/thornbcp.ttf","free/sfd/FreeSerifBold.ttf");
-        last_font=Driver::driver->LoadFont("windows/thorncp.ttf","free/sfd/FreeSerif.ttf");
+        Driver::driver->LoadFont("windows/thorncp.ttf","free/sfd/FreeSerif.ttf");
+        Driver::driver->LoadFont("windows/courierb.ttf","free/sfd/FreeMonoBold.ttf");
+        last_font=Driver::driver->LoadFont("windows/couriern.ttf","free/sfd/FreeMono.ttf");
     }
 
     ::table=this;

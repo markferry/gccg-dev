@@ -1,7 +1,7 @@
 #
 # GCCG v0.9.6.3 Middle-earth deck
 #
-#      DCCD - Dragon-lord - Smaug - The Golden
+#      DCCD - Dragon-lord - Smaug -The Golden
 #
 
 ####
@@ -88,11 +88,10 @@ Pool
 1 Orc Grunt (NE)
 1 Talmog (GW)
 
-# Minion Resource (6)
+# Minion Resource (5)
 
 1 Dragon Mindbend (GW)
 1 Enchanted Stare (GW)
-1 Foul-smelling Paste (LE)
 1 Orc-pouch (NE)
 1 Orders from the Great Demon (BA)
 1 Wealth of His Halls (GW)
@@ -130,8 +129,8 @@ Sideboard
 
 1 Back to the Fray (LE)
 1 Dragon's Abode (GW)
-1 Fire-storm (GW)
 1 Fizzling Torch (NE)
+1 Foul-smelling Paste (LE)
 1 Made His Dwelling There (GW)
 1 Orcs of His Dominion (GW)
 1 Scales and Jewels (GW)
@@ -165,7 +164,7 @@ Sites
 1 Iron Hill Dwarf-hold [M] (LE)
 1 Kala Dulakurth [M] (NW)
 1 Lake-town [M] (LE)
-1 Long Marish [M] (DF)
+1 Long Marshes [M] (DF)
 1 Long Peak [M] (GW)
 1 Mount Gundabad [M] (LE)
 1 Mountains of Mirkwood [M] (GW)

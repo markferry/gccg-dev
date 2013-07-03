@@ -1,0 +1,373 @@
+
+screen.width=1024;
+screen.height=768;
+port=29200;
+meta.port=29114;
+
+#
+# FUNCTIONS
+# =========
+
+#
+# HOOKS
+# =====
+
+#
+# InitServerHook(nmb.of players) - Called during server initialization.
+#
+def InitServerHook
+{
+}
+
+#
+# StartGameHook(nmb.of players) - Called when a game is ready to start.
+#
+def StartGameHook
+{
+}
+
+#
+# UploadDeckHook(player,deck) - Called when a player uploads the deck.
+# CreateDeck(player number, pile name, x, y)
+def UploadDeckHook
+{
+  push(i);
+  if(has_entry("copper",ARG[1]))
+  {
+    i=CreateDeck(player,"copper",60,-90);
+  
+    for(p)(watchers)
+    {
+      if(p==player)
+        Send(p,("CreateDeck",(i,player,"copper",(60,-90))));
+      else
+        Send(p,("CreateDeck",(i,player,"opponent copper",CoordToPlr(decks{i}[3],decks{i}[4],p))));
+    }
+    decks{i}[0]=shuffle(ARG[1]{"copper"});
+
+    SendAll("SetDeck",(i,card_back(decks{i}[0])));
+  }
+  if(has_entry("silver",ARG[1]))
+  {
+    i=CreateDeck(player,"silver",135,-90);
+  
+    for(p)(watchers)
+    {
+      if(p==player)
+        Send(p,("CreateDeck",(i,player,"silver",(135,-90))));
+      else
+        Send(p,("CreateDeck",(i,player,"opponent silver",CoordToPlr(decks{i}[3],decks{i}[4],p))));
+    }
+    decks{i}[0]=shuffle(ARG[1]{"silver"});
+
+    SendAll("SetDeck",(i,card_back(decks{i}[0])));
+  }
+  if(has_entry("gold",ARG[1]))
+  {
+    i=CreateDeck(player,"gold",210,-90);
+  
+    for(p)(watchers)
+    {
+      if(p==player)
+        Send(p,("CreateDeck",(i,player,"gold",(210,-90))));
+      else
+        Send(p,("CreateDeck",(i,player,"opponent gold",CoordToPlr(decks{i}[3],decks{i}[4],p))));
+    }
+    decks{i}[0]=shuffle(ARG[1]{"gold"});
+
+    SendAll("SetDeck",(i,card_back(decks{i}[0])));
+  }
+  if(has_entry("platinum",ARG[1]))
+  {
+    i=CreateDeck(player,"platinum",285,-90);
+  
+    for(p)(watchers)
+    {
+      if(p==player)
+        Send(p,("CreateDeck",(i,player,"platinum",(285,-90))));
+      else
+        Send(p,("CreateDeck",(i,player,"opponent platinum",CoordToPlr(decks{i}[3],decks{i}[4],p))));
+    }
+    decks{i}[0]=shuffle(ARG[1]{"platinum"});
+
+    SendAll("SetDeck",(i,card_back(decks{i}[0])));
+  }
+  if(has_entry("potion",ARG[1]))
+  {
+    i=CreateDeck(player,"potion",360,-90);
+  
+    for(p)(watchers)
+    {
+      if(p==player)
+        Send(p,("CreateDeck",(i,player,"potion",(360,-90))));
+      else
+        Send(p,("CreateDeck",(i,player,"opponent potion",CoordToPlr(decks{i}[3],decks{i}[4],p))));
+    }
+    decks{i}[0]=shuffle(ARG[1]{"potion"});
+
+    SendAll("SetDeck",(i,card_back(decks{i}[0])));
+  }
+  if(has_entry("estate",ARG[1]))
+  {
+    i=CreateDeck(player,"estate",60,-200);
+  
+    for(p)(watchers)
+    {
+      if(p==player)
+        Send(p,("CreateDeck",(i,player,"estate",(60,-200))));
+      else
+        Send(p,("CreateDeck",(i,player,"opponent estate",CoordToPlr(decks{i}[3],decks{i}[4],p))));
+    }
+    decks{i}[0]=shuffle(ARG[1]{"estate"});
+
+    SendAll("SetDeck",(i,card_back(decks{i}[0])));
+  }
+  if(has_entry("duchy",ARG[1]))
+  {
+    i=CreateDeck(player,"duchy",135,-200);
+  
+    for(p)(watchers)
+    {
+      if(p==player)
+        Send(p,("CreateDeck",(i,player,"duchy",(135,-200))));
+      else
+        Send(p,("CreateDeck",(i,player,"opponent duchy",CoordToPlr(decks{i}[3],decks{i}[4],p))));
+    }
+    decks{i}[0]=shuffle(ARG[1]{"duchy"});
+
+    SendAll("SetDeck",(i,card_back(decks{i}[0])));
+  }
+  if(has_entry("province",ARG[1]))
+  {
+    i=CreateDeck(player,"province",210,-200);
+  
+    for(p)(watchers)
+    {
+      if(p==player)
+        Send(p,("CreateDeck",(i,player,"province",(210,-200))));
+      else
+        Send(p,("CreateDeck",(i,player,"opponent province",CoordToPlr(decks{i}[3],decks{i}[4],p))));
+    }
+    decks{i}[0]=shuffle(ARG[1]{"province"});
+
+    SendAll("SetDeck",(i,card_back(decks{i}[0])));
+  }
+  if(has_entry("colony",ARG[1]))
+  {
+    i=CreateDeck(player,"colony",285,-200);
+  
+    for(p)(watchers)
+    {
+      if(p==player)
+        Send(p,("CreateDeck",(i,player,"colony",(285,-200))));
+      else
+        Send(p,("CreateDeck",(i,player,"opponent colony",CoordToPlr(decks{i}[3],decks{i}[4],p))));
+    }
+    decks{i}[0]=shuffle(ARG[1]{"colony"});
+
+    SendAll("SetDeck",(i,card_back(decks{i}[0])));
+  }
+  if(has_entry("curse",ARG[1]))
+  {
+    i=CreateDeck(player,"curse",360,-200);
+  
+    for(p)(watchers)
+    {
+      if(p==player)
+        Send(p,("CreateDeck",(i,player,"curse",(360,-200))));
+      else
+        Send(p,("CreateDeck",(i,player,"opponent curse",CoordToPlr(decks{i}[3],decks{i}[4],p))));
+    }
+    decks{i}[0]=shuffle(ARG[1]{"curse"});
+
+    SendAll("SetDeck",(i,card_back(decks{i}[0])));
+  }
+  if(has_entry("kingdom",ARG[1]))
+  {
+    i=CreateDeck(player,"kingdom",460,290);
+  
+    for(p)(watchers)
+    {
+      if(p==player)
+        Send(p,("CreateDeck",(i,player,"kingdom",(460,290))));
+      else
+        Send(p,("CreateDeck",(i,player,"opponent kingdom",CoordToPlr(decks{i}[3],decks{i}[4],p))));
+    }
+    decks{i}[0]=shuffle(ARG[1]{"kingdom"});
+
+    SendAll("SetDeck",(i,card_back(decks{i}[0])));
+  }
+  if(has_entry("kingdom0",ARG[1]))
+  {
+    i=CreateDeck(player,"kingdom0",660,70);
+  
+    for(p)(watchers)
+    {
+      if(p==player)
+        Send(p,("CreateDeck",(i,player,"kingdom0",(660,70))));
+      else
+        Send(p,("CreateDeck",(i,player,"opponent kingdom0",CoordToPlr(decks{i}[3],decks{i}[4],p))));
+    }
+    decks{i}[0]=shuffle(ARG[1]{"kingdom0"});
+
+    SendAll("SetDeck",(i,card_back(decks{i}[0])));
+  }
+  if(has_entry("kingdom1",ARG[1]))
+  {
+    i=CreateDeck(player,"kingdom1",735,70);
+  
+    for(p)(watchers)
+    {
+      if(p==player)
+        Send(p,("CreateDeck",(i,player,"kingdom1",(735,70))));
+      else
+        Send(p,("CreateDeck",(i,player,"opponent kingdom1",CoordToPlr(decks{i}[3],decks{i}[4],p))));
+    }
+    decks{i}[0]=shuffle(ARG[1]{"kingdom1"});
+
+    SendAll("SetDeck",(i,card_back(decks{i}[0])));
+  }
+  if(has_entry("kingdom2",ARG[1]))
+  {
+    i=CreateDeck(player,"kingdom2",810,70);
+  
+    for(p)(watchers)
+    {
+      if(p==player)
+        Send(p,("CreateDeck",(i,player,"kingdom2",(810,70))));
+      else
+        Send(p,("CreateDeck",(i,player,"opponent kingdom2",CoordToPlr(decks{i}[3],decks{i}[4],p))));
+    }
+    decks{i}[0]=shuffle(ARG[1]{"kingdom2"});
+
+    SendAll("SetDeck",(i,card_back(decks{i}[0])));
+  }
+  if(has_entry("kingdom3",ARG[1]))
+  {
+    i=CreateDeck(player,"kingdom3",885,70);
+  
+    for(p)(watchers)
+    {
+      if(p==player)
+        Send(p,("CreateDeck",(i,player,"kingdom3",(885,70))));
+      else
+        Send(p,("CreateDeck",(i,player,"opponent kingdom3",CoordToPlr(decks{i}[3],decks{i}[4],p))));
+    }
+    decks{i}[0]=shuffle(ARG[1]{"kingdom3"});
+
+    SendAll("SetDeck",(i,card_back(decks{i}[0])));
+  }
+  if(has_entry("kingdom4",ARG[1]))
+  {
+    i=CreateDeck(player,"kingdom4",960,70);
+  
+    for(p)(watchers)
+    {
+      if(p==player)
+        Send(p,("CreateDeck",(i,player,"kingdom4",(960,70))));
+      else
+        Send(p,("CreateDeck",(i,player,"opponent kingdom4",CoordToPlr(decks{i}[3],decks{i}[4],p))));
+    }
+    decks{i}[0]=shuffle(ARG[1]{"kingdom4"});
+
+    SendAll("SetDeck",(i,card_back(decks{i}[0])));
+  }
+  if(has_entry("kingdom5",ARG[1]))
+  {
+    i=CreateDeck(player,"kingdom5",660,180);
+  
+    for(p)(watchers)
+    {
+      if(p==player)
+        Send(p,("CreateDeck",(i,player,"kingdom5",(660,180))));
+      else
+        Send(p,("CreateDeck",(i,player,"opponent kingdom5",CoordToPlr(decks{i}[3],decks{i}[4],p))));
+    }
+    decks{i}[0]=shuffle(ARG[1]{"kingdom5"});
+
+    SendAll("SetDeck",(i,card_back(decks{i}[0])));
+  }
+  if(has_entry("kingdom6",ARG[1]))
+  {
+    i=CreateDeck(player,"kingdom6",735,180);
+  
+    for(p)(watchers)
+    {
+      if(p==player)
+        Send(p,("CreateDeck",(i,player,"kingdom6",(735,180))));
+      else
+        Send(p,("CreateDeck",(i,player,"opponent kingdom6",CoordToPlr(decks{i}[3],decks{i}[4],p))));
+    }
+    decks{i}[0]=shuffle(ARG[1]{"kingdom6"});
+
+    SendAll("SetDeck",(i,card_back(decks{i}[0])));
+  }
+  if(has_entry("kingdom7",ARG[1]))
+  {
+    i=CreateDeck(player,"kingdom7",810,180);
+  
+    for(p)(watchers)
+    {
+      if(p==player)
+        Send(p,("CreateDeck",(i,player,"kingdom7",(810,180))));
+      else
+        Send(p,("CreateDeck",(i,player,"opponent kingdom7",CoordToPlr(decks{i}[3],decks{i}[4],p))));
+    }
+    decks{i}[0]=shuffle(ARG[1]{"kingdom7"});
+
+    SendAll("SetDeck",(i,card_back(decks{i}[0])));
+  }
+  if(has_entry("kingdom8",ARG[1]))
+  {
+    i=CreateDeck(player,"kingdom8",885,180);
+  
+    for(p)(watchers)
+    {
+      if(p==player)
+        Send(p,("CreateDeck",(i,player,"kingdom8",(885,180))));
+      else
+        Send(p,("CreateDeck",(i,player,"opponent kingdom8",CoordToPlr(decks{i}[3],decks{i}[4],p))));
+    }
+    decks{i}[0]=shuffle(ARG[1]{"kingdom8"});
+
+    SendAll("SetDeck",(i,card_back(decks{i}[0])));
+  }
+  if(has_entry("kingdom9",ARG[1]))
+  {
+    i=CreateDeck(player,"kingdom9",960,180);
+  
+    for(p)(watchers)
+    {
+      if(p==player)
+        Send(p,("CreateDeck",(i,player,"kingdom9",(960,180))));
+      else
+        Send(p,("CreateDeck",(i,player,"opponent kingdom9",CoordToPlr(decks{i}[3],decks{i}[4],p))));
+    }
+    decks{i}[0]=shuffle(ARG[1]{"kingdom9"});
+
+    SendAll("SetDeck",(i,card_back(decks{i}[0])));
+  }
+  i=pop();
+}
+
+#
+# GAME SPECIFIC FUNCTIONS
+# =======================
+
+#
+# SetUpPlayer(p) - Create necessary strucrures for player 'p'.
+#
+def SetUpPlayer
+{
+  CreateDeck(ARG,"discard pile",40,160);
+  CreateDeck(ARG,"deck",40,290);
+}
+
+#
+# InitialScore(p) - Return a structure representing initial score for a player 'p'.
+#
+def InitialScore
+{
+  return("");
+}
+

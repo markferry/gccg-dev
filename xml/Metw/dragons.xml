@@ -995,7 +995,7 @@
        <attr key="class" value="Short-event"/>
        <attr key="type" value="Hero Resource"/>
     </card>
-    <card name="Helm of Her Secrecy" graphics="HelmofHerSecrecy.jpg" text="If Eowyn is in your hand, this card is playable on a company facing an attack (before strikes are assigned) -- the company must contain a character with Edoras as a home site. If enough influence is available to control her, Eowyn may be played with (i.e., joins) the company. She gains +2 prowess, +1 body, and +1 direct influence. If the attack is a Nazgûl, place Helm of Her Secrecy with Eowyn following the attack. Otherwise, discard this card following the attack. Regardless, Eowyn remains in play.">
+    <card name="Helm of Her Secrecy" graphics="HelmofHerSecrecy.jpg" text="If Eowyn is in your hand, this card is playable on a company facing an attack (before strikes are assigned) -- the company must contain a character with Edoras as a home site. If enough influence is available to control her, Eowyn may be played with (i.e., joins) the company. She gains +2 prowess, +1 body, and +1 direct influence. If the attack is a Nazgul, place Helm of Her Secrecy with Eowyn following the attack. Otherwise, discard this card following the attack. Regardless, Eowyn remains in play.">
        <attr key="body" value="1"/>
        <attr key="prowess" value="2"/>
        <attr key="rarity" value="R2"/>
@@ -1252,7 +1252,7 @@
 	   <attr key="keyword" value="Battle-gear"/>
 	   <attr key="keyword" value="Hoard Item"/>
     </card>
-    <card name="Vanish in Sunlight!" graphics="VanishinSunlight.jpg" text="Modify the prowess of one Nazgûl or Undead attack by -2 (by -4 if Gates of Morning is in play).">
+    <card name="Vanish in Sunlight!" graphics="VanishinSunlight.jpg" text="Modify the prowess of one Nazgul or Undead attack by -2 (by -4 if Gates of Morning is in play).">
        <attr key="rarity" value="U2"/>
        <attr key="class" value="Short-event"/>
        <attr key="type" value="Hero Resource"/>

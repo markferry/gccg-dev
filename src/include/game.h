@@ -459,6 +459,9 @@ namespace CCG
 	/// Remove top card of the deck if available.
 	int DelTop()
 	{int ret=-1; if(cards.size()) {ret=cards.back(); cards.pop_back(); grp.redraw=true;} return ret;}
+	/// Remove bottom card of the deck if available.
+	int DelBottom()
+	{int ret=-1; if(cards.size()) {ret=cards.front(); cards.pop_front(); grp.redraw=true;} return ret;}
 	/// Remove all cards from the deck.
 	void DelAll()
 	{cards.clear(); grp.redraw=true;}
@@ -488,6 +491,7 @@ namespace CCG
 	{return TypeDeck;}
 	void Draw();
 	void RecalculateSize();
+	bool ClickableAt(int x,int y) const;
 	void Dump() const;
     };
 
@@ -647,7 +651,7 @@ namespace CCG
 
     public:
 
-	CardBook(int num,Object* parent,const string& name,int w,int h,Evaluator::Parser<Table> *parser);
+	CardBook(int num,Object* parent,const string& name,int basecard,int w,int h,Evaluator::Parser<Table> *parser);
 	virtual ~CardBook();
 
 	ObjectType Type() const
@@ -978,6 +982,7 @@ namespace CCG
 	Evaluator::Data del_cardbox_all_recenter(const Evaluator::Data&);
 	Evaluator::Data del_cardbox_recenter(const Evaluator::Data&);
 	Evaluator::Data del_deck(const Evaluator::Data&);
+	Evaluator::Data del_deck_bottom(const Evaluator::Data&);
 	Evaluator::Data del_deck_top(const Evaluator::Data&);
 	Evaluator::Data del_hand(const Evaluator::Data&);
 	Evaluator::Data del_marker(const Evaluator::Data&);
@@ -1009,6 +1014,7 @@ namespace CCG
 	Evaluator::Data message(const Evaluator::Data&);
 	Evaluator::Data msgbox_scroll(const Evaluator::Data&);
 	Evaluator::Data msgbox_search(const Evaluator::Data&);
+	Evaluator::Data msgbox_tail(const Evaluator::Data&);
 	Evaluator::Data mouse(const Evaluator::Data&);
 	Evaluator::Data move_object(const Evaluator::Data&);
 	Evaluator::Data name(const Evaluator::Data&);

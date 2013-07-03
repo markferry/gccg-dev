@@ -187,7 +187,7 @@
        <attr key="type" value="Hazard"/>
 	   <attr key="keyword" value="Sea-dragon"/>
     </card>
-    <card name="Eärcaraxë Ahunt" graphics="EarcaraxeAhunt.jpg" text="Unique. Any company moving in Andrast Coast, Bay of Belfalas, Eriadoran Coast, and/or Andrast immediately faces one Dragon attack (considered a hazard creature attack) -- 3 strikes at 15/6 (attacker chooses defending characters). If Doors of Night is in play, this attack also affects: Old Pûkel-land, Enedhwaith, Anfalas, and any Coastal Sea [{c}] region (or region type).">
+    <card name="Eärcaraxë Ahunt" graphics="EarcaraxeAhuntDC.jpg" text="Unique. Any company moving in Andrast Coast, Bay of Belfalas, Eriadoran Coast, and/or Andrast immediately faces one Dragon attack (considered a hazard creature attack) -- 3 strikes at 15/6 (attacker chooses defending characters). If Doors of Night is in play, this attack also affects: Old Pûkel-land, Enedhwaith, Anfalas, and any Coastal Sea [{c}] region adjacent to The Sundering Seas.">
        <attr key="unique" value="yes"/>
        <attr key="strikes" value="3"/>
        <attr key="mp" value="4"/>
@@ -267,7 +267,7 @@
        <attr key="class" value="Long-event"/>
        <attr key="type" value="Hazard"/>
     </card>
-    <card name="Ice-drake" graphics="Icedrake.jpg" text="Drake. Two strikes. May be played keyed to Elven Shores, Forochel, Angmar, Gundabad, Grey Mountain Narrows, and Withered Heath.">
+    <card name="Ice-drake" graphics="IcedrakeDC.jpg" text="Drake. Two strikes. May be played keyed to Elven Shores, Forochel, Angmar, Gundabad, Grey Mountains, Grey Mountain Narrows, Withered Heath, and any Deep Wilderness [{w} {w}]region in The Northern Waste.">
        <attr key="strikes" value="2"/>
        <attr key="mp" value="1"/>
        <attr key="body" value="-"/>
@@ -998,7 +998,7 @@
        <attr key="class" value="Short-event"/>
        <attr key="type" value="Hero Resource"/>
     </card>
-    <card name="Helm of Her Secrecy" graphics="HelmofHerSecrecy.jpg" text="If Eowyn is in your hand, this card is playable on a company facing an attack (before strikes are assigned) -- the company must contain a character with Edoras as a home site. If enough influence is available to control her, Eowyn may be played with (i.e., joins) the company. She gains +2 prowess, +1 body, and +1 direct influence. If the attack is a Nazgûl, place Helm of Her Secrecy with Eowyn following the attack. Otherwise, discard this card following the attack. Regardless, Eowyn remains in play.">
+    <card name="Helm of Her Secrecy" graphics="HelmofHerSecrecy.jpg" text="If Eowyn is in your hand, this card is playable on a company facing an attack (before strikes are assigned) -- the company must contain a character with Edoras as a home site. If enough influence is available to control her, Eowyn may be played with (i.e., joins) the company. She gains +2 prowess, +1 body, and +1 direct influence. If the attack is a Nazgul, place Helm of Her Secrecy with Eowyn following the attack. Otherwise, discard this card following the attack. Regardless, Eowyn remains in play.">
        <attr key="body" value="1"/>
        <attr key="prowess" value="2"/>
        <attr key="rarity" value="R2"/>
@@ -1021,7 +1021,7 @@
        <attr key="class" value="Permanent-event"/>
        <attr key="type" value="Hero Resource"/>
     </card>
-    <card name="King under the Mountain" graphics="KingundertheMountain.jpg" text="Unique. Playable on Balin, Dáin II, Thorin II, or Thráin II if his company has defeated an at home manifestation attack other than Eärcaraxë at Home. The target Dwarf receives +5 direct influence against Dwarves and Dwarf factions. The site where the Dragon was defeated becomes a Border-hold [{B}] and Dwarf-hold for all purposes and has no Dragon automatic-attacks. Only Dwarves may play items at this site.">
+    <card name="King under the Mountain" graphics="KingundertheMountainDC.jpg" text="Unique. Playable on Balin, Dáin II, Thorin II, or Thráin II if he is at the Dragon's Lair corresponding to the unique Dragon (other than Eärcaraxë) his company has defeated a non-ahunt manifestation of. The target Dwarf receives +5 EI against Dwarves. All versions of the corresponding Dragon's Lair become a Border-hold [{B}] and Dwarf-hold for all purposes and have no Dragon automatic-attacks. Only Dwarves may play items at this site.">
        <attr key="unique" value="yes"/>
        <attr key="mp" value="5"/>
        <attr key="rarity" value="R2"/>
@@ -1233,6 +1233,7 @@
        <attr key="rarity" value="U2"/>
        <attr key="class" value="Minor Item"/>
        <attr key="type" value="Hero Resource"/>
+	   <attr key="keyword" value="Lost Knowledge"/>
     </card>
     <card name="Trickery" graphics="Trickery.jpg" text="Scout only against an Orc, Troll, Man, Elf, Slayer, Awakened Plant, or Giant attack against his company. Make a roll (or draw a #); if the result is greater than 5, the attack is cancelled.">
        <attr key="rarity" value="C2"/>
@@ -1259,7 +1260,7 @@
 	   <attr key="keyword" value="Hoard Item"/>
 	   <attr key="keyword" value="Warrior only"/>
     </card>
-    <card name="Vanish in Sunlight!" graphics="VanishinSunlight.jpg" text="Modify the prowess of one Nazgûl or Undead attack by -2 (by -4 if Gates of Morning is in play).">
+    <card name="Vanish in Sunlight!" graphics="VanishinSunlight.jpg" text="Modify the prowess of one Nazgul or Undead attack by -2 (by -4 if Gates of Morning is in play).">
        <attr key="rarity" value="U2"/>
        <attr key="class" value="Short-event"/>
        <attr key="type" value="Hero Resource"/>
@@ -1326,7 +1327,7 @@
        <attr key="class" value="Permanent-event"/>
        <attr key="type" value="Hero Resource"/>
     </card>
-    <card name="Wormsbane" graphics="Wormsbane.jpg" text="Unique. Weapon. +2 to prowess to a maximum of 9 (+4 to prowess to a maximum of 12 and -2 to strike's body against a Dragon or Drake strike).">
+    <card name="Wormsbane" graphics="Wormsbane.jpg" text="Unique. Weapon. Two-handed. +2 to prowess to a maximum of 9 (+4 to prowess to a maximum of 12 and -2 to strike's body against a Dragon or Drake strike).">
        <attr key="unique" value="yes"/>
        <attr key="corruption" value="2"/>
        <attr key="mp" value="4"/>
@@ -1336,6 +1337,7 @@
        <attr key="class" value="Greater Item"/>
        <attr key="type" value="Hero Resource"/>
 	   <attr key="keyword" value="Battle-gear"/>
+	   <attr key="keyword" value="Two-handed"/>
     </card>
     <card name="Buhr Widu" graphics="BuhrWidu.jpg" back="1" text="">
        <attr key="unique" value="yes"/>

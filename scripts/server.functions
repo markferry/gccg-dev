@@ -1,6 +1,6 @@
 #
 #    Gccg - Generic collectible card game.
-#    Copyright (C) 2001,2002,2003,2004 Tommi Ronkainen
+#    Copyright (C) 2001-2012 Tommi Ronkainen
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -52,7 +52,7 @@
 # deck_rules{game system}{part names} - Contain the list of rules
 #   which describes card limits for the given game system.
 # deck_status{player name} - (how many proxies, deck match registered, deck is in original form)
-# end.turn - who most recently declared end of turn
+# end.player - who most recently declared end of turn
 # flag.game_started - set when the game is started
 # flag.game_broken - set when on of the players has quit
 # flag.game_halted - set when some of the players has quit and there are only one player left
@@ -61,6 +61,7 @@
 # game.data - structure holding generic game information (see. game_data())
 # hand.object[player] - object numbers of hands
 # hand[player] - hands
+# last_vis[player] - visibility of the last card played
 # map.con2plr{connection} - connection number to player number mapping
 # map.plr2con{connection} - player number to connection number mapping
 # markers{object number}{marker type} - number of markers (not on cards)
@@ -72,7 +73,7 @@
 # options.tournament - table is in tournament mode
 # options.game{option name} - dictionary of game specific options 
 #    zero_counters_ok - if 1, generate message when adding/deleting 0 counters
-# persistent - if 1, don't close and reload XML files for next game, just reconnect to meta server
+# persistent - if >1, don't free memory and reload XML for next game, just subtract 1 and reconnect
 # play.stack - list of cards waiting for PlayStage2
 # player - player causing event
 # player.name{player number} - name of the players and watchers
@@ -82,31 +83,39 @@
 # port - server port
 # result - current declared result
 # result.accepted[player] - who has accepted current result
-# result.declared_by - who declared the current result
+# result.owner - player(s) who would receive the current result; all others receive its opposite
 # result.subtype - result subtype if declared
 # score[player] - structure holding a score for a player 
 # server_description - info line to send to the meta server
-# server_flags - a string of space-separated customizable options
+# server_flags - a list of customizable options that can be toggled by players
+#   - "private" (DISABLED by default): spectators are forbidden except God, Guard, or Judge
+#   - "mute": spectators are allowed but cannot talk
+#   - "team": enables various functions to facilitate team play
+#   - "teamscore": scores are shared among players on the same team
 # stack.src[player] - last src from which each player has moved a card to play.stack
-# share.hand - who has decided to share their hand
 # table{object number}
 #   0 card number
 #   1 owner
 #   2 x
 #   3 y
 #   4 orientation
-#   5 is face down?
+#   5 is face down? (if == 3, card has a flipid attribute to use for face down image)
 #   6 dictionary of markers
 #   7 parent (0 if none)
 #   8 list of attachmets
+#   9 visibility status (if face down) - see "visible" array for usage
 # table.stack_order - stacking order of cards object numbers on table (last is the topmost)
-# teamspeak - whose messages will only reach teammates by default
+# team[player] - list of player numbers that count as each player's team
+# teamspeak[player] - whose messages will only reach teammates by default
 # time.change - last clock time when timer was given
 # time.spent - a list of seconds spent by each player
 # time.player - current player who's time is counting
-# transfers - number of card transfer made in the game
-# visible.me[player]{target} - visibility to self
-# visible.opp[player]{target} - visibility to opponent
+# transfers - number of card transfers made in the game
+# visible[player]{target} - visibility of a hand or pile object
+#   ==0: hidden from all
+#   >=1: visible to object's owner
+#   >=2: visible to owner, and any teammates in a team game
+#   >=4: visible to all players
 # watchers - total number of connections
 #
 #  Functions:
@@ -163,6 +172,12 @@
 # Send(connection, command) - send a command to client if still online
 # SendAll(command) - send command to all
 # SendOther(p,command) - Send command to all players except player 'p'.
+# SendTeam(p,command) - Send command to all players on player p's team.
+# SendOpp(p,command) - Send command to all players NOT on player p's team.
+# SetTeams(method[, argument]) - Fill out array of teammates according to the chosen method:
+#   "none" - no teams, or each team consists of a single player
+#   "sides" - odd player numbers vs. even numbers (players will see this as "top vs. bottom")
+#   "against" - player #[argument] is a solo team, everyone else joins together against them
 # ShuffleDeck(object number) - Shuffle deck or hand.
 # Special(data...) - Send special event to all clients.
 # StartGame() - initialize structures and send all initialization commands to clients
@@ -197,6 +212,10 @@ MARKER_COLOR[7]="default";
 
 # Maximum inactive time
 MAX_PING=120;
+
+# Number of consecutive games to run in a single process,
+# without unloading XML files or allocated memory
+persistent=20;
 
 #
 #  VARIABLE DEFINITIONS
@@ -234,6 +253,7 @@ function{"RegisterPlayer"}="RegisterPlayer";
 function{"Score"}="Score";
 function{"UploadDeck"}="UploadDeck";
 
+# function.src and function.dst contain function names used in resolving Transfer()
 function.src=(,);
 function.src{"active"}="Take.Active";
 function.src{"deck"}="Take.Deck";
@@ -253,6 +273,17 @@ function.dst{"out.of.play"}="Put.OutOfPlay";
 function.dst{"table"}="Put.Table";
 function.dst{"play"}="Play.Card.Stage1";
 
+# GAME_PILES should have entries for all pile names in the game vocabulary
+# (game-specific includes can append entries to it)
+# Each entry is an unordered list of zero or more characteristics:
+#   - "public": pile should be face-up by default
+#   - "self_known": pile should be face-up only to its owner
+#   - "reveal_1": if someone turns this pile face-up, only the top card should be revealed
+#   - "protected": pile is central to the game, and players shouldn't be able to remove it
+GAME_PILES=(,);
+GAME_PILES{'deck'}=("reveal_1","protected");
+GAME_PILES{'discard pile'}=("public","protected");
+
 # DEBUG
 # =====
 
@@ -260,19 +291,11 @@ if(options.debug)
 {
 
 #
-# d() - Reply the arbitrary expression to the client.
-#
-def d
-{
-  Reply(tostr(ARG));
-}
-
-#
-# CommandDebug() - This command evaluates any expression and sends result as message.
+# CommandDebug(code) - This command evaluates any expression and sends result as message.
 #
 def CommandDebug
 {
-  d(eval(join(ARG," ")));
+  Reply(tostr(eval(join(ARG," "))));
 }
 
 #
@@ -312,11 +335,12 @@ def InitServer
   counters.src=copy((,),ARG);
   deck.original=array(ARG);
   decks=(,);
-  end.team=-1;
+  end.player=-1;
   end.turn=copy(0,ARG);
   flag.deck_uploaded=array(ARG);
   hand.object=array(ARG);
   hand=copy((,),ARG);
+  last_vis=copy(4,ARG);
   markers=(,);
   play.stack=copy((,),ARG);
   player.name=(,);
@@ -325,47 +349,45 @@ def InitServer
   result=NULL;
   result.accepted=copy(0,ARG);
   score=copy(0,ARG);
-  server_flags=" ";
-  share.hand=copy(0,ARG);
+  server_flags=(,);
   stack.src=copy("",ARG);
   table.stack_order=(,);
   table=(,);
+  team=copy((,),ARG);
   teamspeak=copy(0,ARG);
-  visible.me=array(ARG);
-  visible.opp=array(ARG);
+  visible=array(ARG);
   waitfor=-1;
-  persistent=1;
   alive=(,);
 
+# InitServerHook might create additional pile names,
+# so let it run before setting pile visibility
+  if(isfunction("InitServerHook"))
+    InitServerHook(ARG);
+  
   for(i)(ARG)
   {
-    visible.me[i]=(,);
-    visible.me[i]{"active"}=1;
-    visible.me[i]{"deck"}=0;
-    visible.me[i]{"discard pile"}=1;
-    visible.me[i]{"hand"}=1;
-    visible.me[i]{"out.of.play"}=0;
-    visible.me[i]{"table"}=1;
-    visible.me[i]{"play"}=1;
-    visible.me[i]{"sideboard"}=0;
-    visible.opp[i]=(,);
-    visible.opp[i]{"active"}=0;
-    visible.opp[i]{"deck"}=0;
-    visible.opp[i]{"discard pile"}=1;
-    visible.opp[i]{"hand"}=0;
-    visible.opp[i]{"out.of.play"}=0;
-    visible.opp[i]{"table"}=1;
-    visible.opp[i]{"play"}=1;
-    visible.opp[i]{"sideboard"}=0;
-  }
+    visible[i]=(,);
+    visible[i]{"active"}=1;
+    visible[i]{"hand"}=1;
+    visible[i]{"out.of.play"}=0;
+    visible[i]{"table"}=4;
+    visible[i]{"play"}=4;
 
-  if(isfunction("InitServerHook"))
-    call("InitServerHook",ARG);
+    for(j)(GAME_PILES)
+    {
+      if(PileAttr(j[0],"public"))
+        visible[i]{j[0]}=4;
+      else if(PileAttr(j[0],"self_known"))
+        visible[i]{j[0]}=1;
+      else
+        visible[i]{j[0]}=0;
+    }
+  }
 }
 
 #
-# InitGame() - Because you can't call trigger("init","game") from a script.
-# Used to separate out reusable parts of that procedure.
+# InitGame() - Run repeatable parts of the game startup routine
+# (because scripts don't have access to the trigger() function).
 #
 def InitGame
 {
@@ -405,8 +427,8 @@ def EndGame
 
   if(result != NULL && result != "undecided")
   {
-    net_send(meta.connection,("EndGame",(player.name{result.declared_by},result,result.subtype)));
-    Log("GAME RESULT: "+result+" DECLARED BY: "+player.name{result.declared_by});
+    net_send(meta.connection,("EndGame",(join(result.owner,","),result,result.subtype)));
+    Log("GAME RESULT: "+result+" FOR: "+join(result.owner,","));
     Log("Transfers made: "+tostr(transfers));
   }
   else
@@ -419,10 +441,10 @@ def EndGame
   flag.game_broken=NULL;
   flag.game_halted=NULL;
   
-  sleep(2);
-
-  if (persistent)
+  persistent = persistent - 1;
+  if (persistent > 0)
   {
+    sleep(2);
     net_close(meta.connection);
     InitServer(players_wanted);
     InitGame();
@@ -531,11 +553,10 @@ def StartGame
   {
     SendAll("Message","{green}{sz16}You have saved game on this server.");
     SendAll("Message","{green}{sz16}You may restore it using {yellow}/loadgame{green} or delete it using{yellow} /delgame{green}.");
-    SendAll("Message","{hr}");
   }
 
   if(isfunction("StartGameHook"))
-    call("StartGameHook",players);
+    StartGameHook(players);
 
   net_send(meta.connection,("WeStartedGame",NULL));
   flag.game_started=1;
@@ -601,13 +622,9 @@ def PlayerNumber
 }
 
 #
-# AssignPlayer(player name,player  number) - Reassign player with the
-#   name to the number. Player having the number before reassignment
-#   gets the current player number of the player to be
-#   assigned. Note:
-#   this function does not transfer cards, only connections and scores
-#   are remapped. So, this is identical to exchanging seats in the
-#   table, but not exchanging any cards.
+# AssignPlayer(player name,player number) - Switch the named player and the player with the given number.
+#   If the player already has that number, do nothing.
+#   All objects remain in place and will take on new owners, as though the players get up and switch chairs.
 #
 def AssignPlayer
 {
@@ -757,8 +774,6 @@ def Log
     println(date()+" "+time()+" "+substr(ARG,5));
   else
     println(date()+" "+time()+" "+ARG);
-  if(HasFlag("private"))
-    write_file(SavePath()+"logs/"+tostr(port)+".log",(date()+" "+time()+" "+ARG,));
 }
 
 #
@@ -790,7 +805,7 @@ def MapCon2Plr
 }
 
 #
-# Send(player, command) - Send a command to client if still online.
+# Send(player or watcher number, command) - Send a command to client if still online.
 #
 def Send
 {
@@ -829,36 +844,26 @@ def SendAll
 #
 def SendOther
 {
-  for(i)(watchers)
-  {
-    if(i!=ARG[0])
+  for(i)(seq(0,watchers-1)-(ARG[0],))
       Send(i,ARG[1]);
-  }
 }
 
 #
-# SendTeam(command) - Send command to all teammates.
+# SendTeam(player,command) - Send command to player and all teammates.
 #
 def SendTeam
 {
-  for(i)(players)
-  {
-    if((i + player + 1) % 2)
-      Send(i,ARG);
-  }
+  for(i)(team[ARG[0]])
+    Send(i,ARG[1]);
 }
 
-
 #
-# SendOpp(command) - Send command to everyone other than team.
+# SendOpp(player,command) - Send command to everyone other than team.
 #
 def SendOpp
 {
-  for(i)(watchers)
-  {
-    if(i >= players_wanted || (i + player) % 2)
-      Send(i,ARG);
-  }
+  for(i)(seq(0,watchers-1)-team[ARG[0]])
+      Send(i,ARG[1]);
 }
 
 #
@@ -874,13 +879,11 @@ def ReceiveData
   data=toval(ARG[1]);
 
   if(event=="open")
-  {
     ReceiveOpen(data);
-  }
-  elseif(event=="close")
-  {
+  else if(event=="close")
     ReceiveClose(data);
-  }
+  else if(data==NULL)
+    0;
   else
   {
     connection=event;
@@ -1125,6 +1128,36 @@ def ResultAccepted
 }
 
 #
+# EquivalentResult(player name,result type) - Test a result for equivalence to the current declaration.
+#
+def EquivalentResult
+{
+  if(result==NULL)
+    return(0);
+  else if(count(ARG[0],result.owner))
+    return(result==ARG[1]);
+  else
+    return(OppositeResult(result) == ARG[1]);
+}
+
+#
+# OppositeResult(result type) - Return opposite of the given result.
+#
+def OppositeResult
+{
+  if(ARG == "win")
+    return("lose");
+  else if(ARG == "lose")
+    return("win");
+  else if(ARG == "draw")
+    return("draw");
+  else if(ARG == "undecided")
+    return("undecided");
+  else
+    return(NULL);
+}
+
+#
 # OnePlayerLeft() - Return 1 if all but one players has disconnected.
 #
 def OnePlayerLeft
@@ -1149,7 +1182,7 @@ def AllDecksLoaded
 }
 
 #
-# CreateDeck(owner,name,x,y) - Create new deck to the game.
+# CreateDeck(owner,name,x,y) - Create new deck pile. Return its object number.
 #
 def CreateDeck
 {
@@ -1161,6 +1194,7 @@ def CreateDeck
   c=CoordToSvr(ARG[2],ARG[3],ARG[0]);
   decks{next_object}[3]=c[0];
   decks{next_object}[4]=c[1];
+  return(next_object);
   next_object=next_object+1;
   c=pop();
 }
@@ -1196,7 +1230,7 @@ def CoordToPlr
 #
 def CoordToSvr
 {
-  ARG[0] = ARG[0] + ((ARG[2]/2) * screen.width / ((players_wanted + 1) / 2));
+  ARG[0] = ARG[0] + ((ARG[2] / 2) * screen.width / ((players_wanted + 1) / 2));
   if(ARG[2] % 2 == 1)
   {
     ARG[0] = screen.width - ARG[0];
@@ -1286,7 +1320,7 @@ def IsLoop
 }
 
 #
-# Image(card number,visibility,back ID?) - Return card number or it's background if not visible.
+# Image(card number,visibility,back ID?) - Return card number or its background if not visible.
 #
 def Image
 {
@@ -1361,17 +1395,30 @@ def FindDeck
   push(d);
   for(d)(decks)
   {
-    if(ARG[0]==d[1][1] && d[1][2]==ARG[1])
-      return(d[0]);
+    if(d[0])
+      if(ARG[0]==d[1][1] && d[1][2]==ARG[1])
+        return(d[0]);
   }
   d=pop();
+}
+
+#
+# PileAttr(pile type, flag) - Check if the given type of pile has the given attribute.
+#
+def PileAttr
+{
+  if(!has_entry(ARG[0],GAME_PILES))
+    return(0);
+  else if(count(ARG[1],GAME_PILES{ARG[0]}))
+    return(1);
+  else return(0);
 }
 
 # MESSAGE GENERATION
 # ==================
 
 #
-# MsgCards(list of cards, visibile?, options) - Convert a card list to text.
+# MsgCards(list of cards, visibility, options) - Convert a card list to text.
 #
 def MsgCards
 {
@@ -1471,7 +1518,6 @@ def DeckName
 #
 def ObjectName
 {
-#println("ObjectName: "+tostr(ARG));
   push(o);
   push(i);
 
@@ -1498,7 +1544,9 @@ def ObjectName
   }
   elseif(has_entry(o,table))
   {
-    if(table{o}[5])
+    if(table{o}[5] == 3)
+      return(name(toint(card_attr("flipid",table{o}[0]))));
+    else if(table{o}[5])
       return("a card");
     else if(name(table{o}[0])==NULL)
       return("unknown card (server too old)");
@@ -1591,7 +1639,7 @@ def MsgVerbObject
 }
 
 #
-# MsgVerbObjectTeam - as above, but only directed to teammates
+# MsgVerbObjectTeam(player,verb... - as above, but only directed to teammates of player
 #
 def MsgVerbObjectTeam
 {
@@ -1599,16 +1647,13 @@ def MsgVerbObjectTeam
   push(n);
 
   n="";
-  if(length(ARG)>=3)
-    n=ARG[2];
+  if(length(ARG)>=4)
+    n=ARG[3];
 
-  i=player % 2;
-  while(i < players_wanted)
-  {
-    Send(i,("Message",SubjectName(i)+" "+Verb(i,ARG[0])+" "+ObjectName(i,ARG[1])+n));
-    i=i+2;
-  }
-  Log(SubjectName(i)+" "+Verb(i,ARG[0])+" "+ObjectName(i,ARG[1])+n);
+  for(i)(team[ARG[0]])
+    Send(i,("Message",SubjectName(i)+" "+Verb(i,ARG[1])+" "+ObjectName(i,ARG[2])+n));
+  
+  Log(SubjectName(i)+" "+Verb(i,ARG[1])+" "+ObjectName(i,ARG[2])+n);
 
   n=pop();
   i=pop();
@@ -1647,7 +1692,6 @@ def MsgVerbObjectObject
 #
 def TargetName
 {
-#println("TargetName: "+tostr(ARG));
   if(ARG[2]=="deck.top")
     return("the top of "+ObjectName(ARG[0],ARG[3]));
   elseif(ARG[2]=="deck.bottom")
@@ -1697,18 +1741,30 @@ def Verb
 }
 
 #
-# MsgTransfer(src,cards to self,cards to others,dst,nmb. of cards,options) - Send transfer message.
+# MsgTransfer(src,card list,((vis1,player1)[,(vis2,player2)...]),dst,card count,options)
+# Send transfer message.
 #
 def MsgTransfer
 {
-#println("MsgTransfer:"+tostr(ARG));
   push(c);
+  push(mask);
+  push(vs);
   for(i)(watchers+1)
   {
-    if(i==player)
-      c=ARG[1];
-    else
-      c=ARG[2];
+    mask=0;
+    for(vs)(ARG[2])
+    {
+      if(vs[0] >= 4)
+        mask=1;
+      else if(vs[0] >= 2)
+      {
+        if(find(i,team[vs[1]]) != NULL)
+          mask=1;
+      } 
+      else if(vs[0] && i==vs[1])
+        mask=1;
+    }
+    c=MsgCards(ARG[1],mask,ARG[5]);
 
     if(ARG[3][0]=="play")
     {
@@ -1742,6 +1798,8 @@ def MsgTransfer
     else
       Send(i,("Message",m));
   }
+  vs=pop();
+  mask=pop();
   c=pop();
 }
 
@@ -1760,7 +1818,7 @@ def PlaySound
 # =======================
 
 #
-# Take.Active(vis.self,vis.opp,player,card index) - Take a card from active set.
+# Take.Active(visibility,owner,player,card index) - Take a card from active set.
 #
 def Take.Active
 {
@@ -1769,13 +1827,13 @@ def Take.Active
     return(active[ARG[2]][ARG[3]]);
     active[ARG[2]]=index(active[ARG[2]],seq(0,length(active[ARG[2]])-1)-(ARG[3],));
     if(length(active[ARG[2]])==0)
-      visible.opp[ARG[2]]{"active"}=0;
+      visible[ARG[2]]{"active"}=1;
     SendAll("DelActive",(ARG[2],ARG[3]));
   }
 }
 
 #
-# Take.Table(vis.self,vis.opp,object number) - Take a card from table.
+# Take.Table(visibility,owner,object number) - Take a card from table.
 #
 def Take.Table
 {
@@ -1801,7 +1859,7 @@ def Take.Table
 }
 
 #
-# Take.DeckTop(vis.self,vis.opp,object number) - Take a card from the top of the deck.
+# Take.DeckTop(visibility,owner,object number) - Take a card from the top of the deck.
 #
 def Take.DeckTop
 {
@@ -1810,11 +1868,32 @@ def Take.DeckTop
     return(last(decks{ARG[2]}[0]));
     decks{ARG[2]}[0]=head(decks{ARG[2]}[0]);
     SendAll("DelDeckTop",ARG[2]);
+
+# as this function is called, the 'i' and 'n' variables track how many cards are being transferred
+# so by specifically leaving them intact, we can avoid pointless operations on a reveal_1 pile
+    if(i+1==n && length(decks{ARG[2]}[0]) && PileAttr(decks{ARG[2]}[2],"reveal_1") && ARG[0])
+    {
+      if(ARG[0] >= 4)
+      {
+        SendAll("DelDeckTop",ARG[2]);
+        SendAll("PutDeck",(ARG[2],last(decks{ARG[2]}[0])));
+      }
+      else if(ARG[0] >= 2)
+      {
+        SendTeam(ARG[1],("DelDeckTop",ARG[2]));
+        SendTeam(ARG[1],("PutDeck",(ARG[2],last(decks{ARG[2]}[0]))));
+      }
+      else
+      {
+        Send(ARG[1],("DelDeckTop",ARG[2]));
+        Send(ARG[1],("PutDeck",(ARG[2],last(decks{ARG[2]}[0]))));
+      }
+    }
   }
 }
 
 #
-# Take.DeckBottom(vis.self,vis.opp,object number) - Take a card from the top of the deck.
+# Take.DeckBottom(visibility,owner,object number) - Take a card from the bottom of the deck.
 #
 def Take.DeckBottom
 {
@@ -1828,11 +1907,12 @@ def Take.DeckBottom
 
 
 #
-# Take.SearchDeck(vis.self,vis.opp,object number,card number(s),iteration) - Search a card from the deck.
+# Take.SearchDeck(visibility,owner,object number,card number(s),iteration) - Search a card from the deck.
 #
 def Take.SearchDeck
 {
-  push(i);
+  push(p);
+  push(l);
   push(c);
   if(has_entry(ARG[2],decks))
   {
@@ -1846,20 +1926,46 @@ def Take.SearchDeck
     else
       c=ARG[3];
 
-    i=find(c,decks{ARG[2]}[0]);
-    if(i!=NULL)
+    p=find(c,decks{ARG[2]}[0]);
+    l=length(decks{ARG[2]}[0]);
+    if(p!=NULL)
     {
-      decks{ARG[2]}[0]=index(decks{ARG[2]}[0],seq(0,length(decks{ARG[2]}[0])-1)-(i,));
-      SendAll("DelDeck",(ARG[2],i));
+      push(v);
+      v=visible[ARG[1]]{decks{ARG[2]}[2]};
+      
+      decks{ARG[2]}[0]=index(decks{ARG[2]}[0],seq(0,l-1)-(p,));
+      SendAll("DelDeck",(ARG[2],p));
       return(c);
+# as this function is called, the 'i' and 'n' variables track how many cards are being transferred
+# so by specifically leaving them intact, we can avoid pointless operations on a reveal_1 pile
+      if(i+1==n && l>1 && PileAttr(decks{ARG[2]}[2],"reveal_1") && v)
+      {
+        if(v>=4)
+        {
+          SendAll("DelDeckTop",ARG[2]);
+          SendAll("PutDeck",(ARG[2],last(decks{ARG[2]}[0])));
+        }
+        else if(v>=2)
+        {
+          SendTeam(ARG[1],("DelDeckTop",ARG[2]));
+          SendTeam(ARG[1],("PutDeck",(ARG[2],last(decks{ARG[2]}[0]))));
+        }
+        else
+        {
+          Send(ARG[1],("DelDeckTop",ARG[2]));
+          Send(ARG[1],("PutDeck",(ARG[2],last(decks{ARG[2]}[0]))));
+        }
+      }
+      v=pop();
     }
   }
   c=pop();
-  i=pop();
+  l=pop();
+  p=pop();
 }
 
 #
-# Take.Hand(vis.self,vis.opp,owner of hand,hand card index) - Take a card from the hand.
+# Take.Hand(visibility,owner,player,hand card index) - Take a card from the hand.
 #
 def Take.Hand
 {
@@ -1872,26 +1978,51 @@ def Take.Hand
 }
 
 #
-# Take.Deck(vis.self,vis.opp,object number,deck card index) - Take a card from any position from the deck.
+# Take.Deck(visibility,owner,object number,deck card index) - Take a card from any position from the deck.
 #
 def Take.Deck
 {
-  push(i);
+  push(p);
+  push(l);
   if(has_entry(ARG[2],decks) && ARG[3]!=NULL)
   {
-    i=length(decks{ARG[2]}[0])-1-ARG[3];
-    if(i >= 0 && i < length(decks{ARG[2]}[0]))
+    l=length(decks{ARG[2]}[0]);
+    p=l-1-ARG[3];
+    if(p >= 0 && p < l)
     {
-      return(decks{ARG[2]}[0][i]);
-      decks{ARG[2]}[0]=index(decks{ARG[2]}[0],seq(0,length(decks{ARG[2]}[0])-1)-(i,));
-      SendAll("DelDeck",(ARG[2],i));
+      push(v);
+      v=visible[ARG[1]]{decks{ARG[2]}[2]};
+      
+      return(decks{ARG[2]}[0][p]);
+      decks{ARG[2]}[0]=index(decks{ARG[2]}[0],seq(0,l-1)-(p,));
+      SendAll("DelDeck",(ARG[2],p));
+      if(p && p==l-1 && PileAttr(decks{ARG[2]}[2],"reveal_1") && v)
+      {
+        if(v>=4)
+        {
+          SendAll("DelDeckTop",ARG[2]);
+          SendAll("PutDeck",(ARG[2],last(decks{ARG[2]}[0])));
+        }
+        else if(v>=2)
+        {
+          SendTeam(ARG[1],("DelDeckTop",ARG[2]));
+          SendTeam(ARG[1],("PutDeck",(ARG[2],last(decks{ARG[2]}[0]))));
+        }
+        else
+        {
+          Send(ARG[1],("DelDeckTop",ARG[2]));
+          Send(ARG[1],("PutDeck",(ARG[2],last(decks{ARG[2]}[0]))));
+        }
+      }
+      v=pop();
     }
   }
-  i=pop();
+  l=pop();
+  p=pop();
 }
 
 #
-# Take.OutOfPlay(vis.self,vis.opp,card number) - Take a card from out of play.
+# Take.OutOfPlay(visibility,owner,card number) - Take a card from out of play.
 #
 def Take.OutOfPlay
 {
@@ -1905,35 +2036,53 @@ def Take.OutOfPlay
 }
 
 #
-# Put.Hand(card number,vis.self,vis.opp,owner of hand) - Put a card to the hand.
+# Put.Hand(card number,visibility,owner,player) - Put a card to the hand.
 #
 def Put.Hand
 {
+  push(v);
   hand[ARG[3]]=hand[ARG[3]]+(ARG[0],);
-  if(share.hand[ARG[3]])
+  v=visible[ARG[3]]{"hand"};
+  if(v >= 4)
+    SendAll("PutHand",(ARG[3],ARG[0]));
+  else if(v >= 2)
   {
-    SendTeam("PutHand",(ARG[3],Image(ARG[0],ARG[1])));
-    SendOpp("PutHand",(ARG[3],Image(ARG[0],ARG[2])));
+    SendTeam(ARG[3],("PutHand",(ARG[3],ARG[0])));
+    SendOpp(ARG[3],("PutHand",(ARG[3],card_back(ARG[0]))));
   }
   else
   {
-    Send(player,("PutHand",(ARG[3],Image(ARG[0],ARG[1]))));
-    SendOther(player,("PutHand",(ARG[3],Image(ARG[0],ARG[2]))));
+    Send(ARG[3],("PutHand",(ARG[3],ARG[0])));
+    SendOther(ARG[3],("PutHand",(ARG[3],card_back(ARG[0]))));
   }
+  v=pop();
 }
 
 #
-# Put.Active(card number,vis.self,vis.opp,player) - Put a card to active set.
+# Put.Active(card number,visibility,owner,player) - Put a card to active set.
 #
 def Put.Active
 {
+  push(v);
   active[ARG[3]]=active[ARG[3]]+(ARG[0],);
-  Send(player,("PutActive",(ARG[3],Image(ARG[0],ARG[1]))));
-  SendOther(player,("PutActive",(ARG[3],Image(ARG[0],ARG[2]))));
+  v=visible[ARG[3]]{"active"};
+  if(v >= 4)
+    SendAll("PutActive",(ARG[3],ARG[0]));
+  else if(v >= 2)
+  {
+    SendTeam(ARG[3],("PutActive",(ARG[3],ARG[0])));
+    SendOpp(ARG[3],("PutActive",(ARG[3],card_back(ARG[0]))));
+  }
+  else
+  {
+    Send(ARG[3],("PutActive",(ARG[3],ARG[0])));
+    SendOther(ARG[3],("PutActive",(ARG[3],card_back(ARG[0]))));
+  }
+  v=pop();
 }
 
 #
-# Put.Table(card number,vis.self,vis.opp,x,y,orientation,face down?) - Put a card to the table.
+# Put.Table(card number,visibility,owner,x,y,orientation,face down?) - Put a card to the table.
 #
 def Put.Table
 {
@@ -1943,47 +2092,51 @@ def Put.Table
   push(o);
   push(b);
   i=0;
-  d=CoordToSvr(ARG[3],ARG[4],player);
-  o=OriToSvr(ARG[5],player);
+  d=CoordToSvr(ARG[3],ARG[4],ARG[2]);
+  o=OriToSvr(ARG[5],ARG[2]);
+  
   b=card_back(ARG[0]);
 # If card has a back side image and is coming from the table instead of anywhere else,
 # show that image in place of the card back
-  if (ARG[6] && (src[0]=="table" || stack.src[player]=="table") && card_attr("flipid",ARG[0]) != NULL)
+  if (ARG[6] && (src[0]=="table" || stack.src[ARG[2]]=="table") && card_attr("flipid",ARG[0]) != NULL)
   {
     b=toint(card_attr("flipid",ARG[0]));
-    theoretical_visibility_self=0;
-    theoretical_visibility_others=0;
+    ARG[1]=0;
+# Use the special value "3" to mark face-down cards where incoming watchers
+# should receive the flipid version during SendFullGameStatus
+    ARG[6]=3;
   }
-  table{next_object}=(ARG[0],player,d[0],d[1],o,ARG[6],(,),0,(,));
+  table{next_object}=(ARG[0],ARG[2],d[0],d[1],o,ARG[6],(,),0,(,),ARG[1]);
   table.stack_order=table.stack_order+(next_object,);
+  
   while(i < players)
   {
     e=CoordToPlr(d[0],d[1],i);
-    if(i==player)
-      Send(i,("PutTable",(next_object,e[0],e[1],OriToPlr(o,i),Image(ARG[0],ARG[1] * (!ARG[6]),b),player,Image(ARG[0],theoretical_visibility_self,b))));
+    if(i==ARG[2])
+      Send(i,("PutTable",(next_object,e[0],e[1],OriToPlr(o,i),Image(ARG[0],ARG[1] && !ARG[6],b),i,Image(ARG[0],ARG[1],b))));
     else
-      Send(i,("PutTable",(next_object,e[0],e[1],OriToPlr(o,i),Image(ARG[0],ARG[2] * (!ARG[6]),b),player,Image(ARG[0],theoretical_visibility_others,b))));
+      Send(i,("PutTable",(next_object,e[0],e[1],OriToPlr(o,i),Image(ARG[0],ARG[1] >= 4 && !ARG[6],b),ARG[2],Image(ARG[0],ARG[1] >= 4,b))));
     i=i+1;
   }
   while(i < watchers)
   {
-    Send(i,("PutTable",(next_object,d[0],d[1],o,Image(ARG[0],ARG[2] * (!ARG[6]),b),player,Image(ARG[0],theoretical_visibility_others,b))));
+    Send(i,("PutTable",(next_object,d[0],d[1],o,Image(ARG[0],ARG[1] >= 4 && !ARG[6],b),ARG[2],Image(ARG[0],ARG[1] >= 4,b))));
     i=i+1;
   }
   
 # If card was moved from the table, put its counters back
-  if(src[0]=="table" || stack.src[player]=="table")
+  if(src[0]=="table" || stack.src[ARG[2]]=="table")
   {
-    markers{next_object} = counters.src[player];
+    markers{next_object} = counters.src[ARG[2]];
     for(o)(markers{next_object})
       SendAll("AddMarker",(next_object,o[0],o[1]));
-    counters.src[player]=(,);
+    counters.src[ARG[2]]=(,);
   }
   
   next_object=next_object+1;
   
   if(isfunction("PutTableHook"))
-    call("PutTableHook",ARG);
+    PutTableHook(ARG);
 
   b=pop();
   o=pop();
@@ -1993,40 +2146,61 @@ def Put.Table
 }
 
 #
-# Put.DeckTop(card number,vis.self,vis.opp,deck object number) - Put a card to top of the deck.
+# Put.DeckTop(card number,visibility,owner,deck object number) - Put a card to top of the deck.
 #
 def Put.DeckTop
 {
   decks{ARG[3]}[0]=decks{ARG[3]}[0]+(ARG[0],);
-  if(count(decks{ARG[3]}[2],SELF_KNOWN_PILES))
-    Send(player,("PutDeck",(ARG[3],Image(ARG[0],ARG[1]),ARG[0])));
+  
+  if(ARG[1] >= 4)
+    SendAll("PutDeck",(ARG[3],ARG[0]));
+  else if(ARG[1] >= 2)
+  {
+    SendTeam(ARG[2],("PutDeck",(ARG[3],ARG[0])));
+    SendOpp(ARG[2],("PutDeck",(ARG[3],card_back(ARG[0]))));
+  }
+  else if(ARG[1])
+  {
+    Send(ARG[2],("PutDeck",(ARG[3],ARG[0])));
+    SendOther(ARG[2],("PutDeck",(ARG[3],card_back(ARG[0]))));
+  }
   else
-    Send(player,("PutDeck",(ARG[3],Image(ARG[0],ARG[1]))));
-  SendOther(player,("PutDeck",(ARG[3],Image(ARG[0],ARG[2]))));
+    SendAll("PutDeck",(ARG[3],card_back(ARG[0])));
 }
 
 #
-# Put.DeckBottom(card number,vis.self,vis.opp,deck object number) - Put a card to bottom of the deck.
+# Put.DeckBottom(card number,visibility,owner,deck object number) - Put a card to bottom of the deck.
 #
 def Put.DeckBottom
 {
   decks{ARG[3]}[0]=(ARG[0],)+decks{ARG[3]}[0];
-  if(count(decks{ARG[3]}[2],SELF_KNOWN_PILES))
-    Send(player,("PutDeckBottom",(ARG[3],Image(ARG[0],ARG[1]),ARG[0])));
+  if(PileAttr(decks{ARG[3]}[2],"reveal_1") && length(decks{ARG[3]}[0])>1)
+    SendAll("PutDeckBottom",(ARG[3],card_back(ARG[0])));
+  else if(ARG[1] >= 4)
+    SendAll("PutDeckBottom",(ARG[3],ARG[0]));
+  else if(ARG[1] >= 2)
+  {
+    SendTeam(ARG[2],("PutDeckBottom",(ARG[3],ARG[0])));
+    SendOpp(ARG[2],("PutDeckBottom",(ARG[3],card_back(ARG[0]))));
+  }
+  else if(ARG[1])
+  {
+    Send(ARG[2],("PutDeckBottom",(ARG[3],ARG[0])));
+    SendOther(ARG[2],("PutDeckBottom",(ARG[3],card_back(ARG[0]))));
+  }
   else
-    Send(player,("PutDeckBottom",(ARG[3],Image(ARG[0],ARG[1]))));
-  SendOther(player,("PutDeckBottom",(ARG[3],Image(ARG[0],ARG[2]))));
+    SendAll("PutDeckBottom",(ARG[3],card_back(ARG[0])));
 }
 
 #
-# Put.OutOfPlay(card number,vis.self,vis.opp) - Put a card to the out of play.
+# Put.OutOfPlay(card number,visibility,owner) - Put a card to the out of play.
 #
 def Put.OutOfPlay
 {
 }
 
 #
-# Play.Card.Stage1(card number,vis.self,vis.opp,face down?) - First
+# Play.Card.Stage1(card number,visibility,owner,face down?) - First
 #   stage of the playing a card, i.e. after announcement the card is moved
 #   from the source to the play.stack.
 #
@@ -2035,10 +2209,11 @@ def Play.Card.Stage1
   Send(player,("Play",(Image(ARG[0],ARG[1]),ARG[3])));
   play.stack[player]=play.stack[player]+(ARG[0],);
   stack.src[player]=src[0];
+  last_vis[player]=ARG[1];
 }
 
 #
-# Play.Card.Stage2(vis.self,vis.opp,card number,face down?) - Second
+# Play.Card.Stage2(visibility,owner,card number,face down?) - Second
 #   stage of the playing a card, i.e remove the card from play.stack.
 #
 def Play.Card.Stage2
@@ -2073,7 +2248,7 @@ def Play.Card.Stage2
 #   - ("deck.bottom",deck object number) - to the bottom of a card pile
 #   - ("deck.top",deck object number) - to the top of a card pile
 #   - ("hand",player number) - to hand
-#   - ("out.of.play",) - remove from play
+#   - ("out.of.play",) - remove from the game
 #   - ("play",face down?) - play a card by taking it from source
 #   - ("table",x,y,orientation,face down?) - put to the table
 #   Option is a dictionary containing possible following entries:
@@ -2085,6 +2260,8 @@ def Transfer
   push(i);
   push(cards);
   push(original_cards);
+  push(srcname);
+  push(dstname);
   push(vissrc);
   push(visdst);
   push(n);
@@ -2097,11 +2274,11 @@ def Transfer
     println("Transfer: "+tostr(ARG));
 
   if(length(ARG) < 3 || length(ARG) > 4)
-    Reply("{red}Server: Invalid transfer request.");
+    Reply("{red}Invalid transfer request (wrong number of arguments).");
   else if(length(ARG[1]) < 1)
-    Reply("{red}Server: Invalid transfer source.");
+    Reply("{red}Invalid transfer source.");
   else if(length(ARG[2]) < 1)
-    Reply("{red}Server: Invalid transfer target.");
+    Reply("{red}Invalid transfer target.");
   else
   {
 # Get transfer options.
@@ -2117,104 +2294,116 @@ def Transfer
         }
       }
 
-# Initialize number of transfers, source, destionation and cards transfered.
+# Initialize number of transfers, source, destination and cards transferred.
 
       n=toint(ARG[0]);
       src=ARG[1];
       dst=ARG[2];
 
-# Alert oppontent.
+# Alert opponent.
 
       if(has_entry(src[1],decks) && src[0]=="deck.search")
         MsgVerbObject("browse",src[1]);
+        
+# TransferHook might change a destination as one of its use cases, so it plugs in here
+      if(isfunction("TransferHook"))
+        TransferHook(ARG);
 
-# Compute visibility source names.
+      srcname=src[0];
+      dstname=dst[0];
+      owner_src = player;
+      owner_dst = player;
 
-      vissrc=src[0];
-      visdst=dst[0];
+# Compute source names.
 
-      if(vissrc=="deck" || vissrc=="deck.top" || vissrc=="deck.bottom" || vissrc=="deck.search")
+      if(srcname=="deck" || srcname=="deck.top" || srcname=="deck.bottom" || srcname=="deck.search")
       {
         if(has_entry(src[1],decks))
-          vissrc=decks{src[1]}[2];
+        {
+          if(length(decks{src[1]}[0]) > 0)
+          {
+            owner_src = decks{src[1]}[1];
+            srcname=decks{src[1]}[2];
+          }
+          else
+            srcname=NULL;
+        }
         else
-          vissrc=NULL;
+          srcname=NULL;
       }
-      else if(vissrc=="table")
+      else if(srcname=="table")
       {
         if(!has_entry(src[1],table))
-          vissrc=NULL;
+          srcname=NULL;
       }
+      else if(srcname=="active")
+      {
+        owner_src = src[1];
+        if(length(active[src[1]]) <= 0)
+          srcname=NULL;
+      }
+      else if(srcname=="hand")
+      {
+        owner_src = src[1];
+        if(length(hand[src[1]]) <= 0)
+          srcname=NULL;
+      }
+      
+# Compute destination names.
 
-# Compute visibility destination names.
-
-      if(visdst=="deck" || visdst=="deck.top" || visdst=="deck.bottom")
+      if(dstname=="deck" || dstname=="deck.top" || dstname=="deck.bottom")
       {
         if(has_entry(dst[1],decks))
-          visdst=decks{dst[1]}[2];
+        {
+          dstname=decks{dst[1]}[2];
+          owner_dst = decks{dst[1]}[1];
+        }
         else
-          visdst=NULL;
+          dstname=NULL;
       }
+      else if(dstname=="active" || dstname=="hand")
+        owner_dst = dst[1];
 
 # Compute visibility and knowledge of card identity.
 
-      if(vissrc != NULL && visdst != NULL) 
-      {  
-        theoretical_visibility_self=visible.me[player]{vissrc} || visible.me[player]{visdst};
-        theoretical_visibility_others=visible.opp[player]{vissrc} || visible.opp[player]{visdst};
-		real_visibility_self=visible.me[player]{visdst};
-		real_visibility_others=visible.opp[player]{visdst};
+      if(srcname != NULL && dstname != NULL) 
+      {
+        vissrc = visible[owner_src]{srcname};
+        visdst = visible[owner_dst]{dstname};
 
         if(src[0]=="play")
         {
           if(src[2])
           {
-            theoretical_visibility_self=(card_back(src[1]) != src[1]);
-            theoretical_visibility_others=0;
-            real_visibility_others=0;
-            real_visibility_self=0;
+            visdst = last_vis[player];
+            vissrc = min(visdst,card_back(src[1]) == src[1]);
           }
         }
         else if(src[0]=="table")
         {
-          if(table{src[1]}[5])
-          {
-            theoretical_visibility_others=visible.opp[player]{visdst};
-            theoretical_visibility_self=visible.me[player]{visdst};
-            real_visibility_others=visible.opp[player]{visdst};
-            real_visibility_self=visible.me[player]{visdst};
-          }
+          if(table{src[1]}==NULL)
+            srcname = NULL;
+          else if(table{src[1]}[5]==1)
+            vissrc = table{src[1]}[9];
         }
-        else if(src[0]=="deck" || src[0]=="deck.top" || src[0]=="deck.search")
+        else if(src[0]=="deck" || src[0]=="deck.bottom" || src[0]=="deck.search")
         {
-          if(isvar("SELF_KNOWN_PILES"))
-          {
-            if(count(decks{src[1]}[2],SELF_KNOWN_PILES))
-              theoretical_visibility_self=1;
-          }
+          if(PileAttr(srcname,"reveal_1"))
+            vissrc=min(1,vissrc);
         }
-
+        else if(src[0]=="out.of.play")
+          vissrc = visdst;
         if(dst[0]=="play")
         {
           if(dst[1])
           {
-            theoretical_visibility_others=0;
-            real_visibility_others=0;
-            if(visible.me[player]{vissrc}==0)
-            {
-              theoretical_visibility_self=0;
-              real_visibility_self=0;
-            }
-
-            if((src[0]=="deck" || src[0]=="deck.top" || src[0]=="deck.search") && isvar("SELF_KNOWN_PILES"))
-            {
-              if(count(decks{src[1]}[2],SELF_KNOWN_PILES))
-              {
-                theoretical_visibility_self=1;
-                real_visibility_self=1;
-              }
-            }
+            if(player != owner_src && vissrc < 4)
+              visdst = 0;
+            else
+              visdst = vissrc;
           }
+          else
+            visdst = 7;
         }
       }
 
@@ -2222,13 +2411,13 @@ def Transfer
 
       cards=(,);
 
-      if(vissrc != NULL && visdst != NULL) 
+      if(srcname != NULL && dstname != NULL) 
       {  
         for(i)(n)
         {
           if(options.debug)
-            println("  "+tostr(function.src{first(src)}+"("+((real_visibility_self,real_visibility_others)+tail(src))+")"));
-          c=call(function.src{first(src)},((real_visibility_self,real_visibility_others)+tail(src)+(i,)));
+            println("  "+tostr(function.src{first(src)}+"("+((vissrc,owner_src)+tail(src))+")"));
+          c=call(function.src{first(src)},((vissrc,owner_src)+tail(src)+(i,)));
 
           if(c != NULL)
             cards=cards+(c,);
@@ -2251,14 +2440,14 @@ def Transfer
       for(c)(cards)
       {
         if(options.debug)
-          println("  "+tostr(function.dst{first(dst)}+"("+((c,)+(real_visibility_self,real_visibility_others)+tail(dst))+")"));
-        call(function.dst{first(dst)},((c,)+(real_visibility_self,real_visibility_others)+tail(dst)+(i,)));
+          println("  "+tostr(function.dst{first(dst)}+"("+((c,)+(visdst,owner_dst)+tail(dst))+")"));
+        call(function.dst{first(dst)},((c,)+(visdst,owner_dst)+tail(dst)+(i,)));
       }
 
 # Show message.
 
       if(length(cards))
-        MsgTransfer(src,MsgCards(original_cards,theoretical_visibility_self,opt),MsgCards(original_cards,theoretical_visibility_others,opt),dst,ARG[0],opt);
+        MsgTransfer(src,original_cards,((vissrc,owner_src),(visdst,owner_dst)),dst,ARG[0],opt);
 
      transfers=transfers+1;
   }
@@ -2266,7 +2455,7 @@ def Transfer
   if(result!=NULL)
   {
     result=NULL;
-    result.declared_by=NULL;
+    result.owner=(,);
     result.subtype=NULL;
     SendAll("Message","{green}Declared result canceled.");
   }
@@ -2278,6 +2467,8 @@ def Transfer
   n=pop();
   visdst=pop();
   vissrc=pop();
+  dstname=pop();
+  srcname=pop();
   original_cards=pop();
   cards=pop();
   i=pop();
@@ -2346,8 +2537,10 @@ def UploadDeck
            decks{o[0]}[0]=reverse(D{o[1][2]});
          for(p)(watchers)
          {
-           if(p==player && count(decks{o[0]}[2],SELF_KNOWN_PILES))
-             Send(p,("PutDeck",(o[0],card_back(decks{o[0]}[0]),decks{o[0]}[0])));
+           if(PileAttr(decks{o[0]}[2],"public"))
+             Send(p,("PutDeck",(o[0],decks{o[0]}[0])));
+           else if(p==player && PileAttr(decks{o[0]}[2],"self_known"))
+             Send(p,("PutDeck",(o[0],decks{o[0]}[0])));
            else
              Send(p,("PutDeck",(o[0],card_back(decks{o[0]}[0]))));
          }
@@ -2387,7 +2580,7 @@ def UploadDeck
      deck_status{d[1][0]}=(MakeLegalityCheck(D,0),) + deck_status{d[1][0]};
 
      if(isfunction("UploadDeckHook"))
-       call("UploadDeckHook",(player,ARG));
+       UploadDeckHook(player,D);
   }
 
   t=pop();
@@ -2408,19 +2601,31 @@ def AcceptableResult
 #
 def Say
 {
-  if(ARG != "" && ARG!=NULL)
+  push(s);
+  s=0;
+  if(isfunction("SayHook"))
+    s=SayHook(ARG);
+  
+  if(ARG != "" && ARG!=NULL && !s)
   {
-    if (ARG=="{magenta}End of my turn" && HasFlag("team"))
+    if(ARG=="{magenta}End of my turn")
     {
-      if ((player + 1) % 2 == end.team)
-        end.turn = copy(0,players_wanted);
-      end.turn[player] = 1;
-      end.team = player % 2;
-        
-      SendAll("Message",player.name{player}+": {magenta}End of my turn (" + tostr(sum(end.turn)) + "/" + tostr(players_wanted/2) + ")");
+      if(HasFlag("team"))
+      {
+        if(end.player<0)
+          end.turn = copy(0,players_wanted);
+        else if(find(player,team[end.player]) == NULL)
+          end.turn = copy(0,players_wanted);
+        end.turn[player] = 1;
+        end.player = player;
+      }
+      if(HasFlag("team") && length(team[player])>1)
+        SendAll("Message","{yellow}"+player.name{player}+": {magenta}End of my turn (" + tostr(sum(end.turn)) + "/" + length(team[player]) + ")");
+      else
+        SendAll("Message","{yellow}"+player.name{player}+": "+ARG);
     }
     else if(HasFlag("team") && teamspeak[player]) 
-      SendTeam("Message","{orange}"+player.name{player}+" (to team): "+ARG);
+      SendTeam(player,("Message","{gold}"+player.name{player}+" (to team): "+ARG));
     else
       SendAll("Message","{yellow}"+player.name{player}+": "+ARG);
     if(waitfor==0)
@@ -2440,7 +2645,29 @@ def Say
     }
     else if (waitfor > 0)
     {
+      s = waitfor;
       ARG = lc(ARG);
+      if(!(player % 2) && player < waitfor)
+      {
+        push(p);
+        for(p)(players)
+        {
+          if(lc(player.name{p})==ARG && (p % 2 || p >= waitfor))
+          {
+            AssignPlayer(player.name{p},waitfor);
+            waitfor = waitfor + 2;
+            p = players;
+            if(waitfor >= players_wanted)
+            {
+              waitfor = -1;
+              StartGame();
+            }
+            else
+              SendAll("Message","{green}The team still needs another member. Again, type {yellow}me{green} to volunteer.");
+          }
+        }
+        p=pop();
+      }
       if((ARG == "me" || ARG == "i") && (player % 2 || player >= waitfor))
       {
         AssignPlayer(player.name{player},waitfor);
@@ -2453,7 +2680,7 @@ def Say
         else
           SendAll("Message","{green}The team still needs another member. Again, type {yellow}me{green} to volunteer.");
       }
-      else if (ARG == "random" || ARG == "rand" || ARG == "r")
+      else if(s == waitfor && (ARG == "random" || ARG == "rand" || ARG == "r"))
       {
 #       players have already been shuffled to get to this point
         waitfor = -1;
@@ -2461,6 +2688,7 @@ def Say
       }
     }
   }
+  s=pop();
 }
 
 #
@@ -2487,40 +2715,43 @@ def WatcherSay
 #
 # DeclareResult(win|lose|draw|undecided,optional sub type) - Declare the result of the game.
 #
-  def DeclareResult
+def DeclareResult
+{
+# declaring a loss after someone else's declared win (etc.) should count as acceptance, not a new result
+  if(EquivalentResult(player.name{player},ARG[0]))
+    AcceptResult();
+  else if(count(ARG[0],AcceptableResult()) || ARG[0]=="undecided")
   {
-    if(count(ARG[0],AcceptableResult()) || ARG[0]=="undecided")
-    {
-      result=ARG[0];
-      result.subtype=ARG[1];
-      result.declared_by=player;
-      result.accepted=copy(0,players_wanted);
-      result.accepted[player]=1;
-      SendAll("Message","{green}"+player.name{player}+" declares game result: "+result+" "+result.subtype);
-    }
-    else
-       Send(player,("Message","{red}Only acceptable results are: "+AcceptableResult()+("undecided",)));
-
+    result=ARG[0];
+    result.subtype=ARG[1];
+    result.owner=(player.name{player},);
+    result.accepted=copy(0,players_wanted);
+    result.accepted[player]=1;
+    SendAll("Message","{green}"+player.name{player}+" declares game result: "+result+" "+result.subtype);
+    
     if(ResultAccepted())
       EndGame();
   }
+  else
+     Send(player,("Message","{red}Only acceptable results are: "+AcceptableResult()+("undecided",)));
+}
 
 #
 #  AcceptResult() - Give acceptance to the currently declared result.
 #
-  def AcceptResult
-  {   
-    if(result != NULL)
-    {
-      result.accepted[player]=1;
-      SendAll("Message","{green}"+player.name{player}+" accepts game result declared by "+player.name{result.declared_by});
-    }
-    else
-      Send(player,("Message","{red}Nobody has declared game result yet"));
-
-    if(ResultAccepted())
-      EndGame();
+def AcceptResult
+{   
+  if(result != NULL)
+  {
+    result.accepted[player]=1;
+    SendAll("Message","{green}"+player.name{player}+" accepts declared result");
   }
+  else
+    Send(player,("Message","{red}Nobody has declared game result yet"));
+
+  if(ResultAccepted())
+    EndGame();
+}
 
 #
 #  ShuffleDeck(object number) - Shuffle deck or hand.
@@ -2529,76 +2760,79 @@ def ShuffleDeck
 {
   if(has_entry(ARG,decks))
   {
-    push(v1);
-    push(v2);
-    if(count(decks{ARG}[2],SELF_KNOWN_PILES))
-    {
-      v1=0;
-      v2=0;
-      for(p)(players)
-      {
-        visible.me[p]{decks{ARG}[2]}=0;
-        visible.opp[p]{decks{ARG}[2]}=0;
-      }
-    }
-    else if(decks{ARG}[1]==player)
-    {
-      v1=visible.me[player]{decks{ARG}[2]};
-      v2=visible.opp[player]{decks{ARG}[2]};
-    }
-    else
-    {
-      v1=visible.opp[player]{decks{ARG}[2]};
-      v2=visible.me[player]{decks{ARG}[2]};
-    }
+    push(v);    
+    v=visible[decks{ARG}[1]]{decks{ARG}[2]};
 
     SendAll("PlaySound",("shuffle"));
 
     MsgVerbObject("shuffle",ARG);
     decks{ARG}[0]=shuffle(decks{ARG}[0]);
 
-    if(count(decks{ARG}[2],SELF_KNOWN_PILES))
+    if(v>=4)
     {
-      Send(decks{ARG}[1],("SetDeck",(ARG,card_back(decks{ARG}[0]),decks{ARG}[0])));
-      SendOther(decks{ARG}[1],("SetDeck",(ARG,card_back(decks{ARG}[0]))));
+      if(PileAttr(decks{ARG}[2],"reveal_1"))
+        SendAll("SetDeck",(ARG,card_back(head(decks{ARG}[0]))+(last(decks{ARG}[0]),)));
+      else
+        SendAll("SetDeck",(ARG,decks{ARG}[0]));
+    }
+    else if(v>=2)
+    {
+      if(PileAttr(decks{ARG}[2],"reveal_1"))
+        SendTeam(player,("SetDeck",(ARG,card_back(head(decks{ARG}[0]))+(last(decks{ARG}[0]),))));
+      else
+        SendTeam(player,("SetDeck",(ARG,decks{ARG}[0])));
+        
+      SendOpp(player,("SetDeck",(ARG,card_back(decks{ARG}[0]))));
+    }
+    else if(v)
+    {
+      if(PileAttr(decks{ARG}[2],"reveal_1"))
+        Send(player,("SetDeck",(ARG,card_back(head(decks{ARG}[0]))+(last(decks{ARG}[0]),))));
+      else
+        Send(player,("SetDeck",(ARG,decks{ARG}[0])));
+        
+      SendOther(player,("SetDeck",(ARG,card_back(decks{ARG}[0]))));
     }
     else
-    {
-      if(v1)
-        Send(player,("SetDeck",(ARG,decks{ARG}[0])));
-      else
-        Send(player,("SetDeck",(ARG,card_back(decks{ARG}[0]))));
-   
-      if(v2)
-        SendOther(player,("SetDeck",(ARG,decks{ARG}[0])));
-      else
-        SendOther(player,("SetDeck",(ARG,card_back(decks{ARG}[0]))));
-    }
+      SendAll("SetDeck",(ARG,card_back(decks{ARG}[0])));
+      
 
-    v2=pop();
-    v1=pop();
+    v=pop();
   }
   else if(count(ARG,hand.object))
   {
     push(o);
+    push(v);
     o=Owner(ARG);
     if(length(hand[o]))
     {
       MsgVerbObject("shuffle",ARG);
       hand[o]=shuffle(hand[o]);
-      for(i)(length(hand[o]))
-        SendAll("DelHand",(o,0));
-      for(i)(hand[o])
+      
+      v=visible[o]{"hand"};
+      
+      if(v>=4)
       {
-        Send(o,("PutHand",(o,Image(i,visible.me[o]{"hand"}))));
-        SendOther(o,("PutHand",(o,Image(i,visible.opp[o]{"hand"}))));
+        SendAll("SetHand",(o,hand[o]));
+      }
+      else if(v>=2)
+      {
+        SendTeam(o,("SetHand",(player,hand[player])));
+        SendOpp(o,("SetHand",(player,card_back(hand[player]))));
+      }
+      else
+      {
+        Send(o,("SetHand",(o,hand[o])));
+        SendOther(o,("SetHand",(o,card_back(hand[o]))));
       }
     }
+    v=pop();
     o=pop();
   }
   else if(count(ARG,active.object))
   {
     push(o);
+    push(v);
     o=Owner(ARG);
     if(length(active[o]))
     {
@@ -2606,12 +2840,32 @@ def ShuffleDeck
       active[o]=shuffle(active[o]);
       for(i)(length(active[o]))
         SendAll("DelActive",(o,0));
-      for(i)(active[o])
+      
+      v=visible[o]{"active"};
+      
+      if(v>=4)
       {
-        Send(o,("PutActive",(o,Image(i,visible.me[o]{"hand"}))));
-        SendOther(o,("PutActive",(o,Image(i,visible.opp[o]{"hand"}))));
+        for(i)(active[o])
+          SendAll("PutActive",(o,Image(i,1)));
+      }
+      else if(v>=2)
+      {
+        for(i)(active[o])
+        {
+          SendTeam(o,("PutActive",(o,Image(i,1))));
+          SendOpp(o,("PutActive",(o,Image(i,0))));
+        }
+      }
+      else
+      {
+        for(i)(active[o])
+        {
+          Send(o,("PutActive",(o,Image(i,1))));
+          SendOther(o,("PutActive",(o,Image(i,0))));
+        }
       }
     }
+    v=pop();
     o=pop();
   }
   else
@@ -2824,8 +3078,8 @@ def Touch
     {
       if(teamspeak[player] && HasFlag("team"))
       {
-        MsgVerbObjectTeam("touch",ARG);
-	    SendTeam("Flash",ARG[0]);
+        MsgVerbObjectTeam(player,"touch",ARG);
+	   SendTeam(player,("Flash",ARG[0]));
       }
       else
       {
@@ -3020,74 +3274,125 @@ def Flip
 {
   if(has_entry(ARG,decks))
   {
-    if(visible.opp[player]{decks{ARG}[2]})
+    push(v);
+    v=visible[decks{ARG}[1]]{decks{ARG}[2]};
+    if(v >= 4)
     {
-      visible.opp[player]{decks{ARG}[2]}=0;
-      visible.me[player]{decks{ARG}[2]}=0;
+      v = v - 4;
+      visible[decks{ARG}[1]]{decks{ARG}[2]} = v;
       MsgVerbObject("hide",ARG);
-      SendAll("SetDeck",(ARG,card_back(decks{ARG}[0])));
+      
+      if(v >= 2)
+        SendOpp(decks{ARG}[1],("SetDeck",(ARG,card_back(decks{ARG}[0]))));
+      else if(v)
+        SendOther(decks{ARG}[1],("SetDeck",(ARG,card_back(decks{ARG}[0]))));
+      else
+        SendAll("SetDeck",(ARG,card_back(decks{ARG}[0])));
     }
     else
     {
-      visible.opp[player]{decks{ARG}[2]}=1;
-      visible.me[player]{decks{ARG}[2]}=1;
+      v = v + 4;
+      visible[decks{ARG}[1]]{decks{ARG}[2]} = v;
       MsgVerbObject("reveal",ARG);
-      SendAll("SetDeck",(ARG,decks{ARG}[0]));
+      
+      if(PileAttr(decks{ARG}[2],"reveal_1"))
+        SendAll("SetDeck",(ARG,card_back(head(decks{ARG}[0]))+(last(decks{ARG}[0]),)));
+      else
+        SendAll("SetDeck",(ARG,decks{ARG}[0]));
     }
+    v=pop();
   }
-  if(has_entry(ARG,table))
+  else if(has_entry(ARG,table))
   {
-    if(table{ARG}[5])
+    if(table{ARG}[5]==3)
+    {
+      MsgVerbObject("unflip",ARG);
+      table{ARG}[5]=0;
+      if(table{ARG}[9]<4)
+        table{ARG}[9]=table{ARG}[9] + 4;
+      SendAll("ReplaceTable",(ARG,table{ARG}[0]));
+    }
+    else if(table{ARG}[5])
     {
       table{ARG}[5]=0;
       MsgVerbObject("reveal",ARG);
+      if(table{ARG}[9]<4)
+        table{ARG}[9]=table{ARG}[9] + 4;
       SendAll("ReplaceTable",(ARG,table{ARG}[0]));
     }
     else
     {
       push(c);
-      table{ARG}[5]=1;
-      MsgVerbObject("hide",ARG);
-      c=toint(Attr("flipid",table{ARG}[0]));
-      if (!c) c=card_back(table{ARG}[0]);
+      c=toint(card_attr("flipid",table{ARG}[0]));
+      
+      if(c)
+      {
+        MsgVerbObject("flip",ARG);
+        table{ARG}[5]=3;
+      }
+      else
+      {
+        c=card_back(table{ARG}[0]);
+        MsgVerbObject("hide",ARG);
+        table{ARG}[5]=1;
+      }
+      
       SendAll("ReplaceTable",(ARG,c));
       c=pop();
     }
   }
-  elseif(hand.object[player]==ARG)
+  else if(hand.object[player]==ARG)
   {
-    if(visible.opp[player]{"hand"})
+    push(v);
+    v=visible[player]{"hand"};
+    if(v >= 4)
     {
-      visible.opp[player]{"hand"}=0;
+      v = v - 4;
+      visible[player]{"hand"} = v;
       MsgVerbObject("hide",ARG);
-      SendOther(player,("SetHand",(player,card_back(hand[player]))));
+      
+      if(v >= 2)
+        SendOpp(player,("SetHand",(player,card_back(hand[player]))));
+      else
+        SendOther(player,("SetHand",(player,card_back(hand[player]))));
     }
     else
     {
-      visible.opp[player]{"hand"}=1;
+      v = v + 4;
+      visible[player]{"hand"} = v;
       MsgVerbObject("reveal",ARG);
       SendOther(player,("SetHand",(player,hand[player])));
     }
+    v=pop();
   }
   elseif(active.object[player]==ARG)
   {
-    if(visible.opp[player]{"active"})
+    push(v);
+    v=visible[player]{"active"};
+    if(v >= 4)
     {
-      visible.opp[player]{"active"}=0;
+      v = v - 4;
+      visible[player]{"active"} = v;
       MsgVerbObject("hide","cards set aside");
-      SendOther(player,("SetActive",(player,card_back(active[player]))));
+      
+      if(v >= 2)
+        SendOpp(player,("SetActive",(player,card_back(active[player]))));
+      else
+        SendOther(player,("SetActive",(player,card_back(active[player]))));
     }
     else
     {
-      visible.opp[player]{"active"}=1;
+      v = v + 4;
+      visible[player]{"active"} = v;
       MsgVerbObject("reveal","cards set aside");
       SendOther(player,("SetActive",(player,active[player])));
     }
+    v=pop();
   }
 }
 
 #
-# LegalityCheck() - Make lagality check for the current player's deck.
+# LegalityCheck() - Make legality check for the current player's deck.
 #
 def LegalityCheck
 {
@@ -3100,7 +3405,7 @@ def LegalityCheck
 def Special
 {
   if(isfunction("SpecialHook"))
-    call("SpecialHook",ARG);
+    SpecialHook(ARG);
   SendAll("Special",ARG);
 }
 
@@ -3109,25 +3414,23 @@ def Special
 #
 def Score
 {
-  if(toint(ARG[0]) >= 0 && toint(ARG[0])<players)
+  ARG[0] = toint(ARG[0]);
+  if(ARG[0] >= 0 && ARG[0]<players)
   {
-    if(HasFlag("team"))
+    if(HasFlag("team") && HasFlag("teamscore"))
     {
       push(p);
-      for(p)(players)
+      for(p)(team[ARG[0]])
       {
-        if((p-toint(ARG[0])) % 2 == 0)
-        {
-          score[p]=ARG[1];
-          SendAll("Score",(p,ARG[1]));
-        }
+        score[p]=ARG[1];
+        SendAll("Score",(p,ARG[1]));
       }
       p=pop();
     }
     else
     {
-      score[toint(ARG[0])]=ARG[1];
-      SendAll("Score",(toint(ARG[0]),ARG[1]));
+      score[ARG[0]]=ARG[1];
+      SendAll("Score",(ARG[0],ARG[1]));
     }
   }
 }
@@ -3369,6 +3672,7 @@ def CommandSavegame
   SendAll("Message","{green}Saving game '"+n+"'...");
   savegame=(,);
   savegame{"active"}=active;
+  savegame{"avatars"}=avatar.pos;
   savegame{"decks"}=decks;
   savegame{"deck_status"}=deck_status;
   savegame{"server_status"}=(bet,game.data);
@@ -3380,8 +3684,8 @@ def CommandSavegame
   savegame{"server_flags"}=server_flags;
   savegame{"table"}=table;
   savegame{"table.stack_order"}=table.stack_order;
+  savegame{"team"}=team;
   savegame{"transfers"}=transfers;
-  savegame{"avatars"}=avatar.pos;
   if(isfunction("SavegameHook"))
     savegame{"special"}=SavegameHook();
 
@@ -3400,8 +3704,7 @@ def CommandSavegame
 #
 def HasFlag
 {
-  if(find(" "+ARG+" ",server_flags) == NULL) return(0);
-  else return(1);
+  return(count(ARG,server_flags));
 }
 
 #
@@ -3410,17 +3713,24 @@ def HasFlag
 def CommandOn
 {
   push(f);
+  push(x);
   for(f)(ARG)
   {
     f = lc(f);
-    if(f == "mute" && !HasFlag("mute"))
+    x=0;
+    if(isfunction("SetFlagHook"))
+      x=SetFlagHook(f);
+    
+    if(x)
+      1;
+    else if(f == "mute" && !HasFlag("mute"))
     {
-      server_flags = server_flags+"mute ";
+      server_flags = server_flags+("mute",);
       SendAll("Message","Spectators are now muted.");
     }
     else if(0 && f == "private" && !HasFlag("private"))
     {
-      server_flags = server_flags+"private ";
+      server_flags = server_flags+("private",);
       SendAll("Message","This table is now private; spectators are not allowed.");
       if(watchers > players_wanted)
       {
@@ -3437,7 +3747,8 @@ def CommandOn
     }
     else if(f == "team" && !HasFlag("team") && players_wanted > 3 && (players_wanted % 2) == 0)
     {
-      server_flags = server_flags+"team ";
+      server_flags = server_flags+("team",);
+      SetTeams("sides");
       if(waitfor < 0)
       {
         for(p)(players)
@@ -3448,9 +3759,8 @@ def CommandOn
         SendAll("Message","This is now a team game. You can use {yellow}/wt{white} to whisper to team, {yellow}/ts{white} to make all messages team-whispers by default, and {yellow}/sh{white} to show your hand to the team.");
       }
     }
-    else if(isfunction("SetFlagHook"))
-      call("SetFlagHook",f);
   }
+  x=pop();
   f=pop();
 }
 
@@ -3460,26 +3770,32 @@ def CommandOn
 def CommandOff
 {
   push(f);
+  push(x);
   for(f)(ARG)
   {
     f = lc(f);
+    x=0;
     if(HasFlag(f))
     {
       if(isfunction("ClearFlagHook"))
+        x=ClearFlagHook(f);
+    
+      if(x)
+        1;
+      else if(f=="team")
       {
-        if(ClearFlagHook(f) == 0)
-        {
-          server_flags = strreplace(server_flags," "+f+" "," ");
-          SendAll("Message",ucfirst(f)+" server flag disabled.");        
-        }
+        server_flags = server_flags-("team",);
+        SendAll("Message","Team server flag disabled.");
+        SetTeams("none");
       }
       else
       {
-        server_flags = strreplace(server_flags," "+f+" "," ");
+        server_flags = server_flags-(f,);
         SendAll("Message",ucfirst(f)+" server flag disabled.");
       }
     }
   }
+  x=pop();
   f=pop();
 }
 
@@ -3524,6 +3840,7 @@ def CommandLoadgame
     }
 
     active=savegame{"active"};
+    avatar.pos=savegame{"avatars"};
     decks=savegame{"decks"};
     hand=savegame{"hand"};
     markers=savegame{"markers"};
@@ -3532,18 +3849,17 @@ def CommandLoadgame
     server_flags=savegame{"server_flags"};
     table=savegame{"table"};
     table.stack_order=savegame{"table.stack_order"};
+    if(has_entry("team",savegame))
+      team=savegame{"team"};
     transfers=savegame{"transfers"};
     if(transfers==NULL)
        transfers=0;
 
     if(isfunction("LoadgameHook"))
-      call("LoadgameHook",savegame{"special"});
+      LoadgameHook(savegame{"special"});
 
     for(p)(players)
       CreatePlayerObjects(p);
-
-    if(has_entry("avatars",savegame))
-       avatar.pos=savegame{"avatars"};
 
     FullUpdate();
      
@@ -3631,7 +3947,10 @@ def CommandWhisperteam
 {
   if(HasFlag("team") && player < players_wanted)
   {
-    SendTeam("Message","{gold}"+player.name{player}+" whispers: "+join(ARG," "));
+    if(length(team[player]) > 1)
+      SendTeam(player,("Message","{gold}"+player.name{player}+" (to team): "+join(ARG," ")));
+    else
+      Reply("{red}No teammates to whisper to.");
   }
   else
     Reply("{red}Cannot whisper to teammates when not on a team.");
@@ -3676,16 +3995,20 @@ def CommandTs
 #
 def CommandSharehand
 {
-  share.hand[player] = 1-share.hand[player];
-  if(share.hand[player])
+  push(v);
+  v=visible[player]{"hand"};
+  if(v % 4 < 2)
   {
-    SendTeam("Message",player.name{player}+" reveals hand to the team");
-    SendTeam("SetHand",(player,hand[player]));
+    visible[player]{"hand"} = v + 2;
+    SendTeam(player,("Message",player.name{player}+" reveals hand to the team"));
+    SendTeam(player,("SetHand",(player,hand[player])));
   }
   else
   {
-    SendTeam("Message",player.name{player}+" hides hand from the team");
-    SendOther(player,("SetHand",(player,card_back(hand[player]))));
+    visible[player]{"hand"} = v - 2;
+    SendTeam(player,("Message",player.name{player}+" hides hand from the team"));
+    if(v < 6)
+      SendOther(player,("SetHand",(player,card_back(hand[player]))));
   }
   
 }
@@ -3699,7 +4022,53 @@ def CommandSh
 }
 
 #
-# CommandAddpile - Put a new named pile to the table.
+# SetTeams(method, argument) - Fill out array of teammates according to the chosen method.
+#
+def SetTeams
+{
+  if(typeof(ARG) != "list")
+    ARG=(ARG,);
+  if(length(tofnc(ARG[0])) > 0 && isfunction("SetTeams"+tofnc(ARG[0])))
+    call("SetTeams"+tofnc(ARG[0]),tail(ARG));
+}
+
+def SetTeamsNone
+{
+  push(p);
+  for(p)(seq(0,players_wanted-1))
+    team[p]=(p,);
+  p=pop();
+}
+
+def SetTeamsSides
+{
+  push(p);
+  push(a);
+  a=seq(0,players_wanted-1);
+  for(p)(a)
+    team[p]=select("(#+p+1) % 2",a);
+  a=pop();
+  p=pop();
+}
+
+def SetTeamsAgainst
+{
+  push(p);
+  push(a);
+  a=seq(0,players_wanted-1);
+  for(p)(a)
+  {
+    if(p==ARG[0])
+      team[p]=(p,);
+    else
+      team[p]=a-(ARG[0],);
+  }
+  a=pop();
+  p=pop();
+}
+
+#
+# CommandAddpile(pile name) - Put a new named pile to the table.
 #
 #def CommandAddpile
 #{
@@ -3708,24 +4077,24 @@ def CommandSh
 #  if (length(d) && !FindDeck(player,d))
 #  {
 #    push(p);
-#    CreateDeck(player,d,40,340);
-#    visible.me[player]{d}=1;
-#    visible.opp[player]{d}=1;
+#    push(s);
+#    s=CreateDeck(player,d,0,0);
+#    visible[player]{d} = 4;
 #    MsgVerbObject("make","a pile for "+d);
 #    for(p)(watchers)
 #    {
 #      if(player==p)
-#        Send(p,("CreateDeck",(next_object - 1,player,d,CoordToPlr(40,340,p))));
+#        Send(p,("CreateDeck",(next_object - 1,player,d,(0,0))));
 #      else
-#        Send(p,("CreateDeck",(next_object - 1,player,"opponent "+d,CoordToPlr(40,340,p))));
+#        Send(p,("CreateDeck",(next_object - 1,player,"opponent "+d,CoordToPlr(decks{s}[3],decks{s}[4],p))));
 #    }
 #    p=pop();
 #  }
 #  d=pop();
 #}
-
 #
-# CommandHidepile - Remove a pile from the table.
+#
+# CommandHidepile(pile name) - Remove a pile from the table.
 #
 #def CommandHidepile
 #{
@@ -3734,13 +4103,17 @@ def CommandSh
 #  d=lc(join(ARG," "));
 #  if (f = FindDeck(player,d))
 #  {
-#    push(p);
-#    table=del_entry(f,table);
-#    visible.me[player]{d}=0;
-#    visible.opp[player]{d}=0;
-#    MsgVerbObject("remove","the "+d+" pile");
-#    SendAll("DelTable",f);
-#    p=pop();
+#    if(PileAttr(d,"protected"))
+#      Reply("That is a protected game pile. You can't delete it.");
+#    else
+#    {
+#      push(p);
+#      table=del_entry(f,table);
+#      visible[player]{d} = 0;
+#      MsgVerbObject("remove","the "+d+" pile");
+#      SendAll("DeckDelTable",f);
+#      p=pop();
+#    }
 #  }
 #  f=pop();
 #  d=pop();
@@ -3754,7 +4127,7 @@ def SendFullGameStatus
 # Hand
   for(i)(players)
   {
-    if(i==ARG)
+    if(i==ARG || visible[i]{"hand"} >= 4)
       Send(ARG,("SetHand",(i,hand[i])));
     else
       Send(ARG,("SetHand",(i,card_back(hand[i]))));
@@ -3765,20 +4138,25 @@ def SendFullGameStatus
   {
     if(decks[i][1][1]==ARG)
     {
-      if(visible.me[decks[i][1][1]]{decks[i][1][2]})
-        Send(ARG,("SetDeck",(decks[i][0],decks[i][1][0])));
-      else
+      if(visible[decks[i][1][1]]{decks[i][1][2]})
       {
-        if(count(decks[i][1][2],SELF_KNOWN_PILES))
-          Send(ARG,("SetDeck",(decks[i][0],card_back(decks[i][1][0]),decks[i][1][0])));
+        if(PileAttr(decks[i][1][2],"reveal_1"))
+          Send(ARG,("SetDeck",(decks[i][0],card_back(head(decks[i][1][0]))+(last(decks[i][1][0]),))));
         else
-          Send(ARG,("SetDeck",(decks[i][0],card_back(decks[i][1][0]))));
+          Send(ARG,("SetDeck",(decks[i][0],decks[i][1][0])));
       }
+      else
+        Send(ARG,("SetDeck",(decks[i][0],card_back(decks[i][1][0]))));
     }
     else
     {
-      if(visible.opp[decks[i][1][1]]{decks[i][1][2]})
-        Send(ARG,("SetDeck",(decks[i][0],decks[i][1][0])));
+      if(visible[decks[i][1][1]]{decks[i][1][2]} >= 4)
+      {
+        if(PileAttr(decks[i][1][2],"reveal_1"))
+          Send(ARG,("SetDeck",(decks[i][0],card_back(head(decks[i][1][0]))+(last(decks[i][1][0]),))));
+        else
+          Send(ARG,("SetDeck",(decks[i][0],decks[i][1][0])));
+      }
       else
         Send(ARG,("SetDeck",(decks[i][0],card_back(decks[i][1][0]))));
     }
@@ -3787,7 +4165,7 @@ def SendFullGameStatus
 # Active
   for(i)(players)
   {
-    if(i==ARG)
+    if(i==ARG || visible[i]{"active"} >= 4)
       Send(ARG,("SetActive",(i,active[i])));
     else
       Send(ARG,("SetActive",(i,card_back(active[i]))));
@@ -3801,8 +4179,8 @@ def SendFullGameStatus
   {
     if(table{o}[5])
     {
-      c=toint(Attr("flipid",table{o}[0]));
-      if (!c) c=card_back(table{o}[0]);
+      c=toint(card_attr("flipid",table{o}[0]));
+      if (!c || table{o}[5] < 3) c=card_back(table{o}[0]);
       xy=CoordToPlr(table{o}[2],table{o}[3],ARG);
       Send(ARG,("PutTable",(o,xy[0],xy[1],OriToPlr(table{o}[4],ARG),Image(table{o}[0],0,c),table{o}[1],Image(table{o}[0],ARG==table{o}[1] && !c,c))));
     }
@@ -3845,7 +4223,7 @@ def SendFullGameStatus
 
 # Game specific
   if(isfunction("SendFullGameStatusHook"))
-    call("SendFullGameStatusHook",ARG);
+    SendFullGameStatusHook(ARG);
 }
 
 #
