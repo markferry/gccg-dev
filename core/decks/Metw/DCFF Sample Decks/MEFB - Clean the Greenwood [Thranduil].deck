@@ -1,0 +1,293 @@
+#
+# GCCG v0.9.6.3 Middle-earth deck
+#
+#      Clean the Greenwood
+#
+
+####
+Deck
+####
+
+# Dual Resource (4)
+
+1 Beasts of the Wood (WH)
+2 Well Aimed (FB)
+1 Wild Hounds (WH)
+
+# Elf-lord Character (4)
+
+4 Thranduil of Mirkwood (FB)
+
+# Hazard (35)
+
+1 Alatar the Hunter (AS)
+2 An Unexpected Outpost (DM)
+2 Black Crows (FB)
+3 Chill Them with Fear (LE)
+1 Decisions of the White Council (FB)
+1 Dwarven Warparty (DF)
+1 Elven Archer (FB)
+1 Elven Custody (FB)
+1 Elven Wards (FB)
+2 Elves upon Errantry (LE)
+2 Foolish Words (LE)
+1 Gandalf the White Rider (AS)
+1 Ibûn (DF)
+1 Lady of the Golden Wood (AS)
+1 Lord of the Eagles (DF)
+1 Master of the House (AS)
+1 Mouth of Sauron (TW)
+1 Out of Practise (DF)
+1 Pit Trap (DF)
+1 Radagast the Tamer (AS)
+1 Saruman the Wise (AS)
+1 Sons of Elrond (FB)
+2 The Watchful Peace (FB)
+2 Twilight (TW)
+3 Wandering Eldar (LE)
+
+# Hero Character (4)
+
+1 Arhendhiril (FB)
+1 Elven Handmaid (FB)
+1 Mallorn-dweller (FB)
+1 Wood-elf (FB)
+
+# Hero Resource (21)
+
+2 Ancient Knowledge (FB)
+1 Aranrûth (FB)
+1 Bow of Dragon-horn (TD)
+1 Bow of the Galadhrim (AS)
+2 Clean the Greenwood (FB)
+1 Gates of Morning (TW)
+1 Glamdring (TW)
+2 Great Bow of Yew (FB)
+1 Greenwood the Great (FB)
+1 Longbottom Leaf (BA)
+2 Marvels Told (TD)
+1 Muster (TW)
+2 Risky Blow (TW)
+2 Smoke Rings (DM)
+1 Wood-elves (TW)
+
+# Minion Character (2)
+
+1 Calendal (LE)
+1 Gisulf (DM)
+
+# Minion Resource (4)
+
+1 Blackbole (LE)
+1 I'll Report You (LE)
+2 Swift Strokes (LE)
+
+# Stage Resource (6)
+
+1 Great Achievement (DF)
+1 Lord of Wood and Beast (FB)
+1 Possessions of the Green-elves (FB)
+1 Prince of Mirkwood (FB)
+1 Wardens of the Woodland Realm (FB)
+1 Wizard's Trove (WH)
+
+####
+Pool
+####
+
+# Hero Character (4)
+
+1 Bladorthin (FB)
+1 Haldir (TW)
+1 Legolas (TW)
+1 Wood-elf (FB)
+
+# Hero Resource (3)
+
+1 Elf-stone (TW)
+1 Star-glass (TW)
+1 Towers Destroyed (FB)
+
+# Stage Resource (2)
+
+1 The King's Hunting (FB)
+1 Trusted Counsellor (FB)
+
+#########
+Sideboard
+#########
+
+# Dual Resource (2)
+
+1 Bow of Yew (FB)
+1 Desperate Strike (DF)
+
+# Hazard (14)
+
+1 Camthalion (FP)
+1 Covetous Thoughts (LE)
+1 Durin's Bane (DM)
+1 Elf-lord Revealed in Wrath (LE)
+1 Evenstar of Her People (FB)
+1 Falathrim (FB)
+1 Galadhrim (AS)
+2 He Is Lost to Us (FB)
+1 Nameless Thing (DM)
+1 Stay Her Appetite (LE)
+1 The Dark Days (FB)
+1 The Roving Eye (LE)
+1 Thranduil's Folk (LE)
+
+# Hero Resource (19)
+
+1 A Panoply of Wings (WH)
+1 Arrows Shorn of Ebony (TD)
+1 Clean the Greenwood (FB)
+1 Elf-path (TD)
+1 Elven Rope (BA)
+1 Elves of Taur Rómen (FB)
+1 Emerald of Doriath (TD)
+1 Eryn Lasgalen (FB)
+1 Great Bow of Lórien (FB)
+1 Longbottom Leaf (BA)
+1 Many Turns and Doublings (TD)
+1 Marvels Told (TD)
+1 Muster (TW)
+1 Pass the Doors of Dol Guldur (DM)
+1 Refuge (TD)
+1 Rescue Prisoners (TW)
+1 The Hunt (DM)
+2 The Old Thrush (TW)
+
+# Stage Resource (5)
+
+1 A Merrier World (WH)
+1 Kheleglin (FP)
+1 Legacy of Smiths (WH)
+1 Legendary Hunt (FB)
+1 The Great Hunt (WH)
+
+#####
+Sites
+#####
+
+# Elf-lord Site (5)
+
+2 Heart of the Halls (FB)
+3 Thranduil's Halls [E] (FB)
+
+# Fallen-wizard Site (3)
+
+1 Lórien [F] (FB)
+1 Rivendell [F] (FB)
+1 Thranduil's Halls [F] (FB)
+
+# Hero Site (102)
+
+1 Amon Hen [H] (TW)
+1 Bag End [H] (TW)
+1 Bandit Lair [H] (TW)
+1 Barad-dûr [H] (TW)
+1 Barrow-downs [H] (TW)
+1 Beorn's House [H] (TW)
+1 Blue Mountain Dwarf-hold [H] (TW)
+1 Bree [H] (TW)
+1 Buhr Widu [H] (TD)
+1 Cameth Brin [H] (TW)
+1 Caras Amarth [H] (FB)
+1 Carn Dûm [H] (TW)
+1 Caves of Ûlund [H] (TW)
+1 Ceber Fanuin [H] (FB)
+1 Celebannon [H] (FB)
+1 Cirith Gorgor [H] (AS)
+1 Cirith Ungol [H] (TW)
+1 Cor Angaladh [H] (FB)
+1 Dale [H] (TD)
+1 Dancing Spire [H] (TW)
+1 Dead Marshes [H] (TW)
+1 Dimrill Dale [H] (TW)
+1 Dol Amroth [H] (TW)
+1 Dol Guldur [H] (TW)
+1 Drúadan Forest [H] (TW)
+1 Dunharrow [H] (TW)
+1 Dunnish Clan-hold [H] (TW)
+1 Eagles' Eyrie [H] (TW)
+1 Easterling Camp [H] (TW)
+1 Edhellond [H] (TW)
+1 Edoras [H] (TW)
+1 Ettenmoors [H] (TW)
+1 Framsburg [H] (TD)
+1 Geann a-Lisch [H] (AS)
+1 Gladden Fields [H] (TW)
+1 Glittering Caves [H] (TW)
+1 Gobel Mírlond [H] (AS)
+1 Goblin-gate [H] (TW)
+1 Gold Hill [H] (TD)
+1 Gondmaeglom [H] (TD)
+1 Grey Havens [H] (TW)
+1 Haudh-in-Gwanûr [H] (DM)
+1 Henneth Annûn [H] (TW)
+1 Hermit's Hill [H] (DM)
+1 Himring [H] (TW)
+1 Irerock [H] (TW)
+1 Iron Hill Dwarf-hold [H] (TW)
+1 Isengard [H] (TW)
+1 Isle of the Ulond [H] (TD)
+1 Isles of the Dead that Live [H] (TW)
+1 Lake-town [H] (TW)
+1 Lond Galen [H] (TW)
+1 Lossadan Cairn [H] (TW)
+1 Lossadan Camp [H] (TW)
+1 Lórien [H] (TW)
+1 Minas Morgul [H] (TW)
+1 Minas Tirith [H] (TW)
+1 Moria [H] (TW)
+1 Mount Doom [H] (TW)
+1 Mount Gram [H] (TW)
+1 Mount Gundabad [H] (TW)
+1 Nûrniag Camp [H] (AS)
+1 Old Forest [H] (TW)
+1 Ost-in-Edhil [H] (TW)
+1 Ovir Hollow [H] (TD)
+1 Pelargir [H] (TW)
+1 Raider-hold [H] (AS)
+1 Rhosgobel [H] (TW)
+1 Rhûbar [H] (FB)
+1 Rivendell [H] (TW)
+1 Ruined Signal Tower [H] (TW)
+1 Sarn Goriwing [H] (TW)
+1 Shelob's Lair [H] (TW)
+1 Shrel-Kain [H] (TW)
+1 Southron Oasis [H] (TW)
+1 Stone-circle [H] (TW)
+1 Tharbad [H] (TD)
+1 The Gem-deeps [H] (DM)
+1 The Iron-deeps [H] (DM)
+1 The Lonely Mountain [H] (TW)
+1 The Pûkel-deeps [H] (DM)
+1 The Stones [H] (TW)
+1 The Sulfur-deeps [H] (DM)
+1 The Under-courts [H] (DM)
+1 The Under-galleries [H] (DM)
+1 The Under-gates [H] (DM)
+1 The Under-grottos [H] (DM)
+1 The Under-leas [H] (DM)
+1 The Under-vaults [H] (DM)
+1 The White Towers [H] (TW)
+1 The Wind Throne [H] (TW)
+1 The Worthy Hills [H] (AS)
+1 Thranduil's Halls [H] (TW)
+1 Tolfalas [H] (TW)
+1 Urlurtsu Nurn [H] (DM)
+1 Vale of Erech [H] (TW)
+1 Variag Camp [H] (TW)
+1 Weathertop [H] (TW)
+1 Wellinghall [H] (TW)
+1 Woodmen-town [H] (TW)
+1 Wose Passage-hold [H] (TW)
+1 Zarak Dûm [H] (TD)
+
+# Minion Site (2)
+
+1 Caras Amarth [M] (FB)
+1 Cor Angaladh [M] (FB)

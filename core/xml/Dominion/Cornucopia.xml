@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE ccg-setinfo SYSTEM "../gccg-set.dtd">
+<ccg-setinfo name="Cornucopia" dir="Cornucopia" abbrev="C" game="Dominion">
+	<cards>
+		<card name="Bag of Gold" graphics="bagofgold.jpg" text="+1 Action  Gain a Gold, putting it on top of your deck.  (This is not in the Supply.)">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action - Prize"/>
+			<attr key="cost" value="0"/>
+		</card>
+		<card name="Diadem" graphics="diadem.jpg" text="Worth $2.  When you play this, +$1 per unused Action you have (Action, not Action card).  (This is not in the Supply.)">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Treasure - Prize"/>
+			<attr key="cost" value="0"/>
+		</card>
+		<card name="Followers" graphics="followers.jpg" text="+2 Cards  Gain an Estate. Each other player gains a Curse and discards down to 3 cards in hand.  (This is not in the Supply.)">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action - Attack - Prize"/>
+			<attr key="cost" value="0"/>
+		</card>
+		<card name="Princess" graphics="princess.jpg" text="+1 Buy  ________________  While this is in play, cards cost $2 less, but not less than $0.  (This is not in the Supply.)">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action - Prize"/>
+			<attr key="cost" value="0"/>
+		</card>
+		<card name="Trusty Steed" graphics="trustysteed.jpg" text="Choose two: +2 Cards; or +2 Actions; or +$2; or gain 4 Silvers and put your deck into your discard pile.  (This is not in the Supply.)">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action - Prize"/>
+			<attr key="cost" value="0"/>
+		</card>
+		<card name="Hamlet" graphics="hamlet.jpg" text="+1 Card  +1 Action  You may discard a card; If you do +1 Action.  You may discard a card; If you do +1 Buy">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action"/>
+			<attr key="cost" value="2"/>
+		</card>
+		<card name="Fortune Teller" graphics="fortuneteller.jpg" text="+2 Coin  Each other player reveals cards from the top of his deck until he reveals a Victory of Curse card. He puts it on top and discards the other revealed cards.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action - Attack"/>
+			<attr key="cost" value="3"/>
+		</card>
+		<card name="Menagerie" graphics="menagerie.jpg" text="+1 Action  Reveal your hand.  If there are no duplicate cards in it, +3 Cards.  Otherwise, +1 Card.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action"/>
+			<attr key="cost" value="3"/>
+		</card>
+		<card name="Farming Village" graphics="farmingvillage.jpg" text="+2 Actions  Reveal cards from the top of your deck until you reveal an Action or Treasure card. Put that card into your hand and discard the other cards.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action"/>
+			<attr key="cost" value="4"/>
+		</card>
+		<card name="Horse Traders" graphics="horsetraders.jpg" text="+1 Buy  +3 Coin  Discard 2 Cards  ________________  When another player plays an Attack card, you may set this aside from your hand. If you do, then at the start of your next turn, +1 Card and return this to your hand.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action - Reaction"/>
+			<attr key="cost" value="4"/>
+		</card>
+		<card name="Remake" graphics="remake.jpg" text="Do this twice: Trash a card from your hand then gain a card costing exactly 1 more than the trashed card.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action"/>
+			<attr key="cost" value="4"/>
+		</card>
+		<card name="Tournament" graphics="tournament.jpg" text="+1 Action  Each player may reveal a Province from his hand. If you do, discard it and gain a Prize (from the Prize pile) or a Duchy, putting it on top of your deck. If no-one else does, +1 Card +1 Coin.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action"/>
+			<attr key="cost" value="4"/>
+		</card>
+		<card name="Young Witch" graphics="youngwitch.jpg" text="+2 Cards  Discard 2 cards. Each other player may reveal a Bane card from his hand.  If he doesn’t, he gains a Curse.  ______________________  Setup: Add an extra Kingdom card pile costing 2 or 3 to the Supply. Cards from that pile are Bane cards.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action - Attack"/>
+			<attr key="cost" value="4"/>
+		</card>
+		<card name="Harvest" graphics="harvest.jpg" text="Reveal the top 4 cards of your deck, then discard them. +1 Coin per differently named card revealed.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action"/>
+			<attr key="cost" value="5"/>
+		</card>
+		<card name="Horn of Plenty" graphics="hornofplenty.jpg" text="0 Coins  When you play this, gain a card costing up to 1 Coin per differently named card you have in play, counting this. If it’s a Victory card, trash this.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Treasure"/>
+			<attr key="cost" value="5"/>
+		</card>
+		<card name="Hunting Party" graphics="huntingparty.jpg" text="+1 Card  +1 Action  Reveal your hand. Reveal cards from your deck until you reveal a card that isn’t in a duplicate of one in your hand and discard the rest.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action"/>
+			<attr key="cost" value="5"/>
+		</card>
+		<card name="Jester" graphics="jester.jpg" text="+2 Coins  Each other player discards the top card of his deck. If it’s a Victory card he gains a Curse. Otherwise he gains a copy of the discarded card or you do, your choice.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action - Attack"/>
+			<attr key="cost" value="5"/>
+		</card>
+		<card name="Fairgrounds" graphics="fairgrounds.jpg" text="Worth 2 VP for every 5 differently named cards in your deck (rounded down)">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Victory"/>
+			<attr key="cost" value="6"/>
+		</card>
+	</cards>
+</ccg-setinfo>

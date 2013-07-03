@@ -396,13 +396,14 @@ namespace Evaluator
 	    return ret;
 	}
 
-	/// scripts() - Return a list of strings containging game
-	/// specific extension scripts under scripts/Game directory.
+	/// scripts() - Return a list of strings containing extension
+	/// scripts under scripts/Game or scripts/global directory.
 	Data scripts(const Data& args)
 	{
 	    if(!args.IsNull())
 		ArgumentError("scripts",args);
 
+	    // Search game-specific directory
 	    string file;
 	    file=CCG_DATADIR;
 	    file+="/scripts/";
@@ -415,6 +416,23 @@ namespace Evaluator
 	    struct dirent *e;
 	    DIR* d;
 	    string f;
+
+	    security.OpenDir(file);
+	    d=opendir(file.c_str());
+	    if(d)
+	    {
+		while((e=readdir(d)) != NULL)
+		{
+		    f=e->d_name;
+		    if(!IsDirectory(file+f))
+			ret.AddList(f);
+		}
+		closedir(d);
+	    }
+	    
+	    // Search global add-ons directory
+	    file=CCG_DATADIR;
+	    file+="/scripts/global/";
 
 	    security.OpenDir(file);
 	    d=opendir(file.c_str());

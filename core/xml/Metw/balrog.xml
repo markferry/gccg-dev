@@ -662,7 +662,7 @@
        <attr key="playable" value="Items (minor, major)"/>
        <attr key="special" value="Creatures keyed to this site attack normally, not as detainment."/>
        <attr key="draw_opp" value="3"/>
-       <attr key="auto_attack" value="Orcs 4 strikes with 7 prowess; Nazgûl (cannot be canceled) 1 strike with 15 prowess {cyan} UEP: Nazgul auto-attacks on Balrog sites are not detainment."/>
+       <attr key="auto_attack" value="Orcs 4 strikes with 7 prowess; Nazgul (cannot be canceled) 1 strike with 15 prowess {cyan} UEP: Nazgul auto-attacks on Balrog sites are not detainment."/>
        <attr key="rarity" value="C1"/>
        <attr key="class" value=""/>
        <attr key="type" value="Balrog Site"/>
@@ -706,7 +706,7 @@
        <attr key="playable" value="Information, Items (minor, major)"/>
        <attr key="special" value="Creatures keyed to this site attack normally, not as detainment."/>
        <attr key="draw_opp" value="3"/>
-       <attr key="auto_attack" value="Orcs 3 strikes with 7 prowess; Trolls 2 strikes with 8 prowess; Nazgûl (cannot be canceled) 1 strike with 15 prowess {cyan} UEP: Nazgul auto-attacks on Balrog sites are not detainment."/>
+       <attr key="auto_attack" value="Orcs 3 strikes with 7 prowess; Trolls 2 strikes with 8 prowess; Nazgul (cannot be canceled) 1 strike with 15 prowess {cyan} UEP: Nazgul auto-attacks on Balrog sites are not detainment."/>
        <attr key="rarity" value="C1"/>
        <attr key="class" value=""/>
        <attr key="type" value="Balrog Site"/>
@@ -765,7 +765,7 @@
        <attr key="playable" value="Items (minor, major, greater)"/>
        <attr key="special" value="Creatures keyed to this site attack normally, not as detainment."/>
        <attr key="draw_opp" value="4"/>
-       <attr key="auto_attack" value="Undead 3 strikes with 8 prowess; Nazgûl (cannot be canceled) 1 strike with 15 prowess {cyan} UEP: Nazgul auto-attacks on Balrog sites are not detainment."/>
+       <attr key="auto_attack" value="Undead 3 strikes with 8 prowess; Nazgul (cannot be canceled) 1 strike with 15 prowess {cyan} UEP: Nazgul auto-attacks on Balrog sites are not detainment."/>
        <attr key="rarity" value="C1"/>
        <attr key="class" value=""/>
        <attr key="type" value="Balrog Site"/>

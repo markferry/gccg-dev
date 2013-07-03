@@ -142,6 +142,7 @@ int main(int argc,char** argv)
 				security.AllowWriteFile("./vardump");
 				security.AllowOpenDir(CCG_SAVEDIR"/*");
 				security.AllowOpenDir(CCG_DATADIR"/scripts");
+				security.AllowOpenDir(CCG_DATADIR"/scripts/global");
 			}
 			else if(string("--lang")==argv[arg] && arg < argc-1)
 			{

@@ -27,8 +27,8 @@ Deck
 3 Hobgoblins (TD)
 1 Little Snuffler (DM)
 3 Minions Stir (TW)
-1 Orc Archers (DF)
 1 Orc Battalion (NE)
+1 Orc-archers (DF)
 1 Orc-guard (TW)
 2 Orc-lieutenant (TW)
 2 Orc-raiders (TW)
@@ -39,7 +39,7 @@ Deck
 1 Out of Practise (DF)
 1 Pierced by Many Wounds (DM)
 1 Shadow of Mordor (TD)
-2 Soldiers of the Dark Lord (DF)
+2 Soldiers of the Dark Lord (NE)
 1 Twilight (LE)
 
 # Minion Character (6)
@@ -102,7 +102,7 @@ Sideboard
 
 # Hazard (6)
 
-1 Doom of the Noldor (NM)
+1 Doom of the Noldor (FB)
 1 Fake (NM)
 1 Hard to Tame (DF)
 1 Heritage Forsaken (WR)
@@ -163,4 +163,3 @@ Sites
 1 Turukulon's Lair [M] (TI)
 1 Variag Camp [M] (LE)
 1 Wain-Easterling Camp [M] (CP)
-

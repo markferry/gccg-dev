@@ -1,6 +1,6 @@
 #
 #    Gccg - Generic collectible card game.
-#    Copyright (C) 2001-2011 Tommi Ronkainen
+#    Copyright (C) 2001-2012 Tommi Ronkainen
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -44,6 +44,7 @@
 #
 # Colors:
 #
+# COLORS{colorname} - preset colors for RED, ORANGE, YELLOW, GREEN, BLUE, VIOLET, WHITE, BLACK
 # BGCOLOR - generic background color
 # FGCOLOR - generic foreground color
 # BRCOLOR - generic border color
@@ -95,6 +96,7 @@
 # con - connection number causing event
 # deck - my playdeck object number
 # deck.box - object number of deck editing list
+# deck.groups{groupname} - contains decknames in each category
 # decks{deckname}{part} - decks available (each part, i.e. "deck","sideboard", etc. contains list of card numbers)
 # deck.name - name of the currently selected deck or NULL if not selected
 # deck.objects[player]{name} - object numbers of the decks
@@ -157,6 +159,7 @@
 # player.marker_color - currently selected marker color
 # playmat.image - image number of the play mode background
 # playmat.object - object number of the play mode background
+# pm_name - name of current PM recipient
 # port - server port
 # price.default{rarity} - default prices for different rarities
 # products{product name} - list of products
@@ -189,7 +192,8 @@
 # server.name - name of the game server set by --server or default
 # server.name_backup - list of backup servers or NULL
 # server.name_default - name of the default game server
-# tab.last_player - latest player name shown in tab completion
+# tab.type - type of tab completion to use ("player" or "command")
+# tab.last_item - latest item name shown in tab completion
 # tab.last_initial - latest initial part entered before pressing tab
 # table.width,table.height - width of the playarea (screen size for <= 2-player)
 # table.object[x][y] - object numbers for table images
@@ -199,37 +203,38 @@
 # timer_minute - list of timing event pairs (trigger time,command) for minute based resolution
 # transfer.options - special options to send by TryTransferTo()
 # unbind_next - if not null, next key press will be unbound
+# undo_buffer - list of (ID, qty, from_part, to_part) pairs reflecting recent changes to deck contents
+# undo.pos - current position in undo_buffer when rewinding/forwarding
 # username - name of the player
 #
 # Functions:
 #
 # See reference manual.
-#
-# New ontop-levels used:
-#
-# 100 - alert
-# 60 - menus
-# 50 - deck list/collection
-# 45 - products
-# 40 - score
-# 35 - active set aside
-# 30 - hand
-# 20 - message box
-# 10 - decks
 
 #
 # CONSTANTS
 # =========
+
+# Z-levels (for deciding which objects should be placed on top of others)
+Z_LOBBYCHAT = 1000;
+Z_MENU = 100;
+Z_ZOOM = 95;
+Z_BOOSTER = 90;
+Z_PRODUCTMENU = 80;
+Z_DLIST = 70;
+Z_COLLECTION = 70;
+Z_ALERT = 60;
+Z_SCORE = 50;
+Z_SETASIDE = 40;
+Z_HAND = 30;
+Z_MBOX = 20;
+Z_DECKS = 10;
 
 # Version number of filtering algorithm.
 BOOK_FILTER_VERSION="0.10";
 
 # Mininum binary version required to use this script.
 MINIMUM_VERSION="0.9.0";
-
-# How to fit tables
-TABLES_X=7;
-TABLES_Y=5;
 
 # How many cards in a row at collection
 BOOK_ROWS=3;
@@ -256,6 +261,8 @@ CLEAR_GROUP_DISTANCE=10;
 
 # What to display on "keep tapped" cards.
 STRING_KEEP_TAPPED="T";
+# What to display on "keep untapped" cards.
+STRING_KEEP_UNTAPPED="UNT";
 
 # Game specific menu definitions.
 GAME_MENU=(,);
@@ -268,9 +275,29 @@ DEFAULT_EXPORT_FORMAT="Gccg";
 # Color to use for highlighting touched objects.
 HIGHLIGHT_COLOR=(150,0,0);
 
-# List of counter colors in numeric order (0-indexed)
-COUNTER_COLORS=("Red","Green","Blue","Yellow","Orange","Black","White","Default",NULL,NULL);
-DEFAULT_COUNTER_COLOR=7;
+# Named colors
+COLORS=(,);
+COLORS{'RED'}=(250,0,0);
+COLORS{'ORANGE'}=(250,130,30);
+COLORS{'YELLOW'}=(220,220,0);
+COLORS{'GREEN'}=(0,180,0);
+COLORS{'BLUE'}=(20,20,250);
+COLORS{'VIOLET'}=(160,0,160);
+COLORS{'WHITE'}=(255,255,255);
+COLORS{'BLACK'}=(0,0,0);
+
+# Marker colors
+MARKER_COLOR=array(10);
+
+MARKER_COLOR[0]="Red";
+MARKER_COLOR[1]="Green";
+MARKER_COLOR[2]="Blue";
+MARKER_COLOR[3]="Orange";
+MARKER_COLOR[4]="Yellow";
+MARKER_COLOR[5]="Black";
+MARKER_COLOR[6]="White";
+MARKER_COLOR[7]="Default";
+DEFAULT_MARKER_COLOR=7;
 
 # Default book order.
 BOOK_DEFAULT_SORT=("[age]","[name]");
@@ -278,7 +305,7 @@ BOOK_DEFAULT_SORT=("[age]","[name]");
 # Mapping from filter function names to a pair (type,short help text).
 FILTER_FUNCTIONS=(,);
 
-# Common (all players) basic table size (independant of the display size)
+# Common (server-side) basic table size (independent of the display size)
 BASE_TABLE_WIDTH=1024;
 BASE_TABLE_HEIGHT=768;
 
@@ -421,6 +448,8 @@ HELP{"chat"}{"users"}=("pattern","list of users",NULL,
 "Show list of all users matching wildcard {yellow}pattern{white} or all users if not given. The total number of users matching is shown instead if the list is too long.");
 HELP{"chat"}{"want"}=("player","show player's want list",NULL,
 "Asks the meta server for the want list of the given {yellow}player{white}. The have list contains all cards which he or she have marked as wanted. The cards you have for sale or you have more than {yellow}trade_limit{white}, are shown in green.");
+HELP{"chat"}{"whisper"}=("player, message","whisper to user",NULL,
+"Send a {yellow}message{white} that only the given {yellow}player{white} will receive.");
 HELP{"chat"}{"whois"}=("player","show player info",NULL,
 "Ask the meta server to describe a {yellow}player{white}. The personal data (realname, email, plan) set by the player is shown as well as his/her wealth and game play history.");
 HELP{"chat"}{"kick"}=("player","disconnect player",("God","Guard"),
@@ -462,6 +491,7 @@ function{"CreateActive"}="CreateActive";
 function{"CreatePlayerIcon"}="CreatePlayerIcon";
 function{"CreateDeck"}="CreateDeck";
 function{"CreateHand"}="CreateHand";
+function{"DeckDelTable"}="DeckDelTable";
 function{"DelActive"}="DelActive";
 function{"DelDeck"}="DelDeck";
 function{"DelDeckBottom"}="DelDeckBottom";
@@ -486,7 +516,7 @@ function{"Null"}="Null";
 function{"Play"}="Play";
 function{"PlaySound"}="PlaySound";
 function{"PutActive"}="PutActive";
-function{"PutDeck"}="PutDeck";
+function{"PutDeck"}="PutDeckTop";
 function{"PutDeckBottom"}="PutDeckBottom";
 function{"PutHand"}="PutHand";
 function{"PutTable"}="PutTable";
@@ -500,6 +530,7 @@ function{"SearchDeck"}="SearchDeck";
 function{"SetActive"}="SetActive";
 function{"SetCardbook"}="SetCardbook";
 function{"SetDeck"}="SetDeck";
+function{"SetDeckTop"}="SetDeckTop";
 function{"SetHand"}="SetHand";
 function{"SetJoinGame"}="SetJoinGame";
 function{"SetMe"}="SetMe";
@@ -525,17 +556,22 @@ def playerhas {
   if(playerhave{ARG[0]} != NULL)
     return (find(ARG[1],playerhave{ARG[0]}) != NULL);
   else
-    return 0;
+    return(0);
 }
 
 def playerwants {
   if(playerwant{ARG[0]} != NULL)
     return (find(ARG[1],playerwant{ARG[0]}) != NULL);
   else
-    return 0;
+    return(0);
 }
 
 modifier=" ";
+
+pm_name=NULL;
+
+undo_buffer=(,);
+undo.pos=-1;
 
 #
 # FUNCTIONS WAITING FOR C++ IMPLEMENTATION
@@ -654,13 +690,16 @@ def Initialize
 
   CreatePanel("alert",screen.width/2-w(200),h(100));
   CreatePanel("messages",w(5),h(5));
-  CreatePanel("input",0,screen.height-h(16));
-  CreatePanel("player info",w(5),screen.height-h(70));
+  if(options{"input"}=="top")
+    CreatePanel("input",0,0);
+  else
+    CreatePanel("input",0,screen.height-h(16));
+  CreatePanel("player info",w(5),screen.height-h(82));
   CreatePanel("products",w(5),h(200));
 
-  set_attr(msg.box,"ontop",20);
+  set_attr(msg.box,"ontop",Z_MBOX);
   raise(msg.box);
-  set_attr(alert.box,"ontop",100);
+  set_attr(alert.box,"ontop",Z_ALERT);
   raise(alert.box);
 
   chat_msg.box=create_msgbox(screen.width-w(403),screen.height-h(220),obj=obj+1,"chat msg",w(400),h(200),99999);
@@ -670,8 +709,9 @@ def Initialize
   set_attr(chat_msg.box,"highlight",1);
   set_attr(chat_msg.box,"clickable",1);
   set_attr(chat_msg.box,"draggable",1);
-  set_attr(chat_msg.box,"ontop",46);
+  set_attr(chat_msg.box,"ontop",Z_MBOX);
   raise(chat_msg.box);
+  message(chat_msg.box,"{sz9}press {orange}F6{white} to make this box disappear or reappear");
 
   message(name.box,username);
 
@@ -683,12 +723,12 @@ def Initialize
 
   Msg("{hr}");
   Msg(L("{sz20}{center}Welcome to Gccg/%s",GAME));
-  Msg("{center}{sz16}© 2001-2011 Tommi Ronkainen");
+  Msg("{center}{sz16}© 2001-2012 Tommi Ronkainen");
   Msg(L("{sz20}{center}Press {orange}F1{white} for help or {orange}right click{white} for menu."));
   Msg("{hr}");
 
-  card.book=create_book(w(5),h(176),obj=obj+1,"My Collection",BOOK_ROWS,BOOK_COLUMNS);
-  set_attr(card.book,"ontop",50);
+  card.book=create_book(w(5),h(140),obj=obj+1,"My Collection",BOOK_ROWS,BOOK_COLUMNS);
+  set_attr(card.book,"ontop",Z_COLLECTION);
   raise(card.book);
   set_bgcolor(card.book,BKBGCOLOR);
   set_fgcolor(card.book,BKBRCOLOR);
@@ -707,11 +747,11 @@ def Initialize
 
   booster.box=create_cardbox(screen.width/2,screen.height/2,obj=obj+1,"Open booster");
   set_attr(booster.box,"compact",1);
-  set_attr(booster.box,"ontop",55);
+  set_attr(booster.box,"ontop",Z_BOOSTER);
 
   search.box=create_cardbox(screen.width/2,screen.height/2,obj=obj+1,"Deck search box");
   set_attr(search.box,"compact",1);
-  set_attr(search.box,"ontop",50);
+  set_attr(search.box,"ontop",Z_SETASIDE-1);
 
   select.box=create_cardbox(screen.width/2,screen.height/2,obj=obj+1,"Card select box");
   set_attr(select.box,"compact",1);
@@ -720,13 +760,13 @@ def Initialize
   set_attr(drag.box,"tiny",1);
   set_attr(drag.box,"ontop",1);
 
-  deck.box=create_listbox(screen.width-w(sum(DECKBOX_SIZE)+5),h(134),obj=obj+1,"Current Deck",100,("#","Name of the card",""),DECKBOX_SIZE,34,(1,0,1));
-  set_attr(deck.box,"ontop",50);
+  deck.box=create_listbox(screen.width-w(sum(DECKBOX_SIZE)+4),h(135),obj=obj+1,"Current Deck",100,("#","Name of the card",""),DECKBOX_SIZE,34,(1,0,1));
+  set_attr(deck.box,"ontop",Z_DLIST);
   raise(deck.box);
 
   info.box=create_cardbox(0,0,obj=obj+1,"Info");
   set_attr(info.box,"draggable",1);
-  set_attr(info.box,"ontop",59);
+  set_attr(info.box,"ontop",Z_ZOOM);
   raise(info.box);
   info.current=NULL;
   info.persistent=0;
@@ -757,6 +797,9 @@ def Initialize
   sounds.single_token   = load_sound("single_token.ogg");
   sounds.multiple_token = load_sound("multiple_token.ogg");
   sounds.notify         = load_sound("notify.ogg");
+  
+  if(isfunction("InitializeHook"))
+    InitializeHook();
   
   PlaySound(sounds.launch);
   
@@ -819,6 +862,8 @@ def SaveAll
     save("deck.name");
   if(decks != NULL)
     save("decks");
+  if(deck.groups != NULL)
+    save("deck.groups");
   if(price.default != NULL)
     save("price.default");
   save("options");
@@ -849,12 +894,14 @@ def SaveAll
   save("logs");
 }
 
+
+
 #
 # _InitializeGame() - Initialize game variables.
 #
 def _InitializeGame
 {
-  player.marker_color=DEFAULT_COUNTER_COLOR;
+  player.marker_color=DEFAULT_MARKER_COLOR;
   active=array(players);
   hand=array(players);
   deck.objects=array(players);
@@ -874,16 +921,17 @@ def _InitializeGame
   }
   else
   {
-    table.width=BASE_TABLE_WIDTH/2;
+    table.width=BASE_TABLE_WIDTH / ((players + 1) / 2);
     table.height=BASE_TABLE_HEIGHT;
-    card.xstep=card.design.width/2;
+    card.xstep=card.design.width / ((players + 1) / 2);
     card.ystep=card.design.height;
-    set_cardsize("table",toint(game_option("table card size"))/2);
+    set_cardsize("table",toint(game_option("table card size")) / ((players + 1) / 2));
   }
 
   InitializeLocationTables();
 
-  InitializeGame();
+  if(isfunction("InitializeGame"))
+    InitializeGame();
 }
 
 #
@@ -899,7 +947,6 @@ def _EndGame
     net_close(con);
   }
   ClearScores();
-  flag.playing=0;
 #  if (mode != "chat")
 #    SetMode("chat");
 }
@@ -987,7 +1034,6 @@ def ShowHelp
     n=pop();
     m=pop();
     M=pop();
-    Msg("{hr}");
   }
 }
 
@@ -1047,7 +1093,9 @@ def SendMeta
 {
   if(mode!="" && mode !="offline")
   {
-    if(net_isopen(server.meta))
+    if(server.meta == NULL)
+      Msg("{red}Connection is already closed.");
+    elseif(net_isopen(server.meta))
       net_send(server.meta,ARG);
     else
       Msg("{red}Connection is already closed.");
@@ -1099,7 +1147,7 @@ def RefreshCurrentDeck
   if(deck.name!=NULL && has_entry(deck.name,decks))
   {
     book_set_deck(card.book,decks{deck.name});
-    listbox_set_deck(deck.box,decks{deck.name},card.book); 
+    cards_missing=listbox_set_deck(deck.box,decks{deck.name},card.book);
   }
 }
 
@@ -1112,7 +1160,7 @@ def SetCardbook
   if(deck.name!=NULL && has_entry(deck.name,decks))
   {
     book_set_deck(card.book,decks{deck.name});
-    listbox_set_deck(deck.box,decks{deck.name},card.book); 
+    cards_missing=listbox_set_deck(deck.box,decks{deck.name},card.book); 
     forall("book_refresh{#}=1",keys(ARG));
   }
 }
@@ -1159,8 +1207,17 @@ def SelectDeck
         Msg("Deck '"+deck.name+"' selected.");
         RefreshCurrentDeck();
         RefreshBookForDeck(deck.name);
-        message(deckname.box,"");
+        listbox_scroll(deck.box,-(listbox_scroll(deck.box,0)));
+        if(isfunction("clear_msgbox"))
+          clear_msgbox(deckname.box);
+        else
+        {
+          message(deckname.box,"");
+          message(deckname.box,"");
+        }
         message(deckname.box,"Deck: {white}"+deck.name);
+        undo_buffer=(,);
+        undo.pos=-1;
       }
     }
   }
@@ -1173,12 +1230,25 @@ def DeleteDeck
 {
   if(has_entry(ARG,decks))
   {
+#   remove group reference if applicable
+    g=GroupOf(ARG);
+    if(length(g)>0)
+      deck.groups{g}=deck.groups{g}-(ARG,);
+      
     decks=del_entry(ARG,decks);
     book_set_deck(card.book,NewDeck());
-    listbox_set_deck(deck.box,NewDeck(),card.book);
+    cards_missing=listbox_set_deck(deck.box,NewDeck(),card.book);
     set_attr(deck.box,"visible",0);
     deck.name=NULL;
-    message(deckname.box,"");
+    undo_buffer=(,);
+    undo.pos=-1;
+    if(isfunction("clear_msgbox"))
+      clear_msgbox(deckname.box);
+    else
+    {
+      message(deckname.box,"");
+      message(deckname.box,"");
+    }
     message(deckname.box,"{red}No Deck Selected");
   }
 }
@@ -1454,7 +1524,7 @@ def NextTarget
     push(q);
 
     c=last(targeting_queue);
-    q=select('(card_data(#))[3]==c[0] && ParentObject(#)==NULL',inplay(me));
+    q=select('(card_data(#))[2]==c[0] && ParentObject(#)==NULL',inplay(me));
     targeting_queue=head(targeting_queue);
 
     if(length(q)>0)
@@ -1613,6 +1683,7 @@ def ManualTarget
 def SlashCommand
 {
   push(c);
+  
   c=split(ARG," ");
   if(first(c[0])=="/")
   {
@@ -1633,7 +1704,6 @@ def SlashCommand
   }
   c=pop();
 }
-
 
 #
 # CommandMe() - Implementation of /me command.
@@ -1671,6 +1741,41 @@ def ChatCommandAway
 }
 HELP{"chat"}{"away"}=("text","toggle away status",NULL,
 "Marks you as away from the keyboard with the given text as an explantion. Without any arguments, removes away status.");
+
+#
+# ChatCommandPm(name) - Implementation of /pm command.
+#
+def ChatCommandPm
+{
+  if(!length(ARG))
+  {
+    if(pm_name != NULL)
+      EndPMSession();
+    else
+      Msg("{red}No session active.");
+  }
+  else if(ARG[0]==username)
+    Msg("{red}You can't PM yourself!");
+  else if(has_entry(ARG[0],avatar.object))
+  {
+    pm_name = ARG[0];
+    MsgChat("{hr}");
+    MsgChat("{orange}Hover over this box to whisper to "+ARG[0]);
+    if(!get_attr(chat_msg.box,"visible"))
+      Msg("Please press {yellow}F6{reset} to open the chat window.");
+  }
+  else
+    Msg("{red}No such user online.");
+}
+
+def EndPMSession
+{
+  pm_name = NULL;
+  MsgChat("{orange}PM session closed.");
+}
+
+HELP{"chat"}{"pm"}=("name","start private chat",NULL,
+"If {yellow}[name]{white} is online, start a chat session. Any message you enter while hovering the mouse over the chat box in the lower right will be a whisper directed to that user. You can end a session by typing {yellow}/pm{white} with no arguments, watching a game, or sending a message after the target signs off.");
 
 #
 # CommandRefresh() - Implementation of /refresh command.
@@ -1716,17 +1821,23 @@ def CommandReconnect
     c=1;
   if(c)
   {
+    server = NULL;
 #   no effect if already in chat mode
     SetMode("chat");
     
-    server = NULL;
     forall('DelRoomPlayer(#[0])',room.players);
     forall('DelRoomTable(#[0])',room.tables);
     InitializeConnection();
     
-    sleep(1);
-    Send("RefreshChatRoom",NULL);
+    if(server != NULL)
+    {
+      server.meta = server;
+      sleep(1);
+      Send("RefreshChatRoom",NULL);
+    }
   }
+  else
+    Msg("Connection is still open. Cannot reconnect.");
   c=pop();
 }
 HELP{"any"}{"reconnect"}=("","reconnect to server",NULL,
@@ -1738,6 +1849,7 @@ HELP{"any"}{"reconnect"}=("","reconnect to server",NULL,
 def CommandWho
 {
   push(m);
+  push(p);
   Msg("{orange}Users online:");
   for(p)(room.players)
   {
@@ -1747,6 +1859,7 @@ def CommandWho
     Msg(m);
   }
   Msg("Total: "+length(room.players)+" players.");
+  p=pop();
   m=pop();
 }
 
@@ -1795,7 +1908,7 @@ HELP{"chat"}{"leavetable"}=("","leave table",NULL,
 #
 def ChatCommandGive
 {
-  if(length(ARG)==2 && toint(ARG[1])>0)
+  if(length(ARG)==2 && toreal(ARG[1])>0)
     Send("Give",join(ARG," "));
   else if(length(ARG)<2)
     Msg("{red}You have to give something. Use {yellow}/give NAME MONEY{red} or {yellow}/give NAME CARD{red}.");
@@ -1813,13 +1926,18 @@ def ChatCommandGive
 
     if(length(i)<=0)
       Msg("{red}No such card: "+n);
-    else if(length(i)==1)
-      Send("GiveCard",(ARG[0],i[0]));
     else
     {
-      Msg("{orange}Card name is not unique. Please specify one of the following:");
-      for(n)(i)
-        Msg("     "+canonical_name(n));
+      i=select("(book_entry(card.book,#))[0]",i);
+      if(length(i)==0)
+        Msg("{red}You don't have that card.");
+      else if(length(i)==1)
+        Send("GiveCard",(ARG[0],i[0]));
+      else
+      {
+        Msg("{orange}Card name is not unique. Please specify one of the following:");
+        Msg(join(forall('canonical_name(#)',i),"        "));
+      }
     }
 
     i=pop();
@@ -1897,7 +2015,7 @@ HELP{"any"}{"quit"}=("","leave",NULL,
 #
 def CommandPasswd
 {
-  if(length(split(username,"-"))>1)
+  if(find('-',username))
     Msg("{red}You cannot change your password in special mode.");
   else
   {
@@ -1940,6 +2058,28 @@ def OfflineCommandNewdeck
 
 HELP{"chat"}{"newdeck"}=("deckname","create new deck",NULL,
 "Create an empty deck with the given {yellow}deckname{white} and select it as the current deck. Opens up the deck editing list automatically. The deck is saved automatically after the editing list is closed");
+
+#
+# ChatCommandErasedeck() - Implementation of /erasedeck command.
+#
+def CommandErasedeck
+{
+  if(deck.name != NULL)
+  {
+    decks{deck.name}=NewDeck();
+    deck.part="deck";
+    RefreshCurrentDeck();
+  }
+}
+
+HELP{"any"}{"erasedeck"}=("","erase deck contents",NULL,
+"Remove all cards from the current decklist, leaving only an empty deck shell so you can start over.");
+
+def CommandDeletedeck
+  DeleteDeck(deck.name);
+
+HELP{"any"}{"deletedeck"}=("","delete a deck entry",NULL,
+"Delete the current deck entirely, including its entry in your list of decks.");
 
 #
 # CommandHelp(topic) - Implementation of /help command.
@@ -2067,14 +2207,26 @@ def ChatCommandRenamedeck
 {
   if(deck.name != NULL && has_entry(deck.name,decks) && length(ARG)>=1)
   {
-    decks{join(ARG," ")}=decks{deck.name};
-    decks=del_entry(deck.name,decks);
-    SelectDeck(join(ARG," "));
+    push(n);
+    n=join(ARG," ");
+    if(has_entry(n,decks)
+      Msg("{red}You already have a deck with that name.");
+    else
+    {
+#     update group reference if applicable
+      g=GroupOf(deck.name);
+      if(length(g)>0)
+        deck.groups{g}=(deck.groups{g}-(deck.name,))+(join(ARG," "),);
+      
+      decks{join(ARG," ")}=decks{deck.name};
+      decks=del_entry(deck.name,decks);
+      SelectDeck(join(ARG," "));
+    }
   }
 }
 
 HELP{"chat"}{"renamedeck"}=("name","rename deck",NULL,
-"Give new {yellow}name{white} to the current deck if selected. If there are no deck selected, this command does nothing.");
+"Give new {yellow}name{white} to the current deck if selected. If there is no deck selected, this command does nothing.");
 
 #
 # CommandPage() - Implementation of /page command.
@@ -2143,11 +2295,11 @@ HELP{"any"}{"find"}=("card_name","search for a card",NULL,
 "Find a card having a name {yellow}card_name{white}. If exact name was not found, then search for cards with the name containing a text {yellow}card_name{white}. If found either way, show the collection if not already visible. Then turn to page containing the card found. If already in such page, search for the next page containing the card qualifying the search criteria.");
 
 #
-# CommandSets() - Implementation of /find command.
+# CommandSets() - Implementation of /sets command.
 #
 def CommandSets
 {
-  if(length(ARG))
+  if(length(ARG)>0)
   {
     push(c);
     c=images(join(ARG," "));
@@ -2260,18 +2412,42 @@ def CommandSet
     options{ARG[0]}=a;
     Msg("Setting option {green}"+ARG[0]+"{white}="+tostr(a));
     Send("Set",(ARG[0],a));
+    
+#   Some settings have immediate effect
     if(ARG[0]=="avatar" && a!="sleep")
     {
       avatar{username}=a;
       save("avatar");
+    }    
+    if(ARG[0]=="input")
+    {
+      if(a=="top")
+        CreatePanel("input",0,0);
+      else
+        CreatePanel("input",0,screen.height-h(16));
     }
-  } 
+  }
   a=pop();
   redraw(card.book);
 }
 
 HELP{"chat"}{"set"}=("var,value","change settings",NULL,
-"Without arguments, this command lists all options currenlty set. Otherwise it can be used to fine tune operating parameters of the client or the server. All settings are offered to the server. If the server accepts the setting, i.e. the given variable {yellow}var{white} is meaningful to the server, then the server side option is set to {yellow}value{white}. In any case, client-side option is set to the {yellow}value{white}.\nThe list of client-side options follows:\n  {green}nosound {yellow}<s>{white} - if set to 'yes', all sounds are disabled\n  {green}noalert {yellow}<s>{white} - if set to 'yes', visual alerts are disabled\n  {green}log {yellow}<s>{white} - if set to 'yes', print messages to stdout.\n  {green}trade_limit {yellow}<n>{white} - if you own more than {yellow}n{white} copies of the given card, consider these extra cards as tradeable (default 4)\n  {green}price {yellow}'higher'/'lower'/'same'/'default'{white} - when selling first card or pressing enter, choose price according to this setting (default 'same')\nThe list of server-side options:\n  {green}avatar {yellow}<image>{white} - choose an image presenting you (see graphics/avatar)\n{green}  email {yellow}<s>{white} - set your email address shown by /whois command to {yellow}s{white}\n  {green}plan {yellow}<s>{white} - set additional information shown by /whois command to {yellow}s{white}\n  {green}realname {yellow}<s>{white} - set your real name shown by /whois command to {yellow}s{white}\n");
+"Without arguments, this command lists all options currently set. "
++"Otherwise it can be used to fine tune operating parameters of the client or the server. "
++"All settings are offered to the server. If the server accepts the setting, it will be stored there as well. "
++"In any case, client-side option is set to {yellow}value{white}.\n"
++"The list of client-side options:\n"
++"  {green}nosound {yellow}<s>{white} - if set to 'yes', all sounds are disabled\n"
++"  {green}noalert {yellow}<s>{white} - if set to 'yes', visual alerts are disabled\n"
++"  {green}log {yellow}<s>{white} - if set to 'yes', print messages to stdout.\n"
++"  {green}trade_limit {yellow}<n>{white} - if you own more than {yellow}n{white} copies of the given card, consider these extra cards as tradeable (default 4)\n"
++"  {green}price {yellow}'higher'/'lower'/'same'/'default'{white} - when selling first card or pressing enter, choose price according to this setting (default 'higher')\n"
++"  {green}input {yellow}<s>{white} - if set to 'top', the input bar for text will be at the top of the screen instead of the bottom\n"
++"The list of server-side options:\n"
++"  {green}avatar {yellow}<image>{white} - choose an image representing you (see graphics/avatar)\n"
++"  {green}email {yellow}<s>{white} - set your email address shown by /whois command to {yellow}s{white}\n"
++"  {green}plan {yellow}<s>{white} - set additional information in /whois output to {yellow}s{white}\n"
++"  {green}realname {yellow}<s>{white} - set your real name shown by /whois command to {yellow}s{white}\n");
 
 #
 # CommandLoadimages() - Implementation of /loadimages command.
@@ -2304,11 +2480,12 @@ def CommandEval
   push(m);
   m=join(ARG," ");
   E=eval(m);
+  Send("Say",tostr(E));
   m=pop();
 }
 
 HELP{"any"}{"eval"}=("exp","evaluate an expression",NULL,
-"This command takes an expression {yellow}exp{white} and evaluates it using gccg-script engine. The resulting value of the expression is stored to the variable {yellow}E{white}. Expression can contain more than one statements separated by semicolon. The last semicolon should be omitted.");
+"This command takes an expression {yellow}exp{white} and evaluates it using gccg-script engine. The resulting value of the expression is stored to the variable {yellow}E{white} and sent as a message. The expression may contain more than one statement, in which case all but the last one needs to be followed by a semicolon.");
 
 #
 # CommandBind(text) - Implementation of /bind command.
@@ -2386,7 +2563,7 @@ def ChatCommandBuy
 {
   push(p);
   push(n);
-  if(length(ARG))
+  if(length(ARG)>0)
   {
     if(tostr(toint(ARG[0]))==ARG[0])
     {
@@ -2632,10 +2809,21 @@ HELP{"any"}{"select"}=("exp","select cards to display",NULL,
 
 +join(forall('"{green}"+#+"{white}"',head(attributes())),", ")+" or {green}"+last(attributes())
 
-+"\n  {yellow}<n>{white} - an integer\n  {green}\"{yellow}<str>{green}\"{white} - a string\n  {green}name{white} - a card name\n  {green}set{white} - an abbrivation of the set\n  {green}text{white} - card text\n  {green}have{white} - number of cards you own\n  {green}want{white} - number of cards you want\n  {green}sell{white} - number of cards you have for sale\n  {green}deck{white} - number of cards in the current deck\n  {green}seller{white} - name of the seller\n  {green}price{white} - price of the card\n  {green}myprice{white} - price of the card set by me.\n"
-+"  {green}pwant({yellow}player{green}){white} - wanted by {yellow}player{white}\n"
-+"  {green}phave({yellow}player{green}){white} - sold by {yellow}player{white}\n"
-+"    to use {green}phave{white} or {green}pwant{white}, you must first do {cyan}/have {yellow}player{white} or {cyan}/want {yellow}player{white}, respectively.\n"
++"\n  {yellow}<n>{white} - an integer"
++"\n  {green}\"{yellow}<str>{green}\"{white} - a string"
++"\n  {green}name{white} - a card name"
++"\n  {green}set{white} - an abbrevation of the set"
++"\n  {green}text{white} - card text"
++"\n  {green}have{white} - number of copies you own"
++"\n  {green}want{white} - number of copies you want"
++"\n  {green}sell{white} - number of copies you have for sale"
++"\n  {green}deck{white} - number of copies in the current deck"
++"\n  {green}seller{white} - name of the seller with lowest price"
++"\n  {green}price{white} - price of the card"
++"\n  {green}myprice{white} - price of the card set by me"
++"\n  {green}pwant({yellow}player{green}){white} - wanted by {yellow}player{white} (must use {cyan}/want {yellow}player{white} first)"
++"\n  {green}phave({yellow}player{green}){white} - sold by {yellow}player{white} (must use {cyan}/have {yellow}player{white}) first)"
++"\n"
 );
 
 #
@@ -2828,7 +3016,7 @@ def CreateHand
     y=y-220;
 
   hand[ARG[1]]=create_hand(ARG[3][0]-10,y,ARG[0],ARG[2]);
-  set_attr(hand[ARG[1]],"ontop",30);
+  set_attr(hand[ARG[1]],"ontop",Z_HAND);
   raise(hand[ARG[1]]);
 
   if(ARG[1]!=me)
@@ -2868,7 +3056,7 @@ def CreateActive
   set_attr(ARG[0],"compact",1);
   set_fgcolor(ARG[0],(0,200,4));
   set_attr(ARG[0],"highlight",1);
-  set_attr(ARG[0],"ontop",35);
+  set_attr(ARG[0],"ontop",Z_SETASIDE);
   raise(ARG[0]);
   y=pop();
   x=pop();
@@ -2898,7 +3086,7 @@ def CreatePlayerIcon
 
   set_attr(ARG[0],"clickable",1);
   set_attr(ARG[0],"draggable",1);
-  set_attr(ARG[0],"ontop",1);
+  set_attr(ARG[0],"ontop",Z_MBOX);
   add_text(ARG[0],"{font4}{sz10}{shadow}"+ARG[1]);
   set_textalign(ARG[0],0);
   set_textvalign(ARG[0],2);
@@ -2982,15 +3170,25 @@ def Message
     {
       to_msg = 0;
       hilight = 0;
+
+      if(pm_name != NULL)
+      {
+        if(find("{red}No player '"+pm_name+"'",m)==0 || left(m,30)=="{red}Invalid command /whisper ")
+          EndPMSession();
+      }
       
-      if(substr(m,0,6)=="{blue}")
+      if(left(m,6)=="{blue}")
+      {
         to_msg = 1;
-      elseif(substr(m,0,23)=="{gold}* you whisper to ")
+        if(find(username+" receives",m)==6)
+          hilight=1;
+      }
+      elseif(left(m,23)=="{gold}* you whisper to ")
       {
         to_msg = 1;
         hilight = 1;
       }
-      elseif(substr(m,0,6)=="{gold}" && find("whispers:",m))
+      elseif(left(m,6)=="{gold}" && find("whispers:",m))
       {
         to_msg = 1;
         hilight = 2;
@@ -3003,8 +3201,9 @@ def Message
         {
           if(substr(m,8,length(username))!=username || left(m,8)=="Welcome ")
             hilight = 2;
-          elseif(find((split(m,": "))[1],forall("(#)[1][0]",room.players))!=NULL)
-            hilight = 1;
+          elseif(find(": ",m))
+            if(find((split(m,": "))[1],forall("(#)[1][0]",room.players))!=NULL)
+              hilight = 1;
         }
       }
       else
@@ -3031,9 +3230,9 @@ def Message
 }
 
 #
-#  PutDeck(object number,card number(s),[real cards]) - Put one or more cards to the top of the deck.
+# PutDeckTop(object number,card number(s),[real cards]) - Put one or more cards to the top of the deck.
 #
-def PutDeck
+def PutDeckTop
 {
   PlaySound(sounds.card_pickup);
   
@@ -3098,22 +3297,24 @@ def PutDeckBottom
 }
 
 #
-#  PutHand(player number,card) - Put a card to the players hand.
+#  PutHand(player number, card[, card 2...]) - Put cards to a player's hand.
 #
 def PutHand
 {
+  push(c);
   PlaySound(sounds.card_pickup);
-  
-  put_hand(hand[ARG[0]],ARG[1]);
+  for(c)(tail(ARG))
+    put_hand(hand[ARG[0]],c);
+  c=pop();
 }
 
 #
-#  PutActive(player number,card) - Put a card to the players active set.
+#  PutActive(player number, card[, card 2...]) - Put a card to the player's active set.
 #
 def PutActive
 {
   PlaySound(sounds.card_pickup);
-  put_cardbox_recenter(active[ARG[0]],ARG[1]);
+  put_cardbox_recenter(active[ARG[0]],tail(ARG));
 }
 
 #
@@ -3132,8 +3333,13 @@ def PutTable
   if(ARG[6]!=ARG[4])
     change_card(ARG[0],ARG[4]);
 
-  if(ARG[5]==me)
+# in use cases where a card is given to us automatically, we have no control over coordinates
+# so don't reserve a group stack for it
+  if(ARG[5]==me && awaiting_card)
+  {
     PutCardInGroup(ARG[6],ARG[0],ARG[1],ARG[2]);
+    awaiting_card=0;
+  }
   if(options.game{"PutTableHook"}!="off" && isfunction("PutTableHook"))
     PutTableHook(ARG);
   if(lottery.started)
@@ -3158,6 +3364,7 @@ def PutTable
     c=pop();
   }
 }
+
 #
 #  DelDeckTop(object number) - Remove top card of the deck.
 #
@@ -3176,7 +3383,7 @@ def DelDeckBottom
 {
   if(isfunction("DelDeckHook"))
     call("DelDeckHook",(ARG,deck.class{ARG},first(deck_content{ARG}),length(deck_content{ARG})-1));
-  del_deck_top(ARG);
+  del_deck_bottom(ARG);
   deck_content{ARG}=tail(deck_content{ARG});
 }
 
@@ -3262,24 +3469,40 @@ def _StartGame
     PlaySound(sounds.start);
   StartGame();
   flag.playing=1;
+  awaiting_card=0;
   options.game=(,);
 }
 
 #
-# DelTable(object number) - Del a card 'object number' from the table.
+# DelTable(object number) - Remove a card with 'object number' from the table.
 #
 def DelTable
 {
   push(c);
   c=card_data(ARG);
-  if(c[0]==me)
-    DelCardInGroup(ARG);
+  if(typeof(c)=="list")
+  {
+    if(c[0]==me)
+      DelCardInGroup(ARG);
+  }
   del_object(ARG);
 
   if(isfunction("DelTableHook"))
     call("DelTableHook",ARG);
 
   c=pop();
+}
+
+#
+# DeckDelTable(object number) - Remove a pile with 'object number' from the table.
+#
+def DeckDelTable
+{
+  push(o);
+  o=find(ARG,flatten(deck.objects));
+  if(o>0 && o%2)
+    set_attr(ARG,"visible",0);
+  o=pop();
 }
 
 #
@@ -3317,24 +3540,35 @@ def SetActive
 #
 def SetHand
 {
+  push(e);
+  e=0;
+
+  if(!get_attr(hand[ARG[0]],"tiny"))
+  {
+# if the hand started out face-down and expanded, you've willfully asked for it to be that way
+# so don't shrink even if it remains face-down afterwards (probably because of a shuffle)
+    for(c)(hand(hand[ARG[0]]))
+    {
+      if(card_back(c)==c)
+       e=1;
+    }
+  }
   repeat(length(hand(hand[ARG[0]])),"del_hand(hand[ARG[0]],0)");
   forall("put_hand(hand[ARG[0]],#)",ARG[1]);
   if(ARG[0]!=me)
   {
-    push(r);
     push(d);
     push(n);
-    r=0;
+# if someone else's hand contains face up cards, clearly it should be expanded so we can see them
     for(c)(ARG[1])
     {
       if(card_back(c)!=c)
-       r=1;
+       e=1;
     }
 
     d=object_data(hand[ARG[0]]);
 
-# Hide
-    if(r==0)
+    if(!e)
     {
       set_attr(hand[ARG[0]],"tiny",1);
       n=object_data(hand[ARG[0]]);
@@ -3343,7 +3577,6 @@ def SetHand
     }
     else
     {
-# Reveal
       set_attr(hand[ARG[0]],"tiny",0);
       n=object_data(hand[ARG[0]]);
       if(n[0]+n[2] > screen.width)
@@ -3351,8 +3584,8 @@ def SetHand
     }
     n=pop();
     d=pop();
-    r=pop();
   }
+  e=pop();
 }
 
 #
@@ -3375,6 +3608,16 @@ def SetDeck
   
   if(isfunction("PutDeckHook"))
     call("PutDeckHook",(ARG[0],deck.class{ARG[0]},ARG[1]));
+}
+
+#
+#  SetDeckTop(object number,card number) - Change the top card of a deck.
+#
+def SetDeckTop
+{
+  del_deck_top(ARG[0]);
+  put_deck_top(ARG[0],ARG[1]);
+  deck_content{ARG}=head(deck_content{ARG})+(ARG[1],);
 }
 
 #
@@ -3477,8 +3720,11 @@ def AddMarker
 {
   if(length(ARG)>=3)
   {
-    PlaySound(sounds.multiple_token);
-    repeat(toint(ARG[2]),'add_marker(ARG[0],ARG[1])');
+    if(ARG[2]>0)
+    {
+      PlaySound(sounds.multiple_token);
+      repeat(toint(ARG[2]),'add_marker(ARG[0],ARG[1])');
+    }
   }
   else
   {
@@ -3497,8 +3743,11 @@ def DelMarker
 {
   if(length(ARG)>=3)
   {
-    PlaySound(sounds.multiple_token);
-    repeat(toint(ARG[2]),'del_marker(ARG[0],ARG[1])');
+    if(ARG[2]>0)
+    {
+      PlaySound(sounds.multiple_token);
+      repeat(toint(ARG[2]),'del_marker(ARG[0],ARG[1])');
+    }
   }
   else
   {
@@ -3537,7 +3786,8 @@ def Play
 
   found=0;
 
-  if(isfunction("Play"+tofnc(name(ARG[0]))))
+# cards with no alphanumeric characters in name need a special exemption to avoid an infinite loop
+  if(length(tofnc(name(ARG[0]))) > 0 && isfunction("Play"+tofnc(name(ARG[0]))))
     call("Play"+tofnc(name(ARG[0])),ARG);
   else
   {
@@ -3563,7 +3813,7 @@ def Play
 }
 
 #
-# PlayCard(card number,upside down?) - Default handler for playing card on table.
+# PlayCard(card number,face down?) - Default handler for playing card on table.
 #
 def PlayCard
 {
@@ -3576,6 +3826,7 @@ def PlayCard
 
   Send("Transfer",(1,("play",ARG[0],ARG[1]),("table",a[0]+card.width/2,a[1]+card.height/2,0,ARG[1])));
 
+  awaiting_card=1;
   a=pop();
 }
 
@@ -3586,6 +3837,15 @@ def IsStayTapped
 {
   return(has_text(ARG,STRING_KEEP_TAPPED));
 }
+
+#
+# IsStayUntapped(object) - Return 1 if object has stay-untapped flag set.
+#
+def IsStayUntapped
+{
+  return(has_text(ARG,STRING_KEEP_UNTAPPED));
+}
+
 
 #
 # SetStayTapped() - Set stay-tapped flag for card under the mouse.
@@ -3612,6 +3872,34 @@ def UnsetStayTapped
   {
     if(object.type=="card")
       del_text(object.number,STRING_KEEP_TAPPED);
+  }
+}
+
+#
+# SetStayUntapped() - Set stay-untapped flag for card under the mouse.
+#
+def SetStayUntapped
+{
+  if(object.type=="card")
+  {
+    if(!IsStayUntapped(object.number))
+    {
+      if(tapped(object.number))
+        MouseMiddleClick();
+      add_text(object.number,STRING_KEEP_UNTAPPED);
+    }
+  }
+}
+
+#
+# UnsetStayUntapped() - Clear stay-untapped flag for card under the mouse.
+#
+def UnsetStayUntapped
+{
+  if(IsStayUntapped(object.number))
+  {
+    if(object.type=="card")
+      del_text(object.number,STRING_KEEP_UNTAPPED);
   }
 }
 
@@ -3680,17 +3968,17 @@ def SetMode
   if(mode!=ARG)
   {
     DelMenu();
-
     if(mode!="")
       call("Leave"+ucfirst(mode)+"Mode",NULL);
-
-    forall('if(object_data(#)!=NULL) set_attr(#,"visible",0);',mode_object{mode});
-
+    
+    if(has_entry(mode,mode_object))
+      forall('if(object_data(#)!=NULL) set_attr(#,"visible",0);',mode_object{mode});
     mode=ARG;
     if(ARG!="")
       call("Start"+ucfirst(ARG)+"Mode",NULL);
-
-    forall('if(object_data(#)!=NULL) set_attr(#,"visible",1);',mode_object{mode});
+      
+    if(has_entry(mode,mode_object))
+      forall('if(object_data(#)!=NULL) set_attr(#,"visible",1);',mode_object{mode});
   }
 }
 
@@ -3706,9 +3994,12 @@ def StartChatMode
   if(old.me != NULL)
     me=old.me;
   old.me=NULL;
-  Send("RefreshChatRoom",NULL);
-  SetAwayOff();
-
+  
+  if(server != NULL)
+  {
+    Send("RefreshChatRoom",NULL);
+    SetAwayOff();
+  }
   if(LoadBookState())
     SetBookPage(book_page(card.book));
   else
@@ -3717,7 +4008,6 @@ def StartChatMode
   MsgChat(" ");
   MsgChat("{hr}");
   MsgChat("my messages");
-  MsgChat("{hr}");
   MsgChat(" ");
 }
 
@@ -3796,6 +4086,7 @@ def LeavePlayMode
 {
   ClearSearchbox();
   server=server.meta;
+  flag.playing=0;
   del_object(select("#>=10000",objects()));
   set_attr(playmat.object,"visible",0);
   Msg("GAME ENDS");
@@ -3821,10 +4112,11 @@ def StartWatchMode
   deck_content=(,);
   ShowPlaymat();
   raise(chat_msg.box);
+  if(pm_name != NULL)
+    EndPMSession();
   MsgChat(" ");
   MsgChat("{hr}");
-  MsgChat("main chat");
-  MsgChat("{hr}");
+  MsgChat("main chat: hover over this box to talk");
   MsgChat(" ");
 }
 
@@ -4158,6 +4450,8 @@ def ConnectServer
 {
   if(server==server.meta)
   {
+    if(left(ARG[0],4)=="127.")
+      ARG[0] = server.name;
     Msg("Connecting to the game server "+ARG[0]+" at port "+ARG[1]);
     server=net_connect(ARG[0],ARG[1]);
     if(server==NULL)
@@ -4224,7 +4518,7 @@ def AddCards
     book_set_entry(card.book,((c,e),));
   }
   if(deck.name!=NULL && has_entry(deck.name,decks))
-    listbox_set_deck(deck.box,decks{deck.name},card.book); 
+    cards_missing=listbox_set_deck(deck.box,decks{deck.name},card.book); 
   e=pop();
 }
 
@@ -4265,7 +4559,7 @@ def AddCards
     AddCards(ARG);
 
     if(deck.name!=NULL && has_entry(deck.name,decks))
-      listbox_set_deck(deck.box,decks{deck.name},card.book);
+      cards_missing=listbox_set_deck(deck.box,decks{deck.name},card.book);
 
     AlertOff();
   }
@@ -4558,12 +4852,17 @@ def EditCountCards
 
 #
 # AddToDeck(deck name,deck part,card name,count) - Add card(s) to the deck in the deck collection.
+# Return ID of most recent card added.
 #
 def AddToDeck
 {
   push(d);
+  push(c);
   d=select("canonical_name(#)==ARG[2]",decks{ARG[0]}{ARG[1]});
-  decks{ARG[0]}{ARG[1]}=decks{ARG[0]}{ARG[1]} - d + FindCards(length(d)+ARG[3],ARG[2]);
+  c=FindCards(length(d)+ARG[3],ARG[2]);
+  decks{ARG[0]}{ARG[1]}=decks{ARG[0]}{ARG[1]} - d + c;
+  return(last(c));
+  c=pop();
   d=pop();
 }
 
@@ -4613,6 +4912,12 @@ def RemoveDeckPart
     {
       decks{deck.name}=del_entry(lc(ARG),decks{deck.name});
       RefreshCurrentDeck();
+      if(lc(ARG)==deck.part)
+      {
+        deck.part="deck";
+        undo_buffer=(,);
+        undo.pos=-1;
+      }
     }
   }
 }
@@ -4622,25 +4927,53 @@ def RemoveDeckPart
 #
 def EditAdd
 {
-  push(d);
-  push(n);
+  push(o);
   if(!has_entry(deck.name,decks) || deck.name==NULL)
     Msg("{red}You must have a deck selected.");
   else if(!has_entry(ARG[0],decks{deck.name}))
     Msg("{red}Cannot add to deck: no such deck part as "+tostr(ARG[0])+".");
   else
   {
-    if(typeof(ARG[1])=="string")
-      AddToDeck(deck.name,ARG[0],ARG[1],1);
-    else if(typeof(ARG[1])=="integer")
-      decks{deck.name}{ARG[0]}=decks{deck.name}{ARG[0]} + (ARG[1],);
-    else
-      Msg("{red}Can't add "+tostr(ARG[1])+" to the deck (this is an uncaught bug in Gccg).");
+    o=1;
+    if(isfunction("EditAddHook"))
+      o=EditAddHook(ARG);
+      
+    if(o)
+    {
+      if(typeof(ARG[1])=="string")
+        o=AddToDeck(deck.name,ARG[0],ARG[1],1);
+      else if(typeof(ARG[1])=="integer")
+      {
+        o=ARG[1];
+        decks{deck.name}{ARG[0]}=decks{deck.name}{ARG[0]} + (o,);
+      }
+      else
+      {
+        Msg("{red}Bad card name argument.");
+        o=NULL;
+      }
 
-    RefreshCurrentDeck();
+      if(o!=NULL)
+      {
+        if(undo.pos<0)
+        {
+          undo_buffer=((o,1,"",ARG[0]),);
+          undo.pos=0;
+        }
+        else if(undo_buffer[undo.pos][0]==o && undo_buffer[undo.pos][2]=="" && undo_buffer[undo.pos][3]==ARG[0])
+          undo_buffer[undo.pos][1]=undo_buffer[undo.pos][1] + 1;
+        else if(undo_buffer[undo.pos][0]==o && undo_buffer[undo.pos][2]==ARG[0] && undo_buffer[undo.pos][3]=="")
+          undo_buffer[undo.pos][1]=undo_buffer[undo.pos][1] - 1;
+        else
+        {
+          undo.pos=undo.pos+1;
+          undo_buffer=left(undo_buffer,undo.pos)+((o,1,"",ARG[0]),);
+        }
+        RefreshCurrentDeck();
+      }
+    }
   }
-  n=pop();
-  d=pop();
+  o=pop();
 }
 
 #
@@ -4653,7 +4986,7 @@ def EditDel
   if(!has_entry(deck.name,decks) || deck.name==NULL)
     Msg("{red}You must have a deck selected.");
   else if(!has_entry(ARG[0],decks{deck.name}))
-    Msg("{red}Cannot add to deck: no such deck part as "+tostr(ARG[0])+".");
+    Msg("{red}No such deck part as "+tostr(ARG[0])+".");
   else
   {
     if(typeof(ARG[1])=="string")
@@ -4661,12 +4994,79 @@ def EditDel
     else if(typeof(ARG[1])=="integer")
       d=select("#==ARG[1]",decks{deck.name}{ARG[0]});
     else
-      Msg("{red}Can't delete "+tostr(ARG[1])+" from the deck (this is an uncatched bug in Gccg).");
+      Msg("{red}Bad card name argument.");
     if(length(d)>0)
     {
-      decks{deck.name}{ARG[0]}=decks{deck.name}{ARG[0]}-d+head(d);
+      decks{deck.name}{ARG[0]}=decks{deck.name}{ARG[0]}-d+tail(d);
+      
+      if(undo.pos<0)
+      {
+        undo_buffer=((d[0],1,ARG[0],""),);
+        undo.pos=0;
+      }
+      else if(undo_buffer[undo.pos][0]==d[0] && undo_buffer[undo.pos][2]==ARG[0] && undo_buffer[undo.pos][3]=="")
+        undo_buffer[undo.pos][1]=undo_buffer[undo.pos][1] + 1;
+      else if(undo_buffer[undo.pos][0]==d[0] && undo_buffer[undo.pos][2]=="" && undo_buffer[undo.pos][3]==ARG[0])
+        undo_buffer[undo.pos][1]=undo_buffer[undo.pos][1] - 1;
+      else
+      {
+        undo.pos=undo.pos+1;
+        undo_buffer=left(undo_buffer,undo.pos)+((d[0],1,ARG[0],""),);
+      }
+      
       if(length(d)==1)
-        Msg("Note: removed the last "+name(first(d))+" from the "+ARG[0]+".");
+        Msg("Note: removed the last "+name(d[0])+" from the "+ARG[0]+".");
+      RefreshCurrentDeck();
+      return(1);
+    }
+  }
+  d=pop();
+}
+
+#
+# EditMove(from part, to part, canonical name or number) - Move a card from one deck part to another.
+#
+def EditMove
+{
+  push(d);
+  if(!has_entry(deck.name,decks) || deck.name==NULL)
+    Msg("{red}You must have a deck selected.");
+  else if(!has_entry(ARG[0],decks{deck.name}))
+    Msg("{red}No such deck part as "+tostr(ARG[0])+".");
+  else if(!has_entry(ARG[1],decks{deck.name}))
+    Msg("{red}No such deck part as "+tostr(ARG[1])+".");
+  else if(ARG[0]==ARG[1])
+    Msg("{red}Why?");
+  else
+  {
+    if(typeof(ARG[2])=="string")
+      d=select("canonical_name(#)==ARG[2]",decks{deck.name}{ARG[0]});
+    else if(typeof(ARG[2])=="integer")
+      d=select("#==ARG[2]",decks{deck.name}{ARG[0]});
+    else
+      Msg("{red}Bad card name argument.");
+    if(length(d)>0)
+    {
+      decks{deck.name}{ARG[0]}=decks{deck.name}{ARG[0]}-d+tail(d);
+      decks{deck.name}{ARG[1]}=decks{deck.name}{ARG[1]}+(d[0],);
+      
+      if(undo.pos<0)
+      {
+        undo_buffer=((d[0],1,ARG[0],ARG[1]),);
+        undo.pos=0;
+      }
+      else if(undo_buffer[undo.pos][0]==d[0] && undo_buffer[undo.pos][2]==ARG[0] && undo_buffer[undo.pos][3]==ARG[1])
+        undo_buffer[undo.pos][1]=undo_buffer[undo.pos][1] + 1;
+      else if(undo_buffer[undo.pos][0]==d[0] && undo_buffer[undo.pos][2]==ARG[1] && undo_buffer[undo.pos][3]==ARG[0])
+        undo_buffer[undo.pos][1]=undo_buffer[undo.pos][1] - 1;
+      else
+      {
+        undo.pos=undo.pos+1;
+        undo_buffer=left(undo_buffer,undo.pos)+((d[0],1,ARG[0],ARG[1]),);
+      }
+            
+      if(length(d)==1)
+        Msg("Note: moved the last "+name(d[0])+" out of the "+ARG[0]+".");
       RefreshCurrentDeck();
       return(1);
     }
@@ -4681,6 +5081,8 @@ def EditCreateDeck
 {
   if(ARG=="")
     Msg("{red}You must give a valid deck name.");
+  else if(has_entry(ARG,decks))
+    Msg("{red}You already have a deck with that name.");
   else
   {
     decks{ARG}=NewDeck();
@@ -4695,16 +5097,142 @@ def EditCreateDeck
 #
 def CreateEmptyDeck
 {
-  decks{"{blue}New Deck{white}"}=NewDeck();
-  deck.part="deck";
-  SelectDeck("{blue}New Deck{white}");
-  set_attr(deck.box,"visible",1);
-  Msg("{sz20}{yellow}Deckbuilding Help");
-  Msg("To give your new deck a name, type {yellow}/renamedeck [deckname]{white}. To create another deck without bringing up this help, type {yellow}/newdeck [deckname]{white}.");
-  Msg("You can open the list of cards with {yellow}Ctrl+B{white} if you haven't already, then scroll through it with the mouse wheel or with {yellow}PgUp{white} and {yellow}PgDn{white} keys.");
-  Msg("You can also go directly to the next page that has a particular card you want, by typing {yellow}/find [cardname]{white}.");
-  Msg("Clicking on a card with the mouse wheel (or using {yellow}Ctrl+A{white}) adds a copy to the deck; left-clicking removes a copy. Right-clicking offers these options and more.");
+  if(has_entry("{blue}New Deck{white}",decks))
+  {
+    SelectDeck("{blue}New Deck{white}");
+    Msg("You already have an untitled deck which would be destroyed if you created a new one.");
+    Msg("If you still want to add a new deck, type {yellow}/renamedeck [newname]{white} first, or use {yellow}/newdeck [deckname]{white} to create a new named deck.");
+  }
+  else
+  {
+    decks{"{blue}New Deck{white}"}=NewDeck();
+    deck.part="deck";
+    SelectDeck("{blue}New Deck{white}");
+    set_attr(deck.box,"visible",1);
+    Msg("{sz20}{yellow}Deckbuilding Help");
+    Msg("To give your new deck a name, type {yellow}/renamedeck [deckname]{white}. To create another deck without bringing up this help, type {yellow}/newdeck [deckname]{white}.");
+    Msg("You can open the list of cards with {yellow}Ctrl+B{white} if you haven't already, then scroll through it with the mouse wheel or with {yellow}PgUp{white} and {yellow}PgDn{white} keys.");
+    Msg("You can also go directly to the next page that has a particular card you want, by typing {yellow}/find [cardname]{white}.");
+    Msg("Clicking on a card with the mouse wheel (or using {yellow}Ctrl+A{white}) adds a copy to the deck; left-clicking removes a copy. Right-clicking offers these options and more.");
+  }
 }
+
+#
+# ChatCommandAddgroup(name) - Create the named deck group.
+#
+def CommandAddgroup
+{
+  if(length(ARG)>0)
+  {
+    gn = join(ARG," ");
+    if(has_entry(gn,deck.groups))
+      Msg("{red}You already have that deck group.");
+    else
+    {
+      deck.groups{gn}=(,);
+      Msg("Deck group '"+gn+"' added.");
+    }
+  }
+  else
+    Msg("{red}Please specify a name for the deck grouping.");
+}
+
+#
+# ChatCommandDelgroup(name) - Remove a deck group. Any decks therein will still exist, ungrouped.
+#
+def ChatCommandDelgroup
+{
+  if(length(ARG)<1)
+    Msg("{red}Please specify which group you want to delete.");
+  else
+  {
+    gn = join(ARG," ");
+    if(has_entry(gn,deck.groups))
+    {
+      deck.groups=del_entry(gn,deck.groups);
+      Msg("Deck group '"+gn+"' removed.");
+    }
+    else
+      Msg("{red}You don't have that deck group.");
+  }
+}
+
+#
+# GroupOf(deck name) - Return group containing the given deck name.
+# Return empty string if deck is not in a group.
+#
+def GroupOf
+{
+  return("");
+  push(g);
+  for(g)(keys(deck.groups))
+    if(find(ARG,deck.groups{g}) != NULL)
+      return(g);
+  g=pop();
+}
+
+#
+# AddDeckToGroup(group name) - Put the current deck in the specified group.
+#
+def AddDeckToGroup
+{
+  if(deck.name==NULL)
+    Msg("{red}No deck selected.");
+  else if(!has_entry(ARG,deck.groups))
+    Msg("{red}No such group.");
+  else
+  {
+    RemoveDeckFromGroup(1);
+    deck.groups{ARG}=deck.groups{ARG}+(deck.name,);
+    Msg("Deck '"+deck.name+"' added to group '"+ARG+"'.");
+  }
+}
+
+#
+# RemoveDeckFromGroup(silent?) - Take the current deck out of whatever group it's in.
+#
+def RemoveDeckFromGroup
+{
+  if(deck.name==NULL)
+    Msg("{red}No deck selected.");
+  else
+  {
+    push(g);
+    g=GroupOf(deck.name);
+    if(length(g)>0)
+    {
+      deck.groups{g}=deck.groups{g}-(deck.name,);
+      if(!ARG)
+        Msg("Deck '"+deck.name+"' removed from the group '"+g+"'.");
+    }
+    g=pop();
+  }
+}
+
+def WatchCommandAddgroup
+{
+  ChatCommandAddgroup(ARG);
+}
+
+def WatchCommandDelgroup
+{
+  ChatCommandDelgroup(ARG);
+}
+
+def OfflineCommandAddgroup
+{
+  ChatCommandAddgroup(ARG);
+}
+
+def OfflineCommandDelgroup
+{
+  ChatCommandDelgroup(ARG);
+}
+
+HELP{"chat"}{"addgroup"}=("groupname","Add a new deck group",NULL,
+"Create a deck group with the given name. You can use deck groups to help organize similar decks.");
+HELP{"chat"}{"delgroup"}=("groupname","Remove a deck group",NULL,
+"If there is a deck group with the given name, remove it. Any decks you have in that group will not be deleted, but they will reappear in the main deck selection menu.");
 
 #
 # TEXT INPUT AND EDIT
@@ -5045,6 +5573,7 @@ def KeyModifierUp
      }
   }
 }
+
 #
 # CheckForCard() - Return a card number, if mouse points to card name
 #   (deck listing, etc.) or card image. Otherwise NULL.
@@ -5111,7 +5640,7 @@ def PressKey
     f=left(f,length(f)-1)+"Minus";
 
   ok=0;
-
+  
 # Check for /bind
 
   if(bind_next!=NULL && typeof(bind_next)=="string")
@@ -5225,7 +5754,6 @@ def PressKey
       Input(ARG[1]);
     else
       ok=0;
-
     t=pop();
     n=pop();
   }
@@ -5270,7 +5798,7 @@ def KeyReturn
     done=0;
 
     if(isfunction("InputHook"))
-       done=call("InputHook",input);
+       done=InputHook(input);
 
     if(done)
       InputNewline();
@@ -5282,10 +5810,15 @@ def KeyReturn
 
       if(left(i,1)=="/")
         SlashCommand(i);
-      else
+      else if(length(i))
       {
         if(object.number==chat_msg.box)
-          net_send(server.meta,("Say",i));
+        {
+          if(pm_name != NULL)
+            net_send(server.meta,("Command","/whisper "+pm_name+" "+i));
+          else
+            net_send(server.meta,("Say",i));
+        }
         else
           Say(i);
       }
@@ -5297,92 +5830,129 @@ def KeyReturn
   }
 }
 
-
 #
-# KeyTab() - Handler for key Tab.
+# KeyTab() - Autocomplete names or commands.
 #
 def KeyTab
 {
   if(mode!="")
   {
     push(p);
-    push(i);
     push(n);
+    push(b);
+    push(a);
+    push(word);
+    push(nw);
 
-    i=NULL;
-    p=sort(forall("(#)[1][0]",room.players));
-
-    if(tab.last_initial==NULL)
-      tab.last_initial="";
-    if(tab.last_player==NULL || tab.last_player=="")
-      tab.last_player=first(p);
-
-    if(input=="" || input=="{|}")
+    if(p=find("{|}",input))
     {
-      i=tab.last_player+": ";
-      tab.last_initial="";
-    }  
-    else if(right(input,5)==": {|}")
+      b=split(left(input,p)," ",1);
+      a=substr(input,p+3);
+    }
+    else 
     {
-      p=select("find(tab.last_initial,#)==0",p);
+      b=split(input," ",1);
+      a="";
+    }
+    
+    if(last(b)==" ")
+    {
+      nw=1;
+      b=head(b);
+      word=last(b);
+    }
+    else
+    {
+      nw=0;
+      word=last(b);
+    }
+    b=join(head(b));
+    if(word==NULL) word="";
+    
+    if(first(word)=="/")
+#   Command autocompletion
+    {
+      p=unique(sort(forall("'/'+(#)[0]",HELP{"any"}+HELP{mode})));
+      
+      if(tab.type != "command")
+      {
+        tab.last_initial = "/";
+        tab.last_item = first(p);
+        tab.type = "command";
+      }
+    }
+    else
+#   Player autocompletion
+    {
+      p=sort(forall("(#)[1][0]",room.players));
+
+      if(tab.type != "player")
+      {
+        tab.last_initial = "";
+        tab.last_item = first(p);
+        tab.type = "player";
+      }
+    }
+    
+    if(word=="" || word==" ")
+    {
+      if(b=="" && tab.type=="player" && left(a,1) != ":")
+        a=": {|}"+a;
+      else
+        a="{|}"+a;
+      
+      input=b+word+tab.last_item+a;
+      Input("");
+    }
+    else if(nw)
+    {
+      p=select("find(lc(tab.last_initial),lc(#))==0",p);
       
       if(length(p))
       {
-        n=left(input,length(input)-5);
-        if(find(n,p)!=NULL)
+        if(last(word)==":" && tab.type=="player")
         {
-          tab.last_player=p[(find(n,p)+1)%length(p)];
-          input="";
-          i=tab.last_player+": ";
+          nw = ":";
+          word=left(word,length(word)-1);
         }
-      }
-    }
-    else if(right(input,3)=="{|}")
-    {
-      n=trim(left(input,length(input)-3));
-      p=select("find(n,#)==0",p);
-      if(length(p))
-      {
-        tab.last_player=first(p);
-        tab.last_initial=n;
-        input="";
-        i=tab.last_player+": ";
-      }
-      else
-      {
-        n=split(n," ");
-        if(right(input,4)==" {|}")
+        else
+          nw="";
+        
+        if((n=find(lc(word),lc(p)))!=NULL)
         {
-          i=tab.last_player;
-          tab.last_initial="";
+          tab.last_item=p[(n+1)%length(p)];
+          input=b+tab.last_item+nw+" {|}"+a;
+          Input("");
         }
         else
         {
-          p=sort(forall("(#)[1][0]",room.players));
-          p=select("find(last(n),#)==0",p);
-          if(find(last(n),p)!=NULL)
-          {
-            p=sort(forall("(#)[1][0]",room.players));
-            p=select("find(tab.last_initial,#)==0",p);
-            tab.last_player=p[(find(last(n),p)+1)%length(p)];
-            input=left(input,length(input)-length(last(n))-3);
-            i=tab.last_player;
-          }
-          else if(length(p))
-          {
-            tab.last_player=first(p);
-            i=substr(tab.last_player,length(last(n)));
-            tab.last_initial=last(n);
-          }
+          input=b+word+nw+" "+tab.last_item+" {|}"+a;
+          Input("");
         }
       }
     }
+    else
+    {
+      p=select("find(lc(word),lc(#))==0",p);
+      if(length(p))
+      {
+        if(b=="" && tab.type=="player")
+          nw = ": {|}";
+        else
+          nw=" {|}";
+        
+        tab.last_item=first(p);
+        tab.last_initial=word;
+        input=b+tab.last_item+nw+a;
+        Input("");
+      }
+    }
 
-    if(i!=NULL)
-      Input(i);
-
+    word=pop();
+    nw=pop();
+    a=pop();
+    b=pop();
     n=pop();
-    i=pop();
     p=pop();
   }
 }
@@ -5434,7 +6004,7 @@ def DefaultInitialPrice
 }
 
 #
-# HandlePriceInput() - Handler for number + return, i.e. pricing.
+# HandlePriceInput() - Set price of a card.
 #
 def HandlePriceInput
 {
@@ -5483,7 +6053,7 @@ def HandlePriceInput
 }
 
 #
-# ChatKeyControlKeyS() - Handler for key Control+S in chat mode.
+# ChatKeyControlKeyS() - Add a card for sale (or remove one from want list).
 #
 def ChatKeyControlKeyS
 {
@@ -5520,29 +6090,15 @@ def ChatKeyControlKeyS
         BookChangeForsale(card.number,1);
     }
   }
-### dummy block only needed for mass refreshing of prices
-  else if(1)
-  {
-    for(b)(book_cards(card.book,book_page(card.book)))
-    {
-      r=book_entry(card.book,b);
-      if(r[3] > 0.0 && r[4] > 0)
-        BookSetPrice(b,r[3]);
-    }
-    
-  }
   r=pop();
   b=pop();
 }
 
-#
-# WatchKeyControlKeyS() - Handler for key Control+S in chat mode.
-#
 def WatchKeyControlKeyS
   ChatKeyControlKeyS();
 
 #
-# ChatKeyControlKeyA() - Handler for key Control+A in chat mode.
+# ChatKeyControlKeyA() - Add a card to the deck.
 #
 def ChatKeyControlKeyA
 {
@@ -5562,20 +6118,14 @@ def ChatKeyControlKeyA
   }
 }
 
-#
-# WatchKeyControlKeyA() - Handler for key Control+A in watch mode.
-#
 def WatchKeyControlKeyA
   ChatKeyControlKeyA();
 
-#
-# OfflineKeyControlKeyA() - Handler for key Control+A in offline mode.
-#
 def OfflineKeyControlKeyA
   ChatKeyControlKeyA();
 
 #
-# ChatKeyControlKeyW() - Handler for key Control+W in chat mode.
+# ChatKeyControlKeyW() - Add a card to want list (or remove a copy from sale).
 #
 def ChatKeyControlKeyW
 {
@@ -5583,11 +6133,124 @@ def ChatKeyControlKeyW
     BookChangeForsale(card.number,-1);
 }
 
-#
-# WatchKeyControlKeyW() - Handler for key Control+W in watch mode.
-#
 def WatchKeyControlKeyW
   ChatKeyControlKeyW();
+
+#
+# ChatKeyControlKeyZ() - Undo the last change to the decklist (card add/remove).
+# The undo buffer will be reset when choosing a different deck or deck part, and can't rewind past that.
+#
+def ChatKeyControlKeyZ
+{
+  push(brk);
+  brk=1;
+  while(undo.pos>=0 && brk)
+  {
+    if(undo_buffer[undo.pos][1]==0)
+      undo.pos=undo.pos-1;
+    else
+      brk=0;
+  }
+  
+  if(undo.pos<0)
+    Msg("{orange}Nothing to undo.");
+  else
+  {
+    if(undo_buffer[undo.pos][1]<0)
+#   Somehow the undo action ended up with a negative number. Flip it around by swapping source and destination.
+      undo_buffer[undo.pos] = (undo_buffer[undo.pos][0], -undo_buffer[undo.pos][1], undo_buffer[undo.pos][3], undo_buffer[undo.pos][2]);
+    
+#   Hey cool, I already have a dummy variable here. Might as well reuse it.
+    brk=0;
+    if(undo_buffer[undo.pos][2] != "" && has_entry(undo_buffer[undo.pos][2],decks{deck.name}))
+    {
+      brk = brk + 1;
+      decks{deck.name}{undo_buffer[undo.pos][2]} = decks{deck.name}{undo_buffer[undo.pos][2]} + copy(undo_buffer[undo.pos][0],undo_buffer[undo.pos][1]);
+    }
+    if(undo_buffer[undo.pos][3] != "" && has_entry(undo_buffer[undo.pos][3],decks{deck.name}))
+    {
+      push(d);
+      brk = brk + 2;
+      d=select("#==undo_buffer[undo.pos][0]",decks{deck.name}{undo_buffer[undo.pos][3]});
+      decks{deck.name}{undo_buffer[undo.pos][3]} = decks{deck.name}{undo_buffer[undo.pos][3]} - d + copy(undo_buffer[undo.pos][0],max(0,length(d)-undo_buffer[undo.pos][1]));
+      d=pop();
+    }
+    
+    if(brk==1)
+      Msg("{orange}Undo:{white} Put "+tostr(undo_buffer[undo.pos][1])+"x {card"+undo_buffer[undo.pos][0]+"} back in the "+undo_buffer[undo.pos][2]);
+    else if(brk==2)
+      Msg("{orange}Undo:{white} Took "+tostr(undo_buffer[undo.pos][1])+"x {card"+undo_buffer[undo.pos][0]+"} out of the "+undo_buffer[undo.pos][3]);
+    else if(brk==3)
+      Msg("{orange}Undo:{white} Moved "+tostr(undo_buffer[undo.pos][1])+"x {card"+undo_buffer[undo.pos][0]+"} from "+undo_buffer[undo.pos][3]+" back to "+undo_buffer[undo.pos][2]);
+    
+    undo.pos=undo.pos-1;
+    RefreshCurrentDeck();
+  }
+  brk=pop();
+}
+
+def WatchKeyControlKeyZ
+  ChatKeyControlKeyZ();
+
+def OfflineKeyControlKeyZ
+  ChatKeyControlKeyZ();
+
+#
+# ChatKeyControlKeyY() - Redo an action from the undo buffer.
+#
+def ChatKeyControlKeyY
+{
+  push(brk);
+  brk=1;
+  while(undo.pos+2 <= length(undo_buffer) && brk)
+  {
+    if(undo_buffer[undo.pos+1][1]==0)
+      undo.pos=undo.pos+1;
+    else
+      brk=0;
+  }
+  
+  if(undo.pos+2>length(undo_buffer))
+    Msg("{orange}Nothing to redo.");
+  else
+  {
+    undo.pos=undo.pos+1;
+    if(undo_buffer[undo.pos][1]<0)
+#   Somehow the redo action ended up with a negative number. Flip it around by swapping source and destination.
+      undo_buffer[undo.pos] = (undo_buffer[undo.pos][0], -undo_buffer[undo.pos][1], undo_buffer[undo.pos][3], undo_buffer[undo.pos][2]);
+    
+    brk=0;
+    if(undo_buffer[undo.pos][3] != "" && has_entry(undo_buffer[undo.pos][3],decks{deck.name}))
+    {
+      brk = brk + 1;
+      decks{deck.name}{undo_buffer[undo.pos][3]} = decks{deck.name}{undo_buffer[undo.pos][3]} + copy(undo_buffer[undo.pos][0],undo_buffer[undo.pos][1]);
+    }
+    if(undo_buffer[undo.pos][2] != "" && has_entry(undo_buffer[undo.pos][2],decks{deck.name}))
+    {
+      push(d);
+      brk = brk + 2;
+      d=select("#==undo_buffer[undo.pos][0]",decks{deck.name}{undo_buffer[undo.pos][2]});
+      decks{deck.name}{undo_buffer[undo.pos][2]} = decks{deck.name}{undo_buffer[undo.pos][2]} - d + copy(undo_buffer[undo.pos][0],max(0,length(d)-undo_buffer[undo.pos][1]));
+      d=pop();
+    }
+    
+    if(brk==1)
+      Msg("{orange}Redo:{white} Put "+tostr(undo_buffer[undo.pos][1])+"x {card"+undo_buffer[undo.pos][0]+"} back in the "+undo_buffer[undo.pos][3]);
+    else if(brk==2)
+      Msg("{orange}Redo:{white} Took "+tostr(undo_buffer[undo.pos][1])+"x {card"+undo_buffer[undo.pos][0]+"} out of the "+undo_buffer[undo.pos][2]);
+    else if(brk==3)
+      Msg("{orange}Redo:{white} Moved "+tostr(undo_buffer[undo.pos][1])+"x {card"+undo_buffer[undo.pos][0]+"} from "+undo_buffer[undo.pos][2]+" back to "+undo_buffer[undo.pos][3]);
+    
+    RefreshCurrentDeck();
+  }
+  brk=pop();
+}
+
+def WatchKeyControlKeyY
+  ChatKeyControlKeyY();
+
+def OfflineKeyControlKeyY
+  ChatKeyControlKeyY();
 
 #
 # KeyBackspace() - Handler for key Backspace.
@@ -5689,7 +6352,7 @@ def KeyF5
 	{
 		del_cardbox(info.box,0);
 		info.current=NULL;
-	    info.persistent=0;
+		info.persistent=0;
 		Msg("Persistent infozoom is {yellow}disabled{white}.");
 	}
 	else
@@ -5724,7 +6387,7 @@ def KeyEscape
   o=o+select('get_attr(#,"visible")==1 && (object_type(#)=="menu" || object_type(#)=="cardbook" || object_type(#)=="listbox")',objects());
 
   if(isfunction("KeyEscapeHook"))
-    o=call("KeyEscapeHook",o);
+    o=KeyEscapeHook(o);
 
   o=last(select("count(#,o)",objects()));
 
@@ -5744,6 +6407,7 @@ def KeyEscape
   elseif(o==deck.box)
   {
     save("decks");
+    save("deck.groups");
     save("deck.name");
     set_attr(deck.box,"visible",0);
   }
@@ -5762,8 +6426,6 @@ def KeyF1
 {
   ShowHelp();
   Msg(L("Note: Use {yellow}Page Up{white} and/or {yellow}Page Down{white} keys or mouse wheel to scroll these messages."));
-  MsgChat("{hr}");
-  MsgChat(" ");
 }
 
 #
@@ -5813,7 +6475,7 @@ def KeyPageDown
 }
 
 #
-# KeyControlKeyPageUp() - Handler for key Control PageUp.
+# KeyControlKeyPageUp() - Scroll to previous section in card book.
 #
 def KeyControlKeyPageUp
 {
@@ -5839,7 +6501,7 @@ def KeyControlKeyPageUp
 }
 
 #
-# KeyControlKeyPageDown() - Handler for key Control PageDown.
+# KeyControlKeyPageDown() - Scroll to next section in card book.
 #
 def KeyControlKeyPageDown
 {
@@ -5865,7 +6527,7 @@ def KeyControlKeyPageDown
 }
 
 #
-# KeyControlKeyB() - Handler for key Control+B.
+# KeyControlKeyB() - Show/hide card book.
 #
 def KeyControlKeyB
 {
@@ -5876,87 +6538,69 @@ def KeyControlKeyB
 }
 
 #
-# KeyControlKeyP() - Handler for key Control+P.
+# KeyControlKeyP() - Show/hide list of products.
 #
 def KeyControlKeyP
 {
   TogglePanel("products");
-  set_attr(products.box,"ontop",45);
+  set_attr(products.box,"ontop",Z_PRODUCTMENU);
   raise(products.box);
 }
 
 #
-# ChatKeyControlKeyE() - Handler for key Control+E in chat mode.
+# ChatKeyControlKeyE() - Show/hide deck list.
 #
 def ChatKeyControlKeyE
 {
   if(get_attr(deck.box,"visible"))
     set_attr(deck.box,"visible",0);
   else if(deck.name==NULL || !has_entry(deck.name,decks))
-      ChooseDeckMenu();
+      ChooseDeckMenu("");
   else
   {
-    listbox_set_deck(deck.box,decks{deck.name},card.book);
+    cards_missing=listbox_set_deck(deck.box,decks{deck.name},card.book);
     raise(deck.box);
     set_attr(deck.box,"visible",1);
     RefreshBookForDeck(deck.name);
   }
 }
 
-#
-# WatchKeyControlKeyE() - Handler for key Control+E in watch mode.
-#
 def WatchKeyControlKeyE
   ChatKeyControlKeyE();
 
-#
-# OfflineKeyControlKeyE() - Handler for key Control+E in offline mode.
-#
 def OfflineKeyControlKeyE
   ChatKeyControlKeyE();
 
 #
-# ChatKeyControlKeyD() - Handler for key Control+D in chat mode.
+# ChatKeyControlKeyD() - Show deck selection menu.
 #
 def ChatKeyControlKeyD
 {
-  ChooseDeckMenu();
+  ChooseDeckMenu("");
 }
 
-#
-# WatchKeyControlKeyD() - Handler for key Control+D in watch mode.
-#
 def WatchKeyControlKeyD
   ChatKeyControlKeyD();
 
-#
-# OfflineKeyControlKeyD() - Handler for key Control+D in offline mode.
-#
 def OfflineKeyControlKeyD
   ChatKeyControlKeyD();
 
 #
-# ChatKeyControlKeyI() - Handler for key Control+I in chat mode.
+# ChatKeyControlKeyI() - Show deck import menu.
 #
 def ChatKeyControlKeyI
 {
   ImportDeckMenu();
 }
 
-#
-# WatchKeyControlKeyI() - Handler for key Control+I in watch mode.
-#
 def WatchKeyControlKeyI
   ChatKeyControlKeyI();
 
-#
-# OfflineKeyControlKeyI() - Handler for key Control+I in offline mode.
-#
 def OfflineKeyControlKeyI
   ChatKeyControlKeyI();
 
 #
-# ChatKeyControlKeyX() - Handler for key Control+X in chat mode.
+# ChatKeyControlKeyX() - Export current deck as a text file.
 #
 def ChatKeyControlKeyX
 {
@@ -5964,15 +6608,14 @@ def ChatKeyControlKeyX
     ExportToFile(decks{deck.name},strreplace(deck.name,".","_"),DEFAULT_EXPORT_FORMAT);
 }
 
-#
-# WatchKeyControlKeyX() - Handler for key Control+X in watch mode.
-#
 def WatchKeyControlKeyX
   ChatKeyControlKeyX();
 
+def OfflineKeyControlKeyX
+  ChatKeyControlKeyX();
 
 #
-# KeyControlKeyH() - Handler for key Control+H.
+# KeyControlKeyH() - Show information about an object.
 #
 def KeyControlKeyH
 {
@@ -5989,17 +6632,35 @@ def KeyControlKeyH
     {
       push(b);
       push(s);
+      push(f);
       Msg("{hr}");
-      Msg("{sz20}{yellow}"+name(c));
+      Msg("{sz20}{yellow}{card"+c+"}");
       Msg(text(c));
       s="";
+      f=(,);
       for(b)((("set",set_of(c)),)+attrs(c))
       {
-        if(b[1]!="")
+        if(left(b[0],4)=="flip")
+          f=f+((substr(b[0],4),b[1]),);
+        else if(b[1]!="")
           s=s+"{yellow}"+join(ucfirst(split(L(b[0]),"_"))," ")+":{white} "+L(b[1])+"  ";
       }
       s=s+"{yellow}Card ID: {white}"+c;
       Msg(s);
+      if(length(f))
+      {
+        Msg("{orange}FLIP SIDE:");
+        Msg("{sz16}{yellow}"+f{'name'});
+        Msg(f{'text'});
+        s="";
+        for(b)(f)
+        {
+          if(b[0] != "name" && b[0] != "text" && b[1] != "")
+            s=s+"{yellow}"+join(ucfirst(split(L(b[0]),"_"))," ")+":{white} "+L(b[1])+"  ";
+        }
+        Msg(s);
+      }
+      f=pop();
       s=pop();
       b=pop();
     }
@@ -6011,7 +6672,7 @@ def KeyControlKeyH
 }
 
 #
-# GrabTimer() - Helper function to grap timer to yourself.
+# GrabTimer() - Helper function to grab timer for yourself.
 #
 def GrabTimer
 {
@@ -6032,7 +6693,7 @@ def PlayKeyControlKeyTab
 # ============================
 
 #
-# PlayKeyDelete() - Handler for key Delete in play mode.
+# PlayKeyDelete() - Move a card to discard pile.
 #
 def PlayKeyDelete
 {
@@ -6040,9 +6701,6 @@ def PlayKeyDelete
     InputKeyDelete();
   else
   {
-    if(search.source==discard)
-      ClearSearchbox();
-
     if(options{"discard_attached"}=="yes" && card.number!=NULL)
     {
       push(object.number);
@@ -6065,7 +6723,7 @@ def PlayKeyDelete
 }
 
 #
-# PlayKeyShiftKeyDelete() - Handler for key Shift+Delete in play mode.
+# PlayKeyShiftKeyDelete() - Move a card (bottom card if used on a pile) to discard pile.
 #
 def PlayKeyShiftKeyDelete
 {
@@ -6085,7 +6743,7 @@ def PlayKeyShiftKeyDelete
 }
 
 #
-# PlayKeyInsert() - Handler for key Insert in play mode.
+# PlayKeyInsert() - Move a card to hand.
 #
 def PlayKeyInsert
 {
@@ -6093,22 +6751,18 @@ def PlayKeyInsert
 }
 
 #
-# PlayKeyHome() - Handler for key Home in play mode.
+# PlayKeyHome() - Move a card to top of deck.
 #
 def PlayKeyHome
 {
   if(input!="")
     InputKeyHome();
   else
-  {
-    if(search.source==deck)
-      ClearSearchbox();
     TryTransferTo("deck.top",deck);
-  }
 }
 
 #
-# PlayKeyEnd() - Handler for key End in play mode.
+# PlayKeyEnd() - Set a card aside.
 #
 def PlayKeyEnd
 {
@@ -6119,7 +6773,7 @@ def PlayKeyEnd
 }
 
 #
-# PlayKeyShiftKeyEnd() - Handler for key Shift+End in play mode.
+# PlayKeyShiftKeyEnd() - Set a card aside (bottom card if used on a pile).
 #
 def PlayKeyShiftKeyEnd
 {
@@ -6136,7 +6790,7 @@ def PlayKeyShiftKeyEnd
 }
 
 #
-# PlayKeyControlKeyS() - Handler for key Control+S in play mode.
+# PlayKeyControlKeyS() - Shuffle a hand or pile of cards.
 #
 def PlayKeyControlKeyS
 {
@@ -6148,7 +6802,7 @@ def PlayKeyControlKeyS
 }
 
 #
-# PlayKeyControlKeyL() - Handler for key Control+L in play mode.
+# PlayKeyControlKeyL() - Look through a pile of cards.
 #
 def PlayKeyControlKeyL
 {
@@ -6161,7 +6815,7 @@ def PlayKeyControlKeyL
 }
 
 #
-# PlayKeyControlKeyF() - Handler for key Control+F in play mode.
+# PlayKeyControlKeyF() - Reveal or hide an object.
 #
 def PlayKeyControlKeyF
 {
@@ -6170,14 +6824,20 @@ def PlayKeyControlKeyF
   if(object.number == hand[me])
   {
     if(has_text(object.number,"{shadow}{orange}Revealed"))
+    {
+      set_fgcolor(object.number,COLORS{'ORANGE'});
       del_text(object.number,"{shadow}{orange}Revealed");
+    }
     else
+    {
+      set_fgcolor(object.number,COLORS{'GREEN'});
       add_text(object.number,"{shadow}{orange}Revealed");
+    }
   }
 }
 
 #
-# PlayKeyControlKeyP() - Handler for key Control+P in play mode.
+# PlayKeyControlKeyP() - Play a card.
 #
 def PlayKeyControlKeyP
 {
@@ -6185,7 +6845,7 @@ def PlayKeyControlKeyP
 }
 
 #
-# PlayKeyShiftControlKeyP() - Control+Shift+P: play a card face down.
+# PlayKeyShiftControlKeyP() - Play a card face down.
 #
 def PlayKeyShiftControlKeyP
 {
@@ -6193,7 +6853,7 @@ def PlayKeyShiftControlKeyP
 }
 
 #
-# PlayKeyControlKeyU() - Handler for key Control+U in play mode.
+# PlayKeyControlKeyU() - Untap all cards.
 #
 def PlayKeyControlKeyU
 {
@@ -6306,17 +6966,17 @@ def SetCounterColor
   c=ARG[0];
   if(length(cm) > c)
     c=toint(substr(cm,c,1));
-  if (COUNTER_COLORS[c] == NULL)
-    c=DEFAULT_COUNTER_COLOR;
+  if(MARKER_COLOR[c] == NULL)
+    c=DEFAULT_MARKER_COLOR;
     
-  Msg(COUNTER_COLORS[c]+" counters selected.");
+  Msg(MARKER_COLOR[c]+" counters selected.");
   player.marker_color = c;
   cm=pop();
   c=pop();
 }
 
 #
-# PlayKeyControlKeyA() - Handler for key Control+A in play mode.
+# PlayKeyControlKeyA() - Put a marker on a card.
 #
 def PlayKeyControlKeyA
 {
@@ -6325,7 +6985,7 @@ def PlayKeyControlKeyA
 }
 
 #
-# PlayKeyControlKeyD() - Handler for key Control+D in play mode.
+# PlayKeyControlKeyD() - Remove a marker from a card.
 #
 def PlayKeyControlKeyD
 {
@@ -6348,7 +7008,7 @@ def PlayKeyControlKeyD
 }
 
 #
-# PlayKeyControlKeyT() - Handler for key Control+T in play mode.
+# PlayKeyControlKeyT() - Touch an object.
 #
 def PlayKeyControlKeyT
 {
@@ -6370,8 +7030,7 @@ def PlayKeyControlKeyT
 }
 
 #
-# PlayKeyControlKeyDelete() - Handler for key Control+Delete in play
-#  mode.
+# PlayKeyControlKeyDelete() - Erase a card (move it out of play).
 #
 def PlayKeyControlKeyDelete
 {
@@ -6379,17 +7038,15 @@ def PlayKeyControlKeyDelete
 }
 
 #
-# PlayKeyControlKeyHome() - Handler for key Control+Home in play mode.
+# PlayKeyControlKeyHome() - Put a card to the bottom of the deck.
 #
 def PlayKeyControlKeyHome
 {
-  if(search.source==deck)
-    ClearSearchbox();
   TryTransferTo("deck.bottom",deck);
 }
 
 #
-# PlayKeyControlKeyE() - Handler for key Control+E in play mode.
+# PlayKeyControlKeyE() - Declare end of turn.
 #
 def PlayKeyControlKeyE
 {
@@ -6401,7 +7058,7 @@ def PlayKeyControlKeyE
 }
 
 #
-# KeyControlKeyR() - Handler for key Control+R.
+# KeyControlKeyR() - Roll dice.
 #
 def KeyControlKeyR
 {
@@ -6409,13 +7066,16 @@ def KeyControlKeyR
 }
 
 #
-# KeyControlKeyC() - Handler for key Control+C.
+# KeyControlKeyC() - Flip a coin.
 #
 def KeyControlKeyC
 {
   Send("Roll","coin");
 }
 
+#
+# PlayKeyAltKeyD() - Duplicate a card.
+#
 def PlayKeyAltKeyD
 {
   push(c);
@@ -6442,7 +7102,7 @@ def Menu
   DelMenu();
   SaveMenuContext();
   menu=create_menu(mouse.x,mouse.y,menu.object,ARG[0],ARG[1]);
-  set_attr(menu,"ontop",60);
+  set_attr(menu,"ontop",Z_MENU);
   raise(menu);
 }
 
@@ -6465,14 +7125,55 @@ def DelMenu
 }
 
 #
-# ChooseDeckMenu() - Choose a deck.
+# ChooseDeckMenu(group name) - Choose a deck. If group name is given, only show decks from that group.
 #
 def ChooseDeckMenu
 {
-  if(length(decks) > 0)
-    Menu("Choose a deck",forall("(#,)",keys(decks)));
+  if(length(decks)>0)
+  {
+    if(length(ARG)>0)
+    {
+      if(!has_entry(ARG,deck.groups))
+        Msg("{red}ERROR: No such group.");
+      else if(!length(deck.groups{ARG}))
+        Msg("{red}No decks in the group.");
+      else
+      {
+        push(l);
+        l=(("{blue}<back>","","ChooseDeckMenu('')"),);
+        l=l+forall("(#,)",sort(deck.groups{ARG}));
+        Menu("Choose a deck",l);
+      }
+    }
+    else
+    {
+      push(l);
+      l=forall("('{green}'+#,'','ChooseDeckMenu(#)')",select("length(#)",keys(deck.groups)));
+      l=l+forall("(#,)",select("!length(GroupOf(#))",keys(decks)));
+      Menu("Choose a deck",l);
+      l=pop();      
+    }
+  }
   else
     Msg("{red}No decks available.");
+}
+
+#
+# ChooseGroupMenu() - Choose a group to put the current deck in.
+#
+def ChooseGroupMenu
+{
+  if(deck.name==NULL)
+    Msg("No deck selected.");
+  else if(!length(deck.groups))
+    Msg("You have no deck groups. You can create one by typing {yellow}/addgroup [groupname]{white}.");
+  else
+  {
+    push(l);
+    l=forall("('{green}'+#,'','AddDeckToGroup(#)')",keys(deck.groups));
+    l=l+(("{blue}New group...","","Msg('You can create a new group by typing {yellow}/addgroup [groupname]{white}.')"),);
+    Menu("Choose a group",l);
+  }
 }
 
 #
@@ -6535,7 +7236,7 @@ def ApplyImportDeck
       {
         Msg("{red}Import failed: "+d+".");
         d=NULL;
-        if(length(flatten(values(import.deck))))
+        if(length(flatten(values(import.deck)))>0)
           d=import.deck;
       }
       else
@@ -6605,7 +7306,7 @@ def ImportDeckMenu
 #
 def ExportDeckMenu
 {
-  Menu("Export deck as..",forall('(#+" format","","ExportToFile(decks{deck.name},deck.name,\""+#+"\")")',("Gccg",)+OtherDeckFormats()));
+  Menu("Export deck as...",forall('(#+" format","","ExportToFile(decks{deck.name},deck.name,\""+#+"\")")',("Gccg",)+OtherDeckFormats()));
 }
 
 #
@@ -6619,9 +7320,9 @@ def GiveCardSubmenu
   t=forall("(#)[1][0]",room.players) - (username,);
   for(p)(sort(t))
   {
-    m=m+(("Give {blue}"+name(ARG)+"{black} to {green}"+p,"",'SendMeta("GiveCard",("'+p+'",'+tostr(ARG)+'))'),);
+    m=m+(("Give {blue}{card"+ARG+"}{black} to {green}"+p,"",'SendMeta("GiveCard",("'+p+'",'+tostr(ARG)+'))'),);
   }
-  Submenu("Give {blue}"+name(ARG),m);
+  Submenu("Give {blue}{card"+ARG+"}",m);
   t=pop();
   m=pop();
 }
@@ -6685,14 +7386,28 @@ def MergeDeckSubmenu
 {
   if(length(decks) > 0)
   {
-    push(m);
-    m=(,);
-    for(d)(keys(decks))
+    if(length(ARG)>0)
     {
-      m=m+((d,"","MergeDeck("+tostr(d)+")"),);
+      if(!has_entry(ARG,deck.groups))
+        Msg("{red}ERROR: No such group.");
+      else if(!length(deck.groups{ARG}))
+        Msg("{red}No decks in the group.");
+      else
+      {
+        push(l);
+        l=(("{blue}<back>","","MergeDeckSubmenu('')"),);
+        l=l+forall("(#,'','MergeDeck(#)')",sort(deck.groups{ARG}));
+        Menu("Merge deck with...",l);
+      }
     }
-    Menu("Merge deck with...",m);
-    m=pop();
+    else
+    {
+      push(l);
+      l=forall("('{green}'+#,'','MergeDeckSubmenu(#)')",select("length(#)",keys(deck.groups)));
+      l=l+forall("(#,'','MergeDeck(#)')",select("!length(GroupOf(#))",keys(decks)));
+      Menu("Merge deck with...",l);
+      l=pop();      
+    }
   }
   else
     Msg("{red}No decks available.");
@@ -6907,9 +7622,9 @@ def MenuByContext
       m=(("Show player info","/whois "+p,""),("Show want list","/want "+p,""),("Show have list","/have "+p,""),("{hr}","",""));
 
       if(p==username)
-        m=m+(("Mark away","/away Away",""),("Mark here","/away",""));
+        m=m+(("{gray}Start private chat","",""),("Mark away","/away Away",""),("Mark here","/away",""));
       else
-        m=m+(("{gray}Mark away","",""),("{gray}Mark here","",""));
+        m=m+(("Start private chat","/pm "+p,""),("{gray}Mark away","",""),("{gray}Mark here","",""));
 
       Menu("Player: "+p,m);
       m=pop();
@@ -6955,6 +7670,23 @@ def ConstructMenu
   push(q);
   q=(,);
   m=(,);
+
+# Look for applicable context menu items
+
+  if(server.meta==NULL)
+    m=m+((1,"{red}Reconnect to server","/reconnect",""),);
+  elseif(!net_isopen(server.meta))
+    m=m+((1,"{red}Reconnect to server","/reconnect",""),);
+  elseif(server==NULL && mode=="play")
+    m=m+((1,"{red}Go back to main server","","SetMode('chat')"),);
+  elseif(!net_isopen(server) && mode=="play")
+    m=m+((1,"{red}Go back to main server","","SetMode('chat')"),);
+
+  elseif(ARG=="Main Menu - Chat" && right(username,7)=="-sealed")
+    m=((1,"Leave sealed mode","/sealed end",""),);
+
+  if(length(m))
+    m=m+((1,"{hr}","",""),);
 
 # Construct menu list 'm'
 
@@ -7046,18 +7778,23 @@ def CurrentDeckMenu
     for(p)(keys(decks{deck.name}))
     {
       if(n!=p)
-        m=m+(("Move one {blue}"+EditCardname()+"{black} to {green}"+p,"","EditDel('"+n+"',"+tostr(EditCardname())+");EditAdd('"+p+"',"+tostr(EditCardname())+")"),);
+        m=m+(("Move one {blue}"+EditCardname()+"{black} to {green}"+p,"","EditMove('"+n+"','"+p+"',"+tostr(EditCardname())+")"),);
     }
     m=m+(("Find card","/find "+EditCardname(),""),);
     n=pop();
   }
   else if(EditPartname()!=NULL)
   {
-    m=m+(("Select {blue}"+EditPartname()+"{black} under construction","left click",""),); 
+    m=m+(("Select {blue}"+EditPartname()+"{black} under construction","left click",""),);
   }
   else
   {
-    m=m+(("Destroy this deck","","DeleteDeck(deck.name)"),("Select another deck","Ctrl+D",""),("Export deck","Ctrl+X",""));
+    m=m+(("Destroy this deck","/deletedeck",""),("Select another deck","Ctrl+D",""),("Export deck","Ctrl+X",""),("Move deck to a group...","","ChooseGroupMenu()"));
+    if(length(GroupOf(deck.name))>0)
+      m=m+(("Remove deck from group","","RemoveDeckFromGroup(0)"),);
+    else
+      m=m+(("{gray}Remove deck from group","",""),);
+    
     if(length(OtherDeckFormats())>0)
       m=m+(("Export deck as...","","ExportDeckMenu()"),);
     else
@@ -7067,10 +7804,17 @@ def CurrentDeckMenu
       m=m+(("Check legality for "+deck_rules[0][0],"","MakeLegalityCheck("+tostr(deck_rules[0][0])+")"),);
     else
       m=m+(("Check legality...","","CheckLegalitySubmenu()"),);
-    m=m+(("Add cards from another deck...","","MergeDeckSubmenu()"),);
+    m=m+(("Add cards from another deck...","","MergeDeckSubmenu('')"),
+         ("Remove all cards","/erasedeck",""),("Undo change","Ctrl+Z",""),("Redo change","Ctrl+Y",""));
+    
   }
 
   m=m+(("{hr}","",""),("Scroll up","Page Up",""),("Scroll down","Page Down",""),("Close","Esc",'set_attr(deck.box,"visible",0)'));
+  for(p)(keys(decks{deck.name}))
+  {
+    if(p!="deck")
+      m=m+(("Remove {blue}"+p+"{black} section","","RemoveDeckPart('"+p+"')"),);
+  }
 
   m=m+ConstructMenu("Current Deck Menu");
 
@@ -7241,7 +7985,7 @@ def OpponentHandMenu
     m=m+(
 	("Force discard","",'Send("Transfer",(1,("hand",Owner(object.number),hand.card_index),("deck.top",deck.objects[Owner(object.number)]{"opponent discard pile"})))'),
 	("Reveal card","",'Send("Reveal",(object.number,hand.card_index))'),
-	("Set Aside","",'Send("Transfer",(1,("hand",Owner(object.number),hand.card_index),("active",me)))'),
+	("Set aside","",'Send("Transfer",(1,("hand",Owner(object.number),hand.card_index),("active",me)))'),
     ("{hr}","","")
 	);
   }
@@ -7486,9 +8230,8 @@ def CardMenu
 
   if(card.number!=NULL)
   {
-    if(length(ConstructMenu("Tap a card")))
-      m=ConstructMenu("Tap a card");
-    else
+    m=ConstructMenu("Tap a card");
+    if(length(m) < 1)
       m=(("Tap/Untap","middle click",""),("Tap and keep tapped","","SetStayTapped()"));
 
     for(t)(TargetingOptions())
@@ -7650,7 +8393,8 @@ def MouseLeftClick
   {
     DelMenu();
     if(mode=="chat")
-      ChatCommandLeavetable();
+      if(room.players{me}[2] >= 0)
+        ChatCommandLeavetable();
   }
   else
   {
@@ -7760,7 +8504,7 @@ def MouseLeftDragEnd
 {
   if(dragging) 
   {
-    dragging=0; 
+    dragging=0;
     set_attr(object.number,"highlight",dragging.highlight);
   }
 }
@@ -7827,45 +8571,45 @@ def MouseLeftClickCardSelectBox
 }
 
 #
-# MouseMoveShift - Called when the mouse is moved.
+# MouseMove - Called when the mouse is moved.
 #
 def MouseMove
 {
 	if(find("shift",modifier) && info.persistent==0)
 	{
-	    push(c);
-	    c=CheckForCard();
-	    if(c!=NULL)
-	    {
-	          if(find("ctrl",modifier) && length(Attr("flipid",c)))
-                 c=toint(Attr("flipid",c));
+		push(c);
+		c=CheckForCard();
+		if(c!=NULL)
+		{
+			if(find("ctrl",modifier) && length(Attr("flipid",c)))
+				c=toint(Attr("flipid",c));
 			if(info.current==NULL)
 			{
 				raise(info.box);
 				put_cardbox(info.box,c);
-				info.current=c;	    
+				info.current=c;
 			}
 			else if(c!=info.current)
 			{
 				replace_cardbox(info.box,c);
 				info.current=c;
 			}
-	    }
+		}
 		else if(info.current!=NULL)
 		{
 			del_cardbox(info.box,0);
 			info.current=NULL;
 		}
-	    c=pop();
+		c=pop();
 	}
 	else if(info.persistent==1)
 	{
-	    push(c);
-	    c=CheckForCard();
-	    if(c!=NULL)
-	    {
-	          if(find("ctrl",modifier) && length(Attr("flipid",c)))
-                 c=toint(Attr("flipid",c));
+		push(c);
+		c=CheckForCard();
+		if(c!=NULL)
+		{
+			if(find("ctrl",modifier) && length(Attr("flipid",c)))
+				c=toint(Attr("flipid",c));
 			if(info.current==NULL)
 			{
 				raise(info.box);
@@ -7877,8 +8621,8 @@ def MouseMove
 				replace_cardbox(info.box,c);
 				info.current=c;
 			}
-	    }
-	    c=pop();
+		}
+		c=pop();
 	}
 }
 
@@ -7895,12 +8639,13 @@ def SelectDeckPart
   {
     deck.part=ARG;
     Msg("Deck part '"+ARG+"' selected.");
+    undo_buffer=(,);
+    undo.pos=-1;
   }
 }
 
 #
-# MouseMiddleClickCurrentDeck() - Handler for mouse middle click on
-#  the current deck editor.
+# MouseMiddleClickCurrentDeck() - Add a card to the deck.
 #
 def MouseMiddleClickCurrentDeck
 {
@@ -7916,8 +8661,7 @@ def MouseMiddleClickCurrentDeck
 }
 
 #
-# MouseLeftClickCurrentDeck() - Handler for mouse left click on the
-#   current deck editor.
+# MouseLeftClickCurrentDeck() - Remove a card from the deck.
 #
 def MouseLeftClickCurrentDeck
 {
@@ -7941,7 +8685,7 @@ def MouseLeftClickCurrentDeck
 }
 
 #
-# MouseWheelCurrentDeck(dir) - Mouse wheel handler for deck editor (dir=0 up, dir=1 down).
+# MouseWheelCurrentDeck(dir) - Scroll deck list (0=up, 1=down).
 #
 def MouseWheelCurrentDeck
 {
@@ -7952,7 +8696,7 @@ def MouseWheelCurrentDeck
 }
 
 #
-# MouseWheelMyCollection(dir) - Mouse wheel handler for collection (dir=0 up, dir=1 down).
+# MouseWheelMyCollection(dir) - Scroll through card book pages (0=up, 1=down).
 #
 def MouseWheelMyCollection
 {
@@ -7963,7 +8707,7 @@ def MouseWheelMyCollection
 }
 
 #
-# MouseWheelMenu(dir) - Mouse wheel handler for menu (dir=0 up, dir=1 down).
+# MouseWheelMenu(dir) - Scroll through menu box (0=up, 1=down).
 #
 def MouseWheelMenu
 {
@@ -7974,7 +8718,7 @@ def MouseWheelMenu
 }
 
 #
-# MouseWheelChatMsg(dir) - Mouse wheel handler for additional chat box.
+# MouseWheelChatMsg(dir) - Scroll through secondary chat box (0= up, 1=down).
 #
 def MouseWheelChatMsg
 {
@@ -7985,7 +8729,7 @@ def MouseWheelChatMsg
 }
 
 #
-# MouseLeftClickMyCollection() - Handler for mouse left click on my collection.
+# MouseLeftClickMyCollection() - Remove a card from the deck.
 #
 def MouseLeftClickMyCollection
 {
@@ -8020,8 +8764,7 @@ def MouseLeftClickMyCollection
 }
 
 #
-# MouseMiddleClickMyCollection() - Handler for mouse middle click on
-#   my collection.
+# MouseMiddleClickMyCollection() - Add a card to the deck.
 #
 def MouseMiddleClickMyCollection
 {
@@ -8035,7 +8778,7 @@ def MouseMiddleClickMyCollection
 }
 
 #
-# MouseMiddleClickTable() - Handler for mouse middle click on table.
+# MouseMiddleClickTable() - Set ready-to-play signal if sitting at table.
 #
 def MouseMiddleClickTable
 {
@@ -8049,8 +8792,7 @@ def MouseMiddleClickTable
 }
 
 #
-# MouseMiddleClickOpenBooster() - Handler for mouse middle click
-#  opened booster.
+# MouseMiddleClickOpenBooster() - Reveal all cards in booster.
 #
 def MouseMiddleClickOpenBooster
 {
@@ -8062,7 +8804,7 @@ def MouseMiddleClickOpenBooster
 }
 
 #
-# MouseLeftClickTable() - Handler for mouse left click on table.
+# MouseLeftClickTable() - Sit at a table.
 #
 def MouseLeftClickTable
 {
@@ -8071,8 +8813,7 @@ def MouseLeftClickTable
 }
 
 #
-# MouseLeftClickOpenBooster() - Handler for mouse left click on opened
-#   booster.
+# MouseLeftClickOpenBooster() - Reveal single card in booster.
 #
 def MouseLeftClickOpenBooster
 {
@@ -8099,10 +8840,10 @@ def MouseMoveObject
   x=object.x;
   y=object.y;
 
-  if(me >= 2)
-    x=x-screen.width/2;
+  if(me>1)
+    x=x-((me/2) * BASE_TABLE_WIDTH / ((players + 1) / 2));
 
-  if(object.type=="card" || object.type=="deck" || (object.type=="image" && mode=="play"))
+  if(mode=="play" && (object.type=="card" || object.type=="deck" || object.type=="image"))
     Send("MoveObject",(object.number,x,y));
 
   y=pop();
@@ -8110,7 +8851,7 @@ def MouseMoveObject
 }
 
 #
-# MouseMiddleClickCard() - Handler for mouse middle clicking a card.
+# MouseMiddleClickCard() - Tap or untap a card.
 #
 def MouseMiddleClickCard
 {
@@ -8137,7 +8878,7 @@ def MouseMiddleClickCard
 }
 
 #
-# MouseLeftClickCard() - Handler for mouse left clicking a card.
+# MouseLeftClickCard() - Select target for a card in targeting queue.
 #
 def MouseLeftClickCard
 {
@@ -8169,7 +8910,7 @@ def MouseLeftClickCard
         xy[0]=xy[0]+t[2] + i*t[4];
         xy[1]=xy[1]+t[3] + i*t[5];
         if(me>1)
-          xy[0]=xy[0]-screen.width/2;
+          xy[0]=xy[0]-((me / 2) * BASE_TABLE_WIDTH / ((players + 1) / 2));
         xy=screen2table(xy);
         Send("MoveObject",(t[0],)+xy);
 
@@ -8223,7 +8964,7 @@ def MouseLeftClickCard
 }
 
 #
-# MouseLeftClickDeck() - Handler for mouse left clicking on deck.
+# MouseLeftClickDeck() - Draw a card from deck.
 #
 def MouseLeftClickDeck
 {
@@ -8232,7 +8973,7 @@ def MouseLeftClickDeck
 }
 
 #
-# MouseLeftClickHand() - Handler for mouse left clicking on hand.
+# MouseLeftClickHand() - Play a card from hand.
 #
 def MouseLeftClickHand
 {
@@ -8244,8 +8985,7 @@ def MouseLeftClickHand
 }
 
 #
-# MouseLeftClickActiveSet() - Handler for mouse left clicking on
-#   active set.
+# MouseLeftClickActiveSet() - Move card that's been set aside into hand.
 #
 def MouseLeftClickActiveSet
 {
@@ -8257,8 +8997,7 @@ def MouseLeftClickActiveSet
 }
 
 #
-# MouseLeftClickOpponentHand() - Handler for mouse left clicking on
-#   opponent's hand.
+# MouseLeftClickOpponentHand() - Shrink your expand your view of opponent's hand.
 #
 def MouseLeftClickOpponentHand
 {
@@ -8266,8 +9005,7 @@ def MouseLeftClickOpponentHand
 }
 
 #
-# MouseLeftClickDeckSearchBox() - Handler for mouse left clicking on
-#   deck search box.
+# MouseLeftClickDeckSearchBox() - Move card from search into hand.
 #
 def MouseLeftClickDeckSearchBox
 {
@@ -8388,7 +9126,7 @@ def GetByPrimaryCategory
 }
 
 #
-# GetGroups(categroy table) - Collect group names from the list of
+# GetGroups(category table) - Collect group names from the list of
 #   category table entries.
 #
 def GetGroups
@@ -8590,7 +9328,7 @@ def FindCardGroupIndices
 # PutCardInGroup(card number,object number,x,y) - Update 'card.group'
 #   table replacing "reserved" entry with this card. This hook is
 #   called when a card is put to the table. If no "reserved" entry is
-#   found, reserve new enrty.
+#   found, reserve new entry.
 #
 def PutCardInGroup
 {
@@ -8698,8 +9436,8 @@ def DelCardInGroup
     }
   }
 
-  if(!ok)
-    Msg("{red}Internal error: DelCardInGroup("+ARG+"), object: "+tostr(ARG));
+#  if(!ok)
+#    Msg("{red}Internal error: DelCardInGroup("+ARG+"), object: "+tostr(ARG));
 
   ok=pop();
 }
@@ -8745,7 +9483,7 @@ def LocationList
 #
 def TargetCard
 {
-  Msg("{yellow}Left click target for "+name(findspace.card)+"...");
+  Msg("{yellow}Left click target for {card"+findspace.card+"}...");
   targeting_queue=targeting_queue+((findspace.card,ARG[2],ARG[3],ARG[4],ARG[5],findspace.options),);
   if(players>2)
     return(table.width/2-card.design.width,table.height/2-card.design.height-25+ARG[1]*5);
@@ -8809,7 +9547,7 @@ def FindOtherCard
 #       x=first(screen2table(c[0]/2,c[1])) + ARG[3];
 #       y=last(screen2table(c[0],c[1])) + ARG[4];
 #       return (x,y);
-       return NULL;
+       return(NULL);
      }
      else
      {
@@ -8850,7 +9588,7 @@ def InitializeScoreSystem
     set_textsize(score.object[p],20);
     set_textalign(score.object[p],2);
     set_textcolor(score.object[p],(0,242,20));
-    set_attr(score.object[p],"ontop",40);
+    set_attr(score.object[p],"ontop",Z_SCORE);
     set_attr(score.object[p],"sticky",1);
     raise(score.object[p]);
     mode_object{"watch"}=mode_object{"watch"}+(score.object[p],);
@@ -8942,7 +9680,7 @@ def CreateAvatar
   o=create_msgbox(ARG[3][0]-w(10),ARG[3][1]+h(32-2),obj=obj+1,"Player "+ARG[2],w(32+20),h(30),2);
   set_attr(o,"visible",0);
   set_attr(o,"clickable",1);
-  set_attr(o,"ontop",0);
+  set_attr(o,"ontop",Z_MBOX);
   set_textsize(o,9);
   set_textmargin(o,0);
   set_textalign(o,1);
@@ -9121,7 +9859,6 @@ def SetAwayOn
     CommandMe("away: "+ARG);
     Msg("{hr}");
     Msg("{sz20}Away log since "+time()+" starts here:");
-    Msg("{hr}");
   }
 }
 
@@ -9136,7 +9873,6 @@ def SetAwayOff
     o=away{username};
     CommandSet("avatar",o);
     CommandMe("is back");
-    Msg("{hr}");
     Msg("{sz20}Away log ends here.");
     Msg("{hr}");
     away{username}=NULL;
@@ -9704,7 +10440,7 @@ def str2filter_rel
               {
                 e=str2filter_typetostring(e);
                 e[1][0]=strreplace(lc(e[1][0]),"cardname","\"+name(#)+\"");
-                return("find(fuzzy("+e[1][0]+"),fuzzy("+e[0][0]+"))!=NULL","s");
+                return("find(lc("+e[1][0]+"),lc("+e[0][0]+"))!=NULL","s");
               }
               else
                 return(str2filter_sum(ARG));
@@ -10239,8 +10975,13 @@ def RecognizeCard
     c=fuzzy_images(ARG);
   if(c!=(,))
   {
-	if(length(c)>1)
-		Msg("{yellow}Warning: Ambiguous name: {white}"+ARG+"{yellow} matches {white}"+join(forall('canonical_name(#)',c),", ")+"{white}");
+    if(length(c)>1)
+    {
+      Msg("{yellow}Warning: Ambiguous name: {white}"+ARG+"{yellow} matches {white}"+join(forall('canonical_name(#)',c),", ")+"{white}");
+      cb=select("(book_entry(card.book,#))[0]",c);
+      if(length(cb)>0)
+        c=cb;
+    }
     return(random(c));
   }
   c=pop();
@@ -10454,8 +11195,12 @@ def ASCIIFormatSuffix
 def ExportToFile
 {
   push(f);
+  push(g);
   push(s);
   f=tofilename(ARG[1]);
+#  g=GroupOf(ARG[1]);
+#  if(length(g)>0)
+#    f=tofilename(g)+"/"+f;
   
   if(!isfunction(tofnc(ARG[2])+"FormatSuffix"))
     execute(tofnc(ARG[2])+".format");
@@ -10470,6 +11215,7 @@ def ExportToFile
   Msg("Done.");
 
   s=pop();
+  g=pop();
   f=pop();
 }
 
@@ -10507,17 +11253,17 @@ def InitializePanelSystem
   panel_objects=(,);
   panel_options=(,);
   panel_structure{"player info"}=(
-    ("msgbox","name","name.box",0,0,w(130),h(16),
+    ("msgbox","name","name.box",0,0,w(130),h(18),
       TXCOLOR,BRCOLOR,BGCOLOR,
       0,12,1,1,
       ("highlight","fit"),
       1),
-    ("msgbox","money","money.box",0,h(16)-1,w(130),h(18),
+    ("msgbox","money","money.box",0,h(18)-1,w(130),h(18),
       TXCOLOR,BRCOLOR,BGCOLOR,
       0,12,1,1,
       ("highlight","fit"),
       1),
-    ("msgbox","deck name","deckname.box",0,h(16)+h(18)-2,w(130),h(16),
+    ("msgbox","deck name","deckname.box",0,h(18)+h(18)-2,w(130),h(28),
       TXCOLOR,BRCOLOR,BGCOLOR,
       2,10,1,1,
       ("highlight",),
@@ -10527,29 +11273,29 @@ def InitializePanelSystem
     ("msgbox","alert","alert.box",0,0,w(400),h(50),
       (255,255,255),(255,255,255),(200,0,0),
       0,20,1,1,
-      ("highlight","ontop"),
+      ("highlight","ontop=Z_ALERT"),
       1),
   );
   panel_structure{"messages"}=(
-    ("msgbox","msg","msg.box",0,0,screen.width-10,h(130),
+    ("msgbox","msg","msg.box",0,0,screen.width-w(10),h(130),
       (255,255,255),(255,255,255),NULL,
       0,12,0,0,
-      ("ontop",),
-      99999),
+      ("ontop=Z_LOBBYCHAT",),
+      10000),
   );
   panel_structure{"input"}=(
     ("msgbox","input","input.box",0,0,screen.width,h(16),
       INCOLOR,BRCOLOR,BGCOLOR,
       0,12,0,1,
-      ("highlight","ontop"),
+      ("highlight","ontop=Z_MBOX"),
       1),
   );
   panel_structure{"products"}=(
     ("msgbox","products","products.box",0,screen.height,w(800),h(100),
       FGCOLOR,BRCOLOR,BGCOLOR,
       0,12,0,1,
-      ("highlight","clickable","draggable"),
-      2),
+      ("highlight","clickable","draggable","ontop=Z_PRODUCTMENU"),
+      1),
   );
   panel_options{"player info"}=(,);
   panel_options{"alert"}=(,);
@@ -10586,7 +11332,7 @@ def CreatePanel
 
 # Create an object.
       if(p[0]=="msgbox")
-        o=call("create_"+p[0],(x,y,obj=obj+1,p[1],p[5],p[6],p[15]));
+        o=create_msgbox(x,y,obj=obj+1,p[1],p[5],p[6],p[15]);
       panel_objects{ARG[0]}=panel_objects{ARG[0]}+(o,);
       if(p[2]!=NULL)
         eval(p[2]+"=o");
@@ -10603,7 +11349,12 @@ def CreatePanel
       set_attr(o,"visible",0);
       set_attr(o,"ontop",0);
       for(a)(p[14])
-        set_attr(o,a,1);
+      {
+        if(left(a,6)=="ontop=")
+          set_attr(o,"ontop",toint(eval(substr(a,6))));
+        else
+          set_attr(o,a,1);
+      }
 
 # Attach.
       if(root==NULL)
@@ -10626,6 +11377,9 @@ def CreatePanel
     r=pop();
     root=pop();
   }
+  else
+# Panel already exists. Move existing panel.
+    MovePanel(ARG);
 }
 
 #
@@ -10686,6 +11440,20 @@ def HidePanel
 #
 def MovePanel
 {
+  push(o);
+  push(p);
+  for(o)(length(panel_structure{ARG[0]}))
+  {
+#   Note the two different containers:
+#     panel_structure contains the specifications for putting objects in a panel;
+#     panel_objects contains their actual object numbers currently in use
+    p=panel_structure{ARG[0]}[o];
+    x=ARG[1]+p[3];
+    y=ARG[2]+p[4];
+    move_object(panel_objects{ARG[0]}[o],x,y);
+  }
+  p=pop();
+  o=pop();
 }
 
 #
@@ -10791,14 +11559,14 @@ def UpdateProductsPanel
 
     set_attr(obj,"highlight",1);
     set_attr(obj,"clickable",1);
-    set_attr(obj,"ontop",45);
+    set_attr(obj,"ontop",Z_PRODUCTMENU+1);
     set_attr(obj,"dragparent",1);
     set_fgcolor(obj,BRCOLOR);
 
     set_textalign(obj,1); 
     set_textvalign(obj,2);
     add_text(obj,"{shadow}"+b[1][2][0]);
-    add_text(obj,"{shadow}"+ucfirst(b[1][2][1]));
+    add_text(obj,"{shadow}{sz10}"+ucfirst(b[1][2][1]));
     add_text(obj,"{shadow}$"+format("%.2f",b[1][1]));
 
     x=x+image_width(product.images{b[0]})+w(5);
@@ -10879,7 +11647,7 @@ def JudgePlayCommandLottery
        for(c)(lottery)
        {
          if(c[1][1])
-            Msg(c[1][1]+" x "+name(c[0])+" for "+c[1][0]);
+            Msg(c[1][1]+" x {card"+c[0]+"} for "+c[1][0]);
        }
      }
      else if(ARG[0]=="start")
@@ -11127,7 +11895,6 @@ def StartPlaybackMode
   MsgChat(" ");
   MsgChat("{hr}");
   MsgChat("Playback");
-  MsgChat("{hr}");
   MsgChat(" ");
 }
 

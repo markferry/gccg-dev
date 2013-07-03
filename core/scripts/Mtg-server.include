@@ -11,7 +11,7 @@
 #
 #  Functions:
 #
-# SetUpPlayer(p) - create necessary strucrures for player 'p'
+# SetUpPlayer(p) - create necessary structures for player 'p'
 #
 
 screen.width=1024;
@@ -19,8 +19,8 @@ screen.height=768;
 port=29200;
 meta.port=29100;
 
-if(server.name=="NO.DEFAULT.SERVER.FOR.THIS.GAME")
-  server.name="gccgmeta.sytes.net";
+if(meta.server=="NO.DEFAULT.SERVER.FOR.THIS.GAME")
+  meta.server="gccgmeta.sytes.net";
 
 #
 # GAME SPECIFIC FUNCTIONS
@@ -32,11 +32,19 @@ if(server.name=="NO.DEFAULT.SERVER.FOR.THIS.GAME")
 #
 def InitServerHook
 {
- for(i)(ARG)
- {
-  visible.me[i]{"exile"}=1;
-  visible.opp[i]{"exile"}=1;
- }
+  GAME_PILES{'exile'}=("public",);
+  GAME_PILES{'sideboard'}=("self_known",);
+  GAME_PILES{'command'}=("public",);
+  GAME_PILES{'planes'}=("reveal_1",);
+  GAME_PILES{'schemes'}=("reveal_1",);
+
+  server_flags=("teamscore",);
+  archenemy=-1;
+  mtg.waitfor="";
+  mtg.waitforexpiry=0;
+  
+  hasplane=copy(0,ARG);
+  hasscheme=copy(0,ARG);
 }
 
 #
@@ -44,10 +52,217 @@ def InitServerHook
 #
 def SetUpPlayer
 {
-  CreateDeck(ARG,"deck",40,50);
-  CreateDeck(ARG,"discard pile",40,160);
-  CreateDeck(ARG,"sideboard",40,250);
-  CreateDeck(ARG,"exile",40,250);
+  CreateDeck(ARG,"deck",40,45);
+  CreateDeck(ARG,"discard pile",40,155);
+  CreateDeck(ARG,"sideboard",40,245);
+  CreateDeck(ARG,"exile",40,245);
+}
+
+#
+# TransferHook() - Used for making planes and schemes go to the right piles.
+#
+def TransferHook
+{
+  if(ARG[2][0]=="deck.top" || ARG[2][0]=="deck.bottom")
+  {
+    push(c);
+    push(d);
+    c=(,);
+    if(ARG[1][0]=="table")
+      if(table{ARG[1][1]} != NULL)
+        c=(table{ARG[1][1]}[0],);
+    else if(ARG[1][0]=="hand")
+      if(length(hand[ARG[1][1]]) > max(0,ARG[1][2]))
+        c=index(hand[ARG[1][1]],seq(ARG[1][2],min(ARG[1][2]+ARG[0]-1,length(hand[ARG[1][1]]))));
+    else if(ARG[1][0]=="active")
+      if(length(active[ARG[1][1]]) > max(0,ARG[1][2]))
+        c=index(active[ARG[1][1]],seq(ARG[1][2],min(ARG[1][2]+ARG[0]-1,length(active[ARG[1][1]]))));
+    else if(ARG[1][0]=="deck.top")
+      if(length(decks{ARG[1][1]}[0]) > 0)
+        c=right(decks{ARG[1][1]}[0],ARG[0]);
+    else if(ARG[1][0]=="deck.bottom")
+      if(length(decks{ARG[1][1]}[0]) > 0)
+        c=left(decks{ARG[1][1]}[0],ARG[0]);
+    
+    if(length(c)<1)
+      0;
+    else if(min(c)>499 && max(c)<700)
+    {
+      if(decks{ARG[2][1]}[2]!="planes")
+      {
+        d=FindDeck(player,"planes");
+        if(d)
+          dst[1]=d;
+        else
+        {
+          for(d)(decks)
+          {
+            if(d[1][2]=="planes")
+              dst[1]=d[0];
+          }
+        }
+        if(decks{dst[1]}[2]=="planes" && (decks{ARG[2][1]}[2]=="discard pile" || decks{ARG[2][1]}[2]=="exile"))
+          dst[0]="deck.bottom";
+       
+      }
+    }
+    else if(min(c)>699 && max(c)<800)
+    {
+      if(decks{ARG[2][1]}[2]!="schemes")
+      {
+        d=FindDeck(player,"schemes");
+
+        if(d)
+          dst[1]=d;
+        else
+        {
+          for(d)(decks)
+          {
+            if(d[1][2]=="schemes")
+              dst[1]=d[0];
+          }
+        }
+        if(decks{dst[1]}[2]=="schemes" && (decks{ARG[2][1]}[2]=="discard pile" || decks{ARG[2][1]}[2]=="exile"))
+          dst[0]="deck.bottom";
+      }
+    }
+    d=pop();
+    c=pop();
+  }
+}
+
+#
+# UploadDeckHook() - If a player submits a plane or scheme deck, add a pile for it.
+#
+def UploadDeckHook
+{
+  push(i);
+  if(has_entry("planes",ARG[1]))
+  {
+    i=CreateDeck(player,"planes",40,335);
+    hasplane[player]=1;
+    
+    for(p)(watchers)
+    {
+      if(p==player)
+        Send(p,("CreateDeck",(i,player,"planes",(40,335))));
+      else
+        Send(p,("CreateDeck",(i,player,"opponent planes",CoordToPlr(decks{i}[3],decks{i}[4],p))));
+    }
+    decks{i}[0]=shuffle(ARG[1]{"planes"});
+
+    SendAll("SetDeck",(i,card_back(decks{i}[0])));
+  }
+  if(has_entry("schemes",ARG[1]))
+  {
+    i=CreateDeck(player,"schemes",40,-90);
+    hasscheme[player]=1;
+    
+    for(p)(watchers)
+    {
+      if(p==player)
+        Send(p,("CreateDeck",(i,player,"schemes",(40,-90))));
+      else
+        Send(p,("CreateDeck",(i,player,"opponent schemes",CoordToPlr(decks{i}[3],decks{i}[4],p))));
+    }
+    decks{i}[0]=shuffle(ARG[1]{"schemes"});
+
+    SendAll("SetDeck",(i,card_back(decks{i}[0])));
+  }
+  
+  if(AllDecksLoaded())
+  {
+    if(sum(hasplane))
+      SendAll("Message","{orange}Planechase! Fun! Remember that the {yellow}Delete{orange} key can put a plane card on the bottom of the planar deck when you're done with it. Roll the planar die with {yellow}Ctrl+R{orange} just like a normal die roll, but only use the {red}first die{orange}. {dice1} is Planeswalk, and {dice6} is {C} (chaos).");
+    
+    if(players_wanted>2)
+      i=sum(hasscheme);
+    else
+      i=0;
+    
+    if(i==1)
+    {
+      SendAll("Message","{cyan}It looks like you're trying to play an Archenemy game! Type {yellow}yes{cyan} if this is correct, or {yellow}no{cyan} if I should just ignore the scheme deck behind the curtain.");
+      archenemy=find(1,hasscheme);
+      mtg.waitfor="arch confirm";
+      mtg.waitforexpiry=toint(current_time())+30;
+    }
+    else if(i==players_wanted)
+    {
+      SendAll("Message","{cyan}Oh boy! Supervillain Rumble! I wouldn't want to get too involved in a scuffle like that. Nonetheless, if you all just keep those decks around for show and only one of you is planning on using it this game, the Baddest Baddie of them All should type {yellow}me{cyan} to put their villainy to the test.");
+      mtg.waitfor="arch choose";
+      mtg.waitforexpiry=toint(current_time())+30;
+    }
+    else if(i)
+    {
+      SendAll("Message","{cyan}Multiple archenemies? I'm guessing all but one of you is an impostor, so the real one can step out of the shadows by typing {yellow}me{cyan}.");
+      mtg.waitfor="arch choose";
+      mtg.waitforexpiry=toint(current_time())+30;
+    }
+  }
+  i=pop();
+}
+
+#
+# SayHook() - used for some Mtg-specific messages
+#
+def SayHook
+{
+  return(0);
+  
+# This is in SayHook because it should be broadcast to all players even if the player has teamspeak on.
+# If it were processed by Say(), the teamspeak section would pick up on it first.
+  if(left(ARG,21)=="{orange}Current life ")
+  {
+    SendAll("Message","{yellow}"+player.name{player}+": "+ARG);
+    return(1);
+  }
+  else if(length(mtg.waitfor)>0)
+  {
+    if(mtg.waitforexpiry && current_time()>mtg.waitforexpiry)
+      mtg.waitfor="";
+    else if(mtg.waitfor=="arch confirm")
+    {
+      if(lc(ARG)=="yes" || lc(ARG)=="y")
+      {
+        mtg.waitfor="";
+        SendAll("Message","{yellow}"+player.name{player}+": "+ARG);
+        SetTeams("against",archenemy);
+        server_flags = server_flags + ("team",) - ("teamscore",);
+        score[archenemy] = InitialScore(archenemy);
+        SendAll("Score",(archenemy,score[archenemy]));
+        SendAll("Message","{cyan}Very well then. Now everyone except "+player.name{archenemy}+" is on a team together, and can use {yellow}/sh{cyan} to show hands, or {yellow}/t MESSAGE{cyan} to talk amongst yourselves. Begin!");
+        return(1);
+      }
+      else if(lc(ARG)=="no" || lc(ARG)=="n")
+      {
+        mtg.waitfor="";
+        SendAll("Message","{yellow}"+player.name{player}+": "+ARG);
+        return(1);
+      }
+    }
+    else if(mtg.waitfor=="arch choose")
+    {
+      if((lc(ARG)=="me" || lc(ARG)=="i") && hasscheme(player))
+      {
+        mtg.waitfor="";
+        SendAll("Message","{yellow}"+player.name{player}+": "+ARG);
+        archenemy=player;
+        SetTeams("against",player);
+        server_flags = server_flags + ("team",) - ("teamscore",);
+        score[archenemy] = InitialScore(player);
+        SendAll("Score",(player,score[player]));
+        SendAll("Message","{cyan}Very well then. Now everyone except "+player.name{player}+" is on a team together, and can use {yellow}/sh{cyan} to show hands, or {yellow}/t MESSAGE{cyan} to talk amongst yourselves. Begin!");
+        return(1);
+      }
+      else if(lc(ARG)=="no" || lc(ARG)=="n")
+      {
+        mtg.waitfor="";
+        SendAll("Message","{yellow}"+player.name{player}+": "+ARG);
+        return(1);
+      }
+    }
+  }
 }
 
 #
@@ -55,5 +270,8 @@ def SetUpPlayer
 #
 def InitialScore
 {
-  return(20);
+  initscore = 20;
+  if (ARG==archenemy) initscore = initscore * 2;
+  if (HasFlag("teamscore") && HasFlag("team")) initscore = (initscore * 3 * length(team[ARG])) / 4;
+  return(initscore);
 }

@@ -173,16 +173,46 @@ def RuleCheckWizards
 {
   push(w);
   push(m);
+  push(e);
+  push(f);
 
-  w=select('Attr("race",#)=="Wizard" || 
+  if (ARG[2] == "E"){
+    w=select('Attr("race",#)=="Wizard" || 
+			Attr("race",#)=="Ringwraith" || 
+			Attr("race",#)=="Fallen-wizard" || 
+			Attr("race",#)=="Balrog" || 
+			Attr("race",#)=="Elf-lord" ||
+			Attr("race",#)=="Dragon-lord" ||
+			Attr("race",#)=="Dwarf-lord" ||
+			name(#) == "The Lidless Eye" ||
+			name(#) == "Sauron"',ARG[0]);
+  }
+  else
+  {
+	w=select('Attr("race",#)=="Wizard" || 
 			Attr("race",#)=="Ringwraith" || 
 			Attr("race",#)=="Fallen-wizard" || 
 			Attr("race",#)=="Balrog" || 
 			Attr("race",#)=="Elf-lord" ||
 			Attr("race",#)=="Dragon-lord" ||
 			Attr("race",#)=="Dwarf-lord"' ,ARG[0]);
+  }
   m=forall('count(#,w)',unique(sort(w)));
-
+  e=0;
+  for (c) (ARG[0])
+  {
+	e=e+1;
+  }
+  if(ARG[1] == "total" && ARG[2]=="D")
+  {
+	if (e>99)
+		return(max(m)<=5);
+	else if (e>79)
+		return(max(m)<=4);
+	else 
+		return(max(m)<=3);
+  }
+  
 #Msg("Avatars: w="+tostr(w)+" Counts: m="+tostr(m)+" Second Max: "+tostr(max(m-(max(m),))));
 
   if(max(m-(max(m),)) > 1)
@@ -212,6 +242,8 @@ def RuleCheckWizards
       return(length(w)<=3 && length(unique(sort(w)))<=2);
   }
 
+  f=pop();
+  e=pop();
   m=pop();
   w=pop();
 }

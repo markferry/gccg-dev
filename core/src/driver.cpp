@@ -181,20 +181,20 @@ namespace Driver
 			int n=atoi(ret.substr(5,ret.length()-6).c_str());
 			if(n < 0)
 				n=0;
-			else if(n > 4)
-				n=4;
+			else if(n > 6)
+				n=6;
 			style.font=n;
 		}
 		else if(ret.substr(0,5)=="{card" && ret.substr(ret.length()-1,1)=="}")
 		{
 			int n=atoi(ret.substr(5,ret.length()-6).c_str());
-
+			string name="_unknown_";
+			
 			if(n >= 0 && n < Database::cards.Cards())
-			{
-				string name=Database::cards.Name(n);
-				w=TextWidth(style.font,style.pointsize,name);
-				h=TextHeight(style.font,style.pointsize,name);
-			}
+				name=Database::cards.Name(n);
+			
+			w=TextWidth(style.font,style.pointsize,name);
+			h=TextHeight(style.font,style.pointsize,name);
 		}
 		else if(ret=="{red}")
 			style.color=RED;
@@ -230,39 +230,39 @@ namespace Driver
 			style=TextStyle();
 			style.shadow=old;
 		}
-                else
-                {
-                    int r=atoi(ret.substr(1).c_str());
-                    int g=-1;
-                    int b=-1;
-                    
-                    if(r>0)
-                    {
-			for(size_t n=0; n < ret.length(); n++)
-                        {
-                            if(ret[n]==',')
-                            {
-                                n++;
-                                g=atoi(ret.substr(n).c_str());
-                                for(; n < ret.length(); n++)
-                                    if(ret[n]==',')
-                                    {
-                                        b=atoi(ret.substr(n+1).c_str());
-                                        break;
-                                    }
+          else
+          {
+               int r=atoi(ret.substr(1).c_str());
+               int g=-1;
+               int b=-1;
+          
+               if(r>0 || ret.substr(1,2)=="0,")
+               {
+				for(size_t n=0; n < ret.length(); n++)
+				{
+					if(ret[n]==',')
+					{
+						n++;
+						g=atoi(ret.substr(n).c_str());
+						for(; n < ret.length(); n++)
+							if(ret[n]==',')
+							{
+								b=atoi(ret.substr(n+1).c_str());
+								break;
+							}
 
-                                break;
-                            }
-                        }
+						break;
+					}
+				}
 
-                        if(r>=0 && g>=0 && b>=0 && r<256 && g<256 && b<256)
-                        {
-                            style.color.r=r;
-                            style.color.g=g;
-                            style.color.b=b;
-                        }
-                    }
-                }
+				if(r>=0 && g>=0 && b>=0 && r<256 && g<256 && b<256)
+				{
+					style.color.r=r;
+					style.color.g=g;
+					style.color.b=b;
+				}
+			}
+		}
 
 		return ret;
 	}

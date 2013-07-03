@@ -1,0 +1,227 @@
+#
+# GCCG v0.9.6.3 Middle-earth deck
+#
+#      Forests of Old
+#
+
+####
+Deck
+####
+
+# Dual Resource (4)
+
+2 Essay on Ringcraft (FB)
+2 Well Aimed (FB)
+
+# Elf-lord Character (4)
+
+4 Lady Galadriel (FB)
+
+# Hazard (35)
+
+1 Adûnaphel (TW)
+1 Alatar the Hunter (AS)
+1 An Unexpected Outpost (DM)
+1 Black Crows (FB)
+1 Bregalad (FB)
+1 Chill Them with Fear (LE)
+2 Decisions of the White Council (FB)
+3 Ent in Search of the Entwives (LE)
+1 Finglas (FB)
+1 Foolish Words (LE)
+1 Gandalf the White Rider (AS)
+1 Lord of the Eagles (DF)
+1 Master of the House (AS)
+1 Mouth of Sauron (TW)
+2 Old Man Willow (TW)
+1 Out of Practise (DF)
+1 Pallando the Soul-keeper (AS)
+2 Protecting Their Domain (FB)
+1 Radagast the Tamer (AS)
+1 Revealed to all Watchers (DM)
+1 Sentinel of the Grove (FB)
+1 The Oldest (FB)
+1 The Watchful Peace (FB)
+1 The Way is Shut (DM)
+1 Twilight (LE)
+2 Wandering Eldar (LE)
+3 Wrath of the Olvar (FB)
+
+# Hero Character (6)
+
+1 Celebrían (FB)
+1 Elven Handmaid (FB)
+1 Fanar (FB)
+1 Mallorn-dweller (FB)
+1 Orophin (TW)
+1 Rúmil (FB)
+
+# Hero Resource (25)
+
+1 A Chance Meeting (TW)
+2 A Long Good Talk (FB)
+2 Ancient Knowledge (FB)
+1 Ancient Skill and Wisdom (FB)
+1 Bow of the Galadhrim (AS)
+1 Elves of Lothlórien (FB)
+1 Hundreds of Butterflies (DM)
+2 Into the Smoking Cone (DM)
+1 Light of the Lady (FB)
+1 Longbottom Leaf (BA)
+1 Looking from Mind to Mind (FB)
+2 Marvels Told (TD)
+2 Of the Green-elves (FB)
+3 Precious Gold Ring (TW)
+1 Ringlore (TW)
+1 Smoke Rings (DM)
+1 Treebeard (TW)
+1 Wood-elves (TW)
+
+# Stage Resource (6)
+
+1 Blind to All Else (WH)
+2 Great Achievement (DF)
+1 Great Patron (WH)
+1 Possessions of the Green-elves (FB)
+1 Ring of Water (FB)
+
+####
+Pool
+####
+
+# Dual Resource (1)
+
+1 Bow of Yew (FB)
+
+# Hero Character (6)
+
+1 Aegnor (FB)
+1 Celeborn, Lord of Lórien (FB)
+1 Haldir (TW)
+1 Mallorn-dweller (FB)
+1 Thranduil (TW)
+1 Wood-elf (FB)
+
+# Hero Resource (2)
+
+1 Elven Rope (BA)
+1 Rumours of Rings (BA)
+
+# Stage Resource (3)
+
+1 Lady of Many Gifts (FB)
+1 Thrall of the Voice (WH)
+1 Trusted Counsellor (FB)
+
+#########
+Sideboard
+#########
+
+# Hazard (15)
+
+1 Call of Home (TW)
+1 Camthalion (FP)
+1 Covetous Thoughts (LE)
+1 Crossing the Border (DF)
+1 Elven Archer (FB)
+1 Falathrim (FB)
+1 Galadhrim (AS)
+1 Heedless Revelry (LE)
+1 Lady of the Golden Wood (AS)
+1 Landroval (LE)
+1 Nameless Thing (DM)
+1 News of Doom (LE)
+1 Stay Her Appetite (LE)
+1 The Roving Eye (LE)
+1 Twilight (TW)
+
+# Hero Resource (23)
+
+1 Cup of Farewell (DM)
+1 Dwarven Ring of Thrár's Tribe [H] (TW)
+1 Elf-stone (TW)
+1 Elven Cloak (TW)
+1 Emerald of Doriath (TD)
+1 Great Bow of Lórien (FB)
+1 Healing Herbs (TW)
+1 Leaf Brooch (DM)
+2 Lesser Ring (TW)
+1 Lost Tome (DM)
+1 Magic Ring of Courage (TW)
+1 Magic Ring of Nature (TW)
+1 Magic Ring of Stealth (TW)
+1 Marvels Told (TD)
+1 Nenya (TW)
+1 Royal Duo (FB)
+1 Smoke Rings (DM)
+1 Tom Bombadil (TW)
+1 Tower Raided (AS)
+1 True Fána (TW)
+1 Waybread (TD)
+1 Wizard's Test (TW)
+
+# Stage Resource (2)
+
+1 Chief-guardian (FB)
+1 The Elf-king (FB)
+
+################
+Sideboard vs. fw
+################
+
+# Hazard (10)
+
+1 Blind to the West (WH)
+1 Cast from the Order (WH)
+1 Curse Him, Root and Branch! (FB)
+1 Hard to Tame (DF)
+1 He Is Lost to Us (FB)
+1 Inner Rot (WH)
+1 Ire of the East (WH)
+1 Nature's Revenge (WH)
+1 Power Relinquished to Artifice (WH)
+1 Something Else at Work (WH)
+
+#####
+Sites
+#####
+
+# Elf-lord Site (3)
+
+3 Lórien [E] (FB)
+
+# Fallen-wizard Site (2)
+
+1 Rivendell [F] (FB)
+1 Thranduil's Halls [F] (FB)
+
+# Hero Site (28)
+
+1 Amon Hen [H] (TW)
+1 Amon Lind [H] (FB)
+1 Bandit Lair [H] (TW)
+1 Barad-dûr [H] (TW)
+1 Barrow-downs [H] (TW)
+1 Buhr Widu [H] (TD)
+1 Caras Amarth [H] (FB)
+1 Cerin Amroth [H] (FB)
+1 Cor Angaladh [H] (FB)
+1 Dead Marshes [H] (TW)
+1 Dimrill Dale [H] (TW)
+1 Dol Guldur [H] (TW)
+1 Easterling Camp [H] (TW)
+1 Gladden Fields [H] (TW)
+1 Glittering Caves [H] (TW)
+1 Goblin-gate [H] (TW)
+1 Hermit's Hill [H] (DM)
+1 Isengard [H] (TW)
+1 Isles of the Dead that Live [H] (TW)
+1 Moria [H] (TW)
+1 Mount Doom [H] (TW)
+1 Ost-in-Edhil [H] (TW)
+1 Raider-hold [H] (AS)
+1 Rhûbar [H] (FB)
+1 Telpëmar [H] (FB)
+1 The Under-grottos [H] (DM)
+1 Tom's House [H] (FB)
+1 Wellinghall [H] (TW)

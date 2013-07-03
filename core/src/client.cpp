@@ -572,6 +572,7 @@ int gccg_main(int argc,const char** argv)
 	security.AllowExecute(getenv("HOME")+string("/.gccg/init*"));
 	security.AllowWriteFile("./vardump");
 	security.AllowOpenDir(CCG_DATADIR"/scripts");
+	security.AllowOpenDir(CCG_DATADIR"/scripts/global");
 	
 	// Load game description and create save dir.
 	if(arg < argc)

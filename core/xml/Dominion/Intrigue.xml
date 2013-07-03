@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE ccg-setinfo SYSTEM "../gccg-set.dtd">
+<ccg-setinfo name="Intrigue" dir="Intrigue" abbrev="I" game="Dominion">
+	<cards>
+		<card name="Courtyard" graphics="courtyard.jpg" text="+3 Card, Put a card from your hand on top of your deck.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action"/>
+			<attr key="cost" value="2"/>
+		</card>
+		<card name="Pawn" graphics="pawn.jpg" text="Choose two: +1 Card, +1 Action, +1 Buy, +1 Coin. (The choices must be different.).">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action"/>
+			<attr key="cost" value="2"/>
+		</card>
+		<card name="Secret Chamber" graphics="secretchamber.jpg" text="Discard any number of cards. +1 Coin per card discarded. - When another player plays an Attack card, you may reveal this from your hand. If you do, +2 cards, then put 2 cards from your hand on top of your deck.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action - Reaction"/>
+			<attr key="cost" value="2"/>
+		</card>
+		<card name="Great Hall" graphics="greathall.jpg" text="1 Victory, +1 Card, +1 Action.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action - Victory"/>
+			<attr key="cost" value="3"/>
+		</card>
+		<card name="Masquerade" graphics="masquerade.jpg" text="+2 Card, Each player passes a card in their hand to the player on their left. You may trash a card from your hand.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action"/>
+			<attr key="cost" value="3"/>
+		</card>
+		<card name="Shanty Town" graphics="shantytown.jpg" text="+2 Actions, Reveal your hand. If you have no Action cards in hand, +2 Cards.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action"/>
+			<attr key="cost" value="3"/>
+		</card>
+		<card name="Steward" graphics="steward.jpg" text="Choose one: +2 Cards; or +2 Coins; or trash 2 cards from your hand.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action"/>
+			<attr key="cost" value="3"/>
+		</card>
+		<card name="Swindler" graphics="swindler.jpg" text="+2 Coins, Each other player trashes the top card of his deck and gains a card with the same cost that you choose.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action - Attack"/>
+			<attr key="cost" value="3"/>
+		</card>
+		<card name="Wishing Well" graphics="wishingwell.jpg" text="+1 Card, +1 Action, Name a card, then reveal the top card of your deck. If it is the named card, put it in your hand.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action"/>
+			<attr key="cost" value="3"/>
+		</card>
+		<card name="Baron" graphics="baron.jpg" text="+1 Buy, You may discard an Estate card. If you do, +4 Coins. Otherwise, gain an Estate card.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action"/>
+			<attr key="cost" value="4"/>
+		</card>
+		<card name="Bridge" graphics="bridge.jpg" text="+1 Buy, +1 Coin. All cards (including cards in players' hands) cost 1 Coin less this turn, but not less than 0 Coins.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action"/>
+			<attr key="cost" value="4"/>
+		</card>
+		<card name="Conspirator" graphics="conspirator.jpg" text="+2 Coins. If you've played 3 or more Actions this turn (counting this): +1 Card, +1 Action.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action"/>
+			<attr key="cost" value="4"/>
+		</card>
+		<card name="Coppersmith" graphics="coppersmith.jpg" text="Copper produces an extra 1 Coin this turn.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action"/>
+			<attr key="cost" value="4"/>
+		</card>
+		<card name="Ironworks" graphics="ironworks.jpg" text="Gain a card costing up to 4 Coins. If it is an... Action card, +1 Action. Treasure card, +1 Coin. Victory card, +1 Card.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action"/>
+			<attr key="cost" value="4"/>
+		</card>
+		<card name="Mining Village" graphics="miningvillage.jpg" text="+1 Card, +2 Actions. You may trash this card immediately. If you do, +2 Coins.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action"/>
+			<attr key="cost" value="4"/>
+		</card>
+		<card name="Scout" graphics="scout.jpg" text="+1 Action. Reveal the top 4 cards of your deck. Put the revealed Victory cards into your hand. Put the other cards on top of your deck in any order.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action"/>
+			<attr key="cost" value="4"/>
+		</card>
+		<card name="Duke" graphics="duke.jpg" text="Worth 1 Victory per Duchy you have.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Victory"/>
+			<attr key="cost" value="5"/>
+		</card>
+		<card name="Minion" graphics="minion.jpg" text="+1 Action, Choose one: +2 Coins; or discard your hand, +4 Cards, and each other player with at least 5 cards in hand discards his hand and draws 4 cards.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action - Attack"/>
+			<attr key="cost" value="5"/>
+		</card>
+		<card name="Saboteur" graphics="saboteur.jpg" text="Each other player reveals cards from the top of his deck until revealing one costing 3 Coins or more. He trashes that card and may gain a card costing at most 2 Coins less than it. He discards the other revealed cards.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action - Attack"/>
+			<attr key="cost" value="5"/>
+		</card>
+		<card name="Torturer" graphics="torturer.jpg" text="+3 Card, Each other player chooses one: he discards 2 cards; or he gains a Curse card, putting it in his hand.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action - Attack"/>
+			<attr key="cost" value="5"/>
+		</card>
+		<card name="Trading Post" graphics="tradingpost.jpg" text="Trash 2 cards from your hand. If you do, gain a silver card; put it into your hand.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action"/>
+			<attr key="cost" value="5"/>
+		</card>
+		<card name="Tribute" graphics="tribute.jpg" text="The player to your left reveals then discards the top 2 cards of his deck. For each differently named card revealed, if it is an... Action Card, +2 Actions; Treasure Card, +2 Coins; Victory Card, +2 Cards.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action"/>
+			<attr key="cost" value="5"/>
+		</card>
+		<card name="Upgrade" graphics="upgrade.jpg" text="+1 Card, +1 Action, Trash a card from your hand. Gain a card costing exactly 1 Coin more than it.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action"/>
+			<attr key="cost" value="5"/>
+		</card>
+		<card name="Harem" graphics="harem.jpg" text="2 Coins, 2 Victory.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Treasure - Victory"/>
+			<attr key="cost" value="6"/>
+		</card>
+		<card name="Nobles" graphics="nobles.jpg" text="2 Victory, Choose one: +3 Cards, or +2 Actions.">
+			<attr key="rarity" value="F"/>
+			<attr key="type" value="Action - Victory"/>
+			<attr key="cost" value="6"/>
+		</card>
+	</cards>
+</ccg-setinfo>

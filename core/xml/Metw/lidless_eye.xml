@@ -1786,7 +1786,7 @@
        <attr key="type" value="Minion Resource"/>
 	   <attr key="keyword" value="Command"/>
     </card>
-    <card name="In the Name of Mordor" graphics="IntheNameofMordor.jpg" text="Playable on an untapped character whose company is facing a detainment attack keyed to (by name or type) a Dark-hold [{D}], Dark-domain [{d}], Shadow-hold [{S}], or Shadow-land [{s}]. Tap the character and cancel the attack. Alternatively, this card cancels and discards one Nazgûl hazard event.">
+    <card name="In the Name of Mordor" graphics="IntheNameofMordor.jpg" text="Playable on an untapped character whose company is facing a detainment attack keyed to (by name or type) a Dark-hold [{D}], Dark-domain [{d}], Shadow-hold [{S}], or Shadow-land [{s}]. Tap the character and cancel the attack. Alternatively, this card cancels and discards one Nazgul hazard event.">
        <attr key="rarity" value="U"/>
        <attr key="class" value="Short-event"/>
        <attr key="type" value="Minion Resource"/>
@@ -1916,7 +1916,7 @@
        <attr key="class" value="Permanent-event"/>
        <attr key="type" value="Minion Resource"/>
     </card>
-    <card name="Remnants of Old Robberies" graphics="RemnantsofOldRobberies.jpg" text="Playable on a non-Wolves, non-Animals, non-Nazgûl hazard creature attack that a company has just defeated. Place this card with the attack's card. The company receives a number of miscellaneous marshalling points equal to the kill marshalling points the defeated creature would give a hero player.">
+    <card name="Remnants of Old Robberies" graphics="RemnantsofOldRobberies.jpg" text="Playable on a non-Wolves, non-Animals, non-Nazgul hazard creature attack that a company has just defeated. Place this card with the attack's card. The company receives a number of miscellaneous marshalling points equal to the kill marshalling points the defeated creature would give a hero player.">
        <attr key="rarity" value="R"/>
        <attr key="class" value="Permanent-event"/>
        <attr key="type" value="Minion Resource"/>
@@ -2629,7 +2629,7 @@
        <attr key="type" value="Minion Resource"/>
 	   <attr key="keyword" value="Battle-gear"/>
     </card>
-    <card name="The One Ring" graphics="TheOneRing.jpg" text="Unique. The One Ring. Playable only with a Gold Ring and after a test indicates The One Ring. +5 prowess (to a maximum of double the bearer's normal prowess). +5 to body (to a maximum of 10). +5 to direct influence. Bearer may make a corruption check modified by -2 to cancel a non-Undead, non-Nazgûl strike. +1 corruption point to every character in the bearer's company.">
+    <card name="The One Ring" graphics="TheOneRing.jpg" text="Unique. The One Ring. Playable only with a Gold Ring and after a test indicates The One Ring. +5 prowess (to a maximum of double the bearer's normal prowess). +5 to body (to a maximum of 10). +5 to direct influence. Bearer may make a corruption check modified by -2 to cancel a non-Undead, non-Nazgul strike. +1 corruption point to every character in the bearer's company.">
        <attr key="unique" value="yes"/>
        <attr key="corruption" value="6"/>
        <attr key="mp" value="6"/>
@@ -3043,7 +3043,7 @@
        <attr key="region" value="Dagorlad"/>
        <attr key="site_type" value="{S}"/>
        <attr key="playable" value="Items (minor, major)"/>
-       <attr key="special" value="Non-Nazgûl creatures played at this site attack normally, not as detainment."/>
+       <attr key="special" value="Non-Nazgul creatures played at this site attack normally, not as detainment."/>
        <attr key="draw_opp" value="1"/>
        <attr key="auto_attack" value="Undead - 2 strikes with 8 prowess; each character wounded must make a corruption check modified by -2"/>
        <attr key="rarity" value="U"/>
@@ -3256,7 +3256,7 @@
        <attr key="region" value="High Pass"/>
        <attr key="site_type" value="{S}"/>
        <attr key="playable" value="Items (minor, gold ring)"/>
-       <attr key="special" value="Non-Nazgûl creatures played at this site attack normally, not as detainment."/>
+       <attr key="special" value="Non-Nazgul creatures played at this site attack normally, not as detainment."/>
        <attr key="draw_opp" value="2"/>
        <attr key="auto_attack" value="Orcs - 3 strikes with 6 prowess"/>
        <attr key="rarity" value="F1"/>
@@ -3465,7 +3465,7 @@
        <attr key="region" value="Redhorn Gate"/>
        <attr key="site_type" value="{S}"/>
        <attr key="playable" value="Items (minor, major, greater, gold ring)"/>
-       <attr key="special" value="Non-Nazgûl creatures played at this site attack normally, not as detainment."/>
+       <attr key="special" value="Non-Nazgul creatures played at this site attack normally, not as detainment."/>
        <attr key="draw_opp" value="3"/>
        <attr key="auto_attack" value="Orcs - 4 strikes with 7 prowess"/>
        <attr key="rarity" value="F2"/>
@@ -3621,7 +3621,7 @@
        <attr key="region" value="Imlad Morgul"/>
        <attr key="site_type" value="{S}"/>
        <attr key="playable" value="Items (minor, major)"/>
-       <attr key="special" value="Contains a hoard. Non-Nazgûl creatures played at this site attack normally, not as detainment."/>
+       <attr key="special" value="Contains a hoard. Non-Nazgul creatures played at this site attack normally, not as detainment."/>
        <attr key="draw_opp" value="1"/>
        <attr key="auto_attack" value="(1st) Orcs - 2 strikes with 8 prowess; (2nd) Spider (cannot be canceled) - 1 strike with 16 prowess; any character wounded is immediately eliminated"/>
        <attr key="rarity" value="U"/>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE ccg-setinfo SYSTEM "../gccg-set.dtd">
+<ccg-setinfo name="Mats" dir="Mats" abbrev="MT" game="Dominion">
+	<cards>
+		<card name="Island Mat" graphics="IslandMat.jpg">
+			<attr key="type" value="Mat"/>
+		</card>	
+		<card name="Native Village Mat" graphics="NativeVillageMat.jpg">
+			<attr key="type" value="Mat"/>
+		</card>	
+		<card name="Pirate Ship Mat" graphics="PirateShipMat.jpg">
+			<attr key="type" value="Mat"/>
+		</card>	
+		<card name="Trade Route Mat" graphics="TradeRouteMat.jpg">
+			<attr key="type" value="Mat"/>
+		</card>	
+		<card name="Victory Mat 1" graphics="VictoryMat1.jpg">
+			<attr key="type" value="Mat"/>
+		</card>	
+		<card name="Victory Mat 2" graphics="VictoryMat2.jpg">
+			<attr key="type" value="Mat"/>
+		</card>	
+		<card name="Victory Mat 3" graphics="VictoryMat3.jpg">
+			<attr key="type" value="Mat"/>
+		</card>	
+		<card name="Victory Mat 4" graphics="VictoryMat4.jpg">
+			<attr key="type" value="Mat"/>
+		</card>	
+		<card name="Victory Mat 5" graphics="VictoryMat5.jpg">
+			<attr key="type" value="Mat"/>
+		</card>	
+		<card name="Victory Mat 6" graphics="VictoryMat6.jpg">
+			<attr key="type" value="Mat"/>
+		</card>		
+		<card name="Victory Mat 7" graphics="VictoryMat7.jpg">
+			<attr key="type" value="Mat"/>
+		</card>	
+		<card name="Victory Mat 8" graphics="VictoryMat8.jpg">
+			<attr key="type" value="Mat"/>
+		</card>	
+	</cards>
+</ccg-setinfo>

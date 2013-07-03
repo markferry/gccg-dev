@@ -231,14 +231,20 @@ namespace Evaluator
 		Data operator-() const;
 		/// Add two objects. Lists and strings are catenated, integers are summed together.
 		Data operator+(const Data& ) const;
-		/// Substract two objects. If args are lists, remove elements from first belonging second.
+		/// Subtract two objects. If args are lists, remove elements from first belonging second.
 		Data operator-(const Data& ) const;
 		/// Multiply two numbers or throw LangErr.
 		Data operator*(const Data& ) const;
-		/// Divide an number by other number. Other objects throws LangErr.
+		/// Divide a number by other number. Other objects throws LangErr.
 		Data operator/(const Data& ) const;
 		/// Return remainder for integers. Other objects throws LangErr.
 		Data operator%(const Data& ) const;
+		/// Bitwise OR.
+		Data operator|(const Data& ) const;
+		/// Bitwise AND.
+		Data operator&(const Data& ) const;
+		/// Bitwise XOR.
+		Data operator^(const Data& ) const;
 		/// Logical OR.
 		Data operator||(const Data& ) const;
 		/// Logical AND.

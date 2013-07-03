@@ -2,7 +2,7 @@
 <!DOCTYPE ccg-setinfo SYSTEM "../gccg-set.dtd">
 <ccg-setinfo name="Firstborn Promo" dir="firstborn_promo" abbrev="FP" game="Middle-earth">
 	<cards>
-		<card name="Camthalion" graphics="Camthalion.jpg" text="Unique. Elf. 1 strike. +2 prowess against Elves.May be played keyed to any Dark-domain [d] or Dark-hold [D], if there is a Nazgûl permanent-event or Ringwraith in play, or to any Shadow-hold [S] following a Nazgûl attack. Cannot be targetted by spells or magic. As a short-event, playable on a hero character moving through a Dark-domain or to/from a Dark-hold. Character loses all his skills for the rest of the turn; discard any Knowledge or Information events he controls.">
+		<card name="Camthalion" graphics="Camthalion.jpg" text="Unique. Elf. 1 strike. +2 prowess against Elves.May be played keyed to any Dark-domain [d] or Dark-hold [D], if there is a Nazgul permanent-event or Ringwraith in play, or to any Shadow-hold [S] following a Nazgul attack. Cannot be targetted by spells or magic. As a short-event, playable on a hero character moving through a Dark-domain or to/from a Dark-hold. Character loses all his skills for the rest of the turn; discard any Knowledge or Information events he controls.">
 			 <attr key="type" value="Hazard"/>
 			 <attr key="rarity" value="P"/>
 			 <attr key="unique" value="yes"/>
