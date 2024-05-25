@@ -14,7 +14,8 @@ SERVER_FILES=games.dat
 
 # mythos/ files included in mythos-data package
 DATA_NAME:=gccg-mythos-data
-DATA_VERSION:=11072903
+DATA_VERSION:=24052501
+DATA_CSV:=mythos-all.csv
 DATA_XML:=<module name=\"mythos-data\" version=\"${DATA_VERSION}\"></module>
 DATA_PACKAGE:=${DATA_NAME}-${DATA_VERSION}.tgz
 DATA_FILES=xml/Mythos
@@ -78,4 +79,11 @@ web-clean:
 
 web: dist
 	rsync -av ${SITE_PATH} ${SSH_PATH}
+
+########################
+%.csv: %.ods
+	libreoffice --headless --convert-to csv $<
+
+xml: ${DATA_CSV}
+	core/data/mythos_spoil_to_xml.sh $< mythos/xml/Mythos/
 
