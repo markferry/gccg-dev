@@ -87,3 +87,5 @@ web: dist
 xml: ${DATA_CSV}
 	core/data/mythos_spoil_to_xml.sh $< mythos/xml/Mythos/
 
+annotate: xml
+	cd mythos && make annotate
