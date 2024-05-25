@@ -7,6 +7,7 @@
 #
 
 SRC="$1"
+OUT_DIR="$2"
 
 # Extra processing to keep GCCG happy
 SEDSCRIPT="s/&apos;/'/g"
@@ -14,7 +15,7 @@ SEDSCRIPT="s/&apos;/'/g"
 # csv2xml needs a root element
 HEADER="<cards>"
 FOOTER="</cards>"
-XSLT="mythosdb_to_xml.xslt"
+XSLT="$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")/mythosdb_to_xml.xslt"
 XSLTPROC="xsltproc"
 
 # Map database SET IDs to GCCG set vars
@@ -110,6 +111,6 @@ gen_xml() {
 for SET_ID in Limited B1 B2 B3 Standard Dreamlands "New Æon" ScoobyDoo Promo
 do
     get_setfname "$SET_ID"
-    gen_xml > "$SET_FNAME"
+    gen_xml > "${OUT_DIR}/$SET_FNAME"
 done
 
