@@ -33,7 +33,7 @@ SITE_XML:=${SITE_PATH}/available.xml
 
 AVAILABLE_XML="<modules>\n\t<source url=\"http://gccg.sourceforge.net/modules/\"/>\n\t${CLIENT_XML}\n\t${DATA_XML}\n\t${GRAPHICS_XML}\n</modules>"
 
-SSH_PATH=yuggoth-git:~/public_html/
+SSH_PATH=yuggoth:~/public_html/
 ########################
 all: dist
 
